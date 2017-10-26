@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
 	<fragment name="default">
-		<template name="default"/>
-		<data name="fetch"/>
-		<style name="default"/>
-		<script name="Control"/>
-		<struc name="/core/DOM"/>
-		<struc name="/sse/script"/>
+		<template name="default" />
+		<data name="fetch" />
+		<style name="default" />
+		<script name="Control" />
+		<struc name="/core/DOM" />
+		<struc name="/sse/script" />
 	</fragment>
-	
+
 	<fragment name="archive">
-		<template name="archive"/>
-		<data name="archive"/>
-		<style name="default"/>
+		<template name="archive" />
+		<data name="archive" />
+		<style name="default" />
 	</fragment>
-	<resource name="chat" path="chat.json" type="application/json"/>
-	<resource name="config" path="config.xml" type="application/xml"/>
+	<resource name="chat" path="chat.json" type="application/json" />
+	<resource name="config" path="config.xml" type="application/xml" />
 </module>

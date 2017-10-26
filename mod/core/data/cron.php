@@ -1,4 +1,5 @@
 <?php
+namespace Slothsoft\CMS;
 
 use Slothsoft\Core\Storage;
 

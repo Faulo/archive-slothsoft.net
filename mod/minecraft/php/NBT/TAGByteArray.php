@@ -1,47 +1,44 @@
 <?php
 namespace Slothsoft\Minecraft\NBT;
 
-class TAGByteArray extends TAGNode {
+class TAGByteArray extends TAGNode
+{
 
-	const TYPE = 7;
+    const TYPE = 7;
 
-	public function loadPayload() {
+    public function loadPayload()
+    {
+        $offset = $this->getPayloadOffset();
+        
+        $this->Payload['length'] = self::createNode(self::TYPE_INT, $offset);
+        
+        $offset += $this->Payload['length']->getLength();
+        
+        $this->Payload['bytes'] = self::getBinary($offset, $this->Payload['length']->getValue());
+    }
 
-		$offset = $this->getPayloadOffset();
+    public function getLength()
+    {
+        $length = parent::getLength();
+        
+        $length += $this->Payload['length']->getLength();
+        
+        $length += $this->Payload['length']->getValue();
+        
+        return $length;
+    }
 
-		$this->Payload['length'] = self::createNode(self::TYPE_INT, $offset);
+    public function getValue()
+    {
+        return $this->Payload['bytes'];
+    }
 
-		$offset += $this->Payload['length']->getLength();
-
-		$this->Payload['bytes'] = self::getBinary($offset, $this->Payload['length']->getValue());
-
-	}
-
-	public function getLength() {
-
-		$length = parent::getLength();
-
-		$length += $this->Payload['length']->getLength();
-
-		$length += $this->Payload['length']->getValue();
-
-		return $length;
-
-	}
-
-	public function getValue() {
-
-		return $this->Payload['bytes'];
-
-	}
-
-	public $Payload = array(
-
-		'length' => null,
-
-		'bytes' => ''
-
-	);
-
+    public $Payload = array(
+        
+        'length' => null,
+        
+        'bytes' => ''
+    
+    );
 } 
 

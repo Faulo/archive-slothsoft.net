@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
 	<fragment name="game">
-		<template name="home"/>
-		<style name="game"/>
-		<script name="core"/>
-		<script name="Tetris"/>
-		<script name="Tetris.Block"/>
-		<script name="Tetris.Board"/>
-		<script name="Tetris.Controls"/>
-		<script name="Tetris.Game"/>
-		<script name="Tetris.Pos"/>
-		<script name="Tetris.Shape"/>
-		<script name="Tetris.Storage"/>
+		<template name="home" />
+		<style name="game" />
+		<script name="core" />
+		<script name="Tetris" />
+		<script name="Tetris.Block" />
+		<script name="Tetris.Board" />
+		<script name="Tetris.Controls" />
+		<script name="Tetris.Game" />
+		<script name="Tetris.Pos" />
+		<script name="Tetris.Shape" />
+		<script name="Tetris.Storage" />
 	</fragment>
-	
-	
-	<resource name="game" path="game.xml" type="application/xml"/>
+
+
+	<resource name="game" path="game.xml" type="application/xml" />
 </module>

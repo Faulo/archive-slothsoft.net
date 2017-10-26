@@ -1,5 +1,4 @@
 <?php
-
 $uri = 'http://www.nuklearpower.com/2001/03/02/episode-001-were-going-where/';
 
 $blackList = <<<'EOT'
@@ -78,15 +77,15 @@ Guest Comic Surprise!
 Dead Computer Day
 EOT;
 $blackList = explode(PHP_EOL, $blackList);
-//my_dump($blackList);die();
+// my_dump($blackList);die();
 
 $imageDir = realpath(__DIR__ . '/../res/8bit');
-if (!$imageDir) {
-	return;
+if (! $imageDir) {
+    return;
 }
 $thumbDir = realpath(__DIR__ . '/../res/8bit-thumb');
-if (!$thumbDir) {
-	return;
+if (! $thumbDir) {
+    return;
 }
 
 $imageFile = $imageDir . DIRECTORY_SEPARATOR . '../8bit.xml';
@@ -102,74 +101,70 @@ $queries['image'] = 'normalize-space(//*[@id="comic"]//@src)';
 $i = 1;
 $comicList = [];
 
-
 do {
-	echo $uri . PHP_EOL;
-	
-	$href = $uri;
-	$xpath = \Storage::loadExternalXPath($uri, TIME_YEAR);
-	$uri = null;
-	if ($xpath) {
-		$uri = $xpath->evaluate($queries['uri']);
-		$title = $xpath->evaluate($queries['title']);
-		$image = $xpath->evaluate($queries['image']);
-		
-		
-		if ($image) {
-			$ext = substr($image, strrpos($image, '.'));
-			$name = sprintf('%04d%s', $i, $ext);
-			$path = sprintf('%s%s%s', $imageDir, DIRECTORY_SEPARATOR, $name);
-			$thumbFile = sprintf('%s%s%04d.png', $thumbDir, DIRECTORY_SEPARATOR, $i);
-			
-			$arr = [];
-			$arr['title'] = $title;
-			$arr['key'] = sprintf('%04d', $i);
-			$arr['image'] = sprintf('/getResource.php/dev/8bit-comics/%s', $name);
-			$arr['thumb'] = sprintf('/getResource.php/dev/8bit-thumbs/%s', $arr['key']);
-			$arr['href'] = $href;
-			
-			//my_dump([$uri, $title, $image, $path]);die();
-			
-			$i++;
-			
-			if (!file_exists($path)) {
-				if ($file = \CMS\HTTPFile::createFromURL($image)) {
-					echo $path . PHP_EOL;
-					$file->copyTo($imageDir, $name);
-				}
-			}
-			if (file_exists($path)) {
-				//if (!file_exists($thumbFile)) {
-					try {
-						$arr += \Image::imageInfo($path);
-						$image = \Image::createFromFile($path);
-						$thumb = imagecreatetruecolor($thumbWidth / $thumbFactor, $thumbHeight / $thumbFactor);
-						imagecopyresized($thumb, $image, 0, 0, 0, 0, $thumbWidth / $thumbFactor, $thumbHeight / $thumbFactor, $thumbWidth, $thumbHeight);
-						imagepng($thumb, $thumbFile);
-					} catch (\Exception $e) {
-						
-					}
-				//}
-			}
-			
-			if (in_array($title, $blackList)) {
-				echo '	SKIPPING!' . PHP_EOL;
-			} else {
-				$comicList[] = $arr;
-			}
-		}
-	}
+    echo $uri . PHP_EOL;
+    
+    $href = $uri;
+    $xpath = \Storage::loadExternalXPath($uri, TIME_YEAR);
+    $uri = null;
+    if ($xpath) {
+        $uri = $xpath->evaluate($queries['uri']);
+        $title = $xpath->evaluate($queries['title']);
+        $image = $xpath->evaluate($queries['image']);
+        
+        if ($image) {
+            $ext = substr($image, strrpos($image, '.'));
+            $name = sprintf('%04d%s', $i, $ext);
+            $path = sprintf('%s%s%s', $imageDir, DIRECTORY_SEPARATOR, $name);
+            $thumbFile = sprintf('%s%s%04d.png', $thumbDir, DIRECTORY_SEPARATOR, $i);
+            
+            $arr = [];
+            $arr['title'] = $title;
+            $arr['key'] = sprintf('%04d', $i);
+            $arr['image'] = sprintf('/getResource.php/dev/8bit-comics/%s', $name);
+            $arr['thumb'] = sprintf('/getResource.php/dev/8bit-thumbs/%s', $arr['key']);
+            $arr['href'] = $href;
+            
+            // my_dump([$uri, $title, $image, $path]);die();
+            
+            $i ++;
+            
+            if (! file_exists($path)) {
+                if ($file = \CMS\HTTPFile::createFromURL($image)) {
+                    echo $path . PHP_EOL;
+                    $file->copyTo($imageDir, $name);
+                }
+            }
+            if (file_exists($path)) {
+                // if (!file_exists($thumbFile)) {
+                try {
+                    $arr += \Image::imageInfo($path);
+                    $image = \Image::createFromFile($path);
+                    $thumb = imagecreatetruecolor($thumbWidth / $thumbFactor, $thumbHeight / $thumbFactor);
+                    imagecopyresized($thumb, $image, 0, 0, 0, 0, $thumbWidth / $thumbFactor, $thumbHeight / $thumbFactor, $thumbWidth, $thumbHeight);
+                    imagepng($thumb, $thumbFile);
+                } catch (\Exception $e) {}
+                // }
+            }
+            
+            if (in_array($title, $blackList)) {
+                echo '	SKIPPING!' . PHP_EOL;
+            } else {
+                $comicList[] = $arr;
+            }
+        }
+    }
 } while ($uri and $i < 1385);
 
 $doc = new \DOMDocument('1.0', 'UTF-8');
 $rootNode = $doc->createElement('data');
 $doc->appendChild($rootNode);
 foreach ($comicList as $arr) {
-	$node = $doc->createElement('comic');
-	foreach ($arr as $key => $val) {
-		$node->setAttribute($key, $val);
-	}
-	$rootNode->appendChild($node);
+    $node = $doc->createElement('comic');
+    foreach ($arr as $key => $val) {
+        $node->setAttribute($key, $val);
+    }
+    $rootNode->appendChild($node);
 }
 $doc->save($imageFile);
 

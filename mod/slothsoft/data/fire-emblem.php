@@ -2,15 +2,14 @@
 namespace Slothsoft\CMS;
 
 use Slothsoft\FireEmblem\Game;
-
 $gameKey = $this->httpRequest->getInputValue('game');
-if (!$gameKey) {
-	return null;
+if (! $gameKey) {
+    return null;
 }
 
 $doc = $this->getResourceDoc('slothsoft/fire-emblem', 'xml');
-if (!$doc) {
-	return;
+if (! $doc) {
+    return;
 }
 
 $docList = $this->getResourceDir('slothsoft/fire-emblem-data', 'xml');

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
 	<fragment name="compare">
-		<data name="compare"/>
-		<template name="_compare"/>
-		<param name="standalone" scope="global"/>
+		<data name="compare" />
+		<template name="_compare" />
+		<param name="standalone" scope="global" />
 	</fragment>
-	
+
 	<fragment name="mapping">
-		<data name="mapping"/>
-		<template name="_mapping"/>
-		<param name="standalone" scope="global"/>
+		<data name="mapping" />
+		<template name="_mapping" />
+		<param name="standalone" scope="global" />
 	</fragment>
-	
+
 	<fragment name="excel">
-		<data name="excel"/>
-		<template name="_excel"/>
-		<param name="standalone" scope="global"/>
+		<data name="excel" />
+		<template name="_excel" />
+		<param name="standalone" scope="global" />
 	</fragment>
 </module>

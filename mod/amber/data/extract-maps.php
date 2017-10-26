@@ -2,7 +2,6 @@
 namespace Slothsoft\CMS;
 
 use Slothsoft\Savegame\Editor;
-
 $mode = $this->httpRequest->getInputValue('SaveDefault', 'thalion');
 $mode = preg_replace('~[^\w]~', '', $mode);
 $name = $this->httpRequest->getInputValue('SaveName', null);

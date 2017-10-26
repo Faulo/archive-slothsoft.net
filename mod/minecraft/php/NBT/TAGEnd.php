@@ -1,29 +1,25 @@
 <?php
 namespace Slothsoft\Minecraft\NBT;
 
-class TAGEnd extends TAGNode {
+class TAGEnd extends TAGNode
+{
 
-	const TYPE = 0;
+    const TYPE = 0;
 
-	public function loadPayload() {
+    public function loadPayload()
+    {}
 
-	}
+    public function getLength()
+    {
+        return parent::getLength();
+    }
 
-	public function getLength() {
+    public function getValue()
+    {
+        return null;
+    }
 
-		return parent::getLength();
-
-	}
-
-	public function getValue() {
-
-		return null;
-
-	}
-
-	public $Payload = array(
-
-	);
-
+    public $Payload = array(
+    );
 }
 

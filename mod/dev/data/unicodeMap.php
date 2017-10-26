@@ -1,5 +1,4 @@
 <?php
-
 $resDoc = $this->getResourceDoc('dev/unicode', 'xml');
 
 $nodeList = $resDoc->getElementsByTagName('letter');
@@ -7,15 +6,15 @@ $nodeList = $resDoc->getElementsByTagName('letter');
 $unicodeMap = [];
 
 foreach ($nodeList as $node) {
-	foreach ($node->attributes as $attrNode) {
-		$type = $attrNode->name;
-		$letter = $attrNode->value;
-		
-		if (!isset($unicodeMap[$type])) {
-			$unicodeMap[$type] = [];
-		}
-		$unicodeMap[$type][] = $letter;
-	}
+    foreach ($node->attributes as $attrNode) {
+        $type = $attrNode->name;
+        $letter = $attrNode->value;
+        
+        if (! isset($unicodeMap[$type])) {
+            $unicodeMap[$type] = [];
+        }
+        $unicodeMap[$type][] = $letter;
+    }
 }
 
 unset($unicodeMap['name']);

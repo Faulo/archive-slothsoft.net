@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
-	
+
 	<fragment name="sprites">
-		<!--<data name="sprites"/>-->
-		<data name="list"/>
-		<template name="_sprites"/>
-		<param name="standalone" scope="global"/>
-		<struc name="/core/HTML5"/>
+		<!--<data name="sprites"/> -->
+		<data name="list" />
+		<template name="_sprites" />
+		<param name="standalone" scope="global" />
+		<struc name="/core/HTML5" />
 	</fragment>
-	
+
 	<fragment name="team">
-		<res name="team" load="xml"/>
-		<res name="list" load="xml"/>
-		<template name="_team"/>
-		<param name="standalone" scope="global"/>
-		<struc name="/core/HTML5"/>
+		<res name="team" load="xml" />
+		<res name="list" load="xml" />
+		<template name="_team" />
+		<param name="standalone" scope="global" />
+		<struc name="/core/HTML5" />
 	</fragment>
-	
+
 	<fragment name="go-iv">
-		<data name="go-iv"/>
-		<template name="_go-iv"/>
-		<param name="standalone" scope="global"/>
+		<data name="go-iv" />
+		<template name="_go-iv" />
+		<param name="standalone" scope="global" />
 	</fragment>
-	
+
 	<!-- pages -->
 	<fragment name="home">
-		<data name="default"/>
-		<style name="default"/>
+		<data name="default" />
+		<style name="default" />
 		<fragment name="content">
-			<template name="home"/>
-			<struc name="/core/DOM"/>
-			<res name="/core/sites" load="xml"/>
-			<res name="news" load="xml"/>
-			<call name="log-wrapper" as="log"/>
-			<call name="/chat/default" as="chat-short"/>
+			<template name="home" />
+			<struc name="/core/DOM" />
+			<res name="/core/sites" load="xml" />
+			<res name="news" load="xml" />
+			<call name="log-wrapper" as="log" />
+			<call name="/chat/default" as="chat-short" />
 		</fragment>
 	</fragment>
-	
+
 	<!-- json -->
-	<resource name="go-data" path="go-data.json" type="application/json"/>
-	
-	<resourceDir name="go-trainers" path="go-trainers" type="application/xml"/>
-	
-	<resource name="team" path="team.xml" type="application/xml"/>
-	<resource name="list" path="list.xml" type="application/xml"/>
-	
-	<resourceDir name="sprites" path="sprites" type="image/png"/>
+	<resource name="go-data" path="go-data.json" type="application/json" />
+
+	<resourceDir name="go-trainers" path="go-trainers" type="application/xml" />
+
+	<resource name="team" path="team.xml" type="application/xml" />
+	<resource name="list" path="list.xml" type="application/xml" />
+
+	<resourceDir name="sprites" path="sprites" type="image/png" />
 </module>

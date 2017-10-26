@@ -1,4 +1,5 @@
 <?php
+namespace Slothsoft\CMS;
 
 $tmpDoc = $this->getFragmentDoc('core/sitemap');
 $tmpPath = self::loadXPath($tmpDoc);
@@ -7,9 +8,8 @@ $ret = [];
 
 $nodeList = $tmpPath->evaluate('//*[name() = "loc"]');
 foreach ($nodeList as $node) {
-	$ret[] = sprintf('start /b /wait curl "%s" -o batch.xhtml', $node->textContent);
+    $ret[] = sprintf('start /b /wait curl "%s" -o batch.xhtml', $node->textContent);
 }
-
 
 $ret = implode(PHP_EOL, $ret);
 

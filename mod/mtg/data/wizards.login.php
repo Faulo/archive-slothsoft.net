@@ -10,27 +10,27 @@ $user = 'Faulo';
 $password = 'Fault1er@wizards.lio';
 
 if ($data = \Slothsoft\Core\Storage::loadExternalJSON($url, 0, null, $options)) {
-	$encrypt1 = $data['ModalData']['ResponseData'][0];
-	$encrypt2 = $data['ModalData']['ResponseData'][1];
-	$encrypt3 = $data['ModalData']['ResponseData'][2];
-	
-	$key = new RSAKeyPair($encrypt1, '0', $encrypt2);
-	$encrypted = $key->encryptUser($user, $password, $encrypt3);
-	
-	$param = $data;
-	$param['Parameters'] = [];
-	$param['Parameters']['encrypted'] = $encrypted;
-	$param['Parameters']['rememberMe'] = false;
-	
-	$url = 'http://www.wizards.com/Magic/PlaneswalkerPoints/Login/Login';
-	
-	if ($data = \Slothsoft\Core\Storage::loadExternalJSON($url, 0, $param, $options)) {
-		my_dump($data);
-	} else {
-		throw new \Exception(\Slothsoft\Core\Storage::loadExternalHeader($url, 0, $param, $options));
-	}
+    $encrypt1 = $data['ModalData']['ResponseData'][0];
+    $encrypt2 = $data['ModalData']['ResponseData'][1];
+    $encrypt3 = $data['ModalData']['ResponseData'][2];
+    
+    $key = new RSAKeyPair($encrypt1, '0', $encrypt2);
+    $encrypted = $key->encryptUser($user, $password, $encrypt3);
+    
+    $param = $data;
+    $param['Parameters'] = [];
+    $param['Parameters']['encrypted'] = $encrypted;
+    $param['Parameters']['rememberMe'] = false;
+    
+    $url = 'http://www.wizards.com/Magic/PlaneswalkerPoints/Login/Login';
+    
+    if ($data = \Slothsoft\Core\Storage::loadExternalJSON($url, 0, $param, $options)) {
+        my_dump($data);
+    } else {
+        throw new \Exception(\Slothsoft\Core\Storage::loadExternalHeader($url, 0, $param, $options));
+    }
 } else {
-	throw new \Exception(\Slothsoft\Core\Storage::loadExternalFile($url, 0, null, $options));
+    throw new \Exception(\Slothsoft\Core\Storage::loadExternalFile($url, 0, null, $options));
 }
 
 /*

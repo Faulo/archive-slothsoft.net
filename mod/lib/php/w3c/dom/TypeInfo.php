@@ -4,31 +4,37 @@
  * 
  * @link http://www.w3.org/TR/DOM-Level-3-Core/core.html#TypeInfo
  */
-
 namespace w3c\dom;
 
-interface TypeInfo {
+interface TypeInfo
+{
 
-	const DERIVATION_RESTRICTION = 0x00000001;
-	const DERIVATION_EXTENSION = 0x00000002;
-	const DERIVATION_UNION = 0x00000004;
-	const DERIVATION_LIST = 0x00000008;
+    const DERIVATION_RESTRICTION = 0x00000001;
 
-	/**
-	 * @return string
-	 */
-	public function getTypeName();
+    const DERIVATION_EXTENSION = 0x00000002;
 
-	/**
-	 * @return string
-	 */
-	public function getTypeNamespace();
+    const DERIVATION_UNION = 0x00000004;
 
-	/**
-	 * @param string $typeNamespaceArg
-	 * @param string $typeNameArg
-	 * @param int $derivationMethod
-	 * @return bool
-	 */
-	public function isDerivedFrom($typeNamespaceArg, $typeNameArg, $derivationMethod);
+    const DERIVATION_LIST = 0x00000008;
+
+    /**
+     *
+     * @return string
+     */
+    public function getTypeName();
+
+    /**
+     *
+     * @return string
+     */
+    public function getTypeNamespace();
+
+    /**
+     *
+     * @param string $typeNamespaceArg
+     * @param string $typeNameArg
+     * @param int $derivationMethod
+     * @return bool
+     */
+    public function isDerivedFrom($typeNamespaceArg, $typeNameArg, $derivationMethod);
 }

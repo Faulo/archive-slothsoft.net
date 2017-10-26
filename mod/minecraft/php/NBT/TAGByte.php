@@ -1,15 +1,14 @@
 <?php
 namespace Slothsoft\Minecraft\NBT;
 
-class TAGByte extends TAGNumber {
+class TAGByte extends TAGNumber
+{
 
-	const TYPE = 1;
+    const TYPE = 1;
 
-	public function loadPayload() {
-
-		parent::loadPayload(1);
-
-	}	
-
+    public function loadPayload()
+    {
+        parent::loadPayload(1);
+    }
 } 
 

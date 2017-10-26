@@ -1,161 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
 	<fragment name="home">
-		<struc name="/slothsoft/default"/>
+		<struc name="/slothsoft/default" />
 		<fragment name="content">
-			<template name="home"/>
-			<struc name="default"/>
+			<template name="home" />
+			<struc name="default" />
 		</fragment>
-		<call name="chat"/>
+		<call name="chat" />
 	</fragment>
 	<fragment name="editor-savegame">
-		<struc name="/slothsoft/default"/>
-		<param name="EditorConfig" value="/amber/AmbermoonSavegame"/>
-		<call name="editor-content" as="content"/>
-		<!--
-		<fragment name="content">
-			<data name="editor"/>
-			<template name="editor"/>
-			<struc name="default"/>
-			<script name="SavegameEditor"/>
-			<res name="AmbermoonItems" as="items" load="xml"/>
-			<res name="AmbermoonPortraits" as="portraits" load="xml"/>
-			<call name="itemlist-content"/>
-			<call name="portraitlist-content"/>
-		</fragment>
-		-->
+		<struc name="/slothsoft/default" />
+		<param name="EditorConfig" value="/amber/AmbermoonSavegame" />
+		<call name="editor-content" as="content" />
+		<!-- <fragment name="content"> <data name="editor"/> <template name="editor"/> 
+			<struc name="default"/> <script name="SavegameEditor"/> <res name="AmbermoonItems" 
+			as="items" load="xml"/> <res name="AmbermoonPortraits" as="portraits" load="xml"/> 
+			<call name="itemlist-content"/> <call name="portraitlist-content"/> </fragment> -->
 	</fragment>
-	
+
 	<fragment name="editor-gamedata">
-		<struc name="/slothsoft/default"/>
-		<param name="EditorConfig" value="/amber/AmbermoonGamedata"/>
-		<call name="editor-content" as="content"/>
+		<struc name="/slothsoft/default" />
+		<param name="EditorConfig" value="/amber/AmbermoonGamedata" />
+		<call name="editor-content" as="content" />
 	</fragment>
-	
+
 	<fragment name="editor-amberfiles">
-		<struc name="/slothsoft/default"/>
-		<param name="EditorConfig" value="/amber/AmbermoonAmberfiles"/>
-		<call name="editor-content" as="content"/>
+		<struc name="/slothsoft/default" />
+		<param name="EditorConfig" value="/amber/AmbermoonAmberfiles" />
+		<call name="editor-content" as="content" />
 	</fragment>
-	
+
 	<fragment name="editor-content">
-		<data name="editor"/>
-		<template name="editor"/>
-		<struc name="default"/>
-		<!--
-		<script name="/lib/angular"/>
-		<script name="AngularAmber"/>
-		-->
-		<script name="SavegameEditor"/>
-		<res name="AmbermoonItems" as="items" load="xml"/>
-		<res name="AmbermoonPortraits" as="portraits" load="xml"/>
+		<data name="editor" />
+		<template name="editor" />
+		<struc name="default" />
+		<!-- <script name="/lib/angular"/> <script name="AngularAmber"/> -->
+		<script name="SavegameEditor" />
+		<res name="AmbermoonItems" as="items" load="xml" />
+		<res name="AmbermoonPortraits" as="portraits" load="xml" />
 	</fragment>
-	
+
 	<fragment name="help">
-		<struc name="/slothsoft/default"/>
+		<struc name="/slothsoft/default" />
 		<fragment name="content">
-			<template name="help"/>
-			<struc name="default"/>
-			<res name="/core/sites" load="xml"/>
+			<template name="help" />
+			<struc name="default" />
+			<res name="/core/sites" load="xml" />
 		</fragment>
-		<call name="chat"/>
+		<call name="chat" />
 	</fragment>
-	
+
 	<fragment name="epchart">
-		<struc name="/slothsoft/default"/>
+		<struc name="/slothsoft/default" />
 		<fragment name="content">
-			<template name="epchart"/>
-			<struc name="default"/>
-			<res name="config" load="xml"/>
+			<template name="epchart" />
+			<struc name="default" />
+			<res name="config" load="xml" />
 		</fragment>
 	</fragment>
-	
+
 	<fragment name="itemlist">
-		<struc name="/slothsoft/default"/>
-		<call name="itemlist-content" as="content"/>
+		<struc name="/slothsoft/default" />
+		<call name="itemlist-content" as="content" />
 	</fragment>
 	<fragment name="itemlist-content">
-		<template name="itemlist"/>
-		<struc name="default"/>
-		<res name="AmbermoonItems" as="list" load="xml"/>
+		<template name="itemlist" />
+		<struc name="default" />
+		<res name="AmbermoonItems" as="list" load="xml" />
 	</fragment>
-	
+
 	<fragment name="portraitlist">
-		<struc name="/slothsoft/default"/>
-		<call name="portraitlist-content" as="content"/>
+		<struc name="/slothsoft/default" />
+		<call name="portraitlist-content" as="content" />
 	</fragment>
 	<fragment name="portraitlist-content">
-		<template name="itemlist"/>
-		<struc name="default"/>
-		<res name="AmbermoonPortraits" as="list" load="xml"/>
+		<template name="itemlist" />
+		<struc name="default" />
+		<res name="AmbermoonPortraits" as="list" load="xml" />
 	</fragment>
-	
+
 	<fragment name="chat">
-		<param name="chat-database" value="amber"/>
-		<template name="/chat/shoutbox"/>
-		<call name="/chat/default" as="chat"/>
+		<param name="chat-database" value="amber" />
+		<template name="/chat/shoutbox" />
+		<call name="/chat/default" as="chat" />
 	</fragment>
-	
+
 	<fragment name="items">
-		<param name="standalone" scope="global"/>
-		<template name="items"/>
-		<data name="items"/>
-		<res name="item-map" load="status base64"/>
+		<param name="standalone" scope="global" />
+		<template name="items" />
+		<data name="items" />
+		<res name="item-map" load="status base64" />
 	</fragment>
-	
+
 	<fragment name="extract-items">
-		<template name="extract-items"/>
-		<data name="extract-items"/>
+		<template name="extract-items" />
+		<data name="extract-items" />
 	</fragment>
-	
+
 	<fragment name="extract-portraits">
-		<template name="extract-portraits"/>
-		<data name="extract-portraits"/>
+		<template name="extract-portraits" />
+		<data name="extract-portraits" />
 	</fragment>
-	
+
 	<fragment name="extract-maps">
-		<template name="extract-maps"/>
-		<data name="extract-maps"/>
+		<template name="extract-maps" />
+		<data name="extract-maps" />
 	</fragment>
-	
+
 	<fragment name="extract-monsters">
-		<template name="extract-monsters"/>
-		<data name="extract-monsters"/>
+		<template name="extract-monsters" />
+		<data name="extract-monsters" />
 	</fragment>
-	
+
 	<struc name="default">
-		<style name="default"/>
-		<style name="dictionary"/>
+		<style name="default" />
+		<style name="dictionary" />
 	</struc>
-	
-	<resource name="sites" path="sites.xml" type="application/xml"/>
-	
-	<resource name="editor" path="editor.xml" type="application/xml"/>
-	<resource name="config" path="config.json" type="application/json"/>
-	<resource name="charStruc" path="charStruc.xml" type="application/xml"/>
-	<resource name="partyStruc" path="partyStruc.xml" type="application/xml"/>
-	
-	<resource name="AmbermoonAmberfiles" path="AmbermoonAmberfiles.xml" type="application/xml"/>
-	<resource name="AmbermoonSavegame" path="AmbermoonAmberfiles.Savegame.xml" type="application/xml"/>
-	<resource name="AmbermoonGamedata" path="AmbermoonAmberfiles.Gamedata.xml" type="application/xml"/>
-	<!--
-	<resource name="AmbermoonDictionary" path="AmbermoonDictionary.xml" type="application/xml"/>
-	<resource name="AmbermoonItems" path="AmbermoonItems.svg" type="image/svg+xml"/>
-	<resource name="AmbermoonCPU" path="AmbermoonCPU.xml" type="application/xml"/>
-	-->
-	
-	<resource name="items-map" path="AmbermoonItems.png" type="image/png"/>
-	<resource name="portraits-map" path="AmbermoonPortraits.png" type="image/png"/>
-	
-	<resource name="AmbermoonItems" path="AmbermoonItems.xml" type="application/xml"/>
-	<resource name="AmbermoonPortraits" path="AmbermoonPortraits.xml" type="application/xml"/>
-	
-	<resourceDir name="saves" path="save" type="application/octet-stream"/>
-	<resourceDir name="portraits" path="portraits" type="image/png"/>
-	<resourceDir name="items" path="items" type="image/png"/>
-	<resourceDir name="icons" path="icons" type="image/png"/>
-	<resourceDir name="monster-gfx" path="monster-gfx" type="image/png"/>
-	
-	<resourceDir name="AmbermoonPatch" path="save/patch" type="*/*"/>
-	
+
+	<resource name="sites" path="sites.xml" type="application/xml" />
+
+	<resource name="editor" path="editor.xml" type="application/xml" />
+	<resource name="config" path="config.json" type="application/json" />
+	<resource name="charStruc" path="charStruc.xml" type="application/xml" />
+	<resource name="partyStruc" path="partyStruc.xml" type="application/xml" />
+
+	<resource name="AmbermoonAmberfiles" path="AmbermoonAmberfiles.xml"
+		type="application/xml" />
+	<resource name="AmbermoonSavegame" path="AmbermoonAmberfiles.Savegame.xml"
+		type="application/xml" />
+	<resource name="AmbermoonGamedata" path="AmbermoonAmberfiles.Gamedata.xml"
+		type="application/xml" />
+	<!-- <resource name="AmbermoonDictionary" path="AmbermoonDictionary.xml" 
+		type="application/xml"/> <resource name="AmbermoonItems" path="AmbermoonItems.svg" 
+		type="image/svg+xml"/> <resource name="AmbermoonCPU" path="AmbermoonCPU.xml" 
+		type="application/xml"/> -->
+
+	<resource name="items-map" path="AmbermoonItems.png" type="image/png" />
+	<resource name="portraits-map" path="AmbermoonPortraits.png"
+		type="image/png" />
+
+	<resource name="AmbermoonItems" path="AmbermoonItems.xml"
+		type="application/xml" />
+	<resource name="AmbermoonPortraits" path="AmbermoonPortraits.xml"
+		type="application/xml" />
+
+	<resourceDir name="saves" path="save" type="application/octet-stream" />
+	<resourceDir name="portraits" path="portraits" type="image/png" />
+	<resourceDir name="items" path="items" type="image/png" />
+	<resourceDir name="icons" path="icons" type="image/png" />
+	<resourceDir name="monster-gfx" path="monster-gfx" type="image/png" />
+
+	<resourceDir name="AmbermoonPatch" path="save/patch" type="*/*" />
+
 </module>

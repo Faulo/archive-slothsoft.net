@@ -703,12 +703,11 @@
 																	<xsd:complexType>
 																		<xsd:sequence>
 																			<xsd:element name="Person" minOccurs="0"
-																				maxOccurs="unbounded" vplan:ot="OT:00000066"
-																				type="vplan:PersonType">
+																				maxOccurs="unbounded" vplan:ot="OT:00000066" type="vplan:PersonType">
 																				<xsd:annotation>
 																					<xsd:documentation>OT: Person [OT:00000066]
 																					</xsd:documentation>
-																				</xsd:annotation>
+																				</xsd:annotation>
 																			</xsd:element>
 																		</xsd:sequence>
 																	</xsd:complexType>
@@ -859,9 +858,8 @@
 																							</xsd:annotation>
 																							<xsd:complexType>
 																								<xsd:sequence>
-																									<xsd:element
-																										name="Kontakt" minOccurs="0"
-																										maxOccurs="unbounded" vplan:ot="OT:00000064"
+																									<xsd:element name="Kontakt"
+																										minOccurs="0" maxOccurs="unbounded" vplan:ot="OT:00000064"
 																										type="vplan:KontaktType">
 																										<xsd:annotation>
 																											<xsd:documentation>
@@ -898,7 +896,7 @@
 																	<xsd:complexType>
 																		<xsd:sequence>
 																			<xsd:element name="Gewerbebetrieb"
-																						minOccurs="0" maxOccurs="unbounded" type="vplan:GewerbebetriebType">
+																				minOccurs="0" maxOccurs="unbounded" type="vplan:GewerbebetriebType">
 																			</xsd:element>
 																		</xsd:sequence>
 																	</xsd:complexType>
@@ -908,7 +906,7 @@
 																	<xsd:complexType>
 																		<xsd:sequence>
 																			<xsd:element name="Gewerbebetrieb"
-																						minOccurs="0" maxOccurs="unbounded" type="vplan:GewerbebetriebType">
+																				minOccurs="0" maxOccurs="unbounded" type="vplan:GewerbebetriebType">
 																			</xsd:element>
 																		</xsd:sequence>
 																	</xsd:complexType>
@@ -923,9 +921,8 @@
 																	</xsd:annotation>
 																	<xsd:complexType>
 																		<xsd:sequence>
-																			<xsd:element
-																				name="Person" minOccurs="0" maxOccurs="unbounded"
-																				vplan:ot="OT:00000066" type="vplan:PersonType">
+																			<xsd:element name="Person" minOccurs="0"
+																				maxOccurs="unbounded" vplan:ot="OT:00000066" type="vplan:PersonType">
 																				<xsd:annotation>
 																					<xsd:documentation>
 																						OT:
@@ -946,9 +943,8 @@
 																	</xsd:annotation>
 																	<xsd:complexType>
 																		<xsd:sequence>
-																			<xsd:element
-																				name="Person" minOccurs="0" maxOccurs="unbounded"
-																				vplan:ot="OT:00000066" type="vplan:PersonType">
+																			<xsd:element name="Person" minOccurs="0"
+																				maxOccurs="unbounded" vplan:ot="OT:00000066" type="vplan:PersonType">
 																				<xsd:annotation>
 																					<xsd:documentation>
 																						OT:
@@ -970,9 +966,8 @@
 																	</xsd:annotation>
 																	<xsd:complexType>
 																		<xsd:sequence>
-																			<xsd:element
-																				name="Person" minOccurs="0" maxOccurs="unbounded"
-																				vplan:ot="OT:00000066" type="vplan:PersonType">
+																			<xsd:element name="Person" minOccurs="0"
+																				maxOccurs="unbounded" vplan:ot="OT:00000066" type="vplan:PersonType">
 																				<xsd:annotation>
 																					<xsd:documentation>
 																						OT:
@@ -994,9 +989,8 @@
 																	</xsd:annotation>
 																	<xsd:complexType>
 																		<xsd:sequence>
-																			<xsd:element
-																				name="Person" minOccurs="0" maxOccurs="unbounded"
-																				vplan:ot="OT:00000066" type="vplan:PersonType">
+																			<xsd:element name="Person" minOccurs="0"
+																				maxOccurs="unbounded" vplan:ot="OT:00000066" type="vplan:PersonType">
 																				<xsd:annotation>
 																					<xsd:documentation>
 																						OT:
@@ -1110,9 +1104,8 @@
 																							</xsd:annotation>
 																							<xsd:complexType>
 																								<xsd:sequence>
-																									<xsd:element
-																										name="Kontakt" minOccurs="0"
-																										maxOccurs="unbounded" vplan:ot="OT:00000064"
+																									<xsd:element name="Kontakt"
+																										minOccurs="0" maxOccurs="unbounded" vplan:ot="OT:00000064"
 																										type="vplan:KontaktType">
 																										<xsd:annotation>
 																											<xsd:documentation>
@@ -1233,9 +1226,8 @@
 																							</xsd:annotation>
 																							<xsd:complexType>
 																								<xsd:sequence>
-																									<xsd:element
-																										name="Kontakt" minOccurs="0"
-																										maxOccurs="unbounded" vplan:ot="OT:00000064"
+																									<xsd:element name="Kontakt"
+																										minOccurs="0" maxOccurs="unbounded" vplan:ot="OT:00000064"
 																										type="vplan:KontaktType">
 																										<xsd:annotation>
 																											<xsd:documentation>
@@ -1356,9 +1348,8 @@
 																							</xsd:annotation>
 																							<xsd:complexType>
 																								<xsd:sequence>
-																									<xsd:element
-																										name="Kontakt" minOccurs="0"
-																										maxOccurs="unbounded" vplan:ot="OT:00000064"
+																									<xsd:element name="Kontakt"
+																										minOccurs="0" maxOccurs="unbounded" vplan:ot="OT:00000064"
 																										type="vplan:KontaktType">
 																										<xsd:annotation>
 																											<xsd:documentation>
@@ -1455,13 +1446,14 @@
 	</xsd:element>
 	<xsd:complexType name="PersonType">
 		<xsd:sequence>
-			<xsd:element name="Kennung" minOccurs="0" maxOccurs="1" type="xsd:anyType"></xsd:element>
+			<xsd:element name="Kennung" minOccurs="0" maxOccurs="1"
+				type="xsd:anyType"></xsd:element>
 			<xsd:element minOccurs="0" maxOccurs="1" name="Kontakte">
 				<xsd:annotation></xsd:annotation>
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element minOccurs="0" maxOccurs="unbounded"
-							name="Kontakt" type="vplan:KontaktType">
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="Kontakt"
+							type="vplan:KontaktType">
 							<xsd:annotation></xsd:annotation>
 
 						</xsd:element>
@@ -1508,48 +1500,39 @@
 				<xsd:annotation></xsd:annotation>
 			</xsd:element>
 			<xsd:element minOccurs="0" maxOccurs="1"
-				name="Staatsangehörigkeitsverzeichnis_Verzeichnis_ID"
-				type="xsd:anyType">
+				name="Staatsangehörigkeitsverzeichnis_Verzeichnis_ID" type="xsd:anyType">
 				<xsd:annotation></xsd:annotation>
 			</xsd:element>
-			<xsd:element minOccurs="0" maxOccurs="1"
-				name="Postanschriften">
+			<xsd:element minOccurs="0" maxOccurs="1" name="Postanschriften">
 				<xsd:annotation></xsd:annotation>
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element minOccurs="0" maxOccurs="unbounded"
-							name="Postanschrift">
+						<xsd:element minOccurs="0" maxOccurs="unbounded" name="Postanschrift">
 							<xsd:annotation></xsd:annotation>
 							<xsd:complexType>
 								<xsd:sequence>
-									<xsd:element minOccurs="0"
-										maxOccurs="1" name="Postadresse_Straßename"
-										type="xsd:anyType">
+									<xsd:element minOccurs="0" maxOccurs="1"
+										name="Postadresse_Straßename" type="xsd:anyType">
 										<xsd:annotation></xsd:annotation>
 									</xsd:element>
-									<xsd:element minOccurs="0"
-										maxOccurs="1" name="Postadresse_Hausnummer"
-										type="xsd:anyType">
+									<xsd:element minOccurs="0" maxOccurs="1"
+										name="Postadresse_Hausnummer" type="xsd:anyType">
 										<xsd:annotation></xsd:annotation>
 									</xsd:element>
-									<xsd:element minOccurs="0"
-										maxOccurs="1" name="Postadresse_Postleitzahl"
-										type="xsd:anyType">
+									<xsd:element minOccurs="0" maxOccurs="1"
+										name="Postadresse_Postleitzahl" type="xsd:anyType">
 										<xsd:annotation></xsd:annotation>
 									</xsd:element>
-									<xsd:element minOccurs="0"
-										maxOccurs="1" name="Postadresse_Ort" type="xsd:anyType">
+									<xsd:element minOccurs="0" maxOccurs="1"
+										name="Postadresse_Ort" type="xsd:anyType">
 										<xsd:annotation></xsd:annotation>
 									</xsd:element>
-									<xsd:element minOccurs="0"
-										maxOccurs="1" name="Postadresse_Staatenverzeichnis_ID"
-										type="xsd:anyType">
+									<xsd:element minOccurs="0" maxOccurs="1"
+										name="Postadresse_Staatenverzeichnis_ID" type="xsd:anyType">
 										<xsd:annotation></xsd:annotation>
 									</xsd:element>
-									<xsd:element minOccurs="0"
-										maxOccurs="1"
-										name="Postadresse_Staatenverzeichnis_Verzeichnis_ID"
-										type="xsd:anyType">
+									<xsd:element minOccurs="0" maxOccurs="1"
+										name="Postadresse_Staatenverzeichnis_Verzeichnis_ID" type="xsd:anyType">
 										<xsd:annotation></xsd:annotation>
 									</xsd:element>
 								</xsd:sequence>
@@ -1562,41 +1545,40 @@
 				minOccurs="0">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="Registereintrag"
-							maxOccurs="unbounded" minOccurs="0">
+						<xsd:element name="Registereintrag" maxOccurs="unbounded"
+							minOccurs="0">
 							<xsd:complexType>
 								<xsd:sequence>
-									<xsd:element name="Nummer"
+									<xsd:element name="Nummer" maxOccurs="1" minOccurs="0">
+									</xsd:element>
+									<xsd:element name="Auflagen_Beschränkungen"
 										maxOccurs="1" minOccurs="0">
 									</xsd:element>
-									<xsd:element
-										name="Auflagen_Beschränkungen" maxOccurs="1" minOccurs="0">
-									</xsd:element>
-									<xsd:element
-										name="Gültigkeitsbeginndatum" maxOccurs="1" minOccurs="0">
+									<xsd:element name="Gültigkeitsbeginndatum"
+										maxOccurs="1" minOccurs="0">
 									</xsd:element>
 									<xsd:element name="Genehmigungsstatus_gemeldet"
 										maxOccurs="1" minOccurs="0">
-									</xsd:element>									
-									<xsd:element name="Register"
-										maxOccurs="1" minOccurs="0">
+									</xsd:element>
+									<xsd:element name="Register" maxOccurs="1"
+										minOccurs="0">
 										<xsd:complexType>
 											<xsd:sequence>
-												<xsd:element
-													name="Register" maxOccurs="unbounded" minOccurs="0">
+												<xsd:element name="Register" maxOccurs="unbounded"
+													minOccurs="0">
 													<xsd:complexType>
 														<xsd:sequence>
-															<xsd:element
-																name="Typ" maxOccurs="1" minOccurs="0">
+															<xsd:element name="Typ" maxOccurs="1"
+																minOccurs="0">
 															</xsd:element>
-															<xsd:element
-																name="Name" maxOccurs="1" minOccurs="0">
+															<xsd:element name="Name" maxOccurs="1"
+																minOccurs="0">
 															</xsd:element>
-															<xsd:element
-																name="Ort" maxOccurs="1" minOccurs="0">
+															<xsd:element name="Ort" maxOccurs="1"
+																minOccurs="0">
 															</xsd:element>
-															<xsd:element
-																name="Bezeichnung" maxOccurs="1" minOccurs="0">
+															<xsd:element name="Bezeichnung" maxOccurs="1"
+																minOccurs="0">
 															</xsd:element>
 														</xsd:sequence>
 													</xsd:complexType>
@@ -1622,8 +1604,8 @@
 				name="Faxnummern_ohne_Vorwahl" type="xsd:anyType">
 				<xsd:annotation></xsd:annotation>
 			</xsd:element>
-			<xsd:element minOccurs="0" maxOccurs="1"
-				name="E-Mail-Adressen" type="xsd:anyType">
+			<xsd:element minOccurs="0" maxOccurs="1" name="E-Mail-Adressen"
+				type="xsd:anyType">
 				<xsd:annotation></xsd:annotation>
 			</xsd:element>
 			<xsd:element minOccurs="0" maxOccurs="1" name="Webseiten"
@@ -1634,28 +1616,28 @@
 				name="Telefonnummern_Vorwahl" type="xsd:anyType">
 				<xsd:annotation></xsd:annotation>
 			</xsd:element>
-			<xsd:element minOccurs="0" maxOccurs="1"
-				name="Faxnummern_Vorwahl" type="xsd:anyType">
+			<xsd:element minOccurs="0" maxOccurs="1" name="Faxnummern_Vorwahl"
+				type="xsd:anyType">
 				<xsd:annotation></xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="GewerbebetriebType">
 		<xsd:sequence>
-			<xsd:element name="Name_ohne_Rechtsform"
-				minOccurs="0" maxOccurs="1" vplan:oti="">
+			<xsd:element name="Name_ohne_Rechtsform" minOccurs="0"
+				maxOccurs="1" vplan:oti="">
 				<xsd:annotation>
 					<xsd:documentation>OTI: Name ohne Rechtsform
 						[?VPlanId?]
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element
-				name="Anzahl_der_Geschäftsführer_der_Personengesellschaft"
+			<xsd:element name="Anzahl_der_Geschäftsführer_der_Personengesellschaft"
 				minOccurs="0" maxOccurs="1" vplan:oti="">
 				<xsd:annotation>
 					<xsd:documentation>OTI: Anzahl der
-						Geschäftsführer der Personengesellschaft
+						Geschäftsführer der
+						Personengesellschaft
 						[?VPlanId?]
 					</xsd:documentation>
 				</xsd:annotation>
@@ -1665,60 +1647,61 @@
 				minOccurs="0" maxOccurs="1" vplan:oti="">
 				<xsd:annotation>
 					<xsd:documentation>OTI: Anzahl der gesetzlichen
-						Vertreter der juristischen Person [?VPlanId?]
+						Vertreter der
+						juristischen Person [?VPlanId?]
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="Rechtsformverzeichnis_ID"
-				minOccurs="0" maxOccurs="1" vplan:oti="">
+			<xsd:element name="Rechtsformverzeichnis_ID" minOccurs="0"
+				maxOccurs="1" vplan:oti="">
 				<xsd:annotation>
 					<xsd:documentation>OTI: Rechtsformverzeichnis ID
 						[?VPlanId?]
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element
-				name="Rechtsformverzeichnis_Verzeichnis_ID"
+			<xsd:element name="Rechtsformverzeichnis_Verzeichnis_ID"
 				minOccurs="0" maxOccurs="1" vplan:oti="">
 				<xsd:annotation>
 					<xsd:documentation>OTI: Rechtsformverzeichnis
-						Verzeichnis ID [?VPlanId?]
+						Verzeichnis ID
+						[?VPlanId?]
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="Art_der_Betriebs"
-				minOccurs="0" maxOccurs="1" vplan:oti="">
+			<xsd:element name="Art_der_Betriebs" minOccurs="0"
+				maxOccurs="1" vplan:oti="">
 				<xsd:annotation>
 					<xsd:documentation>OTI: Art der Betriebs
 						[?VPlanId?]
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="Beschäftigte_Vollzeit"
-				minOccurs="0" maxOccurs="1" vplan:oti="">
+			<xsd:element name="Beschäftigte_Vollzeit" minOccurs="0"
+				maxOccurs="1" vplan:oti="">
 				<xsd:annotation>
 					<xsd:documentation>OTI: Beschäftigte Vollzeit
 						[?VPlanId?]
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="Beschäftigte_Teilzeit"
-				minOccurs="0" maxOccurs="1" vplan:oti="">
+			<xsd:element name="Beschäftigte_Teilzeit" minOccurs="0"
+				maxOccurs="1" vplan:oti="">
 				<xsd:annotation>
 					<xsd:documentation>OTI: Beschäftigte Teilzeit
 						[?VPlanId?]
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="Beschäftigte"
-				minOccurs="0" maxOccurs="1" vplan:oti="">
+			<xsd:element name="Beschäftigte" minOccurs="0" maxOccurs="1"
+				vplan:oti="">
 				<xsd:annotation>
 					<xsd:documentation>OTI: Beschäftigte [?VPlanId?]
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="Art_der_Niederlassung"
-				minOccurs="0" maxOccurs="1" vplan:oti="">
+			<xsd:element name="Art_der_Niederlassung" minOccurs="0"
+				maxOccurs="1" vplan:oti="">
 				<xsd:annotation>
 					<xsd:documentation>OTI: Art der Niederlassung
 						[?VPlanId?]
@@ -1729,23 +1712,24 @@
 				minOccurs="0" maxOccurs="1" vplan:oti="">
 				<xsd:annotation>
 					<xsd:documentation>OTI: gemeldete
-						Gewerbetätigkeit Beginn [?VPlanId?]
+						Gewerbetätigkeit Beginn
+						[?VPlanId?]
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element
-				name="gemeldete_Tätigkeiten_Registereinträge"
+			<xsd:element name="gemeldete_Tätigkeiten_Registereinträge"
 				minOccurs="0" maxOccurs="1" vplan:oti="">
 				<xsd:annotation>
 					<xsd:documentation>OTI: gemeldete Tätigkeiten
-						Registereinträge [?VPlanId?] (OV)
+						Registereinträge
+						[?VPlanId?] (OV)
 						Registereintrag [?VPlanId?]
 					</xsd:documentation>
 				</xsd:annotation>
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="Registereintrag"
-							minOccurs="0" maxOccurs="unbounded" vplan:ot="">
+						<xsd:element name="Registereintrag" minOccurs="0"
+							maxOccurs="unbounded" vplan:ot="">
 							<xsd:annotation>
 								<xsd:documentation>OT: Registereintrag
 									[?VPlanId?]
@@ -1753,21 +1737,21 @@
 							</xsd:annotation>
 							<xsd:complexType>
 								<xsd:sequence>
-									<xsd:element
-										name="Gemeldete_Tätigkeit_Bezeichnung"
+									<xsd:element name="Gemeldete_Tätigkeit_Bezeichnung"
 										minOccurs="0" maxOccurs="1" vplan:oti="">
 										<xsd:annotation>
 											<xsd:documentation>OTI: Gemeldete
-												Tätigkeit Bezeichnung [?VPlanId?]
+												Tätigkeit Bezeichnung
+												[?VPlanId?]
 											</xsd:documentation>
 										</xsd:annotation>
 									</xsd:element>
-									<xsd:element
-										name="Gemeldete_Tätigkeit_Schlüsselverzeichnis_ID"
+									<xsd:element name="Gemeldete_Tätigkeit_Schlüsselverzeichnis_ID"
 										minOccurs="0" maxOccurs="1" vplan:oti="">
 										<xsd:annotation>
 											<xsd:documentation>OTI: Gemeldete
-												Tätigkeit Schlüsselverzeichnis ID
+												Tätigkeit
+												Schlüsselverzeichnis ID
 												[?VPlanId?]
 											</xsd:documentation>
 										</xsd:annotation>
@@ -1777,17 +1761,18 @@
 										minOccurs="0" maxOccurs="1" vplan:oti="">
 										<xsd:annotation>
 											<xsd:documentation>OTI: Gemeldete
-												Tätigkeit Schlüsselverzeichnis
+												Tätigkeit
+												Schlüsselverzeichnis
 												Verzeichnis ID [?VPlanId?]
 											</xsd:documentation>
 										</xsd:annotation>
 									</xsd:element>
-									<xsd:element
-										name="Gemeldete_Tätigkeit_Nebenerwerb"
+									<xsd:element name="Gemeldete_Tätigkeit_Nebenerwerb"
 										minOccurs="0" maxOccurs="1" vplan:oti="">
 										<xsd:annotation>
 											<xsd:documentation>OTI: Gemeldete
-												Tätigkeit Nebenerwerb [?VPlanId?]
+												Tätigkeit Nebenerwerb
+												[?VPlanId?]
 											</xsd:documentation>
 										</xsd:annotation>
 									</xsd:element>
@@ -1799,12 +1784,12 @@
 											</xsd:documentation>
 										</xsd:annotation>
 									</xsd:element>
-									<xsd:element
-										name="Gemeldete_Tätigkeit_Schwerpunkt"
+									<xsd:element name="Gemeldete_Tätigkeit_Schwerpunkt"
 										minOccurs="0" maxOccurs="1" vplan:oti="">
 										<xsd:annotation>
 											<xsd:documentation>OTI: Gemeldete
-												Tätigkeit Schwerpunkt [?VPlanId?]
+												Tätigkeit Schwerpunkt
+												[?VPlanId?]
 											</xsd:documentation>
 										</xsd:annotation>
 									</xsd:element>
@@ -1817,32 +1802,30 @@
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
-			<xsd:element name="Anmeldegrund"
-				minOccurs="0" maxOccurs="1" vplan:oti="">
+			<xsd:element name="Anmeldegrund" minOccurs="0" maxOccurs="1"
+				vplan:oti="">
 				<xsd:annotation>
 					<xsd:documentation>OTI: Anmeldegrund [?VPlanId?]
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="Änderungsgrund"
-				maxOccurs="1" minOccurs="0">
+			<xsd:element name="Änderungsgrund" maxOccurs="1"
+				minOccurs="0">
 			</xsd:element>
-			<xsd:element name="Abmeldegrund"
-				maxOccurs="1" minOccurs="0">
+			<xsd:element name="Abmeldegrund" maxOccurs="1" minOccurs="0">
 			</xsd:element>
-			<xsd:element name="Grund_für_Gewerbeaufgabe"
-				maxOccurs="1" minOccurs="0">
+			<xsd:element name="Grund_für_Gewerbeaufgabe" maxOccurs="1"
+				minOccurs="0">
 			</xsd:element>
-			<xsd:element name="Registereinträge"
-				maxOccurs="1" minOccurs="0">
+			<xsd:element name="Registereinträge" maxOccurs="1"
+				minOccurs="0">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="Registereintrag"
-							maxOccurs="unbounded" minOccurs="0">
+						<xsd:element name="Registereintrag" maxOccurs="unbounded"
+							minOccurs="0">
 							<xsd:complexType>
 								<xsd:sequence>
-									<xsd:element name="Nummer"
-										maxOccurs="1" minOccurs="0">
+									<xsd:element name="Nummer" maxOccurs="1" minOccurs="0">
 									</xsd:element>
 									<xsd:element name="Auflagen_Beschränkungen"
 										maxOccurs="1" minOccurs="0">
@@ -1853,25 +1836,25 @@
 									<xsd:element name="Gültigkeitsbeginndatum"
 										maxOccurs="1" minOccurs="0">
 									</xsd:element>
-									<xsd:element name="Register"
-										maxOccurs="1" minOccurs="0">
+									<xsd:element name="Register" maxOccurs="1"
+										minOccurs="0">
 										<xsd:complexType>
 											<xsd:sequence>
-												<xsd:element name="Register"
-													maxOccurs="unbounded" minOccurs="0">
+												<xsd:element name="Register" maxOccurs="unbounded"
+													minOccurs="0">
 													<xsd:complexType>
 														<xsd:sequence>
-															<xsd:element name="Typ"
-																maxOccurs="1" minOccurs="0">
+															<xsd:element name="Typ" maxOccurs="1"
+																minOccurs="0">
 															</xsd:element>
-															<xsd:element name="Name"
-																maxOccurs="1" minOccurs="0">
+															<xsd:element name="Name" maxOccurs="1"
+																minOccurs="0">
 															</xsd:element>
-															<xsd:element name="Ort"
-																maxOccurs="1" minOccurs="0">
+															<xsd:element name="Ort" maxOccurs="1"
+																minOccurs="0">
 															</xsd:element>
-															<xsd:element name="Bezeichnung"
-																maxOccurs="1" minOccurs="0">
+															<xsd:element name="Bezeichnung" maxOccurs="1"
+																minOccurs="0">
 															</xsd:element>
 														</xsd:sequence>
 													</xsd:complexType>
@@ -1895,8 +1878,8 @@
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="sonstige_Betriebsart"
-				minOccurs="0" maxOccurs="1" vplan:oti="">
+			<xsd:element name="sonstige_Betriebsart" minOccurs="0"
+				maxOccurs="1" vplan:oti="">
 				<xsd:annotation>
 					<xsd:documentation>
 						OTI: sonstige
@@ -1905,8 +1888,8 @@
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="Ist_Reisegewerbe"
-				minOccurs="0" maxOccurs="1" vplan:oti="">
+			<xsd:element name="Ist_Reisegewerbe" minOccurs="0"
+				maxOccurs="1" vplan:oti="">
 				<xsd:annotation>
 					<xsd:documentation>
 						OTI: Ist
@@ -1915,8 +1898,8 @@
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-			<xsd:element name="Ist_Gaststätte"
-				minOccurs="0" maxOccurs="1">
+			<xsd:element name="Ist_Gaststätte" minOccurs="0"
+				maxOccurs="1">
 			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>

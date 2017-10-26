@@ -1,262 +1,300 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de-de">
 
-<p key="Minecraft Einstellungen">Server Einstellungen</p>
-<p key="Schlüssel">Schlüssel</p>
-<p key="Wert">Wert</p>
-<p key="Server Hardware">Server Hardware</p>
-<p key="Welt Statistik">Aktuelle Zusammensetzung der Welt</p>
-<p key="Anzahl">Anzahl</p>
-<p key="Block">Block</p>
-<p key="Map surface">Oberfläche</p>
-<p key="Air">Luft</p>
-<p key="Stone">Stein</p>
-<p key="Grass">Grasblock</p>
-<p key="Dirt">Erde</p>
-<p key="Cobblestone">Pflasterstein</p>
-<p key="Moss Cobblestone">Moss Cobblestone</p>
-<p key="Monster Spawner">Monster Spawner</p>
-<p key="Bedrock">Bedrock</p>
-<p key="Snow">Snow</p>
-<p key="Water">Water</p>
-<p key="Ice">Ice</p>
-<p key="Lava">Lava</p>
-<p key="Fire">Fire</p>
-<p key="Portal field">Portal field</p>
-<p key="Obsidian">Obsidian</p>
-<p key="Endportal frame">Endportal frame</p>
-<p key="Endportal field">Endportal field</p>
-<p key="End stone">End stone</p>
-<p key="Enderdragon egg">Enderdragon egg</p>
-<p key="Wood">Wood</p>
-<p key="&gt; Normal">&gt; Normal</p>
-<p key="&gt; Redwood">&gt; Redwood</p>
-<p key="&gt; Birch">&gt; Birch</p>
-<p key="Sapling">Sapling</p>
-<p key="Tall grass and ferns">Tall grass and ferns</p>
-<p key="&gt; Tall grass">&gt; Tall grass</p>
-<p key="&gt; Fern">&gt; Fern</p>
-<p key="Dead shrub">Dead shrub</p>
-<p key="Leaves">Leaves</p>
-<p key="Wooden planks">Wooden planks</p>
-<p key="Cactus">Cactus</p>
-<p key="Yellow flower">Yellow flower</p>
-<p key="Red rose">Red rose</p>
-<p key="Mycelium">Mycelium</p>
-<p key="Lily pad">Lily pad</p>
-<p key="Brown mushroom">Brown mushroom</p>
-<p key="Huge brown mushroom">Huge brown mushroom</p>
-<p key="&gt; Flesh">&gt; Flesh</p>
-<p key="&gt; Cap">&gt; Cap</p>
-<p key="&gt; Stem">&gt; Stem</p>
-<p key="Red mushroom">Red mushroom</p>
-<p key="Huge red mushroom">Huge red mushroom</p>
-<p key="Cobweb">Cobweb</p>
-<p key="Silverfish stone">Silverfish stone</p>
-<p key="Sand">Sand</p>
-<p key="Sandstone">Sandstone</p>
-<p key="Snow Block">Snow Block</p>
-<p key="Gravel">Gravel</p>
-<p key="Clay">Clay</p>
-<p key="Gold Ore">Gold Ore</p>
-<p key="Iron Ore">Iron Ore</p>
-<p key="Coal Ore">Coal Ore</p>
-<p key="Diamond Ore">Diamond Ore</p>
-<p key="Lapis Lazuli Ore">Lapis Lazuli Ore</p>
-<p key="Redstone Ore">Redstone Ore</p>
-<p key="Gold">Gold</p>
-<p key="Iron">Iron</p>
-<p key="Diamond">Diamond</p>
-<p key="Lapis Lazuli">Lapis Lazuli</p>
-<p key="Wool">Wool</p>
-<p key="&gt; White">&gt; White</p>
-<p key="&gt; Orange">&gt; Orange</p>
-<p key="&gt; Magenta">&gt; Magenta</p>
-<p key="&gt; Light Blue">&gt; Light Blue</p>
-<p key="&gt; Yellow">&gt; Yellow</p>
-<p key="&gt; Light Green">&gt; Light Green</p>
-<p key="&gt; Pink">&gt; Pink</p>
-<p key="&gt; Gray">&gt; Gray</p>
-<p key="&gt; Light Gray">&gt; Light Gray</p>
-<p key="&gt; Cyan">&gt; Cyan</p>
-<p key="&gt; Purple">&gt; Purple</p>
-<p key="&gt; Blue">&gt; Blue</p>
-<p key="&gt; Brown">&gt; Brown</p>
-<p key="&gt; Dark Green">&gt; Dark Green</p>
-<p key="&gt; Red">&gt; Red</p>
-<p key="&gt; Black">&gt; Black</p>
-<p key="Farmland">Farmland</p>
-<p key="Crops">Crops</p>
-<p key="Sugar cane">Sugar cane</p>
-<p key="Vines">Vines</p>
-<p key="Cake">Cake</p>
-<p key="Torch">Torch</p>
-<p key="Craft table">Craft table</p>
-<p key="Enchantment table">Enchantment table</p>
-<p key="Chest">Chest</p>
-<p key="Furnace">Furnace</p>
-<p key="Dispenser">Dispenser</p>
-<p key="Note Block">Note Block</p>
-<p key="Jukebox">Jukebox</p>
-<p key="Bookshelf">Bookshelf</p>
-<p key="Beds">Beds</p>
-<p key="Wooden doors">Wooden doors</p>
-<p key="Iron doors">Iron doors</p>
-<p key="Wooden stairs">Wooden stairs</p>
-<p key="Cobblestone stairs">Cobblestone stairs</p>
-<p key="Brick stairs">Brick stairs</p>
-<p key="Stone brick stairs">Stone brick stairs</p>
-<p key="Slabs">Slabs</p>
-<p key="&gt; Stone slabs">&gt; Stone slabs</p>
-<p key="&gt; Sand slabs">&gt; Sand slabs</p>
-<p key="&gt; Wooden slabs">&gt; Wooden slabs</p>
-<p key="&gt; Cobblestone slabs">&gt; Cobblestone slabs</p>
-<p key="&gt; Brick slabs">&gt; Brick slabs</p>
-<p key="&gt; Stone brick slabs">&gt; Stone brick slabs</p>
-<p key="Double slabs">Double slabs</p>
-<p key="&gt; Stone double slabs">&gt; Stone double slabs</p>
-<p key="&gt; Sand double slabs">&gt; Sand double slabs</p>
-<p key="&gt; Wooden double slabs">&gt; Wooden double slabs</p>
-<p key="&gt; Cobblestone double slabs">&gt; Cobblestone double slabs</p>
-<p key="&gt; Brick double slabs">&gt; Brick double slabs</p>
-<p key="&gt; Stone brick double slabs">&gt; Stone brick double slabs</p>
-<p key="Sponge">Sponge</p>
-<p key="Glass">Glass</p>
-<p key="Glass pane">Glass pane</p>
-<p key="Brick">Brick</p>
-<p key="Stone brick">Stone brick</p>
-<p key="&gt; Smooth">&gt; Smooth</p>
-<p key="&gt; Mossy">&gt; Mossy</p>
-<p key="&gt; Cracked">&gt; Cracked</p>
-<p key="Iron bars">Iron bars</p>
-<p key="TNT">TNT</p>
-<p key="Melon stem">Melon stem</p>
-<p key="Melon">Melon</p>
-<p key="Pumpkin stem">Pumpkin stem</p>
-<p key="Pumpkin">Pumpkin</p>
-<p key="Jack-O-Lantern">Jack-O-Lantern</p>
-<p key="Netherrack">Netherrack</p>
-<p key="Soul Sand">Soul Sand</p>
-<p key="Glowstone">Glowstone</p>
-<p key="Nether brick">Nether brick</p>
-<p key="Nether brick fence">Nether brick fence</p>
-<p key="Nether brick stairs">Nether brick stairs</p>
-<p key="Nether wart">Nether wart</p>
-<p key="Signs">Signs</p>
-<p key="Ladder">Ladder</p>
-<p key="Fence">Fence</p>
-<p key="Fence gate">Fence gate</p>
-<p key="Minecart Track">Minecart Track</p>
-<p key="Powered Rail">Powered Rail</p>
-<p key="Detector Rail">Detector Rail</p>
-<p key="Piston">Piston</p>
-<p key="Sticky piston">Sticky piston</p>
-<p key="Lever">Lever</p>
-<p key="Buttons">Buttons</p>
-<p key="Trapdoor">Trapdoor</p>
-<p key="Pressure Plates">Pressure Plates</p>
-<p key="Redstone Wire">Redstone Wire</p>
-<p key="Redstone Torches">Redstone Torches</p>
-<p key="Redstone Repeaters">Redstone Repeaters</p>
-<p key="Redstone Lamps">Redstone Lamps</p>
-<p key="&gt; On">&gt; On</p>
-<p key="&gt; Off">&gt; Off</p>
-<p key="Zombies">Zombies</p>
-<p key="Cows">Cows</p>
-<p key="Sheep">Sheep</p>
-<p key="Pigs">Pigs</p>
-<p key="Skeletons">Skeletons</p>
-<p key="Creepers">Creepers</p>
-<p key="Slimes">Slimes</p>
-<p key="players/title">Spieler dieses Servers</p>
-<p key="players/level">Level: </p>
-<p key="players/laston">Zuletzt online: </p>
-<p key="workshop/title">Die Werkstatt befindet sich im Südosten der Hauptstadt und funktioniert nach dem Ehrlichkeitsprinzip. <samp>:D</samp></p>
-<p key="mall/title">Das Einkaufszentrum befindet sich im Südosten der Hauptstadt und funktioniert nach dem Ehrlichkeitsprinzip. <samp>:D</samp></p>
-<p key="mall/buy">Einkauf:</p>
-<p key="mall/sell">Verkauf:</p>
-<p key="pics/upload">Bildchen hochladen</p>
-<p key="pics/uploaded">Hochgeladene Bildchen</p>
-<p key="pics/submit">Hochladen</p>
-<p key="law/forbidden/title"><em>Kein Spieler darf...</em></p>
-<p key="law/forbidden">
-	<ul>
-	<li>Eine Blockstruktur zerstören oder modifizieren, die so aussieht als könnte sie ein anderer Spieler gebaut haben</li>
-	<li>Gegenstände aus Kisten nehmen, die so aussehen als könnten sie einem anderen Spieler gehören</li>
-	<li>Innerhalb der Stadt bauen</li>
-	<li>Das Einkaufszentrum oder die Werkstatt benutzen</li>
-	<li>Client-Mods oder Bugs in Minecraft benutzen, die <samp>GOTT</samp> als Cheaten bezeichnen würde</li>
-	<li>Einen Namen besitzen der vulgär ist oder auf ähnliche Weise auf einen niedrigen Intellekt hindeutet</li>
-	</ul>
-</p>
-<p key="law/forbidden/note">Ein paar Regeln verschwinden, wenn man Bürger wird.</p>
-<p key="law/allowed/title"><em>Alle Spieler dürfen...</em></p>
-<p key="law/allowed">
-	<ul>
-	<li>Sich an den öffentlichen Gebäuden der Stadt bedienen, wie dem Fundbüro oder dem Gewächshaus</li>
-	<li>Das Bahn-System in der Stadt sowie die Fernbahnhöfe außerhalb der Stadt benutzen</li>
-	</ul>
-</p>
-<p key="law/allowed/note">
-	Alle Spieler müssen außerhalb der Stadt siedeln, bis sie von <samp>GOTT</samp> für würdig befunden wurden, in der Stadt zu leben.
-	Damit erlangen sie Bürgerstatus und die folgenden Privilegien.
-	Um Bürger zu werden, muss man eine Weile online gewesen sein und mit seinen Strukturen gezeigt haben dass man Grundkenntnisse über Minecraft besitzt.
-	<samp>GOTT</samp> informiert jeden Spieler, sobald er Bürgerrecht erlangt.
-</p>
-<p key="law/restricted/title"><em>Alle Bürger dürfen...</em></p>
-<p key="law/restricted">
-	<ul>
-	<li>Ein Wohngebäude innerhalb der Stadt an den dafür vorgesehen Parzellen errichten</li>
-	<li>Nach Absprache ein öffentliches Gebäude an jedem freien Ort innerhalb der Stadt bauen</li>
-	<li>Auf ihrer Parzelle machen was sie wollen, so lange Nachbargrundstücke davon nicht beeinflusst werden (Selbstschussanlagen, Feuer, etc.)</li>
-	<li>Das Einkaufszentrum entsprechend den ausgeschilderten Preistafeln benutzen</li>
-	<li>Die Werkstatt entsprechend den ausgeschilderten Tauschkursen benutzen</li>
-	</ul>
-</p>
-<p key="law/restricted/note">
-	Jegliche Verstöße werden mehr oder weniger sofort mit Verbannung bestraft.
-	In einem solchen Fall stell ich eine Kiste mit dem Inventar des Exilanten an seine aktuelle Position, falls jemand looten will.
-	Wenn ihr Petzen wollt, macht einen Screenshot oder so... 
-</p>
-<p key="Last system message:">Letzte Systemnaricht:</p>
-<p key="Currently online:">Aktuell online:</p>
-<p key="Command block">Command block</p>
-<p key="&gt; Oak">&gt; Oak</p>
-<p key="&gt; Spurce">&gt; Spurce</p>
-<p key="&gt; Jungle">&gt; Jungle</p>
-<p key="Emerald Ore">Emerald Ore</p>
-<p key="Emerald">Emerald</p>
-<p key="Wheat">Wheat</p>
-<p key="Carrots">Carrots</p>
-<p key="Potatoes">Potatoes</p>
-<p key="Cocoa pod">Cocoa pod</p>
-<p key="Flower pot">Flower pot</p>
-<p key="Brewing stand">Brewing stand</p>
-<p key="Couldron">Couldron</p>
-<p key="Anvil">Anvil</p>
-<p key="Ender chest">Ender chest</p>
-<p key="Beacon">Beacon</p>
-<p key="Sandstone stairs">Sandstone stairs</p>
-<p key="Wooden slabs">Wooden slabs</p>
-<p key="Wooden double slabs">Wooden double slabs</p>
-<p key="&gt; Chiseled">&gt; Chiseled</p>
-<p key="Head">Head</p>
-<p key="Cobblestone wall">Cobblestone wall</p>
-<p key="Mossy cobblestone wall">Mossy cobblestone wall</p>
-<p key="Tripwire hook">Tripwire hook</p>
-<p key="Tripwire">Tripwire</p>
-<p key="mall/head">Einkaufszentrum Tauschkurs</p>
-<p key="workshop/head">Werkstatt Tauschkurs</p>
-<p key="Server is:">Server ist:</p>
-<p key="Version:">Version:</p>
-<p key="Players online:">Spieler online:</p>
-<p key="Minecraft Server is:"><a href="/Minecraft/">Minecraft</a> Server ist:</p>
-<p key="2D Normal">2D Normal</p>
-<p key="Karten">Karten</p>
-<p key="Minecraft">Minecraft</p>
-<p key="Slothsoft">Slothsoft</p>
-<p key="2D Cave">2D Cave</p>
-<p key="3D Normal">3D Normal</p>
-<p key="3D Cave">3D Cave</p>
-<p key="Recently online:">Recently online:</p>
+	<p key="Minecraft Einstellungen">Server Einstellungen</p>
+	<p key="Schlüssel">Schlüssel</p>
+	<p key="Wert">Wert</p>
+	<p key="Server Hardware">Server Hardware</p>
+	<p key="Welt Statistik">Aktuelle Zusammensetzung der Welt</p>
+	<p key="Anzahl">Anzahl</p>
+	<p key="Block">Block</p>
+	<p key="Map surface">Oberfläche</p>
+	<p key="Air">Luft</p>
+	<p key="Stone">Stein</p>
+	<p key="Grass">Grasblock</p>
+	<p key="Dirt">Erde</p>
+	<p key="Cobblestone">Pflasterstein</p>
+	<p key="Moss Cobblestone">Moss Cobblestone</p>
+	<p key="Monster Spawner">Monster Spawner</p>
+	<p key="Bedrock">Bedrock</p>
+	<p key="Snow">Snow</p>
+	<p key="Water">Water</p>
+	<p key="Ice">Ice</p>
+	<p key="Lava">Lava</p>
+	<p key="Fire">Fire</p>
+	<p key="Portal field">Portal field</p>
+	<p key="Obsidian">Obsidian</p>
+	<p key="Endportal frame">Endportal frame</p>
+	<p key="Endportal field">Endportal field</p>
+	<p key="End stone">End stone</p>
+	<p key="Enderdragon egg">Enderdragon egg</p>
+	<p key="Wood">Wood</p>
+	<p key="&gt; Normal">&gt; Normal</p>
+	<p key="&gt; Redwood">&gt; Redwood</p>
+	<p key="&gt; Birch">&gt; Birch</p>
+	<p key="Sapling">Sapling</p>
+	<p key="Tall grass and ferns">Tall grass and ferns</p>
+	<p key="&gt; Tall grass">&gt; Tall grass</p>
+	<p key="&gt; Fern">&gt; Fern</p>
+	<p key="Dead shrub">Dead shrub</p>
+	<p key="Leaves">Leaves</p>
+	<p key="Wooden planks">Wooden planks</p>
+	<p key="Cactus">Cactus</p>
+	<p key="Yellow flower">Yellow flower</p>
+	<p key="Red rose">Red rose</p>
+	<p key="Mycelium">Mycelium</p>
+	<p key="Lily pad">Lily pad</p>
+	<p key="Brown mushroom">Brown mushroom</p>
+	<p key="Huge brown mushroom">Huge brown mushroom</p>
+	<p key="&gt; Flesh">&gt; Flesh</p>
+	<p key="&gt; Cap">&gt; Cap</p>
+	<p key="&gt; Stem">&gt; Stem</p>
+	<p key="Red mushroom">Red mushroom</p>
+	<p key="Huge red mushroom">Huge red mushroom</p>
+	<p key="Cobweb">Cobweb</p>
+	<p key="Silverfish stone">Silverfish stone</p>
+	<p key="Sand">Sand</p>
+	<p key="Sandstone">Sandstone</p>
+	<p key="Snow Block">Snow Block</p>
+	<p key="Gravel">Gravel</p>
+	<p key="Clay">Clay</p>
+	<p key="Gold Ore">Gold Ore</p>
+	<p key="Iron Ore">Iron Ore</p>
+	<p key="Coal Ore">Coal Ore</p>
+	<p key="Diamond Ore">Diamond Ore</p>
+	<p key="Lapis Lazuli Ore">Lapis Lazuli Ore</p>
+	<p key="Redstone Ore">Redstone Ore</p>
+	<p key="Gold">Gold</p>
+	<p key="Iron">Iron</p>
+	<p key="Diamond">Diamond</p>
+	<p key="Lapis Lazuli">Lapis Lazuli</p>
+	<p key="Wool">Wool</p>
+	<p key="&gt; White">&gt; White</p>
+	<p key="&gt; Orange">&gt; Orange</p>
+	<p key="&gt; Magenta">&gt; Magenta</p>
+	<p key="&gt; Light Blue">&gt; Light Blue</p>
+	<p key="&gt; Yellow">&gt; Yellow</p>
+	<p key="&gt; Light Green">&gt; Light Green</p>
+	<p key="&gt; Pink">&gt; Pink</p>
+	<p key="&gt; Gray">&gt; Gray</p>
+	<p key="&gt; Light Gray">&gt; Light Gray</p>
+	<p key="&gt; Cyan">&gt; Cyan</p>
+	<p key="&gt; Purple">&gt; Purple</p>
+	<p key="&gt; Blue">&gt; Blue</p>
+	<p key="&gt; Brown">&gt; Brown</p>
+	<p key="&gt; Dark Green">&gt; Dark Green</p>
+	<p key="&gt; Red">&gt; Red</p>
+	<p key="&gt; Black">&gt; Black</p>
+	<p key="Farmland">Farmland</p>
+	<p key="Crops">Crops</p>
+	<p key="Sugar cane">Sugar cane</p>
+	<p key="Vines">Vines</p>
+	<p key="Cake">Cake</p>
+	<p key="Torch">Torch</p>
+	<p key="Craft table">Craft table</p>
+	<p key="Enchantment table">Enchantment table</p>
+	<p key="Chest">Chest</p>
+	<p key="Furnace">Furnace</p>
+	<p key="Dispenser">Dispenser</p>
+	<p key="Note Block">Note Block</p>
+	<p key="Jukebox">Jukebox</p>
+	<p key="Bookshelf">Bookshelf</p>
+	<p key="Beds">Beds</p>
+	<p key="Wooden doors">Wooden doors</p>
+	<p key="Iron doors">Iron doors</p>
+	<p key="Wooden stairs">Wooden stairs</p>
+	<p key="Cobblestone stairs">Cobblestone stairs</p>
+	<p key="Brick stairs">Brick stairs</p>
+	<p key="Stone brick stairs">Stone brick stairs</p>
+	<p key="Slabs">Slabs</p>
+	<p key="&gt; Stone slabs">&gt; Stone slabs</p>
+	<p key="&gt; Sand slabs">&gt; Sand slabs</p>
+	<p key="&gt; Wooden slabs">&gt; Wooden slabs</p>
+	<p key="&gt; Cobblestone slabs">&gt; Cobblestone slabs</p>
+	<p key="&gt; Brick slabs">&gt; Brick slabs</p>
+	<p key="&gt; Stone brick slabs">&gt; Stone brick slabs</p>
+	<p key="Double slabs">Double slabs</p>
+	<p key="&gt; Stone double slabs">&gt; Stone double slabs</p>
+	<p key="&gt; Sand double slabs">&gt; Sand double slabs</p>
+	<p key="&gt; Wooden double slabs">&gt; Wooden double slabs</p>
+	<p key="&gt; Cobblestone double slabs">&gt; Cobblestone double slabs</p>
+	<p key="&gt; Brick double slabs">&gt; Brick double slabs</p>
+	<p key="&gt; Stone brick double slabs">&gt; Stone brick double slabs</p>
+	<p key="Sponge">Sponge</p>
+	<p key="Glass">Glass</p>
+	<p key="Glass pane">Glass pane</p>
+	<p key="Brick">Brick</p>
+	<p key="Stone brick">Stone brick</p>
+	<p key="&gt; Smooth">&gt; Smooth</p>
+	<p key="&gt; Mossy">&gt; Mossy</p>
+	<p key="&gt; Cracked">&gt; Cracked</p>
+	<p key="Iron bars">Iron bars</p>
+	<p key="TNT">TNT</p>
+	<p key="Melon stem">Melon stem</p>
+	<p key="Melon">Melon</p>
+	<p key="Pumpkin stem">Pumpkin stem</p>
+	<p key="Pumpkin">Pumpkin</p>
+	<p key="Jack-O-Lantern">Jack-O-Lantern</p>
+	<p key="Netherrack">Netherrack</p>
+	<p key="Soul Sand">Soul Sand</p>
+	<p key="Glowstone">Glowstone</p>
+	<p key="Nether brick">Nether brick</p>
+	<p key="Nether brick fence">Nether brick fence</p>
+	<p key="Nether brick stairs">Nether brick stairs</p>
+	<p key="Nether wart">Nether wart</p>
+	<p key="Signs">Signs</p>
+	<p key="Ladder">Ladder</p>
+	<p key="Fence">Fence</p>
+	<p key="Fence gate">Fence gate</p>
+	<p key="Minecart Track">Minecart Track</p>
+	<p key="Powered Rail">Powered Rail</p>
+	<p key="Detector Rail">Detector Rail</p>
+	<p key="Piston">Piston</p>
+	<p key="Sticky piston">Sticky piston</p>
+	<p key="Lever">Lever</p>
+	<p key="Buttons">Buttons</p>
+	<p key="Trapdoor">Trapdoor</p>
+	<p key="Pressure Plates">Pressure Plates</p>
+	<p key="Redstone Wire">Redstone Wire</p>
+	<p key="Redstone Torches">Redstone Torches</p>
+	<p key="Redstone Repeaters">Redstone Repeaters</p>
+	<p key="Redstone Lamps">Redstone Lamps</p>
+	<p key="&gt; On">&gt; On</p>
+	<p key="&gt; Off">&gt; Off</p>
+	<p key="Zombies">Zombies</p>
+	<p key="Cows">Cows</p>
+	<p key="Sheep">Sheep</p>
+	<p key="Pigs">Pigs</p>
+	<p key="Skeletons">Skeletons</p>
+	<p key="Creepers">Creepers</p>
+	<p key="Slimes">Slimes</p>
+	<p key="players/title">Spieler dieses Servers</p>
+	<p key="players/level">Level: </p>
+	<p key="players/laston">Zuletzt online: </p>
+	<p key="workshop/title">
+		Die Werkstatt befindet sich im Südosten der Hauptstadt und
+		funktioniert nach dem Ehrlichkeitsprinzip.
+		<samp>:D</samp>
+	</p>
+	<p key="mall/title">
+		Das Einkaufszentrum befindet sich im Südosten der Hauptstadt und
+		funktioniert nach dem Ehrlichkeitsprinzip.
+		<samp>:D</samp>
+	</p>
+	<p key="mall/buy">Einkauf:</p>
+	<p key="mall/sell">Verkauf:</p>
+	<p key="pics/upload">Bildchen hochladen</p>
+	<p key="pics/uploaded">Hochgeladene Bildchen</p>
+	<p key="pics/submit">Hochladen</p>
+	<p key="law/forbidden/title">
+		<em>Kein Spieler darf...</em>
+	</p>
+	<p key="law/forbidden">
+		<ul>
+			<li>Eine Blockstruktur zerstören oder modifizieren, die so aussieht
+				als könnte sie ein anderer Spieler gebaut haben</li>
+			<li>Gegenstände aus Kisten nehmen, die so aussehen als könnten sie
+				einem anderen Spieler gehören</li>
+			<li>Innerhalb der Stadt bauen</li>
+			<li>Das Einkaufszentrum oder die Werkstatt benutzen</li>
+			<li>
+				Client-Mods oder Bugs in Minecraft benutzen, die
+				<samp>GOTT</samp>
+				als Cheaten bezeichnen würde
+			</li>
+			<li>Einen Namen besitzen der vulgär ist oder auf ähnliche Weise auf
+				einen niedrigen Intellekt hindeutet</li>
+		</ul>
+	</p>
+	<p key="law/forbidden/note">Ein paar Regeln verschwinden, wenn man Bürger wird.</p>
+	<p key="law/allowed/title">
+		<em>Alle Spieler dürfen...</em>
+	</p>
+	<p key="law/allowed">
+		<ul>
+			<li>Sich an den öffentlichen Gebäuden der Stadt bedienen, wie dem
+				Fundbüro oder dem Gewächshaus</li>
+			<li>Das Bahn-System in der Stadt sowie die Fernbahnhöfe außerhalb der
+				Stadt benutzen</li>
+		</ul>
+	</p>
+	<p key="law/allowed/note">
+		Alle Spieler müssen außerhalb der Stadt siedeln, bis sie von
+		<samp>GOTT</samp>
+		für würdig befunden wurden, in der Stadt zu leben.
+		Damit erlangen sie Bürgerstatus und die folgenden Privilegien.
+		Um Bürger zu werden, muss man eine Weile online gewesen sein und mit
+		seinen Strukturen gezeigt haben dass man Grundkenntnisse über
+		Minecraft besitzt.
+		<samp>GOTT</samp>
+		informiert jeden Spieler, sobald er Bürgerrecht erlangt.
+	</p>
+	<p key="law/restricted/title">
+		<em>Alle Bürger dürfen...</em>
+	</p>
+	<p key="law/restricted">
+		<ul>
+			<li>Ein Wohngebäude innerhalb der Stadt an den dafür vorgesehen
+				Parzellen errichten</li>
+			<li>Nach Absprache ein öffentliches Gebäude an jedem freien Ort
+				innerhalb der Stadt bauen</li>
+			<li>Auf ihrer Parzelle machen was sie wollen, so lange
+				Nachbargrundstücke davon nicht beeinflusst werden
+				(Selbstschussanlagen, Feuer, etc.)</li>
+			<li>Das Einkaufszentrum entsprechend den ausgeschilderten Preistafeln
+				benutzen</li>
+			<li>Die Werkstatt entsprechend den ausgeschilderten Tauschkursen
+				benutzen</li>
+		</ul>
+	</p>
+	<p key="law/restricted/note">
+		Jegliche Verstöße werden mehr oder weniger sofort mit Verbannung bestraft.
+		In einem solchen Fall stell ich eine Kiste mit dem Inventar des
+		Exilanten an seine aktuelle Position, falls jemand looten will.
+		Wenn ihr Petzen wollt, macht einen Screenshot oder so...
+	</p>
+	<p key="Last system message:">Letzte Systemnaricht:</p>
+	<p key="Currently online:">Aktuell online:</p>
+	<p key="Command block">Command block</p>
+	<p key="&gt; Oak">&gt; Oak</p>
+	<p key="&gt; Spurce">&gt; Spurce</p>
+	<p key="&gt; Jungle">&gt; Jungle</p>
+	<p key="Emerald Ore">Emerald Ore</p>
+	<p key="Emerald">Emerald</p>
+	<p key="Wheat">Wheat</p>
+	<p key="Carrots">Carrots</p>
+	<p key="Potatoes">Potatoes</p>
+	<p key="Cocoa pod">Cocoa pod</p>
+	<p key="Flower pot">Flower pot</p>
+	<p key="Brewing stand">Brewing stand</p>
+	<p key="Couldron">Couldron</p>
+	<p key="Anvil">Anvil</p>
+	<p key="Ender chest">Ender chest</p>
+	<p key="Beacon">Beacon</p>
+	<p key="Sandstone stairs">Sandstone stairs</p>
+	<p key="Wooden slabs">Wooden slabs</p>
+	<p key="Wooden double slabs">Wooden double slabs</p>
+	<p key="&gt; Chiseled">&gt; Chiseled</p>
+	<p key="Head">Head</p>
+	<p key="Cobblestone wall">Cobblestone wall</p>
+	<p key="Mossy cobblestone wall">Mossy cobblestone wall</p>
+	<p key="Tripwire hook">Tripwire hook</p>
+	<p key="Tripwire">Tripwire</p>
+	<p key="mall/head">Einkaufszentrum Tauschkurs</p>
+	<p key="workshop/head">Werkstatt Tauschkurs</p>
+	<p key="Server is:">Server ist:</p>
+	<p key="Version:">Version:</p>
+	<p key="Players online:">Spieler online:</p>
+	<p key="Minecraft Server is:">
+		<a href="/Minecraft/">Minecraft</a>
+		Server ist:
+	</p>
+	<p key="2D Normal">2D Normal</p>
+	<p key="Karten">Karten</p>
+	<p key="Minecraft">Minecraft</p>
+	<p key="Slothsoft">Slothsoft</p>
+	<p key="2D Cave">2D Cave</p>
+	<p key="3D Normal">3D Normal</p>
+	<p key="3D Cave">3D Cave</p>
+	<p key="Recently online:">Recently online:</p>
 </html>

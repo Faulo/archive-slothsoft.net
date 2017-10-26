@@ -4,25 +4,28 @@
  * 
  * @link http://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-1004215813
  */
-
 namespace w3c\dom;
 
-interface ProcessingInstruction extends Node {
+interface ProcessingInstruction extends Node
+{
 
-	/**
-	 * @return string
-	 */
-	public function getTarget();
+    /**
+     *
+     * @return string
+     */
+    public function getTarget();
 
-	/**
-	 * @throws DOMException
-	 * @return string
-	 */
-	public function getData();
+    /**
+     *
+     * @throws DOMException
+     * @return string
+     */
+    public function getData();
 
-	/**
-	 * @param string $data
-	 * @return void
-	 */
-	public function setData($data);
+    /**
+     *
+     * @param string $data
+     * @return void
+     */
+    public function setData($data);
 }

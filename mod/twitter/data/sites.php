@@ -3,7 +3,6 @@ namespace Slothsoft\CMS;
 
 use Slothsoft\Core\DOMHelper;
 use Slothsoft\Twitter\Archive;
-
 $baseXML = '
 <page name="%1$s">
 	<param name="user" value="%1$s"/>
@@ -23,7 +22,7 @@ $retXML = '';
 
 $userList = Archive::getUserList();
 foreach ($userList as $user) {
-	$retXML .= sprintf($baseXML, $user);
+    $retXML .= sprintf($baseXML, $user);
 }
 
 $dom = new DOMHelper();

@@ -1,11 +1,12 @@
 <?php
+namespace Slothsoft\CMS;
 
-$client = \DBMS\Manager::getClient();
+use Slothsoft\DBMS\Manager;
+
+$client = Manager::getClient();
 
 $dbList = $client->getDatabaseList();
-foreach ($dbList as $db) {
-	
-}
+foreach ($dbList as $db) {}
 
 //$db = \DBMS\Manager::getDatabase('twitter');
 

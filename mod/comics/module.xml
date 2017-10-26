@@ -1,52 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
 	<fragment name="8bit">
-		<template name="_default"/>
-		<res name="8bit-index" load="xml"/>
-		<struc name="/core/HTML5"/>
-		<param name="standalone" scope="global"/>
+		<template name="_default" />
+		<res name="8bit-index" load="xml" />
+		<struc name="/core/HTML5" />
+		<param name="standalone" scope="global" />
 	</fragment>
-	
+
 	<fragment name="menage-a-3">
-		<template name="_default"/>
-		<res name="menage-a-3-index" load="xml"/>
-		<struc name="/core/HTML5"/>
-		<param name="standalone" scope="global"/>
+		<template name="_default" />
+		<res name="menage-a-3-index" load="xml" />
+		<struc name="/core/HTML5" />
+		<param name="standalone" scope="global" />
 	</fragment>
-	
+
 	<fragment name="el-goonish-shive">
-		<template name="_default"/>
-		<res name="el-goonish-shive-index" load="xml"/>
-		<struc name="/core/HTML5"/>
-		<param name="standalone" scope="global"/>
+		<template name="_default" />
+		<res name="el-goonish-shive-index" load="xml" />
+		<struc name="/core/HTML5" />
+		<param name="standalone" scope="global" />
 	</fragment>
-	
+
 	<fragment name="oots">
-		<template name="_default"/>
-		<res name="oots-index" load="xml"/>
-		<struc name="/core/HTML5"/>
-		<param name="standalone" scope="global"/>
+		<template name="_default" />
+		<res name="oots-index" load="xml" />
+		<struc name="/core/HTML5" />
+		<param name="standalone" scope="global" />
 	</fragment>
-	
+
 	<fragment name="girl-genius">
-		<template name="_default"/>
-		<res name="girl-genius-index" load="xml"/>
-		<struc name="/core/HTML5"/>
-		<param name="standalone" scope="global"/>
+		<template name="_default" />
+		<res name="girl-genius-index" load="xml" />
+		<struc name="/core/HTML5" />
+		<param name="standalone" scope="global" />
 	</fragment>
-	
-	<resource name="8bit-index" path="8bit\index.xml" type="application/xml"/>
-	<resourceDir name="8bit" path="8bit" type="*/*"/>
-	
-	<resource name="menage-a-3-index" path="menage-a-3\index.xml" type="application/xml"/>
-	<resourceDir name="menage-a-3" path="menage-a-3" type="*/*"/>
-	
-	<resource name="el-goonish-shive-index" path="el-goonish-shive\index.xml" type="application/xml"/>
-	<resourceDir name="el-goonish-shive" path="el-goonish-shive" type="*/*"/>
-	
-	<resource name="oots-index" path="oots\index.xml" type="application/xml"/>
-	<resourceDir name="oots" path="oots" type="*/*"/>
-	
-	<resource name="girl-genius-index" path="girl-genius\index.xml" type="application/xml"/>
-	<resourceDir name="girl-genius" path="girl-genius" type="*/*"/>
+
+	<resource name="8bit-index" path="8bit\index.xml" type="application/xml" />
+	<resourceDir name="8bit" path="8bit" type="*/*" />
+
+	<resource name="menage-a-3-index" path="menage-a-3\index.xml"
+		type="application/xml" />
+	<resourceDir name="menage-a-3" path="menage-a-3" type="*/*" />
+
+	<resource name="el-goonish-shive-index" path="el-goonish-shive\index.xml"
+		type="application/xml" />
+	<resourceDir name="el-goonish-shive" path="el-goonish-shive"
+		type="*/*" />
+
+	<resource name="oots-index" path="oots\index.xml" type="application/xml" />
+	<resourceDir name="oots" path="oots" type="*/*" />
+
+	<resource name="girl-genius-index" path="girl-genius\index.xml"
+		type="application/xml" />
+	<resourceDir name="girl-genius" path="girl-genius" type="*/*" />
 </module>

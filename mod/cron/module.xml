@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
-	
-	<resource name="update-files" path="update-files.xml" type="application/xml"/>
-	<resource name="update-comics" path="update-comics.xml" type="application/xml"/>
-	<resource name="update-hentai" path="update-hentai.xml" type="application/xml"/>
-	<resource name="update-youtube" path="update-youtube.xml" type="application/xml"/>
+
+	<resource name="update-files" path="update-files.xml" type="application/xml" />
+	<resource name="update-comics" path="update-comics.xml" type="application/xml" />
+	<resource name="update-hentai" path="update-hentai.xml" type="application/xml" />
+	<resource name="update-youtube" path="update-youtube.xml"
+		type="application/xml" />
 </module>

@@ -7,11 +7,11 @@ $idList = [];
 $idList[] = 426913;
 
 foreach ($idList as $id) {
-	$card = [];
-	$card['oracle_id'] = $id;
-	$data = OracleInfo::getOracleCardData($card);
-	
-	my_dump($data);
+    $card = [];
+    $card['oracle_id'] = $id;
+    $data = OracleInfo::getOracleCardData($card);
+    
+    my_dump($data);
 }
 
 /*

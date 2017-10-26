@@ -1,60 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
 	<fragment name="sitemap">
-		<template name="_sitemap"/>
-		<res name="sites" load="xml"/>
+		<template name="_sitemap" />
+		<res name="sites" load="xml" />
 	</fragment>
-	
+
 	<fragment name="ipLog">
-		<template name="_ipLog"/>
-		<!--<res name="language-registry" load="xml"/>-->
-		<data name="ipLog"/>
+		<template name="_ipLog" />
+		<!--<res name="language-registry" load="xml"/> -->
+		<data name="ipLog" />
 	</fragment>
 	<fragment name="botLog">
-		<template name="_ipLog"/>
-		<param name="bots" value="1"/>
-		<!--<res name="language-registry" load="xml"/>-->
-		<data name="ipLog"/>
+		<template name="_ipLog" />
+		<param name="bots" value="1" />
+		<!--<res name="language-registry" load="xml"/> -->
+		<data name="ipLog" />
 	</fragment>
 	<fragment name="userLog">
-		<template name="_ipLog"/>
-		<!--<param name="bots" value="0"/>-->
-		<!--<res name="language-registry" load="xml"/>-->
-		<data name="ipLog"/>
+		<template name="_ipLog" />
+		<!--<param name="bots" value="0"/> -->
+		<!--<res name="language-registry" load="xml"/> -->
+		<data name="ipLog" />
 	</fragment>
-	
+
 	<fragment name="language-backend">
-		<template name="_language-backend"/>
-		<data name="language-backend"/>
+		<template name="_language-backend" />
+		<data name="language-backend" />
 	</fragment>
-	
-	<resource name="sites" path="sites.xml" type="application/xml"/>
-	
+
+	<resource name="sites" path="sites.xml" type="application/xml" />
+
 	<!-- http://www.w3.org/International/articles/language-tags/ -->
-	<resource name="language-registry" path="language-subtag-registry.xml" type="application/xml" source="http://www.langtag.net/registries/language-subtag-registry.xml"/>
-	<resource name="iso-639" path="iso-639.xml" type="application/xml" source="http://www.loc.gov/standards/iso639-2/php/code_list.php"/>
-	<resource name="unicode" path="ucd.all.flat.csv" type="text/csv" del=";" sep="" key-col="0" val-col="1" output="assoc" source="http://unicode.org/Public/UNIDATA/UnicodeData.txt"/>
-	<resource name="unicode-all" path="ucd.all.flat.xml" type="application/xml" source="http://www.unicode.org/Public/UCD/latest/ucdxml/ucd.all.flat.zip"/>
-	
+	<resource name="language-registry" path="language-subtag-registry.xml"
+		type="application/xml" source="http://www.langtag.net/registries/language-subtag-registry.xml" />
+	<resource name="iso-639" path="iso-639.xml" type="application/xml"
+		source="http://www.loc.gov/standards/iso639-2/php/code_list.php" />
+	<resource name="unicode" path="ucd.all.flat.csv" type="text/csv"
+		del=";" sep="" key-col="0" val-col="1" output="assoc"
+		source="http://unicode.org/Public/UNIDATA/UnicodeData.txt" />
+	<resource name="unicode-all" path="ucd.all.flat.xml" type="application/xml"
+		source="http://www.unicode.org/Public/UCD/latest/ucdxml/ucd.all.flat.zip" />
+
 	<struc name="DOM">
-		<script name="DOM"/>
-		<script name="DOMHelper"/>
-		<script name="NS"/>
-		<script name="XPath"/>
-		<script name="XSLT"/>
-		<!--<script name="TouchAndDrag"/>-->
-		<!--<script name="Touch"/>-->
-		<!--<struc name="/lib/wgxpath"/>-->
-		<struc name="HTML5"/>
+		<script name="DOM" />
+		<script name="DOMHelper" />
+		<script name="NS" />
+		<script name="XPath" />
+		<script name="XSLT" />
+		<!--<script name="TouchAndDrag"/> -->
+		<!--<script name="Touch"/> -->
+		<!--<struc name="/lib/wgxpath"/> -->
+		<struc name="HTML5" />
 	</struc>
-	
+
 	<struc name="HTML5">
-		<script name="HTML5"/>
-		<style name="HTML5"/>
+		<script name="HTML5" />
+		<style name="HTML5" />
 	</struc>
-	
+
 	<struc name="XPath">
-		<script name="NS"/>
-		<script name="XPath"/>
+		<script name="NS" />
+		<script name="XPath" />
 	</struc>
 </module>

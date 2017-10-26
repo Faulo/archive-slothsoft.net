@@ -2,13 +2,12 @@
 namespace Slothsoft\CMS;
 
 use Slothsoft\Chat\Model;
-
 $dbName = 'cms';
 $tableName = 'minecraft_log';
 
 if ($name = $this->httpRequest->getInputValue('chat-database') and $name !== $tableName) {
-	$dbName = 'chat';
-	$tableName = $name;
+    $dbName = 'chat';
+    $tableName = $name;
 }
 
 $chat = new Model();

@@ -1,8 +1,9 @@
 <?xml version="1.0" ?>
 <xsd:schema id="ivb.mail.do1"
 	targetNamespace="http://inno-vplan-transfer.de/ivb.mail.do1.xsd"
-	elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://inno-vplan-transfer.de/ivb.mail.do1.xsd"
-	xmlns:mstns="http://inno-vplan-transfer.de/ivb.mail.do1.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	elementFormDefault="qualified" attributeFormDefault="qualified"
+	xmlns="http://inno-vplan-transfer.de/ivb.mail.do1.xsd" xmlns:mstns="http://inno-vplan-transfer.de/ivb.mail.do1.xsd"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 	<xsd:element name="ivb.mail.do1">
 		<xsd:complexType>
@@ -20,7 +21,7 @@
 			<xsd:element name="CONTENT" type="CONTENTtype" maxOccurs="unbounded" />
 			<xsd:element name="ATTACHMENT" type="ATTACHMENTtype"
 				minOccurs="0" maxOccurs="unbounded" />
-			<xsd:element name="ID" type="xsd:string"/>
+			<xsd:element name="ID" type="xsd:string" />
 		</xsd:sequence>
 		<xsd:attribute name="FROM" type="xsd:string" use="required" />
 		<xsd:attribute name="SUBJECT" type="xsd:string" use="optional" />

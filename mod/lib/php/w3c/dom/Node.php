@@ -4,246 +4,300 @@
  * 
  * @link http://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-1950641247
  */
-
 namespace w3c\dom;
 
-interface Node {
+interface Node
+{
 
-	const ELEMENT_NODE = 1;
-	const ATTRIBUTE_NODE = 2;
-	const TEXT_NODE = 3;
-	const CDATA_SECTION_NODE = 4;
-	const ENTITY_REFERENCE_NODE = 5;
-	const ENTITY_NODE = 6;
-	const PROCESSING_INSTRUCTION_NODE = 7;
-	const COMMENT_NODE = 8;
-	const DOCUMENT_NODE = 9;
-	const DOCUMENT_TYPE_NODE = 10;
-	const DOCUMENT_FRAGMENT_NODE = 11;
-	const NOTATION_NODE = 12;
-	const DOCUMENT_POSITION_DISCONNECTED = 0x01;
-	const DOCUMENT_POSITION_PRECEDING = 0x02;
-	const DOCUMENT_POSITION_FOLLOWING = 0x04;
-	const DOCUMENT_POSITION_CONTAINS = 0x08;
-	const DOCUMENT_POSITION_CONTAINED_BY = 0x10;
-	const DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC = 0x20;
+    const ELEMENT_NODE = 1;
 
-	/**
-	 * @return string
-	 */
-	public function getNodeName();
+    const ATTRIBUTE_NODE = 2;
 
-	/**
-	 * @throws DOMException
-	 * @return string
-	 */
-	public function getNodeValue();
+    const TEXT_NODE = 3;
 
-	/**
-	 * @param string $nodeValue
-	 * @throws DOMException
-	 * @return void
-	 */
-	public function setNodeValue($nodeValue);
+    const CDATA_SECTION_NODE = 4;
 
-	/**
-	 * @return int
-	 */
-	public function getNodeType();
+    const ENTITY_REFERENCE_NODE = 5;
 
-	/**
-	 * @return Node
-	 */
-	public function getParentNode();
+    const ENTITY_NODE = 6;
 
-	/**
-	 * @return array
-	 */
-	public function getChildNodes();
+    const PROCESSING_INSTRUCTION_NODE = 7;
 
-	/**
-	 * @return Node
-	 */
-	public function getFirstChild();
+    const COMMENT_NODE = 8;
 
-	/**
-	 * @return Node
-	 */
-	public function getLastChild();
+    const DOCUMENT_NODE = 9;
 
-	/**
-	 * @return Node
-	 */
-	public function getPreviousSibling();
+    const DOCUMENT_TYPE_NODE = 10;
 
-	/**
-	 * @return Node
-	 */
-	public function getNextSibling();
+    const DOCUMENT_FRAGMENT_NODE = 11;
 
-	/**
-	 * @return array
-	 */
-	public function getAttributes();
+    const NOTATION_NODE = 12;
 
-	/**
-	 * @return Document
-	 */
-	public function getOwnerDocument();
+    const DOCUMENT_POSITION_DISCONNECTED = 0x01;
 
-	/**
-	 * @return string
-	 */
-	public function getNamespaceURI();
+    const DOCUMENT_POSITION_PRECEDING = 0x02;
 
-	/**
-	 * @throws DOMException
-	 * @return string
-	 */
-	public function getPrefix();
+    const DOCUMENT_POSITION_FOLLOWING = 0x04;
 
-	/**
-	 * @param string $prefix
-	 * @return void
-	 */
-	public function setPrefix($prefix);
+    const DOCUMENT_POSITION_CONTAINS = 0x08;
 
-	/**
-	 * @return string
-	 */
-	public function getLocalName();
+    const DOCUMENT_POSITION_CONTAINED_BY = 0x10;
 
-	/**
-	 * @return string
-	 */
-	public function getBaseURI();
+    const DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC = 0x20;
 
-	/**
-	 * @throws DOMException
-	 * @return string
-	 */
-	public function getTextContent();
+    /**
+     *
+     * @return string
+     */
+    public function getNodeName();
 
-	/**
-	 * @param string $textContent
-	 * @throws DOMException
-	 * @return void
-	 */
-	public function setTextContent($textContent);
+    /**
+     *
+     * @throws DOMException
+     * @return string
+     */
+    public function getNodeValue();
 
-	/**
-	 * @param Node $newChild
-	 * @param Node $refChild
-	 * @throws DOMException
-	 * @return Node
-	 */
-	public function insertBefore(Node $newChild, Node $refChild);
+    /**
+     *
+     * @param string $nodeValue
+     * @throws DOMException
+     * @return void
+     */
+    public function setNodeValue($nodeValue);
 
-	/**
-	 * @param Node $newChild
-	 * @param Node $oldChild
-	 * @throws DOMException
-	 * @return Node
-	 */
-	public function replaceChild(Node $newChild, Node $oldChild);
+    /**
+     *
+     * @return int
+     */
+    public function getNodeType();
 
-	/**
-	 * @param Node $oldChild
-	 * @throws DOMException
-	 * @return Node
-	 */
-	public function removeChild(Node $oldChild);
+    /**
+     *
+     * @return Node
+     */
+    public function getParentNode();
 
-	/**
-	 * @param Node $newChild
-	 * @throws DOMException
-	 * @return Node
-	 */
-	public function appendChild(Node $newChild);
+    /**
+     *
+     * @return array
+     */
+    public function getChildNodes();
 
-	/**
-	 * @return bool
-	 */
-	public function hasChildNodes();
+    /**
+     *
+     * @return Node
+     */
+    public function getFirstChild();
 
-	/**
-	 * @param bool $deep
-	 * @return Node
-	 */
-	public function cloneNode($deep);
+    /**
+     *
+     * @return Node
+     */
+    public function getLastChild();
 
-	/**
-	 * @return void
-	 */
-	public function normalize();
+    /**
+     *
+     * @return Node
+     */
+    public function getPreviousSibling();
 
-	/**
-	 * @param string $feature
-	 * @param string $version
-	 * @return bool
-	 */
-	public function isSupported($feature, $version);
+    /**
+     *
+     * @return Node
+     */
+    public function getNextSibling();
 
-	/**
-	 * @return bool
-	 */
-	public function hasAttributes();
+    /**
+     *
+     * @return array
+     */
+    public function getAttributes();
 
-	/**
-	 * @param Node $other
-	 * @throws DOMException
-	 * @return int
-	 */
-	public function compareDocumentPosition(Node $other);
+    /**
+     *
+     * @return Document
+     */
+    public function getOwnerDocument();
 
-	/**
-	 * @param Node $other
-	 * @return bool
-	 */
-	public function isSameNode(Node $other);
+    /**
+     *
+     * @return string
+     */
+    public function getNamespaceURI();
 
-	/**
-	 * @param string $namespaceURI
-	 * @return string
-	 */
-	public function lookupPrefix($namespaceURI);
+    /**
+     *
+     * @throws DOMException
+     * @return string
+     */
+    public function getPrefix();
 
-	/**
-	 * @param string $namespaceURI
-	 * @return bool
-	 */
-	public function isDefaultNamespace($namespaceURI);
+    /**
+     *
+     * @param string $prefix
+     * @return void
+     */
+    public function setPrefix($prefix);
 
-	/**
-	 * @param string $prefix
-	 * @return string
-	 */
-	public function lookupNamespaceURI($prefix);
+    /**
+     *
+     * @return string
+     */
+    public function getLocalName();
 
-	/**
-	 * @param Node $arg
-	 * @return bool
-	 */
-	public function isEqualNode(Node $arg);
+    /**
+     *
+     * @return string
+     */
+    public function getBaseURI();
 
-	/**
-	 * @param string $feature
-	 * @param string $version
-	 * @return Node
-	 */
-	public function getFeature($feature, $version);
+    /**
+     *
+     * @throws DOMException
+     * @return string
+     */
+    public function getTextContent();
 
-	/**
-	 * @param string $key
-	 * @param Object $data
-	 * @param UserDataHandler $handler
-	 * @return Object
-	 */
-	public function setUserData($key, $data, UserDataHandler $handler);
+    /**
+     *
+     * @param string $textContent
+     * @throws DOMException
+     * @return void
+     */
+    public function setTextContent($textContent);
 
-	/**
-	 * @param string $key
-	 * @return Object
-	 */
-	public function getUserData($key);
+    /**
+     *
+     * @param Node $newChild
+     * @param Node $refChild
+     * @throws DOMException
+     * @return Node
+     */
+    public function insertBefore(Node $newChild, Node $refChild);
+
+    /**
+     *
+     * @param Node $newChild
+     * @param Node $oldChild
+     * @throws DOMException
+     * @return Node
+     */
+    public function replaceChild(Node $newChild, Node $oldChild);
+
+    /**
+     *
+     * @param Node $oldChild
+     * @throws DOMException
+     * @return Node
+     */
+    public function removeChild(Node $oldChild);
+
+    /**
+     *
+     * @param Node $newChild
+     * @throws DOMException
+     * @return Node
+     */
+    public function appendChild(Node $newChild);
+
+    /**
+     *
+     * @return bool
+     */
+    public function hasChildNodes();
+
+    /**
+     *
+     * @param bool $deep
+     * @return Node
+     */
+    public function cloneNode($deep);
+
+    /**
+     *
+     * @return void
+     */
+    public function normalize();
+
+    /**
+     *
+     * @param string $feature
+     * @param string $version
+     * @return bool
+     */
+    public function isSupported($feature, $version);
+
+    /**
+     *
+     * @return bool
+     */
+    public function hasAttributes();
+
+    /**
+     *
+     * @param Node $other
+     * @throws DOMException
+     * @return int
+     */
+    public function compareDocumentPosition(Node $other);
+
+    /**
+     *
+     * @param Node $other
+     * @return bool
+     */
+    public function isSameNode(Node $other);
+
+    /**
+     *
+     * @param string $namespaceURI
+     * @return string
+     */
+    public function lookupPrefix($namespaceURI);
+
+    /**
+     *
+     * @param string $namespaceURI
+     * @return bool
+     */
+    public function isDefaultNamespace($namespaceURI);
+
+    /**
+     *
+     * @param string $prefix
+     * @return string
+     */
+    public function lookupNamespaceURI($prefix);
+
+    /**
+     *
+     * @param Node $arg
+     * @return bool
+     */
+    public function isEqualNode(Node $arg);
+
+    /**
+     *
+     * @param string $feature
+     * @param string $version
+     * @return Node
+     */
+    public function getFeature($feature, $version);
+
+    /**
+     *
+     * @param string $key
+     * @param Object $data
+     * @param UserDataHandler $handler
+     * @return Object
+     */
+    public function setUserData($key, $data, UserDataHandler $handler);
+
+    /**
+     *
+     * @param string $key
+     * @return Object
+     */
+    public function getUserData($key);
 }

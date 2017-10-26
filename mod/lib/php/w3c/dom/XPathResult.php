@@ -4,68 +4,86 @@
  * 
  * @link http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html#XPathResult
  */
-
 namespace w3c\dom;
 
-interface XPathResult {
+interface XPathResult
+{
 
-	const ANY_TYPE = 0;
-	const NUMBER_TYPE = 1;
-	const STRING_TYPE = 2;
-	const BOOLEAN_TYPE = 3;
-	const UNORDERED_NODE_ITERATOR_TYPE = 4;
-	const ORDERED_NODE_ITERATOR_TYPE = 5;
-	const UNORDERED_NODE_SNAPSHOT_TYPE = 6;
-	const ORDERED_NODE_SNAPSHOT_TYPE = 7;
-	const ANY_UNORDERED_NODE_TYPE = 8;
-	const FIRST_ORDERED_NODE_TYPE = 9;
+    const ANY_TYPE = 0;
 
-	/**
-	 * @return int
-	 */
-	public function getResultType();
+    const NUMBER_TYPE = 1;
 
-	/**
-	 * @return float
-	 */
-	public function getNumberValue();
+    const STRING_TYPE = 2;
 
-	/**
-	 * @return string
-	 */
-	public function getStringValue();
+    const BOOLEAN_TYPE = 3;
 
-	/**
-	 * @return bool
-	 */
-	public function getBooleanValue();
+    const UNORDERED_NODE_ITERATOR_TYPE = 4;
 
-	/**
-	 * @return Node
-	 */
-	public function getSingleNodeValue();
+    const ORDERED_NODE_ITERATOR_TYPE = 5;
 
-	/**
-	 * @return bool
-	 */
-	public function getInvalidIteratorState();
+    const UNORDERED_NODE_SNAPSHOT_TYPE = 6;
 
-	/**
-	 * @return int
-	 */
-	public function getSnapshotLength();
+    const ORDERED_NODE_SNAPSHOT_TYPE = 7;
 
-	/**
-	 * @throws XPathException
-	 * @throws DOMException
-	 * @return Node
-	 */
-	public function iterateNext();
+    const ANY_UNORDERED_NODE_TYPE = 8;
 
-	/**
-	 * @param int $index
-	 * @throws XPathException
-	 * @return Node
-	 */
-	public function snapshotItem($index);
+    const FIRST_ORDERED_NODE_TYPE = 9;
+
+    /**
+     *
+     * @return int
+     */
+    public function getResultType();
+
+    /**
+     *
+     * @return float
+     */
+    public function getNumberValue();
+
+    /**
+     *
+     * @return string
+     */
+    public function getStringValue();
+
+    /**
+     *
+     * @return bool
+     */
+    public function getBooleanValue();
+
+    /**
+     *
+     * @return Node
+     */
+    public function getSingleNodeValue();
+
+    /**
+     *
+     * @return bool
+     */
+    public function getInvalidIteratorState();
+
+    /**
+     *
+     * @return int
+     */
+    public function getSnapshotLength();
+
+    /**
+     *
+     * @throws XPathException
+     * @throws DOMException
+     * @return Node
+     */
+    public function iterateNext();
+
+    /**
+     *
+     * @param int $index
+     * @throws XPathException
+     * @return Node
+     */
+    public function snapshotItem($index);
 }

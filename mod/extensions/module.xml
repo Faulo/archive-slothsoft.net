@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
 	<fragment name="update">
-		<template name="update-rdf"/>
-		<data name="repository" load="xml"/>
-		<param name="standalone" scope="global"/>
+		<template name="update-rdf" />
+		<data name="repository" load="xml" />
+		<param name="standalone" scope="global" />
 	</fragment>
-	
+
 	<fragment name="home-missingSloth">
-		<template name="home"/>
-		<resDir name="missingSloth@slothsoft.net" load="status" as="extension"/>
+		<template name="home" />
+		<resDir name="missingSloth@slothsoft.net" load="status" as="extension" />
 	</fragment>
-	
+
 	<fragment name="missingSloth-emoji">
-		<param name="standalone" scope="global"/>
-		<template name="missingSloth.emoji"/>
-		<data name="missingSloth.emoji"/>
+		<param name="standalone" scope="global" />
+		<template name="missingSloth.emoji" />
+		<data name="missingSloth.emoji" />
 	</fragment>
-	
-	<resourceDir name="missingSloth@slothsoft.net" path="missingSloth@slothsoft.net" type="application/x-xpinstall"/>
-	<resourceDir name="missingSloth@slothsoft.net-manifest" path="missingSloth@slothsoft.net" type="application/rdf+xml"/>
-	<resourceDir name="missingSloth@slothsoft.net-signing" path="missingSloth@slothsoft.net/signing" type="*/*"/>
-	<resourceDir name="update" path="update" type="application/rdf+xml"/>
+
+	<resourceDir name="missingSloth@slothsoft.net" path="missingSloth@slothsoft.net"
+		type="application/x-xpinstall" />
+	<resourceDir name="missingSloth@slothsoft.net-manifest"
+		path="missingSloth@slothsoft.net" type="application/rdf+xml" />
+	<resourceDir name="missingSloth@slothsoft.net-signing"
+		path="missingSloth@slothsoft.net/signing" type="*/*" />
+	<resourceDir name="update" path="update" type="application/rdf+xml" />
 </module>
