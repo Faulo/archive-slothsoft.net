@@ -1,6 +1,8 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+use Exception;
+
 declare(ticks = 1000);
 
 class StringDictionaryInstruction extends AbstractInstructionContent {

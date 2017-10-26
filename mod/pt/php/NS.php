@@ -1,6 +1,7 @@
 <?php
-namespace PT;
-use PT\Node;
+namespace Slothsoft\PT;
+
+use Slothsoft\Core\Storage;
 
 class NS {
 	protected $ownerRepository;
@@ -112,7 +113,7 @@ class NS {
 	}
 	public function installSpec() {
 		if ($specURI = $this->getSpec()) {
-			if ($doc = \CMS\HTTPDocument::loadExternalDocument($specURI)) {
+			if ($doc = Storage::loadExternalDocument($specURI)) {
 				$xpath = new \DOMXPath($doc);
 				$xpath->registerNamespace('xsd', 'http://www.w3.org/2001/XMLSchema');
 				

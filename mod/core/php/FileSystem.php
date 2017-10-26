@@ -8,13 +8,12 @@
 ***********************************************************************/
 namespace Slothsoft\Core;
 
-use Slothsoft\Core\Storage;
-use FInfo;
 use COM;
-use Exception;
-use DOMXPath;
 use DOMDocument;
 use DOMElement;
+use DOMXPath;
+use Exception;
+use finfo;
 
 abstract class FileSystem {
 	const ZIP_PATH = 'C:/Program Files/7-Zip/7z.exe';

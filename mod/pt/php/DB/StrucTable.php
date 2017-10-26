@@ -1,5 +1,5 @@
 <?php
-namespace PT\DB;
+namespace Slothsoft\PT\DB;
 
 class StrucTable extends Table {
 	protected function install() {

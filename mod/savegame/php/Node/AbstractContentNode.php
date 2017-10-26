@@ -1,11 +1,6 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
-use Slothsoft\Savegame\Editor;
-use Slothsoft\Savegame\Dictionary;
-use DOMElement;
-use DOMDocument;
-use Exception;
 
 declare(ticks = 1000);
 

@@ -1,6 +1,8 @@
 <?php
 
-$repo = \PT\Repository::getInstance('dom');
+use Slothsoft\PT\Repository;
+
+$repo = Repository::getInstance('dom');
 
 $retNode = $repo->asNode($dataDoc);
 

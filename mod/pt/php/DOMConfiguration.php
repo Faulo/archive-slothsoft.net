@@ -5,7 +5,7 @@
  * @link http://www.w3.org/TR/DOM-Level-3-Core/core.html#DOMConfiguration
  */
 
-namespace PT;
+namespace Slothsoft\PT;
 
 class DOMConfiguration implements \w3c\dom\DOMConfiguration {
 

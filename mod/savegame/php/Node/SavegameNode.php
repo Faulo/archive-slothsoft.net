@@ -2,10 +2,8 @@
 namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\Editor;
-use Slothsoft\Savegame\Dictionary;
-use DOMElement;
-use Exception;
 use DOMDocument;
+use DOMElement;
 
 declare(ticks = 1000);
 

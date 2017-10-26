@@ -1,5 +1,8 @@
 <?php
-namespace PT;
+namespace Slothsoft\PT;
+
+use Slothsoft\DBMS\Manager;
+use Exception;
 
 class Repository {
 	protected static $instanceList = [];
@@ -33,7 +36,7 @@ class Repository {
 	protected $namespaceListById = [];
 	
 	protected function __construct($dbName) {
-		$this->dbmsDB = \DBMS\Manager::getDatabase($dbName);
+		$this->dbmsDB = Manager::getDatabase($dbName);
 		$indexTable = $this->getIndexTable();
 		$indexTable->init();
 		$this->namespaceData[null] = [

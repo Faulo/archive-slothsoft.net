@@ -2,8 +2,6 @@
 namespace Slothsoft\CMS;
 
 use Slothsoft\Amber\SavegameController;
-use Slothsoft\Core\DOMHelper;
-use Slothsoft\Core\Image;
 
 $this->httpRequest->setInputValue('save', ['editor' => [ 'archives' => ['AM2_BLIT']]]);
 

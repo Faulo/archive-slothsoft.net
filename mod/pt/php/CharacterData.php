@@ -5,7 +5,7 @@
  * @link http://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-FF21A306
  */
 
-namespace PT;
+namespace Slothsoft\PT;
 
 class CharacterData extends Node implements \w3c\dom\CharacterData {
 

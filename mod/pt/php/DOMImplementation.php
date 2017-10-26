@@ -5,7 +5,7 @@
  * @link http://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-102161490
  */
 
-namespace PT;
+namespace Slothsoft\PT;
 
 class DOMImplementation implements \w3c\dom\DOMImplementation {
 

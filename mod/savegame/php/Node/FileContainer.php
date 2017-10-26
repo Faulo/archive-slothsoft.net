@@ -1,9 +1,6 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
-use Slothsoft\Core\DOMHelper;
-use DOMElement;
-use DOMDocument;
 use Exception;
 
 declare(ticks = 1000);

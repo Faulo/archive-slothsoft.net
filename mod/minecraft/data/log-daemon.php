@@ -1,5 +1,7 @@
 <?php
-namespace Minecraft;
+namespace Slothsoft\CMS;
+
+use Slothsoft\Minecraft\Log;
 
 sleep(30);
 

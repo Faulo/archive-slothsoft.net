@@ -1,7 +1,9 @@
 <?php
 
 //$resDoc = $this->getResourceDoc('/core/unicode-all', 'xml');
-$resDoc = \DOMHelper::loadDocument(__DIR__ . '/../res/ucd.all.flat.xml');
+use Slothsoft\Core\DOMHelper;
+
+$resDoc = DOMHelper::loadDocument(__DIR__ . '/../res/ucd.all.flat.xml');
 //die($resDoc->saveXML($resDoc->documentElement->cloneNode(false)));
 
 $charList = [];

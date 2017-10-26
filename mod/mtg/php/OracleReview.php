@@ -2,7 +2,6 @@
 namespace Slothsoft\MTG;
 
 use DOMDocument;
-use Exception;
 
 class OracleReview {
 	

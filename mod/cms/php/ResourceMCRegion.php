@@ -1,6 +1,7 @@
 <?php // © 2012 Daniel Schulz
 namespace Slothsoft\CMS;
 
+use Slothsoft\Core\DOMHelper;
 use Slothsoft\Minecraft\NBT\TAGNode;
 
 class ResourceMCRegion extends Resource {
@@ -81,7 +82,7 @@ class ResourceMCRegion extends Resource {
 							imagepng($pic);
 							$imgbinary = ob_get_clean();
 							
-							$imgNode = $this->resDoc->createElementNS(Website::NS_HTML, 'img');
+							$imgNode = $this->resDoc->createElementNS(DOMHelper::NS_HTML, 'img');
 							$imgNode->setAttribute('src', 'data:image/png;base64,'.base64_encode($imgbinary));
 							$this->resNode->appendChild($imgNode);
 							//$imgStr.= '<img src="data:image/png;base64,'.base64_encode($imgbinary).'"/>';

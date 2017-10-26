@@ -1,5 +1,7 @@
 <?php
 
+use Slothsoft\CMS\HTTPFile;
+
 $spritesURI = 'http://www.bisafans.de/pokedex/gen.php';
 
 $source = 'gen7/icon/statisch';
@@ -92,7 +94,7 @@ if ($tempDir and $targetDir) {
 				$name = sprintf('%04d-%s', $mon['no'], $gen);
 				$tempPath = $tempDir . DIRECTORY_SEPARATOR . $name . '.png';
 				//echo $tempPath . PHP_EOL;
-				if ($file = \CMS\HTTPFile::createFromDownload($tempPath, $uri)) {
+				if ($file = HTTPFile::createFromDownload($tempPath, $uri)) {
 					$file->copyTo(
 						$targetDir,
 						null

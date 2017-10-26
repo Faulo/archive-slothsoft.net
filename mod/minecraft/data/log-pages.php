@@ -1,8 +1,11 @@
 <?php
+namespace Slothsoft\CMS;
+
+use Slothsoft\Chat\Model;
 
 $retFragment = $dataDoc->createDocumentFragment();
 
-$chat = new \Chat\Model();
+$chat = new Model();
 $chat->init('cms', 'minecraft_log');
 
 $firstTime = $chat->getFirstTime();

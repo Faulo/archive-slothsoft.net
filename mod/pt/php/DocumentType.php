@@ -5,7 +5,7 @@
  * @link http://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-412266927
  */
 
-namespace PT;
+namespace Slothsoft\PT;
 
 class DocumentType extends Node implements \w3c\dom\DocumentType {
 

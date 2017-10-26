@@ -2,6 +2,7 @@
 namespace Slothsoft\Core;
 
 use Slothsoft\CMS\HTTPFile;
+use DOMDocument;
 use Serializable;
 
 class CloudFlareScraper implements Serializable {

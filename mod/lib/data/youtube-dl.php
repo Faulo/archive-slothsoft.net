@@ -1,5 +1,7 @@
 <?php
 
+use Slothsoft\CMS\HTTPFile;
+
 $url = $this->httpRequest->getInputValue('url');
 
 $ret = 'null';
@@ -14,4 +16,4 @@ if ($url) {
 }
 
 
-return \CMS\HTTPFile::createFromString($ret, 'youtube-dl.json');
+return HTTPFile::createFromString($ret, 'youtube-dl.json');

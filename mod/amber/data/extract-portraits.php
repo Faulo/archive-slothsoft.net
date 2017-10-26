@@ -1,4 +1,8 @@
 <?php
+namespace Slothsoft\CMS;
+
+use Slothsoft\Core\FileSystem;
+use Slothsoft\Core\Image;
 
 if ($this->httpRequest->hasInputValue('css')) {
 	$portraitDir = __DIR__ . '/../res/portraits';
@@ -16,7 +20,7 @@ if ($this->httpRequest->hasInputValue('css')) {
 			$id
 		);
 	}
-	return \CMS\HTTPFile::createFromString(implode(PHP_EOL, $ret));
+	return HTTPFile::createFromString(implode(PHP_EOL, $ret));
 }
 
 $portraits = <<<'EOT'

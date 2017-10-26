@@ -1,9 +1,11 @@
 <?php
 
+use Slothsoft\DBMS\Manager;
+
 $dbName = 'cms';
 $tableName = 'access_log';
 
-$dbmsTable = \DBMS\Manager::getTable($dbName, $tableName);
+$dbmsTable = Manager::getTable($dbName, $tableName);
 
 $countList = [];
 $uriList = $dbmsTable->select('REQUEST_URI', 'REQUEST_URI LIKE "/get%"');

@@ -5,7 +5,7 @@
  * @link http://www.w3.org/TR/DOM-Level-3-Core/core.html#i-Document
  */
 
-namespace PT;
+namespace Slothsoft\PT;
 
 class Document extends Node implements \w3c\dom\Document {
 	protected $ownerRepository;

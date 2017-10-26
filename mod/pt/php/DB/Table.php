@@ -1,5 +1,7 @@
 <?php
-namespace PT\DB;
+namespace Slothsoft\PT\DB;
+
+use Slothsoft\DBMS\Manager;
 
 abstract class Table {
 	protected $dbName;
@@ -8,7 +10,7 @@ abstract class Table {
 	public function __construct($dbName, $tableName) {
 		$this->dbName = $dbName;
 		$this->tableName = $tableName;
-		$this->dbmsTable = \DBMS\Manager::getTable($dbName, $tableName);
+		$this->dbmsTable = Manager::getTable($dbName, $tableName);
 	}
 	public function init() {
 		if (!$this->exists()) {

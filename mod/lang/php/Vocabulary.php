@@ -4,10 +4,8 @@ namespace Slothsoft\Lang;
 use Slothsoft\CMS\HTTPDocument;
 use Slothsoft\Core\Storage;
 use Slothsoft\Game\Dice;
-use DOMXPath;
-use DOMDocument;
 use DOMElement;
-use DOMNode;
+use DOMXPath;
 use Exception;
 
 /*

@@ -1,5 +1,5 @@
 <?php
-namespace PT\DB;
+namespace Slothsoft\PT\DB;
 
 class IndexTable extends Table {
 	protected function install() {

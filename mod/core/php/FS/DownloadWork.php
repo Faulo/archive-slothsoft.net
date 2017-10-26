@@ -1,15 +1,14 @@
 <?php
 namespace Slothsoft\Core\FS;
 
-use Slothsoft\Core\FileSystem;
-use Slothsoft\Core\Storage;
-use Slothsoft\Core\Image;
-use Slothsoft\Core\CloudFlareScraper;
-use Slothsoft\Core\Lambda\Stackable;
 use Slothsoft\CMS\HTTPFile;
-use Exception;
-use DOMXPath;
+use Slothsoft\Core\FileSystem;
+use Slothsoft\Core\Image;
+use Slothsoft\Core\Storage;
+use Slothsoft\Core\Lambda\Stackable;
 use DOMDocument;
+use DOMXPath;
+use Exception;
 
 class DownloadWork extends Stackable {	
 	const HTTP_CACHETIME = TIME_MINUTE;

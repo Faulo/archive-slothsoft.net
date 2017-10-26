@@ -5,7 +5,7 @@
  * @link http://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-527DCFF2
  */
 
-namespace PT;
+namespace Slothsoft\PT;
 
 class Entity extends Node implements \w3c\dom\Entity {
 

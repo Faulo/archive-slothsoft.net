@@ -1,3 +1,5 @@
 <?php
 
-\CMS\HTTPResponse::setHttpConfig(['cache-duration' => 0]);
+use Slothsoft\CMS\HTTPResponse;
+
+HTTPResponse::setHttpConfig(['cache-duration' => 0]);

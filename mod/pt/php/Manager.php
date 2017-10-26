@@ -1,5 +1,7 @@
 <?php
-namespace PT;
+namespace Slothsoft\PT;
+
+use Slothsoft\DBMS\Manager as DBMSManager;
 
 class Manager {
 	const DATABASE_NAME = 'pt';
@@ -16,8 +18,8 @@ class Manager {
 	
 	public static function init() {
 		if (!self::$initialized) {
-			self::$dmbsDB = \DBMS\Manager::getDatabase(self::DATABASE_NAME);
-			self::$indexTable = new DB\Index(self::$dbms->name, self::TABLE_INDEX_NAME);
+		    self::$dmbsDB = DBMSManager::getDatabase(self::DATABASE_NAME);
+			self::$indexTable = new DB\IndexTable(self::$dbms->name, self::TABLE_INDEX_NAME);
 			
 			self::$initialized = true;
 		}
@@ -26,7 +28,7 @@ class Manager {
 	public static function getDocument($documentName) {
 		$documentName = trim(strtolower($documentName));
 		if (!isset(self::$dataList[$documentName])) {
-			self::$dataList[$documentName] = new DB\Data(self::$dbms->name, $documentName);
+			self::$dataList[$documentName] = new DB\DataTable(self::$dbms->name, $documentName);
 		}
 		return self::$dataList[$documentName];
 	}

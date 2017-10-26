@@ -5,7 +5,7 @@
  * @link http://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-1950641247
  */
 
-namespace PT;
+namespace Slothsoft\PT;
 
 class Node implements \w3c\dom\Node {
 	const CDATA_SECTION_NODE_NAME = '#cdata-section';

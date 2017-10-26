@@ -5,7 +5,7 @@
  * @link http://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-5431D1B9
  */
 
-namespace PT;
+namespace Slothsoft\PT;
 
 class Notation extends Node implements \w3c\dom\Notation {
 

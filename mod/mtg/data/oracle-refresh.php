@@ -2,7 +2,6 @@
 namespace Slothsoft\CMS;
 
 use Slothsoft\MTG\Oracle;
-use Slothsoft\CMS\HTTPFile;
 use DOMDocument;
 
 $retDoc = new DOMDocument();

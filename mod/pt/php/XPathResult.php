@@ -5,7 +5,7 @@
  * @link http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html#XPathResult
  */
 
-namespace PT;
+namespace Slothsoft\PT;
 
 class XPathResult implements \w3c\dom\XPathResult {
 

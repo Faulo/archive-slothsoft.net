@@ -1,9 +1,7 @@
 <?php
 namespace Slothsoft\CMS;
 
-use Savegame\Editor;
-use Savegame\Dictionary;
-use Slothsoft\Core\DOMHelper;
+use Slothsoft\Savegame\Editor;
 
 $mode = $this->httpRequest->getInputValue('SaveDefault', 'thalion');
 $mode = preg_replace('~[^\w]~', '', $mode);

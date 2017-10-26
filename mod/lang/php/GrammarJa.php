@@ -4,6 +4,7 @@ namespace Slothsoft\Lang;
 use DOMDocument;
 use DOMXPath;
 use DOMElement;
+use Exception;
 
 class GrammarJa {
 	protected $doc;

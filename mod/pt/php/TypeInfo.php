@@ -5,7 +5,7 @@
  * @link http://www.w3.org/TR/DOM-Level-3-Core/core.html#TypeInfo
  */
 
-namespace PT;
+namespace Slothsoft\PT;
 
 class TypeInfo implements \w3c\dom\TypeInfo {
 

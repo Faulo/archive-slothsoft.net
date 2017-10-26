@@ -1,6 +1,7 @@
 <?php
-namespace PT\DB;
-use PT\Node;
+namespace Slothsoft\PT\DB;
+
+use Slothsoft\PT\Node;
 
 class DataTable extends Table {
 	protected function install() {

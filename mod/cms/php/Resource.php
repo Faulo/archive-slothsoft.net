@@ -16,6 +16,7 @@ use Slothsoft\Core\FileSystem;
 use DOMXPath;
 use DOMDocument;
 use DOMElement;
+use Exception;
 
 class Resource {
 	const CACHE_ACTIVE = false;

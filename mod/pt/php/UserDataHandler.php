@@ -5,7 +5,7 @@
  * @link http://www.w3.org/TR/DOM-Level-3-Core/core.html#UserDataHandler
  */
 
-namespace PT;
+namespace Slothsoft\PT;
 
 class UserDataHandler implements \w3c\dom\UserDataHandler {
 

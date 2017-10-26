@@ -1,8 +1,6 @@
 <?php
 namespace Slothsoft\CMS;
 
-use Slothsoft\CMS\HTTPResponse;
-use Slothsoft\CMS\HTTPFile;
 use Slothsoft\Chat\SSEServer;
 
 $sseName = $this->httpRequest->getInputValue('name');

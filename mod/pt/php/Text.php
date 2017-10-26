@@ -5,7 +5,7 @@
  * @link http://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-1312295772
  */
 
-namespace PT;
+namespace Slothsoft\PT;
 
 class Text extends CharacterData implements \w3c\dom\Text {
 
