@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://inno-vplan-transfer.de/ivb-akte.xsd"
+	elementFormDefault="qualified" attributeFormDefault="qualified"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://inno-vplan-transfer.de/ivb-akte.xsd">
+
+	<xsd:element name="Akte">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Vorgaenge" type="VorgaengeType"
+					maxOccurs="1" minOccurs="0">
+				</xsd:element>
+
+				<xsd:element name="OrdnerListe" type="OrdnerListeType"
+					maxOccurs="1" minOccurs="0">
+				</xsd:element>
+
+            	<xsd:element name="Nachricht" type="NachrichtType"
+            		maxOccurs="1" minOccurs="0" />
+
+            </xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="VorgangType">
+		<xsd:sequence>
+			<xsd:element name="Status" type="xsd:string" maxOccurs="1"
+				minOccurs="0">
+			</xsd:element>
+			<xsd:element name="ArchivID" type="xsd:string" maxOccurs="1"
+				minOccurs="0">
+			</xsd:element>
+			<xsd:element name="Aktenzeichen" type="xsd:string"
+				maxOccurs="1" minOccurs="0">
+			</xsd:element>
+			<xsd:element name="Dokumente" maxOccurs="1" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+						<xsd:element name="Dokument" type="DokumentType">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:string" use="required" />
+	</xsd:complexType>
+
+	<xsd:complexType name="DokumentType">
+		<xsd:sequence>
+			<xsd:element name="Status" type="xsd:string" maxOccurs="1"
+				minOccurs="0">
+			</xsd:element>
+			<xsd:element name="ArchivID" type="xsd:string" maxOccurs="1"
+				minOccurs="0">
+			</xsd:element>
+			<xsd:element name="Aktenzeichen" type="xsd:string"
+				maxOccurs="1" minOccurs="0">
+			</xsd:element>
+
+			<xsd:element name="Dateien" type="DateienType" maxOccurs="1" minOccurs="0"></xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:string" use="required" />
+	</xsd:complexType>
+
+	<xsd:complexType name="OrdnerType">
+		<xsd:sequence>
+			<xsd:element name="Status" type="xsd:string" maxOccurs="1"
+				minOccurs="0">
+			</xsd:element>
+			<xsd:element name="ArchivID" type="xsd:string" maxOccurs="1"
+				minOccurs="0" />
+			<xsd:element name="Aktenzeichen" type="xsd:string"
+				maxOccurs="1" minOccurs="0" />
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:string" use="required" />
+		<xsd:attribute name="Typ" type="xsd:string" use="optional" />
+	</xsd:complexType>
+
+	<xsd:complexType name="NachrichtType">
+		<xsd:sequence>
+			<xsd:element name="IVB-ID" type="xsd:string" />
+			<xsd:element name="sendender_Softwaretyp" minOccurs="0"
+				maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="VPlan-Softwarekomponententyp"
+							minOccurs="0" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="VPlan-ID" minOccurs="0"
+										maxOccurs="1" type="xsd:string">
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Nachrichtenszenarium" minOccurs="0"
+				maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="VPlan-Anwendung" minOccurs="0"
+							maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="VPlan-ID" minOccurs="0"
+										maxOccurs="1" type="xsd:string">
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="gesendeter_Nachrichtentyp" minOccurs="0"
+				maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="VPlan-Nachricht" minOccurs="0"
+							maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="VPlan-ID" minOccurs="0"
+										maxOccurs="1" type="xsd:string">
+									</xsd:element>
+									<xsd:element name="Unternachrichten" minOccurs="0"
+										maxOccurs="1">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="VPlan-Nachricht" minOccurs="0"
+													maxOccurs="unbounded">
+													<xsd:complexType>
+														<xsd:sequence>
+															<xsd:element name="VPlan-ID" minOccurs="0"
+																maxOccurs="1" type="xsd:string">
+															</xsd:element>
+															<xsd:element name="Containerpfad" minOccurs="0"
+																maxOccurs="1" type="xsd:string">
+															</xsd:element>
+															<xsd:element name="Containerpfad_Index"
+																minOccurs="0" maxOccurs="1" type="xsd:string">
+															</xsd:element>
+														</xsd:sequence>
+													</xsd:complexType>
+												</xsd:element>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="sendende_Software" minOccurs="0"
+				maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Softwareinstallation" minOccurs="0"
+							maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="IVB-ID" minOccurs="0" maxOccurs="1"
+										type="xsd:string">
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="integrierende_Organisation" minOccurs="0"
+				maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Beteiligter" minOccurs="0"
+							maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="IVB-ID" minOccurs="0" maxOccurs="1"
+										type="xsd:string">
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="anfragende_Nachricht" minOccurs="0"
+				maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Nachricht" minOccurs="0" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="IVB-ID" minOccurs="0" maxOccurs="1"
+										type="xsd:string">
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+	<xsd:complexType name="VorgaengeType">
+		<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+			<xsd:element name="Vorgang" type="VorgangType"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="OrdnerListeType">
+		<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+			<xsd:element name="Ordner" type="OrdnerType"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+    <xsd:complexType name="DateiType">
+		<xsd:sequence>
+			<xsd:element name="Status" type="xsd:string"
+				maxOccurs="1" minOccurs="0">
+			</xsd:element>
+			<xsd:element name="ArchivID" type="xsd:string"
+				maxOccurs="1" minOccurs="0">
+			</xsd:element>
+			<xsd:element name="Aktenzeichen" type="xsd:string"
+				maxOccurs="1" minOccurs="0">
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:string" use="required">
+		</xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="DateienType">
+    	<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+            <xsd:element name="Datei" type="DateiType"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

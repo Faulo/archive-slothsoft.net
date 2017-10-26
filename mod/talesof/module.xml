@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<fragment name="skit-contest">
+		<template name="_skitcontest"/>
+		<data name="skitcontest"/>
+		<res name="/core/language-registry" load="xml"/>
+	</fragment>
+	<fragment name="chat">
+		<param name="chat-database" value="tales"/>
+		<template name="/chat/shoutbox"/>
+		<call name="/chat/default" as="chat"/>
+	</fragment>
+	
+	<fragment name="tales-home">
+		<struc name="/slothsoft/default"/>
+		<fragment name="content">
+			<template name="tales-home"/>
+		</fragment>
+		<call name="chat"/>
+	</fragment>
+	
+	<fragment name="mc-home">
+		<struc name="/slothsoft/default"/>
+		<fragment name="content">
+			<template name="mc-home"/>
+		</fragment>
+		<call name="chat"/>
+	</fragment>
+	
+	<fragment name="eternia-home">
+		<struc name="/slothsoft/default"/>
+		<fragment name="content">
+			<template name="eternia-home"/>
+		</fragment>
+		<call name="chat"/>
+	</fragment>
+	<fragment name="graces-home">
+		<struc name="/slothsoft/default"/>
+		<fragment name="content">
+			<template name="graces-home"/>
+		</fragment>
+		<call name="chat"/>
+	</fragment>
+
+	<fragment name="craymelEditor">
+		<struc name="/slothsoft/default"/>
+		<fragment name="content">
+			<template name="CraymelEditor"/>
+			<style name="default"/>
+			<struc name="/core/DOM"/>
+			<script name="craymelEditor"/>
+			<script name="/core/TouchAndDrag"/>
+			<res name="CraymelEditor" load="xml"/>
+		</fragment>
+		<call name="chat"/>
+	</fragment>
+	
+	<fragment name="melnicsTest">
+		<struc name="/slothsoft/default"/>
+		<fragment name="content">
+			<template name="Melnics"/>
+			<style name="default"/>
+			<data name="melnics.test"/>
+		</fragment>
+	</fragment>
+	<fragment name="melnicsTable">
+		<template name="MelnicsTable"/>
+		<style name="default"/>
+		<style name="/slothsoft/default"/>
+		<data name="melnics.test"/>
+	</fragment>
+	<fragment name="melnicsTranslator">
+		<struc name="/slothsoft/default"/>
+		<fragment name="content">
+			<struc name="/core/DOM"/>
+			<template name="melnics.translator"/>
+			<style name="default"/>
+			<style name="/slothsoft/kana"/>
+			<script name="MelnicsTranslator"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="link-heroes">
+		<struc name="/slothsoft/default"/>
+		<fragment name="content">
+			<struc name="/core/DOM"/>
+			<script name="/core/Sortable"/>
+			<res name="ToL.Heroes" load="xml"/>
+			<template name="tol-heroes"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="link-pulls">
+		<struc name="/slothsoft/default"/>
+		<fragment name="content">
+			<struc name="/core/DOM"/>
+			<script name="/core/Sortable"/>
+			<style name="default"/>
+			<template name="tol-pulls"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="mc-game">
+		<struc name="/slothsoft/default"/>
+		
+		<template name="mc-board"/>
+		<style name="default"/>
+		<res name="mc-cards" load="xml"/>
+		
+	</fragment>
+	
+	<fragment name="carta">
+		<struc name="/slothsoft/default"/>
+		<fragment name="content">
+			<template name="MagicCarta"/>
+			<style name="default"/>
+			<res name="MagicCarta" load="xml"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="一番くじ">
+		<data name="ichibankuji"/>
+		<template name="ichibankuji"/>
+		<param name="standalone" scope="global"/>
+	</fragment>
+	
+	<fragment name="ichibankuji">
+		<data name="ichibankuji"/>
+		<template name="ichibankuji"/>
+		<param name="standalone" scope="global"/>
+	</fragment>
+	
+	<resourceDir name="fonts" path="fonts" type="application/*"/>
+	<resourceDir name="patterns" path="patterns" type="image/svg+xml"/>
+	
+	<resource name="sites" path="sites.xml" type="application/xml"/>
+	<resource name="CraymelEditor" path="CraymelEditor.xml" type="application/xml"/>
+	<resource name="MagicCarta" path="MagicCarta.xml" type="application/xml"/>
+	<resource name="Melnics" path="Melnics.xml" type="application/xml"/>
+	
+	<resource name="mc-cards" path="mc.cards.xml" type="application/xml"/>
+	<resourceDir name="mc-images" path="cards" type="image/png"/>
+	
+	<resource name="ToL.Heroes" path="ToL.Heroes.xml" type="application/xml"/>
+	<resource name="ToL.Heroes-csv" path="ToL.Heroes.csv" type="text/csv" output="thead"/>
+	
+</module>

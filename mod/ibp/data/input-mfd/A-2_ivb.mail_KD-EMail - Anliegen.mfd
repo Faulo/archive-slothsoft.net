@@ -1,0 +1,1663 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Edited with Altova MapForce 2016 -->
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="26">
+	<resources/>
+	<component name="defaultmap1" blackbox="0" uid="1" editable="1">
+		<properties ShowAnnotations="0" SelectedLanguage="xslt2"/>
+		<structure>
+			<children>
+				<component name="constant" library="core" uid="591" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="401"/>
+					</targets>
+					<view ltx="300" lty="103" rbx="343" rby="121"/>
+					<data>
+						<constant value="," datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="string-join" library="core" uid="765" kind="5">
+					<properties/>
+					<sources>
+						<datapoint/>
+						<datapoint pos="1" key="422"/>
+						<datapoint pos="2" key="402"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="407"/>
+					</targets>
+					<view ltx="372" lty="48" rbx="486" rby="121"/>
+				</component>
+				<component name="constant" library="core" uid="592" kind="2">
+					<properties/>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="817" lty="197" rbx="863" rby="215"/>
+					<data>
+						<constant value="0" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="589" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="389"/>
+					</targets>
+					<view ltx="828" lty="7" rbx="883" rby="25"/>
+					<data>
+						<constant value="AS" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="590" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="380"/>
+					</targets>
+					<view ltx="817" lty="103" rbx="871" rby="121"/>
+					<data>
+						<constant value="ZS" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="ParseSubject" library="antavent" blackbox="0" uid="593" kind="19" visible="0">
+					<view ltx="519" lty="-28" rbx="762" rby="193"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="subject" inpkey="377" componentid="6"/>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="Betrefftext" outkey="370" componentid="5"/>
+							<entry name="Vorgangsbezeichung" outkey="378" componentid="18"/>
+							<entry name="Bearbeitungsstatus" componentid="19"/>
+							<entry name="Ergebnisstatus" componentid="20"/>
+							<entry name="Antragsteller" componentid="21"/>
+							<entry name="ZuständigeStelle" componentid="22"/>
+							<entry name="BeginnGenehmigungsfiktion" componentid="23"/>
+							<entry name="EndeGenehmigungsfiktion" componentid="24"/>
+							<entry name="Anwendung" componentid="25"/>
+							<entry name="Softwarekomponententyp" componentid="26"/>
+							<entry name="Nachricht" componentid="27"/>
+							<entry name="Unternachricht" componentid="29"/>
+							<entry name="Softwareinstallation" componentid="28"/>
+						</root>
+					</data>
+				</component>
+				<component name="ExtractMessageFromIVBMail" library="antavent" blackbox="0" uid="766" kind="19" visible="0">
+					<view ltx="354" lty="567" rbx="503" rby="584"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="EMailContent" inpkey="369" componentid="11"/>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="427" componentid="10"/>
+						</root>
+					</data>
+				</component>
+				<component name="ParseMailContent" library="antavent" blackbox="0" uid="769" kind="19" visible="0">
+					<view ltx="289" lty="224" rbx="473" rby="499"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="Content" inpkey="388" componentid="102"/>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="Bezeichnung" outkey="382" componentid="437"/>
+							<entry name="Vorgang-VPlan-ID" outkey="419" componentid="498"/>
+							<entry name="Vorgang-IVB-ID" outkey="397" componentid="408"/>
+							<entry name="Bearbeitungsstatus" outkey="384" componentid="407"/>
+							<entry name="AS" outkey="393" componentid="410"/>
+							<entry name="Ergebnisstatus" outkey="405" componentid="505"/>
+							<entry name="ZS" outkey="391" componentid="411"/>
+							<entry name="GFB" outkey="413" componentid="409"/>
+							<entry name="GFE" outkey="423" componentid="412"/>
+							<entry name="A" outkey="409" componentid="413"/>
+							<entry name="N" outkey="395" componentid="415"/>
+							<entry name="N-IVB-ID" outkey="411" componentid="491"/>
+							<entry name="SKT" outkey="417" componentid="414"/>
+							<entry name="SKI" outkey="403" componentid="417"/>
+							<entry name="VPlan-Nachricht" componentid="484" expanded="1">
+								<entry name="VPlan-Nachricht" ns="1" outkey="362"/>
+							</entry>
+							<entry name="Dokumentinformationen" outkey="425" componentid="508"/>
+						</root>
+					</data>
+				</component>
+				<component name="make_documents" library="user" blackbox="0" uid="835" kind="19" visible="0">
+					<view ltx="590" lty="544" rbx="880" rby="688"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb.mail.do1.xsd"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="ATTACHMENTtype" ns="1" componentid="848" expanded="1">
+								<entry name="ATTACHMENTtype" inpkey="585" expanded="1"/>
+							</entry>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="Dokumente" ns="1" componentid="849" expanded="1">
+								<entry name="Dokument" outkey="586" expanded="1">
+									<entry name="Dateien" expanded="1">
+										<entry name="Datei" expanded="1"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+					</data>
+				</component>
+				<component name="AID" library="core" uid="858" kind="6">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="593"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="597"/>
+					</targets>
+					<view ltx="200" lty="-140" rbx="266" rby="-101"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="AID" optional="1"/>
+					</data>
+				</component>
+				<component name="ivb.mail.do1" library="xml" uid="767" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" TnsPrefix="ivb"/>
+					<view ltx="-28" lty="-102" rbx="256" rby="412"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb.mail.do1.xsd"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="ivb.mail.do1" outkey="386" expanded="1">
+										<entry name="EMAIL" outkey="366" expanded="1">
+											<entry name="SUBJECT" type="attribute" outkey="589"/>
+											<entry name="RECIPIENTS" expanded="1">
+												<entry name="RECIPIENT" outkey="374"/>
+											</entry>
+											<entry name="CCS" expanded="1"/>
+											<entry name="REPLIES" expanded="1">
+												<entry name="REPLY" outkey="421"/>
+											</entry>
+											<entry name="CONTENT" outkey="368" expanded="1"/>
+											<entry name="ATTACHMENT" outkey="372" expanded="1"/>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\ivb.mail.do1_attributesQualified.xsd" inputinstance="\\dev5\DATA\PROJECTS\VPlan\_Beispieldaten\2015-10-22\2015-10-20-12-49-11-526_main_transform_input_bescheid.xml" instanceroot="{http://inno-vplan-transfer.de/ivb.mail.do1.xsd}ivb.mail.do1"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="859" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="594"/>
+					</targets>
+					<view ltx="100" lty="-140" rbx="158" rby="-122"/>
+					<data>
+						<constant value="A-6" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="ivb_mail_to_kd_email" library="user" blackbox="0" uid="823" kind="19" visible="0">
+					<view ltx="488" lty="224" rbx="858" rby="499"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="AID" inpkey="596" componentid="860"/>
+							<entry name="Bezeichnung" inpkey="519" componentid="796"/>
+							<entry name="VorgangVPlanID" inpkey="520" componentid="797"/>
+							<entry name="VorgangIVBID" inpkey="521" componentid="798"/>
+							<entry name="Bearbeitungsstatus" inpkey="522" componentid="802"/>
+							<entry name="AS" inpkey="523" componentid="803"/>
+							<entry name="Ergebnisstatus" inpkey="524" componentid="819"/>
+							<entry name="ZS" inpkey="525" componentid="799"/>
+							<entry name="GFB" inpkey="526" componentid="801"/>
+							<entry name="GFE" inpkey="527" componentid="795"/>
+							<entry name="A" inpkey="528" componentid="805"/>
+							<entry name="N" inpkey="529" componentid="806"/>
+							<entry name="NIVBID" inpkey="530" componentid="808"/>
+							<entry name="SKT" inpkey="531" componentid="807"/>
+							<entry name="SKI" inpkey="532" componentid="800"/>
+							<entry name="VPlanNachricht" componentid="809" expanded="1">
+								<entry name="VPlan-Nachricht" ns="1" inpkey="533"/>
+							</entry>
+							<entry name="Dokumentinformationen" inpkey="534" componentid="810"/>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="Bezeichnung" outkey="551" componentid="792"/>
+							<entry name="Vorgang-VPlan-ID" outkey="552" componentid="793"/>
+							<entry name="Vorgang-IVB-ID" outkey="553" componentid="794"/>
+							<entry name="Bearbeitungsstatus" outkey="554" componentid="789"/>
+							<entry name="AS" outkey="555" componentid="816"/>
+							<entry name="Ergebnisstatus" outkey="556" componentid="820"/>
+							<entry name="ZS" outkey="557" componentid="817"/>
+							<entry name="GFB" outkey="558" componentid="815"/>
+							<entry name="GFE" outkey="559" componentid="818"/>
+							<entry name="A" outkey="560" componentid="790"/>
+							<entry name="N" outkey="561" componentid="804"/>
+							<entry name="N-IVB-ID" outkey="562" componentid="812"/>
+							<entry name="SKT" outkey="563" componentid="811"/>
+							<entry name="SKI" outkey="564" componentid="791"/>
+							<entry name="VPlan-Nachricht" componentid="813" expanded="1">
+								<entry name="VPlan-Nachricht" ns="1" outkey="565"/>
+							</entry>
+							<entry name="Dokumentinformationen" componentid="814"/>
+						</root>
+					</data>
+				</component>
+				<component name="N-2-5-KDEMail-IN" library="xml" uid="768" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1" TnsPrefix="vplan"/>
+					<view ltx="939" lty="-102" rbx="1248" rby="533"/>
+					<data>
+						<root scrollposition="392">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Anliegen" expanded="1">
+										<entry name="Vorgänge" expanded="1">
+											<entry name="Vorgang" inpkey="387" expanded="1">
+												<entry name="Beteiligte" expanded="1">
+													<entry name="Beteiligter" expanded="1">
+														<entry name="Kontakte" expanded="1">
+															<entry name="Kontakt" expanded="1"/>
+														</entry>
+														<entry name="IVB-ID" inpkey="394"/>
+													</entry>
+													<entry name="V-Plan_Fachliche_Rollen" expanded="1">
+														<entry name="VPlan_ID" inpkey="390" expanded="1"/>
+													</entry>
+												</entry>
+												<entry name="Beteiligte" expanded="1" clone="1">
+													<entry name="Beteiligter" expanded="1">
+														<entry name="Kontakte" expanded="1">
+															<entry name="Kontakt" expanded="1">
+																<entry name="E-Mail-Adressen" inpkey="375" expanded="1"/>
+															</entry>
+														</entry>
+														<entry name="IVB-ID" inpkey="392"/>
+													</entry>
+													<entry name="V-Plan_Fachliche_Rollen" expanded="1">
+														<entry name="VPlan_ID" inpkey="381" expanded="1"/>
+													</entry>
+												</entry>
+												<entry name="Dokumente" expanded="1">
+													<entry name="Dokument" inpkey="365" expanded="1">
+														<entry name="Dateien" expanded="1">
+															<entry name="Datei" expanded="1">
+																<entry name="Typ" expanded="1"/>
+															</entry>
+														</entry>
+														<entry name="Bezeichnung" expanded="1"/>
+													</entry>
+												</entry>
+												<entry name="Bezeichnung" inpkey="379"/>
+												<entry name="Bezeichnung" inpkey="383" clone="1"/>
+												<entry name="IVB-ID" inpkey="398"/>
+												<entry name="VPlan-Leistungen" expanded="1">
+													<entry name="VPlan-Leistung" expanded="1">
+														<entry name="VPlan-ID" inpkey="420"/>
+													</entry>
+												</entry>
+												<entry name="Bearbeiungsstatus" inpkey="385"/>
+												<entry name="Ergebnisstatus" inpkey="406"/>
+												<entry name="Termine" expanded="1">
+													<entry name="Termin" expanded="1">
+														<entry name="Fristbeginn" inpkey="400" expanded="1"/>
+														<entry name="Fristende" inpkey="416" expanded="1"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="Nachrichten" expanded="1">
+											<entry name="Nachricht" inpkey="367" expanded="1">
+												<entry name="IVB-ID" inpkey="412"/>
+												<entry name="E-Mail-Adressen_Antwort_Empfänger" inpkey="408"/>
+												<entry name="Nachrichtentext" inpkey="428" expanded="1"/>
+												<entry name="Betreff" inpkey="371"/>
+												<entry name="Nachrichtenszenarium" expanded="1">
+													<entry name="VPlan-Anwendung" expanded="1">
+														<entry name="VPlan-ID" inpkey="410"/>
+													</entry>
+												</entry>
+												<entry name="sendender_Softwaretyp" expanded="1">
+													<entry name="VPlan-Softwarekomponententyp" expanded="1">
+														<entry name="VPlan-ID" inpkey="418"/>
+													</entry>
+												</entry>
+												<entry name="gesendeter_Nachrichtentyp" expanded="1">
+													<entry name="VPlan-Nachricht" expanded="1">
+														<entry name="VPlan-ID" inpkey="396"/>
+														<entry name="Unternachrichten" expanded="1">
+															<entry name="VPlan-Nachricht" inpkey="363">
+																<entry name="VPlan-ID" expanded="1"/>
+															</entry>
+														</entry>
+													</entry>
+												</entry>
+												<entry name="sendende_Software" expanded="1">
+													<entry name="Softwareinstallation">
+														<entry name="IVB-ID" inpkey="404"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-2.xsd" outputinstance="test-results\ivb-akte.xml" instanceroot="{http://inno-vplan-transfer.de/ivb-akte.xsd}Anliegen"/>
+						<wsdl/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges>
+					<edge edgekey="535">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="566">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="591">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="592">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+				</edges>
+				<vertices>
+					<vertex vertexkey="362">
+						<edges>
+							<edge vertexkey="533" edgekey="535"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="366">
+						<edges>
+							<edge vertexkey="367" edgekey="432"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="368">
+						<edges>
+							<edge vertexkey="369" edgekey="433"/>
+							<edge vertexkey="388" edgekey="434"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="370">
+						<edges>
+							<edge vertexkey="371" edgekey="435"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="372">
+						<edges>
+							<edge vertexkey="585" edgekey="591"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="374">
+						<edges>
+							<edge vertexkey="375" edgekey="436"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="378">
+						<edges>
+							<edge vertexkey="379" edgekey="438"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="380">
+						<edges>
+							<edge vertexkey="381" edgekey="439"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="382">
+						<edges>
+							<edge vertexkey="519" edgekey="536"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="384">
+						<edges>
+							<edge vertexkey="522" edgekey="537"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="386">
+						<edges>
+							<edge vertexkey="387" edgekey="442"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="389">
+						<edges>
+							<edge vertexkey="390" edgekey="443"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="391">
+						<edges>
+							<edge vertexkey="525" edgekey="538"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="393">
+						<edges>
+							<edge vertexkey="523" edgekey="539"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="395">
+						<edges>
+							<edge vertexkey="529" edgekey="540"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="397">
+						<edges>
+							<edge vertexkey="521" edgekey="541"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="401">
+						<edges>
+							<edge vertexkey="402" edgekey="449"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="403">
+						<edges>
+							<edge vertexkey="532" edgekey="542"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="405">
+						<edges>
+							<edge vertexkey="524" edgekey="543"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="407">
+						<edges>
+							<edge vertexkey="408" edgekey="452"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="409">
+						<edges>
+							<edge vertexkey="528" edgekey="544"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="411">
+						<edges>
+							<edge vertexkey="530" edgekey="545"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="413">
+						<edges>
+							<edge vertexkey="526" edgekey="546"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="417">
+						<edges>
+							<edge vertexkey="531" edgekey="547"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="419">
+						<edges>
+							<edge vertexkey="520" edgekey="548"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="421">
+						<edges>
+							<edge vertexkey="422" edgekey="459"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="423">
+						<edges>
+							<edge vertexkey="527" edgekey="549"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="425">
+						<edges>
+							<edge vertexkey="534" edgekey="550"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="427">
+						<edges>
+							<edge vertexkey="428" edgekey="462"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="551">
+						<edges>
+							<edge vertexkey="383" edgekey="567"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="552">
+						<edges>
+							<edge vertexkey="420" edgekey="568"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="553">
+						<edges>
+							<edge vertexkey="398" edgekey="569"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="554">
+						<edges>
+							<edge vertexkey="385" edgekey="570"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="555">
+						<edges>
+							<edge vertexkey="394" edgekey="571"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="556">
+						<edges>
+							<edge vertexkey="406" edgekey="572"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="557">
+						<edges>
+							<edge vertexkey="392" edgekey="573"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="558">
+						<edges>
+							<edge vertexkey="400" edgekey="574"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="559">
+						<edges>
+							<edge vertexkey="416" edgekey="575"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="560">
+						<edges>
+							<edge vertexkey="410" edgekey="576"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="561">
+						<edges>
+							<edge vertexkey="396" edgekey="577"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="562">
+						<edges>
+							<edge vertexkey="412" edgekey="578"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="563">
+						<edges>
+							<edge vertexkey="418" edgekey="579"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="564">
+						<edges>
+							<edge vertexkey="404" edgekey="580"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="565">
+						<edges>
+							<edge vertexkey="363" edgekey="566"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="586">
+						<edges>
+							<edge vertexkey="365" edgekey="592"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="589">
+						<edges>
+							<edge vertexkey="377" edgekey="590"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="594">
+						<edges>
+							<edge vertexkey="593" edgekey="595"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="597">
+						<edges>
+							<edge vertexkey="596" edgekey="598"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="ivb_mail_to_kd_email" library="user" blackbox="0" uid="787" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="Vorgang-VPlan-ID" library="core" uid="793" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="24"/>
+					</sources>
+					<view ltx="1077" lty="-223" rbx="1191" rby="-184"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="Vorgang-VPlan-ID"/>
+					</data>
+				</component>
+				<component name="Bearbeitungsstatus" library="core" uid="802" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="29" lty="-159" rbx="172" rby="-120"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="Bearbeitungsstatus"/>
+					</data>
+				</component>
+				<component name="AS" library="core" uid="803" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="27"/>
+					</targets>
+					<view ltx="108" lty="-121" rbx="172" rby="-82"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="AS"/>
+					</data>
+				</component>
+				<component name="Ergebnisstatus" library="core" uid="819" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="51" lty="-83" rbx="172" rby="-44"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="Ergebnisstatus"/>
+					</data>
+				</component>
+				<component name="ZS" library="core" uid="799" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="15"/>
+					</targets>
+					<view ltx="109" lty="-45" rbx="172" rby="-6"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="ZS"/>
+					</data>
+				</component>
+				<component name="GFB" library="core" uid="801" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="102" lty="-7" rbx="172" rby="32"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="GFB"/>
+					</data>
+				</component>
+				<component name="A" library="core" uid="805" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="115" lty="69" rbx="172" rby="108"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="A"/>
+					</data>
+				</component>
+				<component name="GFE" library="core" uid="795" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint/>
+					</targets>
+					<view ltx="103" lty="31" rbx="172" rby="70"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="GFE"/>
+					</data>
+				</component>
+				<component name="VorgangIVBID" library="core" uid="798" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="13"/>
+					</targets>
+					<view ltx="56" lty="-197" rbx="172" rby="-158"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="VorgangIVBID"/>
+					</data>
+				</component>
+				<component name="VorgangVPlanID" library="core" uid="797" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="23"/>
+					</targets>
+					<view ltx="45" lty="-235" rbx="172" rby="-196"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="VorgangVPlanID"/>
+					</data>
+				</component>
+				<component name="Bezeichnung" library="core" uid="796" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="9"/>
+					</targets>
+					<view ltx="60" lty="-273" rbx="172" rby="-234"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="Bezeichnung"/>
+					</data>
+				</component>
+				<component name="N" library="core" uid="806" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="5"/>
+					</targets>
+					<view ltx="115" lty="107" rbx="171" rby="146"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="N"/>
+					</data>
+				</component>
+				<component name="NIVBID" library="core" uid="808" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="25"/>
+					</targets>
+					<view ltx="89" lty="145" rbx="171" rby="184"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="NIVBID"/>
+					</data>
+				</component>
+				<component name="SKT" library="core" uid="807" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="19"/>
+					</targets>
+					<view ltx="101" lty="183" rbx="171" rby="222"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="SKT"/>
+					</data>
+				</component>
+				<component name="SKI" library="core" uid="800" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="21"/>
+					</targets>
+					<view ltx="106" lty="221" rbx="171" rby="260"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="SKI"/>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="809" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="1" lty="320" rbx="250" rby="461"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="VPlan-Nachricht" outkey="11" expanded="1"/>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-2.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="VPlanNachricht">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Nachrichten" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Nachricht" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="gesendeter_Nachrichtentyp" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="VPlan-Nachricht" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Unternachrichten" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="VPlan-Nachricht" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="Dokumentinformationen" library="core" uid="810" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="45" lty="557" rbx="206" rby="596"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="Dokumentinformationen"/>
+					</data>
+				</component>
+				<component name="Bezeichnung" library="core" uid="792" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="10"/>
+					</sources>
+					<view ltx="1077" lty="-261" rbx="1168" rby="-222"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="Bezeichnung"/>
+					</data>
+				</component>
+				<component name="Vorgang-IVB-ID" library="core" uid="794" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="14"/>
+					</sources>
+					<view ltx="1077" lty="-185" rbx="1180" rby="-146"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="Vorgang-IVB-ID"/>
+					</data>
+				</component>
+				<component name="Bearbeitungsstatus" library="core" uid="789" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="45"/>
+					</sources>
+					<view ltx="1077" lty="-147" rbx="1199" rby="-108"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="Bearbeitungsstatus"/>
+					</data>
+				</component>
+				<component name="AS" library="core" uid="816" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="16"/>
+					</sources>
+					<view ltx="1077" lty="-109" rbx="1120" rby="-70"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="AS"/>
+					</data>
+				</component>
+				<component name="Ergebnisstatus" library="core" uid="820" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="46"/>
+					</sources>
+					<view ltx="1077" lty="-71" rbx="1177" rby="-32"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="Ergebnisstatus"/>
+					</data>
+				</component>
+				<component name="ZS" library="core" uid="817" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="28"/>
+					</sources>
+					<view ltx="1077" lty="-33" rbx="1119" rby="6"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="ZS"/>
+					</data>
+				</component>
+				<component name="N" library="core" uid="804" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="6"/>
+					</sources>
+					<view ltx="1077" lty="119" rbx="1112" rby="158"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="N"/>
+					</data>
+				</component>
+				<component name="N-IVB-ID" library="core" uid="812" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="26"/>
+					</sources>
+					<view ltx="1077" lty="157" rbx="1146" rby="196"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="N-IVB-ID"/>
+					</data>
+				</component>
+				<component name="SKT" library="core" uid="811" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="20"/>
+					</sources>
+					<view ltx="1077" lty="195" rbx="1126" rby="234"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="SKT"/>
+					</data>
+				</component>
+				<component name="SKI" library="core" uid="791" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="22"/>
+					</sources>
+					<view ltx="1077" lty="233" rbx="1121" rby="272"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="SKI"/>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="813" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="964" lty="320" rbx="1181" rby="432"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="VPlan-Nachricht" inpkey="12" expanded="1"/>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-2.xsd"/>
+						<wsdl/>
+						<parameter usageKind="output" name="VPlan-Nachricht">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Nachrichten" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Nachricht" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="gesendeter_Nachrichtentyp" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="VPlan-Nachricht" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Unternachrichten" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="VPlan-Nachricht" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="Dokumentinformationen" library="core" uid="814" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="2"/>
+					</sources>
+					<view ltx="964" lty="557" rbx="1104" rby="596"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="Dokumentinformationen"/>
+					</data>
+				</component>
+				<component name="A" library="core" uid="790" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="18"/>
+					</sources>
+					<view ltx="1077" lty="81" rbx="1113" rby="120"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="A"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="864" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="44"/>
+					</targets>
+					<view ltx="557" lty="-33" rbx="655" rby="-15"/>
+					<data>
+						<constant value="OTIW-639-2" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="862" kind="4">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="59"/>
+						<datapoint pos="1" key="60"/>
+						<datapoint pos="2" key="81"/>
+						<datapoint pos="3" key="82"/>
+						<datapoint pos="4" key="61"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="62"/>
+					</targets>
+					<view ltx="710" lty="-182" rbx="808" rby="-70"/>
+				</component>
+				<component name="if-else" library="core" uid="861" kind="4">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="55"/>
+						<datapoint pos="1" key="56"/>
+						<datapoint pos="2" key="57"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="58"/>
+					</targets>
+					<view ltx="710" lty="-71" rbx="807" rby="5"/>
+				</component>
+				<component name="AID" library="core" uid="860" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="53"/>
+					</targets>
+					<view ltx="106" lty="-340" rbx="172" rby="-301"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="AID"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="871" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="78"/>
+					</targets>
+					<view ltx="289" lty="-138" rbx="347" rby="-120"/>
+					<data>
+						<constant value="A-3" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="GFB" library="core" uid="815" kind="7">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<view ltx="1077" lty="5" rbx="1126" rby="44"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="GFB"/>
+					</data>
+				</component>
+				<component name="GFE" library="core" uid="818" kind="7">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<view ltx="1077" lty="43" rbx="1125" rby="82"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="GFE"/>
+					</data>
+				</component>
+				<component name="equal" library="core" uid="867" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="50"/>
+						<datapoint pos="1" key="51"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="52"/>
+					</targets>
+					<view ltx="419" lty="-235" rbx="472" rby="-179"/>
+				</component>
+				<component name="equal" library="core" uid="870" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="77"/>
+						<datapoint pos="1" key="79"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="80"/>
+					</targets>
+					<view ltx="419" lty="-176" rbx="472" rby="-120"/>
+				</component>
+				<component name="constant" library="core" uid="869" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="76"/>
+					</targets>
+					<view ltx="557" lty="-109" rbx="655" rby="-91"/>
+					<data>
+						<constant value="OTIW-638-4" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="868" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="49"/>
+					</targets>
+					<view ltx="289" lty="-197" rbx="347" rby="-179"/>
+					<data>
+						<constant value="A-6" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="863" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="43"/>
+					</targets>
+					<view ltx="557" lty="-147" rbx="655" rby="-129"/>
+					<data>
+						<constant value="OTIW-638-5" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="865" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="54"/>
+					</targets>
+					<view ltx="419" lty="-33" rbx="459" rby="-15"/>
+					<data>
+						<constant datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges>
+					<edge edgekey="29">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+				</edges>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="2" edgekey="30"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="6" edgekey="32"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="9">
+						<edges>
+							<edge vertexkey="10" edgekey="34"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="11">
+						<edges>
+							<edge vertexkey="12" edgekey="29"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="13">
+						<edges>
+							<edge vertexkey="14" edgekey="35"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="15">
+						<edges>
+							<edge vertexkey="16" edgekey="36"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="19">
+						<edges>
+							<edge vertexkey="20" edgekey="38"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="21">
+						<edges>
+							<edge vertexkey="22" edgekey="39"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="23">
+						<edges>
+							<edge vertexkey="24" edgekey="40"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="25">
+						<edges>
+							<edge vertexkey="26" edgekey="41"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="27">
+						<edges>
+							<edge vertexkey="28" edgekey="42"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="43">
+						<edges>
+							<edge vertexkey="60" edgekey="63"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="44">
+						<edges>
+							<edge vertexkey="56" edgekey="64"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="49">
+						<edges>
+							<edge vertexkey="51" edgekey="65"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="52">
+						<edges>
+							<edge vertexkey="59" edgekey="66"/>
+							<edge vertexkey="55" edgekey="67"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="53">
+						<edges>
+							<edge vertexkey="50" edgekey="68"/>
+							<edge vertexkey="18" edgekey="69"/>
+							<edge vertexkey="77" edgekey="83"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="54">
+						<edges>
+							<edge vertexkey="61" edgekey="70"/>
+							<edge vertexkey="57" edgekey="71"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="58">
+						<edges>
+							<edge vertexkey="46" edgekey="74"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="62">
+						<edges>
+							<edge vertexkey="45" edgekey="75"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="76">
+						<edges>
+							<edge vertexkey="82" edgekey="84"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="78">
+						<edges>
+							<edge vertexkey="79" edgekey="85"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="80">
+						<edges>
+							<edge vertexkey="81" edgekey="86"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="make_documents" library="user" blackbox="0" uid="824" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="position" library="core" uid="847" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="97"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="95"/>
+					</targets>
+					<view ltx="504" lty="196" rbx="571" rby="235"/>
+				</component>
+				<component name="constant" library="core" uid="854" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="123"/>
+					</targets>
+					<view ltx="347" lty="334" rbx="504" rby="352"/>
+					<data>
+						<constant value="7|Bestätigung Gewerberegistrierung" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="853" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="112"/>
+					</targets>
+					<view ltx="239" lty="317" rbx="311" rby="335"/>
+					<data>
+						<constant value="L-75-7" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="855" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="124"/>
+					</targets>
+					<view ltx="378" lty="412" rbx="504" rby="430"/>
+					<data>
+						<constant value="8|Kostenbescheid" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="857" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="114"/>
+					</targets>
+					<view ltx="239" lty="395" rbx="311" rby="413"/>
+					<data>
+						<constant value="L-75-8" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="contains" library="core" uid="856" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="117"/>
+						<datapoint pos="1" key="115"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="116"/>
+					</targets>
+					<view ltx="416" lty="357" rbx="504" rby="413"/>
+				</component>
+				<component name="contains" library="core" uid="852" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="109"/>
+						<datapoint pos="1" key="110"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="111"/>
+					</targets>
+					<view ltx="416" lty="279" rbx="504" rby="335"/>
+				</component>
+				<component name="document" library="xml" uid="848" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="36" lty="53" rbx="215" rby="253"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb.mail.do1.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="ATTACHMENTtype" outkey="84" expanded="1">
+								<entry name="TYPESPECIFICATION" type="attribute" outkey="135"/>
+								<entry name="MIMETYPE" type="attribute" outkey="136"/>
+								<entry name="ENCODING" type="attribute" outkey="137"/>
+								<entry name="FILENAME" type="attribute" outkey="138"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\ivb.mail.do1_attributesQualified.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="ATTACHMENTtype">
+							<root>
+								<entry name="ATTACHMENTtype" ns="http://inno-vplan-transfer.de/ivb.mail.do1.xsd" type="xml-type"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="846" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="93"/>
+					</targets>
+					<view ltx="372" lty="468" rbx="504" rby="486"/>
+					<data>
+						<constant value="Anderes Dokument" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="850" kind="4">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="113"/>
+						<datapoint pos="1" key="118"/>
+						<datapoint pos="2" key="119"/>
+						<datapoint pos="3" key="120"/>
+						<datapoint pos="4" key="121"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="122"/>
+					</targets>
+					<view ltx="572" lty="308" rbx="670" rby="420"/>
+				</component>
+				<component name="document" library="xml" uid="849" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="939" lty="33" rbx="1183" rby="532"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="Dokument" inpkey="85" expanded="1">
+								<entry name="Dateien" expanded="1">
+									<entry name="Datei" expanded="1">
+										<entry name="Typ" inpkey="88"/>
+										<entry name="Datei_Encoding" inpkey="90"/>
+										<entry name="Quelle_Dateiname" inpkey="92"/>
+										<entry name="IVB-ID" inpkey="98"/>
+										<entry name="Typ_Spezifikation" inpkey="83"/>
+										<entry name="Inhalt" inpkey="86"/>
+									</entry>
+								</entry>
+								<entry name="VPlan-Dokumententypen">
+									<entry name="VPlan-Dokumententyp" expanded="1">
+										<entry name="VPlan-ID" expanded="1"/>
+									</entry>
+								</entry>
+								<entry name="IVB-ID" inpkey="96"/>
+								<entry name="Bezeichnung" inpkey="94"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-2.xsd"/>
+						<wsdl/>
+						<parameter usageKind="output" name="Dokumente">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgänge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgang" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Dokumente" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Dokument" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="84">
+						<edges>
+							<edge vertexkey="85" edgekey="100"/>
+							<edge vertexkey="86" edgekey="101"/>
+							<edge vertexkey="97" edgekey="102"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="93">
+						<edges>
+							<edge vertexkey="121" edgekey="145"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="95">
+						<edges>
+							<edge vertexkey="96" edgekey="107"/>
+							<edge vertexkey="98" edgekey="108"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="111">
+						<edges>
+							<edge vertexkey="113" edgekey="128"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="112">
+						<edges>
+							<edge vertexkey="110" edgekey="129"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="114">
+						<edges>
+							<edge vertexkey="115" edgekey="130"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="116">
+						<edges>
+							<edge vertexkey="119" edgekey="131"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="122">
+						<edges>
+							<edge vertexkey="94" edgekey="146"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="123">
+						<edges>
+							<edge vertexkey="118" edgekey="133"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="124">
+						<edges>
+							<edge vertexkey="120" edgekey="134"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="135">
+						<edges>
+							<edge vertexkey="83" edgekey="139"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="136">
+						<edges>
+							<edge vertexkey="88" edgekey="140"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="137">
+						<edges>
+							<edge vertexkey="90" edgekey="141"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="138">
+						<edges>
+							<edge vertexkey="92" edgekey="142"/>
+							<edge vertexkey="109" edgekey="147"/>
+							<edge vertexkey="117" edgekey="148"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+</mapping>

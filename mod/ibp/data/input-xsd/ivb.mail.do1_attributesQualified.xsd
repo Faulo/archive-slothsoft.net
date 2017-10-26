@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+<xsd:schema id="ivb.mail.do1"
+	targetNamespace="http://inno-vplan-transfer.de/ivb.mail.do1.xsd"
+	elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://inno-vplan-transfer.de/ivb.mail.do1.xsd"
+	xmlns:mstns="http://inno-vplan-transfer.de/ivb.mail.do1.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:element name="ivb.mail.do1">
+		<xsd:complexType>
+			<xsd:sequence maxOccurs="unbounded" minOccurs="1">
+				<xsd:element name="EMAIL" type="EMAILtype" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="EMAILtype">
+		<xsd:sequence minOccurs="1" maxOccurs="1">
+			<xsd:element name="RECIPIENTS" type="RECIPIENTStype" />
+			<xsd:element name="CCS" type="CCStype" minOccurs="0" />
+			<xsd:element name="REPLIES" type="REPLIEStype" minOccurs="0" />
+			<xsd:element name="CONTENT" type="CONTENTtype" maxOccurs="unbounded" />
+			<xsd:element name="ATTACHMENT" type="ATTACHMENTtype"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="ID" type="xsd:string"/>
+		</xsd:sequence>
+		<xsd:attribute name="FROM" type="xsd:string" use="required" />
+		<xsd:attribute name="SUBJECT" type="xsd:string" use="optional" />
+	</xsd:complexType>
+
+	<xsd:complexType name="RECIPIENTStype">
+		<xsd:sequence maxOccurs="unbounded" minOccurs="1">
+			<xsd:element name="RECIPIENT" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+	<xsd:complexType name="CCStype">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="CC" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="REPLIEStype">
+		<xsd:sequence minOccurs="0" maxOccurs="1">
+			<xsd:element name="REPLY" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CONTENTtype">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="MIMETYPE" type="xsd:string"
+					default="text/plain" />
+				<xsd:attribute name="ENCODING" type="xsd:string"
+					default="ISO-8859-1" />
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="ATTACHMENTtype" mixed="true">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:anySimpleType">
+				<xsd:attribute name="TYPESPECIFICATION" type="xsd:string"
+					use="required" />
+				<xsd:attribute name="MIMETYPE" type="xsd:string"
+					default="application/octet-stream" />
+				<xsd:attribute name="ENCODING" type="xsd:string"
+					default="ISO-8859-1" />
+				<xsd:attribute name="FILENAME" type="xsd:string" use="required" />
+				<xsd:attribute name="DISPLAYNAME" type="xsd:string" />
+				<xsd:attribute name="CONTENTID" type="xsd:string" />
+
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+</xsd:schema>

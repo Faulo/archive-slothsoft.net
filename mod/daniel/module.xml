@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<fragment name="default">
+		<struc name="default"/>
+	</fragment>
+	
+	<fragment name="tetris">
+		<struc name="default"/>
+		<call name="/tetris/game" as="content"/>
+	</fragment>
+	
+	<fragment name="navi">
+		<template name="navi"/>
+		<res name="/core/sites" load="xml"/>
+	</fragment>
+	
+	<fragment name="images">
+		<template name="imageList"/>
+		<resDir name="images" load="status"/>
+	</fragment>
+
+	<struc name="default">
+		<template name="_default"/>
+		<res name="/core/sites" load="xml"/>
+		<style name="layout"/>
+		<call name="navi"/>
+		<style name="/slothsoft/fonts"/>
+		<style name="/slothsoft/default"/>
+	</struc>
+	
+	<resourceDir name="images" path="images" type="image/png"/>
+	
+	<resource name="sites" path="sites.xml" type="application/xml"/>
+	
+	<resource name="favicon" path="favicon.png" type="image/png"/>
+	<resourceDir name="misc" path="misc" type="*/*"/>
+	
+	<resource name="contacts" path="google.csv" type="text/csv" del="," sep="" output="thead" min-length="1"/>
+</module>

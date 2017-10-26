@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<fragment name="empty">
+		<struc name="default"/>
+	</fragment>
+	
+	<fragment name="bahn">
+		<param name="standalone" scope="global"/>
+		<template name="_bahn"/>
+		<data name="bahn"/>
+	</fragment>
+	
+	<fragment name="slothsoft-chat">
+		<param name="chat-database" value="slothsoft"/>
+		<template name="/chat/shoutbox"/>
+		<call name="/chat/default" as="chat"/>
+	</fragment>
+	
+	<fragment name="missing-sloth-chat">
+		<param name="chat-database" value="missingsloth"/>
+		<template name="/chat/shoutbox"/>
+		<call name="/chat/default" as="chat"/>
+	</fragment>
+	
+	<fragment name="archive-chat">
+		<param name="chat-database" value="archive"/>
+		<template name="/chat/shoutbox"/>
+		<call name="/chat/default" as="chat"/>
+	</fragment>
+	
+	<fragment name="home">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="home"/>
+		</fragment>
+		<call name="slothsoft-chat" as="chat"/>
+	</fragment>
+
+	<fragment name="about-us">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="about-us"/>
+			<resDir name="staff" load="xml"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="missingSloth">
+		<struc name="default"/>
+		<call name="/extensions/home-missingSloth" as="content"/>
+		<call name="missing-sloth-chat" as="chat"/>
+	</fragment>
+	
+	<fragment name="chat-list">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="chat-list"/>
+			<call name="slothsoft-chat" as="chat"/>
+			<call name="/minecraft/chat" as="chat"/>
+			<call name="/amber/chat" as="chat"/>
+			<call name="/talesof/chat" as="chat"/>
+			<call name="fire-emblem-chat" as="chat"/>
+			<call name="missing-sloth-chat" as="chat"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="imprint">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="address"/>
+			<res name="owner" load="xml"/>
+		</fragment>
+	</fragment>
+	
+
+	<fragment name="navi">
+		<template name="navi"/>
+		<res name="/core/sites" load="xml"/>
+	</fragment>
+	
+	<fragment name="pc">
+		<param name="standalone" scope="global"/>
+		<template name="_pc"/>
+		<data name="pc"/>
+		<style name="default"/>
+		<style name="fonts"/>
+		<script name="/core/html5"/>
+	</fragment>
+	
+	<fragment name="validator">
+		<template name="w3c.validator"/>
+	</fragment>
+	<fragment name="dict.select">
+		<template name="dict.select"/>
+		<res name="lang-de-de" load="xml"/>
+		<res name="lang-en-us" load="xml"/>
+	</fragment>
+	
+	<fragment name="downloads">
+		<template name="_downloads"/>
+		<style name="default"/>
+		<style name="layout"/>
+		<style name="fonts"/>
+		<data name="downloads"/>
+	</fragment>
+	<fragment name="archive">
+		<template name="_archive"/>
+		<data name="archive"/>
+		<style name="default"/>
+		<style name="layout"/>
+		<style name="fonts"/>
+		<style name="colors"/>
+		<style name="archive"/>
+		<struc name="/sse/script"/>
+		<script name="Unison"/>
+		<call name="archive-chat" as="chat"/>
+		<script name="/core/HTML5"/>
+	</fragment>
+	<fragment name="archive-hentai">
+		<template name="_archive.hentai"/>
+		<data name="archive.hentai"/>
+		<style name="default"/>
+		<style name="layout"/>
+		<style name="fonts"/>
+		<style name="colors"/>
+		<style name="archive"/>
+	</fragment>
+	<fragment name="archive-manga">
+		<template name="_archive.hentai"/>
+		<data name="archive.manga"/>
+		<style name="default"/>
+		<style name="layout"/>
+		<style name="fonts"/>
+		<style name="colors"/>
+		<style name="archive"/>
+	</fragment>
+	
+	<fragment name="unicode-mapper">
+		<struc name="default"/>
+		<fragment name="content">
+			<struc name="/core/DOM"/>
+			<script name="UnicodeMapper"/>
+			<template name="unicode-mapper"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="kana-home">
+		<struc name="default"/>
+		<fragment name="content">
+			<res name="/core/sites" load="xml"/>
+			<template name="kana-home"/>
+		</fragment>
+		<!--<call name="slothsoft-chat" as="chat"/>-->
+	</fragment>
+	
+	<fragment name="kana-table">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="kana"/>
+			<style name="kana"/>
+			<res name="kana" load="xml"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="kana-translator">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="kana-translator"/>
+			<style name="kana"/>
+			<struc name="/core/DOM"/>
+			<script name="Translator"/>
+			<res name="kana" load="xml"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="kana-test">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="kana-test"/>
+			<data name="kana.test"/>
+			<style name="kana"/>
+			<struc name="/core/DOM"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="kana-vocab">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="kana-vocab"/>
+			<data name="kana.vocab"/>
+			<style name="kana"/>
+			<struc name="/core/DOM"/>
+			<script name="Translator"/>
+			<script name="Vocab"/>
+			<script name="VocabTest"/>
+		</fragment>
+	</fragment>
+	<fragment name="kana-vocab-mobile">
+		<template name="_default"/>
+		<res name="/core/sites" load="xml"/>
+		<style name="default"/>
+		<style name="colors"/>
+		<style name="layout"/>
+		<fragment name="content">
+			<template name="kana-vocab"/>
+			<data name="kana.vocab"/>
+			<style name="kana"/>
+			<style name="kana-mobile"/>
+			<struc name="/core/DOM"/>
+			<script name="Translator"/>
+			<script name="Vocab"/>
+			<script name="VocabTest"/>
+		</fragment>
+	</fragment>
+	<fragment name="vocab-words-log">
+		<template name="vocab-log"/>
+		<data name="kana.vocab"/>
+	</fragment>
+	<fragment name="vocab-kanji-log">
+		<template name="vocab-log"/>
+		<data name="vocab.kanji"/>
+	</fragment>
+	<fragment name="vocab-list-add">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="vocab-list-add"/>
+			<data name="kana.vocab"/>
+			<style name="kana"/>
+			<struc name="/core/DOM"/>
+			<script name="Translator"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="vocab-kanji">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="vocab-kanji"/>
+			<data name="vocab.kanji"/>
+			<style name="kana"/>
+			<struc name="/core/DOM"/>
+			<script name="Translator"/>
+			<script name="Vocab"/>
+			<script name="VocabTest"/>
+		</fragment>
+	</fragment>
+	<fragment name="vocab-kanji-mobile">
+		<template name="_default"/>
+		<res name="/core/sites" load="xml"/>
+		<style name="default"/>
+		<style name="colors"/>
+		<style name="layout"/>
+		<fragment name="content">
+			<template name="vocab-kanji"/>
+			<data name="vocab.kanji"/>
+			<style name="kana"/>
+			<style name="kana-mobile"/>
+			<struc name="/core/DOM"/>
+			<script name="Translator"/>
+			<script name="Vocab"/>
+			<script name="VocabTest"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="vocab-words-test">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="vocab.test"/>
+			<data name="kana.vocab"/>
+			<style name="kana"/>
+			<struc name="/core/DOM"/>
+			<script name="Translator"/>
+			<script name="Vocab"/>
+			<script name="VocabTest"/>
+		</fragment>
+	</fragment>
+	<fragment name="vocab-kanji-test">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="vocab.test"/>
+			<data name="vocab.kanji"/>
+			<style name="kana"/>
+			<struc name="/core/DOM"/>
+			<script name="Translator"/>
+			<script name="Vocab"/>
+			<script name="VocabTest"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="vocab-verbs">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="vocab-grammar"/>
+			<data name="vocab-grammar-verbs"/>
+			<style name="kana"/>
+			<struc name="/core/DOM"/>
+			<script name="Translator"/>
+		</fragment>
+	</fragment>
+	<fragment name="vocab-verbs-old">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="vocab-grammar"/>
+			<res name="japanese-faulo-verbs" load="xml"/>
+			<style name="kana"/>
+			<struc name="/core/DOM"/>
+			<script name="Translator"/>
+		</fragment>
+	</fragment>
+	
+	
+	<fragment name="english-vocab">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="english-vocab"/>
+			<data name="english.vocab"/>
+			<style name="kana"/>
+			<struc name="/core/DOM"/>
+			<script name="Translator"/>
+		</fragment>
+	</fragment>
+	
+	
+	<fragment name="tetris">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="tetris"/>
+			<res name="tetris"/>
+			<scriptDir name="Tetris/"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="fire-emblem-home">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="fire-emblem-home"/>
+		</fragment>
+		<call name="fire-emblem-chat" as="chat"/>
+	</fragment>
+	<fragment name="fire-emblem-breeding">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="fire-emblem-breeding"/>
+			<data name="fire-emblem"/>
+			<script name="FireEmblem"/>
+		</fragment>
+		<call name="fire-emblem-chat" as="chat"/>
+	</fragment>
+	<fragment name="fire-emblem-cast">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="fire-emblem-cast"/>
+			<data name="fire-emblem"/>
+		</fragment>
+		<call name="fire-emblem-chat" as="chat"/>
+	</fragment>
+	<fragment name="fire-emblem-chat">
+		<param name="chat-database" value="fireemblem"/>
+		<template name="/chat/shoutbox"/>
+		<call name="/chat/default" as="chat"/>
+	</fragment>
+	
+	<fragment name="backend-colors">
+		<struc name="default"/>
+		<call name="/minecraft/status" as="status"/>
+		<fragment name="content">
+			<template name="backend.colors"/>
+			<script name="CSS"/>
+			<struc name="/core/DOM"/>
+			<script name="Backend"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="deviantart">
+		<template name="deviantart"/>
+		<data name="deviantart"/>
+		<param name="standalone" scope="global"/>
+	</fragment>	
+	
+	<fragment name="heartbeat-for-all">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="heartbeat-for-all"/>
+		</fragment>
+		<call name="slothsoft-chat" as="chat"/>
+	</fragment>	
+	<fragment name="heartbeat-for-all.game">
+		<struc name="default"/>
+		<fragment name="content">
+			<template name="heartbeat-for-all.game"/>
+		</fragment>
+	</fragment>	
+	<resource name="heartbeat-for-all-zip" path="heartbeat-for-all/HeartbeatForAll.zip" type="application/zip"/>
+	<resource name="heartbeat-for-all-unity" path="heartbeat-for-all/Web.unity3d" type="application/vnd.unity"/>
+	
+	<fragment name="music">
+		<resDir name="music-mp3"/>
+		<resDir name="music-lyrics" load="xml"/>
+		<template name="_music"/>
+		<param name="standalone" scope="global"/>
+		<script name="/core/HTML5"/>
+		<style name="default"/>
+	</fragment>	
+	
+	<fragment name="writing">
+		<param name="standalone" scope="global"/>
+		<template name="writing"/>
+		<style name="fonts"/>
+	</fragment>	
+	
+	
+	<!--<resource name="KanjiStrokeOrders-truetype" path="fonts/KanjiStrokeOrders.ttf" type="application/x-ttf"/>-->
+	<resource name="finnish-faulo" path="finnish.faulo.xhtml" type="application/xhtml+xml"/>
+	<resource name="japanese-faulo" path="japanese.faulo.xhtml" type="application/xhtml+xml"/>
+	<resource name="japanese-faulo-verbs" path="japanese.faulo.verbs.xml" type="application/xml"/>
+	<resource name="english-julia" path="english.julia.xhtml" type="application/xhtml+xml"/>
+	
+	<resource name="kana" path="kana.xml" type="application/xml"/>
+	<resource name="vocab.kanji.map" path="vocab.kanji.map.svg" type="image/svg+xml"/>
+	
+	<resource name="sites" path="sites.xml" type="application/xml"/>
+	<resource name="sites-backend" path="sites.backend.xml" type="application/xml"/>
+	<resource name="sites-downloads" path="sites.downloads.xml" type="application/xml"/>
+	<resource name="sites-vocab" path="sites.vocab.xml" type="application/xml"/>
+	
+	<resource name="pc" path="pc.xml" type="application/xml"/>
+	<resource name="prefFonts" path="fonts.json" type="application/json"/>
+	<resource name="owner" path="owner.xml" type="application/xml"/>
+	<resourceDir name="fonts" path="fonts" type="application/font-sfnt"/>
+	<resourceDir name="icons" path="icons" type="image/png"/>
+	<resourceDir name="system-fonts" path="system-fonts" type="application/font-sfnt"/>
+	
+	<resource name="lang-de-de" path="lang/de-de.svg" type="image/svg+xml"/>
+	<resource name="lang-en-us" path="lang/en-us.svg" type="image/svg+xml"/>
+	<resource name="lang-ja-jp" path="lang/ja-jp.svg" type="image/svg+xml"/>
+	<resourceDir name="lang" path="lang" type="image/svg+xml"/>
+	
+	
+	<resource name="fire-emblem" path="fire-emblem.xml" type="application/xml"/>
+	<resourceDir name="fire-emblem-data" path="fire-emblem" type="text/csv" del="|" sep="" output="table" min-length="1"/>
+	
+	<resourceDir name="fire-emblem-por" path="fire-emblem-por" type="text/csv" del="|" sep="" output="table" min-length="1"/>
+	<resourceDir name="fire-emblem-sd" path="fire-emblem-sd" type="text/csv" del="|" sep="" output="table" min-length="1"/>
+	<resourceDir name="fire-emblem-bs" path="fire-emblem-bs" type="text/csv" del="|" sep="" output="table" min-length="1"/>
+	<resourceDir name="fire-emblem-ss" path="fire-emblem-ss" type="text/csv" del="|" sep="" output="table" min-length="1"/>
+	<resourceDir name="fire-emblem-aw" path="fire-emblem-aw" type="text/csv" del="|" sep="" output="table" min-length="1"/>
+	<resourceDir name="fire-emblem-rd" path="fire-emblem-rd" type="text/csv" del="|" sep="" output="table" min-length="1"/>
+	
+	<resource name="fire-emblem-shadow-dragon" path="FireEmblemShadowDragon.csv" type="text/csv" del="|" sep="" cols="13" output="table"/>
+	<resource name="fire-emblem-shadow-dragon2" path="FireEmblemShadowDragon2.csv" type="text/csv" del="|" sep="" cols="9" output="table"/>
+	<resource name="fire-emblem-path-of-radiance" path="FireEmblemPathOfRadiance.csv" type="text/csv" del="|" sep="" cols="9" output="table"/>
+	<resource name="fire-emblem-path-of-radiance2" path="FireEmblemPathOfRadiance2.txt" type="text/plain"/>
+	
+	<resourceDir name="staff" path="staff" type="application/xml"/>
+	<resourceDir name="staff-avatars" path="staff" type="image/png"/>
+	
+	<resource name="unicode-mapper" path="unicode-mapper.xml" type="application/xml"/>
+	<resource name="unicode-mapping" path="unicode-mapping.xml" type="application/xml"/>
+	
+	<resourceDir name="pics" path="pics" type="image/png"/>
+	
+	<resource name="favicon" path="favicon.png" type="image/png"/>
+	<resourceDir name="games" path="games" type="application/zip"/>
+	<resourceDir name="unity" path="games" type="application/vnd.unity"/>
+	
+	<resourceDir name="music-mp3" path="music-mp3" type="audio/mpeg"/>
+	<resourceDir name="music-lyrics" path="music-lyrics" type="text/plain"/>
+	
+	<resourceDir name="vocab-ja" path="vocab-ja" type="audio/mpeg"/>
+	<resourceDir name="vocab-jlpt" path="vocab-jlpt" type="application/xhtml+xml"/>
+	<resource name="grammar-ja" path="japanese.grammar.xml" type="application/xml"/>
+	
+	
+	<struc name="default">
+		<template name="_default"/>
+		<res name="/core/sites" load="xml"/>
+		<style name="default"/>
+		<style name="fonts"/>
+		<style name="colors"/>
+		<style name="layout"/>
+		<call name="navi"/>
+		<call name="validator"/>
+		<call name="dict.select"/>
+		<struc name="/core/HTML5"/>
+	</struc>
+</module>

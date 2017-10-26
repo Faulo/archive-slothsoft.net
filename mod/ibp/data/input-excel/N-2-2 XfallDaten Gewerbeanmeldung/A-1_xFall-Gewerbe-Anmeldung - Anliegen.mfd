@@ -1,0 +1,4193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Edited with Altova MapForce 2016 -->
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="26">
+	<resources/>
+	<component name="defaultmap1" blackbox="0" uid="1" editable="1">
+		<properties SelectedLanguage="xslt2"/>
+		<structure>
+			<children>
+				<component name="split-get-first-last-item" library="antavent" blackbox="0" uid="125" kind="19" visible="0">
+					<view ltx="459" lty="880" rbx="596" rby="914"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="input" inpkey="504" componentid="52"/>
+							<entry name="splitter" componentid="51"/>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="first-item" outkey="505" componentid="45"/>
+							<entry name="last-item" outkey="506" componentid="46"/>
+						</root>
+					</data>
+				</component>
+				<component name="split-get-first-last-item" library="antavent" blackbox="0" uid="111" kind="19" visible="0">
+					<view ltx="459" lty="598" rbx="596" rby="632"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="input" inpkey="398" componentid="52"/>
+							<entry name="splitter" componentid="51"/>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="first-item" outkey="399" componentid="45"/>
+							<entry name="last-item" outkey="400" componentid="46"/>
+						</root>
+					</data>
+				</component>
+				<component name="extract-communication" library="antavent" blackbox="0" uid="113" kind="19" visible="0">
+					<view ltx="346" lty="666" rbx="596" rby="717"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="Kommunikation" ns="1" componentid="73" expanded="1">
+								<entry name="Kommunikation" inpkey="401"/>
+							</entry>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="email-addresses" outkey="402" componentid="72"/>
+							<entry name="telephone" outkey="403" componentid="74"/>
+							<entry name="telefax" outkey="404" componentid="75"/>
+						</root>
+					</data>
+				</component>
+				<component name="split-get-first-last-item" library="antavent" blackbox="0" uid="107" kind="19" visible="0">
+					<view ltx="459" lty="444" rbx="596" rby="478"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="input" inpkey="350" componentid="52"/>
+							<entry name="splitter" componentid="51"/>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="first-item" outkey="351" componentid="45"/>
+							<entry name="last-item" outkey="352" componentid="46"/>
+						</root>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="164" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="534"/>
+					</targets>
+					<view ltx="812" lty="565" rbx="907" rby="583"/>
+					<data>
+						<constant value="angemeldet" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="gemeldete_Gewerbetaetigkeit_Beginn" library="user" blackbox="0" uid="141" kind="19" visible="0">
+					<view ltx="447" lty="1033" rbx="773" rby="1059"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="angemeldet" ns="1" componentid="131" expanded="1">
+								<entry name="angemeldet" inpkey="517"/>
+							</entry>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="gemeldete_Gewerbetätigkeit_Beginn" ns="1" componentid="132" expanded="1">
+								<entry name="gemeldete_Gewerbetätigkeit_Beginn" outkey="518"/>
+							</entry>
+						</root>
+					</data>
+				</component>
+				<component name="split-get-first-last-item" library="antavent" blackbox="0" uid="119" kind="19" visible="0">
+					<view ltx="637" lty="880" rbx="774" rby="914"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="input" inpkey="408" componentid="52"/>
+							<entry name="splitter" componentid="51"/>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="first-item" outkey="409" componentid="45"/>
+							<entry name="last-item" outkey="410" componentid="46"/>
+						</root>
+					</data>
+				</component>
+				<component name="extract-communication" library="antavent" blackbox="0" uid="109" kind="19" visible="0">
+					<view ltx="346" lty="510" rbx="596" rby="561"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="Kommunikation" ns="1" componentid="73" expanded="1">
+								<entry name="Kommunikation" inpkey="359" expanded="1"/>
+							</entry>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="email-addresses" outkey="360" componentid="72"/>
+							<entry name="telephone" outkey="361" componentid="74"/>
+							<entry name="telefax" outkey="362" componentid="75"/>
+						</root>
+					</data>
+				</component>
+				<component name="split-get-first-last-item" library="antavent" blackbox="0" uid="93" kind="19" visible="0">
+					<view ltx="656" lty="444" rbx="793" rby="478"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="input" inpkey="227" componentid="52"/>
+							<entry name="splitter" componentid="51"/>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="first-item" outkey="228" componentid="45"/>
+							<entry name="last-item" outkey="229" componentid="46"/>
+						</root>
+					</data>
+				</component>
+				<component name="extract-communication" library="antavent" blackbox="0" uid="121" kind="19" visible="0">
+					<view ltx="474" lty="945" rbx="774" rby="998"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="Kommunikation" ns="1" componentid="73" expanded="1">
+								<entry name="Kommunikation" inpkey="411"/>
+							</entry>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="email-addresses" outkey="412" componentid="72"/>
+							<entry name="telephone" outkey="413" componentid="74"/>
+							<entry name="telefax" outkey="414" componentid="75"/>
+						</root>
+					</data>
+				</component>
+				<component name="make_registereinträge" library="antavent" blackbox="0" uid="312" kind="19" visible="0">
+					<view ltx="440" lty="305" rbx="739" rby="398"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="xfall_daten_050_gewerbe" ns="1" componentid="120" expanded="1">
+								<entry name="gewerbeeintrag" inpkey="896"/>
+							</entry>
+							<entry name="xfall_daten_050_gewerbe2" ns="1" componentid="121" expanded="1">
+								<entry name="erlaubnis" inpkey="897"/>
+							</entry>
+							<entry name="xfall_daten_050_gewerbe3" ns="1" componentid="115" expanded="1">
+								<entry name="handwerkskarte" inpkey="898"/>
+							</entry>
+							<entry name="xfall_daten_050_gewerbe4" ns="1" componentid="117" expanded="1">
+								<entry name="aufenthaltsgenehmigung" inpkey="899"/>
+							</entry>
+							<entry name="xfall_daten_050_gewerbe5" ns="1" componentid="118" expanded="1">
+								<entry name="auflageOderBeschraenkung" inpkey="900"/>
+							</entry>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="IVBAktexFallDatenGewerbeAnmeldung2" ns="1" componentid="112" expanded="1">
+								<entry name="Registereintrag" outkey="901"/>
+							</entry>
+							<entry name="IVBAktexFallDatenGewerbeAnmeldung3" ns="1" componentid="111" expanded="1">
+								<entry name="Registereintrag" outkey="902"/>
+							</entry>
+							<entry name="IVBAktexFallDatenGewerbeAnmeldung" ns="1" componentid="113" expanded="1">
+								<entry name="Registereintrag" outkey="903"/>
+							</entry>
+							<entry name="IVBAktexFallDatenGewerbeAnmeldung4" ns="1" componentid="119" expanded="1">
+								<entry name="Registereintrag" outkey="904"/>
+							</entry>
+						</root>
+					</data>
+				</component>
+				<component name="xfall_persons_to_ivb_persons" library="antavent" blackbox="0" uid="308" kind="19" visible="0">
+					<view ltx="447" lty="63" rbx="739" rby="190"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="xfall_daten_050_gewerbe" ns="1" componentid="226" expanded="1">
+								<entry name="BeteiligteNatPerson" inpkey="872"/>
+							</entry>
+							<entry name="Name" ns="1" componentid="242" expanded="1">
+								<entry name="aufenthaltsgenehmigung" inpkey="892"/>
+							</entry>
+							<entry name="Name2" ns="1" componentid="243" expanded="1">
+								<entry name="auflageOderBeschraenkung" inpkey="893"/>
+							</entry>
+							<entry name="xfall_daten_050_gewerbe2" ns="1" componentid="229" expanded="1">
+								<entry name="gewerbeeintrag" inpkey="874"/>
+							</entry>
+							<entry name="xfall_daten_050_gewerbe5" ns="1" componentid="231" expanded="1">
+								<entry name="gesetzlicherVertreter" inpkey="875"/>
+							</entry>
+							<entry name="xfall_daten_050_gewerbe3" ns="1" componentid="227" expanded="1">
+								<entry name="betriebsleiter" inpkey="873"/>
+							</entry>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="IVBAktexFallDatenGewerbeAnmeldung2" ns="1" componentid="234" expanded="1">
+								<entry name="antragstellende_Person" outkey="877"/>
+							</entry>
+							<entry name="IVBAktexFallDatenGewerbeAnmeldung5" ns="1" componentid="235" expanded="1">
+								<entry name="Einzelgewerbetreibender" outkey="879"/>
+							</entry>
+							<entry name="IVBAktexFallDatenGewerbeAnmeldung4" ns="1" componentid="239" expanded="1">
+								<entry name="geschäftsführende_Gesellschafter" outkey="881"/>
+							</entry>
+							<entry name="IVBAktexFallDatenGewerbeAnmeldung" ns="1" componentid="236" expanded="1">
+								<entry name="gesetzliche_Vertreter" outkey="880"/>
+							</entry>
+							<entry name="IVBAktexFallDatenGewerbeAnmeldung3" ns="1" componentid="233" expanded="1">
+								<entry name="Betriebsleiter_Vertretungsberechtigter" outkey="878"/>
+							</entry>
+						</root>
+					</data>
+				</component>
+				<component name="add" library="core" uid="117" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="405"/>
+						<datapoint pos="1" key="406"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="407"/>
+					</targets>
+					<view ltx="571" lty="237" rbx="646" rby="295"/>
+				</component>
+				<component name="map_zahl_to_Anzahl" library="user" blackbox="0" uid="591" kind="19" visible="0">
+					<view ltx="688" lty="226" rbx="793" rby="243"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="node" inpkey="928" componentid="590"/>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="934" componentid="592"/>
+						</root>
+					</data>
+				</component>
+				<component name="N-2-2-IN" library="xml" uid="3" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1" TnsPrefix="vplan"/>
+					<view ltx="935" rbx="1243" rby="1130"/>
+					<data>
+						<root scrollposition="180">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="2" expanded="1">
+								<entry name="document" ns="2" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Anliegen" inpkey="652" expanded="1">
+										<entry name="Vorgänge" expanded="1">
+											<entry name="Vorgang" expanded="1">
+												<entry name="MPlan" expanded="1">
+													<entry name="MPlan" expanded="1">
+														<entry name="antragstellende_Person" inpkey="653"/>
+														<entry name="entgegennehmende_Organisation">
+															<entry name="Organisation">
+																<entry name="Gemeindename" inpkey="655"/>
+															</entry>
+														</entry>
+														<entry name="meldende_Betriebsstätte" expanded="1">
+															<entry name="Betriebsstätte" inpkey="656">
+																<entry name="Amtlicher_Gemeindeschlüssel" inpkey="657"/>
+																<entry name="Postanschriften">
+																	<entry name="Postanschrift">
+																		<entry name="Postadresse_Straßename" inpkey="658"/>
+																		<entry name="Postadresse_Hausnummer" inpkey="659"/>
+																		<entry name="Postadresse_Postleitzahl" inpkey="660"/>
+																		<entry name="Postadresse_Ort" inpkey="661"/>
+																		<entry name="Postadresse_Staatenverzeichnis_ID" inpkey="662"/>
+																		<entry name="Postadresse_Staatenverzeichnis_Verzeichnis_ID" inpkey="663"/>
+																	</entry>
+																</entry>
+																<entry name="Kontakte">
+																	<entry name="Kontakt" expanded="1">
+																		<entry name="Telefonnummern_ohne_Vorwahl" inpkey="664"/>
+																		<entry name="Faxnummern_ohne_Vorwahl" inpkey="665"/>
+																		<entry name="E-Mail-Adressen" inpkey="666"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="meldender_Gewerbebetrieb" expanded="1">
+															<entry name="Gewerbebetrieb" expanded="1">
+																<entry name="Name_ohne_Rechtsform" inpkey="667"/>
+																<entry name="Anzahl_der_Geschäftsführer_der_Personengesellschaft" inpkey="668" expanded="1">
+																	<entry name="#text" ns="1" inpkey="921"/>
+																</entry>
+																<entry name="Anzahl_der_gesetzlichen_Vertreter_der_juristischen_Person" inpkey="669" expanded="1">
+																	<entry name="#text" ns="1" inpkey="937"/>
+																</entry>
+																<entry name="Rechtsformverzeichnis_ID" inpkey="670"/>
+																<entry name="Rechtsformverzeichnis_Verzeichnis_ID" inpkey="671"/>
+																<entry name="Art_der_Betriebs" expanded="1">
+																	<entry name="#text" ns="1" inpkey="672"/>
+																</entry>
+																<entry name="Beschäftigte_Vollzeit" inpkey="673"/>
+																<entry name="Beschäftigte_Teilzeit" inpkey="674"/>
+																<entry name="Beschäftigte" inpkey="675"/>
+																<entry name="Art_der_Niederlassung" inpkey="676"/>
+																<entry name="gemeldete_Gewerbetätigkeit_Beginn" inpkey="677"/>
+																<entry name="gemeldete_Tätigkeiten_Registereinträge">
+																	<entry name="Registereintrag" inpkey="678">
+																		<entry name="Gemeldete_Tätigkeit_Bezeichnung" inpkey="679"/>
+																		<entry name="Gemeldete_Tätigkeit_Schlüsselverzeichnis_ID" inpkey="680"/>
+																		<entry name="Gemeldete_Tätigkeit_Schlüsselverzeichnis_Verzeichnis_ID" inpkey="681"/>
+																		<entry name="Gemeldete_Tätigkeit_Nebenerwerb" inpkey="682"/>
+																		<entry name="Gemeldete_Tätigkeit_Beginn" inpkey="683"/>
+																		<entry name="Gemeldete_Tätigkeit_Schwerpunkt">
+																			<entry name="#text" ns="1" inpkey="684"/>
+																		</entry>
+																		<entry name="Gemeldete_Tätigkeit_Status">
+																			<entry name="#text" ns="1" inpkey="685"/>
+																		</entry>
+																	</entry>
+																</entry>
+																<entry name="Anmeldegrund" inpkey="686"/>
+																<entry name="Registereinträge" expanded="1">
+																	<entry name="Registereintrag" inpkey="687">
+																		<entry name="Register">
+																			<entry name="Register" expanded="1"/>
+																		</entry>
+																	</entry>
+																	<entry name="Registereintrag" inpkey="688" clone="1"/>
+																	<entry name="Registereintrag" inpkey="689" clone="1">
+																		<entry name="Nummer" expanded="1"/>
+																	</entry>
+																	<entry name="Registereintrag" inpkey="690" clone="1"/>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="Betriebsleiter_Vertretungsberechtigter" inpkey="691">
+															<entry name="Person" expanded="1"/>
+														</entry>
+														<entry name="Einzelgewerbetreibender" inpkey="863" expanded="1"/>
+														<entry name="gesetzliche_Vertreter" inpkey="694">
+															<entry name="Person">
+																<entry name="Kontakte">
+																	<entry name="Kontakt" expanded="1"/>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="geschäftsführende_Gesellschafter" inpkey="864"/>
+														<entry name="Hauptniederlassung">
+															<entry name="Betriebsstätte" inpkey="697" expanded="1">
+																<entry name="Postanschriften" expanded="1">
+																	<entry name="Postanschrift" inpkey="698" expanded="1">
+																		<entry name="Postadresse_Straßename" inpkey="699"/>
+																		<entry name="Postadresse_Hausnummer" inpkey="700"/>
+																		<entry name="Postadresse_Postleitzahl" inpkey="701"/>
+																		<entry name="Postadresse_Ort" inpkey="702"/>
+																		<entry name="Postadresse_Staatenverzeichnis_ID" inpkey="703"/>
+																		<entry name="Postadresse_Staatenverzeichnis_Verzeichnis_ID" inpkey="704"/>
+																	</entry>
+																</entry>
+																<entry name="Kontakte" expanded="1">
+																	<entry name="Kontakt" expanded="1">
+																		<entry name="Telefonnummern_ohne_Vorwahl" inpkey="705"/>
+																		<entry name="Faxnummern_ohne_Vorwahl" inpkey="706"/>
+																		<entry name="E-Mail-Adressen" inpkey="707"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="frühere_Betriebsstätten">
+															<entry name="Betriebsstätte" inpkey="708">
+																<entry name="Postanschriften" expanded="1">
+																	<entry name="Postanschrift" inpkey="709" expanded="1">
+																		<entry name="Postadresse_Straßename" inpkey="710"/>
+																		<entry name="Postadresse_Hausnummer" inpkey="711"/>
+																		<entry name="Postadresse_Postleitzahl" inpkey="712"/>
+																		<entry name="Postadresse_Ort" inpkey="713"/>
+																		<entry name="Postadresse_Staatenverzeichnis_ID" inpkey="714"/>
+																		<entry name="Postadresse_Staatenverzeichnis_Verzeichnis_ID" inpkey="715"/>
+																	</entry>
+																</entry>
+																<entry name="Kontakte">
+																	<entry name="Kontakt" expanded="1">
+																		<entry name="Telefonnummern_ohne_Vorwahl" inpkey="716"/>
+																		<entry name="Faxnummern_ohne_Vorwahl" inpkey="717"/>
+																		<entry name="E-Mail-Adressen" inpkey="718" expanded="1"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="früherer_Gewerbebetrieb" inpkey="719">
+															<entry name="Gewerbebetrieb">
+																<entry name="Name" inpkey="720"/>
+															</entry>
+														</entry>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-1.xsd" outputinstance="test-results\IVB-Akte-xFallDatenGewerbeAnmeldung.xml" instanceroot="{http://inno-vplan-transfer.de/ivb-akte.xsd}Anliegen"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="xfall_daten_050_gewerbe" library="xml" uid="2" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view rbx="290" rby="1120"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="2" expanded="1">
+								<entry name="document" ns="2" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="gewerbe.gewerbeanmeldung.05001002" outkey="181" expanded="1">
+										<entry name="beteiligter" displayselectionmode="all">
+											<entry name="rolle" expanded="1"/>
+										</entry>
+										<entry name="beteiligter" outkey="182">
+											<condition>
+												<expression>
+													<function name="equal" library="core">
+														<expression>
+															<attribute ns="http://www.w3.org/2001/XMLSchema-instance" name="type"/>
+														</expression>
+														<expression>
+															<constant value="{http://xoev.de/schemata/xfall_daten/4_0_0}BeteiligteNatPerson" datatype="QName"/>
+														</expression>
+													</function>
+												</expression>
+											</condition>
+											<entry name="natuerlichePerson">
+												<entry name="geschlecht" expanded="1">
+													<entry name="geschlecht" expanded="1"/>
+												</entry>
+												<entry name="geburt" expanded="1">
+													<entry name="geburtsort" expanded="1">
+														<entry name="staat" expanded="1">
+															<entry name="staat" expanded="1"/>
+														</entry>
+													</entry>
+												</entry>
+												<entry name="staatsangehoerigkeit" expanded="1">
+													<entry name="staatsangehoerigkeit" expanded="1"/>
+												</entry>
+												<entry name="anschrift" expanded="1">
+													<entry name="staat">
+														<entry name="staat" expanded="1"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="entgegennehmendeGemeinde" outkey="243"/>
+										<entry name="ags">
+											<entry name="code" ns="1" outkey="244"/>
+										</entry>
+										<entry name="eingetragenerName" outkey="245"/>
+										<entry name="zahlGeschaeftsfuehrenderGesellschafter" outkey="246"/>
+										<entry name="zahlGesetzlicherVertreter" outkey="247"/>
+										<entry name="gewerbeeintrag" outkey="566">
+											<entry name="rechtsform" outkey="248"/>
+										</entry>
+										<entry name="betriebsleiter" outkey="249"/>
+										<entry name="gesetzlicherVertreter" outkey="252">
+											<entry name="geschlecht">
+												<entry name="geschlecht" expanded="1"/>
+											</entry>
+											<entry name="geburt">
+												<entry name="geburtsort">
+													<entry name="staat">
+														<entry name="staat" expanded="1"/>
+													</entry>
+												</entry>
+											</entry>
+											<entry name="staatsangehoerigkeit">
+												<entry name="staatsangehoerigkeit" expanded="1"/>
+											</entry>
+											<entry name="anschrift">
+												<entry name="staat" expanded="1">
+													<entry name="staat" expanded="1"/>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="geschaeftsfuehrenderGesellschafter">
+											<entry name="nameNatuerlichePerson">
+												<entry name="vorname" expanded="1"/>
+												<entry name="familienname" expanded="1"/>
+											</entry>
+										</entry>
+										<entry name="betriebsstaette" outkey="197">
+											<entry name="anschrift">
+												<entry name="strasse" outkey="353"/>
+												<entry name="hausnummer" outkey="354"/>
+												<entry name="postleitzahl" outkey="355"/>
+												<entry name="ort" outkey="356"/>
+												<entry name="staat">
+													<entry name="staat" expanded="1">
+														<entry name="code" ns="1" outkey="357"/>
+													</entry>
+												</entry>
+											</entry>
+											<entry name="kommunikation" outkey="358"/>
+										</entry>
+										<entry name="hauptniederlassung" outkey="446">
+											<entry name="anschrift" outkey="447">
+												<entry name="strasse" outkey="390"/>
+												<entry name="hausnummer" outkey="391"/>
+												<entry name="postleitzahl" outkey="392"/>
+												<entry name="ort" outkey="393"/>
+												<entry name="staat" expanded="1">
+													<entry name="staat" expanded="1">
+														<entry name="code" ns="1" outkey="448"/>
+													</entry>
+												</entry>
+											</entry>
+											<entry name="kommunikation" outkey="449"/>
+										</entry>
+										<entry name="fruehereBetriebsstaette" outkey="450">
+											<entry name="anschrift" outkey="451" expanded="1">
+												<entry name="strasse" outkey="452"/>
+												<entry name="hausnummer" outkey="453"/>
+												<entry name="postleitzahl" outkey="454"/>
+												<entry name="ort" outkey="455"/>
+												<entry name="staat" expanded="1">
+													<entry name="staat" expanded="1">
+														<entry name="code" ns="1" outkey="456"/>
+													</entry>
+												</entry>
+											</entry>
+											<entry name="kommunikation" outkey="457"/>
+										</entry>
+										<entry name="artDesGemeldetenBetriebs" expanded="1">
+											<entry name="code" ns="1" outkey="514"/>
+										</entry>
+										<entry name="beschaeftigteVollzeit" outkey="458"/>
+										<entry name="beschaeftigteTeilzeit" outkey="459"/>
+										<entry name="meldungErstattetFuer" expanded="1">
+											<entry name="code" ns="1" outkey="460"/>
+										</entry>
+										<entry name="erlaubnis" outkey="580"/>
+										<entry name="handwerkskarte" outkey="588"/>
+										<entry name="aufenthaltsgenehmigung" outkey="606"/>
+										<entry name="auflageOderBeschraenkung" outkey="607"/>
+										<entry name="angemeldet" outkey="461">
+											<entry name="taetigkeit" outkey="462"/>
+											<entry name="wzschluessel" outkey="463"/>
+											<entry name="nebenerwerb" outkey="464"/>
+											<entry name="datum" outkey="465"/>
+											<entry name="schwerpunkt" outkey="536"/>
+										</entry>
+										<entry name="anmeldegrund">
+											<entry name="code" ns="1" outkey="510"/>
+										</entry>
+										<entry name="fruehererName" outkey="466"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd" inputinstance="..\Beispieldaten\2015-11-17\gewerbeanmeldung.xml" outputinstance="..\_XSD\xFallDatenXSD\xsd\xfall-gewerbeanmeldung.xml" instanceroot="{http://xoev.de/schemata/xfall_daten/4_0_0}gewerbe.gewerbeanmeldung.05001002"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="map_zahl_to_Anzahl" library="user" blackbox="0" uid="593" kind="19" visible="0">
+					<view ltx="688" lty="264" rbx="793" rby="281"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="node" inpkey="935" componentid="590"/>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result" outkey="936" componentid="592"/>
+						</root>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges>
+					<edge edgekey="372">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="468">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="469">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="519">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="729">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="882">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="883">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="884">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="885">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="886">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="887">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="888">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="889">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="891">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="894">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="895">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="905">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="906">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="907">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="908">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="909">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="910">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="911">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="912">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="913">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+				</edges>
+				<vertices>
+					<vertex vertexkey="181">
+						<edges>
+							<edge vertexkey="652" edgekey="731"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="182">
+						<edges>
+							<edge vertexkey="872" edgekey="889"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="197">
+						<edges>
+							<edge vertexkey="656" edgekey="732"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="228">
+						<edges>
+							<edge vertexkey="671" edgekey="733"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="229">
+						<edges>
+							<edge vertexkey="670" edgekey="734"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="243">
+						<edges>
+							<edge vertexkey="655" edgekey="735"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="244">
+						<edges>
+							<edge vertexkey="657" edgekey="736"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="245">
+						<edges>
+							<edge vertexkey="667" edgekey="737"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="246">
+						<edges>
+							<edge vertexkey="928" edgekey="931"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="247">
+						<edges>
+							<edge vertexkey="935" edgekey="938"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="248">
+						<edges>
+							<edge vertexkey="227" edgekey="324"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="249">
+						<edges>
+							<edge vertexkey="873" edgekey="884"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="252">
+						<edges>
+							<edge vertexkey="875" edgekey="891"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="351">
+						<edges>
+							<edge vertexkey="663" edgekey="741"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="352">
+						<edges>
+							<edge vertexkey="662" edgekey="742"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="353">
+						<edges>
+							<edge vertexkey="658" edgekey="743"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="354">
+						<edges>
+							<edge vertexkey="659" edgekey="744"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="355">
+						<edges>
+							<edge vertexkey="660" edgekey="745"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="356">
+						<edges>
+							<edge vertexkey="661" edgekey="746"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="357">
+						<edges>
+							<edge vertexkey="350" edgekey="382"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="358">
+						<edges>
+							<edge vertexkey="359" edgekey="372"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="360">
+						<edges>
+							<edge vertexkey="666" edgekey="747"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="361">
+						<edges>
+							<edge vertexkey="664" edgekey="748"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="362">
+						<edges>
+							<edge vertexkey="665" edgekey="749"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="390">
+						<edges>
+							<edge vertexkey="699" edgekey="750"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="391">
+						<edges>
+							<edge vertexkey="700" edgekey="751"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="392">
+						<edges>
+							<edge vertexkey="701" edgekey="752"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="393">
+						<edges>
+							<edge vertexkey="702" edgekey="753"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="399">
+						<edges>
+							<edge vertexkey="704" edgekey="754"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="400">
+						<edges>
+							<edge vertexkey="703" edgekey="755"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="402">
+						<edges>
+							<edge vertexkey="707" edgekey="756"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="403">
+						<edges>
+							<edge vertexkey="705" edgekey="757"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="404">
+						<edges>
+							<edge vertexkey="706" edgekey="758"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="407">
+						<edges>
+							<edge vertexkey="675" edgekey="759"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="409">
+						<edges>
+							<edge vertexkey="715" edgekey="760"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="410">
+						<edges>
+							<edge vertexkey="714" edgekey="761"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="412">
+						<edges>
+							<edge vertexkey="718" edgekey="762"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="413">
+						<edges>
+							<edge vertexkey="716" edgekey="763"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="414">
+						<edges>
+							<edge vertexkey="717" edgekey="764"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="446">
+						<edges>
+							<edge vertexkey="697" edgekey="765"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="447">
+						<edges>
+							<edge vertexkey="698" edgekey="766"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="448">
+						<edges>
+							<edge vertexkey="398" edgekey="484"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="449">
+						<edges>
+							<edge vertexkey="401" edgekey="469"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="450">
+						<edges>
+							<edge vertexkey="708" edgekey="767"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="451">
+						<edges>
+							<edge vertexkey="709" edgekey="768"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="452">
+						<edges>
+							<edge vertexkey="710" edgekey="769"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="453">
+						<edges>
+							<edge vertexkey="711" edgekey="770"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="454">
+						<edges>
+							<edge vertexkey="712" edgekey="771"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="455">
+						<edges>
+							<edge vertexkey="713" edgekey="772"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="456">
+						<edges>
+							<edge vertexkey="408" edgekey="491"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="457">
+						<edges>
+							<edge vertexkey="411" edgekey="468"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="458">
+						<edges>
+							<edge vertexkey="405" edgekey="493"/>
+							<edge vertexkey="673" edgekey="773"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="459">
+						<edges>
+							<edge vertexkey="406" edgekey="495"/>
+							<edge vertexkey="674" edgekey="774"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="460">
+						<edges>
+							<edge vertexkey="676" edgekey="775"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="461">
+						<edges>
+							<edge vertexkey="517" edgekey="519"/>
+							<edge vertexkey="678" edgekey="776"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="462">
+						<edges>
+							<edge vertexkey="679" edgekey="777"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="463">
+						<edges>
+							<edge vertexkey="504" edgekey="507"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="464">
+						<edges>
+							<edge vertexkey="682" edgekey="778"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="465">
+						<edges>
+							<edge vertexkey="683" edgekey="779"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="466">
+						<edges>
+							<edge vertexkey="720" edgekey="780"/>
+							<edge vertexkey="719" edgekey="781"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="505">
+						<edges>
+							<edge vertexkey="681" edgekey="782"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="506">
+						<edges>
+							<edge vertexkey="680" edgekey="783"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="510">
+						<edges>
+							<edge vertexkey="686" edgekey="784"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="514">
+						<edges>
+							<edge vertexkey="672" edgekey="785"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="518">
+						<edges>
+							<edge vertexkey="677" edgekey="729"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="534">
+						<edges>
+							<edge vertexkey="685" edgekey="786"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="536">
+						<edges>
+							<edge vertexkey="684" edgekey="787"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="566">
+						<edges>
+							<edge vertexkey="874" edgekey="883"/>
+							<edge vertexkey="896" edgekey="910"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="580">
+						<edges>
+							<edge vertexkey="897" edgekey="905"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="588">
+						<edges>
+							<edge vertexkey="898" edgekey="913"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="606">
+						<edges>
+							<edge vertexkey="892" edgekey="895"/>
+							<edge vertexkey="899" edgekey="912"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="607">
+						<edges>
+							<edge vertexkey="893" edgekey="894"/>
+							<edge vertexkey="900" edgekey="911"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="877">
+						<edges>
+							<edge vertexkey="653" edgekey="886"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="878">
+						<edges>
+							<edge vertexkey="691" edgekey="885"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="879">
+						<edges>
+							<edge vertexkey="863" edgekey="887"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="880">
+						<edges>
+							<edge vertexkey="694" edgekey="888"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="881">
+						<edges>
+							<edge vertexkey="864" edgekey="882"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="901">
+						<edges>
+							<edge vertexkey="687" edgekey="908"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="902">
+						<edges>
+							<edge vertexkey="688" edgekey="909"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="903">
+						<edges>
+							<edge vertexkey="689" edgekey="906"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="904">
+						<edges>
+							<edge vertexkey="690" edgekey="907"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="934">
+						<edges>
+							<edge vertexkey="921" edgekey="939"/>
+							<edge vertexkey="668" edgekey="940"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="936">
+						<edges>
+							<edge vertexkey="937" edgekey="941"/>
+							<edge vertexkey="669" edgekey="942"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="split-get-last-item" library="antavent" blackbox="0" uid="19" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="constant" library="core" uid="22" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="111" lty="255" rbx="153" rby="273"/>
+					<data>
+						<constant value="|" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="splitter" library="core" uid="21" kind="6">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="2"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="213" lty="234" rbx="294" rby="273"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="splitter" optional="1"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="27" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="4"/>
+					</targets>
+					<view ltx="482" lty="246" rbx="520" rby="264"/>
+					<data>
+						<constant value="1" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="last-items" library="core" uid="26" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="5"/>
+						<datapoint pos="1" key="6"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="7"/>
+					</targets>
+					<view ltx="606" lty="122" rbx="714" rby="178"/>
+				</component>
+				<component name="tokenize" library="core" uid="24" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="16"/>
+						<datapoint pos="1" key="9"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="10"/>
+					</targets>
+					<view ltx="391" lty="122" rbx="473" rby="178"/>
+				</component>
+				<component name="input" library="core" uid="30" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="17"/>
+					</targets>
+					<view ltx="223" lty="122" rbx="295" rby="161"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="input"/>
+					</data>
+				</component>
+				<component name="result" library="core" uid="20" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="8"/>
+					</sources>
+					<view ltx="836" lty="122" rbx="891" rby="161"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="result"/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="2" edgekey="11"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="9" edgekey="12"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="4">
+						<edges>
+							<edge vertexkey="6" edgekey="13"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="7">
+						<edges>
+							<edge vertexkey="8" edgekey="14"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="10">
+						<edges>
+							<edge vertexkey="5" edgekey="15"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="17">
+						<edges>
+							<edge vertexkey="16" edgekey="18"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="split-get-first-item" library="antavent" blackbox="0" uid="31" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="constant" library="core" uid="33" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="322" lty="216" rbx="364" rby="234"/>
+					<data>
+						<constant value="|" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="splitter" library="core" uid="34" kind="6">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="4"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="424" lty="195" rbx="506" rby="234"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="splitter" optional="1"/>
+					</data>
+				</component>
+				<component name="input" library="core" uid="37" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="434" lty="83" rbx="506" rby="122"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="input"/>
+					</data>
+				</component>
+				<component name="first-items" library="core" uid="39" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="10"/>
+						<datapoint pos="1" key="11"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="12"/>
+					</targets>
+					<view ltx="792" lty="83" rbx="900" rby="139"/>
+				</component>
+				<component name="tokenize" library="core" uid="35" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="2"/>
+						<datapoint pos="1" key="7"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="8"/>
+					</targets>
+					<view ltx="602" lty="83" rbx="685" rby="139"/>
+				</component>
+				<component name="constant" library="core" uid="36" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="5"/>
+					</targets>
+					<view ltx="693" lty="207" rbx="731" rby="225"/>
+					<data>
+						<constant value="1" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="result" library="core" uid="32" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="9"/>
+					</sources>
+					<view ltx="1017" lty="83" rbx="1072" rby="122"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="result"/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="2" edgekey="13"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="4" edgekey="14"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="11" edgekey="15"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="7" edgekey="16"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="8">
+						<edges>
+							<edge vertexkey="10" edgekey="17"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="12">
+						<edges>
+							<edge vertexkey="9" edgekey="18"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="split-get-first-last-item" library="antavent" blackbox="0" uid="44" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="splitter" library="core" uid="51" kind="6">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="2"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="10"/>
+					</targets>
+					<view ltx="251" lty="221" rbx="332" rby="260"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="splitter" optional="1"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="55" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="8"/>
+					</targets>
+					<view ltx="473" lty="259" rbx="511" rby="277"/>
+					<data>
+						<constant value="1" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="50" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="149" lty="242" rbx="191" rby="260"/>
+					<data>
+						<constant value="|" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="input" library="core" uid="52" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="4"/>
+					</targets>
+					<view ltx="261" lty="109" rbx="333" rby="148"/>
+					<data>
+						<input datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="input" name="input"/>
+					</data>
+				</component>
+				<component name="first-items" library="core" uid="53" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="7"/>
+						<datapoint pos="1" key="9"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="619" lty="109" rbx="727" rby="165"/>
+				</component>
+				<component name="first-item" library="core" uid="45" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="12"/>
+					</sources>
+					<view ltx="1087" lty="109" rbx="1157" rby="148"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="first-item"/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="155" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="27"/>
+					</targets>
+					<view ltx="695" lty="45" rbx="733" rby="63"/>
+					<data>
+						<constant value="2" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="151" kind="4">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="34"/>
+						<datapoint pos="1" key="35"/>
+						<datapoint pos="2" key="36"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="37"/>
+					</targets>
+					<view ltx="936" lty="11" rbx="1033" rby="87"/>
+				</component>
+				<component name="last-item" library="core" uid="46" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="16"/>
+					</sources>
+					<view ltx="1089" lty="221" rbx="1157" rby="260"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="last-item"/>
+					</data>
+				</component>
+				<component name="last-items" library="core" uid="57" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="13"/>
+						<datapoint pos="1" key="14"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="15"/>
+					</targets>
+					<view ltx="619" lty="221" rbx="727" rby="277"/>
+				</component>
+				<component name="if-else" library="core" uid="156" kind="4">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="40"/>
+						<datapoint pos="1" key="42"/>
+						<datapoint pos="2" key="43"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="41"/>
+					</targets>
+					<view ltx="936" lty="201" rbx="1033" rby="277"/>
+				</component>
+				<component name="equal-or-greater" library="core" uid="154" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="28"/>
+						<datapoint pos="1" key="29"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="38"/>
+					</targets>
+					<view ltx="791" lty="-10" rbx="897" rby="46"/>
+				</component>
+				<component name="constant" library="core" uid="152" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="39"/>
+					</targets>
+					<view ltx="743" lty="158" rbx="783" rby="176"/>
+					<data>
+						<constant datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="tokenize" library="core" uid="54" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="5"/>
+						<datapoint pos="1" key="11"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="428" lty="109" rbx="510" rby="165"/>
+				</component>
+				<component name="count" library="core" uid="149" kind="5">
+					<properties/>
+					<sources>
+						<datapoint/>
+						<datapoint pos="1" key="44"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="30"/>
+					</targets>
+					<view ltx="619" lty="-10" rbx="733" rby="46"/>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="2" edgekey="17"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="35" edgekey="45"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="4">
+						<edges>
+							<edge vertexkey="5" edgekey="19"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="7" edgekey="20"/>
+							<edge vertexkey="13" edgekey="21"/>
+							<edge vertexkey="44" edgekey="46"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="8">
+						<edges>
+							<edge vertexkey="9" edgekey="22"/>
+							<edge vertexkey="14" edgekey="23"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="10">
+						<edges>
+							<edge vertexkey="11" edgekey="24"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="15">
+						<edges>
+							<edge vertexkey="42" edgekey="47"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="27">
+						<edges>
+							<edge vertexkey="29" edgekey="32"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="30">
+						<edges>
+							<edge vertexkey="28" edgekey="33"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="37">
+						<edges>
+							<edge vertexkey="12" edgekey="48"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="38">
+						<edges>
+							<edge vertexkey="34" edgekey="49"/>
+							<edge vertexkey="40" edgekey="50"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="39">
+						<edges>
+							<edge vertexkey="36" edgekey="51"/>
+							<edge vertexkey="43" edgekey="52"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="41">
+						<edges>
+							<edge vertexkey="16" edgekey="53"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="extract-communication" library="antavent" blackbox="0" uid="71" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="telephone" library="core" uid="74" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="31"/>
+					</sources>
+					<view ltx="999" lty="155" rbx="1075" rby="194"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="telephone"/>
+					</data>
+				</component>
+				<component name="telefax" library="core" uid="75" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="32"/>
+					</sources>
+					<view ltx="999" lty="217" rbx="1061" rby="256"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="telefax"/>
+					</data>
+				</component>
+				<component name="equal" library="core" uid="77" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="1"/>
+						<datapoint pos="1" key="7"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="8"/>
+					</targets>
+					<view ltx="579" lty="33" rbx="632" rby="89"/>
+				</component>
+				<component name="constant" library="core" uid="80" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="435" lty="33" rbx="499" rby="51"/>
+					<data>
+						<constant value="email" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="84" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="17"/>
+					</targets>
+					<view ltx="446" lty="176" rbx="519" rby="194"/>
+					<data>
+						<constant value="telefon" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="87" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="24"/>
+					</targets>
+					<view ltx="446" lty="314" rbx="502" rby="332"/>
+					<data>
+						<constant value="fax" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="email-addresses" library="core" uid="72" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="4"/>
+					</sources>
+					<view ltx="999" lty="90" rbx="1107" rby="129"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="email-addresses"/>
+					</data>
+				</component>
+				<component name="equal" library="core" uid="88" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="25"/>
+						<datapoint pos="1" key="28"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="26"/>
+					</targets>
+					<view ltx="579" lty="314" rbx="632" rby="370"/>
+				</component>
+				<component name="equal" library="core" uid="85" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="18"/>
+						<datapoint pos="1" key="21"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="19"/>
+					</targets>
+					<view ltx="579" lty="217" rbx="632" rby="273"/>
+				</component>
+				<component name="xfd:kennung" library="core" uid="83" kind="3">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="23"/>
+						<datapoint pos="1" key="20"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="22"/>
+						<datapoint/>
+					</targets>
+					<view ltx="683" lty="178" rbx="786" rby="234"/>
+				</component>
+				<component name="xfd:kennung" library="core" uid="86" kind="3">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="30"/>
+						<datapoint pos="1" key="27"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="29"/>
+						<datapoint/>
+					</targets>
+					<view ltx="683" lty="314" rbx="786" rby="370"/>
+				</component>
+				<component name="document" library="xml" uid="73" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="97" lty="90" rbx="333" rby="290"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								</namespaces>
+							</header>
+							<entry name="Kommunikation" ns="1" expanded="1">
+								<entry name="kanal" ns="1" expanded="1">
+									<entry name="code" outkey="2"/>
+								</entry>
+								<entry name="kennung" ns="1" outkey="5"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="Kommunikation">
+							<root>
+								<entry name="Kommunikation" ns="http://xoev.de/schemata/xfall_daten/4_0_0" type="xml-type"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="xfd:kennung" library="core" uid="79" kind="3">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="9"/>
+						<datapoint pos="1" key="10"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="11"/>
+						<datapoint/>
+					</targets>
+					<view ltx="683" lty="33" rbx="786" rby="89"/>
+				</component>
+				<component name="constant" library="core" uid="91" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="43"/>
+					</targets>
+					<view ltx="742" lty="133" rbx="785" rby="151"/>
+					<data>
+						<constant value="," datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="string-join" library="core" uid="90" kind="5">
+					<properties/>
+					<sources>
+						<datapoint/>
+						<datapoint pos="1" key="44"/>
+						<datapoint pos="2" key="45"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="46"/>
+					</targets>
+					<view ltx="851" lty="56" rbx="965" rby="129"/>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="2">
+						<edges>
+							<edge vertexkey="7" edgekey="12"/>
+							<edge vertexkey="21" edgekey="33"/>
+							<edge vertexkey="28" edgekey="34"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="9" edgekey="13"/>
+							<edge vertexkey="23" edgekey="35"/>
+							<edge vertexkey="30" edgekey="36"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="1" edgekey="14"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="8">
+						<edges>
+							<edge vertexkey="10" edgekey="15"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="11">
+						<edges>
+							<edge vertexkey="44" edgekey="47"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="17">
+						<edges>
+							<edge vertexkey="18" edgekey="37"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="19">
+						<edges>
+							<edge vertexkey="20" edgekey="38"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="22">
+						<edges>
+							<edge vertexkey="31" edgekey="39"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="24">
+						<edges>
+							<edge vertexkey="25" edgekey="40"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="26">
+						<edges>
+							<edge vertexkey="27" edgekey="41"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="29">
+						<edges>
+							<edge vertexkey="32" edgekey="42"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="43">
+						<edges>
+							<edge vertexkey="45" edgekey="48"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="46">
+						<edges>
+							<edge vertexkey="4" edgekey="49"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="map-xfall-natuelichePerson-Anliegen" library="antavent" blackbox="0" uid="126" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="result" library="core" uid="127" kind="7">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<view ltx="1301" lty="100" rbx="1356" rby="139"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="result"/>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="128" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="151" lty="100" rbx="451" rby="300"/>
+					<data>
+						<root scrollposition="4">
+							<header>
+								<namespaces/>
+							</header>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-xFallDaten Gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="antragstellende_Person">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<vertices/>
+			</graph>
+		</structure>
+	</component>
+	<component name="gemeldete_Gewerbetaetigkeit_Beginn" library="user" blackbox="0" uid="129" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="document" library="xml" uid="131" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="17" lty="13" rbx="317" rby="213"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								</namespaces>
+							</header>
+							<entry name="angemeldet" outkey="2" expanded="1">
+								<entry name="datum" outkey="3"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="angemeldet">
+							<root>
+								<entry name="gewerbe.gewerbeanmeldung.05001002" ns="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								<entry name="angemeldet" ns="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="132" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="1030" lty="13" rbx="1349" rby="85"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="gemeldete_Gewerbetätigkeit_Beginn" ns="1" expanded="1">
+								<entry name="#text" inpkey="1"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-xFallDaten Gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="output" name="gemeldete_Gewerbetätigkeit_Beginn">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgänge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgang" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="meldender_Gewerbebetrieb" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Gewerbebetrieb" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="gemeldete_Gewerbetätigkeit_Beginn" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="xfd:angemeldet" library="core" uid="134" kind="30">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="8"/>
+						<datapoint pos="1" key="9"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="10"/>
+					</targets>
+					<view ltx="386" lty="62" rbx="488" rby="120"/>
+					<data>
+						<wsdl/>
+						<sort>
+							<collation/>
+							<key direction="ascending"/>
+						</sort>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="143" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="668" lty="62" rbx="968" rby="262"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+								<entry name="angemeldet" inpkey="24" expanded="1">
+									<entry name="datum" outkey="25"/>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="variable" name="angemeldet">
+							<root>
+								<entry name="gewerbe.gewerbeanmeldung.05001002" ns="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								<entry name="angemeldet" ns="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="138" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="7"/>
+					</targets>
+					<view ltx="420" lty="196" rbx="458" rby="214"/>
+					<data>
+						<constant value="1" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="first-items" library="core" uid="137" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="4"/>
+						<datapoint pos="1" key="5"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="6"/>
+					</targets>
+					<view ltx="535" lty="64" rbx="643" rby="120"/>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges>
+					<edge edgekey="16">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="26">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="27">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+				</edges>
+				<vertices>
+					<vertex vertexkey="2">
+						<edges>
+							<edge vertexkey="8" edgekey="16"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="9" edgekey="17"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="24" edgekey="27"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="7">
+						<edges>
+							<edge vertexkey="5" edgekey="19"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="10">
+						<edges>
+							<edge vertexkey="4" edgekey="26"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="25">
+						<edges>
+							<edge vertexkey="1" edgekey="28"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="is_einzelgewerbetreibender" library="user" blackbox="0" uid="172" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="document" library="xml" uid="206" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="30" lty="10" rbx="210" rby="210"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								</namespaces>
+							</header>
+							<entry name="Gewerbeeintrag" expanded="1">
+								<entry name="rechtsform" outkey="7"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="Gewerbeeintrag">
+							<root>
+								<entry name="Gewerbeeintrag" ns="http://xoev.de/schemata/xfall_daten/4_0_0" type="xml-type"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="split-get-first-last-item" library="antavent" blackbox="0" uid="205" kind="19" visible="0">
+					<view ltx="264" lty="45" rbx="401" rby="79"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="input" inpkey="6" componentid="52"/>
+							<entry name="splitter" componentid="51"/>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="first-item" outkey="4" componentid="45"/>
+							<entry name="last-item" outkey="5" componentid="46"/>
+						</root>
+					</data>
+				</component>
+				<component name="value-map" library="core" uid="207" kind="23">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="8"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="9"/>
+					</targets>
+					<view ltx="482" lty="10" rbx="559" rby="49"/>
+					<data>
+						<wsdl/>
+						<valuemap enableDefaultValue="1">
+							<valuemapTable>
+								<entry from="RFM012013" to="true"/>
+								<entry from="RFM012015" to="true"/>
+							</valuemapTable>
+							<input name="Input" type="string"/>
+							<result name="result" type="boolean" defaultValue="false"/>
+						</valuemap>
+					</data>
+				</component>
+				<component name="value-map" library="core" uid="208" kind="23">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="13"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="14"/>
+					</targets>
+					<view ltx="482" lty="112" rbx="559" rby="151"/>
+					<data>
+						<wsdl/>
+						<valuemap enableDefaultValue="1">
+							<valuemapTable>
+								<entry from="170" to="true"/>
+								<entry from="180" to="true"/>
+								<entry from="921" to="true"/>
+								<entry from="991" to="true"/>
+							</valuemapTable>
+							<input name="Input" type="string"/>
+							<result name="result" type="boolean" defaultValue="false"/>
+						</valuemap>
+					</data>
+				</component>
+				<component name="result" library="core" uid="173" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="1"/>
+					</sources>
+					<view ltx="933" lty="45" rbx="988" rby="84"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="result"/>
+					</data>
+				</component>
+				<component name="logical-and" library="core" uid="210" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="10"/>
+						<datapoint pos="1" key="11"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="12"/>
+					</targets>
+					<view ltx="634" lty="45" rbx="713" rby="103"/>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="4">
+						<edges>
+							<edge vertexkey="8" edgekey="15"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="13" edgekey="16"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="7">
+						<edges>
+							<edge vertexkey="6" edgekey="17"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="9">
+						<edges>
+							<edge vertexkey="10" edgekey="18"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="12">
+						<edges>
+							<edge vertexkey="1" edgekey="21"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="14">
+						<edges>
+							<edge vertexkey="11" edgekey="20"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="xfall_person_to_ivb_person" library="user" blackbox="0" uid="183" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="split-get-first-last-item" library="antavent" blackbox="0" uid="200" kind="19" visible="0">
+					<view ltx="591" lty="328" rbx="728" rby="362"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="input" inpkey="55" componentid="52"/>
+							<entry name="splitter" componentid="51"/>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="first-item" outkey="54" componentid="45"/>
+							<entry name="last-item" outkey="53" componentid="46"/>
+						</root>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="187" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="917" lty="-9" rbx="1159" rby="519"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="Person" inpkey="74" expanded="1">
+								<entry name="Kontakte" inpkey="75">
+									<entry name="Kontakt">
+										<entry name="Telefonnummern_ohne_Vorwahl" inpkey="6"/>
+										<entry name="Faxnummern_ohne_Vorwahl" inpkey="7"/>
+										<entry name="E-Mail-Adressen" inpkey="8"/>
+									</entry>
+								</entry>
+								<entry name="Anredeverzeichnis_ID" inpkey="16"/>
+								<entry name="Anredeverzeichnis_Verzeichnis_ID" inpkey="17"/>
+								<entry name="Vorname" inpkey="22"/>
+								<entry name="Nachname" inpkey="23"/>
+								<entry name="Geburtsname" inpkey="24"/>
+								<entry name="Geschlecht" inpkey="25"/>
+								<entry name="Geburtsort" inpkey="44"/>
+								<entry name="Geburtsland" inpkey="45"/>
+								<entry name="Geburtsdatum" inpkey="46"/>
+								<entry name="Staatsangehörigkeitsverzeichnis_ID" inpkey="56"/>
+								<entry name="Staatsangehörigkeitsverzeichnis_Verzeichnis_ID" inpkey="57"/>
+								<entry name="Postanschriften" inpkey="76" expanded="1">
+									<entry name="Postanschrift" inpkey="37" expanded="1"/>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-1.xsd"/>
+						<wsdl/>
+						<parameter usageKind="output" name="Person">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgänge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgang" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Einzelgewerbetreibender" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Person" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="186" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="3" lty="-9" rbx="204" rby="519"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="NatuerlichePerson" outkey="77" expanded="1">
+								<entry name="nameNatuerlichePerson" expanded="1">
+									<entry name="anrede" outkey="18"/>
+									<entry name="vorname">
+										<entry name="name" outkey="64"/>
+									</entry>
+									<entry name="familienname">
+										<entry name="name" outkey="65"/>
+									</entry>
+									<entry name="geburtsname">
+										<entry name="name" outkey="66"/>
+									</entry>
+								</entry>
+								<entry name="geschlecht">
+									<entry name="geschlecht">
+										<entry name="code" ns="1" outkey="67"/>
+									</entry>
+								</entry>
+								<entry name="geburt">
+									<entry name="datum" outkey="47"/>
+									<entry name="geburtsort" expanded="1">
+										<entry name="ort" outkey="48"/>
+										<entry name="staat">
+											<entry name="staat">
+												<entry name="code" ns="1" outkey="49"/>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+								<entry name="staatsangehoerigkeit" expanded="1">
+									<entry name="staatsangehoerigkeit" expanded="1">
+										<entry name="code" ns="1" outkey="68"/>
+									</entry>
+								</entry>
+								<entry name="anschrift" outkey="36"/>
+								<entry name="kommunikation" outkey="1"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="NatuerlichePerson">
+							<root>
+								<entry name="NatuerlichePerson" ns="http://xoev.de/schemata/xfall_daten/4_0_0" type="xml-type"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="split-get-first-last-item" library="antavent" blackbox="0" uid="189" kind="19" visible="0">
+					<view ltx="423" lty="2" rbx="560" rby="36"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="input" inpkey="13" componentid="52"/>
+							<entry name="splitter" componentid="51"/>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="first-item" outkey="14" componentid="45"/>
+							<entry name="last-item" outkey="15" componentid="46"/>
+						</root>
+					</data>
+				</component>
+				<component name="extract-communication" library="antavent" blackbox="0" uid="184" kind="19" visible="0">
+					<view ltx="423" lty="94" rbx="680" rby="146"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="Kommunikation" ns="1" componentid="73" expanded="1">
+								<entry name="Kommunikation" inpkey="2"/>
+							</entry>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="email-addresses" outkey="3" componentid="72"/>
+							<entry name="telephone" outkey="4" componentid="74"/>
+							<entry name="telefax" outkey="5" componentid="75"/>
+						</root>
+					</data>
+				</component>
+				<component name="xfall_anschrift_to_ivb_postanschrift" library="user" blackbox="0" uid="197" kind="19" visible="0">
+					<view ltx="459" lty="414" rbx="758" rby="466"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="xfall_daten_050_gewerbe" ns="1" componentid="195" expanded="1">
+								<entry name="anschrift" inpkey="40"/>
+							</entry>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="IVBAkteA1" ns="1" componentid="196" expanded="1">
+								<entry name="Postanschrift" outkey="41"/>
+							</entry>
+						</root>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges>
+					<edge edgekey="9">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="42">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="43">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+				</edges>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="2" edgekey="9"/>
+							<edge vertexkey="75" edgekey="78"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="8" edgekey="10"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="4">
+						<edges>
+							<edge vertexkey="6" edgekey="11"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="7" edgekey="12"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="14">
+						<edges>
+							<edge vertexkey="17" edgekey="19"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="15">
+						<edges>
+							<edge vertexkey="16" edgekey="20"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="18">
+						<edges>
+							<edge vertexkey="13" edgekey="21"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="36">
+						<edges>
+							<edge vertexkey="40" edgekey="43"/>
+							<edge vertexkey="76" edgekey="79"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="41">
+						<edges>
+							<edge vertexkey="37" edgekey="42"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="47">
+						<edges>
+							<edge vertexkey="46" edgekey="50"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="48">
+						<edges>
+							<edge vertexkey="44" edgekey="51"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="49">
+						<edges>
+							<edge vertexkey="45" edgekey="52"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="53">
+						<edges>
+							<edge vertexkey="56" edgekey="59"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="54">
+						<edges>
+							<edge vertexkey="57" edgekey="60"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="64">
+						<edges>
+							<edge vertexkey="22" edgekey="69"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="65">
+						<edges>
+							<edge vertexkey="23" edgekey="70"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="66">
+						<edges>
+							<edge vertexkey="24" edgekey="71"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="67">
+						<edges>
+							<edge vertexkey="25" edgekey="72"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="68">
+						<edges>
+							<edge vertexkey="55" edgekey="73"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="77">
+						<edges>
+							<edge vertexkey="74" edgekey="80"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="xfall_anschrift_to_ivb_postanschrift" library="user" blackbox="0" uid="192" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="document" library="xml" uid="196" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="914" rbx="1202" rby="496"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="Postanschrift" inpkey="4" expanded="1">
+								<entry name="Postadresse_Straßename" inpkey="12"/>
+								<entry name="Postadresse_Hausnummer" inpkey="13"/>
+								<entry name="Postadresse_Postleitzahl" inpkey="14"/>
+								<entry name="Postadresse_Ort" inpkey="15"/>
+								<entry name="Postadresse_Staatenverzeichnis_ID" inpkey="23"/>
+								<entry name="Postadresse_Staatenverzeichnis_Verzeichnis_ID" inpkey="24"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-1.xsd"/>
+						<wsdl/>
+						<parameter usageKind="output" name="IVBAkteA1">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgänge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgang" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Einzelgewerbetreibender" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Person" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Postanschriften" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Postanschrift" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="195" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view rbx="188" rby="497"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="anschrift" outkey="3" expanded="1">
+								<entry name="strasse" outkey="8"/>
+								<entry name="hausnummer" outkey="9"/>
+								<entry name="postleitzahl" outkey="10"/>
+								<entry name="ort" outkey="11"/>
+								<entry name="staat" expanded="1">
+									<entry name="staat" expanded="1">
+										<entry name="code" ns="1" outkey="25"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="xfall_daten_050_gewerbe">
+							<root>
+								<entry name="NatuerlichePerson" ns="http://xoev.de/schemata/xfall_daten/4_0_0" type="xml-type"/>
+								<entry name="anschrift" ns="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="split-get-first-last-item" library="antavent" blackbox="0" uid="198" kind="19" visible="0">
+					<view ltx="461" lty="175" rbx="598" rby="209"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="input" inpkey="20" componentid="52"/>
+							<entry name="splitter" componentid="51"/>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="first-item" outkey="21" componentid="45"/>
+							<entry name="last-item" outkey="22" componentid="46"/>
+						</root>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="4" edgekey="7"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="8">
+						<edges>
+							<edge vertexkey="12" edgekey="16"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="9">
+						<edges>
+							<edge vertexkey="13" edgekey="17"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="10">
+						<edges>
+							<edge vertexkey="14" edgekey="18"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="11">
+						<edges>
+							<edge vertexkey="15" edgekey="19"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="21">
+						<edges>
+							<edge vertexkey="24" edgekey="26"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="22">
+						<edges>
+							<edge vertexkey="23" edgekey="31"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="25">
+						<edges>
+							<edge vertexkey="20" edgekey="28"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="get_Antragsteller" library="antavent" blackbox="0" uid="165" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="document" library="xml" uid="169" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="-17" rbx="149" rby="384"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								</namespaces>
+							</header>
+							<entry name="BeteiligteNatPerson" ns="1" expanded="1">
+								<entry name="rolle" ns="1" expanded="1">
+									<entry name="code" outkey="9"/>
+								</entry>
+								<entry name="natuerlichePerson" ns="1" outkey="22"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="xfall_daten_050_gewerbe">
+							<root>
+								<entry name="BeteiligteNatPerson" ns="http://xoev.de/schemata/xfall_daten/4_0_0" type="xml-type"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="equal" library="core" uid="167" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="2"/>
+						<datapoint pos="1" key="7"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="4"/>
+					</targets>
+					<view ltx="297" lty="-13" rbx="350" rby="43"/>
+				</component>
+				<component name="constant" library="core" uid="166" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="195" lty="-13" rbx="250" rby="5"/>
+					<data>
+						<constant value="AS" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="170" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="934" lty="-13" rbx="1222" rby="317"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="Person" inpkey="10" expanded="1"/>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-1.xsd"/>
+						<wsdl/>
+						<parameter usageKind="output" name="IVBAktexFallDatenGewerbeAnmeldung">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgänge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgang" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Einzelgewerbetreibender" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Person" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="xfd:natuerlichePerson" library="core" uid="168" kind="3">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="3"/>
+						<datapoint pos="1" key="5"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="6"/>
+						<datapoint/>
+					</targets>
+					<view ltx="407" lty="-13" rbx="540" rby="43"/>
+				</component>
+				<component name="xfall_person_to_ivb_person" library="antavent" blackbox="0" uid="266" kind="19" visible="0">
+					<view ltx="566" rbx="883" rby="25"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="NatuerlichePerson" ns="1" componentid="72" expanded="1">
+								<entry name="NatuerlichePerson" inpkey="38"/>
+							</entry>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="Person" ns="1" componentid="70" expanded="1">
+								<entry name="Person" outkey="39"/>
+							</entry>
+						</root>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges>
+					<edge edgekey="24">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="40">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="41">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+				</edges>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="2" edgekey="11"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="4">
+						<edges>
+							<edge vertexkey="5" edgekey="23"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="38" edgekey="41"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="9">
+						<edges>
+							<edge vertexkey="7" edgekey="15"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="22">
+						<edges>
+							<edge vertexkey="3" edgekey="24"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="39">
+						<edges>
+							<edge vertexkey="10" edgekey="40"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="gewerbeeintrag_to_registereintrag" library="antavent" blackbox="0" uid="215" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="constant" library="core" uid="219" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="737" lty="189" rbx="897" rby="207"/>
+					<data>
+						<constant value="Handels-, Genossenschafts- oder Vereinsregister" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="217" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="1046" lty="70" rbx="1310" rby="270"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="Registereintrag" inpkey="10" expanded="1">
+								<entry name="Nummer" inpkey="2"/>
+								<entry name="Register" expanded="1">
+									<entry name="Register" expanded="1">
+										<entry name="Typ" inpkey="3"/>
+										<entry name="Ort" inpkey="4"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-1.xsd"/>
+						<wsdl/>
+						<parameter usageKind="output" name="Registereintrag">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgänge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgang" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="meldender_Gewerbebetrieb" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Gewerbebetrieb" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Registereinträge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Registereintrag" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="218" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="137" lty="70" rbx="317" rby="270"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								</namespaces>
+							</header>
+							<entry name="Gewerbeeintrag" expanded="1">
+								<entry name="nr" outkey="5"/>
+								<entry name="ort" outkey="6"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="Gewerbeeintrag">
+							<root>
+								<entry name="Gewerbeeintrag" ns="http://xoev.de/schemata/xfall_daten/4_0_0" type="xml-type"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="3" edgekey="7"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="2" edgekey="8"/>
+							<edge vertexkey="10" edgekey="13"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="4" edgekey="9"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="erlaubnis_to_registereintrag" library="antavent" blackbox="0" uid="222" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="constant" library="core" uid="228" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="8"/>
+					</targets>
+					<view ltx="795" lty="159" rbx="925" rby="177"/>
+					<data>
+						<constant value="Gewerbeerlaubnis" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="225" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="58" lty="54" rbx="208" rby="254"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								</namespaces>
+							</header>
+							<entry name="Genehmigung" expanded="1">
+								<entry name="erteilt" outkey="1"/>
+								<entry name="datum" outkey="2"/>
+								<entry name="geber" outkey="3"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="Genehmigung">
+							<root>
+								<entry name="Genehmigung" ns="http://xoev.de/schemata/xfall_daten/4_0_0" type="xml-type"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="224" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="964" lty="54" rbx="1228" rby="254"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="Registereintrag" inpkey="4" expanded="1">
+								<entry name="Gültigkeitsbeginndatum" inpkey="5"/>
+								<entry name="Register" expanded="1">
+									<entry name="Register" expanded="1">
+										<entry name="Typ" inpkey="6"/>
+										<entry name="Name" inpkey="7"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-1.xsd"/>
+						<wsdl/>
+						<parameter usageKind="output" name="Registereintrag">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgänge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgang" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="meldender_Gewerbebetrieb" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Gewerbebetrieb" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Registereinträge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Registereintrag" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="4" edgekey="9"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="2">
+						<edges>
+							<edge vertexkey="5" edgekey="10"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="7" edgekey="11"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="8">
+						<edges>
+							<edge vertexkey="6" edgekey="12"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="handwerkskarte_to_registereintrag" library="user" blackbox="0" uid="231" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="result" library="core" uid="232" kind="7">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<view ltx="1179" lty="100" rbx="1234" rby="139"/>
+					<data>
+						<output datatype="string"/>
+						<wsdl/>
+						<parameter usageKind="output" name="result"/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<vertices/>
+			</graph>
+		</structure>
+	</component>
+	<component name="handwerkskarte_to_registereintrag" library="antavent" blackbox="0" uid="233" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="constant" library="core" uid="239" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="4"/>
+					</targets>
+					<view ltx="758" lty="223" rbx="878" rby="241"/>
+					<data>
+						<constant value="Handwerkskarte" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="236" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="7" lty="99" rbx="157" rby="299"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								</namespaces>
+							</header>
+							<entry name="Genehmigung" expanded="1">
+								<entry name="erteilt" outkey="11"/>
+								<entry name="datum" outkey="5"/>
+								<entry name="geber" outkey="6"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="Genehmigung">
+							<root>
+								<entry name="Genehmigung" ns="http://xoev.de/schemata/xfall_daten/4_0_0" type="xml-type"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="235" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="948" lty="100" rbx="1206" rby="299"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="Registereintrag" inpkey="10" expanded="1">
+								<entry name="Gültigkeitsbeginndatum" inpkey="1"/>
+								<entry name="Register" expanded="1">
+									<entry name="Register" expanded="1">
+										<entry name="Typ" inpkey="2"/>
+										<entry name="Name" inpkey="3"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-1.xsd"/>
+						<wsdl/>
+						<parameter usageKind="output" name="Registereintrag">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgänge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgang" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="meldender_Gewerbebetrieb" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Gewerbebetrieb" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Registereinträge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Registereintrag" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="4">
+						<edges>
+							<edge vertexkey="2" edgekey="7"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="1" edgekey="8"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="3" edgekey="9"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="11">
+						<edges>
+							<edge vertexkey="10" edgekey="12"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="aufenthaltsgenehmigung_to_registereintrag" library="antavent" blackbox="0" uid="254" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="document" library="xml" uid="262" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="61" lty="263" rbx="206" rby="353"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								</namespaces>
+							</header>
+							<entry name="Genehmigung" expanded="1">
+								<entry name="erteilt" outkey="13"/>
+								<entry name="zusatz" outkey="16"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="auflagen">
+							<root>
+								<entry name="Genehmigung" ns="http://xoev.de/schemata/xfall_daten/4_0_0" type="xml-type"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="259" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="7"/>
+					</targets>
+					<view ltx="775" lty="181" rbx="932" rby="199"/>
+					<data>
+						<constant value="Aufenthaltsgenehmigung" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="260" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="61" lty="72" rbx="206" rby="187"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								</namespaces>
+							</header>
+							<entry name="Genehmigung" expanded="1">
+								<entry name="erteilt" outkey="1"/>
+								<entry name="datum" outkey="5"/>
+								<entry name="geber" outkey="3"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="aufenthaltsgenehmigung">
+							<root>
+								<entry name="Genehmigung" ns="http://xoev.de/schemata/xfall_daten/4_0_0" type="xml-type"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="258" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="968" lty="55" rbx="1226" rby="254"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace/>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="Registereintrag" ns="1" inpkey="2" expanded="1">
+								<entry name="Auflagen_Beschränkungen" ns="1" inpkey="17" expanded="1">
+									<entry name="#text" inpkey="18"/>
+								</entry>
+								<entry name="Gültigkeitsbeginndatum" ns="1" inpkey="6"/>
+								<entry name="Register" ns="1" expanded="1">
+									<entry name="Register" ns="1" expanded="1">
+										<entry name="Typ" ns="1" inpkey="8"/>
+										<entry name="Name" ns="1" inpkey="4"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-1.xsd"/>
+						<wsdl/>
+						<parameter usageKind="output" name="Registereintrag">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgänge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgang" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="meldender_Gewerbebetrieb" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Gewerbebetrieb" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Registereinträge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Registereintrag" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="2" edgekey="9"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="4" edgekey="10"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="6" edgekey="11"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="7">
+						<edges>
+							<edge vertexkey="8" edgekey="12"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="13">
+						<edges>
+							<edge vertexkey="17" edgekey="19"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="16">
+						<edges>
+							<edge vertexkey="18" edgekey="20"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="xfall_persons_to_ivb_persons" library="user" blackbox="0" uid="289" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="document" library="xml" uid="296" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="16" lty="47" rbx="195" rby="127"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								</namespaces>
+							</header>
+							<entry name="BeteiligteNatPerson" outkey="14" expanded="1"/>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="xfall_daten_050_gewerbe">
+							<root>
+								<entry name="BeteiligteNatPerson" ns="http://xoev.de/schemata/xfall_daten/4_0_0" type="xml-type"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="298" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="16" lty="190" rbx="217" rby="231"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								</namespaces>
+							</header>
+							<entry name="betriebsleiter" outkey="16"/>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="xfall_daten_050_gewerbe3">
+							<root>
+								<entry name="gewerbe.gewerbeanmeldung.05001002" ns="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								<entry name="betriebsleiter" ns="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="xfall_person_to_ivb_person" library="antavent" blackbox="0" uid="292" kind="19" visible="0">
+					<view ltx="315" lty="190" rbx="621" rby="223"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="NatuerlichePerson" ns="1" componentid="72" expanded="1">
+								<entry name="NatuerlichePerson" inpkey="12"/>
+							</entry>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="Person" ns="1" componentid="70" expanded="1">
+								<entry name="Person" outkey="6"/>
+							</entry>
+						</root>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="297" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="26" lty="302" rbx="217" rby="336"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								</namespaces>
+							</header>
+							<entry name="gewerbeeintrag" outkey="15"/>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="xfall_daten_050_gewerbe2">
+							<root>
+								<entry name="gewerbe.gewerbeanmeldung.05001002" ns="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								<entry name="gewerbeeintrag" ns="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="{http://inno-vplan-transf..." library="core" uid="295" kind="3">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="11"/>
+						<datapoint pos="1" key="4"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="1"/>
+						<datapoint/>
+					</targets>
+					<view ltx="745" lty="339" rbx="848" rby="395"/>
+				</component>
+				<component name="document" library="xml" uid="300" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="11" lty="395" rbx="217" rby="434"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								</namespaces>
+							</header>
+							<entry name="gesetzlicherVertreter" outkey="18"/>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="xfall_daten_050_gewerbe5">
+							<root>
+								<entry name="gewerbe.gewerbeanmeldung.05001002" ns="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								<entry name="gesetzlicherVertreter" ns="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="xfall_person_to_ivb_person" library="antavent" blackbox="0" uid="293" kind="19" visible="0">
+					<view ltx="315" lty="401" rbx="621" rby="434"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="NatuerlichePerson" ns="1" componentid="72" expanded="1">
+								<entry name="NatuerlichePerson" inpkey="9"/>
+							</entry>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="Person" ns="1" componentid="70" expanded="1">
+								<entry name="Person" outkey="5">
+									<entry name="Kontakte">
+										<entry name="Kontakt" expanded="1"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="303" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="912" lty="164" rbx="1197" rby="223"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="Betriebsleiter_Vertretungsberechtigter" inpkey="40" expanded="1">
+								<entry name="Person" inpkey="41"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-1.xsd"/>
+						<wsdl/>
+						<parameter usageKind="output" name="IVBAktexFallDatenGewerbeAnmeldung3">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgänge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgang" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Betriebsleiter_Vertretungsberechtigter" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="302" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="981" lty="47" rbx="1197" rby="94"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="antragstellende_Person" inpkey="21" expanded="1">
+								<entry name="Person" inpkey="22"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-1.xsd"/>
+						<wsdl/>
+						<parameter usageKind="output" name="IVBAktexFallDatenGewerbeAnmeldung2">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgänge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgang" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="antragstellende_Person" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="305" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="981" lty="311" rbx="1197" rby="355"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="Einzelgewerbetreibender" inpkey="42" expanded="1">
+								<entry name="Person" inpkey="43"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-1.xsd"/>
+						<wsdl/>
+						<parameter usageKind="output" name="IVBAktexFallDatenGewerbeAnmeldung5">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgänge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgang" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Einzelgewerbetreibender" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="301" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="1000" lty="422" rbx="1197" rby="462"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="gesetzliche_Vertreter" inpkey="19" expanded="1">
+								<entry name="Person" inpkey="20"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-1.xsd"/>
+						<wsdl/>
+						<parameter usageKind="output" name="IVBAktexFallDatenGewerbeAnmeldung">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgänge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgang" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="gesetzliche_Vertreter" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="299" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="11" lty="505" rbx="274" rby="542"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								</namespaces>
+							</header>
+							<entry name="geschaeftsfuehrenderGesellschafter" outkey="17"/>
+						</root>
+						<document schema="..\_XSD\xfall_4_xml_schemata_xfall-daten\xsd\xfall_daten_050_gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="xfall_daten_050_gewerbe4">
+							<root>
+								<entry name="gewerbe.gewerbeanmeldung.05001002" ns="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+								<entry name="geschaeftsfuehrenderGesellschafter" ns="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="xfall_person_to_ivb_person" library="antavent" blackbox="0" uid="294" kind="19" visible="0">
+					<view ltx="315" lty="505" rbx="621" rby="538"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="NatuerlichePerson" ns="1" componentid="72" expanded="1">
+								<entry name="NatuerlichePerson" inpkey="2"/>
+							</entry>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="Person" ns="1" componentid="70" expanded="1">
+								<entry name="Person" outkey="8">
+									<entry name="Kontakte">
+										<entry name="Kontakt" expanded="1"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+					</data>
+				</component>
+				<component name="document" library="xml" uid="304" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="932" lty="521" rbx="1197" rby="566"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="geschäftsführende_Gesellschafter" inpkey="44" expanded="1">
+								<entry name="Person" inpkey="45"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-1.xsd"/>
+						<wsdl/>
+						<parameter usageKind="output" name="IVBAktexFallDatenGewerbeAnmeldung4">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgänge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgang" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="geschäftsführende_Gesellschafter" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="is_einzelgewerbetreibender" library="antavent" blackbox="0" uid="290" kind="19" visible="0">
+					<view ltx="417" lty="311" rbx="621" rby="336"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="Gewerbeeintrag" ns="1" componentid="43" expanded="1">
+								<entry name="Gewerbeeintrag" inpkey="10"/>
+							</entry>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="result2" outkey="3" componentid="47"/>
+						</root>
+					</data>
+				</component>
+				<component name="get_Antragsteller" library="antavent" blackbox="0" uid="291" kind="19" visible="0">
+					<view ltx="315" lty="47" rbx="607" rby="82"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://xoev.de/schemata/xfall_daten/4_0_0"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="xfall_daten_050_gewerbe" ns="1" componentid="169" expanded="1">
+								<entry name="BeteiligteNatPerson" inpkey="13"/>
+							</entry>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="IVBAktexFallDatenGewerbeAnmeldung" ns="1" componentid="170" expanded="1">
+								<entry name="Person" outkey="7"/>
+							</entry>
+						</root>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges>
+					<edge edgekey="27">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="28">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="30">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="31">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="32">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="33">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="35">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="36">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="46">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="47">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="48">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+				</edges>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="43" edgekey="46"/>
+							<edge vertexkey="42" edgekey="49"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="4" edgekey="37"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="11" edgekey="36"/>
+							<edge vertexkey="19" edgekey="38"/>
+							<edge vertexkey="20" edgekey="28"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="6">
+						<edges>
+							<edge vertexkey="41" edgekey="47"/>
+							<edge vertexkey="40" edgekey="50"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="7">
+						<edges>
+							<edge vertexkey="21" edgekey="39"/>
+							<edge vertexkey="22" edgekey="33"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="8">
+						<edges>
+							<edge vertexkey="45" edgekey="48"/>
+							<edge vertexkey="44" edgekey="51"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="14">
+						<edges>
+							<edge vertexkey="13" edgekey="31"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="15">
+						<edges>
+							<edge vertexkey="10" edgekey="32"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="16">
+						<edges>
+							<edge vertexkey="12" edgekey="30"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="17">
+						<edges>
+							<edge vertexkey="2" edgekey="35"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="18">
+						<edges>
+							<edge vertexkey="9" edgekey="27"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="map_zahl_to_Anzahl" library="user" blackbox="0" uid="585" editable="1" inline="1">
+		<properties/>
+		<description/>
+		<structure>
+			<children>
+				<component name="exists" library="core" uid="586" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="1"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="3"/>
+					</targets>
+					<view ltx="250" rbx="317" rby="39"/>
+				</component>
+				<component name="constant" library="core" uid="587" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="5"/>
+					</targets>
+					<view ltx="260" lty="117" rbx="298" rby="135"/>
+					<data>
+						<constant value="0" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="node" library="core" uid="590" kind="6">
+					<properties/>
+					<sources>
+						<datapoint/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="10"/>
+					</targets>
+					<view rbx="73" rby="39"/>
+					<data>
+						<input datatype="int"/>
+						<wsdl/>
+						<parameter usageKind="input" name="node"/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="588" kind="4">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="4"/>
+						<datapoint pos="1" key="7"/>
+						<datapoint pos="2" key="6"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="2"/>
+					</targets>
+					<view ltx="367" lty="21" rbx="464" rby="97"/>
+				</component>
+				<component name="result" library="core" uid="592" kind="7">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="17"/>
+					</sources>
+					<view ltx="834" lty="21" rbx="889" rby="60"/>
+					<data>
+						<output datatype="anySimpleType"/>
+						<wsdl/>
+						<parameter usageKind="output" name="result"/>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="2">
+						<edges>
+							<edge vertexkey="17" edgekey="18"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="3">
+						<edges>
+							<edge vertexkey="4" edgekey="13"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="6" edgekey="14"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="10">
+						<edges>
+							<edge vertexkey="1" edgekey="15"/>
+							<edge vertexkey="7" edgekey="16"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+</mapping>

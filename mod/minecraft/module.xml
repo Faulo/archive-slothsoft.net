@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<!-- pages -->
+	<fragment name="home">
+		<struc name="default"/>
+		<style name="default"/>
+		<fragment name="content">
+			<template name="home"/>
+			<struc name="/core/DOM"/>
+			<res name="/core/sites" load="xml"/>
+			<res name="news" load="xml"/>
+			<call name="log-wrapper" as="log"/>
+			<call name="/chat/default" as="chat-short"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="chat">
+		<param name="chat-database" value=""/>
+		<param name="chat-duration" value="7"/>
+		<template name="/chat/shoutbox"/>
+		<call name="/chat/default" as="chat"/>
+	</fragment>
+	
+	<fragment name="news">
+		<struc name="default"/>
+		<style name="default"/>
+		<fragment name="content">
+			<template name="news"/>
+			<res name="news" load="xml"/>
+		</fragment>
+	</fragment>
+	
+	<fragment name="log">
+		<struc name="default"/>
+		<style name="default"/>
+		<call name="log-wrapper" as="content"/>
+	</fragment>
+	<fragment name="archive">
+		<struc name="default"/>
+		<style name="default"/>
+		<call name="/chat/archive" as="content"/>
+	</fragment>
+	<fragment name="log-wrapper">
+		<template name="log"/>
+		<call name="log-content"/>
+	</fragment>
+	<fragment name="log-content">
+		<template name="log.content"/>
+		<data name="log"/>
+		<data name="status"/>
+	</fragment>
+	<fragment name="shoutbox"><struc name="default"/>
+		<style name="default"/>
+		<call name="/chat/default" as="content"/>
+	</fragment>
+	<fragment name="maps"><struc name="default"/>
+		<style name="default"/>
+		<call name="maps-content" as="content"/>
+	</fragment>
+	<fragment name="map-2D-normal"><struc name="map"/>
+		<res name="map-2D-n" as="map"/>
+	</fragment>
+	<fragment name="map-3D-normal"><struc name="map"/>
+		<res name="map-3D-n" as="map"/>
+	</fragment>
+	<fragment name="map-2D-cave"><struc name="map"/>
+		<res name="map-2D-c" as="map"/>
+	</fragment>
+	<fragment name="map-3D-cave"><struc name="map"/>
+		<res name="map-3D-c" as="map"/>
+	</fragment>
+	<fragment name="infos"><struc name="default"/>
+		<style name="default"/>
+		<call name="infos-content" as="content"/>
+	</fragment>
+	<fragment name="statistic"><struc name="default"/>
+		<style name="default"/>
+		<call name="statistic-content" as="content"/>
+	</fragment>
+	<fragment name="law"><struc name="default"/>
+		<style name="default"/>
+		<call name="law-content" as="content"/>
+	</fragment>
+	<fragment name="mall"><struc name="default"/>
+		<style name="default"/>
+		<call name="mall-content" as="content"/>
+	</fragment>
+	<fragment name="workshop"><struc name="default"/>
+		<style name="default"/>
+		<call name="workshop-content" as="content"/>
+	</fragment>
+	<fragment name="players"><struc name="default"/>
+		<style name="default"/>
+		<call name="players-content" as="content"/>
+	</fragment>
+	<fragment name="pics"><struc name="default"/>
+		<style name="default"/>
+		<call name="pics-content" as="content"/>
+	</fragment>
+	<fragment name="mapTest"><struc name="default"/>
+		<style name="default"/>
+		<res name="map-mca" as="content" load="xml"/>
+	</fragment>
+	
+	<!--
+	<fragment name="log-content"><template name="log"/>
+		<style name="log"/>
+		<data name="log" as="currentLog"/>
+		<resDir name="log"/>
+	</fragment>
+	-->
+	<fragment name="status">
+		<template name="status"/>
+		<struc name="/core/DOM"/>
+		<data name="status"/>
+	</fragment>
+	<fragment name="maps-content"><template name="maps"/>
+		<resDir name="maps" load="status"/>
+		<!--<resDir name="/slothsoft/icons" as="icons" load="base64"/>-->
+	</fragment>
+	<fragment name="infos-content"><template name="infos"/>
+		<res name="hardware" load="xml"/>
+		<res name="server" load="xml"/>
+	</fragment>
+	<fragment name="statistic-content"><template name="infos"/>
+		<res name="info" load="xml"/>
+		<res name="mapping" load="xml"/>
+		<!--<resDir name="blocks"/>-->
+	</fragment>
+	<fragment name="law-content"><template name="law"/></fragment>
+	<fragment name="mall-content"><template name="mall"/>
+		<res name="trade" load="xml"/>
+		<!--<resDir name="blocks"/>-->
+	</fragment>
+	<fragment name="workshop-content"><template name="workshop"/>
+		<res name="craft" load="xml"/>
+		<!--<resDir name="blocks"/>-->
+	</fragment>
+	<fragment name="players-content">
+		<template name="players"/>
+		<resDir name="players" load="status xml"/>
+		<!--<resDir name="blocks"/>-->
+		<res name="heart.0"/>
+		<res name="heart.1"/>
+		<res name="heart.2"/>
+		<res name="food.0"/>
+		<res name="food.1"/>
+		<res name="food.2"/>
+	</fragment>
+	<fragment name="pics-content">
+		<template name="pics"/>
+		<data name="pics-upload"/>
+		<resDir name="pics" load="status"/>
+		<!--<resDir name="/slothsoft/icons" as="icons" load="base64"/>-->
+	</fragment>
+	
+	<struc name="map">
+		<template name="_map"/>
+		<style name="/slothsoft/default"/>
+		<style name="/slothsoft/layout"/>
+		<style name="/slothsoft/fonts"/>
+		<style name="/slothsoft/colors"/>
+		<style name="default"/>
+		<call name="/slothsoft/navi" as="navi"/>
+		<call name="/slothsoft/validator" as="validator"/>
+		<call name="/slothsoft/dict.select" as="dict.select"/>
+	</struc>
+	
+	<!-- Resources -->
+	<!-- misc -->
+	<resource name="news" path="news.xml" type="application/xml"/>
+	<resource name="tectonicus" path="tectonicus/index.html" type="text/html"/>
+	<resource name="tectonicus" path="tectonicus_old/index.html" type="text/html"/>
+	<resource name="log" path="log.xml" type="application/xml"/>
+	
+	<resourceDir name="log" path="log" type="application/xml"/>
+	<resource name="players-faulo" path="players/Faulo" type="application/x-nbt"/>
+	<resourceDir name="players" path="C:\Minecraft\players" type="application/x-nbt"/>
+	<resource name="map-mcr" path="r.0.0.mcr" type="application/x-mcr"/>
+	<resource name="map-mca" path="r.-1.-1.mca" type="application/x-mca"/>
+	
+	
+	<!-- text -->
+	<resource name="hardware" path="hardware.txt" type="text/csv" del="=" sep="" cols="2" output="assoc"/>
+	<resource name="server" path="server.txt" type="text/csv" del="=" sep="" cols="2" output="assoc"/>
+	<resource name="info" path="info.txt" type="text/csv" del=":" sep="" cols="2" output="assoc"/>
+	
+	<!-- pics -->
+	<resource name="map-2D-n" path="maps/Map.2D.normal.png" type="image/png"/>
+	<resource name="map-3D-n" path="maps/Map.3D.normal.png" type="image/png"/>
+	<resource name="map-2D-c" path="maps/Map.2D.cave.png" type="image/png"/>
+	<resource name="map-3D-c" path="maps/Map.3D.cave.png" type="image/png"/>
+	
+	<resource name="heart.0" path="heart.0.svg" type="image/svg+xml"/>
+	<resource name="heart.1" path="heart.1.svg" type="image/svg+xml"/>
+	<resource name="heart.2" path="heart.2.svg" type="image/svg+xml"/>
+	<resource name="food.0" path="food.0.svg" type="image/svg+xml"/>
+	<resource name="food.1" path="food.1.svg" type="image/svg+xml"/>
+	<resource name="food.2" path="food.2.svg" type="image/svg+xml"/>
+	
+	<resourceDir name="maps" path="maps" type="image/png"/>
+	<resourceDir name="blocks" path="blocks" type="image/png"/>
+	<resourceDir name="pics" path="pictures" type="image/*"/>
+	
+	<!-- json -->
+	<resource name="chunks" path="chunks.json" type="application/json"/>
+	<resource name="craft" path="craft.json" type="application/json"/>
+	<resource name="ids" path="ids.json" type="application/json"/>
+	<resource name="import" path="import.json" type="application/json"/>
+	<resource name="mapping" path="mapping.json" type="application/json"/>
+	<resource name="trade" path="trade.json" type="application/json"/>
+	<resource name="waypoints" path="waypoints.json" type="application/json"/>
+	
+	<struc name="default">
+		<struc name="/slothsoft/default"/>
+		<call name="status"/>
+	</struc>
+</module>

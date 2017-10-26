@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us">
+
+<p key="lang/missingSloth@slothsoft.net/title">Missing Sloth - Firefox/Twitter Add-On</p>
+<p key="lang/missingSloth@slothsoft.net/download">Install Missing Sloth</p>
+<p key="lang/missingSloth@slothsoft.net/description">
+	<p>This is an add-on for Firefox that makes slight layout changes to Twitter's webpages, to make them easier to navigate.</p>
+	<p>If you're familiar with Tumblr's <a href="http://missing-e.com/" rel="external">Missing e</a> add-on then you have a good idea of what Missing Sloth is trying to be.</p>
+	<p>I'm going to write in detail about all the options available, but for now I'll just leave you with this screenshot of where to find them, after installing the add-on:
+	<br/>
+	<img src="https://pbs.twimg.com/media/Bfn-UWQCQAAaHPm.png" alt="It's right under 'Settings'."/>
+	</p>
+	<p>
+		For feedback of any kind please feel free to use the shoutbox to the right.
+	</p>
+	<p>\o/</p>
+	<p>Oh, and, uh, this is kinda what it looks like in action: <img src="http://slothsoft.net/getResource.php/dev/misc/missingSloth.png" alt="lots of stuff!"/></p>
+</p>
+<p key="lang//title">lang//title</p>
+<p key="lang//download">lang//download</p>
+<p key="lang//description">lang//description</p>
+</html>

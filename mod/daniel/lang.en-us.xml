@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us">
+
+<p key="News">News</p>
+<p key="daniel-schulz.slothsoft.net">News</p>
+<p key="daniel-schulz.slothsoft.net/content">
+	<article>
+		<h2>31.07.2017</h2>
+		<p>
+			There we go. Added more projects, and screenshots. This should suffice for a while.
+		</p>
+		<p>
+			I'll be at <a href="https://www.devcom.global/" rel="external" target="_blank">Devcom</a> August 20-24, if we met each other there, hello again, and welcome! \o/
+		</p>
+	</article>
+	<article>
+		<h2>04.07.2017</h2>
+		<p>
+			I'm finally getting around to updating this website...
+		</p>
+	</article>
+	<article>
+		<h2>10.08.2014</h2>
+		<img src="/getResource.php/daniel/images/meishi" alt="Look at me!"/>
+		<p>
+			I'm at the GDC Europe this week, so if you're reading this then it's probably because I threw one of my business cards at you and now you're wondering what's up with that URL.
+		</p>
+		<p>
+			Well, hello! Thanks for stopping by. \o/ ...I'm sorry to say but I failed to upload more stuff to here. orz
+		</p>
+		<p>
+			If you wanted to get a glimpse of what I do, maybe check out my other, not-portfolio website <a href="http://slothsoft.net/">slothsoft.net</a>. Come back here later for some vaguely defined awesome stuff. /o/
+		</p>
+	</article>
+	<article>
+		<h2>03.08.2014</h2>
+		<p>
+			This is the portfolio-to-be of Daniel Schulz.
+		</p>
+	</article>
+</p>
+
+<p key="AboutMe">About Me</p>
+<p key="AboutMe/content">
+	<article>
+		<h2>03.08.2014</h2>
+		<img src="/getResource.php/slothsoft/staff-avatars/Daniel" alt="Daniel"/>
+		<p>
+			I'm a software engineer from Dresden, Germany.
+			My current job is in web development, 
+			but I'm studying game design on the side to start working as a videogame developer at some future point.
+		</p>
+		<p>
+			I also manage Slothsoft's homepage over at <a href="http://slothsoft.net/">slothsoft.net</a>.
+		</p>
+		<p>
+			You can contact me at <a href="mailto:daniel.lio.schulz@gmail.com">daniel.lio.schulz@gmail.com</a>.
+		</p>
+		<br/>
+	</article>
+</p>
+<p key="Projects">Projects</p>
+<p key="Projects/content">
+	<article>
+		<h2>11.07.2017</h2>
+		<p>
+			This is where I put any interesting projects that illustrate my programming skills in PHP/JavaScript/XHTML/CSS (as much as that can be done without reading their source code).
+		</p>
+	</article>
+</p>
+<p key="Ambermoon">Ambermoon Savegame Editor</p>
+<p key="Ambermoon/content">
+	<article>
+		<h2>About</h2>
+		<p><a href="https://en.wikipedia.org/wiki/Ambermoon" rel="external" target="_blank">Ambermoon</a> is a 1993 video game by Thalion Software which was released for the Amiga.</p>
+		<p>It was one of the first games I've ever played and has kept a sweet spot in my heart ever since. It's an RPG where you start out as an InsertNameHere adventurer and recruit companions as you explore the game world, à la Baldur's Gate or Fallout. When I played it as a kid, it always bugged me that I couldn't change my party members' classes, names, or faces, and was instead at the mercy of what pre-defined characters already existed. Well, one day I poked around my savegames in a hex editor and realized that I could totally change these things.
+		</p>
+		<p>
+			Long story short, I created an <a href="http://slothsoft.net/Ambermoon/SavegameEditor/" rel="next" target="_blank">online savegame editor</a>.
+		</p>
+	</article>
+	<article>
+		<h2>Technical Details</h2>
+		<dl>
+			<dt>Server-side</dt>
+			<dd>PHP loads a <a href="http://slothsoft.net/getResource.php/amber/AmbermoonSavegame" rel="external" target="_blank">painstakingly-made XML file</a> that describes the individual structure of the various savegame files.</dd>
+			<dd>My editor then uses <a data-dict-replace="spec/dom"/> magic to transform this information into easily-accessible objects, up to a ratio of "1 object per 1 bit of save data".</dd>
+			<dd>Either a default "new game" save state is loaded, or a state previously saved by the user.</dd>
+			<dd>Both the editor (generated using <a data-dict-replace="spec/xslt"/>) and any requested file downloads are then transferred via my implementation of some usual HTTP goodstuff: <a data-dict-replace="spec/content-encoding"/>, <a data-dict-replace="spec/transfer-encoding"/>, <a data-dict-replace="spec/ranged-requests"/>, and others.</dd>
+			<dt>Client-side</dt>
+			<dd>HTML to display the (massive) editor.</dd>
+			<dd>CSS to make it look like the original game; <a data-dict-replace="spec/image-rendering"/> "pixelated" in particular is a godsend.</dd>
+			<dd>Also cool new stuff like <a data-dict-replace="spec/flexbox"/>.</dd>
+		</dl>
+	</article>
+	<article>
+		<h2>Screenshots</h2>
+		<figure>
+			<img src="/getResource.php/daniel/images/Ambermoon.character" alt="a form with a billion inputs"/>
+			<figcaption>
+				Well, I did say it was massive.
+			</figcaption>
+		</figure>
+		<figure>
+			<img src="/getResource.php/daniel/images/Ambermoon.contextmenu" alt="a form with a billion inputs"/>
+			<figcaption>
+				Items can be changed via an <a href="https://w3c.github.io/html/interactive-elements.html#the-menu-element" target="_blank" rel="external">HTML 5.2 context menu</a>.
+			</figcaption>
+		</figure>
+		
+		<figure>
+			<img src="/getResource.php/daniel/images/Ambermoon.original" alt="an AMIGA screenshot?!"/>
+			<figcaption>
+				For comparison, this is what the original game looked like.
+			</figcaption>
+		</figure>
+	</article>
+</p>
+<p key="Japanese">Japanese-to-English Translator</p>
+<p key="Japanese/content">
+	<article>
+		<h2>About</h2>
+		<p>
+			A couple years ago I started learning Japanese, and along the way I've created a couple of tools to help me do so.
+			One of those is a <a href="http://slothsoft.net/Japanese/Translator/" rel="next" target="_blank">Japanese-to-English Translator</a>.
+		</p>
+		<p>
+			One of the first things I noticed about Japanese is that, unlike Latin-based languages, it's not trivial to determine where a word ends and the next one begins (i.e., there's no "space" character). I found this makes using dictionaries to look up sentences incredibly frustrating, so I wrote a script that looks up every combination of adjacant characters (in an online dictionary) until a translation for every character sequence in a given sentence has been found.
+			This worked well enough for my needs, so I kept adding more features, like audio recordings or a visual aid for drawing the characters.
+		</p>
+	</article>
+	<article>
+		<h2>Technical Details</h2>
+		<dl>
+			<dt>Server-Side</dt>
+			<dd>PHP receives the user input as JSON object, transcribed into Latin, Hiragana, and Katana. This is done because the search results of online dictionaries may vary depending on which of those 3 encodings is searched for.</dd>
+			<dd>The user input is looked up in the excellent dictionary <a href="http://jisho.org" rel="external" target="_blank">jisho.org</a> (There's no special API for this, I just parse the HTML via the usual <a data-dict-replace="spec/dom"/> magic). If no result is found, the last character of user input is dropped (to be search separately later), and the process is repeated.</dd>
+			<dd>When all characters have been looked up, every word found is looked up in the dictionary <a href="http://nihongo.monash.edu/cgi-bin/wwwjdic" rel="external" target="_blank">WWWJDIC</a> to get a link to an audio file.</dd>
+			<dd>All requests made by the server are cached in a MySQL database, both to improve response time and to reduce the strain I put on the other dictionaries.</dd>
+			<dd>The translations and audio links are then sent to the client as XML document.</dd>
+			<dt>Client-Side</dt>
+			<dd>The page itself is XHTML, served by my CMS.</dd>
+			<dd>User input into the translator is transcribed every which way between Latin, Hiragana, and Katakana using an XML <a href="http://slothsoft.net/getResource.php/slothsoft/kana" rel="external" target="_blank">transcription table</a>. This happens in real-time, so the translator can function as a substitute Japanese keyboard, too.</dd>
+			<dd>When user inaction is detected, the input is sent to the server to be processed as described above.</dd>
+			<dd>The server response is converted to HTML via <a data-dict-replace="spec/xslt"/>.</dd>
+		</dl>
+	</article>
+	<article>
+		<h2>Screenshots</h2>
+		<figure>
+			<img src="/getResource.php/daniel/images/Japanese.translator" alt="Japanese-English Translator"/>
+			<figcaption>
+				You search for a sequence of characters; the translator transcribes them, breaks them up into words, translates them into English, reads them out to you, and tells you how to draw them.
+			</figcaption>
+		</figure>
+	</article>
+</p>
+<p key="MTG">Magic: The Gathering Search Engine</p>
+<p key="MTG/content">
+	<article>
+		<h2>About</h2>
+		<p>
+			<a href="https://en.wikipedia.org/wiki/Magic:_The_Gathering" rel="external" target="_blank">Magic: The Gathering</a> is a trading card game created by Richard Garfield and published by Wizards of the Coast.
+		</p>
+		<p>
+			Not satisfied with the speed, reliability, and ease-of-use of their official card search engine over at <a href="http://gatherer.wizards.com/Pages/Default.aspx" rel="external" target="_blank">gatherer.wizards.com</a>, I created my own: <a href="http://mtg.slothsoft.net/" rel="next" target="_blank">mtg.slothsoft.net</a>.
+		</p>
+		<p>
+			It regularly downloads the entirety of Wizards' card database and cross-references the cards with other card databases for, among other things, higher-quality images and current market prices. Its interface is designed to work on desktop as well as mobile, and a client-side image cache ensures peak perfomance at minimal traffic.
+		</p>
+	</article>
+	<article>
+		<h2>Technical Details</h2>
+		<dl>
+			<dt>Server-side</dt>
+			<dd>Multi-threaded PHP (via <a data-dict-replace="spec/pthreads"/>) to download and parse the card data (using my personal implementation of <a data-dict-replace="spec/xmlhttprequest"/>, and PHP's native implementation of <a data-dict-replace="spec/xpath"/>).</dd>
+			<dd>Stored in a <a data-dict-replace="spec/mysql"/> database.</dd>
+			<dd><a data-dict-replace="spec/xslt"/> (with some <a data-dict-replace="spec/exslt"/>) to generate the frontend.</dd>
+			<dt>Client-side</dt>
+			<dd>HTML to display the search form and the results.</dd>
+			<dd>The image cache is based on a (shared) <a data-dict-replace="spec/webworkers"/> and stores all previously requested card images in a local <a data-dict-replace="spec/indexedDB"/>, and it displays its status via an <a data-dict-replace="spec/html-template"/>.</dd>
+		</dl>
+	</article>
+	<article>
+		<h2>Screenshots</h2>
+		<figure>
+			<img src="/getResource.php/daniel/images/MTG.form" alt="Search Form"/>
+			<figcaption>
+				That's a lot of options.
+			</figcaption>
+		</figure>
+		<figure>
+			<img src="/getResource.php/daniel/images/MTG.planeswalkers" alt="Standard Planeswalkers"/>
+			<figcaption>
+				Which blue planeswalkers are currently legal in Standard?
+			</figcaption>
+		</figure>
+		<figure>
+			<img src="/getResource.php/daniel/images/MTG.closeup" alt="1 card all big and stuff"/>
+			<figcaption>
+				Close-up for the beautiful artwork!
+			</figcaption>
+		</figure>
+	</article>
+</p>
+<p key="Tetris">Tetris</p>
+<p key="Tetris/content">
+	<article>
+		<h2>About</h2>
+		<p>
+			A tiny proof-of-concept HTML Tetris implementation.
+		</p>
+		<p>
+			This game was only supposed to be a placeholder until I cobble something together that's actually worth showing, but somehow it's still here. I updated the code to make it use a couple fancy new(ish) features like <a href="https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#dom-window-requestanimationframe" rel="external" target="_blank">requestAnimationFrame</a>, but it's still horribly outdated and has zero support for mobile, so it's gonna disappear soon. I hope.
+		</p>
+	</article>
+	<article>
+		<h2>Technical Details</h2>
+		<p>-</p>
+	</article>
+	<article>
+		<h2>Screenshots</h2>
+		<p>-</p>
+	</article>
+</p>
+<p key="Unicode">Unicode Text Converter</p>
+<p key="Unicode/content">
+	<article>
+		<h2>About</h2>
+		<p><a href="http://slothsoft.net/UnicodeMapper/" rel="next" target="_blank">Unicode Text Converter</a></p>
+	</article>
+	<article>
+		<h2>Technical Details</h2>
+		<p>-</p>
+	</article>
+	<article>
+		<h2>Screenshots</h2>
+		<p>-</p>
+	</article>
+</p>
+<p key="LODB">E-Learning Specification, Viewer, Editor</p>
+<p key="LODB/content">
+	<article>
+		<h2>About</h2>
+		<p>
+		The <a href="https://tu-dresden.de" rel="external" target="_blank">Technische Universität Dresden</a> offers language courses, and they had contracted my then-place of employment, <a href="http://www.ibp-dresden.de/" rel="external" target="_blank">IBP Dresden</a>, with developing and maintaining an online e-learning tool. I was the project lead and main designer/programmer, so I wrote nearly all of its code, which I figure is a good enough reason to include it in my portfolio.
+		</p>
+		<p>
+		The goal of the project was to create a website where students could log on and study languages in pre-defined <abbr title="dubbed &quot;Learning Objects&quot; in the spec">study units</abbr>; The material should consist of reading and listening comprehensions with a variety of different tasks for the student to solve, like multiple-choice questions and clozes. As this was supposed to be a language learning tool, it was important that the user interface supported multiple languages. Furthermore, the payload of each study unit should be able to contain image, video, and audio files. For the teachers, the tool should offer a WYSIWYG-style editor to create and maintain the study units, with a particular focus on an intuitive, yet flexible interface.
+		</p>
+		<p>
+		The project consisted of 3 parts:</p>
+		<ul>
+			<li>To develop a data structure that could hold the information required by <abbr title="a.k.a., the frontend">the viewer</abbr> and <abbr title="a.k.a., the backend">the editor</abbr>. I quickly chose XML as host language and then developed an XML schema for it, both to make sure the XML produced by the editor doesn't deviate from the specification, and to give future implementers of the viewer or editor something to validate against.</li>
+			<li>To develop a viewer for <abbr title="that is, the data file">the aforementioned XML</abbr>. In order to reduce traffic and increase responsiveness, I implemented it with very few server requests, in JavaScript. The main render routine is an XSL transformation, with an optional server round-trip for those browsers that lack support for native XSLT. Traffic only occurs, aside from the static resources, for the data file of each study unit (also its media files), and to log submitted answers for teacher review.</li>
+			<li>To develop an editor that spits out data files for the viewer. This was, again, implemented almost entirely client-side in JavaScript, with server requests only done when needed to save or load the current unit. As there were a lot of user commands and data to handle, I implemented a Model-View-Controller sectioning to keep the code mostly tidy. To work around JavaScript's class inheritance wonkiness (this was before <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/create" rel="external" target="_blank">Object.create</a>), I deployed a custom-made implementation of <a href="https://en.wikipedia.org/wiki/Trait_(computer_programming)" rel="external" target="_blank">Traits</a>.</li>
+		</ul>
+	</article>
+	<article>
+		<h2>Technical Details</h2>
+		<dl>
+			<dt>Specification</dt>
+			<dd>The <a href="http://schema.ibp-dresden.de/lodb/" rel="external" target="_blank">spec</a>, written as <a data-dict-replace="spec/xsd"/>, describes the current state of development. Internally, it uses an <a data-dict-replace="spec/xslt"/> to converts the schema into a neat <a href="http://schema.ibp-dresden.de/lodb/?page=documentation" rel="external" target="_blank">documentation</a>, and a schema parser (written in PHP) to create an <a href="http://schema.ibp-dresden.de/lodb/?page=dummy" rel="external" target="_blank">example XML</a> which contains 1 copy of just about every element possible and arranged so as to be a valid document according to the spec.</dd>
+			<dt>Viewer</dt>
+			<dd>The viewer is written in JavaScript and uses <a data-dict-replace="spec/xslt"/>, with <a data-dict-replace="spec/xpath"/> to access the interactive elements of the GUI. To do drag'n'drop it uses the HTML5 <a data-dict-replace="spec/drag"/> API. In order to support mobile, the <a data-dict-replace="spec/touch"/> API was used, as well as <a data-dict-replace="spec/media-queries"/>.</dd>
+			<dt>Editor</dt>
+			<dd>The editor uses the same code base as the viewer. Editing is done via the HTML5 attribute <a data-dict-replace="spec/contenteditable"/>, and its related functions. The data file is manipulated via the usual <a data-dict-replace="spec/dom"/> magic.</dd>
+		</dl>
+	</article>
+	<article>
+		<h2>Screenshots</h2>
+		<figure>
+			<img src="/getResource.php/daniel/images/LODB.viewer" alt="E-Learning viewer"/>
+			<figcaption>
+				The Viewer. To the left is the course navigation, on the right is a study unit, with 3 pages, currently showing a drag-and-drop task.
+			</figcaption>
+		</figure>
+		<figure>
+			<img src="/getResource.php/daniel/images/LODB.editor" alt="E-Learning viewer"/>
+			<figcaption>
+				The same task, in the Editor. ...In the end, out of the 2 requirements, only "flexible" was achieved.
+			</figcaption>
+		</figure>
+		<figure>
+			<img src="/getResource.php/daniel/images/LODB.source" alt="E-Learning viewer"/>
+			<figcaption>
+				The XML source of the same task. Spec-compliant!
+			</figcaption>
+		</figure>
+		<figure>
+			<img src="/getResource.php/daniel/images/LODB.documentation" alt="E-Learning specification header"/>
+			<figcaption>
+				If you've ever seen a <a href="https://www.w3.org/TR/xml/" target="_blank" rel="external">W3C recommendation</a>, this hopefully looks very familiar.
+			</figcaption>
+		</figure>
+		<figure>
+			<img src="/getResource.php/daniel/images/LODB.quiz" alt="E-Learning specification element"/>
+			<figcaption>
+				Just one of many elements defined in the LODB namespace.
+			</figcaption>
+		</figure>
+	</article>
+</p>
+<p key="spec/mysql">			<a rel="external" target="_blank" href="https://dev.mysql.com/">MySQL</a></p>
+<p key="spec/pthreads">			<a rel="external" target="_blank" href="http://de2.php.net/manual/en/book.pthreads.php">pthreads</a></p>
+<p key="spec/xmlhttprequest">	<a rel="external" target="_blank" href="https://xhr.spec.whatwg.org/">XMLHttpRequest</a></p>
+<p key="spec/xpath">	<a rel="external" target="_blank" href="http://www.w3.org/TR/xpath/">XPath</a></p>
+<p key="spec/xslt">		<a rel="external" target="_blank" href="http://www.w3.org/TR/xslt/">XSLT</a></p>
+<p key="spec/exslt">	<a rel="external" target="_blank" href="http://exslt.org/exsl/index.html">EXSLT</a></p>
+<p key="spec/webworkers"><a rel="external" target="_blank" href="https://www.w3.org/TR/workers/">Web Worker</a></p>
+<p key="spec/html-template"><a rel="external" target="_blank" href="https://www.w3.org/TR/html5/scripting-1.html#the-template-element">HTML template</a></p>
+<p key="spec/indexedDB"><a rel="external" target="_blank" href="https://www.w3.org/TR/IndexedDB/">Indexed Database</a></p>
+<p key="spec/dom"><a rel="external" target="_blank" href="https://www.w3.org/DOM/">DOM</a></p>
+<p key="spec/content-encoding"><a rel="external" target="_blank" href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11">Content-Encoding</a></p>
+<p key="spec/transfer-encoding"><a rel="external" target="_blank" href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.41">Transfer-Encoding</a></p>
+<p key="spec/ranged-requests"><a rel="external" target="_blank" href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.16">Ranged Requests</a></p>
+<p key="spec/flexbox"><a rel="external" target="_blank" href="https://www.w3.org/TR/css-flexbox-1/">Flexible Box Layout</a></p>
+<p key="spec/image-rendering"><a rel="external" target="_blank" href="https://drafts.csswg.org/css-images-3/#the-image-rendering">Image-Rendering</a></p>
+<p key="spec/drag"><a rel="external" target="_blank" href="https://www.w3.org/TR/2010/WD-html5-20101019/dnd.html">Drag and Drop</a></p>
+<p key="spec/touch"><a rel="external" target="_blank" href="https://www.w3.org/TR/touch-events/">Touch Events</a></p>
+<p key="spec/media-queries"><a rel="external" target="_blank" href="https://www.w3.org/TR/css3-mediaqueries/">Media Queries</a></p>
+<p key="spec/contenteditable"><a rel="external" target="_blank" href="https://www.w3.org/TR/2008/WD-html5-20080610/editing.html">contenteditable</a></p>
+<p key="spec/xsd"><a rel="external" target="_blank" href="https://www.w3.org/2001/XMLSchema">XML Schema</a></p>
+</html>

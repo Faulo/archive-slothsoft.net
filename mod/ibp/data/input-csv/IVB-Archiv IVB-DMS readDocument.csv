@@ -1,0 +1,14 @@
+1.;-;-;ivb.archive.do3
+1.2.;ivb.archive.do3;readDocument;readDocumentType
+1.2.1.;readDocumentType;adapterName;
+1.2.2.;readDocumentType;searchFolder;folderType
+1.2.2.1.;folderType;path;
+1.2.2.2.;folderType;repository;
+1.2.2.3.;folderType;metadataList;metadataListType
+1.2.2.3.1.;metadataListType;metadata;metadataType
+1.2.2.3.1.1.;metadataType;name;
+1.2.2.3.1.2.;metadataType;value;
+1.2.3.;readDocumentType;searchMetaDataList;metadataListType
+1.2.3.1.;metadataListType;metadata;metadataType
+1.2.3.1.1.;metadataType;name;
+1.2.3.1.2.;metadataType;value;

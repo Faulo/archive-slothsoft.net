@@ -1,0 +1,946 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Edited with Altova MapForce 2016 -->
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="26">
+	<resources/>
+	<component name="defaultmap1" blackbox="0" uid="1" editable="1">
+		<properties ShowAnnotations="0" SelectedLanguage="xslt2"/>
+		<structure>
+			<children>
+				<component name="set-empty" library="core" uid="37" kind="5">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="321"/>
+					</targets>
+					<view ltx="646" lty="448" rbx="721" rby="487"/>
+				</component>
+				<component name="map_gewerbeeintrag" library="user" blackbox="0" uid="30" kind="19" visible="0">
+					<view ltx="328" lty="318" rbx="608" rby="427"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/IVB-Container.xsd"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="Registerauszug2" ns="1" componentid="31" expanded="1">
+								<entry name="Registerauszug2" inpkey="297"/>
+							</entry>
+						</root>
+						<root rootindex="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+									<namespace/>
+								</namespaces>
+							</header>
+							<entry name="N212IN" ns="1" componentid="27" expanded="1">
+								<entry name="Registereintrag" outkey="282" expanded="1"/>
+							</entry>
+						</root>
+					</data>
+				</component>
+				<component name="ivb.container.xfall.implementation.gewerbe" library="xml" uid="2" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view rbx="297" rby="592"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/IVB-Container.xsd"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="ivb.container.xfall.implementation.gewerbe" outkey="1" expanded="1">
+										<entry name="Nachricht" outkey="2" expanded="1">
+											<entry name="IVB-Nachrichtenszenarium" outkey="52">
+												<entry name="VPlan-Anwendung" outkey="53" expanded="1">
+													<entry name="VPlan-ID" outkey="54"/>
+												</entry>
+											</entry>
+											<entry name="sendenderSoftwaretyp" outkey="55">
+												<entry name="VPlan-Softwarekomponententyp" outkey="56" expanded="1">
+													<entry name="VPlan-ID" outkey="57"/>
+												</entry>
+											</entry>
+											<entry name="gesendeterNachrichtentyp" outkey="58">
+												<entry name="VPlan-Nachricht" outkey="59">
+													<entry name="VPlan-ID" outkey="60"/>
+													<entry name="Unternachrichten" outkey="61">
+														<entry name="VPlan-Nachricht" outkey="62">
+															<entry name="VPlan-ID" outkey="63"/>
+															<entry name="ContainerPfad" outkey="64"/>
+															<entry name="ContainerIndex" outkey="65"/>
+														</entry>
+													</entry>
+												</entry>
+											</entry>
+											<entry name="sendendeSoftware" outkey="66">
+												<entry name="Softwareinstallation" outkey="67">
+													<entry name="IVB-ID" outkey="68"/>
+												</entry>
+											</entry>
+											<entry name="integrierendeOrganisation" outkey="69">
+												<entry name="Organisation" outkey="70">
+													<entry name="IVB-ID" outkey="71"/>
+												</entry>
+											</entry>
+											<entry name="zuerzeugendeNachrichten">
+												<entry name="Nachricht" expanded="1"/>
+											</entry>
+										</entry>
+										<entry name="Antrag" expanded="1">
+											<entry name="Antragsteller" outkey="76" expanded="1">
+												<entry name="ID" outkey="201"/>
+												<entry name="webseite" outkey="77"/>
+												<entry name="telefon" expanded="1">
+													<entry name="vorwahl" outkey="78"/>
+												</entry>
+												<entry name="fax" expanded="1">
+													<entry name="vorwahl" outkey="79"/>
+												</entry>
+											</entry>
+											<entry name="Registerauszug2" outkey="288" expanded="1"/>
+											<entry name="Gewerbebetrieb" outkey="72">
+												<entry name="sonstigeBetriebsart" outkey="73"/>
+											</entry>
+											<entry name="Betriebsstaette" outkey="80" expanded="1">
+												<entry name="webseite" outkey="81"/>
+												<entry name="telefon">
+													<entry name="vorwahl" outkey="82"/>
+												</entry>
+												<entry name="fax" outkey="83"/>
+												<entry name="artDesGemeldetenBetriebs">
+													<entry name="Handel" outkey="156"/>
+													<entry name="Handwerk" outkey="157"/>
+													<entry name="Industrie" outkey="158"/>
+													<entry name="Sonstiges" outkey="159"/>
+												</entry>
+												<entry name="besondereGewerbeform">
+													<entry name="automatenaufstellungsgewerbe" outkey="144"/>
+													<entry name="reisegewerbe" outkey="145"/>
+													<entry name="gaststaette" outkey="160"/>
+												</entry>
+											</entry>
+											<entry name="FruehereBetriebsstaette" outkey="84">
+												<entry name="webseite" outkey="85"/>
+												<entry name="telefon">
+													<entry name="vorwahl" outkey="86"/>
+												</entry>
+												<entry name="fax">
+													<entry name="vorwahl" outkey="87"/>
+												</entry>
+											</entry>
+											<entry name="KuenftigeBetriebsstaette">
+												<entry name="webseite" outkey="161"/>
+												<entry name="telefon">
+													<entry name="vorwahl" outkey="162"/>
+												</entry>
+												<entry name="fax">
+													<entry name="vorwahl" outkey="163"/>
+												</entry>
+											</entry>
+											<entry name="Hauptniederlassung" outkey="88">
+												<entry name="webseite" outkey="89"/>
+												<entry name="telefon">
+													<entry name="vorwahl" outkey="90"/>
+												</entry>
+												<entry name="fax">
+													<entry name="vorwahl" outkey="91"/>
+												</entry>
+											</entry>
+											<entry name="Personen" expanded="1">
+												<entry name="Person" outkey="92" expanded="1">
+													<entry name="ID" outkey="172"/>
+													<entry name="webseite" outkey="94"/>
+													<entry name="telefon" expanded="1">
+														<entry name="vorwahl" outkey="95"/>
+													</entry>
+													<entry name="fax" expanded="1">
+														<entry name="vorwahl" outkey="96"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\ivb.container.xfall.implementation.gewerbe.xsd" inputinstance="..\Beispieldaten\2015-12-09-10-26-17-578_subdoc-xml.xml" outputinstance="..\_XSD\IVB\ivb.container.xfall.implementation.gewerbe.xml" instanceroot="{http://inno-vplan-transfer.de/IVB-Container.xsd}ivb.container.xfall.implementation.gewerbe"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="N-2-12-IN" library="xml" uid="3" kind="14">
+					<properties XSLTTargetEncoding="UTF-8" XSLTDefaultOutput="1" TnsPrefix="vplan"/>
+					<view ltx="902" rbx="1200" rby="730"/>
+					<data>
+						<root scrollposition="805">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+									<namespace uid="http://www.altova.com/mapforce"/>
+								</namespaces>
+							</header>
+							<entry name="FileInstance" ns="1" expanded="1">
+								<entry name="document" ns="1" expanded="1" casttotargettypemode="cast-in-subtree">
+									<entry name="Anliegen" inpkey="3" expanded="1">
+										<entry name="Nachrichten">
+											<entry name="Nachricht" inpkey="4" expanded="1">
+												<entry name="sendender_Softwaretyp" inpkey="7">
+													<entry name="VPlan-Softwarekomponententyp" inpkey="8" expanded="1">
+														<entry name="VPlan-ID" inpkey="9"/>
+													</entry>
+												</entry>
+												<entry name="Nachrichtenszenarium" inpkey="10">
+													<entry name="VPlan-Anwendung" inpkey="11" expanded="1">
+														<entry name="VPlan-ID" inpkey="12"/>
+													</entry>
+												</entry>
+												<entry name="gesendeter_Nachrichtentyp" inpkey="13">
+													<entry name="VPlan-Nachricht" inpkey="14" expanded="1">
+														<entry name="VPlan-ID" inpkey="15"/>
+														<entry name="Unternachrichten" inpkey="16">
+															<entry name="VPlan-Nachricht" inpkey="17" expanded="1">
+																<entry name="VPlan-ID" inpkey="18"/>
+																<entry name="Containerpfad" inpkey="19"/>
+																<entry name="Containerpfad_Index" inpkey="20"/>
+															</entry>
+														</entry>
+													</entry>
+												</entry>
+												<entry name="sendende_Software" inpkey="21" expanded="1">
+													<entry name="Softwareinstallation" inpkey="22">
+														<entry name="IVB-ID" inpkey="23"/>
+													</entry>
+												</entry>
+												<entry name="integrierende_Organisation" inpkey="24">
+													<entry name="Beteiligter" inpkey="25" expanded="1">
+														<entry name="IVB-ID" inpkey="26"/>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+										<entry name="Vorgänge" expanded="1">
+											<entry name="Vorgang" expanded="1">
+												<entry name="MPlan" expanded="1">
+													<entry name="MPlan" expanded="1">
+														<entry name="antragstellende_Person">
+															<entry name="Person" inpkey="31">
+																<entry name="Kennung" inpkey="220"/>
+																<entry name="Kontakte">
+																	<entry name="Kontakt">
+																		<entry name="Webseiten" inpkey="32"/>
+																		<entry name="Telefonnummern_Vorwahl" inpkey="33"/>
+																		<entry name="Faxnummern_Vorwahl" inpkey="34"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="meldende_Betriebsstätte" expanded="1">
+															<entry name="Betriebsstätte" inpkey="35" expanded="1">
+																<entry name="Kontakte" expanded="1">
+																	<entry name="Kontakt" expanded="1">
+																		<entry name="Webseiten" inpkey="36"/>
+																		<entry name="Telefonnummern_Vorwahl" inpkey="37"/>
+																		<entry name="Faxnummern_Vorwahl" inpkey="38"/>
+																	</entry>
+																</entry>
+																<entry name="Ist_Handel" inpkey="149"/>
+																<entry name="Ist_Handwerk" inpkey="150"/>
+																<entry name="Ist_Industrie" inpkey="151"/>
+																<entry name="Ist_Sonstiges" inpkey="152"/>
+															</entry>
+														</entry>
+														<entry name="meldender_Gewerbebetrieb" expanded="1">
+															<entry name="Gewerbebetrieb" inpkey="27" expanded="1">
+																<entry name="Ist_Automatenaufstellungsgewerbe" inpkey="28"/>
+																<entry name="sonstige_Betriebsart" inpkey="29"/>
+																<entry name="Ist_Reisegewerbe" inpkey="30"/>
+																<entry name="Ist_Gaststätte" inpkey="148"/>
+															</entry>
+														</entry>
+														<entry name="meldender_beteiligter_Gewerbebetrieb" inpkey="336" expanded="1">
+															<entry name="Gewerbebetrieb" expanded="1">
+																<entry name="Registereinträge" inpkey="332" expanded="1">
+																	<entry name="Registereintrag" inpkey="333" expanded="1"/>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="Einzelgewerbetreibender">
+															<entry name="Person" expanded="1">
+																<entry name="Kennung" inpkey="222"/>
+																<entry name="Kontakte" expanded="1">
+																	<entry name="Kontakt" expanded="1">
+																		<entry name="Webseiten" inpkey="223"/>
+																		<entry name="Telefonnummern_Vorwahl" inpkey="224"/>
+																		<entry name="Faxnummern_Vorwahl" inpkey="225"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="gesetzliche_Vertreter">
+															<entry name="Person" inpkey="47" expanded="1">
+																<entry name="Kennung" inpkey="173"/>
+																<entry name="Kontakte" expanded="1">
+																	<entry name="Kontakt" expanded="1">
+																		<entry name="Webseiten" inpkey="49"/>
+																		<entry name="Telefonnummern_Vorwahl" inpkey="50"/>
+																		<entry name="Faxnummern_Vorwahl" inpkey="51"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="geschäftsführende_Gesellschafter">
+															<entry name="Person" expanded="1">
+																<entry name="Kennung" inpkey="226"/>
+																<entry name="Kontakte">
+																	<entry name="Kontakt">
+																		<entry name="Webseiten" inpkey="227"/>
+																		<entry name="Telefonnummern_Vorwahl" inpkey="228"/>
+																		<entry name="Faxnummern_Vorwahl" inpkey="229"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="Hauptniederlassung">
+															<entry name="Betriebsstätte" inpkey="43" expanded="1">
+																<entry name="Kontakte" expanded="1">
+																	<entry name="Kontakt" expanded="1">
+																		<entry name="Webseiten" inpkey="44"/>
+																		<entry name="Telefonnummern_Vorwahl" inpkey="45"/>
+																		<entry name="Faxnummern_Vorwahl" inpkey="46"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="frühere_Betriebsstätten">
+															<entry name="Betriebsstätte" inpkey="39" expanded="1">
+																<entry name="Kontakte" expanded="1">
+																	<entry name="Kontakt" expanded="1">
+																		<entry name="Webseiten" inpkey="40"/>
+																		<entry name="Telefonnummern_Vorwahl" inpkey="41"/>
+																		<entry name="Faxnummern_Vorwahl" inpkey="42"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+														<entry name="künftige_Betriebsstätten">
+															<entry name="Betriebsstätte" expanded="1">
+																<entry name="Kontakte" expanded="1">
+																	<entry name="Kontakt" expanded="1">
+																		<entry name="Webseiten" inpkey="153"/>
+																		<entry name="Telefonnummern_Vorwahl" inpkey="154"/>
+																		<entry name="Faxnummern_Vorwahl" inpkey="155"/>
+																	</entry>
+																</entry>
+															</entry>
+														</entry>
+													</entry>
+												</entry>
+											</entry>
+										</entry>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-1.xsd" outputinstance="..\_XSD\IVB\IVB-Akte-Implementation.xml" instanceroot="{http://inno-vplan-transfer.de/ivb-akte.xsd}Anliegen"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="exists" library="core" uid="35" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="319"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="327"/>
+					</targets>
+					<view ltx="654" lty="300" rbx="721" rby="339"/>
+				</component>
+				<component name="if-else" library="core" uid="36" kind="4">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="324"/>
+						<datapoint pos="1" key="323"/>
+						<datapoint pos="2" key="322"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="325"/>
+					</targets>
+					<view ltx="740" lty="328" rbx="837" rby="404"/>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges>
+					<edge edgekey="337">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+					<edge edgekey="142">
+						<data>
+							<dataconnection type="1"/>
+						</data>
+					</edge>
+					<edge edgekey="143">
+						<data>
+							<dataconnection type="1"/>
+						</data>
+					</edge>
+					<edge edgekey="310">
+						<data>
+							<dataconnection type="2"/>
+						</data>
+					</edge>
+				</edges>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="3" edgekey="5"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="2">
+						<edges>
+							<edge vertexkey="4" edgekey="6"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="52">
+						<edges>
+							<edge vertexkey="10" edgekey="97"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="53">
+						<edges>
+							<edge vertexkey="11" edgekey="98"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="54">
+						<edges>
+							<edge vertexkey="12" edgekey="99"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="55">
+						<edges>
+							<edge vertexkey="7" edgekey="100"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="56">
+						<edges>
+							<edge vertexkey="8" edgekey="101"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="57">
+						<edges>
+							<edge vertexkey="9" edgekey="102"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="58">
+						<edges>
+							<edge vertexkey="13" edgekey="103"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="59">
+						<edges>
+							<edge vertexkey="14" edgekey="104"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="60">
+						<edges>
+							<edge vertexkey="15" edgekey="105"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="61">
+						<edges>
+							<edge vertexkey="16" edgekey="143"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="62">
+						<edges>
+							<edge vertexkey="17" edgekey="142"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="63">
+						<edges>
+							<edge vertexkey="18" edgekey="108"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="64">
+						<edges>
+							<edge vertexkey="19" edgekey="109"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="65">
+						<edges>
+							<edge vertexkey="20" edgekey="110"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="66">
+						<edges>
+							<edge vertexkey="21" edgekey="111"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="67">
+						<edges>
+							<edge vertexkey="22" edgekey="112"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="68">
+						<edges>
+							<edge vertexkey="23" edgekey="113"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="69">
+						<edges>
+							<edge vertexkey="24" edgekey="114"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="70">
+						<edges>
+							<edge vertexkey="25" edgekey="115"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="71">
+						<edges>
+							<edge vertexkey="26" edgekey="116"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="72">
+						<edges>
+							<edge vertexkey="27" edgekey="117"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="73">
+						<edges>
+							<edge vertexkey="29" edgekey="118"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="76">
+						<edges>
+							<edge vertexkey="31" edgekey="121"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="77">
+						<edges>
+							<edge vertexkey="32" edgekey="122"/>
+							<edge vertexkey="223" edgekey="230"/>
+							<edge vertexkey="227" edgekey="231"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="78">
+						<edges>
+							<edge vertexkey="33" edgekey="123"/>
+							<edge vertexkey="224" edgekey="232"/>
+							<edge vertexkey="228" edgekey="233"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="79">
+						<edges>
+							<edge vertexkey="34" edgekey="124"/>
+							<edge vertexkey="225" edgekey="234"/>
+							<edge vertexkey="229" edgekey="235"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="80">
+						<edges>
+							<edge vertexkey="35" edgekey="125"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="81">
+						<edges>
+							<edge vertexkey="36" edgekey="126"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="82">
+						<edges>
+							<edge vertexkey="37" edgekey="127"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="83">
+						<edges>
+							<edge vertexkey="38" edgekey="128"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="84">
+						<edges>
+							<edge vertexkey="39" edgekey="129"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="85">
+						<edges>
+							<edge vertexkey="40" edgekey="130"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="86">
+						<edges>
+							<edge vertexkey="41" edgekey="131"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="87">
+						<edges>
+							<edge vertexkey="42" edgekey="132"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="88">
+						<edges>
+							<edge vertexkey="43" edgekey="133"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="89">
+						<edges>
+							<edge vertexkey="44" edgekey="134"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="90">
+						<edges>
+							<edge vertexkey="45" edgekey="135"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="91">
+						<edges>
+							<edge vertexkey="46" edgekey="136"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="92">
+						<edges>
+							<edge vertexkey="47" edgekey="137"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="94">
+						<edges>
+							<edge vertexkey="49" edgekey="139"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="95">
+						<edges>
+							<edge vertexkey="50" edgekey="140"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="96">
+						<edges>
+							<edge vertexkey="51" edgekey="141"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="144">
+						<edges>
+							<edge vertexkey="28" edgekey="146"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="145">
+						<edges>
+							<edge vertexkey="30" edgekey="147"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="156">
+						<edges>
+							<edge vertexkey="149" edgekey="195"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="157">
+						<edges>
+							<edge vertexkey="150" edgekey="196"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="158">
+						<edges>
+							<edge vertexkey="151" edgekey="197"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="159">
+						<edges>
+							<edge vertexkey="152" edgekey="198"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="160">
+						<edges>
+							<edge vertexkey="148" edgekey="168"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="161">
+						<edges>
+							<edge vertexkey="153" edgekey="169"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="162">
+						<edges>
+							<edge vertexkey="154" edgekey="170"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="163">
+						<edges>
+							<edge vertexkey="155" edgekey="171"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="172">
+						<edges>
+							<edge vertexkey="173" edgekey="174"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="201">
+						<edges>
+							<edge vertexkey="220" edgekey="221"/>
+							<edge vertexkey="222" edgekey="236"/>
+							<edge vertexkey="226" edgekey="237"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="282">
+						<edges>
+							<edge vertexkey="319" edgekey="320"/>
+							<edge vertexkey="333" edgekey="337"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="288">
+						<edges>
+							<edge vertexkey="297" edgekey="310"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="321">
+						<edges>
+							<edge vertexkey="322" edgekey="338"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="325">
+						<edges>
+							<edge vertexkey="332" edgekey="339"/>
+							<edge vertexkey="336" edgekey="340"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="327">
+						<edges>
+							<edge vertexkey="323" edgekey="341"/>
+							<edge vertexkey="324" edgekey="342"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+	<component name="map_gewerbeeintrag" library="user" blackbox="0" uid="17" editable="1" inline="1">
+		<properties/>
+		<structure>
+			<children>
+				<component name="string-length" library="core" uid="18" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="20"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="13"/>
+					</targets>
+					<view ltx="250" lty="106" rbx="337" rby="145"/>
+				</component>
+				<component name="constant" library="core" uid="19" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="2"/>
+					</targets>
+					<view ltx="312" lty="63" rbx="350" rby="81"/>
+					<data>
+						<constant value="1" datatype="decimal"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="equal-or-greater" library="core" uid="20" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="12"/>
+						<datapoint pos="1" key="3"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="17"/>
+					</targets>
+					<view ltx="401" rbx="507" rby="56"/>
+				</component>
+				<component name="logical-and" library="core" uid="22" kind="5" growable="1" growablebasename="value">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="18"/>
+						<datapoint pos="1" key="16"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="7"/>
+					</targets>
+					<view ltx="545" lty="49" rbx="624" rby="107"/>
+				</component>
+				<component name="string-length" library="core" uid="24" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="19"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="11"/>
+					</targets>
+					<view ltx="263" rbx="350" rby="39"/>
+				</component>
+				<component name="equal-or-greater" library="core" uid="25" kind="5">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="14"/>
+						<datapoint pos="1" key="4"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="15"/>
+					</targets>
+					<view ltx="401" lty="106" rbx="507" rby="162"/>
+				</component>
+				<component name="document" library="xml" uid="31" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="5" lty="10" rbx="163" rby="210"/>
+					<data>
+						<root>
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/IVB-Container.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="Registerauszug2" expanded="1">
+								<entry name="nr" outkey="38"/>
+								<entry name="ort" outkey="39"/>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\ivb.container.xfall.implementation.gewerbe.xsd"/>
+						<wsdl/>
+						<parameter usageKind="input" name="Registerauszug2">
+							<root>
+								<entry name="AntragType" ns="http://inno-vplan-transfer.de/IVB-Container.xsd" type="xml-type"/>
+								<entry name="Registerauszug2" ns="http://inno-vplan-transfer.de/IVB-Container.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+				<component name="constant" library="core" uid="21" kind="2">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="1"/>
+					</targets>
+					<view ltx="767" lty="127" rbx="927" rby="145"/>
+					<data>
+						<constant value="Handels-, Genossenschafts- oder Vereinsregister" datatype="string"/>
+						<wsdl/>
+					</data>
+				</component>
+				<component name="if-else" library="core" uid="23" kind="4">
+					<properties/>
+					<sources>
+						<datapoint pos="0" key="9"/>
+						<datapoint pos="1" key="8"/>
+						<datapoint pos="2" key="6"/>
+					</sources>
+					<targets>
+						<datapoint pos="0" key="10"/>
+					</targets>
+					<view ltx="736" lty="49" rbx="833" rby="125"/>
+				</component>
+				<component name="set-empty" library="core" uid="26" kind="5">
+					<properties/>
+					<targets>
+						<datapoint pos="0" key="5"/>
+					</targets>
+					<view ltx="501" lty="242" rbx="576" rby="281"/>
+				</component>
+				<component name="document" library="xml" uid="27" kind="14">
+					<properties XSLTTargetEncoding="UTF-8"/>
+					<view ltx="962" rbx="1256" rby="200"/>
+					<data>
+						<root scrollposition="1">
+							<header>
+								<namespaces>
+									<namespace uid="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								</namespaces>
+							</header>
+							<entry name="Registereintrag" inpkey="21" expanded="1">
+								<entry name="Nummer" inpkey="40"/>
+								<entry name="Register" expanded="1">
+									<entry name="Register" expanded="1">
+										<entry name="Typ" inpkey="22"/>
+										<entry name="Ort" inpkey="41"/>
+									</entry>
+								</entry>
+							</entry>
+						</root>
+						<document schema="..\_XSD\IVB\IVB-Akte-A-1.xsd"/>
+						<wsdl/>
+						<parameter usageKind="output" name="N212IN">
+							<root>
+								<entry name="Anliegen" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgänge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Vorgang" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="MPlan" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="meldender_Gewerbebetrieb" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Gewerbebetrieb" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Registereinträge" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+								<entry name="Registereintrag" ns="http://inno-vplan-transfer.de/ivb-akte.xsd"/>
+							</root>
+						</parameter>
+					</data>
+				</component>
+			</children>
+			<graph directed="1">
+				<edges/>
+				<vertices>
+					<vertex vertexkey="1">
+						<edges>
+							<edge vertexkey="22" edgekey="25"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="2">
+						<edges>
+							<edge vertexkey="3" edgekey="26"/>
+							<edge vertexkey="4" edgekey="27"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="5">
+						<edges>
+							<edge vertexkey="6" edgekey="28"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="7">
+						<edges>
+							<edge vertexkey="8" edgekey="29"/>
+							<edge vertexkey="9" edgekey="30"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="10">
+						<edges>
+							<edge vertexkey="21" edgekey="31"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="11">
+						<edges>
+							<edge vertexkey="12" edgekey="32"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="13">
+						<edges>
+							<edge vertexkey="14" edgekey="33"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="15">
+						<edges>
+							<edge vertexkey="16" edgekey="34"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="17">
+						<edges>
+							<edge vertexkey="18" edgekey="35"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="38">
+						<edges>
+							<edge vertexkey="19" edgekey="42"/>
+							<edge vertexkey="40" edgekey="43"/>
+						</edges>
+					</vertex>
+					<vertex vertexkey="39">
+						<edges>
+							<edge vertexkey="20" edgekey="44"/>
+							<edge vertexkey="41" edgekey="45"/>
+						</edges>
+					</vertex>
+				</vertices>
+			</graph>
+		</structure>
+	</component>
+</mapping>

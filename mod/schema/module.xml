@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<fragment name="index">
+		<template name="_index"/>
+	</fragment>
+	
+	<fragment name="home">
+		<template name="_home"/>
+	</fragment>
+	
+	<resource name="sites" path="sites.xml" type="application/xml"/>
+	
+	<resourceDir name="amberfiles" path="amberfiles" type="application/xsd+xml"/>
+</module>

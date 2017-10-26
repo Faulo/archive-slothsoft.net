@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	
+	<fragment name="angular.example">
+		<param name="standalone" scope="global"/>
+		<template name="angular"/>
+	</fragment>
+
+	<resource name="jwplayer" path="jwplayer.swf" type="application/octet-stream"/>
+	
+	<struc name="wgxpath">
+		<script name="wgxpath.install" uri="http://wicked-good-xpath.googlecode.com/files/wgxpath.install.js"/>
+	</struc>
+	
+	<struc name="jquery">
+		<script name="jquery" uri="http://jquery.com/download/"/>
+	</struc>
+	
+	<struc name="WebRTC">
+		<script name="webrtc.adapter" uri="https://raw.githubusercontent.com/webrtc/adapter/master/release/adapter.js"/>
+	</struc>
+	
+	<resourceDir name="twemoji-16" path="twemoji-gh-pages/16x16" type="image/png"/>
+	<resourceDir name="twemoji-36" path="twemoji-gh-pages/36x36" type="image/png"/>
+	<resourceDir name="twemoji-72" path="twemoji-gh-pages/72x72" type="image/png"/>
+	<resourceDir name="twemoji-svg" path="twemoji-gh-pages/svg" type="image/svg+xml"/>
+</module>

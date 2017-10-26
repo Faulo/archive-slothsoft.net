@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us">
+
+<p key="Startseite">Home</p>
+<p key="Minecraft">Minecraft</p>
+<p key="Slothsoft">Slothsoft</p>
+<p key="Shoutbox">Shoutbox</p>
+<p key="News">News</p>
+<p key="Karten">Old Maps</p>
+<p key="2D Normal">2D Normal</p>
+<p key="3D Normal">3D Normal</p>
+<p key="2D Cave">2D Cave</p>
+<p key="3D Cave">3D Cave</p>
+<p key="Tectonicus">Tectonicus</p>
+<p key="Tectonicus (Alt)">Tectonicus (Old)</p>
+<p key="Server-Informationen">Server Information</p>
+<p key="Regeln">Rules</p>
+<p key="Einkaufszentrum">Mall</p>
+<p key="Werkstatt">Workshop</p>
+<p key="Spieler">Players</p>
+<p key="Bildchen">Pictures</p>
+<p key="Tales of Eternia">Tales of Eternia</p>
+<p key="Craymel Editor">Craymel Editor</p>
+<p key="Melnics Test">Melnics Learning Program</p>
+<p key="Ambermoon">Ambermoon</p>
+<p key="Editor FAQs">Editor FAQs</p>
+<p key="Savegame Editor">Savegame Editor</p>
+<p key="Japanese">Japanese</p>
+<p key="Hepburn Romanization">Hepburn Romanization</p>
+<p key="Translator">Japanese-English Translator</p>
+<p key="Kana Test">Kana Learning Program</p>
+<p key="Entwicklerbereich">Dev Area</p>
+<p key="PC Übersicht">PC Overview</p>
+<p key="Impressum">Imprint</p>
+<p key="About Me">About Me</p>
+<p key="frontpage/title">
+	<h2>This is the homepage of the Indie Game Development Studio <small>not yet officially</small> known as <em>Slothsoft</em>.</h2>
+	<em>Welcome.</em>
+</p>
+<p key="frontpage/introduction">
+	<p>This place is our personal sandbox for honing our skills at software development and trying out new stuff.</p>
+	<p>What you'll find here will be mostly related to games we love and games we created.</p>
+	<p>At the moment, that would be:</p>
+	<dl>
+		<dt><a href="/Minecraft">Minecraft</a></dt>
+		<dd>
+			<p>We have an open Minecraft server running 24/7 at <code>slothsoft.dnsalias.net</code>, feel free to drop by.</p>
+			<p>The pages here are supposed to help our loyal players in their daily struggle for survival.</p>
+		</dd>
+		<dt><a href="/TalesOfEternia">Tales of</a></dt>
+		<dd>
+			<p>
+				Sometimes, when playing an awesome game, we wind up developing some kind of tool for more efficient gameplay.
+				When they're good enough, they might end up somewhere here.
+			</p>
+		</dd>
+		<dt><a href="/WhatTheHell">What The Hell</a></dt>
+		<dd>
+			<p>
+				Of all the things we've created, this one resembles a game the most. It's kind of a co-op "Scribblenauts meets Tabu".
+			</p>
+		</dd>
+	</dl>
+	<p>
+		All pages here <em>should</em> be available in English and German.
+		Whenever we create a new page we choose the language based on our mood at the time, and afterwards we choose wether to translate it based on our mood at <em>that</em> time.
+	</p>
+</p>
+<p key="frontpage/staff">
+	<h3>This part of Slothsoft consists of these people:</h3>
+	<dl>
+		<dt><a href="/AboutUs/#Daniel">Daniel Schulz</a></dt>
+		<dd>The editor-in-chief of this homepage. Skilled at programming, specifically PHP, HTML and JavaScript.</dd>
+		<dt><a href="/AboutUs/#Claudia">Claudia Osthof</a></dt>
+		<dd>The artist. Currently studies Animation &amp; Game.</dd>
+	</dl>
+	<p>
+		We also have a <em>sister</em> branch over at <a href="http://slothsoft.de">slothsoft.de</a>.
+	</p>
+</p>
+<p key="What The Hell">What The Hell</p>
+<p key="Game">Game</p>
+<p key="About us">About us</p>
+<p key="Statistic">Statistic</p>
+<p key="Server-Log">Server-Log</p>
+<p key="Experience Chart">Experience Chart</p>
+<p key="Tales of Graces">Tales of Graces</p>
+<p key="Magic Carta List">Magic Carta List</p>
+<p key="language:de-de">Deutsch</p>
+<p key="language:en-us">English</p>
+<p key="Last system message:">Last system message:</p>
+<p key="Currently online:">Currently online:</p>
+<p key="About">About</p>
+<p key="This editor allows you to find useful Craymel Configurations by showing all available Greater Craymels and spells, and which craymel mage they would end up with.">This editor allows you to find useful Craymel Configurations by showing all available Greater Craymels and spells, and which craymel mage they would end up with.</p>
+<p key="Instructions">Instructions</p>
+<p key="Click on a Greater Craymels name to have him switch to the other craymel mage. The list will update accordingly.">Click on a Greater Craymel's name to have him switch to the other craymel mage. The list will update accordingly.</p>
+<p key="Credits">Credits</p>
+<p key="(code)">(code)</p>
+<p key="(design)">(design)</p>
+<p key="(awesome craymel guide)">(awesome craymel guide)</p>
+<p key="Craymel Mages">Craymel Mages</p>
+<p key="Spells">Spells</p>
+<p key=""><p/></p>
+<p key="players/title">players/title</p>
+<p key="players/level"><p>players/level</p></p>
+<p key="players/laston">players/laston</p>
+<p key="Fire Emblem">Fire Emblem</p>
+<p key="Shadow Dragon">Shadow Dragon</p>
+<p key="Path of Radiance">Path of Radiance</p>
+<p key="Blazing Sword">Blazing Sword</p>
+<p key="The Sacred Stones">The Sacred Stones</p>
+<p key="Awakening">Awakening</p>
+<p key="Radiant Dawn">Radiant Dawn</p>
+
+<p key="2013">2013</p>
+<p key="2012">2012</p>
+<p key="2011">2011</p>
+<p key="2010">2010</p>
+<p key="month/01">January</p>
+<p key="month/02">February</p>
+<p key="month/03">March</p>
+<p key="month/04">April</p>
+<p key="month/05">May</p>
+<p key="month/06">June</p>
+<p key="month/07">July</p>
+<p key="month/08">August</p>
+<p key="month/09">September</p>
+<p key="month/10">October</p>
+<p key="month/11">November</p>
+<p key="month/12">December</p>
+<p key="Vocabulary Test">Vocabulary Test</p>
+<p key="Vocabulary List">Vocabulary List</p>
+<p key="Personal Studies">Personal Studies</p>
+<p key="JLPT">JLPT</p>
+<p key="N5">N5</p>
+<p key="N4">N4</p>
+<p key="N3">N3</p>
+<p key="N2">N2</p>
+<p key="N1">N1</p>
+<p key="Faulo">Faulo</p>
+<p key="Julia">Julia</p>
+<p key="1987"><p>1987</p></p>
+<p key="1993"><p>1993</p></p>
+<p key="1982"><p>1982</p></p>
+<p key="2008"><p>2008</p></p>
+<p key="1988"><p>1988</p></p>
+<p key="1996"><p>1996</p></p>
+<p key="1990"><p>1990</p></p>
+<p key="2006"><p>2006</p></p>
+<p key="1986"><p>1986</p></p>
+<p key="1998"><p>1998</p></p>
+<p key="1972"><p>1972</p></p>
+<p key="2003"><p>2003</p></p>
+<p key="1976"><p>1976</p></p>
+<p key="1991"><p>1991</p></p>
+<p key="2004"><p>2004</p></p>
+<p key="1981"><p>1981</p></p>
+<p key="1983"><p>1983</p></p>
+<p key="1971"><p>1971</p></p>
+<p key="1973"><p>1973</p></p>
+<p key="1980"><p>1980</p></p>
+<p key="1999"><p>1999</p></p>
+<p key="1975"><p>1975</p></p>
+<p key="2007"><p>2007</p></p>
+<p key="1979"><p>1979</p></p>
+<p key="1989"><p>1989</p></p>
+<p key="1985"><p>1985</p></p>
+<p key="1984"><p>1984</p></p>
+<p key="1970"><p>1970</p></p>
+<p key="2002"><p>2002</p></p>
+<p key="1978"><p>1978</p></p>
+<p key="1995"><p>1995</p></p>
+<p key="1997"><p>1997</p></p>
+<p key="1992"><p>1992</p></p>
+<p key="2009"><p>2009</p></p>
+<p key="1994"><p>1994</p></p>
+<p key="1977"><p>1977</p></p>
+<p key="2000"><p>2000</p></p>
+<p key="2005"><p>2005</p></p>
+<p key="2001"><p>2001</p></p>
+<p key="1974"><p>1974</p></p>
+<p key="Unicode Text Converter">Unicode Text Converter</p>
+<p key="Minecraft Server is:">Minecraft Server is:</p>
+<p key="Version:">Version:</p>
+<p key="Players online:">Players online:</p>
+<p key="Colors">Colors</p>
+<p key="Backend">Backend</p>
+<p key="Daniel">Daniel</p>
+</html>

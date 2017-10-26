@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mit XMLSpy v2016 (x64) (http://www.altova.com) von Veit Gernhardt (Antavent Solutions GmbH) bearbeitet -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://inno-vplan-transfer.de/ivb.container.do0800.xsd" xmlns:vplan="http://inno-vplan-transfer.de/ivb.container.do0800.xsd" targetNamespace="http://inno-vplan-transfer.de/ivb.container.do0800.xsd" elementFormDefault="qualified">
+	<xsd:element name="ivb.container.do0800" vplan:ot="OT:00000169">
+		<xsd:complexType>
+			<xsd:sequence>
+                <xsd:element name="Nachrichten" minOccurs="0" maxOccurs="1" vplan:oti="">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Nachricht" minOccurs="0" maxOccurs="unbounded" vplan:ot="OT:00000171">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="IVB-ID" minOccurs="0" maxOccurs="1" vplan:oti="">
+										</xsd:element>
+										<xsd:element name="E-Mail-Adressen_Antwort_Empfänger" minOccurs="0" maxOccurs="1" vplan:oti="">
+										</xsd:element>
+										<xsd:element name="Nachrichtentext_Datei" minOccurs="0" maxOccurs="1" vplan:oti="">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="Datei" minOccurs="0" maxOccurs="unbounded" vplan:ot="OT:00000078">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="Inhalt" minOccurs="0" maxOccurs="1" vplan:oti="">
+																</xsd:element>
+																<xsd:element name="Typ" minOccurs="0" maxOccurs="1" vplan:oti="">
+																</xsd:element>
+																<xsd:element name="Datei_Encoding" minOccurs="0" maxOccurs="1" vplan:oti="">
+																</xsd:element>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="Nachrichtentext" minOccurs="0" maxOccurs="1" vplan:oti="">
+										</xsd:element>
+										<xsd:element name="Betreff" minOccurs="0" maxOccurs="1" vplan:oti="">
+										</xsd:element>
+										<xsd:element name="Nachrichtenszenarium" minOccurs="0" maxOccurs="1" vplan:oti="">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="VPlan-Anwendung" minOccurs="0" maxOccurs="unbounded" vplan:ot="">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="VPlan-ID" minOccurs="0" maxOccurs="1" vplan:oti="">
+																</xsd:element>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="sendender_Softwaretyp" minOccurs="0" maxOccurs="1" vplan:oti="">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="VPlan-Softwarekomponententyp" minOccurs="0" maxOccurs="unbounded" vplan:ot="OT:00000022">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="VPlan-ID" minOccurs="0" maxOccurs="1" vplan:oti="OTI:00000168">
+																</xsd:element>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="gesendeter_Nachrichtentyp" minOccurs="0" maxOccurs="1" vplan:oti="">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="VPlan-Nachricht" minOccurs="0" maxOccurs="unbounded" vplan:ot="">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="VPlan-ID" minOccurs="0" maxOccurs="1" vplan:oti="">
+																</xsd:element>
+																<xsd:element name="Unternachrichten" minOccurs="0" maxOccurs="1" vplan:oti="">
+																	<xsd:complexType>
+																		<xsd:sequence>
+																			<xsd:element name="VPlan-Nachricht" minOccurs="0" maxOccurs="unbounded" vplan:ot="">
+																				<xsd:complexType>
+																					<xsd:sequence>
+																						<xsd:element name="VPlan-ID" minOccurs="0" maxOccurs="1" vplan:oti="">
+																						</xsd:element>
+																						<xsd:element name="Containerpfad_Index" minOccurs="0" maxOccurs="1" vplan:oti="">
+																						</xsd:element>
+																					</xsd:sequence>
+																				</xsd:complexType>
+																			</xsd:element>
+																		</xsd:sequence>
+																	</xsd:complexType>
+																</xsd:element>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="sendende_Software" minOccurs="0" maxOccurs="1" vplan:oti="">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="Softwareinstallation" minOccurs="0" maxOccurs="unbounded" vplan:ot="">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="IVB-ID" minOccurs="0" maxOccurs="1" vplan:oti="">
+																</xsd:element>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+                <xsd:element name="Vorgänge" minOccurs="0" maxOccurs="1" vplan:oti="">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Vorgang" minOccurs="0" maxOccurs="unbounded">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="Beteiligte" minOccurs="0" maxOccurs="1" vplan:oti="">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="Beteiligter" minOccurs="0" maxOccurs="unbounded" vplan:ot="OT:00000172">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="Kontakte" minOccurs="0" maxOccurs="1" vplan:oti="">
+																	<xsd:complexType>
+																		<xsd:sequence>
+																			<xsd:element name="Kontakt" minOccurs="0" maxOccurs="unbounded" vplan:ot="OT:00000064">
+																				<xsd:complexType>
+																					<xsd:sequence>
+																						<xsd:element name="E-Mail-Adressen" minOccurs="0" maxOccurs="1" vplan:oti="OTI:00000546">
+																						</xsd:element>
+																					</xsd:sequence>
+																				</xsd:complexType>
+																			</xsd:element>
+																		</xsd:sequence>
+																	</xsd:complexType>
+																</xsd:element>
+																<xsd:element name="IVB-ID" minOccurs="0" maxOccurs="1" vplan:oti="">
+																</xsd:element>
+                                                                <xsd:element name="V-Plan_Fachliche_Rollen" minOccurs="0" maxOccurs="unbounded" vplan:ot="">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="VPlan_ID" minOccurs="0" maxOccurs="1" vplan:oti="">
+																</xsd:element>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+                                                            </xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+                                                </xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="Dokumente" minOccurs="0" maxOccurs="1" vplan:oti="">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="Dokument" minOccurs="0" maxOccurs="unbounded" vplan:ot="OT:00000077">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="Dateien" minOccurs="0" maxOccurs="1" vplan:oti="OTI:00000679">
+																	<xsd:complexType>
+																		<xsd:sequence>
+																			<xsd:element name="Datei" minOccurs="0" maxOccurs="unbounded" vplan:ot="OT:00000078">
+																				<xsd:complexType>
+																					<xsd:sequence>
+																						<xsd:element name="Typ" minOccurs="0" maxOccurs="1" vplan:oti="">
+																						</xsd:element>
+																						<xsd:element name="Datei_Encoding" minOccurs="0" maxOccurs="1" vplan:oti="">
+																						</xsd:element>
+																						<xsd:element name="Quelle_Dateiname" minOccurs="0" maxOccurs="1" vplan:oti="">
+																						</xsd:element>
+																						<xsd:element name="IVB-ID" minOccurs="0" maxOccurs="1" vplan:oti="">
+																						</xsd:element>
+																						<xsd:element name="Dokument_Index" minOccurs="0" maxOccurs="1" vplan:oti="">
+																						</xsd:element>
+																						<xsd:element name="Typ_Spezifikation" minOccurs="0" maxOccurs="1" vplan:oti="">
+																						</xsd:element>
+																						<xsd:element name="Inhalt" minOccurs="0" maxOccurs="1" vplan:oti="">
+																						</xsd:element>
+																					</xsd:sequence>
+																				</xsd:complexType>
+																			</xsd:element>
+																		</xsd:sequence>
+																	</xsd:complexType>
+																</xsd:element>
+																<xsd:element name="VPlan-Dokumententypen" minOccurs="0" maxOccurs="1" vplan:oti="OTI:00000674">
+																	<xsd:complexType>
+																		<xsd:sequence>
+																			<xsd:element name="VPlan-Dokumententyp" minOccurs="0" maxOccurs="unbounded" vplan:ot="OT:00000016">
+																				<xsd:complexType>
+																					<xsd:sequence>
+																						<xsd:element name="VPlan-ID" minOccurs="0" maxOccurs="1" vplan:oti="OTI:00000115">
+																						</xsd:element>
+																					</xsd:sequence>
+																				</xsd:complexType>
+																			</xsd:element>
+																		</xsd:sequence>
+																	</xsd:complexType>
+																</xsd:element>
+																<xsd:element name="IVB-ID" minOccurs="0" maxOccurs="1" vplan:oti="">
+																</xsd:element>
+																<xsd:element name="Bezeichnung" minOccurs="0" maxOccurs="1" vplan:oti="OTI:00000675">
+																</xsd:element>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="Bezeichnung" minOccurs="0" maxOccurs="1" vplan:oti="">
+										</xsd:element>
+										<xsd:element name="IVB-ID" minOccurs="0" maxOccurs="1" vplan:oti="">
+										</xsd:element>
+										<xsd:element name="VPlan-Leistungen" minOccurs="0" maxOccurs="1" vplan:oti="OTI:00000626">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="VPlan-Leistung" minOccurs="0" maxOccurs="unbounded" vplan:ot="OT:00000011">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="VPlan-ID" minOccurs="0" maxOccurs="1" vplan:oti="">
+																</xsd:element>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="Bearbeitungsstatus" minOccurs="0" maxOccurs="1" vplan:oti="OTI:00000638">
+										</xsd:element>
+										<xsd:element name="Ergebnisstatus" minOccurs="0" maxOccurs="1" vplan:oti="OTI:00000639">
+										</xsd:element>
+										<xsd:element name="Termine" minOccurs="0" maxOccurs="1" vplan:oti="OTI:00000651">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="Termin" minOccurs="0" maxOccurs="unbounded" vplan:ot="OT:00000076">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="Fristbeginn" minOccurs="0" maxOccurs="1" vplan:oti="">
+																</xsd:element>
+																<xsd:element name="Fristende" minOccurs="0" maxOccurs="1" vplan:oti="">
+																</xsd:element>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de-de">
+
+<p key="Startseite">Startseite</p>
+<p key="Minecraft">Minecraft</p>
+<p key="Slothsoft">Slothsoft</p>
+<p key="Shoutbox">Shoutbox</p>
+<p key="News">News</p>
+<p key="Karten">Alte Karten</p>
+<p key="2D Normal">2D Normal</p>
+<p key="3D Normal">3D Normal</p>
+<p key="2D Cave">2D Höhlen</p>
+<p key="3D Cave">3D Höhlen</p>
+<p key="Tectonicus">Tectonicus</p>
+<p key="Tectonicus (Alt)">Tectonicus (Alt)</p>
+<p key="Server-Informationen">Server-Informationen</p>
+<p key="Regeln">Regeln</p>
+<p key="Einkaufszentrum">Einkaufszentrum</p>
+<p key="Werkstatt">Werkstatt</p>
+<p key="Spieler">Spieler</p>
+<p key="Bildchen">Bildchen</p>
+<p key="Tales of Eternia">Tales of Eternia</p>
+<p key="Craymel Editor">Craymel Editor</p>
+<p key="Melnics Test">Melnics Lernprogramm</p>
+<p key="Ambermoon">Ambermoon</p>
+<p key="Editor FAQs">Editor FAQs</p>
+<p key="Savegame Editor">Spielstand Editor</p>
+<p key="Japanese">Japanisch</p>
+<p key="Hepburn Romanization">Hepburn Romanisierung</p>
+<p key="Translator">Japanisch-Englisch Übersetzer</p>
+<p key="Kana Test">Kana Lernprogramm</p>
+<p key="Entwicklerbereich">Entwicklerbereich</p>
+<p key="PC Übersicht">PC Übersicht</p>
+<p key="Impressum">Impressum</p>
+<p key="frontpage/title">
+	<h2>Dies ist die Homepage der Indie Spieleschmiede deren <small>inoffizieller</small> Name <em>Slothsoft</em> ist.</h2>
+	<em>Willkommen.</em>
+</p>
+<p key="frontpage/introduction">
+	<p>Das ist unser persönlicher Spielplatz um unsere Fähigkeiten der Software-Entwicklung zu verbessern und neues Zeug aus zu probieren.</p>
+	<p>Hier findet sich hauptsächlich Material zu unseren Lieblingsspielen, oder den Spielen die wir kreiert haben.</p>
+	<p>Im Moment sind das:</p>
+	<dl>
+		<dt><a href="/Minecraft">Minecraft</a></dt>
+		<dd>
+			<p>Wir haben einen frei zugänglichen Minecraft-Server rund um die Uhr unter <code>slothsoft.dnsalias.net</code> laufen, jeder ist willkommen.</p>
+			<p>Die Seiten hier sollen unseren Spielern beim täglichen Kampf ums Überleben helfen.</p>
+		</dd>
+		<dt><a href="/TalesOfEternia">Tales of</a></dt>
+		<dd>
+			<p>
+				Manchmal entwickeln wir kleine Werkzeuge um uns beim Spielen unter die Arme zu greifen.
+				Wenn diese gut genug werden, landen sie hier.
+			</p>
+		</dd>
+		<dt><a href="/WhatTheHell">What The Hell</a></dt>
+		<dd>
+			<p>
+				Unser allererstes halbwegs richtiges Spiel. Es ist eine Art "Scribblenauts trifft Tabu".
+			</p>
+		</dd>
+	</dl>
+	<p>
+		Alle Seiten hier <em>sollten</em> auf Deutsch und Englisch verfügbar sein.
+		Wenn wir eine neue Seite anlegen entscheiden wir nach dem Bauch heraus, welche Sprache sie bekommt. Wenn sie fertig ist und wir immer noch Lust haben, übersetzen wir sie. Vielleicht.
+	</p>
+</p>
+<p key="frontpage/staff">
+	<h3>Dieser Teil Slothsofts besteht aus foldenden Personen:</h3>
+	<dl>
+		<dt><a href="/AboutUs/#Daniel">Daniel Schulz</a></dt>
+		<dd>Der Redakteur dieser Seite. Studierter Programmierer mit Schwerpunkt auf PHP, HTML und JavaScript.</dd>
+		<dt><a href="/AboutUs/#Claudia">Claudia Osthof</a></dt>
+		<dd>Die Künstlerin. Studiert gerade Animation &amp; Game.</dd>
+	</dl>
+	<p>
+		Wir haben noch eine <em>Schwester</em>-Seite unter <a href="http://slothsoft.de">slothsoft.de</a>.
+	</p>
+</p>
+<p key="What The Hell">What The Hell</p>
+<p key="Game">Spiel</p>
+<p key="About us">Über uns</p>
+<p key="Statistic">Statistik</p>
+<p key="Server-Log">Server-Log</p>
+<p key="Experience Chart">Erfahrungstabelle</p>
+<p key="Tales of Graces">Tales of Graces</p>
+<p key="Magic Carta List">Magic Carta List</p>
+<p key="language:de-de">Deutsch</p>
+<p key="language:en-us">English</p>
+<p key="Fire Emblem">Fire Emblem</p>
+<p key="Shadow Dragon">Shadow Dragon</p>
+<p key="Path of Radiance">Path of Radiance</p>
+<p key="Blazing Sword">Blazing Sword</p>
+<p key="The Sacred Stones">The Sacred Stones</p>
+<p key="Awakening">Awakening</p>
+<p key="Radiant Dawn">Radiant Dawn</p>
+
+<p key="2013">2013</p>
+<p key="2012">2012</p>
+<p key="2011">2011</p>
+<p key="2010">2010</p>
+<p key="month/01">Januar</p>
+<p key="month/02">Februar</p>
+<p key="month/03">März</p>
+<p key="month/04">April</p>
+<p key="month/05">Mai</p>
+<p key="month/06">Juni</p>
+<p key="month/07">Juli</p>
+<p key="month/08">August</p>
+<p key="month/09">September</p>
+<p key="month/10">Oktober</p>
+<p key="month/11">November</p>
+<p key="month/12">Dezember</p>
+<p key="Vocabulary Test">Vokabeltest</p>
+<p key="JLPT">JLPT</p>
+<p key="N5">N5</p>
+<p key="N4">N4</p>
+<p key="N3">N3</p>
+<p key="N2">N2</p>
+<p key="N1">N1</p>
+<p key="Vocabulary List">Vokabelliste</p>
+<p key="Faulo">Faulo</p>
+<p key="Personal Studies">Eigene Vokabeln</p>
+<p key="Julia">Julia</p>
+<p key="1996"><p>1996</p></p>
+<p key="1976"><p>1976</p></p>
+<p key="1971"><p>1971</p></p>
+<p key="1980"><p>1980</p></p>
+<p key="1978"><p>1978</p></p>
+<p key="1979"><p>1979</p></p>
+<p key="2009"><p>2009</p></p>
+<p key="2006"><p>2006</p></p>
+<p key="1988"><p>1988</p></p>
+<p key="1982"><p>1982</p></p>
+<p key="1970"><p>1970</p></p>
+<p key="1997"><p>1997</p></p>
+<p key="2004"><p>2004</p></p>
+<p key="2001"><p>2001</p></p>
+<p key="2007"><p>2007</p></p>
+<p key="1992"><p>1992</p></p>
+<p key="1975"><p>1975</p></p>
+<p key="1998"><p>1998</p></p>
+<p key="2008"><p>2008</p></p>
+<p key="1985"><p>1985</p></p>
+<p key="1984"><p>1984</p></p>
+<p key="1972"><p>1972</p></p>
+<p key="1991"><p>1991</p></p>
+<p key="2000"><p>2000</p></p>
+<p key="2005"><p>2005</p></p>
+<p key="2003"><p>2003</p></p>
+<p key="1986"><p>1986</p></p>
+<p key="1983"><p>1983</p></p>
+<p key="2002"><p>2002</p></p>
+<p key="1990"><p>1990</p></p>
+<p key="1974"><p>1974</p></p>
+<p key="1977"><p>1977</p></p>
+<p key="1993"><p>1993</p></p>
+<p key="1981"><p>1981</p></p>
+<p key="1995"><p>1995</p></p>
+<p key="1999"><p>1999</p></p>
+<p key="1994"><p>1994</p></p>
+<p key="1989"><p>1989</p></p>
+<p key="1973"><p>1973</p></p>
+<p key="1987"><p>1987</p></p>
+<p key="Unicode Text Converter">Unicode Text Konvertierer</p>
+<p key="Last system message:">Last system message:</p>
+<p key="Currently online:">Currently online:</p>
+<p key="Minecraft Server is:">Minecraft Server is:</p>
+<p key="Version:">Version:</p>
+<p key="Players online:">Players online:</p>
+<p key="Colors">Colors</p>
+<p key="Backend">Backend</p>
+<p key="Daniel">Daniel</p>
+</html>

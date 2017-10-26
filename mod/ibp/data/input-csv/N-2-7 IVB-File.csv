@@ -1,0 +1,17 @@
+1.;-;;ivb.file.do2;;;Anliegen
+1.1.;ivb.file.do2;FOLDER;FOLDER;;;Anliegen. Vorgänge
+1.1.1.;FOLDER;name;;Vorgang;IVB-ID;Anliegen. Vorgänge
+1.1.1.a;;;;Vorgang;Bezeichnung;Anliegen. Vorgänge
+1.1.1.b;;;;Vorgang;Bearbeitungsstatus;Anliegen. Vorgänge
+1.1.1.c;;;;Vorgang;Ergebnisstatus;Anliegen. Vorgänge
+1.1.1.d;;;;VPlan-Leistung;VPlan-ID;Anliegen. Vorgänge. VPlan-Leistungen
+1.1.1.f;;;;Beteiligter;IVB-ID;Anliegen. Vorgänge. Beteiligte
+1.1.1.h;;;;VPlan-Dokumententyp;VPlan-ID;Anliegen. Vorgänge. Dokumente. VPlan-Dokumententypen
+1.1.1.i;;;;Termin;Fristbeginn;Anliegen. Vorgänge. Termine
+1.1.1.j;;;;Termin;Fristende;Anliegen. Vorgänge. Termine
+1.1.2.;FOLDER;FILE;FILE;;;Anliegen. Vorgänge. Dokumente. Dateien
+1.1.2.1.;FILE;<data>;;Datei;Inhalt;Anliegen. Vorgänge. Dokumente. Dateien
+1.1.2.1.a;;;;Nachricht;Nachrichtentext;Anliegen. Nachrichten
+1.1.2.1.b;;;;Nachricht;Betrefftext;Anliegen. Nachrichten
+1.1.2.2.;FILE;filename;;Datei;Quelle Dateiname;Anliegen. Vorgänge. Dokumente. Dateien
+1.1.2.3.;FILE;mimetype;;Datei;Typ;Anliegen. Vorgänge. Dokumente. Dateien

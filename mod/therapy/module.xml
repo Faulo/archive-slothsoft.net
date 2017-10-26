@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<fragment name="clinic">
+		<data name="clinic"/>
+		<template name="clinic"/>
+		<struc name="/core/HTML5"/>
+		<style name="default"/>
+		<param name="standalone" scope="global"/>
+	</fragment>
+	
+	<fragment name="happiness">
+		<template name="happiness"/>
+		<struc name="/core/HTML5"/>
+		<style name="default"/>
+		<param name="standalone" scope="global"/>
+		
+		<fragment name="graph">
+			<resDir name="happiness" load="xml"/>
+			<template name="happiness.graph"/>
+		</fragment>
+	</fragment>
+	
+	
+	<resourceDir name="wochenziele" path="wochenziele" type="application/xml"/>
+	<resourceDir name="happiness" path="happiness" type="text/csv" del="&#9;"/>
+	<resourceDir name="timecapsules" path="timecapsules" type="text/plain"/>
+</module>

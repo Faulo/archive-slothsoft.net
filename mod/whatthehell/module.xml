@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<fragment name="faq">
+		<struc name="/slothsoft/default"/>
+		<fragment name="content">
+			<template name="faq"/>
+		</fragment>
+		<call name="/slothsoft/slothsoft-chat" as="chat"/>
+	</fragment>
+	
+	<fragment name="game">
+		<template name="adventure"/>
+		<res name="adventure" load="xml"/>
+		
+		<style name="default"/>
+		<style name="objects"/>
+		
+		<struc name="/core/DOM"/>
+		
+		<script name="2D"/>
+		<script name="2Dfix"/>
+		<script name="Trait"/>
+		<script name="Trait.View"/>
+		<script name="Trait.ViewGameElement"/>
+		<script name="Adventure"/>
+		<script name="Adventure.Controller"/>
+		<script name="Adventure.Controller.Pull"/>
+		<script name="Adventure.Model"/>
+		<script name="Adventure.Model.Pull"/>
+		<script name="Adventure.View"/>
+		<script name="Adventure.View.God"/>
+		<script name="Adventure.View.Human"/>
+		<script name="Adventure.View.Map"/>
+		<script name="Adventure.View.Map.Item"/>
+		<script name="Adventure.View.Menu"/>
+		<script name="Adventure.View.Solo"/>
+	</fragment>
+	<resource name="adventure" path="adventure.xml" type="application/xml"/>
+	<resource name="background-fort" path="background-fort.png" type="image/png"/>
+	<resource name="font" path="prstartk.ttf" type="application/x-ttf"/>
+</module>

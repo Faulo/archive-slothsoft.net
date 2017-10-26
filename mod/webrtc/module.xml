@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<fragment name="vct-home">
+		<struc name="/slothsoft/default"/>
+		<fragment name="content">
+			<template name="vct-home"/>
+			<style name="default"/>
+		</fragment>
+		<call name="chat"/>
+	</fragment>
+	
+	<fragment name="chat">
+		<param name="chat-database" value="vct"/>
+		<template name="/chat/shoutbox"/>
+		<call name="/chat/default" as="chat"/>
+	</fragment>
+	
+	<fragment name="vct-room">
+		<data name="vct"/>
+		<style name="vct"/>
+		<template name="vct-room"/>
+		<struc name="/lib/WebRTC"/>
+		<struc name="/core/DOM"/>
+		<struc name="/sse/script"/>
+		<script name="WebRTC"/>
+		<script name="WebRTC.User"/>
+		<style name="/slothsoft/default"/>
+		<style name="/slothsoft/fonts"/>
+		
+		<!--<call name="chat"/>-->
+	</fragment>
+	
+	
+	<fragment name="index">
+		<template name="_index"/>
+		<struc name="/lib/WebRTC"/>
+		<struc name="/core/DOM"/>
+		<struc name="/sse/script"/>
+		<script name="WebRTC"/>
+		<script name="WebRTC.User"/>
+		<param name="standalone" scope="global"/>
+	</fragment>
+</module>
