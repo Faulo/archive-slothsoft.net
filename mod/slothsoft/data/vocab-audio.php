@@ -1,4 +1,7 @@
 <?php
+namespace Slothsoft\CMS;
+
+use Slothsoft\Core\FileSystem;
 
 $dataDocList = $this->getResourceDir('slothsoft/vocab-ja', 'status');
 
@@ -23,7 +26,7 @@ foreach ($dataDocList as $name => $dataDoc) {
 	$file = $name . '.mp3';
 	$size = (int) $dataDoc->documentElement->getAttribute('size');
 	if ($size < 1000) {
-		$arr[$file] = \FileSystem::base64Decode($name);
+		$arr[$file] = FileSystem::base64Decode($name);
 	}
 	/*
 	$path = $dataDoc->documentElement->getAttribute('realpath');

@@ -1,9 +1,15 @@
 <?php
+namespace Slothsoft\CMS;
+
+use Slothsoft\Core\DOMHelper;
+use Slothsoft\Core\XMLHttpRequest;
+use DOMDocument;
+
 $_REQUEST['dnt'] = 'false';
 //require_once '../../../constants.php';
 
 
-$dom = new \DOMHelper();
+$dom = new DOMHelper();
 
 //$uri = 'https://slothsoft.net';
 /*
@@ -53,7 +59,7 @@ $dataRoot = $dataDoc->createDocumentFragment();
 
 for ($i = 1, $j = 2; $i < $j; $i++) {
 	$data['page'] = $i;
-	$req = new \XMLHttpRequest();
+	$req = new XMLHttpRequest();
 	$req->open('POST', $uri);
 	$req->send($data);
 

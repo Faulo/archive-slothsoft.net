@@ -1,9 +1,8 @@
 <?php
-namespace Therapy;
+namespace Slothsoft\Therapy;
 
-use \DOMDocument;
-use \DOMElement;
-use \DOMXPath;
+use DOMElement;
+use DOMXPath;
 
 class Goal {
 	protected $node;

@@ -1,9 +1,9 @@
 <?php
-namespace Therapy;
+namespace Slothsoft\Therapy;
 
-use \DOMDocument;
-use \DOMElement;
-use \DOMXPath;
+use DOMDocument;
+use DOMElement;
+use DOMXPath;
 
 class Patient {
 	protected $node;

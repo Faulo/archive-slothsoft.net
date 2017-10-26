@@ -1,4 +1,7 @@
 <?php
+namespace Slothsoft\CMS;
+
+use Slothsoft\Twitter\Archive;
 
 //require_once '../../constants.php';
 
@@ -22,7 +25,7 @@ echo implode(PHP_EOL, $tweetList);
 $dataNode = $dataDoc->createElement('fetch');
 
 if ($userName = $this->httpRequest->getInputValue('user')) {
-	$archive = new \Twitter\Archive($userName);
+	$archive = new Archive($userName);
 	$dataNode->setAttribute('user', $userName);
 	$dataNode->setAttribute('tweets', $archive->fetch(true));
 }

@@ -1,4 +1,11 @@
 <?php
+namespace Slothsoft\CMS;
+
+use Slothsoft\Core\DOMHelper;
+use Slothsoft\Core\FileSystem;
+use Slothsoft\Lang\Dictionary;
+use DOMXPath;
+
 $torrentPath = '"C:/Program Files (x86)/BitTorrent/BitTorrent.exe" "%s"';
 $torrentBatch = 'C:/NetzwerkDaten/Dropbox/Tools/createTorrent.bat';
 
@@ -47,7 +54,7 @@ if ($archive = $this->httpRequest->getInputValue('load-archive') and isset($down
 $tmpList = [];
 foreach ($downloadDirs as $dir) {
 	if ($dir = realpath($dir)) {
-		$key = \FileSystem::generateStorageKey($dir);
+		$key = FileSystem::generateStorageKey($dir);
 		$tmpList[$key] = $dir;
 	}
 }
@@ -132,13 +139,13 @@ if (isset($_FILES[$uploadKey])) {
 
 $retNode = $dataDoc->createDocumentFragment();
 $dataRoot = $dataDoc->documentElement;
-$dataPath = new \DOMXPath($dataDoc);
-$storage = \FileSystem::getStorage();
+$dataPath = new DOMXPath($dataDoc);
+$storage = FileSystem::getStorage();
 
 foreach ($downloadDirs as $key => $dir) {
 	$newNode = null;
 	if ($verifyTree) {
-		$newNode = \FileSystem::asNode($dir, $dataDoc);
+		$newNode = FileSystem::asNode($dir, $dataDoc);
 	} else {
 		$newNode = $storage->retrieveXML($key, 0, $dataDoc);
 	}
@@ -194,7 +201,7 @@ if (isset($this->httpRequest->input['convert'])) {
 			}
 			//*/
 			if ($ext !== 'webm' and $ext !== 'ogv') {
-				$mediaInfo = \FileSystem::mediaInfo($oldPath);
+				$mediaInfo = FileSystem::mediaInfo($oldPath);
 				
 				//webm
 				$newPath = substr($oldPath, 0, - strlen($ext)) . 'webm';
@@ -219,7 +226,7 @@ if (isset($this->httpRequest->input['convert'])) {
 						$mapping = [];
 						$languages = [];
 						foreach ($streamList as $key => $stream) {
-							$langInfo = \Lang\Dictionary::languageInfo($stream['lang']);
+							$langInfo = Dictionary::languageInfo($stream['lang']);
 							$mapping[$key] = '-map ' . $key;
 							$languages[$key] = $langInfo['code'];
 						}
@@ -263,7 +270,7 @@ if (isset($this->httpRequest->input['convert'])) {
 				$i = 1;
 				foreach ($streamList as $key => $stream) {
 					$mapping = '-map ' . $key;
-					$langInfo = \Lang\Dictionary::languageInfo($stream['lang']);
+					$langInfo = Dictionary::languageInfo($stream['lang']);
 					$newPath = sprintf(
 						'%s%02d.%s.srt',
 						substr($oldPath, 0, - strlen($ext)),
@@ -437,7 +444,7 @@ foreach ($requestNodes as $key => &$node) {
 		if (!$node) {
 			my_dump($query);
 			echo $dataPath->document->saveXML($retNode);
-			$this->httpResponse->setStatus(\CMS\HTTPResponse::STATUS_NOT_FOUND);
+			$this->httpResponse->setStatus(HTTPResponse::STATUS_NOT_FOUND);
 			$this->progressStatus = self::STATUS_RESPONSE_SET;
 			$retNode = null;
 		}
@@ -458,7 +465,7 @@ if ($node = $requestNodes['subtitles']) {
 	if ($node = $nodeList->item(0)) {
 		$subtitlePath = $node->getAttribute('path');
 	} else {
-		$mediaInfo = \FileSystem::mediaInfo($filePath);
+		$mediaInfo = FileSystem::mediaInfo($filePath);
 		if ($mediaInfo['subtitle']) {
 			$subtitlePath = $filePath;
 		}
@@ -467,13 +474,13 @@ if ($node = $requestNodes['subtitles']) {
 	if ($subtitlePath) {
 		$tmpPath = tempnam(sys_get_temp_dir(), 'archive');
 		$tmpName = $title . '.vtt';
-		$command = sprintf('%s -i "%s" -f webvtt "%s" -y', \FileSystem::FFMPEG_PATH, $subtitlePath, $tmpPath);
+		$command = sprintf('%s -i "%s" -f webvtt "%s" -y', FileSystem::FFMPEG_PATH, $subtitlePath, $tmpPath);
 		exec($command, $res);
 		//echo $command . PHP_EOL . filesize($tmpPath) . PHP_EOL;
 		//die(file_get_contents($tmpPath));
-		$ret = \CMS\HTTPFile::createFromPath($tmpPath, $tmpName);
+		$ret = HTTPFile::createFromPath($tmpPath, $tmpName);
 	} else {
-		$this->httpResponse->setStatus(\CMS\HTTPResponse::STATUS_NOT_FOUND);
+		$this->httpResponse->setStatus(HTTPResponse::STATUS_NOT_FOUND);
 		$this->progressStatus = self::STATUS_RESPONSE_SET;
 		$ret = null;
 	}
@@ -483,14 +490,14 @@ if ($node = $requestNodes['download']) {
 	$name = $node->getAttribute('name');
 	$path = utf8_decode($path);
 	$this->httpResponse->setDownload(true);
-	$ret = \CMS\HTTPFile::createFromPath($path, $name);
+	$ret = HTTPFile::createFromPath($path, $name);
 }
 if ($node = $requestNodes['show']) {
 	$path = $node->getAttribute('path');
 	$name = $node->getAttribute('name');
 	$path = utf8_decode($path);
 	$this->httpResponse->setDownload(false);
-	$ret = \CMS\HTTPFile::createFromPath($path, $name);
+	$ret = HTTPFile::createFromPath($path, $name);
 }
 if ($node = $requestNodes['watch']) {
 	$node->setAttribute('current', '');
@@ -498,7 +505,7 @@ if ($node = $requestNodes['watch']) {
 if ($node = $requestNodes['info']) {
 	//my_dump(\FileSystem::mediaInfo($node->getAttribute('path')));
 	$dataDoc->replaceChild($node, $dataDoc->documentElement);
-	$ret = \CMS\HTTPFile::createFromDocument($dataDoc, 'info.xml');
+	$ret = HTTPFile::createFromDocument($dataDoc, 'info.xml');
 }
 //NICO NICO
 if ($node = $requestNodes['nico']) {
@@ -526,7 +533,7 @@ if ($node = $requestNodes['nico']) {
 			$rootNode->appendChild($fileNode);
 		}
 		$xpath = self::loadXPath($doc);
-		$dom = new \DOMHelper();
+		$dom = new DOMHelper();
 		$rootTime = $xpath->evaluate('number(//@server-keytime)');
 		$videoTime = $xpath->evaluate('string(//@video-keytime)');
 		$commentsTime = $xpath->evaluate('string(//@comments-keytime)');
@@ -585,7 +592,7 @@ if ($node = $requestNodes['nico']) {
 				//*/
 			}
 		}
-		$htmlCode = sprintf('<div xmlns="%s">%s</div>', \DOMHelper::NS_HTML, $htmlCode);
+		$htmlCode = sprintf('<div xmlns="%s">%s</div>', DOMHelper::NS_HTML, $htmlCode);
 		if ($htmlCodeNode = $dom->parse($htmlCode, $doc, true)) {
 			if ($htmlCodeNode = $htmlCodeNode->removeChild($htmlCodeNode->firstChild)) {
 				$htmlCode = $doc->saveXML($htmlCodeNode);
@@ -611,7 +618,7 @@ if ($node = $requestNodes['nico']) {
 			$doc,
 			$this->getTemplateDoc('slothsoft/_archive.nico')
 		);
-		$ret = \CMS\HTTPFile::createFromDocument($doc, 'nico-comments.xhtml');
+		$ret = HTTPFile::createFromDocument($doc, 'nico-comments.xhtml');
 	}
 }
 if (isset($this->httpRequest->input['host'])) {
@@ -628,7 +635,7 @@ $dataRoot->setAttribute('mode', $mode);
 
 if (isset($this->httpRequest->input['xml'])) {
 	$dataRoot->appendChild($retNode);
-	$ret = \CMS\HTTPFile::createFromDocument($dataDoc, 'info.xml');
+	$ret = HTTPFile::createFromDocument($dataDoc, 'info.xml');
 }
 
 //my_dump(\FileSystem::drawBytes(realpath_cache_size()));

@@ -1,4 +1,8 @@
 <?php
+namespace Slothsoft\CMS;
+
+use Slothsoft\Core\FileSystem;
+
 $dataPath = self::loadXPath($dataDoc);
 $retNode = $dataDoc->createDocumentFragment();
 
@@ -36,7 +40,7 @@ foreach ($partList as $part) {
 
 
 
-$prices = \FileSystem::scanDir($tempDir);
+$prices = FileSystem::scanDir($tempDir);
 foreach ($prices as $file) {
 	$arr = explode('.', $file);
 	$date = $arr[0];

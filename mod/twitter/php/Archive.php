@@ -1,8 +1,14 @@
 <?php
-namespace Twitter;
+namespace Slothsoft\Twitter;
 
-use \DBMS\Manager as DBMS;
-use \CMS\HTTPFile;
+use Slothsoft\CMS\HTTPFile;
+use Slothsoft\Core\DOMHelper;
+use Slothsoft\Core\Storage;
+use Slothsoft\DBMS\Manager as DBMS;
+use DOMDocument;
+use DOMNode;
+use DOMXPath;
+use Exception;
 
 class Archive {
 	const VERSION = 31;
@@ -51,9 +57,9 @@ class Archive {
 			$this->install();
 		}
 		
-		$this->dom = new \DOMHelper();
-		$this->doc = new \DOMDocument('1.0', 'UTF-8');
-		$this->xpath = new \DOMXPath($this->doc);
+		$this->dom = new DOMHelper();
+		$this->doc = new DOMDocument('1.0', 'UTF-8');
+		$this->xpath = new DOMXPath($this->doc);
 	}
 	protected function install() {
 		$sqlCols = [
@@ -83,7 +89,7 @@ class Archive {
 			$limit
 		);
 	}
-	public function asNode(\DOMDocument $dataDoc, array $options) {
+	public function asNode(DOMDocument $dataDoc, array $options) {
 		$retNode = $dataDoc->createElement('user');
 		$retNode->setAttribute('name', $this->userName);
 		
@@ -283,15 +289,15 @@ class Archive {
 					$ret = $id === null
 						? $this->dbmsTable->insert($tweet, $tweet)
 						: $this->dbmsTable->update($tweet, $id);
-				} catch(\Exception $e) {
-					throw new \Exception(
+				} catch(Exception $e) {
+					throw new Exception(
 						$id === null
 							? 'invalid insert?' . PHP_EOL . $tweetId . PHP_EOL . print_r($tweet, true)
 							: 'invalid update?' . PHP_EOL . $id . PHP_EOL . print_r($tweet, true)
 					);
 				}
 			} else {
-				throw new \Exception('invalid parsing?' . PHP_EOL . $tweetId . PHP_EOL . $tweetHTML);
+				throw new Exception('invalid parsing?' . PHP_EOL . $tweetId . PHP_EOL . $tweetHTML);
 			}
 		}
 		return $ret;
@@ -411,13 +417,13 @@ class Archive {
 		$cacheTime = $useCache
 			? TIME_DECADE
 			: TIME_MINUTE;
-		return \Storage::loadExternalXPath($href, $cacheTime);
+		return Storage::loadExternalXPath($href, $cacheTime);
 	}
 	protected function downloadJSON($href, $useCache = false) {
 		$cacheTime = $useCache
 			? TIME_DECADE
 			: TIME_MINUTE;
-		return \Storage::loadExternalJSON($href, $cacheTime);
+		return Storage::loadExternalJSON($href, $cacheTime);
 	}
 	protected function downloadImage($href) {
 		$ret = null;
@@ -529,12 +535,12 @@ class Archive {
 									if ($this->dbmsTable->insert($arr, $arr)) {
 										$c++;
 									}
-								} catch(\Exception $e) {
+								} catch(Exception $e) {
 								}
 							} else {
 								my_dump($arr);
 								echo PHP_EOL . PHP_EOL;
-								throw new \Exception('invalid parsing?');
+								throw new Exception('invalid parsing?');
 							}
 						}
 					}
@@ -544,7 +550,7 @@ class Archive {
 		} while($maxId and $hasMoreItems);
 		return $count;
 	}
-	protected function parseNodeOLD(\DOMNode $tweetNode, $tweetId) {
+	protected function parseNodeOLD(DOMNode $tweetNode, $tweetId) {
 		$tmpList = $this->xpath->evaluate('.//img[@alt]', $tweetNode);
 		$nodeList = [];
 		foreach ($tmpList as $tmp) {

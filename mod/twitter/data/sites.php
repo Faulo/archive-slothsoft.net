@@ -1,4 +1,8 @@
 <?php
+namespace Slothsoft\CMS;
+
+use Slothsoft\Core\DOMHelper;
+use Slothsoft\Twitter\Archive;
 
 $baseXML = '
 <page name="%1$s">
@@ -17,10 +21,10 @@ $baseXML = '
 
 $retXML = '';
 
-$userList = \Twitter\Archive::getUserList();
+$userList = Archive::getUserList();
 foreach ($userList as $user) {
 	$retXML .= sprintf($baseXML, $user);
 }
 
-$dom = new \DOMHelper();
+$dom = new DOMHelper();
 return $dom->parse($retXML, $dataDoc);

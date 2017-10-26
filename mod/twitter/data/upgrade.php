@@ -1,6 +1,10 @@
 <?php
+namespace Slothsoft\CMS;
 
-$userList = \Twitter\Archive::getUserList();
+use Slothsoft\Core\Lambda\Manager;
+use Slothsoft\Twitter\Archive;
+
+$userList = Archive::getUserList();
 if ($userName = $this->httpRequest->getInputValue('user')) {
 	$userList = [$userName];
 }
@@ -19,10 +23,10 @@ $archive = new \Twitter\Archive($user);
 $ret = $archive->upgrade();
 return sprintf("User %s: Upgraded %d tweets!%s", $user, $ret, PHP_EOL);';
 
-return \Lambda\Manager::streamClosureList($code, $argsList);
+return Manager::streamClosureList($code, $argsList);
 
 
-$responseList = \Lambda\Manager::executeList($code, $argsList);
+$responseList = Manager::executeList($code, $argsList);
 
 $retNode = $dataDoc->createDocumentFragment();
 

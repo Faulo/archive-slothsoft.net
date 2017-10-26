@@ -1,5 +1,8 @@
 <?php
-use CMS\HTTPFile;
+namespace Slothsoft\CMS;
+
+use Slothsoft\Core\FileSystem;
+use DOMXPath;
 
 $downloadDirsList = [
 	0 => [
@@ -44,7 +47,7 @@ $downloadDirs = $downloadDirsList[$archive];
 $tmpList = [];
 foreach ($downloadDirs as $dir) {
 	if ($dir = realpath($dir)) {
-		$key = \FileSystem::generateStorageKey($dir);
+		$key = FileSystem::generateStorageKey($dir);
 		$tmpList[$key] = $dir;
 	}
 }
@@ -56,7 +59,7 @@ $verifyTree = $this->httpRequest->hasInputValue('refresh');
 $retNode = $dataDoc->createDocumentFragment();
 $dataRoot = $dataDoc->documentElement;
 $dataPath = new \DOMXPath($dataDoc);
-$storage = \FileSystem::getStorage();
+$storage = FileSystem::getStorage();
 
 $count = 0;
 $limit = (int) $this->httpRequest->getInputValue('limit', 10);
@@ -69,13 +72,13 @@ foreach ($downloadDirs as $key => $dir) {
 		//$fragment = $storage->retrieveXML($key, 0, $dataDoc)
 		//$newNode = $fragment->firstChild;
 	} else {
-		$doc = \FileSystem::asNode($dir);
+		$doc = FileSystem::asNode($dir);
 	}
 	if ($doc) {
-		$xpath = new \DOMXPath($doc);
+		$xpath = new DOMXPath($doc);
 		if (isset($this->httpRequest->input['xml'])) {
 			//$dataDoc->replaceChild($newNode, $dataDoc->documentElement);
-			return \CMS\HTTPFile::createFromDocument($doc);
+			return HTTPFile::createFromDocument($doc);
 		}
 		if ($requestedId) {
 			$query = sprintf('//file[@id = "%s"]', $requestedId);
@@ -84,7 +87,7 @@ foreach ($downloadDirs as $key => $dir) {
 			if (!$node) {
 				//my_dump($query);
 				//echo $doc->saveXML();
-				$this->httpResponse->setStatus(\CMS\HTTPResponse::STATUS_NOT_FOUND);
+				$this->httpResponse->setStatus(HTTPResponse::STATUS_NOT_FOUND);
 				$this->progressStatus = self::STATUS_RESPONSE_SET;
 				return;
 			}
@@ -93,7 +96,7 @@ foreach ($downloadDirs as $key => $dir) {
 			$name = $node->getAttribute('name');
 			$path = utf8_decode($path);
 			$this->httpResponse->setDownload(false);
-			return \CMS\HTTPFile::createFromPath($path, $name);
+			return HTTPFile::createFromPath($path, $name);
 		}
 		
 		$sort = false;

@@ -1,9 +1,8 @@
 <?php
-namespace Therapy;
+namespace Slothsoft\Therapy;
 
-use \DOMDocument;
-use \DOMElement;
-use \DOMHelper;
+use Slothsoft\Core\DOMHelper;
+use DOMDocument;
 
 class Clinic {
 	protected $patientList;

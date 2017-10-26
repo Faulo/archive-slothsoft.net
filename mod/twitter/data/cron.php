@@ -1,6 +1,9 @@
 <?php
-
 namespace Slothsoft\CMS;
+
+use Slothsoft\Core\Lambda\Manager;
+use Slothsoft\Twitter\Archive;
+
 return new HTTPClosure(
 	[
 		'isThreaded' => true,
@@ -8,7 +11,7 @@ return new HTTPClosure(
 	function() use ($dataDoc) {
 		@file_get_contents('http://moodle.log-in-projekt.eu/admin/cron.php');
 
-		$userList = \Twitter\Archive::getUserList();
+		$userList = Archive::getUserList();
 
 		$argsList = [];
 		foreach ($userList as $user) {
@@ -30,6 +33,6 @@ try {
 return $ret . PHP_EOL . PHP_EOL;
 EOT;
 
-		return \Lambda\Manager::streamClosureList($code, $argsList);
+		return Manager::streamClosureList($code, $argsList);
 	}
 );

@@ -1,4 +1,7 @@
 <?php
+namespace Slothsoft\CMS;
+
+use Slothsoft\Core\Storage;
 
 $dataRoot = $dataDoc->documentElement;
 $retFragment = $dataDoc->createDocumentFragment();
@@ -11,7 +14,7 @@ if ($id = $this->httpRequest->getInputValue('id')) {
 	$url = sprintf('/item/%s', $id);
 
 
-	if ($xpath = \Storage::loadExternalXPath($host . $url, TIME_YEAR)) {
+	if ($xpath = Storage::loadExternalXPath($host . $url, TIME_YEAR)) {
 		$dataRoot->setAttribute('href', $host . $url);
 		$dataRoot->setAttribute('name', $xpath->evaluate('string(//html:title)'));
 		
@@ -67,7 +70,7 @@ if ($id = $this->httpRequest->getInputValue('id')) {
 			$type = isset($arr['t'])
 				? $arr['t']
 				: 'unknown';
-			if ($xpath = \Storage::loadExternalXPath($url, TIME_YEAR)) {
+			if ($xpath = Storage::loadExternalXPath($url, TIME_YEAR)) {
 				//if ($nodeList = $xpath->evaluate('//*[@id="itemDetail"]//html:img')) {
 				if ($nodeList = $xpath->evaluate('//*[@id="column"]//html:img')) {
 					
