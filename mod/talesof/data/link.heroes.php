@@ -26,8 +26,11 @@ for ($i = 1; $i < 10; $i ++) {
         }
         foreach ($linkNodeList as $linkNode) {
             // echo $linkNode->textContent . PHP_EOL;
-            $url = 'http://tales-of-link.wikia.com' . $linkNode->getAttribute('href');
-            $charLinkList[$url] = null;
+			$href = $linkNode->getAttribute('href');
+			if (strpos($href, '/wiki/JP_') === false) {
+				$url = 'http://tales-of-link.wikia.com' . $href;
+				$charLinkList[$url] = null;
+			}
         }
     }
 }
@@ -52,6 +55,7 @@ $queryList['ActiveSkillDescription'] = '//tr[th[normalize-space()="Active Skill"
 $charDataList = [];
 
 foreach ($charLinkList as $charLink) {
+	//echo $charLink . PHP_EOL;
     if ($xpath = $this->loadExternalXPath($charLink, TIME_MONTH)) {
         $tmpNodeList = $xpath->evaluate('//a[img]');
         foreach ($tmpNodeList as $tmpNode) {
