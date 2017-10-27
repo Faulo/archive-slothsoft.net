@@ -1,0 +1,86 @@
+@font-face {
+	font-family: myHeading;
+	src: local("Bitstream Cyberbit");/*, local("BernhardModernBT-Bold"), url(/mod/core/res/fonts/BernModB.ttf);*/
+}
+@font-face {
+	font-family: mySpecialHeading;
+	src: local("CopperplateGothicBT-Bold");/*, local("CopperplateGothicBT-Bold"), url(/mod/core/res/fonts/CopGotBd.ttf);*/
+} 
+@font-face {
+	font-family: myParagraph;
+	src: local("Calibri");/*, local("Calibri"), local("Bitstream Cyberbit"), Constantia, url(/mod/core/res/fonts/constan.ttf);*/
+}
+@font-face {
+	font-family: myBody;
+	src: local("Calibri");/*, local("Calibri"), url(/mod/core/res/fonts/calibri.ttf);*/
+}
+@font-face {
+	font-family: myNumber;
+	src: local("Consolas");/*, local("Consolas"), url(/mod/core/res/fonts/consola.ttf);*/
+}
+@font-face {
+	font-family: myTime;
+	src: local("Consolas");/*, local("Consolas"), url(/mod/core/res/fonts/consola.ttf);*/
+}
+@font-face {
+	font-family: myCode;
+	src: local("CourierNewPSMT");/*, local("CourierNewPSMT"), url(/mod/core/res/fonts/cour.ttf);*/
+}
+@font-face {
+	font-family: myPixel;
+	/*src: local("Press Start"), url(/getResource.php/slothsoft/fonts/PrStart);*/
+	src: local("Press Start K"), url(/getResource.php/slothsoft/fonts/prstartk);
+}
+@font-face {
+	font-family: myOldschool;
+	/* https://www.fontzillion.com/fonts/petyka/retro-computer */
+	src: local("Verily Serif Mono"), url("/getResource.php/slothsoft/fonts/VerilySerifMono");
+	/*src: local("Amberworld"), url("/getResource.php/slothsoft/fonts/Amberworld");*/
+}
+@font-face {
+	font-family: myKanjiStroke;
+	src: local("KanjiStrokeOrders"), url(/getResource.php/slothsoft/fonts/KanjiStrokeOrders) format("truetype");
+}
+@font-face {
+	font-family: myKanjiSansSerif;
+	src:local("HiraKakuPro-W3"),
+		local("Hiragino Kaku Gothic Pro W3"),
+		local("ヒラギノ角ゴ Pro W3"),
+		local("Meiryo"),
+		local("MS PGothic");
+}
+@font-face {
+	font-family: myKanjiSerif;
+	src:local("HiraMinPro-W3"),
+		local("Hiragino Mincho Pro W3"),
+		local("ヒラギノ明朝 Pro W3"),
+		local("MS PMincho");
+}
+@font-face {
+	font-family: myUnicodeSymbols;
+	src: local("Segoe UI Symbol"), url(/getResource.php/slothsoft/fonts/seguisym) format("truetype");
+}
+@font-face {
+	font-family: myUnicodeLetters;
+	src:local("Quivira"), url(/getResource.php/slothsoft/fonts/Quivira) format("truetype");
+}
+h1, h2, h3, h4, h5, h6, .myHeading {
+	font-family: myHeading, serif; /*, myUnicodeSymbols, myUnicodeLetters; */
+	/*font-weight: normal;*/
+}
+p, button, input, .myParagraph {
+	font-family: myParagraph, serif;
+}
+button, input {
+	font-size: 1em;
+}
+body, .myBody {
+	font-family: myBody, sans-serif;
+}
+textarea, samp, code, pre, .myCode {
+	font-family: myCode, monospace;
+}
+time, .myTime {
+	font-family: myTime, monospace;
+	font-size: smaller;
+}

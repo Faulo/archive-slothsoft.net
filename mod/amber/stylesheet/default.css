@@ -1,0 +1,520 @@
+
+.Amber {
+	font-size: 1em;
+	font-weight: bold;
+	color: rgb(255, 255, 238);
+	image-rendering: pixelated;
+	image-rendering: -moz-crisp-edges;
+	/*
+	text-shadow: black 1px 1px 1px, black 1px 1px 0px;
+	text-shadow:
+    1px 0px 0 black,
+    0px 1px 0 black,
+     1px 1px 0 black;
+	 */
+}
+.Amber,
+.Amber *:link ,
+.Amber *:visited  {
+	text-shadow: black 1px 1px,		black 0px 1px,		black 1px 0px;
+}
+.Amber summary::marker {
+	text-shadow: inherit;
+}
+.Amber summary::-moz-list-bullet {
+	text-shadow: inherit;
+}
+.Amber summary::-webkit-details-marker {
+	text-shadow: inherit;
+}
+.Amber,
+.Amber summary,
+.Amber code {
+	font-family: myOldschool, monospace;
+	text-transform: uppercase;
+}
+.Amber.Instructions {
+	font-family: myParagraph, serif;
+	text-transform: none;
+}
+.Amber * {
+	font-weight: inherit;
+	font-family: inherit;
+	text-transform: inherit;
+	font-size: inherit;
+	text-shadow: inherit;
+	color: inherit;
+}
+
+.Amber h2 {
+	margin: 0.25em 0;
+}
+.Amber h3 {
+	margin: 0;
+}
+.Amber input[type="submit"],
+.Amber button,
+.Amber details,
+.Amber article {
+	background-color: rgb(102, 102, 85);
+	border-color: rgb(102, 102, 85);
+	border-width: 2px;
+	border-style: outset;
+	box-sizing: border-box;
+	border-radius: 2px;
+}
+.Amber textarea,
+.Amber input[type="text"],
+.Amber input[type="number"],
+.Amber select,
+.Amber *[role="button"] {
+	max-width: 100%;
+	background-color: rgb(68, 68, 51);
+	border-color: rgb(68, 68, 51);
+	border-width: 2px;
+	border-style: inset;
+	box-sizing: border-box;
+	border-radius: 0;
+}
+.Amber textarea {
+	overflow: auto;
+}
+.Amber textarea[data-type="binary"] {
+	white-space: pre-wrap;
+}
+.Amber textarea[data-type="evet-script"] {
+	white-space: pre;
+}
+.Amber article {
+	border-width: 4px;
+	border-radius: 4px;
+}
+.Amber .command {
+	border-style: groove;
+}
+.Amber article {
+	border-style: ridge;
+}
+.Amber input[type="submit"]:active,
+.Amber button:active,
+.Amber details:active,
+.Amber details[open] {
+	border-style: inset;
+}
+.Amber input:focus,
+.Amber select:focus,
+.Amber button:focus,
+.Amber *[role="button"]:focus {
+	border-color: rgb(255, 204, 0);
+}
+
+
+.Amber .orange,
+.Amber form:invalid *[type="submit"] {
+	color: rgb(255, 153, 0);
+}
+.Amber .yellow,
+.Amber .command,
+.Amber input[type="text"],
+.Amber *[data-type="string-dictionary"] li::before {
+	color: rgb(255, 204, 0);
+}
+.Amber .green,
+.Amber .section > .name,
+.Amber caption,
+.Amber h3,
+.Amber *:link  {
+	color: rgb(170, 170, 68);
+}
+.Amber .gray,
+.Amber *:visited,
+.Amber *[data-type="string-dictionary"] li  {
+	color: rgb(170, 170, 153);
+}
+
+.Amber details {
+	overflow: hidden;
+}
+.Amber details + details {
+	margin-top: 0.5em;
+}
+.Amber details details {
+	margin-right: 0.5em;
+	margin-bottom: 0.5em;
+	border-width: 1px;
+}
+.Amber button {
+	margin-left: 0.5em;
+}
+.Amber ul {
+	padding: 0;
+	list-style-type: none;
+}
+.Amber caption {
+	text-align: left;
+}
+
+.Amber input[type="number"],
+.Amber .right-aligned {
+	text-align: right;
+}
+.Amber input[type="text"] {
+}
+.Amber input[type="checkbox"] {
+	width: 1.5em;
+}
+.Amber input[size="1"],
+.Amber input[size="2"] ,
+.Amber input[max="99"],
+.Amber input[max="250"] {
+	width: 3.5em;
+}
+.Amber input[max="256"],
+.Amber input[max="999"] {
+	width: 3.5em;
+}
+.Amber input[max="65536"],
+.Amber input[size="3"],
+.Amber input[size="4"] {
+	width: 6em;
+}
+.Amber select {
+	min-width: 6em;
+}
+.Amber .events select {
+	max-width: 6em;
+}
+.Amber .smaller {
+	font-size: smaller;
+}
+.Amber .pre {
+	white-space: pre-wrap;
+}
+.Amber .EPChart {
+	width: 25em;
+}
+
+.Amber .Item {
+	margin: 0.25em 0;
+}
+.Amber .Item table {
+	border-spacing: 0;
+	margin: 0.25em 0;
+}
+.Amber .Item tbody + tbody > tr:first-child > * {
+    border-top: 0.25em solid transparent;
+}
+.Amber .Item td {
+	height: 1.25em;
+	line-height: 1.25em;
+	padding: 0 0.25em;
+	white-space: nowrap;
+}
+.Amber .Item .ItemName td:last-child {
+	width: 19ch;
+}
+.Amber .Item .ItemData td:last-child {
+	width: 3em;
+	padding-right: 0;
+}
+.Amber .Item .ItemData tbody + tbody td:last-child {
+	padding-right: 6ch;
+}
+.Amber .Item .ItemClasses ul {
+	column-gap: 1ch;
+	column-count: 2;
+	width: 22ch;
+	min-height: 6.25em;
+}
+.Amber .Item .ItemMagic td {
+	min-width: 5ch;
+}
+
+.Amber .popup {
+	position: fixed;
+	top: 50%;
+	left: 0;
+	right: 0;
+	transform: translate(0, -50%);
+	margin: auto;
+	z-index: 20;
+	width: fit-content;
+	width: -moz-fit-content;
+	width: -webkit-fit-content;
+}
+.Amber .popup article {
+	margin: 0;
+	box-shadow: black 0.25em 0.25em 0.5em, black 0.25em 0.25em 0.5em;
+}
+
+@media (max-width: 950px) {
+	.Amber .popup {
+		font-size: smaller;
+	}
+}
+
+
+.Amber .picker {
+	position: relative;
+	padding: 0;
+	display: block;
+	width: fit-content;
+	width: -moz-fit-content;
+	width: -webkit-fit-content;
+}
+.Amber *[data-template="portrait"] .picker,
+.Amber .portrait.picker {
+	border-style: ridge !important;
+}
+.Amber .monster-sprite.picker {
+	border-style: ridge !important;
+}
+.Amber *[data-template="equip"] .picker,
+.Amber *[data-template="item"] .picker,
+.Amber .equipment .picker {
+	margin: auto;
+}
+.Amber .picker > * > * {
+	display: none;
+}
+.Amber .picker > *::after {
+	display: block;
+	content: " ";
+	text-align: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.Amber .picker > *.PortraitId::after,
+.Amber .picker > *[data-picker-name="portrait"]::after {
+	width: 64px;
+	height: 68px;
+	font-size: 68px;
+}
+.Amber .popup .picker > *.PortraitId::after,
+.Amber .popup .picker > *[data-picker-name="portrait"]::after {
+	width: 128px;
+	height: 136px;
+	font-size: 136px;
+}
+.Amber .picker > *.ItemId::after,
+.Amber .picker > *[data-picker-name="item-id"]::after {
+	font-size: 32px;
+	width: 1em;
+	height: 1em;
+	border: 2px solid transparent;
+	background-clip: content-box;
+}
+.Amber .picker > *.Broken[data-picker-value]::after,
+.Amber .picker > *[data-picker-name="broken"]::after {
+	font-size: 32px;
+	width: 1em;
+	height: 1em;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	background-clip: content-box;
+	background-image: url(/getResource.php/amber/items-map);
+}
+.Amber .picker > *.Broken[data-picker-value=""]::after,
+.Amber .picker > *[data-picker-name="broken"][data-picker-value=""]::after {
+	background-image: none;
+}
+.Amber .picker > *.Identified::after,
+.Amber .picker > *[data-picker-name="identified"]::after {
+	position: absolute;
+	top: 24px;
+	right: 2px;
+	font-size: 0.5em;
+	content: "👁";
+}
+.Amber .picker > *.Identified[data-picker-value=""]::after,
+.Amber .picker > *[data-picker-name="identified"][data-picker-value=""]::after {
+	content: "";
+}
+.Amber .picker > *.Charge::after,
+.Amber .picker > *[data-picker-name="item-charge"]::after {
+	position: absolute;
+	top: -2px;
+	right: 2px;
+	color: rgb(255, 204, 0);
+	font-size: 0.5em;
+}
+.Amber .picker > *.Amount::after,
+.Amber .picker > *.Charge::after,
+.Amber .picker > *[data-picker-name="item-amount"]::after,
+.Amber .picker > *[data-picker-name="item-charge"]::after {
+	content: attr(data-picker-value);
+}
+.Amber .picker > *.Amount[data-picker-value="0"]::after,
+.Amber .picker > *.Charge[data-picker-value="0"]::after,
+.Amber .picker > *[data-picker-name="item-amount"][data-picker-value="0"]::after,
+.Amber .picker > *[data-picker-name="item-charge"][data-picker-value="0"]::after {
+	content: " ";
+}
+.Amber .picker > *.Amount[data-picker-value="255"]::after,
+.Amber .picker > *.Charge[data-picker-value="255"]::after,
+.Amber .picker > *[data-picker-name="item-amount"][data-picker-value="255"]::after,
+.Amber .picker > *[data-picker-name="item-charge"][data-picker-value="255"]::after {
+	content: "**";
+}
+.Amber *[data-template="equip"] .picker > *.Amount,
+.Amber .equipment .picker > *[data-picker-name="item-amount"] {
+	display: none;
+}
+
+
+
+
+.Amber *[data-hover-text],
+.Amber form *[type="submit"] {
+	position: relative;
+}
+.Amber *[data-hover-text]:hover::after,
+.Amber form:invalid *[type="submit"]:hover::after {
+	display: block;
+	content: attr(data-hover-text);
+	pointer-events: none;
+	text-align: center;
+	position: absolute;
+	width: max-content;
+	width: -moz-max-content;
+	width: -webkit-max-content;
+	left: 50%;
+	top: 0.5ch;
+	transform: translate(-50%, -50%);
+	margin-left: -2px;
+	z-index: 10;
+}
+.Amber form:invalid *[type="submit"]:hover::after {
+	content: "Formvalidierung fehlgeschlagen!";
+	color: rgb(255, 255, 238);
+}
+.Amber *[data-template="equip"] .name,
+.Amber .equipment .name,
+.Amber article.Portrait {
+	display: block;
+	text-align: center;
+}
+
+.Amber .ailments ul {
+	column-count: 2;
+}
+/*
+*[data-template="item"] img,
+*[data-template="equip"] img {
+	width: 32px;	
+}
+*[data-template="item"] input[data-name = "zerbrochen"]:checked ~ .picker::after,
+*[data-template="equip"] input[data-name = "zerbrochen"]:checked ~ .picker::after {
+	content: " ";
+	background-image: url(/getResource.php/amber/items/broken);
+	position: absolute;
+	top: 1px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+}
+*[data-template="item"] *[data-item-amount]::after {
+	content: attr(data-item-amount);
+	display: block;
+	text-align: center;
+}
+*[data-template="item"] *[data-item-amount="0"]::after {
+	content: " ";
+}
+*/
+
+
+*[data-template="tabs"] > label {
+	display: block;
+	text-align: center;
+	margin-bottom: 16px;
+}
+*[data-template="tabs"] > label > * {
+	display: block;
+	width: auto;
+	margin: auto;
+}
+
+*[data-template="flex"].Equip,
+.equipment {
+	width: 18em;
+}
+*[data-template="flex"].Equip > ul > li,
+.equipment > ul > li {
+	width: 6em;
+	margin: 0;
+}
+*[data-template="flex"].Inventar,
+.inventory {
+	width: 9em;
+}
+*[data-template="flex"].Shop,
+*[data-template="flex"].Chest,
+.shop {
+	width: 36em;
+}
+*[data-template="flex"].Items > ul {
+	justify-content: center;
+}
+*[data-template="flex"].Items > ul > li,
+.shop > ul > li {
+	margin: 0.25em;
+}
+
+*[data-template="flex"] {
+	max-width: 100%;
+}
+*[data-template="flex"] > ul {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-items: stretch;
+}
+*[data-template="flex"] > ul > li {
+	display: block;
+	max-width: 100%;
+}
+*[data-template="flex"] > .name {
+	display: block;
+	text-align: center;
+}
+*[data-template="flex"].Spells > ul > li,
+*[data-template="flex"].spells > ul > li {
+	width: 17em;
+	font-size: smaller;
+}
+*[data-template="flex"].events > ul > li {
+	font-size: smaller;
+}
+
+*[data-template="columns"] {
+	display: table;
+}
+*[data-template="columns"] > * {
+	display: table-cell;
+	vertical-align: top;
+}
+
+
+/*
+*[data-dictionary="Portrait"] option {
+	background-repeat: no-repeat;
+	display:block;
+	height:34px;
+	text-align:right;
+	background-position: left !important;
+}
+*[data-dictionary="ItemId"] option {
+	background-repeat: no-repeat;
+	background-size: contain;
+	display:block;
+	height:18px;
+	text-align:right;	
+}
+*[data-dictionary] *[value] {
+	background-repeat: no-repeat;
+	background-position: top center;
+}
+*/

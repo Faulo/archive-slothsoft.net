@@ -1,0 +1,278 @@
+[data-minecraft-block] {
+	height: 2.5em;
+	font-size: 0.5em;
+	color: black;
+}
+
+nav, .Title, .Content {
+}
+nav.Map {
+	position: fixed;
+	max-height: 90%;
+	overflow-y: auto;
+}
+.Content.Map {
+	background-color: transparent;
+	margin: 0;
+	padding: 0;
+}
+.minecraft-home {
+	display: table;
+	table-layout: fixed;
+}
+.minecraft-home > * {
+	display: table-row;
+}
+.minecraft-home > * > * {
+	display: table-cell;
+	width: 50%;
+}
+@media handheld, all and (max-width: 768px) {
+	.minecraft-home, .minecraft-home > *, .minecraft-home > * > * {
+		display: block;
+		width: auto;
+	}
+	.minecraft-log {
+		display: none;
+	}
+}
+.minecraft-home > *:first-child > * > fieldset {
+	/*height: 240px;*/
+}
+.minecraft-home .minecraft-log ul {
+	/*height: 220px;*/
+}
+.minecraft-pic-preview {
+	padding: 0px;
+}
+.minecraft-pic-preview > li {
+	text-align: center;
+	display: inline-block;
+	margin: 16px;
+	vertical-align: top;
+}
+.minecraft-pic-preview > li {
+	width: 320px;
+}
+.minecraft-pic-preview > li > p {
+	text-align: center;
+}
+.minecraft-pic-preview > li > a {
+	position: relative;
+	display: block;
+}
+.minecraft-pic-preview > li > a > img {
+	vertical-align: bottom;
+}
+.minecraft-pic-preview > li > a > div {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	opacity: 0.25;
+}
+.minecraft-pic-preview > li > a:hover > div {
+	background-color: lightblue;
+}
+
+.minecraft-infos > * {
+	display: inline-block;
+}
+.minecraft-infos table {
+	margin: 0px 8px;
+	table-layout: fixed;
+}
+.minecraft-infos tr {
+
+	
+}
+.minecraft-infos th, .minecraft-infos td {
+
+}
+.minecraft-infos th {
+	text-align: left;
+}
+.minecraft-infos td {
+	font-family: myNumber, monospace;
+	
+}
+.minecraft-infos  img {
+	height: 1.5em;
+}
+.minecraft-pics fieldset{
+	margin: 8px 32px;
+}
+.minecraft-mall td, .minecraft-mall th {
+	padding: 2px 4px;
+}
+
+.Craft {
+	margin: 32px;
+}
+.Craft > * {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0px 8px;
+}
+.Craft > *:first-child + * {
+	font-size: 32px;
+	font-weight: bold;
+}
+.Workbench > *{
+	display: table-row;
+}
+.Workbench > * > * {
+	display: table-cell;
+	background-color: #888888;
+	border: 2px inset #777777;
+	line-height: 24px;
+	height: 24px;
+	width: 24px;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0px;
+	padding: 0px;
+}
+[data-minecraft-charsheet="root"] {
+	background-color: rgb(198, 198, 198);
+	border: 3px outset rgb(198, 198, 198);
+	padding: 4px 8px;
+	display: inline-block;
+	color: white;
+	font-family: myCode, monospace;
+	font-size: smaller;
+	font-weight: bold;
+	margin: 8px;
+}
+[data-minecraft-charsheet="root"] > * {
+	margin: auto;
+	display: table;
+	margin: 4px 0px;
+}
+[data-minecraft-charsheet="root"] > *:first-child > * {
+	display: table-cell;
+	vertical-align: middle;
+}
+[data-minecraft-charsheet="root"] ul {
+	list-style-type: none;
+	padding: 0px;
+}
+[data-minecaft-charsheet="picture"] {
+	padding: 0px 16px;
+	background-color: black;
+	border: 2px inset #777777;
+}
+[data-minecaft-charsheet="picture"] img {
+	height: 96px;
+}
+[data-minecraft-charsheet="stats"] h3 {
+	margin: 0px;
+}
+[data-minecraft-charsheet="inv"] > * > * > *, [data-minecraft-charsheet="equip"] > * {
+	background-color: #888888;
+	border: 2px inset #777777;
+	line-height: 24px;
+	height: 28px;
+	width: 28px;
+	vertical-align: middle;
+	margin: 0px;
+	padding: 0px;
+	
+}
+[data-minecraft-charsheet="inv"], [data-minecraft-charsheet="equip"] {
+	text-align: center;
+	border-spacing: 0px;
+}
+[data-minecraft-charsheet="inv"] div {
+	position: relative;
+}
+[data-minecraft-charsheet="inv"] span {
+	position: absolute;
+	right: 0px;
+	bottom: -0.4em;
+}
+
+* + .minecraft-log {
+	margin-top: 32px;
+}
+.minecraft-log {
+	overflow: auto;
+	background-color: #eee;
+	border: 2px ridge #629923;
+	border-radius: 0.25em;
+}
+.minecraft-log h2 {
+	font-size: 1em;
+}
+
+.minecraft-log .archive {
+	max-width: 90%;
+}
+.minecraft-log .archive > * {
+	display: inline;
+	padding: 0px 2px;
+}
+.minecraft-log .onlinePlayers {
+	float: right;
+	margin: 8px;
+	padding: 4px;
+}
+.onlinePlayers ul {
+	list-style-type: square;
+}
+
+.minecraft-log  *[data-month] {
+	color: black;
+	padding: 1px 4px;
+	display: inline-block;
+	width: 24px;
+	text-align: center;
+}
+
+@media print {
+	nav {
+		display: none;
+	}
+	body {
+		background-color: transparent;
+	}
+	body > * > * {
+		border: none;
+		width: 17.5cm;
+		margin: 0px;
+		padding: 0px;
+		background-color: transparent;
+	}
+	
+	.minecraft-chat ul {
+		height: auto;
+	}
+	.minecraft-home > * > * {
+		display: block;
+		width: auto;
+	}
+	.minecraft-home > *:first-child > * > fieldset {
+		height: auto;
+	}
+	.minecraft-home .minecraft-log ul, .minecraft-home [data-chat-id="list"] {
+		height: auto;
+		overflow: visible;
+	}
+	.minecraft-log .onlinePlayers, .minecraft-log *[data-month] {
+		display: none !important;
+	}
+	.minecraft-pics form {
+		display: none;
+	}
+	.minecraft-pic-preview > li {
+		margin: 4px;
+	}
+	/*
+	a[href]::after {
+		content:" <"attr(href)">";
+		color:#888;
+		font-style:italic;
+		font-size: .83em;
+	}
+	*/
+}

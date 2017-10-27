@@ -1,0 +1,175 @@
+html, body {
+	height: 100%;
+	width: 100%;
+}
+html {
+	overflow: hidden;
+	background: linear-gradient(160deg, #f8ffe8 0%,#e3f5ab 33%,#b7df2d 100%);
+	font-size: 5mm;
+}
+.page {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	align-content: stretch;
+	align-items: stretch;
+	max-width: 45em;
+	margin: auto;
+}
+
+nav, main {
+	border: 1px ridge rgba(128, 128, 128, 0.5);
+	box-shadow: 0.25em 0.25em 0.25em rgba(128, 128, 128, 0.5);
+	border-radius: 0.125em;
+	box-sizing: border-box;
+	margin: 0.25em;
+}
+
+nav {
+	padding: 0;
+	background-color: lightgreen;
+	flex-shrink: 0;
+	overflow: hidden;
+	position: relative;
+	
+	/*
+	background-image: url(/getFragment.php/slothsoft/writing?text=Daniel+Schulz&color=lightblue);
+	background-clip: content-box;
+	background-size: cover;
+	background-repeat: no-repeat;
+	*/
+}
+main {
+	flex-basis: 100%;
+	overflow: auto;
+}
+
+/*
+nav svg {
+	position: absolute;
+	font-family: myPixel, monospace;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+}
+nav svg text {
+	filter: url(/getFragment.php/slothsoft/writing#blackOutline);
+	dominant-baseline: hanging;
+	fill: lightblue;
+	text-anchor: start;
+	font-size: 1.5em;
+	transform: scale(0.75);
+}
+*/
+.navi {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-end;
+	align-items: stretch;
+	margin-right: -1px;
+}
+.navi + .navi {
+	background-color: rgba(0, 255, 0, 0.2);
+	font-size: smaller;
+}
+.navi a {
+	display: block;
+	text-align: center;
+	max-width: 8.5em;
+	padding: 0.5em;
+	line-height: 1em;
+	border-right: 1px ridge rgba(128, 128, 128, 0.5);
+}
+.navi a:hover {
+	background-color: #7de67d !important;
+}
+.navi a.current {
+	background: #87cc87;
+	color: white;
+}
+/* Medium screens */
+@media all and (max-width: 800px) {
+	nav {
+		justify-content: flex-end;
+	}
+}
+
+main {
+	background-color: lightblue;
+	padding: 0.5em;
+	min-height: 10em;
+	overflow: auto;
+}
+
+h1, h2, h3 {
+	color: white;
+	text-shadow:
+		-1px -1px 0 rgba(128, 128, 256, 0.8),
+		1px -1px 0 rgba(128, 128, 256, 0.8),
+		-1px  1px 0 rgba(128, 128, 256, 0.8),
+		1px  1px 0 rgba(128, 128, 256, 0.8);
+}
+
+header {
+	background-color: rgba(128, 128, 256, 0.5);
+	color: white;
+	padding: 0 1em;
+	border-radius: 4em;
+	line-height: 4em;
+}
+header > h2 {
+	margin: 0;
+}
+
+article, section {
+	min-height: 1em;
+}
+section > h2, article > h2 {
+	font-size: 1em;
+	font-weight: normal;
+	border-bottom: 1px solid rgba(128, 128, 256, 0.5);
+}
+section > h3, article > h3 {
+	font-size: 1em;
+	font-weight: normal;
+}
+article > img, section > img {
+	float: right;
+	display: block;
+	max-width: 50%;
+	margin-left: 1em;
+}
+article > *:last-child, section > *:last-child {
+	clear: both;
+}
+dl {
+}
+dl > dd {
+	list-style-type: circle;
+	display:  list-item;
+}
+
+figure,
+figure > img,
+figure > figcaption {
+	display: block;
+	margin: 0;
+}
+figure > figcaption {
+	text-align: center;
+	margin: 0.25em 2em;
+	font-style: italic;
+}
+figure > img {
+	max-width: 100%;
+	margin: auto;
+}
+figure + figure {
+	margin-top: 2em;
+}
+
+.hidden {
+	display: none;
+}

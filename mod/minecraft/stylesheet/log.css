@@ -1,0 +1,36 @@
+.minecraft-log  *[data-month="1"] {
+	background-color: aqua;
+}
+.minecraft-log *[data-month="2"] {
+	background-color: maroon;
+}
+.minecraft-log *[data-month="3"] {
+	background-color: red;
+}
+.minecraft-log *[data-month="4"] {
+	background-color: purple;
+}
+.minecraft-log *[data-month="5"] {
+	background-color: fuchsia;
+}
+.minecraft-log *[data-month="6"] {
+	background-color: green;
+}
+.minecraft-log *[data-month="7"] {
+	background-color: lime;
+}
+.minecraft-log *[data-month="8"] {
+	background-color: olive;
+}
+.minecraft-log *[data-month="9"] {
+	background-color: yellow;
+}
+.minecraft-log *[data-month="10"] {
+	background-color: navy;
+}
+.minecraft-log *[data-month="11"] {
+	background-color: blue;
+}
+.minecraft-log *[data-month="12"] {
+	background-color: teal;
+}

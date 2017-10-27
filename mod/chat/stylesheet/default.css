@@ -1,0 +1,95 @@
+@media print {
+	.Content > *[data-chat-id="shoutbox"] {
+		display: none !important;
+	}
+}
+@media handheld, all and (max-width: 768px) {
+	.Content > *[data-chat-id="shoutbox"] {
+		display: none !important;
+	}
+}
+*[data-chat-id="shoutbox"] {
+	/*
+	width: 450px;
+	display: inline-block;
+	*/
+	background-color: #D8F2BB;
+	margin: 0 0 8px 8px;
+	max-width: 100%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+*[data-chat-id="shoutbox"] .messageLog {
+	
+}
+[data-chat-id="list"] {
+	/*height: 200px;*/
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding:0px;
+	height: 500px;
+}
+*[data-chat-id="shoutbox"] *[data-chat-id="list"] {
+	height: 300px;
+}
+[data-chat-id="form"] {
+}
+[data-chat-id="input"] {
+	border: 1px solid white;
+	background-color: white;
+	box-sizing: border-box;
+	width: 100%;
+	font-size: 1em;
+}
+[data-chat-id="input"][disabled] {
+	background-color: silver;
+	color: white;
+}
+[data-chat-id="input"]:focus {
+	border: 1px solid green;
+}
+.messageLog {
+	list-style-type: none;
+	padding: 0px;
+	font-family: myParagraph, serif, myUnicodeSymbols, myUnicodeLetters;
+}
+.messageLog > li {
+	/*display: table-row;*/
+}
+.messageLog > li > * {
+	/*display: table-cell;*/
+}
+.messageLog > li > *:first-child {
+	color: black;
+	white-space: nowrap;
+	padding-right: 8px;
+}
+.messageLog > li  > *:first-child::before {
+	content: "[";
+}
+.messageLog > li  > *:first-child::after {
+	content: "]";
+}
+.messageLog > li  > *:last-child {
+}
+.messageLog .chat[data-player="GOTT"] {
+	
+}
+.messageLog time {
+	font-size: smaller;
+}
+.messageLog samp {
+	font-style: italic;
+}
+.messageLog strong {
+	font-weight: normal;
+}
+.messageLog .chat {
+	color: navy;
+}
+.messageLog .login > * {
+	color: #3A0;
+}
+.messageLog .logout > * {
+	color: #A30;
+}
