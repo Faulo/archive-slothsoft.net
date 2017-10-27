@@ -1,10 +1,12 @@
 <?php
 namespace Slothsoft\CMS;
 
+use Slothsoft\DBMS\Manager;
+
 $dbName = 'cms';
 $tableName = 'unison';
 
-$table = \DBMS\Manager::getTable($dbName, $tableName);
+$table = Manager::getTable($dbName, $tableName);
 
 $waitStep = 10000;
 $waitTime = 300000000;
@@ -25,10 +27,10 @@ if ($key = $this->httpRequest->getInputValue('media-id')) {
             $status['progress'] += $this->httpRequest->timeFloat - $status['time'] + $i / 1000000 + 0.2;
         }
         $status['id'] = $res['id'];
-        $this->httpResponse->setStatus(\CMS\HTTPResponse::STATUS_OK);
+        $this->httpResponse->setStatus(HTTPResponse::STATUS_OK);
         $this->httpResponse->setBody(json_encode($status));
         $this->progressStatus = self::STATUS_RESPONSE_SET;
     } else {
-        $this->httpResponse->setStatus(\CMS\HTTPResponse::STATUS_NO_CONTENT);
+        $this->httpResponse->setStatus(HTTPResponse::STATUS_NO_CONTENT);
     }
 }

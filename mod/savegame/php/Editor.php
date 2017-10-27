@@ -1,12 +1,11 @@
 <?php
 namespace Slothsoft\Savegame;
 
-use Slothsoft\Core\DOMHelper;
 use Slothsoft\CMS\HTTPFile;
-use Slothsoft\CMS\HTTPRequest;
-use Exception;
-use DOMElement;
+use Slothsoft\Core\DOMHelper;
 use DOMDocument;
+use DOMElement;
+use Exception;
 declare(ticks = 1000);
 
 class Editor

@@ -1,7 +1,6 @@
 <?php
 namespace Slothsoft\FireEmblem;
 
-use Slothsoft\Core\DOMHelper;
 use Slothsoft\Core\Storage;
 use DOMDocument;
 use Exception;

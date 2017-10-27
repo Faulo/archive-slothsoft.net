@@ -1,12 +1,14 @@
 <?php
 namespace Slothsoft\CMS;
 
+use Slothsoft\Lang\TranslatorJaEn;
+
 $userKey = 'slothsoft/japanese-faulo';
 
 $tmpDoc = $this->getResourceDoc($userKey, 'xml');
 $tmpPath = self::loadXPath($tmpDoc);
 
-$translator = new \Lang\TranslatorJaEn();
+$translator = new TranslatorJaEn();
 $translator->commonWords = false;
 
 $res = $translator->translateWord('仲直り');

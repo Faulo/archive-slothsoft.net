@@ -1,5 +1,9 @@
 <?php
-$table = \DBMS\Manager::getTable('cms', 'access_log');
+namespace Slothsoft\CMS;
+
+use Slothsoft\DBMS\Manager;
+
+$table = Manager::getTable('cms', 'access_log');
 
 $sql = '';
 

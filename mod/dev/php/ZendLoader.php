@@ -1,6 +1,7 @@
 <?php
 namespace Slothsoft\Dev;
 
+/*
 use Zend\Stdlib\ArrayUtils;
 use Zend\Mvc\Application;
 
@@ -79,3 +80,5 @@ class ZendLoader
         return $ret;
     }
 }
+
+//*/

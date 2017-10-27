@@ -45,7 +45,7 @@
 				</xsl:for-each>
 			</g>
 			<g class="labels" transform="translate(0, {$height}) scale(1, -1)">
-				<xsl:call-template name="label" mode="svg">
+				<xsl:call-template name="label">
 					<xsl:with-param name="i" select="250"/>
 					<xsl:with-param name="j" select="$maxY"/>
 					<xsl:with-param name="step" select="250"/>
@@ -68,7 +68,7 @@
 			<text transform="translate(60, {$scaleY * $i + 2}) scale(1, -1)">
 				<xsl:value-of select="$i"/>
 			</text>
-			<xsl:call-template name="label" mode="svg">
+			<xsl:call-template name="label">
 				<xsl:with-param name="i" select="$i + $step"/>
 				<xsl:with-param name="j" select="$j"/>
 				<xsl:with-param name="step" select="$step"/>

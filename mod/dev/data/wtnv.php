@@ -1,8 +1,12 @@
 <?php
-$url = 'http://podbay.fm/show/536258179';
-$path = 
+namespace Slothsoft\CMS;
 
-if ($xpath = \Storage::loadExternalXPath($url)) {
+use Slothsoft\Core\Storage;
+
+$url = 'http://podbay.fm/show/536258179';
+$path = '';
+
+if ($xpath = Storage::loadExternalXPath($url)) {
     $argsList = [];
     $nodeList = $xpath->evaluate('//a[@rel="tooltip"]');
     foreach ($nodeList as $node) {

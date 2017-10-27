@@ -3,7 +3,6 @@ namespace Schema;
 
 use DOMDocument;
 use DOMXPath;
-use DOMElement;
 
 class DataDocument
 {

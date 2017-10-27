@@ -1,9 +1,11 @@
 <?php
 namespace Slothsoft\CMS;
 
+use Slothsoft\Lang\Vocabulary;
+
 $retFragment = $dataDoc->createDocumentFragment();
 $dataPath = self::loadXPath($dataDoc);
-$vocab = new \Lang\Vocabulary($dataPath);
+$vocab = new Vocabulary($dataPath);
 $vocab->setTime($this->httpRequest->time);
 
 $userKey = null;
@@ -113,7 +115,7 @@ if ($lang = $this->httpRequest->getInputValue('test-language')) {
         $this->httpResponse->styleFiles = [];
         $this->httpResponse->scriptFiles = [];
         $this->httpResponse->setBody('');
-        $this->httpResponse->setStatus(\CMS\HTTPResponse::STATUS_NO_CONTENT);
+        $this->httpResponse->setStatus(HTTPResponse::STATUS_NO_CONTENT);
         $this->progressStatus = self::STATUS_RESPONSE_SET;
     }
     if ($testList = $this->httpRequest->getInputValue('vocab-test')) {

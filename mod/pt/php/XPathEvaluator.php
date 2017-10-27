@@ -6,6 +6,9 @@
  */
 namespace Slothsoft\PT;
 
+use w3c\dom\XPathException;
+use w3c\dom\DOMException;
+
 class XPathEvaluator implements \w3c\dom\XPathEvaluator
 {
 

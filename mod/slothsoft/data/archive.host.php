@@ -1,10 +1,12 @@
 <?php
 namespace Slothsoft\CMS;
 
+use Slothsoft\DBMS\Manager;
+
 $dbName = 'cms';
 $tableName = 'unison';
 
-$table = \DBMS\Manager::getTable($dbName, $tableName);
+$table = Manager::getTable($dbName, $tableName);
 
 if ($key = $this->httpRequest->getInputValue('media-id')) {
     $status = $this->httpRequest->getInputJSON();
@@ -21,4 +23,4 @@ if ($key = $this->httpRequest->getInputValue('media-id')) {
     ]);
 }
 
-$this->httpResponse->setStatus(\CMS\HTTPResponse::STATUS_NO_CONTENT);
+$this->httpResponse->setStatus(HTTPResponse::STATUS_NO_CONTENT);

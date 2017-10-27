@@ -1,6 +1,7 @@
 <?php
 namespace Slothsoft\CMS;
 
+/*
 const MAX_EXECUTION_TIME = 6000;
 
 const TIMEOUT_MAX = 5000000;
@@ -65,4 +66,6 @@ for ($i = 0; $i < TIMEOUT_MAX; $i += TIMEOUT_STEP) {
     // DB::execute('DELETE FROM '.$handle.' WHERE id IN ('.implode(',', $ids).')');
     usleep(1000 * TIMEOUT_STEP);
 }
-?>
+
+
+//*/

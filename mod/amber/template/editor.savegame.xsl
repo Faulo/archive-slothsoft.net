@@ -1002,8 +1002,8 @@ window.addEventListener(
 		</textarea>
 	</xsl:template>
 	
-	<xsl:template match="save:event-script" mode="form-content" data-type="event-script">
-		<textarea name="save[data][{@value-id}]" rows="20" cols="40">
+	<xsl:template match="save:event-script" mode="form-content">
+		<textarea name="save[data][{@value-id}]" rows="20" cols="40" data-type="event-script">
 			<xsl:if test="@readonly">
 				<xsl:attribute name="readonly">readonly</xsl:attribute>
 			</xsl:if>

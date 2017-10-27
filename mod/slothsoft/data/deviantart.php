@@ -1,12 +1,14 @@
 <?php
 namespace Slothsoft\CMS;
 
+use Slothsoft\Core\XMLHttpRequest;
+
 $retNode = null;
 
 $name = 'FauloLio';
 $pw = 'Faultierbaum3000';
 
-$req = new \XMLHttpRequest();
+$req = new XMLHttpRequest();
 $req->open('POST', 'https://www.deviantart.com/users/login');
 $req->followRedirects = false;
 $req->send([
@@ -19,7 +21,7 @@ $req->send([
 ]);
 my_dump($req->getAllResponseHeaders());
 
-$req = new \XMLHttpRequest();
+$req = new XMLHttpRequest();
 $req->open('POST', 'http://my.deviantart.com/global/difi/?');
 $req->followRedirects = false;
 $req->send([

@@ -1,4 +1,7 @@
 <?php
+namespace Slothsoft\CMS;
+
+use Slothsoft\Core\WebCrawler;
 
 // return \Storage::loadExternalDocument('https://www.steinlese.de/img/favicon.png');
 
@@ -22,11 +25,11 @@
 $url = 'https://www.steinlese.de/';
 $url = 'http://slothsoft.net';
 
-$crawler = new \WebCrawler($url);
+$crawler = new WebCrawler($url);
 $crawler->maxDepth = 10000;
 $crawler->maxDocs = 100000;
 $crawler->maxTime = TIME_DAY;
 
 $ret = $crawler->crawl();
 
-return \CMS\HTTPFile::createFromString($ret);
+return HTTPFile::createFromString($ret);

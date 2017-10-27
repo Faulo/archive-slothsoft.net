@@ -385,7 +385,8 @@ var KanaTable = {
 		<xsl:param name="top" select="$word/@note"/>
 		<xsl:param name="reverse" select="false()"/>
 		<xsl:param name="display-audio" select="true()"/>
-		<span class="word-complete" xml:lang="{$lang}">
+		<span class="word-complete">
+			<xsl:attribute name="xml:lang"><xsl:value-of select="$lang"/></xsl:attribute>
 			<xsl:if test="$display-audio and not($reverse)">
 				<span class="audioPlayer">
 					<xsl:call-template name="word.audioPlayer">
@@ -597,7 +598,8 @@ var KanaTable = {
 	<xsl:template match="test">
 		<article class="vocabularyTest" style="display: none">
 			<h2>Test</h2>
-			<form action=".?{//request/@query}" method="POST" data-vocab-test="{@mode}" data-vocab-type="{@type}" data-vocab-resource="{@resource-uri}" data-vocab-log="{@log-uri}" xml:lang="{@xml:lang}">
+			<form action=".?{//request/@query}" method="POST" data-vocab-test="{@mode}" data-vocab-type="{@type}" data-vocab-resource="{@resource-uri}" data-vocab-log="{@log-uri}">
+				<xsl:copy-of select="@xml:lang"/>
 				<xsl:call-template name="test.repository"/>
 				<!--
 				<xsl:choose>
@@ -680,14 +682,16 @@ var KanaTable = {
 			<article class="paintedBox vocabBox {$type}" data-vocab-id="{$word/@id}">
 				<h3>Question <xsl:value-of select="position()"/>/<xsl:value-of select="last()"/></h3>
 				<div class="translatorForm vocab-table">
-					<div class="input" xml:lang="{$word/@xml:lang}">
+					<div class="input">
+						<xsl:copy-of select="($word/@xml:lang)[1]"/>
 						<xsl:call-template name="test.element">
 							<xsl:with-param name="word" select="$word"/>
 							<xsl:with-param name="mode" select="$mode"/>
 						</xsl:call-template>
 					</div>
 					
-					<div class="output" xml:lang="{$wordList/@xml:lang}">
+					<div class="output">
+						<xsl:copy-of select="($wordList/@xml:lang)[1]"/>
 						<xsl:choose>
 							<xsl:when test="$type = 'choice'">
 								<xsl:call-template name="test.list.choice"/>
@@ -896,7 +900,8 @@ var KanaTable = {
 	
 	<xsl:template name="test.audioPlayer">
 		<xsl:param name="word"/>
-		<div xml:lang="{$word/@xml:lang}" class="audioPlayer">
+		<div class="audioPlayer">
+			<xsl:copy-of select="($word/@xml:lang)[1]"/>
 			<xsl:call-template name="word.audioPlayer">
 				<xsl:with-param name="uri" select="$word/@player-uri"/>
 				<xsl:with-param name="remove" select="$word[lang('ja')]"/>
@@ -946,7 +951,8 @@ var KanaTable = {
 					<xsl:for-each select="vocable">
 						<xsl:variable name="node" select="word[1]"/>
 						<xsl:variable name="lang" select="string($node/@xml:lang)"/>
-						<div data-correct="{2 - position()}" xml:lang="{$lang}">
+						<div data-correct="{2 - position()}">
+							<xsl:attribute name="xml:lang"><xsl:value-of select="$lang"/></xsl:attribute>
 							<div class="vocab-table">
 								<xsl:call-template name="test.audioPlayer">
 									<xsl:with-param name="word" select="$node"/>
@@ -965,7 +971,8 @@ var KanaTable = {
 					<xsl:for-each select="vocable">
 						<xsl:variable name="node" select="word[2]"/>
 						<xsl:variable name="lang" select="string($node/@xml:lang)"/>
-						<div data-correct="{2 - position()}" xml:lang="{$lang}">
+						<div data-correct="{2 - position()}">
+							<xsl:attribute name="xml:lang"><xsl:value-of select="$lang"/></xsl:attribute>
 							<div class="vocab-table">
 								<xsl:call-template name="test.audioPlayer">
 									<xsl:with-param name="word" select="$node"/>

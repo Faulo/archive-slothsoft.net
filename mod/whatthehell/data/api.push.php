@@ -1,6 +1,6 @@
 <?php
 namespace Slothsoft\CMS;
-
+/*
 if (! isset($_REQUEST['type'])) {
     $_REQUEST['type'] = 'message';
 }
@@ -25,4 +25,5 @@ if (strlen($insert['data'])) {
 
 header("HTTP/1.1 204 No Content");
 die();
-?>
+
+//*/

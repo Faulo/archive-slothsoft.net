@@ -10,6 +10,7 @@ namespace Slothsoft\CMS;
 
 use Slothsoft\Lang\Dictionary;
 use DOMDocument;
+
 declare(ticks = 1000);
 
 class HTTPRequest

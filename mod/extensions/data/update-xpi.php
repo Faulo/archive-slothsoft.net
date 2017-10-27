@@ -1,4 +1,7 @@
 <?php
+namespace Slothsoft\CMS;
+
+
 $ret = '';
 $ret .= sprintf('[%s] Starting updating extensions...%s%s', date(DATE_DATETIME), PHP_EOL, PHP_EOL);
 
@@ -94,6 +97,6 @@ foreach ($docList as $id => $doc) {
 }
 
 $this->progressStatus |= self::STATUS_RESPONSE_SET;
-$this->httpResponse->setStatus(\CMS\HTTPResponse::STATUS_OK);
+$this->httpResponse->setStatus(HTTPResponse::STATUS_OK);
 $this->httpResponse->setBody($ret);
-$this->httpResponse->setEtag(\CMS\HTTPResponse::calcEtag($ret));
+$this->httpResponse->setEtag(HTTPResponse::calcEtag($ret));

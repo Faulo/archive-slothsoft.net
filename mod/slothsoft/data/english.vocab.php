@@ -1,6 +1,8 @@
 <?php
 namespace Slothsoft\CMS;
 
+use Slothsoft\Lang\TranslatorJaEn;
+
 $explodeArray = function (array $explodeList, $str) {
     $retList = [
         $str
@@ -49,7 +51,7 @@ $tmpPath = self::loadXPath($tmpDoc);
 $dataRoot = $dataDoc->createElement('vocabulary');
 $dataRoot->setAttribute($attr, '');
 
-$translator = new \Lang\TranslatorJaEn();
+$translator = new TranslatorJaEn();
 
 $expr = '//html:table[@border="1"]//html:tr[count(html:td) = 3 and string-length(html:td[3]) > 1]';
 $tmpNodeList = $tmpPath->evaluate($expr);

@@ -1,4 +1,8 @@
 <?php
+namespace Slothsoft\CMS;
+
+use Slothsoft\Core\FileSystem;
+
 $url = 'http://onepiece.wikia.com/wiki/Episode_Guide';
 
 $sagaList = [];
@@ -38,9 +42,9 @@ $sourceDir = 'D:\backups\Media\Anime\One Piece 1-16 Seasons LIMITED';
 $targetDir = 'D:\Media\Anime\One Piece';
 
 $sourceFileList = [];
-$dirList = \FileSystem::scanDir($sourceDir, \FileSystem::SCANDIR_REALPATH);
+$dirList = FileSystem::scanDir($sourceDir, FileSystem::SCANDIR_REALPATH);
 foreach ($dirList as $dir) {
-    $fileList = \FileSystem::scanDir($dir, \FileSystem::SCANDIR_EXCLUDE_DIRS);
+    $fileList = FileSystem::scanDir($dir, FileSystem::SCANDIR_EXCLUDE_DIRS);
     foreach ($fileList as $file) {
         $file = mb_convert_encoding($file, 'UTF-8', 'Windows-1251');
         if (preg_match('/(\d+).+?([A-Z].+)/u', $file, $match)) {

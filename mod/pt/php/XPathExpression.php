@@ -6,6 +6,9 @@
  */
 namespace Slothsoft\PT;
 
+use w3c\dom\XPathException;
+use w3c\dom\DOMException;
+
 class XPathExpression implements \w3c\dom\XPathExpression
 {
 

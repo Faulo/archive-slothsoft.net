@@ -1,9 +1,13 @@
 <?php
+namespace Slothsoft\CMS;
+
+use Slothsoft\Core\Storage;
+
 $nameList = [];
 $uri = 'http://disney.wikia.com/wiki/Category:Females?page=';
 
 foreach (range(1, 27) as $page) {
-    if ($xpath = \Storage::loadExternalXPath($uri . $page, TIME_YEAR)) {
+    if ($xpath = Storage::loadExternalXPath($uri . $page, TIME_YEAR)) {
         $nodeList = $xpath->evaluate('//*[@id="mw-pages"]//*[@class="mw-content-ltr"]//*[@href]');
         foreach ($nodeList as $node) {
             $nameList[] = ' ' . $xpath->evaluate('normalize-space(.)', $node) . ' ';

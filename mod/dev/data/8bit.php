@@ -1,4 +1,9 @@
 <?php
+namespace Slothsoft\CMS;
+
+use Slothsoft\Core\Image;
+use Slothsoft\Core\Storage;
+
 $uri = 'http://www.nuklearpower.com/2001/03/02/episode-001-were-going-where/';
 
 $blackList = <<<'EOT'
@@ -105,7 +110,7 @@ do {
     echo $uri . PHP_EOL;
     
     $href = $uri;
-    $xpath = \Storage::loadExternalXPath($uri, TIME_YEAR);
+    $xpath = Storage::loadExternalXPath($uri, TIME_YEAR);
     $uri = null;
     if ($xpath) {
         $uri = $xpath->evaluate($queries['uri']);
@@ -130,7 +135,7 @@ do {
             $i ++;
             
             if (! file_exists($path)) {
-                if ($file = \CMS\HTTPFile::createFromURL($image)) {
+                if ($file = HTTPFile::createFromURL($image)) {
                     echo $path . PHP_EOL;
                     $file->copyTo($imageDir, $name);
                 }
@@ -138,8 +143,8 @@ do {
             if (file_exists($path)) {
                 // if (!file_exists($thumbFile)) {
                 try {
-                    $arr += \Image::imageInfo($path);
-                    $image = \Image::createFromFile($path);
+                    $arr += Image::imageInfo($path);
+                    $image = Image::createFromFile($path);
                     $thumb = imagecreatetruecolor($thumbWidth / $thumbFactor, $thumbHeight / $thumbFactor);
                     imagecopyresized($thumb, $image, 0, 0, 0, 0, $thumbWidth / $thumbFactor, $thumbHeight / $thumbFactor, $thumbWidth, $thumbHeight);
                     imagepng($thumb, $thumbFile);

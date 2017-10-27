@@ -1,6 +1,8 @@
 <?php
 namespace Slothsoft\CMS;
 
+use Slothsoft\Core\FileSystem;
+
 $retNode = $dataDoc->createDocumentFragment();
 
 $letterList = array_merge(range('a', 'z'), range('A', 'Z'), range(0, 9), [
@@ -16,7 +18,7 @@ $cleanseDoc = true;
 
 $tempDoc = $this->getResourceDoc('core/unicode');
 $path = $tempDoc->documentElement->getAttribute('realpath');
-$rowList = \FileSystem::loadCSV($path, ';');
+$rowList = FileSystem::loadCSV($path, ';');
 
 $ret = '';
 $unicodeList = [];
@@ -46,7 +48,7 @@ foreach ($rowList as $row) {
     ];
 }
 if (strlen($ret)) {
-    return \CMS\HTTPFile::createFromString($ret);
+    return HTTPFile::createFromString($ret);
 }
 
 foreach ($letterList as &$letter) {
