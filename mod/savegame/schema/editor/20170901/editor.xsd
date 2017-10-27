@@ -167,9 +167,6 @@
 		<xsd:complexType>
 			<xsd:complexContent>
 				<xsd:extension base="instructionContentNode">
-					<xsd:sequence>
-						<xsd:element ref="bit" minOccurs="0" maxOccurs="unbounded"/>
-					</xsd:sequence>
 					<xsd:attribute name="first-bit" type="xsd:integer" />
 					<xsd:attribute name="last-bit" type="xsd:integer" />
 					<xsd:attribute name="size" type="xsd:integer" />
