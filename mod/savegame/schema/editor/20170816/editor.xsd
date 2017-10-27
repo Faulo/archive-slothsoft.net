@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<xsd:schema
+	xmlns="http://schema.slothsoft.net/savegame/editor"
+	targetNamespace="http://schema.slothsoft.net/savegame/editor"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="0.1">
+	<xsd:attributeGroup name="schemaVersion">
+		<xsd:attribute name="schemaVersion" type="xsd:token" use="required" fixed="0.1">
+			<xsd:annotation>
+				<xsd:documentation>Die Version des Schemas, mit der dieses Dokument validiert wurde.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:attributeGroup>
+	
+	
+	<xsd:element name="amberfiles">
+		<xsd:sequence>
+			<xsd:element ref="archive" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="schemaVersion"/>
+	</xsd:element>
+	
+	<xsd:element name="archive">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:group ref="allNodes"/>
+			<xsd:group ref="dataNodes"/>
+		</xsd:choice>
+		<xsd:attributeGroup ref="file"/>
+	</xsd:element>
+	
+	<xsd:group name="allNodes">
+		<xsd:group ref="groupNodes"/>
+		<xsd:group ref="dataNodes"/>
+		<xsd:group ref="instructionNodes"/>
+	</xsd:group>
+	
+	<xsd:group name="groupNodes">
+		<xsd:element ref="group"/>
+		<xsd:element ref="file"/>
+	</xsd:group>
+	
+	<xsd:group name="dataNodes">
+		<xsd:element ref="string"/>
+		<xsd:element ref="integer"/>
+		<xsd:element ref="bit"/>
+		<xsd:element ref="mask"/>
+		<xsd:element ref="dictionary"/>
+	</xsd:group>
+	
+	<xsd:group name="instructionNodes">
+		<xsd:element ref="iterate-group"/>
+		<xsd:element ref="for-each-file"/>
+	</xsd:group>
+		
+	
+	<xsd:attributeGroup ref="file">	
+		<xsd:attribute name="filename" type="xsd:normalizedString"/>
+		<xsd:attribute name="filepath" type="xsd:normalizedString"/>
+	</xsd:attributeGroup>
+</xsd:schema>
