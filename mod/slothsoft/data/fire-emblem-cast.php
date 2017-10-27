@@ -1,6 +1,8 @@
 <?php
 namespace Slothsoft\CMS;
 
+use Slothsoft\Core\Storage;
+use Slothsoft\Core\Lambda\Manager;
 use DOMXPath;
 
 function lookupCharName(array $mappingList, $oldName)
@@ -154,13 +156,13 @@ foreach ($gameNodeList as $gameNode) {
     $uriList = array_keys($charList);
     // my_dump($uriList);die();
     $code = '\Storage::loadExternalDocument($args, TIME_MONTH);';
-    \Lambda\Manager::executeList($code, $uriList);
+    Manager::executeList($code, $uriList);
     
     // my_dump($charList);
     
     // load HTML
     foreach ($charList as $charURI => &$charData) {
-        if ($xpath = \Storage::loadExternalXPath($charURI, TIME_MONTH)) {
+        if ($xpath = Storage::loadExternalXPath($charURI, TIME_MONTH)) {
             $nodeList = $xpath->evaluate('//table[contains(., "Game")][1]'); // class="toccolours"
             if (! $nodeList->length) {
                 echo $charURI . PHP_EOL;
