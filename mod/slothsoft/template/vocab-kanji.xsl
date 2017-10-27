@@ -52,7 +52,8 @@
 				<xsl:variable name="user-wrong" select="sum(word/@user-wrong)"/>
 				<xsl:variable name="user-correct" select="sum(word/@user-correct)"/>
 				
-				<article xml:lang="{$kanjiLang}" class="paintedBox vocabBox">
+				<article class="paintedBox vocabBox">
+					<xsl:attribute name="xml:lang"><xsl:value-of select="$kanjiLang"/></xsl:attribute>
 					<h3>
 						<xsl:if test="word/@user-correct">
 							<xsl:attribute name="title">
@@ -68,7 +69,8 @@
 						</a>
 					</h3>
 					<div class="translatorForm vocab-table">
-						<div class="input" xml:lang="{$kanjiNode/@xml:lang}">
+						<div class="input">
+							<xsl:copy-of select="($kanjiNode/@xml:lang)[1]"/>
 							<xsl:call-template name="test.element">
 								<xsl:with-param name="word" select="$kanjiNode"/>
 								<xsl:with-param name="mode" select="'kanji'"/>
@@ -86,7 +88,8 @@
 							-->
 						</div>
 						
-						<div class="output" xml:lang="{$translationNode/@xml:lang}">
+						<div class="output">
+							<xsl:copy-of select="($translationNode/@xml:lang)[1]"/>
 							<xsl:call-template name="test.element">
 								<xsl:with-param name="word" select="$translationNode"/>
 								<xsl:with-param name="mode" select="'kanji'"/>
