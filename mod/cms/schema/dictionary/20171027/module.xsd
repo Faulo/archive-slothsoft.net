@@ -6,11 +6,11 @@
 	elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
 	<xsd:element name="dictionary">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:any minOccurs="0"/>
-			</xs:sequence>
-		</xs:complexType>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:any minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
 	</xsd:element>
 	
 </xsd:schema>
