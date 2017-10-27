@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
 include_path=5;org.eclipse.dltk.USER_LIBRARY/COM\u00055;org.eclipse.dltk.USER_LIBRARY/pthreads
+phpVersion=php7.0
+useShortTags=false

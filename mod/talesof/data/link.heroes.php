@@ -79,8 +79,8 @@ foreach ($charLinkList as $charLink) {
             $charData['Title'] = $match[1];
             $charData['Hero'] = $match[2];
         } else {
-            my_dump($charData);
-            break;
+            //probably just japanese unit
+            continue;
         }
         
         if (preg_match('~\d~u', $charData['Rarity'], $match)) {
