@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<!--<res ref="/mtg/sites"/>-->
+	<page name="pics" ref="pics" title="pics" status-active=""/>
+	<page name="poll" ref="poll" title="poll" status-active=""/>
+	<page name="smartphone" ref="smartphone" title="smartphone" status-active=""/>
+	
+	<page name="GameOfLife" ref="GameOfLife" title="GameOfLife" status-active=""/>
+</data>

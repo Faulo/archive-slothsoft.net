@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data
+	data-length-min="100"
+	copy-cmd="copy %s %s /y"
+	success-cmd=""
+	success-php="">
+	<data type="php"
+		active="1"
+		>
+		<update
+			name="Magic: the Gathering - Expansions"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\MtG.expansions.csv"
+			source-uri = "D:\www\vhosts\cmd\getData.php /mtg/oracle.sets"
+			success-cmd = "start cmd /c php D:\www\vhosts\cmd\getData.php /mtg/cron ^1^> C:\NetzwerkDaten\Downloads\cron\MtG.update.log ^2^> C:\NetzwerkDaten\Downloads\cron\MtG.update.err"
+		/>
+		<update
+			name="Magic: the Gathering - Events"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\MtG.events.xml"
+			source-uri = "D:\www\vhosts\cmd\getData.php /mtg/events"
+			success-cmd = "copy %s D:\www\mod\mtg\res\events.xml /y"
+		/>
+		<update
+			name="Magic: the Gathering - Oracle"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\MtG.oracle.xml"
+			source-uri = "D:\www\vhosts\cmd\getData.php /mtg/oracle-refresh"
+		/>
+		<update
+			name="Tales of Link - Heroes"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\ToL.Heroes.xml"
+			source-uri = "D:\www\vhosts\cmd\getData.php /talesof/link.heroes"
+			success-cmd = "copy %s D:\www\mod\talesof\res\ToL.Heroes.xml /y"
+		/>
+		<update
+			name="Hentai"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\pr0n.hentai.log"
+			source-uri = "D:\www\vhosts\cmd\getData.php /cron/update-hentai"
+			success-cmd = "php D:\www\vhosts\cmd\getData.php /slothsoft/archive.hentai refresh-all"
+		/>
+		<!--
+		start curl http://dende/getData.php/mtg/cron -N -o C:\NetzwerkDaten\Downloads\cron\MtG.update.log
+		start cmd /c php D:\www\vhosts\cmd\getData.php /mtg/cron ^1^> C:\NetzwerkDaten\Downloads\cron\MtG.update.txt ^2^> C:\NetzwerkDaten\Downloads\cron\MtG.update.log
+		-->
+	</data>
+	<data type="file"
+		active="1"
+		dest-ext=""
+		>
+		<update
+			name="Twitter Emoji"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\twitter-emoji.zip"
+			source-uri = "https://github.com/twitter/twemoji/archive/gh-pages.zip"
+			success-cmd = "7z x %s -y -oD:\www\mod\lib\res"
+		/>
+		<update
+			name="Unicode XML"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\ucd.all.flat.zip"
+			source-uri = "http://www.unicode.org/Public/UCD/latest/ucdxml/ucd.all.flat.zip"
+			success-cmd = "7z x %s -y -oD:\www\mod\core\res"
+		/>
+		<update
+			name="Unicode TXT"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\ucd.all.flat.csv"
+			source-uri = "http://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt"
+			success-cmd = "copy %s D:\www\mod\core\res\ucd.all.flat.csv /y"
+		/>
+		<!--
+		<update
+			name="Tales of Link - Heroes"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\ToL.Heroes.csv"
+			source-uri = "https://docs.google.com/spreadsheets/d/1gIuZ1PT9R8PLBWLeIefTFfzTRJXfEr_n9_A7TOHH3Ug/export?format=csv"
+			success-cmd = "copy %s D:\www\mod\talesof\res\ToL.Heroes.csv /y"
+		/>
+		-->
+		<update
+			name="FFmpeg"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\ffmpeg.7z"
+			source-uri = "http://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-latest-win64-static.7z"
+			success-cmd = "7z e %s *.exe -r -y -oC:\NetzwerkDaten\Dropbox\Tools\ffmpeg"
+		/>
+	</data>
+	
+	<data type="files"
+		active="1"
+		dest-ext=""
+		>
+		<!--
+		<update
+			name="Torrents - Commie Subs"
+			dest-root = "C:\NetzwerkDaten\Torrents.tracker"
+			dest-ext="torrent"
+			source-uri = "http://www.nyaa.se/?page=separate&amp;user=76430"
+			source-xpath = "//tr[.//img[@alt='English-translated Anime']]"
+			source-xpath-name = "normalize-space(td[@class='tlistname'])"
+			source-xpath-uri = "string(td[@class='tlistdownload']/a/@href)"
+			/>
+		-->
+	</data>
+	
+	<data
+		type="rss"
+		active="1"
+		dest-root="D:/Media/Web Original">
+		<update
+			name="Limited Resources"
+			source-host = "http://limitedresources.libsyn.com"
+			source-path = "/rss"
+			preg-title = "/Limited Resources (\d+)\s*[\-\–]\s*(.+)/u"
+			preg-file = "/(\d+).*\.mp3/u"
+			/>
+		<update
+			name="Constructed Resources"
+			source-host = "http://constructedresources.libsyn.com"
+			source-path = "/rss"
+			preg-title = "/Constructed Resources (\d+)\s*[\-\–]\s*(.+)/u"
+			preg-file = "/(\d+).*\.mp3/u"
+			/>
+			
+	</data>
+	
+	<data
+		type="podcast"
+		active="1"
+		dest-root="D:/Media/Web Original">
+		<update
+			name="Welcome To Night Vale"
+			source-host = "http://podbay.fm"
+			source-path = "/show/536258179"
+			source-xpath = "//a[@rel='tooltip']/@href"
+			/>
+		<update
+			name="Dear Hank and John"
+			source-host = "http://podbay.fm"
+			source-path = "/show/1002937870"
+			source-xpath = "//a[@rel='tooltip']/@href"
+			/>
+	</data>
+	
+	
+	
+	
+	<data
+		type="tool"
+		active="1"
+		>
+		
+		
+		
+		<update
+			name="MagicAssistant"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\MagicAssistant.zip"
+			source-uri = "http://sourceforge.net/projects/mtgbrowser/files/Magic_Assistant/"
+			source-xpath-0 = ".//table[@id='files_list']/tbody/tr/th/a/@href"
+			source-xpath-1 = "concat(.//a[contains(@href, 'download')][contains(@href, '64.zip')]/@href, '?r=&amp;ts=1&amp;use_mirror=netcologne')"
+			source-xpath-2 = ".//a[@class='direct-download']/@href"
+			success-cmd = "7z e %s com.reflexit.magiccards.db*.jar -r -y -oD:\backups\MagicAssistant"
+		>
+		<!--<php><![CDATA[
+$sourcePath = 'D:\\backups\\MagicAssistant';
+$destPath = 'C:\\xampp\\htdocs\\mod\\mtg\\res\\db';
+
+$command = '7z e %s *.txt -r -y -o%s';
+
+$fileList = \FileSystem::scanDir($sourcePath, \FileSystem::SCANDIR_REALPATH);
+
+if ($fileList) {
+	$file = array_pop($fileList);
+	$cmd = sprintf($command, $file, $destPath);
+	exec($cmd);
+}
+			]]></php>-->
+		</update>
+		<update
+			name="PCSX2"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\pcsx2.7z"
+			source-uri = "http://buildbot.orphis.net/pcsx2/index.php"
+			source-xpath=".//html:a[. = 'Download'][1]/@href"
+			success-cmd = "7z x %s -y -oD:\backups\PCSX2"
+			>
+			<php><![CDATA[
+$sourcePath = 'D:\\backups\\PCSX2';
+$destPath = 'C:\\NetzwerkDaten\\Dropbox\\Symlinks\\Pcsx2';
+$copyDirList = array();
+$copyDirList[] = '\\';
+$copyDirList[] = '\\cheats_ws\\';
+$copyDirList[] = '\\plugins\\';
+
+$copyFileList = [];
+
+$dirList = \FileSystem::scanDir($sourcePath, \FileSystem::SCANDIR_REALPATH | \FileSystem::SCANDIR_EXCLUDE_FILES);
+rsort($dirList);
+foreach ($dirList as $dir) {
+	if (preg_match('/-(\d+)-/', $dir, $match)) {
+		$version = (int) $match[1];
+		$sourcePath = $dir;
+		foreach ($copyDirList as $copyDir) {
+			$sourceDir = $sourcePath . $copyDir;
+			$destDir = $destPath . $copyDir;
+			$fileList = \FileSystem::scanDir($sourceDir, \FileSystem::SCANDIR_EXCLUDE_DIRS);
+			foreach ($fileList as $file) {
+				if (!preg_match('/-r\d+/', $file)) {
+					$sourceFile = $sourceDir . $file;
+					$destFile = $destDir . $file;
+					$copyFileList[$sourceFile] = $destFile;
+				}
+			}
+		}
+		break;
+	}
+}
+foreach ($copyFileList as $sourceFile => $destFile) {
+	copy($sourceFile, $destFile);
+}
+			]]></php>
+		</update>
+		<!--success-cmd = "7z x %s -y -oC:\Minecraft\Tools\MapCrafter"-->
+		<update
+			name="Minecraft MapCrafter"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\mapcrafter.zip"
+			source-uri = "http://mapcrafter.org/downloads"
+			source-xpath = "(.//a[contains(@href, 'win64') and contains(@href, '.zip')]/@href)[1]"
+			success-cmd = "7z x %s -y -oD:\backups\MapCrafter"
+			>
+			<php><![CDATA[
+$sourcePath = 'D:\\backups\\MapCrafter';
+$destPath = 'C:\\Minecraft\\Tools\\MapCrafter';
+
+$dirList = \FileSystem::scanDir($sourcePath, \FileSystem::SCANDIR_REALPATH | \FileSystem::SCANDIR_EXCLUDE_FILES);
+rsort($dirList);
+if ($dirList) {
+	$dir = reset($dirList);
+	$cmd = sprintf('dcopy %s %s', escapeshellarg($dir), escapeshellarg($destPath));
+	exec($cmd);
+}
+			]]></php>
+		</update>
+		
+		<update
+			name="Minecraft Overviewer"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\overviewer.7z"
+			source-uri = "http://overviewer.org/downloads"
+			source-xpath = ".//html:a[contains(@href, '/builds/win64/')]/@href"
+			success-cmd = "7z x %s -y -oC:\Minecraft\Tools\Overviewer"
+		/>
+		<update
+			name="PThreads VC2"
+			dest-path="C:\NetzwerkDaten\Downloads\cron\pthreadVC2.dll"
+			source-uri="https://sourceware.org/pthreads-win32/"
+			source-xpath="'ftp://sourceware.org/pub/pthreads-win32/dll-latest/dll/x64/pthreadVC2.dll'"
+			success-cmd="copy %s C:\Windows\pthreadVC2.dll /y"
+			/>
+		<update
+			name="PThreads GC2"
+			dest-path="C:\NetzwerkDaten\Downloads\cron\pthreadGC2.dll"
+			source-uri="https://sourceware.org/pthreads-win32/"
+			source-xpath="'ftp://sourceware.org/pub/pthreads-win32/dll-latest/dll/x64/pthreadGC2.dll'"
+			success-cmd="copy %s C:\Windows\pthreadGC2.dll /y"
+			/>
+		<update
+			name="Quivira"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\Quivira.ttf"
+			source-uri = "http://www.quivira-font.com/"
+			source-xpath = ".//html:a[@href = 'files/Quivira.otf']/@href"
+			success-cmd="copy %s C:\xampp\htdocs\mod\slothsoft\res\fonts\Quivira.ttf /y"
+		/>
+		<update
+			name="cURL"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\curl.7z"
+			source-uri = "https://curl.haxx.se/dlwiz/?type=bin&amp;os=Win64&amp;flav=-&amp;ver=-&amp;cpu=x86_64"
+			source-xpath = ".//a[img/@src='download.gif'][contains(@href, 'mingw')]/@href"
+			success-cmd = "7z e %s *.exe -r -y -oC:\NetzwerkDaten\Dropbox\Tools\curl"
+		/><!--
+			source-uri = "http://curl.haxx.se/latest.cgi?curl=win64-ssl-sspi"
+			source-xpath = ".//a[contains(., 'curl')][contains(., 'win64')][last()]/@href"
+			-->
+		<update
+			name="IrfanView"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\irfanview.zip"
+			source-uri = "http://www.irfanview.net/download_sites.htm"
+			source-xpath = ".//a[contains(@href, '.zip')][1]/@href"
+			success-cmd = "7z x %s -y -oC:\NetzwerkDaten\Dropbox\Tools\irfanview"
+		/>
+		<update
+			name="youtube-dl"
+			dest-path = "C:\NetzwerkDaten\Downloads\cron\youtube-dl.exe"
+			source-uri = "https://github.com/rg3/youtube-dl/releases/latest"
+			source-xpath = ".//@href[contains(., '.exe')]"
+			success-cmd="copy %s C:\NetzwerkDaten\Dropbox\Tools\youtube-dl /y"
+		/><!--https://rg3.github.io/youtube-dl/download.html-->
+		
+	</data>
+</data>

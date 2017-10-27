@@ -1,0 +1,2032 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table cellspacing="0" cellpadding="4" border="1" width="100%">
+	<tbody><tr bgcolor="#ffffee" valign="top"> 
+	<th width="25%" scope="col">ISO 639-2 Code</th>
+	<th width="25%" scope="col">ISO 639-1 Code</th>
+	<th width="25%" scope="col">English name of Language</th>
+	<th width="25%" scope="col">French name of Language</th>
+	</tr><tr valign="top">
+		<td scope="row">aar</td>
+		<td>aa</td>
+		<td>Afar</td>
+		<td>afar</td></tr><tr valign="top">
+		<td scope="row">abk</td>
+		<td>ab</td>
+		<td>Abkhazian</td>
+		<td>abkhaze</td></tr><tr valign="top">
+		<td scope="row">ace</td>
+		<td> </td>
+		<td>Achinese</td>
+		<td>aceh</td></tr><tr valign="top">
+		<td scope="row">ach</td>
+		<td> </td>
+		<td>Acoli</td>
+		<td>acoli</td></tr><tr valign="top">
+		<td scope="row">ada</td>
+		<td> </td>
+		<td>Adangme</td>
+		<td>adangme</td></tr><tr valign="top">
+		<td scope="row">ady</td>
+		<td> </td>
+		<td>Adyghe; Adygei</td>
+		<td>adyghé</td></tr><tr valign="top">
+		<td scope="row">afa</td>
+		<td> </td>
+		<td>Afro-Asiatic languages</td>
+		<td>afro-asiatiques, langues</td></tr><tr valign="top">
+		<td scope="row">afh</td>
+		<td> </td>
+		<td>Afrihili</td>
+		<td>afrihili</td></tr><tr valign="top">
+		<td scope="row">afr</td>
+		<td>af</td>
+		<td>Afrikaans</td>
+		<td>afrikaans</td></tr><tr valign="top">
+		<td scope="row">ain</td>
+		<td> </td>
+		<td>Ainu</td>
+		<td>aïnou</td></tr><tr valign="top">
+		<td scope="row">aka</td>
+		<td>ak</td>
+		<td>Akan</td>
+		<td>akan</td></tr><tr valign="top">
+		<td scope="row">akk</td>
+		<td> </td>
+		<td>Akkadian</td>
+		<td>akkadien</td></tr><tr valign="top">
+		<td scope="row">alb (B)<br/>sqi (T)</td>
+		<td>sq</td>
+		<td>Albanian</td>
+		<td>albanais</td></tr><tr valign="top">
+		<td scope="row">ale</td>
+		<td> </td>
+		<td>Aleut</td>
+		<td>aléoute</td></tr><tr valign="top">
+		<td scope="row">alg</td>
+		<td> </td>
+		<td>Algonquian languages</td>
+		<td>algonquines, langues</td></tr><tr valign="top">
+		<td scope="row">alt</td>
+		<td> </td>
+		<td>Southern Altai</td>
+		<td>altai du Sud</td></tr><tr valign="top">
+		<td scope="row">amh</td>
+		<td>am</td>
+		<td>Amharic</td>
+		<td>amharique</td></tr><tr valign="top">
+		<td scope="row">ang</td>
+		<td> </td>
+		<td>English, Old (ca.450-1100)</td>
+		<td>anglo-saxon (ca.450-1100)</td></tr><tr valign="top">
+		<td scope="row">anp</td>
+		<td> </td>
+		<td>Angika</td>
+		<td>angika</td></tr><tr valign="top">
+		<td scope="row">apa</td>
+		<td> </td>
+		<td>Apache languages</td>
+		<td>apaches, langues</td></tr><tr valign="top">
+		<td scope="row">ara</td>
+		<td>ar</td>
+		<td>Arabic</td>
+		<td>arabe</td></tr><tr valign="top">
+		<td scope="row">arc</td>
+		<td> </td>
+		<td>Official Aramaic (700-300 BCE); Imperial Aramaic (700-300 BCE)</td>
+		<td>araméen d'empire (700-300 BCE)</td></tr><tr valign="top">
+		<td scope="row">arg</td>
+		<td>an</td>
+		<td>Aragonese</td>
+		<td>aragonais</td></tr><tr valign="top">
+		<td scope="row">arm (B)<br/>hye (T)</td>
+		<td>hy</td>
+		<td>Armenian</td>
+		<td>arménien</td></tr><tr valign="top">
+		<td scope="row">arn</td>
+		<td> </td>
+		<td>Mapudungun; Mapuche</td>
+		<td>mapudungun; mapuche; mapuce</td></tr><tr valign="top">
+		<td scope="row">arp</td>
+		<td> </td>
+		<td>Arapaho</td>
+		<td>arapaho</td></tr><tr valign="top">
+		<td scope="row">art</td>
+		<td> </td>
+		<td>Artificial languages</td>
+		<td>artificielles, langues</td></tr><tr valign="top">
+		<td scope="row">arw</td>
+		<td> </td>
+		<td>Arawak</td>
+		<td>arawak</td></tr><tr valign="top">
+		<td scope="row">asm</td>
+		<td>as</td>
+		<td>Assamese</td>
+		<td>assamais</td></tr><tr valign="top">
+		<td scope="row">ast</td>
+		<td> </td>
+		<td>Asturian; Bable; Leonese; Asturleonese</td>
+		<td>asturien; bable; léonais; asturoléonais</td></tr><tr valign="top">
+		<td scope="row">ath</td>
+		<td> </td>
+		<td>Athapascan languages</td>
+		<td>athapascanes, langues</td></tr><tr valign="top">
+		<td scope="row">aus</td>
+		<td> </td>
+		<td>Australian languages</td>
+		<td>australiennes, langues</td></tr><tr valign="top">
+		<td scope="row">ava</td>
+		<td>av</td>
+		<td>Avaric</td>
+		<td>avar</td></tr><tr valign="top">
+		<td scope="row">ave</td>
+		<td>ae</td>
+		<td>Avestan</td>
+		<td>avestique</td></tr><tr valign="top">
+		<td scope="row">awa</td>
+		<td> </td>
+		<td>Awadhi</td>
+		<td>awadhi</td></tr><tr valign="top">
+		<td scope="row">aym</td>
+		<td>ay</td>
+		<td>Aymara</td>
+		<td>aymara</td></tr><tr valign="top">
+		<td scope="row">aze</td>
+		<td>az</td>
+		<td>Azerbaijani</td>
+		<td>azéri</td></tr><tr valign="top">
+		<td scope="row">bad</td>
+		<td> </td>
+		<td>Banda languages</td>
+		<td>banda, langues</td></tr><tr valign="top">
+		<td scope="row">bai</td>
+		<td> </td>
+		<td>Bamileke languages</td>
+		<td>bamiléké, langues</td></tr><tr valign="top">
+		<td scope="row">bak</td>
+		<td>ba</td>
+		<td>Bashkir</td>
+		<td>bachkir</td></tr><tr valign="top">
+		<td scope="row">bal</td>
+		<td> </td>
+		<td>Baluchi</td>
+		<td>baloutchi</td></tr><tr valign="top">
+		<td scope="row">bam</td>
+		<td>bm</td>
+		<td>Bambara</td>
+		<td>bambara</td></tr><tr valign="top">
+		<td scope="row">ban</td>
+		<td> </td>
+		<td>Balinese</td>
+		<td>balinais</td></tr><tr valign="top">
+		<td scope="row">baq (B)<br/>eus (T)</td>
+		<td>eu</td>
+		<td>Basque</td>
+		<td>basque</td></tr><tr valign="top">
+		<td scope="row">bas</td>
+		<td> </td>
+		<td>Basa</td>
+		<td>basa</td></tr><tr valign="top">
+		<td scope="row">bat</td>
+		<td> </td>
+		<td>Baltic languages</td>
+		<td>baltes, langues</td></tr><tr valign="top">
+		<td scope="row">bej</td>
+		<td> </td>
+		<td>Beja; Bedawiyet</td>
+		<td>bedja</td></tr><tr valign="top">
+		<td scope="row">bel</td>
+		<td>be</td>
+		<td>Belarusian</td>
+		<td>biélorusse</td></tr><tr valign="top">
+		<td scope="row">bem</td>
+		<td> </td>
+		<td>Bemba</td>
+		<td>bemba</td></tr><tr valign="top">
+		<td scope="row">ben</td>
+		<td>bn</td>
+		<td>Bengali</td>
+		<td>bengali</td></tr><tr valign="top">
+		<td scope="row">ber</td>
+		<td> </td>
+		<td>Berber languages</td>
+		<td>berbères, langues</td></tr><tr valign="top">
+		<td scope="row">bho</td>
+		<td> </td>
+		<td>Bhojpuri</td>
+		<td>bhojpuri</td></tr><tr valign="top">
+		<td scope="row">bih</td>
+		<td>bh</td>
+		<td>Bihari languages</td>
+		<td>langues biharis</td></tr><tr valign="top">
+		<td scope="row">bik</td>
+		<td> </td>
+		<td>Bikol</td>
+		<td>bikol</td></tr><tr valign="top">
+		<td scope="row">bin</td>
+		<td> </td>
+		<td>Bini; Edo</td>
+		<td>bini; edo</td></tr><tr valign="top">
+		<td scope="row">bis</td>
+		<td>bi</td>
+		<td>Bislama</td>
+		<td>bichlamar</td></tr><tr valign="top">
+		<td scope="row">bla</td>
+		<td> </td>
+		<td>Siksika</td>
+		<td>blackfoot</td></tr><tr valign="top">
+		<td scope="row">bnt</td>
+		<td> </td>
+		<td>Bantu languages</td>
+		<td>bantou, langues</td></tr><tr valign="top">
+		<td scope="row">tib (B)<br/>bod (T)</td>
+		<td>bo</td>
+		<td>Tibetan</td>
+		<td>tibétain</td></tr><tr valign="top">
+		<td scope="row">bos</td>
+		<td>bs</td>
+		<td>Bosnian</td>
+		<td>bosniaque</td></tr><tr valign="top">
+		<td scope="row">bra</td>
+		<td> </td>
+		<td>Braj</td>
+		<td>braj</td></tr><tr valign="top">
+		<td scope="row">bre</td>
+		<td>br</td>
+		<td>Breton</td>
+		<td>breton</td></tr><tr valign="top">
+		<td scope="row">btk</td>
+		<td> </td>
+		<td>Batak languages</td>
+		<td>batak, langues</td></tr><tr valign="top">
+		<td scope="row">bua</td>
+		<td> </td>
+		<td>Buriat</td>
+		<td>bouriate</td></tr><tr valign="top">
+		<td scope="row">bug</td>
+		<td> </td>
+		<td>Buginese</td>
+		<td>bugi</td></tr><tr valign="top">
+		<td scope="row">bul</td>
+		<td>bg</td>
+		<td>Bulgarian</td>
+		<td>bulgare</td></tr><tr valign="top">
+		<td scope="row">bur (B)<br/>mya (T)</td>
+		<td>my</td>
+		<td>Burmese</td>
+		<td>birman</td></tr><tr valign="top">
+		<td scope="row">byn</td>
+		<td> </td>
+		<td>Blin; Bilin</td>
+		<td>blin; bilen</td></tr><tr valign="top">
+		<td scope="row">cad</td>
+		<td> </td>
+		<td>Caddo</td>
+		<td>caddo</td></tr><tr valign="top">
+		<td scope="row">cai</td>
+		<td> </td>
+		<td>Central American Indian languages</td>
+		<td>amérindiennes de l'Amérique centrale,  langues</td></tr><tr valign="top">
+		<td scope="row">car</td>
+		<td> </td>
+		<td>Galibi Carib</td>
+		<td>karib; galibi; carib</td></tr><tr valign="top">
+		<td scope="row">cat</td>
+		<td>ca</td>
+		<td>Catalan; Valencian</td>
+		<td>catalan; valencien</td></tr><tr valign="top">
+		<td scope="row">cau</td>
+		<td> </td>
+		<td>Caucasian languages</td>
+		<td>caucasiennes, langues</td></tr><tr valign="top">
+		<td scope="row">ceb</td>
+		<td> </td>
+		<td>Cebuano</td>
+		<td>cebuano</td></tr><tr valign="top">
+		<td scope="row">cel</td>
+		<td> </td>
+		<td>Celtic languages</td>
+		<td>celtiques, langues; celtes, langues</td></tr><tr valign="top">
+		<td scope="row">cze (B)<br/>ces (T)</td>
+		<td>cs</td>
+		<td>Czech</td>
+		<td>tchèque</td></tr><tr valign="top">
+		<td scope="row">cha</td>
+		<td>ch</td>
+		<td>Chamorro</td>
+		<td>chamorro</td></tr><tr valign="top">
+		<td scope="row">chb</td>
+		<td> </td>
+		<td>Chibcha</td>
+		<td>chibcha</td></tr><tr valign="top">
+		<td scope="row">che</td>
+		<td>ce</td>
+		<td>Chechen</td>
+		<td>tchétchène</td></tr><tr valign="top">
+		<td scope="row">chg</td>
+		<td> </td>
+		<td>Chagatai</td>
+		<td>djaghataï</td></tr><tr valign="top">
+		<td scope="row">chi (B)<br/>zho (T)</td>
+		<td>zh</td>
+		<td>Chinese</td>
+		<td>chinois</td></tr><tr valign="top">
+		<td scope="row">chk</td>
+		<td> </td>
+		<td>Chuukese</td>
+		<td>chuuk</td></tr><tr valign="top">
+		<td scope="row">chm</td>
+		<td> </td>
+		<td>Mari</td>
+		<td>mari</td></tr><tr valign="top">
+		<td scope="row">chn</td>
+		<td> </td>
+		<td>Chinook jargon</td>
+		<td>chinook, jargon</td></tr><tr valign="top">
+		<td scope="row">cho</td>
+		<td> </td>
+		<td>Choctaw</td>
+		<td>choctaw</td></tr><tr valign="top">
+		<td scope="row">chp</td>
+		<td> </td>
+		<td>Chipewyan; Dene Suline</td>
+		<td>chipewyan</td></tr><tr valign="top">
+		<td scope="row">chr</td>
+		<td> </td>
+		<td>Cherokee</td>
+		<td>cherokee</td></tr><tr valign="top">
+		<td scope="row">chu</td>
+		<td>cu</td>
+		<td>Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic</td>
+		<td>slavon d'église; vieux slave; slavon liturgique; vieux bulgare</td></tr><tr valign="top">
+		<td scope="row">chv</td>
+		<td>cv</td>
+		<td>Chuvash</td>
+		<td>tchouvache</td></tr><tr valign="top">
+		<td scope="row">chy</td>
+		<td> </td>
+		<td>Cheyenne</td>
+		<td>cheyenne</td></tr><tr valign="top">
+		<td scope="row">cmc</td>
+		<td> </td>
+		<td>Chamic languages</td>
+		<td>chames, langues</td></tr><tr valign="top">
+		<td scope="row">cop</td>
+		<td> </td>
+		<td>Coptic</td>
+		<td>copte</td></tr><tr valign="top">
+		<td scope="row">cor</td>
+		<td>kw</td>
+		<td>Cornish</td>
+		<td>cornique</td></tr><tr valign="top">
+		<td scope="row">cos</td>
+		<td>co</td>
+		<td>Corsican</td>
+		<td>corse</td></tr><tr valign="top">
+		<td scope="row">cpe</td>
+		<td> </td>
+		<td>Creoles and pidgins, English based</td>
+		<td>créoles et pidgins basés sur l'anglais</td></tr><tr valign="top">
+		<td scope="row">cpf</td>
+		<td> </td>
+		<td>Creoles and pidgins, French-based</td>
+		<td>créoles et pidgins basés sur le français</td></tr><tr valign="top">
+		<td scope="row">cpp</td>
+		<td> </td>
+		<td>Creoles and pidgins, Portuguese-based</td>
+		<td>créoles et pidgins basés sur le portugais</td></tr><tr valign="top">
+		<td scope="row">cre</td>
+		<td>cr</td>
+		<td>Cree</td>
+		<td>cree</td></tr><tr valign="top">
+		<td scope="row">crh</td>
+		<td> </td>
+		<td>Crimean Tatar; Crimean Turkish</td>
+		<td>tatar de Crimé</td></tr><tr valign="top">
+		<td scope="row">crp</td>
+		<td> </td>
+		<td>Creoles and pidgins</td>
+		<td>créoles et pidgins</td></tr><tr valign="top">
+		<td scope="row">csb</td>
+		<td> </td>
+		<td>Kashubian</td>
+		<td>kachoube</td></tr><tr valign="top">
+		<td scope="row">cus</td>
+		<td> </td>
+		<td>Cushitic languages</td>
+		<td>couchitiques,  langues</td></tr><tr valign="top">
+		<td scope="row">wel (B)<br/>cym (T)</td>
+		<td>cy</td>
+		<td>Welsh</td>
+		<td>gallois</td></tr><tr valign="top">
+		<td scope="row">cze (B)<br/>ces (T)</td>
+		<td>cs</td>
+		<td>Czech</td>
+		<td>tchèque</td></tr><tr valign="top">
+		<td scope="row">dak</td>
+		<td> </td>
+		<td>Dakota</td>
+		<td>dakota</td></tr><tr valign="top">
+		<td scope="row">dan</td>
+		<td>da</td>
+		<td>Danish</td>
+		<td>danois</td></tr><tr valign="top">
+		<td scope="row">dar</td>
+		<td> </td>
+		<td>Dargwa</td>
+		<td>dargwa</td></tr><tr valign="top">
+		<td scope="row">day</td>
+		<td> </td>
+		<td>Land Dayak languages</td>
+		<td>dayak, langues</td></tr><tr valign="top">
+		<td scope="row">del</td>
+		<td> </td>
+		<td>Delaware</td>
+		<td>delaware</td></tr><tr valign="top">
+		<td scope="row">den</td>
+		<td> </td>
+		<td>Slave (Athapascan)</td>
+		<td>esclave (athapascan)</td></tr><tr valign="top">
+		<td scope="row">ger (B)<br/>deu (T)</td>
+		<td>de</td>
+		<td>German</td>
+		<td>allemand</td></tr><tr valign="top">
+		<td scope="row">dgr</td>
+		<td> </td>
+		<td>Dogrib</td>
+		<td>dogrib</td></tr><tr valign="top">
+		<td scope="row">din</td>
+		<td> </td>
+		<td>Dinka</td>
+		<td>dinka</td></tr><tr valign="top">
+		<td scope="row">div</td>
+		<td>dv</td>
+		<td>Divehi; Dhivehi; Maldivian</td>
+		<td>maldivien</td></tr><tr valign="top">
+		<td scope="row">doi</td>
+		<td> </td>
+		<td>Dogri</td>
+		<td>dogri</td></tr><tr valign="top">
+		<td scope="row">dra</td>
+		<td> </td>
+		<td>Dravidian languages</td>
+		<td>dravidiennes,  langues</td></tr><tr valign="top">
+		<td scope="row">dsb</td>
+		<td> </td>
+		<td>Lower Sorbian</td>
+		<td>bas-sorabe</td></tr><tr valign="top">
+		<td scope="row">dua</td>
+		<td> </td>
+		<td>Duala</td>
+		<td>douala</td></tr><tr valign="top">
+		<td scope="row">dum</td>
+		<td> </td>
+		<td>Dutch, Middle (ca.1050-1350)</td>
+		<td>néerlandais moyen (ca. 1050-1350)</td></tr><tr valign="top">
+		<td scope="row">dut (B)<br/>nld (T)</td>
+		<td>nl</td>
+		<td>Dutch; Flemish</td>
+		<td>néerlandais; flamand</td></tr><tr valign="top">
+		<td scope="row">dyu</td>
+		<td> </td>
+		<td>Dyula</td>
+		<td>dioula</td></tr><tr valign="top">
+		<td scope="row">dzo</td>
+		<td>dz</td>
+		<td>Dzongkha</td>
+		<td>dzongkha</td></tr><tr valign="top">
+		<td scope="row">efi</td>
+		<td> </td>
+		<td>Efik</td>
+		<td>efik</td></tr><tr valign="top">
+		<td scope="row">egy</td>
+		<td> </td>
+		<td>Egyptian (Ancient)</td>
+		<td>égyptien</td></tr><tr valign="top">
+		<td scope="row">eka</td>
+		<td> </td>
+		<td>Ekajuk</td>
+		<td>ekajuk</td></tr><tr valign="top">
+		<td scope="row">gre (B)<br/>ell (T)</td>
+		<td>el</td>
+		<td>Greek, Modern (1453-)</td>
+		<td>grec moderne (après 1453)</td></tr><tr valign="top">
+		<td scope="row">elx</td>
+		<td> </td>
+		<td>Elamite</td>
+		<td>élamite</td></tr><tr valign="top">
+		<td scope="row">eng</td>
+		<td>en</td>
+		<td>English</td>
+		<td>anglais</td></tr><tr valign="top">
+		<td scope="row">enm</td>
+		<td> </td>
+		<td>English, Middle (1100-1500)</td>
+		<td>anglais moyen (1100-1500)</td></tr><tr valign="top">
+		<td scope="row">epo</td>
+		<td>eo</td>
+		<td>Esperanto</td>
+		<td>espéranto</td></tr><tr valign="top">
+		<td scope="row">est</td>
+		<td>et</td>
+		<td>Estonian</td>
+		<td>estonien</td></tr><tr valign="top">
+		<td scope="row">baq (B)<br/>eus (T)</td>
+		<td>eu</td>
+		<td>Basque</td>
+		<td>basque</td></tr><tr valign="top">
+		<td scope="row">ewe</td>
+		<td>ee</td>
+		<td>Ewe</td>
+		<td>éwé</td></tr><tr valign="top">
+		<td scope="row">ewo</td>
+		<td> </td>
+		<td>Ewondo</td>
+		<td>éwondo</td></tr><tr valign="top">
+		<td scope="row">fan</td>
+		<td> </td>
+		<td>Fang</td>
+		<td>fang</td></tr><tr valign="top">
+		<td scope="row">fao</td>
+		<td>fo</td>
+		<td>Faroese</td>
+		<td>féroïen</td></tr><tr valign="top">
+		<td scope="row">per (B)<br/>fas (T)</td>
+		<td>fa</td>
+		<td>Persian</td>
+		<td>persan</td></tr><tr valign="top">
+		<td scope="row">fat</td>
+		<td> </td>
+		<td>Fanti</td>
+		<td>fanti</td></tr><tr valign="top">
+		<td scope="row">fij</td>
+		<td>fj</td>
+		<td>Fijian</td>
+		<td>fidjien</td></tr><tr valign="top">
+		<td scope="row">fil</td>
+		<td> </td>
+		<td>Filipino; Pilipino</td>
+		<td>filipino; pilipino</td></tr><tr valign="top">
+		<td scope="row">fin</td>
+		<td>fi</td>
+		<td>Finnish</td>
+		<td>finnois</td></tr><tr valign="top">
+		<td scope="row">fiu</td>
+		<td> </td>
+		<td>Finno-Ugrian languages</td>
+		<td>finno-ougriennes,  langues</td></tr><tr valign="top">
+		<td scope="row">fon</td>
+		<td> </td>
+		<td>Fon</td>
+		<td>fon</td></tr><tr valign="top">
+		<td scope="row">fre (B)<br/>fra (T)</td>
+		<td>fr</td>
+		<td>French</td>
+		<td>français</td></tr><tr valign="top">
+		<td scope="row">fre (B)<br/>fra (T)</td>
+		<td>fr</td>
+		<td>French</td>
+		<td>français</td></tr><tr valign="top">
+		<td scope="row">frm</td>
+		<td> </td>
+		<td>French, Middle (ca.1400-1600)</td>
+		<td>français moyen (1400-1600)</td></tr><tr valign="top">
+		<td scope="row">fro</td>
+		<td> </td>
+		<td>French, Old (842-ca.1400)</td>
+		<td>français ancien (842-ca.1400)</td></tr><tr valign="top">
+		<td scope="row">frr</td>
+		<td> </td>
+		<td>Northern Frisian</td>
+		<td>frison septentrional</td></tr><tr valign="top">
+		<td scope="row">frs</td>
+		<td> </td>
+		<td>Eastern Frisian</td>
+		<td>frison oriental</td></tr><tr valign="top">
+		<td scope="row">fry</td>
+		<td>fy</td>
+		<td>Western Frisian</td>
+		<td>frison occidental</td></tr><tr valign="top">
+		<td scope="row">ful</td>
+		<td>ff</td>
+		<td>Fulah</td>
+		<td>peul</td></tr><tr valign="top">
+		<td scope="row">fur</td>
+		<td> </td>
+		<td>Friulian</td>
+		<td>frioulan</td></tr><tr valign="top">
+		<td scope="row">gaa</td>
+		<td> </td>
+		<td>Ga</td>
+		<td>ga</td></tr><tr valign="top">
+		<td scope="row">gay</td>
+		<td> </td>
+		<td>Gayo</td>
+		<td>gayo</td></tr><tr valign="top">
+		<td scope="row">gba</td>
+		<td> </td>
+		<td>Gbaya</td>
+		<td>gbaya</td></tr><tr valign="top">
+		<td scope="row">gem</td>
+		<td> </td>
+		<td>Germanic languages</td>
+		<td>germaniques, langues</td></tr><tr valign="top">
+		<td scope="row">geo (B)<br/>kat (T)</td>
+		<td>ka</td>
+		<td>Georgian</td>
+		<td>géorgien</td></tr><tr valign="top">
+		<td scope="row">ger (B)<br/>deu (T)</td>
+		<td>de</td>
+		<td>German</td>
+		<td>allemand</td></tr><tr valign="top">
+		<td scope="row">gez</td>
+		<td> </td>
+		<td>Geez</td>
+		<td>guèze</td></tr><tr valign="top">
+		<td scope="row">gil</td>
+		<td> </td>
+		<td>Gilbertese</td>
+		<td>kiribati</td></tr><tr valign="top">
+		<td scope="row">gla</td>
+		<td>gd</td>
+		<td>Gaelic; Scottish Gaelic</td>
+		<td>gaélique; gaélique écossais</td></tr><tr valign="top">
+		<td scope="row">gle</td>
+		<td>ga</td>
+		<td>Irish</td>
+		<td>irlandais</td></tr><tr valign="top">
+		<td scope="row">glg</td>
+		<td>gl</td>
+		<td>Galician</td>
+		<td>galicien</td></tr><tr valign="top">
+		<td scope="row">glv</td>
+		<td>gv</td>
+		<td>Manx</td>
+		<td>manx; mannois</td></tr><tr valign="top">
+		<td scope="row">gmh</td>
+		<td> </td>
+		<td>German, Middle High (ca.1050-1500)</td>
+		<td>allemand, moyen haut (ca. 1050-1500)</td></tr><tr valign="top">
+		<td scope="row">goh</td>
+		<td> </td>
+		<td>German, Old High (ca.750-1050)</td>
+		<td>allemand, vieux haut (ca. 750-1050)</td></tr><tr valign="top">
+		<td scope="row">gon</td>
+		<td> </td>
+		<td>Gondi</td>
+		<td>gond</td></tr><tr valign="top">
+		<td scope="row">gor</td>
+		<td> </td>
+		<td>Gorontalo</td>
+		<td>gorontalo</td></tr><tr valign="top">
+		<td scope="row">got</td>
+		<td> </td>
+		<td>Gothic</td>
+		<td>gothique</td></tr><tr valign="top">
+		<td scope="row">grb</td>
+		<td> </td>
+		<td>Grebo</td>
+		<td>grebo</td></tr><tr valign="top">
+		<td scope="row">grc</td>
+		<td> </td>
+		<td>Greek, Ancient (to 1453)</td>
+		<td>grec ancien (jusqu'à 1453)</td></tr><tr valign="top">
+		<td scope="row">gre (B)<br/>ell (T)</td>
+		<td>el</td>
+		<td>Greek, Modern (1453-)</td>
+		<td>grec moderne (après 1453)</td></tr><tr valign="top">
+		<td scope="row">grn</td>
+		<td>gn</td>
+		<td>Guarani</td>
+		<td>guarani</td></tr><tr valign="top">
+		<td scope="row">gsw</td>
+		<td> </td>
+		<td>Swiss German; Alemannic; Alsatian</td>
+		<td>suisse alémanique; alémanique; alsacien</td></tr><tr valign="top">
+		<td scope="row">guj</td>
+		<td>gu</td>
+		<td>Gujarati</td>
+		<td>goudjrati</td></tr><tr valign="top">
+		<td scope="row">gwi</td>
+		<td> </td>
+		<td>Gwich'in</td>
+		<td>gwich'in</td></tr><tr valign="top">
+		<td scope="row">hai</td>
+		<td> </td>
+		<td>Haida</td>
+		<td>haida</td></tr><tr valign="top">
+		<td scope="row">hat</td>
+		<td>ht</td>
+		<td>Haitian; Haitian Creole</td>
+		<td>haïtien; créole haïtien</td></tr><tr valign="top">
+		<td scope="row">hau</td>
+		<td>ha</td>
+		<td>Hausa</td>
+		<td>haoussa</td></tr><tr valign="top">
+		<td scope="row">haw</td>
+		<td> </td>
+		<td>Hawaiian</td>
+		<td>hawaïen</td></tr><tr valign="top">
+		<td scope="row">heb</td>
+		<td>he</td>
+		<td>Hebrew</td>
+		<td>hébreu</td></tr><tr valign="top">
+		<td scope="row">her</td>
+		<td>hz</td>
+		<td>Herero</td>
+		<td>herero</td></tr><tr valign="top">
+		<td scope="row">hil</td>
+		<td> </td>
+		<td>Hiligaynon</td>
+		<td>hiligaynon</td></tr><tr valign="top">
+		<td scope="row">him</td>
+		<td> </td>
+		<td>Himachali languages; Western Pahari languages</td>
+		<td>langues himachalis; langues paharis occidentales</td></tr><tr valign="top">
+		<td scope="row">hin</td>
+		<td>hi</td>
+		<td>Hindi</td>
+		<td>hindi</td></tr><tr valign="top">
+		<td scope="row">hit</td>
+		<td> </td>
+		<td>Hittite</td>
+		<td>hittite</td></tr><tr valign="top">
+		<td scope="row">hmn</td>
+		<td> </td>
+		<td>Hmong; Mong</td>
+		<td>hmong</td></tr><tr valign="top">
+		<td scope="row">hmo</td>
+		<td>ho</td>
+		<td>Hiri Motu</td>
+		<td>hiri motu</td></tr><tr valign="top">
+		<td scope="row">hrv</td>
+		<td>hr</td>
+		<td>Croatian</td>
+		<td>croate</td></tr><tr valign="top">
+		<td scope="row">hsb</td>
+		<td> </td>
+		<td>Upper Sorbian</td>
+		<td>haut-sorabe</td></tr><tr valign="top">
+		<td scope="row">hun</td>
+		<td>hu</td>
+		<td>Hungarian</td>
+		<td>hongrois</td></tr><tr valign="top">
+		<td scope="row">hup</td>
+		<td> </td>
+		<td>Hupa</td>
+		<td>hupa</td></tr><tr valign="top">
+		<td scope="row">arm (B)<br/>hye (T)</td>
+		<td>hy</td>
+		<td>Armenian</td>
+		<td>arménien</td></tr><tr valign="top">
+		<td scope="row">iba</td>
+		<td> </td>
+		<td>Iban</td>
+		<td>iban</td></tr><tr valign="top">
+		<td scope="row">ibo</td>
+		<td>ig</td>
+		<td>Igbo</td>
+		<td>igbo</td></tr><tr valign="top">
+		<td scope="row">ice (B)<br/>isl (T)</td>
+		<td>is</td>
+		<td>Icelandic</td>
+		<td>islandais</td></tr><tr valign="top">
+		<td scope="row">ido</td>
+		<td>io</td>
+		<td>Ido</td>
+		<td>ido</td></tr><tr valign="top">
+		<td scope="row">iii</td>
+		<td>ii</td>
+		<td>Sichuan Yi; Nuosu</td>
+		<td>yi de Sichuan</td></tr><tr valign="top">
+		<td scope="row">ijo</td>
+		<td> </td>
+		<td>Ijo languages</td>
+		<td>ijo, langues</td></tr><tr valign="top">
+		<td scope="row">iku</td>
+		<td>iu</td>
+		<td>Inuktitut</td>
+		<td>inuktitut</td></tr><tr valign="top">
+		<td scope="row">ile</td>
+		<td>ie</td>
+		<td>Interlingue; Occidental</td>
+		<td>interlingue</td></tr><tr valign="top">
+		<td scope="row">ilo</td>
+		<td> </td>
+		<td>Iloko</td>
+		<td>ilocano</td></tr><tr valign="top">
+		<td scope="row">ina</td>
+		<td>ia</td>
+		<td>Interlingua (International Auxiliary Language Association)</td>
+		<td>interlingua (langue auxiliaire internationale)</td></tr><tr valign="top">
+		<td scope="row">inc</td>
+		<td> </td>
+		<td>Indic languages</td>
+		<td>indo-aryennes, langues</td></tr><tr valign="top">
+		<td scope="row">ind</td>
+		<td>id</td>
+		<td>Indonesian</td>
+		<td>indonésien</td></tr><tr valign="top">
+		<td scope="row">ine</td>
+		<td> </td>
+		<td>Indo-European languages</td>
+		<td>indo-européennes, langues</td></tr><tr valign="top">
+		<td scope="row">inh</td>
+		<td> </td>
+		<td>Ingush</td>
+		<td>ingouche</td></tr><tr valign="top">
+		<td scope="row">ipk</td>
+		<td>ik</td>
+		<td>Inupiaq</td>
+		<td>inupiaq</td></tr><tr valign="top">
+		<td scope="row">ira</td>
+		<td> </td>
+		<td>Iranian languages</td>
+		<td>iraniennes, langues</td></tr><tr valign="top">
+		<td scope="row">iro</td>
+		<td> </td>
+		<td>Iroquoian languages</td>
+		<td>iroquoises, langues</td></tr><tr valign="top">
+		<td scope="row">ice (B)<br/>isl (T)</td>
+		<td>is</td>
+		<td>Icelandic</td>
+		<td>islandais</td></tr><tr valign="top">
+		<td scope="row">ita</td>
+		<td>it</td>
+		<td>Italian</td>
+		<td>italien</td></tr><tr valign="top">
+		<td scope="row">jav</td>
+		<td>jv</td>
+		<td>Javanese</td>
+		<td>javanais</td></tr><tr valign="top">
+		<td scope="row">jbo</td>
+		<td> </td>
+		<td>Lojban</td>
+		<td>lojban</td></tr><tr valign="top">
+		<td scope="row">jpn</td>
+		<td>ja</td>
+		<td>Japanese</td>
+		<td>japonais</td></tr><tr valign="top">
+		<td scope="row">jpr</td>
+		<td> </td>
+		<td>Judeo-Persian</td>
+		<td>judéo-persan</td></tr><tr valign="top">
+		<td scope="row">jrb</td>
+		<td> </td>
+		<td>Judeo-Arabic</td>
+		<td>judéo-arabe</td></tr><tr valign="top">
+		<td scope="row">kaa</td>
+		<td> </td>
+		<td>Kara-Kalpak</td>
+		<td>karakalpak</td></tr><tr valign="top">
+		<td scope="row">kab</td>
+		<td> </td>
+		<td>Kabyle</td>
+		<td>kabyle</td></tr><tr valign="top">
+		<td scope="row">kac</td>
+		<td> </td>
+		<td>Kachin; Jingpho</td>
+		<td>kachin; jingpho</td></tr><tr valign="top">
+		<td scope="row">kal</td>
+		<td>kl</td>
+		<td>Kalaallisut; Greenlandic</td>
+		<td>groenlandais</td></tr><tr valign="top">
+		<td scope="row">kam</td>
+		<td> </td>
+		<td>Kamba</td>
+		<td>kamba</td></tr><tr valign="top">
+		<td scope="row">kan</td>
+		<td>kn</td>
+		<td>Kannada</td>
+		<td>kannada</td></tr><tr valign="top">
+		<td scope="row">kar</td>
+		<td> </td>
+		<td>Karen languages</td>
+		<td>karen, langues</td></tr><tr valign="top">
+		<td scope="row">kas</td>
+		<td>ks</td>
+		<td>Kashmiri</td>
+		<td>kashmiri</td></tr><tr valign="top">
+		<td scope="row">geo (B)<br/>kat (T)</td>
+		<td>ka</td>
+		<td>Georgian</td>
+		<td>géorgien</td></tr><tr valign="top">
+		<td scope="row">kau</td>
+		<td>kr</td>
+		<td>Kanuri</td>
+		<td>kanouri</td></tr><tr valign="top">
+		<td scope="row">kaw</td>
+		<td> </td>
+		<td>Kawi</td>
+		<td>kawi</td></tr><tr valign="top">
+		<td scope="row">kaz</td>
+		<td>kk</td>
+		<td>Kazakh</td>
+		<td>kazakh</td></tr><tr valign="top">
+		<td scope="row">kbd</td>
+		<td> </td>
+		<td>Kabardian</td>
+		<td>kabardien</td></tr><tr valign="top">
+		<td scope="row">kha</td>
+		<td> </td>
+		<td>Khasi</td>
+		<td>khasi</td></tr><tr valign="top">
+		<td scope="row">khi</td>
+		<td> </td>
+		<td>Khoisan languages</td>
+		<td>khoïsan, langues</td></tr><tr valign="top">
+		<td scope="row">khm</td>
+		<td>km</td>
+		<td>Central Khmer</td>
+		<td>khmer central</td></tr><tr valign="top">
+		<td scope="row">kho</td>
+		<td> </td>
+		<td>Khotanese; Sakan</td>
+		<td>khotanais; sakan</td></tr><tr valign="top">
+		<td scope="row">kik</td>
+		<td>ki</td>
+		<td>Kikuyu; Gikuyu</td>
+		<td>kikuyu</td></tr><tr valign="top">
+		<td scope="row">kin</td>
+		<td>rw</td>
+		<td>Kinyarwanda</td>
+		<td>rwanda</td></tr><tr valign="top">
+		<td scope="row">kir</td>
+		<td>ky</td>
+		<td>Kirghiz; Kyrgyz</td>
+		<td>kirghiz</td></tr><tr valign="top">
+		<td scope="row">kmb</td>
+		<td> </td>
+		<td>Kimbundu</td>
+		<td>kimbundu</td></tr><tr valign="top">
+		<td scope="row">kok</td>
+		<td> </td>
+		<td>Konkani</td>
+		<td>konkani</td></tr><tr valign="top">
+		<td scope="row">kom</td>
+		<td>kv</td>
+		<td>Komi</td>
+		<td>kom</td></tr><tr valign="top">
+		<td scope="row">kon</td>
+		<td>kg</td>
+		<td>Kongo</td>
+		<td>kongo</td></tr><tr valign="top">
+		<td scope="row">kor</td>
+		<td>ko</td>
+		<td>Korean</td>
+		<td>coréen</td></tr><tr valign="top">
+		<td scope="row">kos</td>
+		<td> </td>
+		<td>Kosraean</td>
+		<td>kosrae</td></tr><tr valign="top">
+		<td scope="row">kpe</td>
+		<td> </td>
+		<td>Kpelle</td>
+		<td>kpellé</td></tr><tr valign="top">
+		<td scope="row">krc</td>
+		<td> </td>
+		<td>Karachay-Balkar</td>
+		<td>karatchai balkar</td></tr><tr valign="top">
+		<td scope="row">krl</td>
+		<td> </td>
+		<td>Karelian</td>
+		<td>carélien</td></tr><tr valign="top">
+		<td scope="row">kro</td>
+		<td> </td>
+		<td>Kru languages</td>
+		<td>krou, langues</td></tr><tr valign="top">
+		<td scope="row">kru</td>
+		<td> </td>
+		<td>Kurukh</td>
+		<td>kurukh</td></tr><tr valign="top">
+		<td scope="row">kua</td>
+		<td>kj</td>
+		<td>Kuanyama; Kwanyama</td>
+		<td>kuanyama; kwanyama</td></tr><tr valign="top">
+		<td scope="row">kum</td>
+		<td> </td>
+		<td>Kumyk</td>
+		<td>koumyk</td></tr><tr valign="top">
+		<td scope="row">kur</td>
+		<td>ku</td>
+		<td>Kurdish</td>
+		<td>kurde</td></tr><tr valign="top">
+		<td scope="row">kut</td>
+		<td> </td>
+		<td>Kutenai</td>
+		<td>kutenai</td></tr><tr valign="top">
+		<td scope="row">lad</td>
+		<td> </td>
+		<td>Ladino</td>
+		<td>judéo-espagnol</td></tr><tr valign="top">
+		<td scope="row">lah</td>
+		<td> </td>
+		<td>Lahnda</td>
+		<td>lahnda</td></tr><tr valign="top">
+		<td scope="row">lam</td>
+		<td> </td>
+		<td>Lamba</td>
+		<td>lamba</td></tr><tr valign="top">
+		<td scope="row">lao</td>
+		<td>lo</td>
+		<td>Lao</td>
+		<td>lao</td></tr><tr valign="top">
+		<td scope="row">lat</td>
+		<td>la</td>
+		<td>Latin</td>
+		<td>latin</td></tr><tr valign="top">
+		<td scope="row">lav</td>
+		<td>lv</td>
+		<td>Latvian</td>
+		<td>letton</td></tr><tr valign="top">
+		<td scope="row">lez</td>
+		<td> </td>
+		<td>Lezghian</td>
+		<td>lezghien</td></tr><tr valign="top">
+		<td scope="row">lim</td>
+		<td>li</td>
+		<td>Limburgan; Limburger; Limburgish</td>
+		<td>limbourgeois</td></tr><tr valign="top">
+		<td scope="row">lin</td>
+		<td>ln</td>
+		<td>Lingala</td>
+		<td>lingala</td></tr><tr valign="top">
+		<td scope="row">lit</td>
+		<td>lt</td>
+		<td>Lithuanian</td>
+		<td>lituanien</td></tr><tr valign="top">
+		<td scope="row">lol</td>
+		<td> </td>
+		<td>Mongo</td>
+		<td>mongo</td></tr><tr valign="top">
+		<td scope="row">loz</td>
+		<td> </td>
+		<td>Lozi</td>
+		<td>lozi</td></tr><tr valign="top">
+		<td scope="row">ltz</td>
+		<td>lb</td>
+		<td>Luxembourgish; Letzeburgesch</td>
+		<td>luxembourgeois</td></tr><tr valign="top">
+		<td scope="row">lua</td>
+		<td> </td>
+		<td>Luba-Lulua</td>
+		<td>luba-lulua</td></tr><tr valign="top">
+		<td scope="row">lub</td>
+		<td>lu</td>
+		<td>Luba-Katanga</td>
+		<td>luba-katanga</td></tr><tr valign="top">
+		<td scope="row">lug</td>
+		<td>lg</td>
+		<td>Ganda</td>
+		<td>ganda</td></tr><tr valign="top">
+		<td scope="row">lui</td>
+		<td> </td>
+		<td>Luiseno</td>
+		<td>luiseno</td></tr><tr valign="top">
+		<td scope="row">lun</td>
+		<td> </td>
+		<td>Lunda</td>
+		<td>lunda</td></tr><tr valign="top">
+		<td scope="row">luo</td>
+		<td> </td>
+		<td>Luo (Kenya and Tanzania)</td>
+		<td>luo (Kenya et Tanzanie)</td></tr><tr valign="top">
+		<td scope="row">lus</td>
+		<td> </td>
+		<td>Lushai</td>
+		<td>lushai</td></tr><tr valign="top">
+		<td scope="row">mac (B)<br/>mkd (T)</td>
+		<td>mk</td>
+		<td>Macedonian</td>
+		<td>macédonien</td></tr><tr valign="top">
+		<td scope="row">mad</td>
+		<td> </td>
+		<td>Madurese</td>
+		<td>madourais</td></tr><tr valign="top">
+		<td scope="row">mag</td>
+		<td> </td>
+		<td>Magahi</td>
+		<td>magahi</td></tr><tr valign="top">
+		<td scope="row">mah</td>
+		<td>mh</td>
+		<td>Marshallese</td>
+		<td>marshall</td></tr><tr valign="top">
+		<td scope="row">mai</td>
+		<td> </td>
+		<td>Maithili</td>
+		<td>maithili</td></tr><tr valign="top">
+		<td scope="row">mak</td>
+		<td> </td>
+		<td>Makasar</td>
+		<td>makassar</td></tr><tr valign="top">
+		<td scope="row">mal</td>
+		<td>ml</td>
+		<td>Malayalam</td>
+		<td>malayalam</td></tr><tr valign="top">
+		<td scope="row">man</td>
+		<td> </td>
+		<td>Mandingo</td>
+		<td>mandingue</td></tr><tr valign="top">
+		<td scope="row">mao (B)<br/>mri (T)</td>
+		<td>mi</td>
+		<td>Maori</td>
+		<td>maori</td></tr><tr valign="top">
+		<td scope="row">map</td>
+		<td> </td>
+		<td>Austronesian languages</td>
+		<td>austronésiennes, langues</td></tr><tr valign="top">
+		<td scope="row">mar</td>
+		<td>mr</td>
+		<td>Marathi</td>
+		<td>marathe</td></tr><tr valign="top">
+		<td scope="row">mas</td>
+		<td> </td>
+		<td>Masai</td>
+		<td>massaï</td></tr><tr valign="top">
+		<td scope="row">may (B)<br/>msa (T)</td>
+		<td>ms</td>
+		<td>Malay</td>
+		<td>malais</td></tr><tr valign="top">
+		<td scope="row">mdf</td>
+		<td> </td>
+		<td>Moksha</td>
+		<td>moksa</td></tr><tr valign="top">
+		<td scope="row">mdr</td>
+		<td> </td>
+		<td>Mandar</td>
+		<td>mandar</td></tr><tr valign="top">
+		<td scope="row">men</td>
+		<td> </td>
+		<td>Mende</td>
+		<td>mendé</td></tr><tr valign="top">
+		<td scope="row">mga</td>
+		<td> </td>
+		<td>Irish, Middle (900-1200)</td>
+		<td>irlandais moyen (900-1200)</td></tr><tr valign="top">
+		<td scope="row">mic</td>
+		<td> </td>
+		<td>Mi'kmaq; Micmac</td>
+		<td>mi'kmaq; micmac</td></tr><tr valign="top">
+		<td scope="row">min</td>
+		<td> </td>
+		<td>Minangkabau</td>
+		<td>minangkabau</td></tr><tr valign="top">
+		<td scope="row">mis</td>
+		<td> </td>
+		<td>Uncoded languages</td>
+		<td>langues non codées</td></tr><tr valign="top">
+		<td scope="row">mac (B)<br/>mkd (T)</td>
+		<td>mk</td>
+		<td>Macedonian</td>
+		<td>macédonien</td></tr><tr valign="top">
+		<td scope="row">mkh</td>
+		<td> </td>
+		<td>Mon-Khmer languages</td>
+		<td>môn-khmer, langues</td></tr><tr valign="top">
+		<td scope="row">mlg</td>
+		<td>mg</td>
+		<td>Malagasy</td>
+		<td>malgache</td></tr><tr valign="top">
+		<td scope="row">mlt</td>
+		<td>mt</td>
+		<td>Maltese</td>
+		<td>maltais</td></tr><tr valign="top">
+		<td scope="row">mnc</td>
+		<td> </td>
+		<td>Manchu</td>
+		<td>mandchou</td></tr><tr valign="top">
+		<td scope="row">mni</td>
+		<td> </td>
+		<td>Manipuri</td>
+		<td>manipuri</td></tr><tr valign="top">
+		<td scope="row">mno</td>
+		<td> </td>
+		<td>Manobo languages</td>
+		<td>manobo, langues</td></tr><tr valign="top">
+		<td scope="row">moh</td>
+		<td> </td>
+		<td>Mohawk</td>
+		<td>mohawk</td></tr><tr valign="top">
+		<td scope="row">mon</td>
+		<td>mn</td>
+		<td>Mongolian</td>
+		<td>mongol</td></tr><tr valign="top">
+		<td scope="row">mos</td>
+		<td> </td>
+		<td>Mossi</td>
+		<td>moré</td></tr><tr valign="top">
+		<td scope="row">mao (B)<br/>mri (T)</td>
+		<td>mi</td>
+		<td>Maori</td>
+		<td>maori</td></tr><tr valign="top">
+		<td scope="row">may (B)<br/>msa (T)</td>
+		<td>ms</td>
+		<td>Malay</td>
+		<td>malais</td></tr><tr valign="top">
+		<td scope="row">mul</td>
+		<td> </td>
+		<td>Multiple languages</td>
+		<td>multilingue</td></tr><tr valign="top">
+		<td scope="row">mun</td>
+		<td> </td>
+		<td>Munda languages</td>
+		<td>mounda, langues</td></tr><tr valign="top">
+		<td scope="row">mus</td>
+		<td> </td>
+		<td>Creek</td>
+		<td>muskogee</td></tr><tr valign="top">
+		<td scope="row">mwl</td>
+		<td> </td>
+		<td>Mirandese</td>
+		<td>mirandais</td></tr><tr valign="top">
+		<td scope="row">mwr</td>
+		<td> </td>
+		<td>Marwari</td>
+		<td>marvari</td></tr><tr valign="top">
+		<td scope="row">bur (B)<br/>mya (T)</td>
+		<td>my</td>
+		<td>Burmese</td>
+		<td>birman</td></tr><tr valign="top">
+		<td scope="row">myn</td>
+		<td> </td>
+		<td>Mayan languages</td>
+		<td>maya, langues</td></tr><tr valign="top">
+		<td scope="row">myv</td>
+		<td> </td>
+		<td>Erzya</td>
+		<td>erza</td></tr><tr valign="top">
+		<td scope="row">nah</td>
+		<td> </td>
+		<td>Nahuatl languages</td>
+		<td>nahuatl, langues</td></tr><tr valign="top">
+		<td scope="row">nai</td>
+		<td> </td>
+		<td>North American Indian languages</td>
+		<td>nord-amérindiennes, langues</td></tr><tr valign="top">
+		<td scope="row">nap</td>
+		<td> </td>
+		<td>Neapolitan</td>
+		<td>napolitain</td></tr><tr valign="top">
+		<td scope="row">nau</td>
+		<td>na</td>
+		<td>Nauru</td>
+		<td>nauruan</td></tr><tr valign="top">
+		<td scope="row">nav</td>
+		<td>nv</td>
+		<td>Navajo; Navaho</td>
+		<td>navaho</td></tr><tr valign="top">
+		<td scope="row">nbl</td>
+		<td>nr</td>
+		<td>Ndebele, South; South Ndebele</td>
+		<td>ndébélé du Sud</td></tr><tr valign="top">
+		<td scope="row">nde</td>
+		<td>nd</td>
+		<td>Ndebele, North; North Ndebele</td>
+		<td>ndébélé du Nord</td></tr><tr valign="top">
+		<td scope="row">ndo</td>
+		<td>ng</td>
+		<td>Ndonga</td>
+		<td>ndonga</td></tr><tr valign="top">
+		<td scope="row">nds</td>
+		<td> </td>
+		<td>Low German; Low Saxon; German, Low; Saxon, Low</td>
+		<td>bas allemand; bas saxon; allemand, bas; saxon, bas</td></tr><tr valign="top">
+		<td scope="row">nep</td>
+		<td>ne</td>
+		<td>Nepali</td>
+		<td>népalais</td></tr><tr valign="top">
+		<td scope="row">new</td>
+		<td> </td>
+		<td>Nepal Bhasa; Newari</td>
+		<td>nepal bhasa; newari</td></tr><tr valign="top">
+		<td scope="row">nia</td>
+		<td> </td>
+		<td>Nias</td>
+		<td>nias</td></tr><tr valign="top">
+		<td scope="row">nic</td>
+		<td> </td>
+		<td>Niger-Kordofanian languages</td>
+		<td>nigéro-kordofaniennes, langues</td></tr><tr valign="top">
+		<td scope="row">niu</td>
+		<td> </td>
+		<td>Niuean</td>
+		<td>niué</td></tr><tr valign="top">
+		<td scope="row">dut (B)<br/>nld (T)</td>
+		<td>nl</td>
+		<td>Dutch; Flemish</td>
+		<td>néerlandais; flamand</td></tr><tr valign="top">
+		<td scope="row">nno</td>
+		<td>nn</td>
+		<td>Norwegian Nynorsk; Nynorsk, Norwegian</td>
+		<td>norvégien nynorsk; nynorsk, norvégien</td></tr><tr valign="top">
+		<td scope="row">nob</td>
+		<td>nb</td>
+		<td>Bokmål, Norwegian; Norwegian Bokmål</td>
+		<td>norvégien bokmål</td></tr><tr valign="top">
+		<td scope="row">nog</td>
+		<td> </td>
+		<td>Nogai</td>
+		<td>nogaï; nogay</td></tr><tr valign="top">
+		<td scope="row">non</td>
+		<td> </td>
+		<td>Norse, Old</td>
+		<td>norrois, vieux</td></tr><tr valign="top">
+		<td scope="row">nor</td>
+		<td>no</td>
+		<td>Norwegian</td>
+		<td>norvégien</td></tr><tr valign="top">
+		<td scope="row">nqo</td>
+		<td> </td>
+		<td>N'Ko</td>
+		<td>n'ko</td></tr><tr valign="top">
+		<td scope="row">nso</td>
+		<td> </td>
+		<td>Pedi; Sepedi; Northern Sotho</td>
+		<td>pedi; sepedi; sotho du Nord</td></tr><tr valign="top">
+		<td scope="row">nub</td>
+		<td> </td>
+		<td>Nubian languages</td>
+		<td>nubiennes, langues</td></tr><tr valign="top">
+		<td scope="row">nwc</td>
+		<td> </td>
+		<td>Classical Newari; Old Newari; Classical Nepal Bhasa</td>
+		<td>newari classique</td></tr><tr valign="top">
+		<td scope="row">nya</td>
+		<td>ny</td>
+		<td>Chichewa; Chewa; Nyanja</td>
+		<td>chichewa; chewa; nyanja</td></tr><tr valign="top">
+		<td scope="row">nym</td>
+		<td> </td>
+		<td>Nyamwezi</td>
+		<td>nyamwezi</td></tr><tr valign="top">
+		<td scope="row">nyn</td>
+		<td> </td>
+		<td>Nyankole</td>
+		<td>nyankolé</td></tr><tr valign="top">
+		<td scope="row">nyo</td>
+		<td> </td>
+		<td>Nyoro</td>
+		<td>nyoro</td></tr><tr valign="top">
+		<td scope="row">nzi</td>
+		<td> </td>
+		<td>Nzima</td>
+		<td>nzema</td></tr><tr valign="top">
+		<td scope="row">oci</td>
+		<td>oc</td>
+		<td>Occitan (post 1500)</td>
+		<td>occitan (après 1500)</td></tr><tr valign="top">
+		<td scope="row">oji</td>
+		<td>oj</td>
+		<td>Ojibwa</td>
+		<td>ojibwa</td></tr><tr valign="top">
+		<td scope="row">ori</td>
+		<td>or</td>
+		<td>Oriya</td>
+		<td>oriya</td></tr><tr valign="top">
+		<td scope="row">orm</td>
+		<td>om</td>
+		<td>Oromo</td>
+		<td>galla</td></tr><tr valign="top">
+		<td scope="row">osa</td>
+		<td> </td>
+		<td>Osage</td>
+		<td>osage</td></tr><tr valign="top">
+		<td scope="row">oss</td>
+		<td>os</td>
+		<td>Ossetian; Ossetic</td>
+		<td>ossète</td></tr><tr valign="top">
+		<td scope="row">ota</td>
+		<td> </td>
+		<td>Turkish, Ottoman (1500-1928)</td>
+		<td>turc ottoman (1500-1928)</td></tr><tr valign="top">
+		<td scope="row">oto</td>
+		<td> </td>
+		<td>Otomian languages</td>
+		<td>otomi, langues</td></tr><tr valign="top">
+		<td scope="row">paa</td>
+		<td> </td>
+		<td>Papuan languages</td>
+		<td>papoues, langues</td></tr><tr valign="top">
+		<td scope="row">pag</td>
+		<td> </td>
+		<td>Pangasinan</td>
+		<td>pangasinan</td></tr><tr valign="top">
+		<td scope="row">pal</td>
+		<td> </td>
+		<td>Pahlavi</td>
+		<td>pahlavi</td></tr><tr valign="top">
+		<td scope="row">pam</td>
+		<td> </td>
+		<td>Pampanga; Kapampangan</td>
+		<td>pampangan</td></tr><tr valign="top">
+		<td scope="row">pan</td>
+		<td>pa</td>
+		<td>Panjabi; Punjabi</td>
+		<td>pendjabi</td></tr><tr valign="top">
+		<td scope="row">pap</td>
+		<td> </td>
+		<td>Papiamento</td>
+		<td>papiamento</td></tr><tr valign="top">
+		<td scope="row">pau</td>
+		<td> </td>
+		<td>Palauan</td>
+		<td>palau</td></tr><tr valign="top">
+		<td scope="row">peo</td>
+		<td> </td>
+		<td>Persian, Old (ca.600-400 B.C.)</td>
+		<td>perse, vieux (ca. 600-400 av. J.-C.)</td></tr><tr valign="top">
+		<td scope="row">per (B)<br/>fas (T)</td>
+		<td>fa</td>
+		<td>Persian</td>
+		<td>persan</td></tr><tr valign="top">
+		<td scope="row">phi</td>
+		<td> </td>
+		<td>Philippine languages</td>
+		<td>philippines, langues</td></tr><tr valign="top">
+		<td scope="row">phn</td>
+		<td> </td>
+		<td>Phoenician</td>
+		<td>phénicien</td></tr><tr valign="top">
+		<td scope="row">pli</td>
+		<td>pi</td>
+		<td>Pali</td>
+		<td>pali</td></tr><tr valign="top">
+		<td scope="row">pol</td>
+		<td>pl</td>
+		<td>Polish</td>
+		<td>polonais</td></tr><tr valign="top">
+		<td scope="row">pon</td>
+		<td> </td>
+		<td>Pohnpeian</td>
+		<td>pohnpei</td></tr><tr valign="top">
+		<td scope="row">por</td>
+		<td>pt</td>
+		<td>Portuguese</td>
+		<td>portugais</td></tr><tr valign="top">
+		<td scope="row">pra</td>
+		<td> </td>
+		<td>Prakrit languages</td>
+		<td>prâkrit, langues</td></tr><tr valign="top">
+		<td scope="row">pro</td>
+		<td> </td>
+		<td>Provençal, Old (to 1500);Occitan, Old (to 1500)</td>
+		<td>provençal ancien (jusqu'à 1500); occitan ancien (jusqu'à 1500)</td></tr><tr valign="top">
+		<td scope="row">pus</td>
+		<td>ps</td>
+		<td>Pushto; Pashto</td>
+		<td>pachto</td></tr><tr valign="top">
+		<td scope="row">qaa-qtz</td>
+		<td> </td>
+		<td>Reserved for local use</td>
+		<td>réservée à l'usage local</td></tr><tr valign="top">
+		<td scope="row">que</td>
+		<td>qu</td>
+		<td>Quechua</td>
+		<td>quechua</td></tr><tr valign="top">
+		<td scope="row">raj</td>
+		<td> </td>
+		<td>Rajasthani</td>
+		<td>rajasthani</td></tr><tr valign="top">
+		<td scope="row">rap</td>
+		<td> </td>
+		<td>Rapanui</td>
+		<td>rapanui</td></tr><tr valign="top">
+		<td scope="row">rar</td>
+		<td> </td>
+		<td>Rarotongan; Cook Islands Maori</td>
+		<td>rarotonga; maori des îles Cook</td></tr><tr valign="top">
+		<td scope="row">roa</td>
+		<td> </td>
+		<td>Romance languages</td>
+		<td>romanes, langues</td></tr><tr valign="top">
+		<td scope="row">roh</td>
+		<td>rm</td>
+		<td>Romansh</td>
+		<td>romanche</td></tr><tr valign="top">
+		<td scope="row">rom</td>
+		<td> </td>
+		<td>Romany</td>
+		<td>tsigane</td></tr><tr valign="top">
+		<td scope="row">rum (B)<br/>ron (T)</td>
+		<td>ro</td>
+		<td>Romanian; Moldavian; Moldovan</td>
+		<td>roumain; moldave</td></tr><tr valign="top">
+		<td scope="row">rum (B)<br/>ron (T)</td>
+		<td>ro</td>
+		<td>Romanian; Moldavian; Moldovan</td>
+		<td>roumain; moldave</td></tr><tr valign="top">
+		<td scope="row">run</td>
+		<td>rn</td>
+		<td>Rundi</td>
+		<td>rundi</td></tr><tr valign="top">
+		<td scope="row">rup</td>
+		<td> </td>
+		<td>Aromanian; Arumanian; Macedo-Romanian</td>
+		<td>aroumain; macédo-roumain</td></tr><tr valign="top">
+		<td scope="row">rus</td>
+		<td>ru</td>
+		<td>Russian</td>
+		<td>russe</td></tr><tr valign="top">
+		<td scope="row">sad</td>
+		<td> </td>
+		<td>Sandawe</td>
+		<td>sandawe</td></tr><tr valign="top">
+		<td scope="row">sag</td>
+		<td>sg</td>
+		<td>Sango</td>
+		<td>sango</td></tr><tr valign="top">
+		<td scope="row">sah</td>
+		<td> </td>
+		<td>Yakut</td>
+		<td>iakoute</td></tr><tr valign="top">
+		<td scope="row">sai</td>
+		<td> </td>
+		<td>South American Indian languages</td>
+		<td>sud-amérindiennes, langues</td></tr><tr valign="top">
+		<td scope="row">sal</td>
+		<td> </td>
+		<td>Salishan languages</td>
+		<td>salishennes, langues</td></tr><tr valign="top">
+		<td scope="row">sam</td>
+		<td> </td>
+		<td>Samaritan Aramaic</td>
+		<td>samaritain</td></tr><tr valign="top">
+		<td scope="row">san</td>
+		<td>sa</td>
+		<td>Sanskrit</td>
+		<td>sanskrit</td></tr><tr valign="top">
+		<td scope="row">sas</td>
+		<td> </td>
+		<td>Sasak</td>
+		<td>sasak</td></tr><tr valign="top">
+		<td scope="row">sat</td>
+		<td> </td>
+		<td>Santali</td>
+		<td>santal</td></tr><tr valign="top">
+		<td scope="row">scn</td>
+		<td> </td>
+		<td>Sicilian</td>
+		<td>sicilien</td></tr><tr valign="top">
+		<td scope="row">sco</td>
+		<td> </td>
+		<td>Scots</td>
+		<td>écossais</td></tr><tr valign="top">
+		<td scope="row">sel</td>
+		<td> </td>
+		<td>Selkup</td>
+		<td>selkoupe</td></tr><tr valign="top">
+		<td scope="row">sem</td>
+		<td> </td>
+		<td>Semitic languages</td>
+		<td>sémitiques, langues</td></tr><tr valign="top">
+		<td scope="row">sga</td>
+		<td> </td>
+		<td>Irish, Old (to 900)</td>
+		<td>irlandais ancien (jusqu'à 900)</td></tr><tr valign="top">
+		<td scope="row">sgn</td>
+		<td> </td>
+		<td>Sign Languages</td>
+		<td>langues des signes</td></tr><tr valign="top">
+		<td scope="row">shn</td>
+		<td> </td>
+		<td>Shan</td>
+		<td>chan</td></tr><tr valign="top">
+		<td scope="row">sid</td>
+		<td> </td>
+		<td>Sidamo</td>
+		<td>sidamo</td></tr><tr valign="top">
+		<td scope="row">sin</td>
+		<td>si</td>
+		<td>Sinhala; Sinhalese</td>
+		<td>singhalais</td></tr><tr valign="top">
+		<td scope="row">sio</td>
+		<td> </td>
+		<td>Siouan languages</td>
+		<td>sioux, langues</td></tr><tr valign="top">
+		<td scope="row">sit</td>
+		<td> </td>
+		<td>Sino-Tibetan languages</td>
+		<td>sino-tibétaines, langues</td></tr><tr valign="top">
+		<td scope="row">sla</td>
+		<td> </td>
+		<td>Slavic languages</td>
+		<td>slaves, langues</td></tr><tr valign="top">
+		<td scope="row">slo (B)<br/>slk (T)</td>
+		<td>sk</td>
+		<td>Slovak</td>
+		<td>slovaque</td></tr><tr valign="top">
+		<td scope="row">slo (B)<br/>slk (T)</td>
+		<td>sk</td>
+		<td>Slovak</td>
+		<td>slovaque</td></tr><tr valign="top">
+		<td scope="row">slv</td>
+		<td>sl</td>
+		<td>Slovenian</td>
+		<td>slovène</td></tr><tr valign="top">
+		<td scope="row">sma</td>
+		<td> </td>
+		<td>Southern Sami</td>
+		<td>sami du Sud</td></tr><tr valign="top">
+		<td scope="row">sme</td>
+		<td>se</td>
+		<td>Northern Sami</td>
+		<td>sami du Nord</td></tr><tr valign="top">
+		<td scope="row">smi</td>
+		<td> </td>
+		<td>Sami languages</td>
+		<td>sames, langues</td></tr><tr valign="top">
+		<td scope="row">smj</td>
+		<td> </td>
+		<td>Lule Sami</td>
+		<td>sami de Lule</td></tr><tr valign="top">
+		<td scope="row">smn</td>
+		<td> </td>
+		<td>Inari Sami</td>
+		<td>sami d'Inari</td></tr><tr valign="top">
+		<td scope="row">smo</td>
+		<td>sm</td>
+		<td>Samoan</td>
+		<td>samoan</td></tr><tr valign="top">
+		<td scope="row">sms</td>
+		<td> </td>
+		<td>Skolt Sami</td>
+		<td>sami skolt</td></tr><tr valign="top">
+		<td scope="row">sna</td>
+		<td>sn</td>
+		<td>Shona</td>
+		<td>shona</td></tr><tr valign="top">
+		<td scope="row">snd</td>
+		<td>sd</td>
+		<td>Sindhi</td>
+		<td>sindhi</td></tr><tr valign="top">
+		<td scope="row">snk</td>
+		<td> </td>
+		<td>Soninke</td>
+		<td>soninké</td></tr><tr valign="top">
+		<td scope="row">sog</td>
+		<td> </td>
+		<td>Sogdian</td>
+		<td>sogdien</td></tr><tr valign="top">
+		<td scope="row">som</td>
+		<td>so</td>
+		<td>Somali</td>
+		<td>somali</td></tr><tr valign="top">
+		<td scope="row">son</td>
+		<td> </td>
+		<td>Songhai languages</td>
+		<td>songhai, langues</td></tr><tr valign="top">
+		<td scope="row">sot</td>
+		<td>st</td>
+		<td>Sotho, Southern</td>
+		<td>sotho du Sud</td></tr><tr valign="top">
+		<td scope="row">spa</td>
+		<td>es</td>
+		<td>Spanish; Castilian</td>
+		<td>espagnol; castillan</td></tr><tr valign="top">
+		<td scope="row">alb (B)<br/>sqi (T)</td>
+		<td>sq</td>
+		<td>Albanian</td>
+		<td>albanais</td></tr><tr valign="top">
+		<td scope="row">srd</td>
+		<td>sc</td>
+		<td>Sardinian</td>
+		<td>sarde</td></tr><tr valign="top">
+		<td scope="row">srn</td>
+		<td> </td>
+		<td>Sranan Tongo</td>
+		<td>sranan tongo</td></tr><tr valign="top">
+		<td scope="row">srp</td>
+		<td>sr</td>
+		<td>Serbian</td>
+		<td>serbe</td></tr><tr valign="top">
+		<td scope="row">srr</td>
+		<td> </td>
+		<td>Serer</td>
+		<td>sérère</td></tr><tr valign="top">
+		<td scope="row">ssa</td>
+		<td> </td>
+		<td>Nilo-Saharan languages</td>
+		<td>nilo-sahariennes, langues</td></tr><tr valign="top">
+		<td scope="row">ssw</td>
+		<td>ss</td>
+		<td>Swati</td>
+		<td>swati</td></tr><tr valign="top">
+		<td scope="row">suk</td>
+		<td> </td>
+		<td>Sukuma</td>
+		<td>sukuma</td></tr><tr valign="top">
+		<td scope="row">sun</td>
+		<td>su</td>
+		<td>Sundanese</td>
+		<td>soundanais</td></tr><tr valign="top">
+		<td scope="row">sus</td>
+		<td> </td>
+		<td>Susu</td>
+		<td>soussou</td></tr><tr valign="top">
+		<td scope="row">sux</td>
+		<td> </td>
+		<td>Sumerian</td>
+		<td>sumérien</td></tr><tr valign="top">
+		<td scope="row">swa</td>
+		<td>sw</td>
+		<td>Swahili</td>
+		<td>swahili</td></tr><tr valign="top">
+		<td scope="row">swe</td>
+		<td>sv</td>
+		<td>Swedish</td>
+		<td>suédois</td></tr><tr valign="top">
+		<td scope="row">syc</td>
+		<td> </td>
+		<td>Classical Syriac</td>
+		<td>syriaque classique</td></tr><tr valign="top">
+		<td scope="row">syr</td>
+		<td> </td>
+		<td>Syriac</td>
+		<td>syriaque</td></tr><tr valign="top">
+		<td scope="row">tah</td>
+		<td>ty</td>
+		<td>Tahitian</td>
+		<td>tahitien</td></tr><tr valign="top">
+		<td scope="row">tai</td>
+		<td> </td>
+		<td>Tai languages</td>
+		<td>tai, langues</td></tr><tr valign="top">
+		<td scope="row">tam</td>
+		<td>ta</td>
+		<td>Tamil</td>
+		<td>tamoul</td></tr><tr valign="top">
+		<td scope="row">tat</td>
+		<td>tt</td>
+		<td>Tatar</td>
+		<td>tatar</td></tr><tr valign="top">
+		<td scope="row">tel</td>
+		<td>te</td>
+		<td>Telugu</td>
+		<td>télougou</td></tr><tr valign="top">
+		<td scope="row">tem</td>
+		<td> </td>
+		<td>Timne</td>
+		<td>temne</td></tr><tr valign="top">
+		<td scope="row">ter</td>
+		<td> </td>
+		<td>Tereno</td>
+		<td>tereno</td></tr><tr valign="top">
+		<td scope="row">tet</td>
+		<td> </td>
+		<td>Tetum</td>
+		<td>tetum</td></tr><tr valign="top">
+		<td scope="row">tgk</td>
+		<td>tg</td>
+		<td>Tajik</td>
+		<td>tadjik</td></tr><tr valign="top">
+		<td scope="row">tgl</td>
+		<td>tl</td>
+		<td>Tagalog</td>
+		<td>tagalog</td></tr><tr valign="top">
+		<td scope="row">tha</td>
+		<td>th</td>
+		<td>Thai</td>
+		<td>thaï</td></tr><tr valign="top">
+		<td scope="row">tib (B)<br/>bod (T)</td>
+		<td>bo</td>
+		<td>Tibetan</td>
+		<td>tibétain</td></tr><tr valign="top">
+		<td scope="row">tig</td>
+		<td> </td>
+		<td>Tigre</td>
+		<td>tigré</td></tr><tr valign="top">
+		<td scope="row">tir</td>
+		<td>ti</td>
+		<td>Tigrinya</td>
+		<td>tigrigna</td></tr><tr valign="top">
+		<td scope="row">tiv</td>
+		<td> </td>
+		<td>Tiv</td>
+		<td>tiv</td></tr><tr valign="top">
+		<td scope="row">tkl</td>
+		<td> </td>
+		<td>Tokelau</td>
+		<td>tokelau</td></tr><tr valign="top">
+		<td scope="row">tlh</td>
+		<td> </td>
+		<td>Klingon; tlhIngan-Hol</td>
+		<td>klingon</td></tr><tr valign="top">
+		<td scope="row">tli</td>
+		<td> </td>
+		<td>Tlingit</td>
+		<td>tlingit</td></tr><tr valign="top">
+		<td scope="row">tmh</td>
+		<td> </td>
+		<td>Tamashek</td>
+		<td>tamacheq</td></tr><tr valign="top">
+		<td scope="row">tog</td>
+		<td> </td>
+		<td>Tonga (Nyasa)</td>
+		<td>tonga (Nyasa)</td></tr><tr valign="top">
+		<td scope="row">ton</td>
+		<td>to</td>
+		<td>Tonga (Tonga Islands)</td>
+		<td>tongan (Îles Tonga)</td></tr><tr valign="top">
+		<td scope="row">tpi</td>
+		<td> </td>
+		<td>Tok Pisin</td>
+		<td>tok pisin</td></tr><tr valign="top">
+		<td scope="row">tsi</td>
+		<td> </td>
+		<td>Tsimshian</td>
+		<td>tsimshian</td></tr><tr valign="top">
+		<td scope="row">tsn</td>
+		<td>tn</td>
+		<td>Tswana</td>
+		<td>tswana</td></tr><tr valign="top">
+		<td scope="row">tso</td>
+		<td>ts</td>
+		<td>Tsonga</td>
+		<td>tsonga</td></tr><tr valign="top">
+		<td scope="row">tuk</td>
+		<td>tk</td>
+		<td>Turkmen</td>
+		<td>turkmène</td></tr><tr valign="top">
+		<td scope="row">tum</td>
+		<td> </td>
+		<td>Tumbuka</td>
+		<td>tumbuka</td></tr><tr valign="top">
+		<td scope="row">tup</td>
+		<td> </td>
+		<td>Tupi languages</td>
+		<td>tupi, langues</td></tr><tr valign="top">
+		<td scope="row">tur</td>
+		<td>tr</td>
+		<td>Turkish</td>
+		<td>turc</td></tr><tr valign="top">
+		<td scope="row">tut</td>
+		<td> </td>
+		<td>Altaic languages</td>
+		<td>altaïques, langues</td></tr><tr valign="top">
+		<td scope="row">tvl</td>
+		<td> </td>
+		<td>Tuvalu</td>
+		<td>tuvalu</td></tr><tr valign="top">
+		<td scope="row">twi</td>
+		<td>tw</td>
+		<td>Twi</td>
+		<td>twi</td></tr><tr valign="top">
+		<td scope="row">tyv</td>
+		<td> </td>
+		<td>Tuvinian</td>
+		<td>touva</td></tr><tr valign="top">
+		<td scope="row">udm</td>
+		<td> </td>
+		<td>Udmurt</td>
+		<td>oudmourte</td></tr><tr valign="top">
+		<td scope="row">uga</td>
+		<td> </td>
+		<td>Ugaritic</td>
+		<td>ougaritique</td></tr><tr valign="top">
+		<td scope="row">uig</td>
+		<td>ug</td>
+		<td>Uighur; Uyghur</td>
+		<td>ouïgour</td></tr><tr valign="top">
+		<td scope="row">ukr</td>
+		<td>uk</td>
+		<td>Ukrainian</td>
+		<td>ukrainien</td></tr><tr valign="top">
+		<td scope="row">umb</td>
+		<td> </td>
+		<td>Umbundu</td>
+		<td>umbundu</td></tr><tr valign="top">
+		<td scope="row">und</td>
+		<td> </td>
+		<td>Undetermined</td>
+		<td>indéterminée</td></tr><tr valign="top">
+		<td scope="row">urd</td>
+		<td>ur</td>
+		<td>Urdu</td>
+		<td>ourdou</td></tr><tr valign="top">
+		<td scope="row">uzb</td>
+		<td>uz</td>
+		<td>Uzbek</td>
+		<td>ouszbek</td></tr><tr valign="top">
+		<td scope="row">vai</td>
+		<td> </td>
+		<td>Vai</td>
+		<td>vaï</td></tr><tr valign="top">
+		<td scope="row">ven</td>
+		<td>ve</td>
+		<td>Venda</td>
+		<td>venda</td></tr><tr valign="top">
+		<td scope="row">vie</td>
+		<td>vi</td>
+		<td>Vietnamese</td>
+		<td>vietnamien</td></tr><tr valign="top">
+		<td scope="row">vol</td>
+		<td>vo</td>
+		<td>Volapük</td>
+		<td>volapük</td></tr><tr valign="top">
+		<td scope="row">vot</td>
+		<td> </td>
+		<td>Votic</td>
+		<td>vote</td></tr><tr valign="top">
+		<td scope="row">wak</td>
+		<td> </td>
+		<td>Wakashan languages</td>
+		<td>wakashanes, langues</td></tr><tr valign="top">
+		<td scope="row">wal</td>
+		<td> </td>
+		<td>Wolaitta; Wolaytta</td>
+		<td>wolaitta; wolaytta</td></tr><tr valign="top">
+		<td scope="row">war</td>
+		<td> </td>
+		<td>Waray</td>
+		<td>waray</td></tr><tr valign="top">
+		<td scope="row">was</td>
+		<td> </td>
+		<td>Washo</td>
+		<td>washo</td></tr><tr valign="top">
+		<td scope="row">wel (B)<br/>cym (T)</td>
+		<td>cy</td>
+		<td>Welsh</td>
+		<td>gallois</td></tr><tr valign="top">
+		<td scope="row">wen</td>
+		<td> </td>
+		<td>Sorbian languages</td>
+		<td>sorabes, langues</td></tr><tr valign="top">
+		<td scope="row">wln</td>
+		<td>wa</td>
+		<td>Walloon</td>
+		<td>wallon</td></tr><tr valign="top">
+		<td scope="row">wol</td>
+		<td>wo</td>
+		<td>Wolof</td>
+		<td>wolof</td></tr><tr valign="top">
+		<td scope="row">xal</td>
+		<td> </td>
+		<td>Kalmyk; Oirat</td>
+		<td>kalmouk; oïrat</td></tr><tr valign="top">
+		<td scope="row">xho</td>
+		<td>xh</td>
+		<td>Xhosa</td>
+		<td>xhosa</td></tr><tr valign="top">
+		<td scope="row">yao</td>
+		<td> </td>
+		<td>Yao</td>
+		<td>yao</td></tr><tr valign="top">
+		<td scope="row">yap</td>
+		<td> </td>
+		<td>Yapese</td>
+		<td>yapois</td></tr><tr valign="top">
+		<td scope="row">yid</td>
+		<td>yi</td>
+		<td>Yiddish</td>
+		<td>yiddish</td></tr><tr valign="top">
+		<td scope="row">yor</td>
+		<td>yo</td>
+		<td>Yoruba</td>
+		<td>yoruba</td></tr><tr valign="top">
+		<td scope="row">ypk</td>
+		<td> </td>
+		<td>Yupik languages</td>
+		<td>yupik, langues</td></tr><tr valign="top">
+		<td scope="row">zap</td>
+		<td> </td>
+		<td>Zapotec</td>
+		<td>zapotèque</td></tr><tr valign="top">
+		<td scope="row">zbl</td>
+		<td> </td>
+		<td>Blissymbols; Blissymbolics; Bliss</td>
+		<td>symboles Bliss; Bliss</td></tr><tr valign="top">
+		<td scope="row">zen</td>
+		<td> </td>
+		<td>Zenaga</td>
+		<td>zenaga</td></tr><tr valign="top">
+		<td scope="row">zgh</td>
+		<td> </td>
+		<td>Standard Moroccan Tamazight</td>
+		<td>amazighe standard marocain</td></tr><tr valign="top">
+		<td scope="row">zha</td>
+		<td>za</td>
+		<td>Zhuang; Chuang</td>
+		<td>zhuang; chuang</td></tr><tr valign="top">
+		<td scope="row">chi (B)<br/>zho (T)</td>
+		<td>zh</td>
+		<td>Chinese</td>
+		<td>chinois</td></tr><tr valign="top">
+		<td scope="row">znd</td>
+		<td> </td>
+		<td>Zande languages</td>
+		<td>zandé, langues</td></tr><tr valign="top">
+		<td scope="row">zul</td>
+		<td>zu</td>
+		<td>Zulu</td>
+		<td>zoulou</td></tr><tr valign="top">
+		<td scope="row">zun</td>
+		<td> </td>
+		<td>Zuni</td>
+		<td>zuni</td></tr><tr valign="top">
+		<td scope="row">zxx</td>
+		<td> </td>
+		<td>No linguistic content; Not applicable</td>
+		<td>pas de contenu linguistique; non applicable</td></tr><tr valign="top">
+		<td scope="row">zza</td>
+		<td> </td>
+		<td>Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki</td>
+		<td>zaza; dimili; dimli; kirdki; kirmanjki; zazaki</td></tr></tbody></table>

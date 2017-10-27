@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<page name="AboutUs" ref="about-us" title="About us" status-active="" status-public=""/>
+	<page name="Shoutboxes" ref="chat-list" title="Shoutboxes" status-active="" status-public=""/>
+	<page name="Minecraft" ref="home" title="Minecraft" module="minecraft" status-active="" status-public="">
+		<param name="chat-duration" value="30"/>
+		<page name="News" ref="news" title="News" status-active="" status-public=""/>
+		<page name="Chat" ref="shoutbox" title="Chat" status-active="" status-public="">
+			<param name="chat-duration" value="90"/>
+		</page>
+		<page name="Log" ref="log" title="Server-Log" status-active="" status-public="">
+			<data ref="/minecraft/sites.log"/>
+		</page>
+		<page name="Infos" ref="infos" title="Server-Informationen" status-active="" status-public="">
+			<!--<page name="log" ref="log" title="Server-Log"/>-->
+			
+			
+			<!--
+			<page name="Mall" ref="mall" title="Einkaufszentrum" status-active="" status-public=""/>
+			<page name="Workshop" ref="workshop" title="Werkstatt" status-active="" status-public=""/>
+			-->
+		</page>
+		<page name="Law" ref="law" title="Regeln" status-active="" status-public=""/>
+		<page name="Map" title="Map" ext="/Minecraft/Map/index.html" status-active="" status-public=""/>
+		<page name="Maps" ref="maps" title="Karten" status-active="" status-public="">
+			<!--
+			<page name="Statistic" ref="statistic" title="Statistic" status-active="" status-public=""/>
+			<page name="2D-Normal" ref="map-2D-normal" title="2D Normal" status-active="" status-public=""/>
+			<page name="3D-Normal" ref="map-3D-normal" title="3D Normal" status-active="" status-public=""/>
+			<page name="2D-Cave" ref="map-2D-cave" title="2D Cave" status-active="" status-public=""/>
+			<page name="3D-Cave" ref="map-3D-cave" title="3D Cave" status-active="" status-public=""/>
+			-->
+			<page name="Map" title="Current (MapCrafter)" ext="/Minecraft/Map/index.html" status-active="" status-public=""/>
+			<page name="Map.2015-11-24" title="2015 (MapCrafter)" ext="/Minecraft/Map.2015-11-24/index.html" status-active="" status-public=""/>
+			<page name="Map.2014-05-20" title="2014 (Overviewer)" ext="/Minecraft/Map.2014-05-20/index.html" status-active="" status-public=""/>
+			<page name="Map.2013-02-27" title="2013 (Tectonicus)" ext="/Minecraft/Map.2013-02-27/index.html" status-active="" status-public=""/>
+			<page name="Map.2012-06-07" title="2012 (Tectonicus)" ext="/Minecraft/Map.2012-06-07/index.html" status-active="" status-public=""/>
+			<page name="Map.2011-10-26" title="2011 (Tectonicus)" ext="/Minecraft/Map.2011-10-26/index.html" status-active="" status-public=""/>
+		</page>
+		<page name="Players" ref="players" title="Spieler" status-active="" status-public=""/>
+		<page name="Pics" ref="pics" title="Bildchen" status-active="" status-public=""/>
+	</page>
+	<res ref="/talesof/sites"/>
+	<page name="FireEmblem" title="Fire Emblem" ref="fire-emblem-home" status-active="" status-public="">
+		<page name="RekkaNoKen" title="Rekka No Ken" redirect="/FireEmblem/TheBlazingBlade" status-active="">
+			<param name="game" value="bs"/>
+			<page name="Characters" title="Characters" redirect="/FireEmblem/TheBlazingBlade/Characters" status-active=""/>
+			<page name="Relationships" title="Relationships" redirect="/FireEmblem/TheBlazingBlade/Relationships" status-active=""/>
+		</page>
+		<page name="TheBlazingBlade" title="The Blazing Blade" redirect="Characters" status-active="" status-public="">
+			<param name="game" value="bs"/>
+			<page name="Characters" title="Characters" ref="fire-emblem-cast" status-active="" status-public=""/>
+			<page name="Relationships" title="Relationships" ref="fire-emblem-breeding" status-active="" status-public=""/>
+		</page>
+		<page name="TheSacredStones" title="The Sacred Stones" redirect="Characters" status-active="" status-public="">
+			<param name="game" value="ss"/>
+			<page name="Characters" title="Characters" ref="fire-emblem-cast" status-active="" status-public=""/>
+			<page name="Relationships" title="Relationships" ref="fire-emblem-breeding" status-active="" status-public=""/>
+		</page>
+		<page name="PathOfRadiance" title="Path of Radiance" redirect="Characters" status-active="" status-public="">
+			<param name="game" value="por"/>
+			<page name="Characters" title="Characters" ref="fire-emblem-cast" status-active="" status-public=""/>
+			<page name="Relationships" title="Relationships" ref="fire-emblem-breeding" status-active="" status-public=""/>
+		</page>
+		<page name="RadiantDawn" title="Radiant Dawn" redirect="Characters" status-active="" status-public="">
+			<param name="game" value="rd"/>
+			<page name="Characters" title="Characters" ref="fire-emblem-cast" status-active="" status-public=""/>
+		</page>
+		<page name="ShadowDragon" title="Shadow Dragon" redirect="Characters" status-active="" status-public="">
+			<param name="game" value="sd"/>
+			<page name="Characters" title="Characters" ref="fire-emblem-cast" status-active="" status-public=""/>
+		</page>
+		<page name="Awakening" title="Awakening" redirect="Characters" status-active="" status-public="">
+			<param name="game" value="aw"/>
+			<page name="Characters" title="Characters" ref="fire-emblem-cast" status-active="" status-public=""/>
+			<page name="Relationships" title="Relationships" ref="fire-emblem-breeding" status-active="" status-public=""/>
+		</page>
+		<page name="Fates" title="Fates" redirect="Characters" status-active="" status-public="">
+			<param name="game" value="if"/>
+			<page name="Characters" title="Characters" ref="fire-emblem-cast" status-active="" status-public=""/>
+			<page name="Relationships" title="Relationships" ref="fire-emblem-breeding" status-active="" status-public=""/>
+		</page>
+	</page>
+	<res ref="/dragonage/sites"/>
+	<res ref="/amber/sites"/>
+	<res ref="/slothsoft/sites-vocab"/>
+	<page name="MissingSloth" ref="missingSloth" title="Missing Sloth" status-active=""/>
+	<page name="VideoChatThing" ref="vct-home" module="webrtc" title="VideoChatThing" status-active="" status-public="">
+		<page name="Room" ref="vct-room" title="Room" status-active=""/>
+	</page>
+	<page name="WhatTheHell" title="What The Hell" module="whatthehell" ref="faq" status-active="" status-public="">
+		<page name="Game" title="Game" ref="game" status-active="" status-public=""/>
+	</page>
+	<page name="HeartbeatForAll" title="Heartbeat For All" ref="heartbeat-for-all" status-active="" status-public="">
+		<page name="Game" title="Game" ext="/getResource.php/slothsoft/unity/HeartbeatForAll" status-active="" status-public=""/>
+		<!--<page ext="/HeartbeatForAll/Web.html" title="Game" status-active="" status-public=""/>-->
+	</page>
+	<page name="UnicodeMapper" title="Unicode Text Converter" ref="unicode-mapper" status-active="" status-public=""/>
+	<page name="Imprint" title="Impressum" ref="imprint" status-active="" status-public=""/>
+	
+	
+	<!--
+	<page name="dev" redirect="/" title="Entwicklerbereich" status-active="" status-public="">
+		<page name="PC" title="PC Übersicht" ref="pc" status-active="" status-public=""/>
+		<page name="ipLog" ref="/core/ipLog" status-active=""/>
+		<page name="fonts" title="Fonts-Test" ref="core/fonts"/>
+		<page name="prefFonts" title="Tolle Fonts" ref="core/prefFonts"/>
+		<page name="map" title="Map-Test" ref="minecraft/mapTest"/>
+	</page>
+	-->
+	<res ref="/slothsoft/sites-downloads"/>
+</data>

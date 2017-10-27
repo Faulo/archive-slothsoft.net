@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<news title="Cheater an die Wand!" date="05.02.2014 21:22">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>
+				Wie mir zu Ohren kam existiert in Minecraft 14w05b ein <a href="http://www.youtube.com/watch?v=NQYV5wAzgP8" rel="external">Item Dupe Glitch</a>.
+			</p>
+			<p>
+				Die Nutzung eines solchen Bugs ist, falls das nicht schon der gesunde Spielerverstand gebietet, durch die <a href="/Minecraft/Law/">Server-Regeln</a> untersagt.
+			</p>
+			<p>
+				Da sich Spieler dieses Servers entschieden haben mit diesem Bug zu cheaten, war ich gezwungen die Minecraft-Welt vom 31.01.2014 wieder her zu stellen.
+			</p>
+			<p>
+				Cheats sind in unserer Welt nicht gestattet.
+				Wenn ihr einen Glitch wie diesen findet, wäre es nett wenn ihr eine Nachricht im Chat hinterlasst damit wir Mods darüber Bescheid wissen, ansonsten müsst ihr nix weiter tun als NICHT ZU CHEATEN.
+			</p>
+			<p>
+				Wenn ich feststelle dass dieser Glitch noch einmal verwendet wird, werde ich den betreffenden Spieler von unserem Server verbannen.
+			</p>
+			<p>-Faulo</p>
+			<p>P.S.<small class="number"> (07.02.2014 11:03)</small><br/>
+				Mit der Version 14w06 ist der <a href="https://bugs.mojang.com/browse/MC-46715" rel="external">Bug behoben</a>, es kann also wieder fröhlich repariert werden! \o/
+			</p>
+		</div>
+	</news>
+	<news title="keepInventory!" date="04.10.2013 21:22">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>
+				Ab sofort ist auf dem Server die Spielregel "keepInventory" aktiviert, die bewirkt dass Spieler beim Tod keine Gegenstände oder Erfahrung mehr verlieren. Das wollte ich schon lange auf unserem Server haben, wusste gar nicht dass man das einfach aktivieren kann...
+			</p>
+			<p>
+				Zusätzlich werd ich ein bisschen mit den <a href="http://minecraft.gamepedia.com/Command_block" rel="external">Kommandoblöcken</a> herumspielen. Scheint recht einfach zu sein, damit einen automatischen Teleporter zu bauen; mit dem würde ich die Altstadt, Neustadt, und ein neues Baugebiet bei den Koordinaten 4000|4000 (östlich vom Ostbahnhof der Altstadt) verbinden.
+			</p>
+			<p>
+				Übrigens hab ich ein bisschen an der <a href="/Minecraft/Map/index.html">Karte</a> rumgeschnippelt; da sich der Level-Generator geändert hat wären sonst wieder arg viele Häßlichkeiten entstanden. Hoffe es ist nix Wichtiges verloren gegangen. ^^'
+			</p>
+			<span>-Faulo</span>
+			<p>
+				<strong>Update:</strong><br/>
+				Die ersten Teleporter stehen! \o/
+			</p>
+			<p>
+				Sie sind dem Teleportersystem <a href="http://slothsoft.net/getResource.php/minecraft/pics/Insel%20der%20Winde.png">Ambermoons</a> nachempfunden. Es gibt einen Hub, die <em>Insel der Winde</em>, auf der eine Vielzahl <em>Windtore</em> stehen, die 1:1 mit einem anderen Windtor irgendwo auf der Welt verknüpft sind. Tritt man hindurch, wird man zum Zielort teleportiert.
+			</p>
+			<p>
+				Vorerst habe ich nur <a href="http://slothsoft.net/getResource.php/minecraft/pics/2013-10-06_01.19.03.png">2 Windtore</a> gebaut - eins für die Altstadt (südlich des Hauptbahnhofs), und eins für die Neustadt (vor dem World Trade Center). Weitere Tore würde ich an Orten von Interesse errichten, wenn dort wenigstens 3 verschiedene Spieler eine Basis o.Ä. haben.
+			</p>
+			<p>
+				Sagt mir was ihr davon haltet~ /o/
+			</p>
+		</div>
+	</news>
+	<news title="Neue User!" date="04.12.2012 17:13">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>
+				Ich möchte an dieser Stelle die neuen Spieler begrüßen, die vor kurzem unserer Welt beigetreten sind:
+			</p>
+			<ul>
+				<li>hiko234</li>
+				<li>Casarvancar</li>
+				<li>LordMoehre</li>
+				<li>Fearodin</li>
+				<li>Sygaron</li>
+				<li>Steffen2304</li>
+				<li>ArmandHugoson</li>
+				<li>Zeadrot</li>
+				<li>Mitril</li>
+			</ul>
+			<p>
+				<em>Willkommen!</em>
+			</p>
+			<p>
+				Für den Fall dass sich nochmal Minecraftler über Google hierher verirren, hier nochmal die Server-URL:<br/>
+				<samp>slothsoft<del>.dnsalias</del>.net</samp><br/>
+				Der Server wird jeden Tag um 6:00 neugestartet (das dauert i.d.R. weniger als 10 Sekunden). Ferner installiere ich den neuesten Minecraft-Snapshot, sobald ich ihn bemerke. Die aktuelle Version des Servers (samt Downloadlink) findet ihr oben rechts.
+			</p>
+			<p>
+				Auf eine gute Zusammenarbeit! \o/
+			</p>
+			<span>-Faulo</span>
+		</div>
+	</news>
+	<news title="Neue Stadt!" date="08.06.2012 03:45">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>
+				Um die neuen 1.3 Features des Kartengenerators erleben zu können
+				habe ich die gesamte bisherige Welt 4000m nach Süden verschoben
+				- der Drachenturm steht jetzt bei (0|4000).
+				Im jetzt freien Nordpol bei (0|0) steht ein Portal, welches zu
+				einer Bahnlinie im Nether führt die euch in die Altstadt zurückbringen kann.
+			</p>
+			<p>
+				Ich will eine neue Stadt bei (0|0) errichten, die diesmal nicht
+				mit einem Editor geebnet wird, sondern mehr wie eine richtige Stadt
+				entstehen soll. Meine Hoffnung ist dass sie dadurch schöner wird als die
+				Altstadt. <em>Viel</em> schöner.
+			</p>
+			<p>
+				Vorerst gibt es keine Grundstücke, jeder kann bauen wohin er will.
+				Das wichtigste für den Anfang ist wohl eine kleine Mauer und Beleuchtung,
+				damit keine Monster bei der Arbeit stören...
+			</p>
+			<p>
+				Leider bin ich ausgesprochen schlecht im Designen von Gebäuden,
+				wenn also jemand Spaß daran hat sich irgendetwas landschaftsmäßiges 
+				aus zu denken könnten wir das sehr gern zusammen in der neuen Stadt umsetzen.
+			</p>
+			<p>
+				Meine persönliche Präferenz für den Grundton der Neustadt wäre wohl
+				<a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/MedievalEuropeanFantasy" rel="external">Fantasy</a> / 
+				<a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/SteamPunk" rel="external">Steam Punk</a>...
+				mit einem Haufen Pistons (für Rolltreppen oder so) statt Dampfmaschinen... Piston Punk?
+			</p>
+			<span>-Faulo</span>
+		</div>
+	</news>
+	<news title="Quandary!" date="21.05.2012 07:37">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>
+				Vor Kurzem hatte ich es endlich geschafft, dem Quandary-Entwickler eine kleine Paypal-Spende zu senden, und siehe da:
+			</p>
+			<blockquote>
+				<p>
+Daniel, I just saw this and I have to say thank you. I don't get a lot of these much anymore, understandably.
+				</p>
+				<p>
+I'll let you in on a little secret, though - I've actually been working on Quandary. I have an updated version that's unreleased (I'm planning to launch next week) and I want to share it with you. :)
+				</p>
+				<p>
+You can pick it up here, on the unfinished website:
+				</p>
+				<p>
+<a href="http://retributiongames.com/quandary/new.htm" rel="external">http://retributiongames.com/quandary/new.htm</a> 
+				</p>
+				<p>
+Thanks for everything. Hope you enjoy!
+				</p>
+				<p>
+Rick "ExtraNoise"
+				</p>
+			</blockquote>
+			<p>
+				Awesome! :D
+			</p>
+			<span>-Faulo</span>
+		</div>
+	</news>
+	<news title="Terraria!" date="23.02.2012 20:53">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>
+				Ab sofort hoste ich einen Terraria Server.
+				IP ist die gleiche wie bei Minecraft - <a href="http://slothsoft.dnsalias.net" rel="external">slothsoft.dnsalias.net</a>, Port ist 7777.
+			</p>
+			
+		</div>
+	</news>
+	<news title="Neues Layout!" date="04.01.2012 22:25">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>
+				Hi!
+			</p>
+			<p>
+				Freut euch über das neue Design.
+			</p>
+			<span>-Faulo</span>
+		</div>
+	</news>
+	<news title="Neuanfang" date="26.09.2011 21:30">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>
+				Nach der Einführung von 1.8 und erneut mit 1.9 haben sich, wie erwartet, Narben in der Serverkarte gebildet.
+				Zusätzlich wurde Unmut darüber kund, dass man jetzt ewig weit laufen muss um zu den coolen Dörfern oder Minen zu kommen.
+				Von den Burgen gar nicht zu reden, da wurde bis heute keine generiert.
+				Deshalb scheint es sich gerade an zu bieten, einmal mehr die Karte komplett neu zu erstellen.
+			</p>
+			<p>
+				Im Gegensatz zum letzten Mal würde ich diesmal keine kompletten Chunks übernehmen, sondern gezielter per <a href="http://www.minecraftforum.net/topic/13807-mcedit-minecraft-world-editor-compatible-with-mc-beta-18/" rel="external">MCEdit</a> quaderförmige Segmente aus der aktuellen Welt retten.
+				(Wenn das selber machen will kann von mir die Serverkarte bekommen)
+				Alle Anderen würden im Chat =&gt; ansagen, was sie gerettet haben wollen, mit Koordinaten und Bemerkungen wieviel / was genau.
+				Nach Sichtung werde ich hier updaten, welche Areale ich registriert habe.
+				Wann der tatsächliche Neuanfang stattfindet hängt von Notchs Infos zu eventuellen später kommenden Terrain-Änderungen ab, aktuell tendiere ich zu Mitte Oktober.
+			</p>
+			<p>
+				Zur Klarstellung halt ich mal fest, welche Regeln (auf Grund der Arbeitsweise von MCEdit) zum Kopieren gelten:
+			</p>
+			<ul>
+				<li>Quaderförmig (nicht-quaderförmige Konstrukte sind Arbeit)</li>
+				<li>Höhe/Breite/Tiefe ist beliebig (am Besten so klein wie möglich)</li>
+				<li>Keine Dörfer</li>
+				<li>Allgemein macht sich Oberfläche/Landschaft schlecht, weil die in der neuen Welt kein Äquivalent besitzt und somit zu Narben führen würde</li>
+				<li>Für große, gelöschte Bauwerke würde ich auch die Rohstoffe rausrücken</li>
+				<li>Alles, was beim Kopieren vergessen wird kann ich auch später noch problemlos wiederherstellen</li>
+				<li>Im Nether würde ich nichts übernehmen, weil ... Punkt. Für den nächsten Nether schwebt mir ein Tunnelsystem an der Leveldecke vor, welches die Portale über Schienen verbindet</li>
+			</ul>
+			<h3>Übernommen wird:</h3>
+			<ul>
+				<li>Die Stadt, einschließlich der Cobble-Begrenzung des Lavagrabens</li>
+				<li>Die 4 Zollhäuser außerhalb der Stadt</li>
+				<li>Eine Bahnlinie &amp; Ein Bahnhof zum Copypasten, damit das Bahnnetz schnell wieder steht</li>
+				<li>Carstens Glaskugel. (Arbeit &gt;.&gt;)</li>
+			</ul>
+			<span>-Faulo</span>
+		</div>
+	</news>
+	<news title="Vorbereitungen für 1.8!" date="01.08.2011 17:50">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>
+			Mit dem nächsten Update von Minecraft sollen mindestens 2 weltbewegende Änderungen kommen:
+			<strong>Neues Terrain</strong> (Ruinen, NPC Dörfer) und <strong>Höhere Levels</strong> (Mindestens 256).
+			Beides wird höchstwahrscheinlich Narben an den Grenzen zu dem aktuell existierenden Terrain lassen.
+			Um diese so grazil wie möglich zu verstecken, möchte ich einen quadratischen Ausschnitt aus unserer Welt bilden.
+			<strong>Alles Terrain mit der X oder Z Koordinate größer als ± 1200</strong> wird gelöscht.
+			Damit sind alle Bahnhöfe (die bei 1000 liegen) und noch ein bisschen mehr in jeder Himmelsrichtung sicher.
+			Wenn ihr Zeug habt, das jenseits von 1200 liegt, solltet ihr es holen gehen.
+			<strong>Bis zum Wochenende. (6. August)</strong>
+			Wär ganz toll wenn ihr danach nicht mehr über die Koordinate 1100 hinausgehen würdet, dann müsste ich das Löschen nicht wiederholen wenn 1.8 da ist.
+			Zur neuen Levelhöhe:
+			Falls diese konfigurierbar wird, werde ich den höchstmöglichen Wert einstellen.
+			Falls es nötig ist, eine neue Welt dafür zu generieren, werde ich eine neue Welt erstellen und alles was es so gibt da rein importieren.
+			</p>
+			<span>-Faulo</span>
+		</div>
+	</news>
+	<news title="Serverregeln!" date="11.05.2011 19:20">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>
+				Zu gegebenen Anlass halte ich hier mal die Naturgesetze fest, die in meiner Welt herrschen:
+			</p>					
+			<div style="font-weight: bolder; color: darkred;">
+			<h3><em>Kein Spieler darf...</em></h3>
+			<ul>
+			<li>Eine Blockstruktur zerstören oder modifizieren, die so aussieht als könnte sie ein anderer Spieler gebaut haben</li>
+			<li>Gegenstände aus Kisten nehmen, die so aussehen als könnten sie einem anderen Spieler gehören</li>
+			<li>Innerhalb der Stadt bauen</li>
+			<li>Das Einkaufszentrum oder die Werkstatt benutzen</li>
+			<li>Client-Mods benutzen, die der blinde Pavlik als Cheaten bezeichnen würde</li>
+			<li>Einen Namen besitzen der vulgär ist oder auf ähnliche Weise auf einen niedrigen Intellekt hindeutet</li>
+			</ul>
+			</div>
+			<div style="font-weight: bolder; color: darkgreen;">
+			<h3><em>Alle Spieler dürfen...</em></h3>
+			<ul style="font-weight: bolder;">
+			<li>Sich an den öffentlichen Gebäuden der Stadt bedienen, wie dem Fundbüro oder dem Gewächshaus</li>
+			<li>Das U-Bahn-System in der Stadt sowie die Fernbahnhöfe außerhalb der Stadt benutzen</li>
+			<li>Das empfohlene Texturenpaket, <a href="http://www.retributiongames.com/quandary/" rel="external">Quandary</a>, benutzen</li>
+			</ul>
+			</div>
+			<p>
+				Alle Spieler müssen außerhalb der Stadt siedeln, bis sie von <code>GOTT</code> für würdig befunden wurden, in der Stadt zu leben.
+				Damit erlangen sie Bürgerstatus und die folgenden Privilegien.
+				Um Bürger zu werden, muss man eine Weile online gewesen sein und mit seinen Strukturen gezeigt haben dass man Grundkenntnisse über Minecraft besitzt.
+				<code>GOTT</code> informiert jeden Spieler, sobald er Bürgerrecht erlangt.
+			</p>
+			<div style="font-weight: bolder; color: navy;">
+			<h3><em>Alle Bürger dürfen...</em></h3>
+			<ul style="font-weight: bolder;">
+			<li>Ein Wohngebäude innerhalb der Stadt an den dafür vorgesehen Parzellen errichten</li>
+			<li>Nach Absprache ein öffentliches Gebäude an jedem freien Ort innerhalb der Stadt bauen</li>
+			<li>Auf ihrer Parzelle machen was sie wollen, so lange Nachbargrundstücke davon nicht beeinflusst werden (Selbstschussanlagen, Feuer, etc.)</li>
+			<li>Das Einkaufszentrum entsprechend den ausgeschilderten Preistafeln benutzen</li>
+			<li>Die Werkstatt entsprechend den ausgeschilderten Tauschkursen benutzen</li>
+			</ul>
+			</div>
+			<p>
+				Jegliche Verstöße werden mehr oder weniger sofort mit Verbannung bestraft.
+				In einem solchen Fall stell ich eine Kiste mit dem Inventar des Exilanten an seine aktuelle Position, falls jemand looten will.
+				Wenn ihr Petzen wollt, macht einen Screenshot oder so... 
+			</p>
+			<span>-Faulo</span>
+		</div>
+	</news>
+</data>

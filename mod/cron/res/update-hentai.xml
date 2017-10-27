@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data
+	data-length-min="100"
+	download-cmd="curl -k -L %s -o %s -H %s"
+	copy-cmd="copy %s %s /y"
+	success-cmd=""
+	success-php="">
+	<data
+		type="hentai"
+		active="1"
+		dest-root="C:\NetzwerkDaten\pr0n\manga"
+		dest-path="%s"
+		dest-file="%03d.%s"
+		data-missing-count="1"
+		chapter-count="100"
+		page-count="1000">
+		
+		<data name="pururin.us"
+			source-host="http://pururin.us"
+			source-xpath = ".//*[@class='thumbnail thumb-pururin  col-xs-3 col-sm-3 col-md-3 col-lg-3'][@href]"
+			source-xpath-next	= ".//*[@rel='next']/@href"
+			source-xpath-title	= ".//*[@class='title']"
+			source-xpath-read	= ".//*[@class='read-more']/@href"
+			source-xpath-image	= ".//*[@id='images-holder']//@src"
+			>
+			<!--source-xpath-title="substring-before(.//title, '»')"-->
+			<update
+				source-path = "/browse/most-popular"
+				/>
+			<update
+				source-path = "/browse/highest-rated"
+				/>
+			<update
+				source-path = "/browse/most-viewed"
+				/>
+			<update
+				source-path = "/browse"
+				/>
+		</data>
+		
+		<data name="nhentai.net"
+			active="0"
+			source-host="http://nhentai.net"
+			source-xpath = ".//*[@class='cover'][@href]"
+			source-xpath-next=".//*[@class='next']/@href"
+			source-xpath-image = ".//*[@id='image-container']//@src"
+			>
+			<!--source-xpath-title="substring-before(.//title, '»')"-->
+			<update
+				source-path = "/language/english/"
+				/>
+		</data>
+		
+		<data
+			name="Hentai.ms"
+			active="0"
+			source-xpath = ".//*[@id='search_gallery_item']/*[@href]"
+			source-xpath-next=".//*[@class='pagination_currentpage']/following-sibling::*/@href"
+			source-xpath-download=".//*[@href][normalize-space(.)='DOWNLOAD']/@href"
+			>
+			<!--source-xpath-title=".//html:title"-->
+			<update 
+				source-host = "http://free.hentai.ms"
+				source-path = "/manga?Series=Misc"
+				/>
+				<!--
+			<update 
+				source-host = "http://manga.hentai.ms"
+				source-path = "/manga?Series=H-Magazine-Chapters"
+				/>
+				-->
+			<!--
+			<update 
+				source-host = "http://manga.hentai.ms"
+				source-path = "/manga?Series=H-Manga"
+				/>
+			-->
+		</data>
+	</data>
+</data>

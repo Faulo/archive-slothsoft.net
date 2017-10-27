@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<page name="Ambermoon" title="Ambermoon" module="amber" ref="home" status-active="" status-public="">
+		<page name="EditorHelp" title="EditorHelp" ref="help" status-active="" status-public=""/>
+		<page name="SavegameEditor" title="SavegameEditor" ref="editor-savegame" status-active="" status-public=""/>
+		<page name="GamedataEditor" title="GamedataEditor" ref="editor-gamedata" status-active=""/>
+		<page name="GameEditor" title="GameEditor" ref="editor-amberfiles" status-active=""/>
+		<page name="ExperienceChart" title="ExperienceChart" ref="epchart" status-active="" status-public=""/>
+		<page name="ItemList" title="ItemList" ref="itemlist" status-active="" status-public=""/>
+		<page name="PortraitList" title="PortraitList" ref="portraitlist" status-active="" status-public=""/>
+	</page>
+</data>

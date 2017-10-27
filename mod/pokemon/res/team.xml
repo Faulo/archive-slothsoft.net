@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<player name="Daniel">
+		<team gen="gen1" name="Red">
+			<member name="Bisaflor"/>
+			<member name="Tauboss"/>
+			<member name="Smettbo"/>
+			<member name="Simsala"/>
+			<member name="Garados"/>
+			<member name="Lahmus"/>
+		</team>
+		<team gen="gen2" name="Gold">
+			<member name="Geowaz"/>
+			<member name="Ampharos"/>
+			<member name="Laschoking"/>
+			<member name="Blubella"/>
+			<member name="Sichlor"/>
+			<member name="Xatu"/>
+		</team>
+		<team gen="gen3" name="Emerald">  
+			<member name="Laschoking"/>
+			<member name="Guardevoir"/>
+			<member name="Ninjask"/>
+			<member name="Stolloss"/>
+			<member name="Libelldra"/>
+		</team>
+		<team gen="gen4" name="Pearl">  
+			<member name="Laschoking"/>
+			<member name="Libelldra"/>
+			<member name="Gengar"/>
+			<member name="Lucario"/>
+			<member name="Luxtra"/>
+		</team>
+		<team gen="gen5" name="HeartGold">  
+			<member name="Laschoking"/>
+			<member name="Sichlor"/>
+			<member name="Libelldra"/>
+			<member name="Stolloss"/>
+			<member name="Hundemon"/>
+		</team>
+		<team gen="gen5" name="X">  
+			<member name="Laschoking"/>
+			<member name="Stolloss"/>
+			<member name="Gengar"/>
+			<member name="Voltula"/>
+			<member name="Flunkifer"/>
+			<member name="Altaria"/>
+		</team>
+		<team gen="gen5" name="AlphaSapphire">  
+			<member name="Laschoking"/>
+			<member name="Stolloss"/>
+			<member name="Gengar"/>
+			<member name="Hundemon"/>
+			<member name="Voltula"/>
+			<member name="Altaria"/>
+		</team>
+		<team gen="icon" name="Sun (low-stat challenge)">  
+			<member name="Flegmon"/>
+			<member name="Wattzapf"/>
+			<member name="Golbit"/>
+			<member name="Delibird"/>
+			<member name="Pumpkaboo"/>
+			<member name="Velursi"/>
+		</team>
+		
+		
+	</player>
+</data>

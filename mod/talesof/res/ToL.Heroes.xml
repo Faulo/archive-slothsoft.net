@@ -1,0 +1,34 @@
+________________________________________________________________________________
+#0  my_dump() called at [C:\xampp\htdocs\mod\talesof\data\link.heroes.php:79]
+#1  include(C:\xampp\htdocs\mod\talesof\data\link.heroes.php) called at [C:\xampp\htdocs\mod\cms\php\HTTPDocument.php:916]
+#2  Slothsoft\CMS\HTTPDocument->includeFile() called at [C:\xampp\htdocs\mod\cms\php\HTTPDocument.php:999]
+#3  Slothsoft\CMS\HTTPDocument->getDataDoc() called at [C:\xampp\htdocs\mod\cms\php\HTTPDocument.php:599]
+#4  Slothsoft\CMS\HTTPDocument->loadData() called at [C:\xampp\htdocs\mod\cms\php\HTTPDocument.php:398]
+#5  Slothsoft\CMS\HTTPDocument->lookup() called at [C:\xampp\htdocs\mod\cms\php\HTTPDocument.php:118]
+#6  Slothsoft\CMS\HTTPDocument::parseRequest() called at [C:\xampp\htdocs\vhosts\cmd\getData.php:11]
+--------------------------------------------------------------------------------
+array(11) {
+  ["Wiki"]=>
+  string(49) "http://tales-of-link.wikia.com/wiki/JP_1314_Alice"
+  ["Name"]=>
+  string(30) "［浜辺の女王］アリス"
+  ["Rarity"]=>
+  string(6) "5-star"
+  ["Type"]=>
+  string(5) "Spell"
+  ["ArteName"]=>
+  string(0) ""
+  ["ArteDescription"]=>
+  string(0) ""
+  ["LeaderSkillName"]=>
+  string(24) "おしおきウィップ"
+  ["LeaderSkillDescription"]=>
+  string(33) "Boost ATK to 2.6x when at 60+% HP"
+  ["ActiveSkillName"]=>
+  string(27) "突撃デクスフロート"
+  ["ActiveSkillCost"]=>
+  int(14)
+  ["ActiveSkillDescription"]=>
+  string(44) "Deal a 1.2x-power neutral attack to all foes"
+}
+________________________________________________________________________________

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data
+	data-length-min="100"
+	download-cmd="curl -k -L %s -o %s -H %s"
+	copy-cmd="copy %s %s /y"
+	success-cmd=""
+	success-php="">
+	<data type="comic"
+		active="1"
+		download-count="10000"
+		page-count="10000"
+		>
+		
+		<update
+			name="Girl Genius"
+			dest-root = "D:\www\mod\comics\res\girl-genius"
+			dest-uri = "/getResource.php/comics/girl-genius/"
+			source-uri = "http://www.girlgeniusonline.com/comic.php?date=20021104"
+			source-xpath-uri = "normalize-space(//*[@id='topnext']/@href)"
+			source-xpath-image = "normalize-space(//*[@alt='Comic']/@src)"
+			source-xpath-title = "normalize-space(//*[@name='date']/*[@selected])"
+			>
+			<blacklist><![CDATA[
+			]]></blacklist>
+		</update>
+		<update
+			name="Order of the Stick"
+			dest-root = "D:\www\mod\comics\res\oots"
+			dest-uri = "/getResource.php/comics/oots/"
+			source-uri = "http://www.giantitp.com/comics/oots0001.html"
+			source-xpath-uri = "normalize-space(//*[*/@alt='Next Comic']/@href)"
+			source-xpath-image = "normalize-space(//*[starts-with(@src, '/comics/images/')]/@src)"
+			source-xpath-title = "''"
+			>
+			<blacklist><![CDATA[
+			]]></blacklist>
+		</update>
+		<update
+			name="El Goonish Shive"
+			dest-root = "D:\www\mod\comics\res\el-goonish-shive"
+			dest-uri = "/getResource.php/comics/el-goonish-shive/"
+			source-uri = "http://www.egscomics.com/index.php?id=1"
+			source-xpath-uri = "normalize-space(//*[@rel='next']/@href)"
+			source-xpath-image = "normalize-space(//*[@id='comic']/@src)"
+			source-xpath-title = "normalize-space(//*[@id='comic']/@title)"
+			>
+			<blacklist><![CDATA[
+			]]></blacklist>
+		</update>
+		<update
+			name="Ménage à 3"
+			dest-root = "D:\www\mod\comics\res\menage-a-3"
+			dest-uri = "/getResource.php/comics/menage-a-3/"
+			source-uri = "http://www.ma3comic.com/strips-ma3/for_new_readers"
+			source-xpath-uri = "normalize-space(//*[@id='cndnext']/@href)"
+			source-xpath-image = "normalize-space(//*[@id='cc']//@src)"
+			source-xpath-title = "normalize-space(//*[@id='navjump']/*[1])"
+			>
+			<blacklist><![CDATA[
+#G - Aliens or something - Guest
+#G - Too fruity - Guest
+#G - Worst moment to pass out - Guest
+#Guest - Get lucky kit - Guest
+#Guest - Die with honor! - Guest
+#Guest - jay-jay-J-pop - Guest
+#G - Z-Rock! - Guest
+#G - Authentically Japanese - Guest
+#G - I was beautiful once... - Guest
+#G - I need a model - Guest
+#G - Stay in the game! - Guest
+#G - Down there - Guest
+#G - K.I.S.S. - Guest
+#G - In the cockpit! - Guest
+#G - Hugs - Guest
+#G - Christmas past
+#G - Christmas present
+#G - Christmas future？
+#G - Life drawing - pin-up by Holly G
+#G - Boneularity - guest
+#G - Banananan - guest
+#G - Save me - guest
+#G - Start by running - guest
+#G - Ew seaweed - guest
+#G - Tastes more authentic - guest
+#G - Senna and Sandra - Part 1
+#G - Zii and Yuki in pictures
+#G - Senna and Sandra - Part 2 - 1 and 2 of 7
+#G - Senna and Sandra - Part 2 - 3 of 7
+#G - Senna and Sandra - Part 2 - 4 of 7
+#G - Senna and Sandra - Part 2 - 5 of 7
+#G - Senna and Sandra - Part 2 - 6 of 7
+#G - Senna and Sandra - Part 2 - 7 of 7
+#G - I am in Paris - Holiday guest strip 1 of 3
+#G - Show her freckles - Holiday guest strip 2 of 3
+#G - You must freshen up - Holiday guest strip 3 of 3
+#G - Sandra Interlude - Strip 1
+#G - Sandra Interlude - Strip Two
+#G - Sandra Interlude - Strip Three
+#G - Sandra Interlude - Strip Four
+#G - Sandra Interlude - Strip Five
+#G - Preview of work in progress for vol 5
+#G - Vol 5 preview
+#G - Gender reversed preview
+#G - Zii pin-up by Shouri
+#G - DiDi and Lita
+#G - Break week - Vol 2 bonus preview
+#G - Break week - Vol 3 bonus preview
+#G - Zii and DiDi mistletoe
+#G - DiDi and chibis
+#G - Tax returns
+#G - TCAF 2014
+#G - Menage a 3 - Volume 6 - Kickstarter
+#G - Ma3 Vol 6 Kickstarter Gold Pledge Posters
+#G - PSA 01 while at ConnectiCon 2014
+#G - Menage a 3 - Volume 6 - Kickstarter 7 Days
+#G - MA3 Kickstarter 2014 Funded
+#G - SDB vol 1 cover preview
+#G - Mountain climbing
+#G - Excuse us young man - guest strip
+#G - Signing books and more books
+#G - Hal-con update - Amber preview
+#G - Zii and The Troublemakers
+#G - Gary and the girls
+#G - Amber Amber Happy New Year
+#G - At TCAF - Dr DiDi KS bonus preview
+#G - Kickstarter 2015 - Help us fund Volume 7
+#G - Thank you and at Fan Expo
+#G - Driving back home from FanExpo
+#G - DiDi and Kiley Thanksgiving break
+#G - KS update and more
+#G - DiDilina Ziirella - At Calgary Expo
+#G - Psycho themed DiDi - At Calgary Expo
+]]></blacklist>
+		</update>
+		<update
+			name="8 Bit Theater"
+			dest-root = "D:\www\mod\comics\res\8bit"
+			dest-uri = "/getResource.php/comics/8bit/"
+			source-uri = "http://www.nuklearpower.com/2001/03/02/episode-001-were-going-where/"
+			source-xpath-uri = "normalize-space(//html:a[@rel='next']/@href)"
+			source-xpath-image = "normalize-space(//*[@id='comic']//@src)"
+			source-xpath-title = "normalize-space(//*[@id='comic']//@title)"
+			>
+			<blacklist><![CDATA[
+Interlude 00: He’s a Fighter, Not a Webcomic Artist
+Interlude 01: THE FIGHTER DOES NOT LIEK THE ROBOT!
+Interlude 02: NOR DOES THE FIGHTER LIKE THE NINJAS!!!
+Episode 025 Temp: “I must be dreaming…”
+Episode 1019: You Already Saw This One.
+Thanksgiving 2002 Guest Comic
+Thanksgiving 2002 Guest Comic
+track 1 – i throw my toys around
+E3 Guest Week #1 “Citizen Mage”
+E3 Guest Week #2 “Bad Dudes”
+E3 Guest Week #3 “MST8BT”
+E3 Guest Week #4 “Finally!”
+E3 Guest Week #5 “I Wouldn’t Handle E3 Well”
+E3 Guest Week #6 “Where Are They Now?”
+E3 Guest Week #7 “The Gong Comic”
+Vacation 2003: #1 Cookies!
+Vacation 2003: #2 Twinkin’ Out
+Vacation 2003: #3 Requiem for a Black Mage
+Vacation 2003 #4: Demands
+Vacation 2003 #5: Chromatic Discussion
+Vacation 2003 #6: The Day the Music Stopped
+Thanksgiving ’03: Cheap Cop Out–I Mean–Mail Bag!
+Christmas ’03 Special So Brian Can Rest
+Propaganda Posters of Vana’diel
+8-Bit Theater #1 Gold Foil Embossed Collection Edition!
+8-bit Theater: The Movie
+Last Weird MegaCon Side Comic Thing
+Teaser!
+Vacation ’04 #1: The Sosa-like Entry
+Vacation ’04 #2 “It won’t get weird.”
+Vacation ’04 #3: I Love Bridge Jokes
+Vacation ’04 #4: In A World…
+Vacation ’04 #5: About Class Changes
+Vacation ’04 #6: “I didn’t do it.”
+Vacation ’04 #7: The Real Story
+Vacation ’04 #8: Something Amiss
+For Michael
+I’ll sleep when I’m dead. Like now.
+Self Indulgent Tripe
+I’m just a stupid place holder
+Logo Imitates Life
+Half-Life 2 Comic? On the internet? Now that’s new!
+Season’s WARNINGS
+And now, a special New Year presentation!
+Technicolor Yawn
+E3 ’05: The Heart of the Matter
+E3 ’05: You’re in Trouble
+E3 ’05: Sprite Noir
+E3 ’05: Uneventful Reunion
+E3 ’05: Checks and Balances
+E3 ’05: White Magic for Dummies
+E3 ’05: Dream Analysis
+E3 ’05: Monster Manual
+Episode: 566: Spelunk’d!
+Field of Battle Prelude
+Field of Battle Chapter 1
+Field of Battle Chapter 2
+Field of Battle Chapter 3
+Field of Battle Chapter 4
+Field of Battle Chapter 5
+Field of Battle Chapter 6
+Field of Battle: Top Secret Files
+Operation: Nomenclature
+Nuklear Age 2.0 cover preview
+A Story, Page 1
+A Story, Page 2
+A Story, Page 3
+A Story, Page 4
+A Story, Page 5
+VACATION ’07: Take A Gander at Robo!
+VACATION ’07: Take Another Gander At Robo!
+Civilization Daydreams: FAILURE
+Civilization Daydreams: Research, Research, Research
+VACATION ’07: One Last Gander For You
+Christmas ’07 Cop Out!
+Guest Comic Surprise!
+Dead Computer Day]]></blacklist>
+		</update>
+	</data>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<data
+		type="manga"
+		active="1"
+		dest-root="D:/Manga"
+		dest-path="%s Chapter %04d"
+		dest-file="%03d.%s"
+		data-missing-count="3"
+		chapter-count="100"
+		page-count="1000">
+		
+		<data
+			source-host = "http://reader.sensescans.com"
+			source-xpath-image = ".//div[@id='page']//img[@class='open']/@src"
+			>
+			<update
+				name="Magi"
+				source-path = "/reader/read/magi__labyrinth_of_magic/en/26/%d/page/%d"
+				/>
+		</data>
+		<!--
+		<data
+			source-host = "http://www.mangabee.com"
+			source-xpath-image = ".//html:img[@class='manga-page']/@src"
+			>
+			<update
+				name="One Piece"
+				source-path = "/One_Piece_bee/%d/%d"
+				/>
+		</data>
+		
+		<data
+			source-host = "http://mangafox.me"
+			source-xpath-image = ".//html:img[@id='image']/@src"
+			>
+			<update
+				name="One Piece"
+				source-path = "/manga/one_piece/vTBD/c%d/%d.html"
+				/>
+		</data>
+		-->
+			
+		
+		<data
+			source-host = "http://www.mangapanda.com"
+			source-xpath-image = ".//html:img[@id='img']/@src"
+			>
+			<update
+				name="Attack on Titan"
+				source-path = "/shingeki-no-kyojin/%d/%d"
+			/>
+			<update
+				name="Attack on Titan - Before The Fall"
+				source-path = "/attack-on-titan-before-the-fall/%d/%d"
+			/>
+			<update
+				name="Pandora Hearts"
+				source-path = "/pandora-hearts/%d/%d"
+			/>
+			<update
+				name="One Piece"
+				source-path = "/one-piece/%d/%d"
+				title-list = "https://en.wikipedia.org/wiki/List_of_One_Piece_chapters_%28187%E2%80%93388%29"
+				/>
+		</data>
+		
+		<data
+			source-host = "http://www.mangahere.co"
+			source-xpath-image = ".//html:img[@id='image']/@src"
+			>
+			<update
+				name="Avatar - The Last Airbender - The Promise"
+				source-path = "/manga/avatar_the_last_airbender_the_promise/c%03d/%d.html"
+			/>
+		</data>
+	</data>
+</data>

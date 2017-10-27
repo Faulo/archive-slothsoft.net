@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data
+	data-length-min="100"
+	download-cmd="curl -L %s -o %s -H %s"
+	copy-cmd="copy %s %s /y"
+	success-cmd=""
+	success-php="">
+	<data type="youtube"
+		active="1"
+		dest-root="C:/NetzwerkDaten/YouTube"
+		dest-file="%(playlist_index)s - %(title)s.%(ext)s"
+		download-cmd="youtube-dl %s -i -w -c -o &quot;%s&quot;"
+		>
+		<!--download-cmd="youtube-dl %s -i -w -c -o &quot;%s&quot; - -proxy &quot;http://54.90.77.41:8888&quot;"-->
+		<update
+			name="Dragon Ball Z Abridged"
+			dest-root="D:\backups\Media\Web Original\Dragon Ball Z Abridged"
+			source-uri="https://www.youtube.com/playlist?list=PL6EC7B047181AD013"
+			/>
+			
+		<update
+			name="Crash Course US History"
+			dest-root="D:\backups\Media\Web Original\Crash Course\US History"
+			source-uri="https://www.youtube.com/playlist?list=PL8dPuuaLjXtMwmepBjTSG593eG7ObzO7s"
+			/>
+		<update
+			name="Crash Course World History 1"
+			dest-root="D:\backups\Media\Web Original\Crash Course\World History 1"
+			source-uri="https://www.youtube.com/playlist?list=PLBDA2E52FB1EF80C9"
+			/>
+		<update
+			name="Crash Course World History 2"
+			dest-root="D:\backups\Media\Web Original\Crash Course\World History 2"
+			source-uri="https://www.youtube.com/playlist?list=PL8dPuuaLjXtNjasccl-WajpONGX3zoY4M"
+			/>
+		<update
+			name="Crash Course Biology"
+			dest-root="D:\backups\Media\Web Original\Crash Course\Biology"
+			source-uri="https://www.youtube.com/playlist?list=PL3EED4C1D684D3ADF"
+			/>
+		<update
+			name="Crash Course Ecology"
+			dest-root="D:\backups\Media\Web Original\Crash Course\Ecology"
+			source-uri="https://www.youtube.com/playlist?list=PL8dPuuaLjXtNdTKZkV_GiIYXpV9w4WxbX"
+			/>
+		<update
+			name="Crash Course Chemistry"
+			dest-root="D:\backups\Media\Web Original\Crash Course\Chemistry"
+			source-uri="https://www.youtube.com/playlist?list=PL8dPuuaLjXtPHzzYuWy6fYEaX9mQQ8oGr"
+			/>
+		<update
+			name="Crash Course Literature"
+			dest-root="D:\backups\Media\Web Original\Crash Course\Literature"
+			source-uri="https://www.youtube.com/playlist?list=PL8dPuuaLjXtOeEc9ME62zTfqc0h6Pe8vb"
+			/>
+		<update
+			name="Crash Course Psychology"
+			dest-root="D:\backups\Media\Web Original\Crash Course\Psychology"
+			source-uri="https://www.youtube.com/playlist?list=PL8dPuuaLjXtOPRKzVLY0jJY"
+			/>
+		<update
+			name="Crash Course Big History"
+			dest-root="D:\backups\Media\Web Original\Crash Course\Big History"
+			source-uri="https://www.youtube.com/playlist?list=PL8dPuuaLjXtMczXZUmjb3mZSU1Roxnrey"
+			/>
+		<update
+			name="Crash Course Astronomy"
+			dest-root="D:\backups\Media\Web Original\Crash Course\Astronomy"
+			source-uri="https://www.youtube.com/playlist?list=PL8dPuuaLjXtPAJr1ysd5yGIyiSFuh0mIL"
+			/>
+		<update
+			name="Crash Course Anatomy"
+			dest-root="D:\backups\Media\Web Original\Crash Course\Anatomy"
+			source-uri="https://www.youtube.com/playlist?list=PL8dPuuaLjXtOAKed_MxxWBNaPno5h3Zs8"
+			/>
+		<update
+			name="Crash Course Government and Politics"
+			dest-root="D:\backups\Media\Web Original\Crash Course\Government and Politics"
+			source-uri="https://www.youtube.com/playlist?list=PL8dPuuaLjXtOfse2ncvffeelTrqvhrz8H"
+			/>
+	</data>
+</data>

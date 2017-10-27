@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<page name="AboutMe" title="AboutMe" ref="default" status-active="" status-public=""/>
+	<page name="Projects" title="Projects" ref="default" status-active="" status-public="">
+		<page name="Ambermoon" title="Ambermoon" ref="default" status-active="" status-public=""/>
+		<page name="LODB" title="LODB" ref="default" status-active="" status-public=""/>
+		<page name="Japanese" title="Japanese" ref="default" status-active="" status-public=""/>
+		<page name="MTG" title="MTG" ref="default" status-active="" status-public=""/>
+		<page name="Tetris" title="Tetris" ref="tetris" status-active=""/>
+		<page name="Unicode" title="Unicode" ref="default" status-active=""/>
+	</page>
+	<!--
+	<page name="News" title="News" ref="index" status-active="" status-public=""/>
+	<page name="Art" title="Art" redirect="2DArt" status-active="" status-public="">
+		<page name="2DArt" title="2DArt" ref="index" status-active="" status-public="">
+			<page name="Simon" title="Simon" ref="index" status-active="" status-public=""/>
+			<page name="BusRide" title="BusRide" ref="index" status-active="" status-public=""/>
+			<page name="UndoArt" title="UndoArt" ref="index" status-active="" status-public=""/>
+			<page name="Kingsley" title="Kingsley" ref="index" status-active="" status-public=""/>
+			<page name="Siblings" title="Siblings" ref="index" status-active="" status-public=""/>
+			<page name="Unexpected" title="Unexpected" ref="index" status-active="" status-public=""/>
+		</page>
+		<page name="Storyboarding" title="Storyboarding" ref="index" status-active="" status-public="">
+		</page>
+	</page>
+	<page name="Games" title="Games" redirect="Undo" status-active="" status-public="">
+		<page name="Undo" title="Undo" ref="index" status-active="" status-public=""/>
+		<page name="CoraAndTheFire" title="CoraAndTheFire" ref="index" status-active="" status-public=""/>
+		<page name="HeartbeatForAll" title="HeartbeatForAll" ref="index" status-active="" status-public=""/>
+		<page name="Inspectre" title="Inspectre" ref="index" status-active="" status-public=""/>
+		<page name="ShipWars" title="ShipWars" ref="index" status-active="" status-public=""/>
+		<page name="GirlHate" title="GirlHate" ref="index" status-active="" status-public=""/>
+	</page>
+	<page name="Resume" title="Resume" ref="index" status-active="" status-public=""/>
+	<page name="Contact" title="Contact" ref="index" status-active="" status-public=""/>
+	-->
+</data>
