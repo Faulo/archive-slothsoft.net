@@ -1,6 +1,9 @@
 <?php
 namespace Slothsoft\CMS;
 
+use Slothsoft\Lang\GrammarJa;
+use DOMXPath;
+
 /*
  * $doc = $this->getResourceDoc('slothsoft/kana', 'xml');
  * $xpath = new \DOMXPath($doc);
@@ -26,11 +29,11 @@ $dataRoot = $dataDoc->documentElement;
 
 $grammarDoc = $this->getResourceDoc('slothsoft/grammar-ja', 'xml');
 
-$grammar = new \Lang\GrammarJa();
+$grammar = new GrammarJa();
 $grammar->init($grammarDoc);
 
 $vocabDoc = $this->getDataDoc('slothsoft/kana.vocab');
-$vocabPath = new \DOMXPath($vocabDoc);
+$vocabPath = new DOMXPath($vocabDoc);
 
 $formList = $grammar->getConjugationFormList();
 foreach ($formList as $form) {

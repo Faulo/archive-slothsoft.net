@@ -1,4 +1,9 @@
 <?php
+namespace Slothsoft\CMS;
+
+use Slothsoft\Core\DOMHelper;
+use DOMDocument;
+
 $pollName = $this->httpRequest->getInputValue('poll');
 $userName = $this->httpRequest->getInputValue('user');
 
@@ -7,7 +12,7 @@ if ($pollName and $userName) {
     $pollFile = sprintf('%s_index.xml', $saveDir);
     $saveFile = sprintf('%s%s.xml', $saveDir, $userName);
     
-    $pollDoc = \DOMHelper::loadDocument($pollFile);
+    $pollDoc = DOMHelper::loadDocument($pollFile);
     
     $userDoc = new DOMDocument();
     if (file_exists($saveFile)) {

@@ -1,6 +1,8 @@
 <?php
 namespace Slothsoft\CMS;
 
+use DOMXPath;
+
 function lookupCharName(array $mappingList, $oldName)
 {
     $name = str_replace(' ', '_', $oldName);
