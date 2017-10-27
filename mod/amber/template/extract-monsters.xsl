@@ -5,7 +5,7 @@
 	xmlns:func="http://exslt.org/functions"
 	xmlns:str="http://exslt.org/strings"	xmlns:set="http://exslt.org/sets"
 	xmlns:php="http://php.net/xsl"
-	xmlns:save="http://schema.slothsoft.net/savegame"
+	xmlns:save="http://schema.slothsoft.net/savegame/editor"
 	extension-element-prefixes="exsl func str set php">
 	
 	<xsl:key name="dictionary-option" match="save:savegame.editor/save:dictionary/save:option" use="../@dictionary-id"/>	<xsl:key name="string-dictionary" match="save:group[@type='string-dictionary']/save:string" use="../@name"/>	

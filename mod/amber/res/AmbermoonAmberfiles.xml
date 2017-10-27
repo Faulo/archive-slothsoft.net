@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<savegame.editor xmlns="http://schema.slothsoft.net/savegame" schemaVersion="0.2">
+<savegame.editor xmlns="http://schema.slothsoft.net/savegame/editor" schemaVersion="0.3">
 	<global global-id="item">
 		<integer name="item-amount" position="0"/>
 		<integer name="item-charge" position="1"/>
