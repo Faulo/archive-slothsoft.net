@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><xsl:stylesheet version="1.0"	xmlns="http://www.w3.org/1999/xhtml"	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">		<xsl:import href="/getTemplate.php/core/graph"/>		<xsl:template match="/data">		<xsl:apply-templates select=".//graph"/>	</xsl:template></xsl:stylesheet>

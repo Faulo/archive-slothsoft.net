@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><xsl:stylesheet version="1.0"	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"	xmlns:str="http://exslt.org/strings"	xmlns:func="http://exslt.org/functions"	extension-element-prefixes="str func">		<xsl:template match="/data">		<xsl:copy-of select="*[@data-cms-name = 'extract-portraits']/*"/>	</xsl:template></xsl:stylesheet>
