@@ -47,7 +47,7 @@ class DOMHelper
     const NS_SITEMAP = 'http://www.sitemaps.org/schemas/sitemap/0.9';
 
     protected static $namespaceList = [
-        'module' => self::NS_CMS_EDITOR,
+        'module' => self::NS_CMS_MODULE,
         'dict' => self::NS_CMS_DICT,
         'editor' => self::NS_SAVE_EDITOR,
         
