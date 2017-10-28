@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module>
+<module xmlns="http://schema.slothsoft.net/cms/module">
 
 	<resource name="update-files" path="update-files.xml" type="application/xml" />
 	<resource name="update-comics" path="update-comics.xml" type="application/xml" />
