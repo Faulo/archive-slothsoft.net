@@ -97,7 +97,7 @@ class DOMHelper
             $nsList['html'] = self::NS_HTML;
         }
         if ($options & self::XPATH_PHP) {
-            $nsList['php'] = self::NS_HTML;
+            $nsList['php'] = self::NS_PHP;
         }
         if ($options & self::XPATH_SLOTHSOFT) {
             $nsList['module'] = self::NS_CMS_MODULE;
