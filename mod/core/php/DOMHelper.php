@@ -98,7 +98,6 @@ class DOMHelper
         }
         if ($options & self::XPATH_PHP) {
             $nsList['php'] = self::NS_HTML;
-            $xpath->registerPHPFunctions();
         }
         if ($options & self::XPATH_SLOTHSOFT) {
             $nsList['module'] = self::NS_CMS_MODULE;
@@ -107,6 +106,9 @@ class DOMHelper
         }
         foreach ($nsList as $prefix => $ns) {
             $xpath->registerNamespace($prefix, $ns);
+        }
+        if ($options & self::XPATH_PHP) {
+            $xpath->registerPHPFunctions();
         }
         return $xpath;
     }
