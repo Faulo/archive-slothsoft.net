@@ -37,7 +37,7 @@ class HTTPDocument
     const NS_XLINK = 'http://www.w3.org/1999/xlink';
 
     const NS_PHP = 'http://php.net/xpath';
-
+    
     const NS_EM = 'http://www.mozilla.org/2004/em-rdf#';
 
     const DIR_MODULES = 'mod/';
@@ -370,10 +370,10 @@ class HTTPDocument
         $this->xslt->registerPHPFunctions();
         
         $this->sitesDoc = DOMHelper::loadDocument($siteMapPath);
-        $this->sitesPath = DOMHelper::loadXPath($this->sitesDoc, DOMHelper::XPATH_PHP);
+        $this->sitesPath = DOMHelper::loadXPath($this->sitesDoc, DOMHelper::XPATH_PHP | DOMHelper::XPATH_SLOTHSOFT);
         // $this->sitesInitialized = false;
         // $this->resourceDocs['/core/sites'] = $this->sitesDoc;
-        $this->moduleRoot = $this->sitesDoc->createElement(self::TAG_MODULES);
+        $this->moduleRoot = $this->sitesDoc->createElementNS(DOMHelper::NS_CMS_MODULE, self::TAG_MODULES);
     }
 
     public function getExternalDocument($uri, $type = 'xml', $cacheTime = TIME_DAY)

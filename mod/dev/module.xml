@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module xmlns="http://schema.slothsoft.net/cms/module">
+<module>
 	<fragment name="dvb">
 		<res name="dvb" load="xml" />
 		<template name="_dvb" />

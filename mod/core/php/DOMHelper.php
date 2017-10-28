@@ -18,6 +18,9 @@ declare(ticks = 1);
 
 class DOMHelper
 {
+    const NS_CMS_MODULE = 'http://schema.slothsoft.net/cms/module';
+    const NS_CMS_DICT = 'http://schema.slothsoft.net/cms/dictionary';
+    const NS_SAVE_EDITOR = 'http://schema.slothsoft.net/savegame/editor';
 
     const NS_XML = 'http://www.w3.org/XML/1998/namespace';
 
@@ -44,6 +47,10 @@ class DOMHelper
     const NS_SITEMAP = 'http://www.sitemaps.org/schemas/sitemap/0.9';
 
     protected static $namespaceList = [
+        'module' => self::NS_CMS_EDITOR,
+        'dict' => self::NS_CMS_DICT,
+        'editor' => self::NS_SAVE_EDITOR,
+        
         'xml' => self::NS_XML,
         'html' => self::NS_HTML,
         'xsl' => self::NS_XSL,
@@ -55,15 +62,17 @@ class DOMHelper
         'em' => self::NS_EM,
         'gd' => self::NS_GD,
         'media' => self::NS_MEDIA,
-        'sitemap' => self::NS_SITEMAP
+        'sitemap' => self::NS_SITEMAP,
     ];
 
     const XPATH_NS = 1;
  // loadXPath loads all known namespaces
     const XPATH_HTML = 2;
- // loadXPath loads HTML namespace
+    // loadXPath loads HTML namespace
     const XPATH_PHP = 4;
- // loadXPath loads PHP functions
+    // loadXPath loads PHP functions
+    const XPATH_SLOTHSOFT = 8;
+    // loadXPath loads Slothsoft namespaces
     public static function loadDocument($filePath, $asHTML = false)
     {
         $document = new DOMDocument();
@@ -78,17 +87,26 @@ class DOMHelper
     public static function loadXPath(DOMDocument $document, $options = self::XPATH_HTML)
     {
         $xpath = new DOMXPath($document);
+        $nsList = [];
         if ($options & self::XPATH_NS) {
             foreach (self::$namespaceList as $prefix => $ns) {
-                $xpath->registerNamespace($prefix, $ns);
+                $nsList[$prefix] = $ns;
             }
         }
         if ($options & self::XPATH_HTML) {
-            $xpath->registerNamespace('html', self::NS_HTML);
+            $nsList['html'] = self::NS_HTML;
         }
         if ($options & self::XPATH_PHP) {
-            $xpath->registerNamespace('php', self::NS_PHP);
+            $nsList['php'] = self::NS_HTML;
             $xpath->registerPHPFunctions();
+        }
+        if ($options & self::XPATH_SLOTHSOFT) {
+            $nsList['module'] = self::NS_CMS_MODULE;
+            $nsList['dict'] = self::NS_CMS_DICT;
+            $nsList['editor'] = self::NS_SAVE_EDITOR;
+        }
+        foreach ($nsList as $prefix => $ns) {
+            $xpath->registerNamespace($prefix, $ns);
         }
         return $xpath;
     }
