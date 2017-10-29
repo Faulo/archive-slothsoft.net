@@ -72,9 +72,13 @@ class Resource
 
     public static function getResource($path, DOMElement $resNode, $loadFile = '')
     {
-        $mimeType = $resNode->getAttribute('type');
-        if ($ret = self::instantiateResource($mimeType)) {
-            $ret = $ret->init($path, $resNode, $loadFile);
+        try {
+            $mimeType = $resNode->getAttribute('type');
+            if ($ret = self::instantiateResource($mimeType)) {
+                $ret = $ret->init($path, $resNode, $loadFile);
+            }
+        } catch(Exception $e) {
+            $ret = null;
         }
         return $ret;
     }
@@ -260,8 +264,7 @@ class Resource
         }
         $this->realpath = realpath($this->realpath);
         if (! $this->realpath) {
-            trigger_error(sprintf(self::ERROR_FILE_NOTFOUND, $resNode->getAttribute('name'), $this->getPath()), E_USER_WARNING);
-            return false;
+            throw new Exception(sprintf(self::ERROR_FILE_NOTFOUND, $resNode->getAttribute('name'), $this->getPath()));
         }
         $this->file = basename($this->realpath);
         if ($resNode->tagName === HTTPDocument::TAG_RESOURCE) {

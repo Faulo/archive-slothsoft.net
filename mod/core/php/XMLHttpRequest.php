@@ -114,7 +114,7 @@ class XMLHttpRequest implements \w3c\XMLHttpRequest
     public static $useCookies = false;
 
     protected $_env = [
-        'SERVER_NAME' => 'Dende',
+        'SERVER_NAME' => SERVER_NAME,
         'SERVER_SOFTWARE' => 'PHP'
     ];
 

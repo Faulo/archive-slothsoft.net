@@ -27,9 +27,6 @@
 	</xsl:template>
 	
 	<xsl:template name="printFont">
-		<!--
-		<resourceDir name="fonts" path="Quivira.ttf" type="application/font-sfnt" data-cms-path="slothsoft/fonts" realpath="C:\xampp\htdocs\mod\slothsoft\res\fonts\Quivira.ttf" uri="/getResource.php/slothsoft/fonts/Quivira" data-cms-name="fonts"/>
-		-->
 		<xsl:variable name="style">font-family: <xsl:value-of select="generate-id(.)"/>, Arial;</xsl:variable>
 		<tr>
 			<td><xsl:value-of select="string[@key=$name]/@val"/></td>

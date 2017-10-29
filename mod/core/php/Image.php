@@ -280,38 +280,5 @@ class Image
         }
         return $ret;
     }
-
-    public static function batch()
-    {
-        $dir = ROOT . 'minecraft/blocks/';
-        $files = scandir($dir);
-        $NodeArray['ThumbnailData'] = array();
-        $NodeArray['ThumbnailLink'] = array();
-        $NodeArray['ThumbnailName'] = array();
-        foreach ($files as $file) {
-            if ($file === '.' or $file === '..')
-                continue;
-            $arr = explode('.', $file);
-            if (count($arr) === 3)
-                unlink($dir . $file);
-            continue;
-            $id = $arr[0];
-            $end = $arr[1];
-            $arr[1] = 's';
-            $arr[2] = $end;
-            
-            $pic = self::createFromFile($dir . $file);
-            $w = imagesx($pic);
-            $h = imagesy($pic);
-            $new_image = imagecreatetruecolor(24, 24);
-            // imagealphablending($pic, false);
-            // imagesavealpha($pic, true);
-            // imagealphablending($new_image, false);
-            // imagesavealpha($new_image, true);
-            imagecopyresized($new_image, $pic, 0, 0, 0, 0, 24, 24, $w, $h);
-            imagedestroy($pic);
-            imagejpeg($new_image, $dir . implode('.', $arr));
-        }
-    }
 }
 

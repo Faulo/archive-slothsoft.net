@@ -213,7 +213,7 @@ class DownloadWork extends Stackable
              * [key] => 0001
              * [href] => http://www.nuklearpower.com/2001/03/02/episode-001-were-going-where/
              * [source] => http://www.nuklearpower.com/comics/8-bit-theater/010302.jpg
-             * [path] => C:\xampp\htdocs\mod\comics\res\8bit\0001.jpg
+             * [path] => SERVER_ROOT . mod\comics\res\8bit\0001.jpg
              * [image] => /getResource.php/comics/8bit/0001.jpg
              * [width] => 612
              * [height] => 936

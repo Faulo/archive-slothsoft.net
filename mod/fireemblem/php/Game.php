@@ -19,7 +19,7 @@ class Game
 
     protected $gameNode;
 
-    protected $characterList;
+    protected $characterList = [];
 
     public function __construct(DOMDocument $configDoc, array $dataDocList)
     {

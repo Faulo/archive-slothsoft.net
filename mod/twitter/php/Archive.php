@@ -453,7 +453,7 @@ class Archive
         if (strpos($file, '.')) {
             $file = $this->tableName . '.' . $file;
             
-            $path = ROOT . self::DIR_IMAGES . $file;
+            $path = SERVER_ROOT . self::DIR_IMAGES . $file;
             $uri = self::URL_IMAGES . $file;
             
             $ret = $href;
@@ -482,7 +482,7 @@ class Archive
         $file = basename($file);
         $file = sprintf('%s.%s', $this->tableName, $file);
         
-        $path = ROOT . self::DIR_HTML . $file . '.html';
+        $path = SERVER_ROOT . self::DIR_HTML . $file . '.html';
         $uri = self::URL_HTML . $file;
         
         if (HTTPFile::createFromDownload($path, $href, self::HTTP_CACHETIME)) {

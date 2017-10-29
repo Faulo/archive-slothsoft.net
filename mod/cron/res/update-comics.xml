@@ -13,7 +13,7 @@
 		
 		<update
 			name="Girl Genius"
-			dest-root = "D:\www\mod\comics\res\girl-genius"
+			dest-root = "mod\comics\res\girl-genius"
 			dest-uri = "/getResource.php/comics/girl-genius/"
 			source-uri = "http://www.girlgeniusonline.com/comic.php?date=20021104"
 			source-xpath-uri = "normalize-space(//*[@id='topnext']/@href)"
@@ -25,7 +25,7 @@
 		</update>
 		<update
 			name="Order of the Stick"
-			dest-root = "D:\www\mod\comics\res\oots"
+			dest-root = "mod\comics\res\oots"
 			dest-uri = "/getResource.php/comics/oots/"
 			source-uri = "http://www.giantitp.com/comics/oots0001.html"
 			source-xpath-uri = "normalize-space(//*[*/@alt='Next Comic']/@href)"
@@ -37,7 +37,7 @@
 		</update>
 		<update
 			name="El Goonish Shive"
-			dest-root = "D:\www\mod\comics\res\el-goonish-shive"
+			dest-root = "mod\comics\res\el-goonish-shive"
 			dest-uri = "/getResource.php/comics/el-goonish-shive/"
 			source-uri = "http://www.egscomics.com/index.php?id=1"
 			source-xpath-uri = "normalize-space(//*[@rel='next']/@href)"
@@ -49,7 +49,7 @@
 		</update>
 		<update
 			name="Ménage à 3"
-			dest-root = "D:\www\mod\comics\res\menage-a-3"
+			dest-root = "mod\comics\res\menage-a-3"
 			dest-uri = "/getResource.php/comics/menage-a-3/"
 			source-uri = "http://www.ma3comic.com/strips-ma3/for_new_readers"
 			source-xpath-uri = "normalize-space(//*[@id='cndnext']/@href)"
@@ -134,7 +134,7 @@
 		</update>
 		<update
 			name="8 Bit Theater"
-			dest-root = "D:\www\mod\comics\res\8bit"
+			dest-root = "mod\comics\res\8bit"
 			dest-uri = "/getResource.php/comics/8bit/"
 			source-uri = "http://www.nuklearpower.com/2001/03/02/episode-001-were-going-where/"
 			source-xpath-uri = "normalize-space(//html:a[@rel='next']/@href)"

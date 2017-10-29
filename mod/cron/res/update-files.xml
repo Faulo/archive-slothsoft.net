@@ -10,35 +10,35 @@
 		<update
 			name="Magic: the Gathering - Expansions"
 			dest-path = "C:\NetzwerkDaten\Downloads\cron\MtG.expansions.csv"
-			source-uri = "D:\www\vhosts\cmd\getData.php /mtg/oracle.sets"
-			success-cmd = "start cmd /c php D:\www\vhosts\cmd\getData.php /mtg/cron ^1^> C:\NetzwerkDaten\Downloads\cron\MtG.update.log ^2^> C:\NetzwerkDaten\Downloads\cron\MtG.update.err"
+			source-uri = "vhosts\cmd\getData.php /mtg/oracle.sets"
+			success-cmd = "start cmd /c php vhosts\cmd\getData.php /mtg/cron ^1^> C:\NetzwerkDaten\Downloads\cron\MtG.update.log ^2^> C:\NetzwerkDaten\Downloads\cron\MtG.update.err"
 		/>
 		<update
 			name="Magic: the Gathering - Events"
 			dest-path = "C:\NetzwerkDaten\Downloads\cron\MtG.events.xml"
-			source-uri = "D:\www\vhosts\cmd\getData.php /mtg/events"
-			success-cmd = "copy %s D:\www\mod\mtg\res\events.xml /y"
+			source-uri = "vhosts\cmd\getData.php /mtg/events"
+			success-cmd = "copy %s mod\mtg\res\events.xml /y"
 		/>
 		<update
 			name="Magic: the Gathering - Oracle"
 			dest-path = "C:\NetzwerkDaten\Downloads\cron\MtG.oracle.xml"
-			source-uri = "D:\www\vhosts\cmd\getData.php /mtg/oracle-refresh"
+			source-uri = "vhosts\cmd\getData.php /mtg/oracle-refresh"
 		/>
 		<update
 			name="Tales of Link - Heroes"
 			dest-path = "C:\NetzwerkDaten\Downloads\cron\ToL.Heroes.xml"
-			source-uri = "D:\www\vhosts\cmd\getData.php /talesof/link.heroes"
-			success-cmd = "copy %s D:\www\mod\talesof\res\ToL.Heroes.xml /y"
+			source-uri = "vhosts\cmd\getData.php /talesof/link.heroes"
+			success-cmd = "copy %s mod\talesof\res\ToL.Heroes.xml /y"
 		/>
 		<update
 			name="Hentai"
 			dest-path = "C:\NetzwerkDaten\Downloads\cron\pr0n.hentai.log"
-			source-uri = "D:\www\vhosts\cmd\getData.php /cron/update-hentai"
-			success-cmd = "php D:\www\vhosts\cmd\getData.php /slothsoft/archive.hentai refresh-all"
+			source-uri = "vhosts\cmd\getData.php /cron/update-hentai"
+			success-cmd = "php vhosts\cmd\getData.php /slothsoft/archive.hentai refresh-all"
 		/>
 		<!--
 		start curl http://dende/getData.php/mtg/cron -N -o C:\NetzwerkDaten\Downloads\cron\MtG.update.log
-		start cmd /c php D:\www\vhosts\cmd\getData.php /mtg/cron ^1^> C:\NetzwerkDaten\Downloads\cron\MtG.update.txt ^2^> C:\NetzwerkDaten\Downloads\cron\MtG.update.log
+		start cmd /c php vhosts\cmd\getData.php /mtg/cron ^1^> C:\NetzwerkDaten\Downloads\cron\MtG.update.txt ^2^> C:\NetzwerkDaten\Downloads\cron\MtG.update.log
 		-->
 	</data>
 	<data type="file"
@@ -49,26 +49,26 @@
 			name="Twitter Emoji"
 			dest-path = "C:\NetzwerkDaten\Downloads\cron\twitter-emoji.zip"
 			source-uri = "https://github.com/twitter/twemoji/archive/gh-pages.zip"
-			success-cmd = "7z x %s -y -oD:\www\mod\lib\res"
+			success-cmd = "7z x %s -y -omod\lib\res"
 		/>
 		<update
 			name="Unicode XML"
 			dest-path = "C:\NetzwerkDaten\Downloads\cron\ucd.all.flat.zip"
 			source-uri = "http://www.unicode.org/Public/UCD/latest/ucdxml/ucd.all.flat.zip"
-			success-cmd = "7z x %s -y -oD:\www\mod\core\res"
+			success-cmd = "7z x %s -y -omod\core\res"
 		/>
 		<update
 			name="Unicode TXT"
 			dest-path = "C:\NetzwerkDaten\Downloads\cron\ucd.all.flat.csv"
 			source-uri = "http://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt"
-			success-cmd = "copy %s D:\www\mod\core\res\ucd.all.flat.csv /y"
+			success-cmd = "copy %s mod\core\res\ucd.all.flat.csv /y"
 		/>
 		<!--
 		<update
 			name="Tales of Link - Heroes"
 			dest-path = "C:\NetzwerkDaten\Downloads\cron\ToL.Heroes.csv"
 			source-uri = "https://docs.google.com/spreadsheets/d/1gIuZ1PT9R8PLBWLeIefTFfzTRJXfEr_n9_A7TOHH3Ug/export?format=csv"
-			success-cmd = "copy %s D:\www\mod\talesof\res\ToL.Heroes.csv /y"
+			success-cmd = "copy %s mod\talesof\res\ToL.Heroes.csv /y"
 		/>
 		-->
 		<update
@@ -156,7 +156,7 @@
 		>
 		<!--<php><![CDATA[
 $sourcePath = 'D:\\backups\\MagicAssistant';
-$destPath = 'C:\\xampp\\htdocs\\mod\\mtg\\res\\db';
+$destPath = SERVER_ROOT . 'mod\\mtg\\res\\db';
 
 $command = '7z e %s *.txt -r -y -o%s';
 
@@ -260,7 +260,7 @@ if ($dirList) {
 			dest-path = "C:\NetzwerkDaten\Downloads\cron\Quivira.ttf"
 			source-uri = "http://www.quivira-font.com/"
 			source-xpath = ".//html:a[@href = 'files/Quivira.otf']/@href"
-			success-cmd="copy %s C:\xampp\htdocs\mod\slothsoft\res\fonts\Quivira.ttf /y"
+			success-cmd="copy %s mod\slothsoft\res\fonts\Quivira.ttf /y"
 		/>
 		<update
 			name="cURL"

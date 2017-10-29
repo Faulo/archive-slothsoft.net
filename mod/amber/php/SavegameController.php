@@ -47,8 +47,8 @@ class SavegameController
         $editorConfig['tempDir'] = $tempDir;
         $editorConfig['mode'] = $mode;
         $editorConfig['id'] = $name;
-        $editorConfig['ambtoolPath'] = 'D:\\www\\mod\\amber\\cli\\ambtool.exe';
-        $editorConfig['ambgfxPath'] = 'D:\\www\\mod\\amber\\cli\\amgfx.exe';
+        $editorConfig['ambtoolPath'] = 'mod\\amber\\cli\\ambtool.exe';
+        $editorConfig['ambgfxPath'] = 'mod\\amber\\cli\\amgfx.exe';
         $editorConfig['loadAllArchives'] = ($loadAll or $saveAll or $downloadAll);
         $editorConfig['selectedArchives'] = [];
         $editorConfig['uploadedArchives'] = [];

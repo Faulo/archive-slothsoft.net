@@ -17,7 +17,7 @@ $editorConfig['defaultDir'] = $defaultDir;
 $editorConfig['tempDir'] = $tempDir;
 $editorConfig['mode'] = $mode;
 $editorConfig['id'] = $name;
-$editorConfig['ambtoolPath'] = 'D:\\www\\mod\\amber\\cli\\ambtool.exe';
+$editorConfig['ambtoolPath'] = 'mod\\amber\\cli\\ambtool.exe';
 $editorConfig['selectedArchives'] = [];
 $editorConfig['uploadedArchives'] = [];
 

@@ -18,11 +18,9 @@ use DOMNode;
 class Storage
 {
 
-    public static $log = false;
-
     public static $touchOnExit = false;
 
-    const LOG_PATH = 'C:/xampp/htdocs/log/storage/';
+    const LOG_PATH = SERVER_ROOT . DIR_LOG . 'storage/';
 
     protected static $storageList = [];
 
@@ -354,9 +352,7 @@ class Storage
         if ($storageName) {
             $this->tableName = $storageName;
         }
-        if (self::$log) {
-            $this->logFile = sprintf('%s%s.txt', self::LOG_PATH, FileSystem::filenameSanitize($this->tableName));
-        }
+        $this->logFile = sprintf('%s%s.log', self::LOG_PATH, FileSystem::filenameSanitize($this->tableName));
         $this->dbmsTable = $this->getDBMSTable();
         if (! $this->dbmsTable->tableExists()) {
             $this->install();
@@ -599,7 +595,7 @@ class Storage
 
     protected function _createLog($method, $name, $ret)
     {
-        if ($this->logFile) {
+        if (CORE_STORAGE_LOG_ENABLED) {
             $ret = $ret ? 'OK' : 'FAIL';
             $log = sprintf('[%s] %s: %s %s (%s)%s', date(DATE_DATETIME), $ret, $method, self::_hash($name), $name, PHP_EOL);
             if ($handle = fopen($this->logFile, 'ab')) {

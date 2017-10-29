@@ -59,7 +59,7 @@ class HTTPRequest
         $env['SERVER_NAME'] = $key === false ? self::$allowedHostList[0] : self::$allowedHostList[$key];
         
         if ($env['SERVER_NAME'] === 'localhost') {
-            $env['SERVER_NAME'] = 'dende';
+            $env['SERVER_NAME'] = SERVER_NAME;
         }
         
         $turing = 'human';
@@ -86,7 +86,7 @@ class HTTPRequest
         } else {
             $turing = 'bot';
         }
-        if ($env['REMOTE_ADDR'] === '::1' and $env['SERVER_NAME'] === 'dende') {
+        if ($env['REMOTE_ADDR'] === '::1') {
             $turing = 'shell';
         }
         $env['REQUEST_TURING'] = $turing;

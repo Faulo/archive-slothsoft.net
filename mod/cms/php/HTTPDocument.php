@@ -11,6 +11,7 @@ namespace Slothsoft\CMS;
 use Slothsoft\Core\Storage;
 use Slothsoft\Core\DOMHelper;
 use Slothsoft\PT\Repository;
+use Error;
 use Exception;
 use DOMImplementation;
 use DOMDocument;
@@ -132,6 +133,9 @@ class HTTPDocument
 
     private static $singleton;
 
+    /**
+     * @return NULL|\Slothsoft\CMS\HTTPDocument
+     */
     public static function instance()
     {
         $ret = null;
@@ -412,13 +416,13 @@ class HTTPDocument
 
     public function getBannedList()
     {
-        $logFile = ROOT_LOG . 'banned-ips.txt';
+        $logFile = SERVER_ROOT . DIR_LOG . 'banned-ips.txt';
         return file_exists($logFile) ? file($logFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) : [];
     }
 
     public function setBannedList(array $list)
     {
-        $logFile = ROOT_LOG . 'banned-ips.txt';
+        $logFile = SERVER_ROOT . DIR_LOG . 'banned-ips.txt';
         return file_put_contents($logFile, implode(PHP_EOL, $list));
     }
 
@@ -1073,11 +1077,15 @@ class HTTPDocument
     {
         $ret = null;
         list ($module, $name) = $this->splitModulePath($path);
-        if ($resNode = $this->getModuleNode($path, self::TAG_RESOURCE)) {
-            $resNode->setAttribute('data-cms-path', $this->getModulePath($resNode));
-            if ($res = Resource::getResource($this->includeDir . $module . '/' . self::DIR_RESSOURCE, $resNode)) {
-                $ret = $res->getPath();
+        try {
+            if ($resNode = $this->getModuleNode($path, self::TAG_RESOURCE)) {
+                $resNode->setAttribute('data-cms-path', $this->getModulePath($resNode));
+                if ($res = Resource::getResource($this->includeDir . $module . '/' . self::DIR_RESSOURCE, $resNode)) {
+                    $ret = $res->getPath();
+                }
             }
+        } catch(Exception $e) {
+            $ret = null;
         }
         return $ret;
     }
@@ -1158,12 +1166,17 @@ class HTTPDocument
                 $dataDoc = $this->impl->createDocument(null, self::TAG_DATA);
                 $dataRoot = $dataDoc->documentElement;
                 $dataRoot->setAttribute('path', $path);
-                $dataRes = $this->includeFile($file, $dataDoc);
-                
+                try {
+                    $dataRes = $this->includeFile($file, $dataDoc);
+                } catch(Exception $e) {
+                    $dataRes = null;
+                } catch(Error $e) {
+                    $dataRes = null;
+                }
                 while ($dataRes instanceof HTTPClosure) {
                     if ($dataRes->isThreaded() and PHP_SAPI === 'apache2handler') {
                         // switch to CLI
-                        $cmd = sprintf('php %s %s', 'D:\\www\\vhosts\\cmd\\getData.php', $path);
+                        $cmd = sprintf('php %s %s', SERVER_ROOT . 'vhosts\\cmd\\getData.php', $path);
                         $dataRes = new HTTPCommand($cmd);
                     } else {
                         $dataRes = $dataRes->run();

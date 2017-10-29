@@ -589,7 +589,6 @@ EOT;
                 unset($styleFile);
             }
             
-            // xml-stylesheet type="text/css" href="C:/xampp/htdocs/mod/core/stylesheet/HTML5.css"
             foreach ($this->styleFiles as $styleFile) {
                 $doc->insertBefore($doc->createProcessingInstruction('xml-stylesheet', sprintf('type="text/css" href="%s"', $styleFile)), $doc->firstChild);
             }

@@ -43,11 +43,11 @@ class Tick
         $this->lastTime = get_execution_time();
         
         $this->functionList = [];
-        $this->functionFile = ROOT_LOG . 'tick.function.txt';
+        $this->functionFile = SERVER_ROOT . DIR_LOG . 'tracking.tick.function.log';
         file_put_contents($this->functionFile, '');
         
         $this->timelineList = [];
-        $this->timelineFile = ROOT_LOG . 'tick.timeline.txt';
+        $this->timelineFile = SERVER_ROOT . DIR_LOG . 'tracking.tick.timeline.log';
         file_put_contents($this->timelineFile, '');
     }
 

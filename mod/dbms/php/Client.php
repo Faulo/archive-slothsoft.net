@@ -334,9 +334,7 @@ class Client
     public function execute($sqlString)
     {
         if ($this->connect()) {
-            if (Manager::$log) {
-                Manager::_createLog($sqlString);
-            }
+            Manager::_createLog($sqlString);
             return $this->sqli->query($sqlString);
         }
     }

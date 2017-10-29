@@ -513,7 +513,7 @@ class TranslatorJaEn extends Translator
     {
         static $targetPath = null;
         if (! $targetPath) {
-            $targetPath = realpath('C:/xampp/htdocs/mod/slothsoft/res/vocab-ja');
+            $targetPath = realpath(SERVER_ROOT . 'mod/slothsoft/res/vocab-ja');
         }
         $ret = $uri;
         if ($targetPath) {

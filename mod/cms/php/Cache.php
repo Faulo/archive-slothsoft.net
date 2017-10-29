@@ -22,10 +22,7 @@ class Cache
     public function __construct()
     {
         $this->documentRoot = SERVER_ROOT;
-        // $this->rootDir = $this->documentRoot . 'cache' . DIRECTORY_SEPARATOR;
-        // $this->rootDir = 'R:\\Temp\\CMSCache\\';
-        // $this->rootDir = 'D:\\Temp\\CMSCache\\';
-        $this->rootDir = 'C:/xampp/htdocs/tmp/';
+        $this->rootDir = SERVER_ROOT . DIR_CACHE;
     }
 
     public function getPath($uri, $cacheDir = '')

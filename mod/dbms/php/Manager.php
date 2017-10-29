@@ -4,11 +4,7 @@ namespace Slothsoft\DBMS;
 class Manager
 {
 
-    public static $log = false;
-
-    public static $logAccess = false;
-
-    const LOG_PATH = 'C:/xampp/htdocs/log/lodb/manager.txt';
+    const LOG_PATH = SERVER_ROOT . DIR_LOG . 'manager.log';
 
     const LOG_LINELENGTH = 120;
 
@@ -21,9 +17,7 @@ class Manager
     public static function getClient()
     {
         if (! self::$client) {
-            if (self::$logAccess) {
-                self::_createLog(sprintf('Manager: creating Client...'));
-            }
+            self::_createLog(sprintf('Manager: creating Client...'));
             self::$client = new Client();
         }
         return self::$client;
@@ -33,9 +27,9 @@ class Manager
     {
         $dbName = mb_strtolower(trim($dbName));
         if (! isset(self::$databaseList[$dbName])) {
-            if (self::$logAccess) {
+            
                 self::_createLog(sprintf('Manager: creating Database %s...', $dbName));
-            }
+            
             self::$databaseList[$dbName] = new Database(self::getClient(), $dbName);
         }
         return self::$databaseList[$dbName];
@@ -49,9 +43,9 @@ class Manager
             self::$tableList[$dbName] = [];
         }
         if (! isset(self::$tableList[$dbName][$tableName])) {
-            if (self::$logAccess) {
+            
                 self::_createLog(sprintf('Manager: creating Table %s.%s...', $dbName, $tableName));
-            }
+            
             self::$tableList[$dbName][$tableName] = new Table(self::getDatabase($dbName), $tableName);
         }
         return self::$tableList[$dbName][$tableName];
@@ -90,13 +84,15 @@ class Manager
 
     public static function _createLog($sql)
     {
-        if (strlen($sql) > self::LOG_LINELENGTH) {
-            $sql = substr($sql, 0, self::LOG_LINELENGTH) . '...';
-        }
-        $log = sprintf('[%s] %s%s', date(DATE_DATETIME), $sql, PHP_EOL);
-        if ($handle = fopen(self::LOG_PATH, 'ab')) {
-            fwrite($handle, $log);
-            fclose($handle);
+        if (DBMS_MANAGER_LOG_ENABLED) {
+            if (strlen($sql) > self::LOG_LINELENGTH) {
+                $sql = substr($sql, 0, self::LOG_LINELENGTH) . '...';
+            }
+            $log = sprintf('[%s] %s%s', date(DATE_DATETIME), $sql, PHP_EOL);
+            if ($handle = fopen(self::LOG_PATH, 'ab')) {
+                fwrite($handle, $log);
+                fclose($handle);
+            }
         }
     }
 }
