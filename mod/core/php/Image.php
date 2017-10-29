@@ -20,12 +20,14 @@ class Image
     const IRFANVIEW_QUERY_SCALE = '%1$s /silent /resize=(%3$d,%4$d) /convert=%2$s';
 
     const FFMPEG_ACTIVE = true;
- // DEAKTIVIERT: temp.tmp kann nicht gelesen werden!!!!!
-                                // const FFMPEG_PATH = 'C:/NetzwerkDaten/Dropbox/Tools/ffmpeg/ffmpeg.exe';
+
+    // DEAKTIVIERT: temp.tmp kann nicht gelesen werden!!!!!
+    // const FFMPEG_PATH = 'C:/NetzwerkDaten/Dropbox/Tools/ffmpeg/ffmpeg.exe';
     const FFMPEG_PATH = 'ffmpeg';
 
     const FFMPEG_QUERY_CONVERT = '-i %1$s %2$s -y';
- // /encode
+
+    // /encode
     const OPTIPNG_ACTIVE = true;
 
     const OPTIPNG_PATH = 'optipng';
