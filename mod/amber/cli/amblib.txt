@@ -1,0 +1,59 @@
+ _______          __ http://amberworld.sourceforge.net __    __
+|   _   |--------.  |--.-----.----.--.--.--.-----.----.  |--|  |
+|       |        |  _  |  -__|   _|  |  |  |  _  |   _|  |  _  |
+|___|___|__|__|__|_____|_____|__| |________|_____|__| |__|_____|
+         AMBERWORLD - THE AMBERMOON OPEN SOURCE PROJECT
+
+================================================================
+          AmberMap v0.6 (2004-04-01) by Oliver Gantert
+----------------------------------------------------------------
+             Ambermoon 2D Map Viewer (Beta Version)
+================================================================
+
+================================================================
+  COMPILING THE SOURCES
+----------------------------------------------------------------
+The current sources are in a messy state and were put together
+in a hurry. They were only tested and compiled under Win32 with
+lcc-win32, but should be portable to most systems supported by
+the SDL library. Future revisions will be cleaned up, optimized
+and (most important) commented.
+The Win32 version uses the DLL editions of AMBlib and SDL. For
+other systems, these must be linked statically.
+To be honest, this version of the sources was just released
+because Sourceforge requires it ;)
+================================================================
+  INSTALLING THE PROGRAM
+----------------------------------------------------------------
+AmberMap needs the original Ambermoon files in its subdirectory
+"Amberfiles". The Win32 version also requires AMBlib.dll and
+SDL.dll. The directory structure looks something like this:
+  ./AmberMap.exe
+  ./AMBlib.dll
+  ./SDL.dll
+  ./Extrafiles/Static_data.amb
+  ./Amberfiles/*.amb
+================================================================
+  USING THE PROGRAM
+----------------------------------------------------------------
+This version is run from the command line with one parameter,
+which is the number of the map to be loaded.
+By default, map #257 (grandfather's house) is loaded.
+If some map number gives a "failed to load" error, it either
+doesn't exist or is a 3D map.
+You'll have to play around to find out ;)
+================================================================
+  BUGS
+----------------------------------------------------------------
+There ARE bugs. On Windows, using Alt+Tab in Fullscreen mode is
+not recommended, better switch to window mode and iconify the
+window -- you have been warned!
+================================================================
+  FUTURE
+----------------------------------------------------------------
+Cleaning up the sources has highest priority. A map selection
+menu would be nice. Moving the hardcoded stuff into an external
+file should be more Copyright-compliant. Decipher the remaining
+unknown bytes in IconData and find out how the events work.
+Add the map texts (location name etc). Fix bugs, and blablabla.
+================================================================
