@@ -18,8 +18,11 @@ declare(ticks = 1);
 
 class DOMHelper
 {
+
     const NS_CMS_MODULE = 'http://schema.slothsoft.net/cms/module';
+
     const NS_CMS_DICT = 'http://schema.slothsoft.net/cms/dictionary';
+
     const NS_SAVE_EDITOR = 'http://schema.slothsoft.net/savegame/editor';
 
     const NS_XML = 'http://www.w3.org/XML/1998/namespace';
@@ -62,16 +65,20 @@ class DOMHelper
         'em' => self::NS_EM,
         'gd' => self::NS_GD,
         'media' => self::NS_MEDIA,
-        'sitemap' => self::NS_SITEMAP,
+        'sitemap' => self::NS_SITEMAP
     ];
 
     const XPATH_NS = 1;
- // loadXPath loads all known namespaces
+
+    // loadXPath loads all known namespaces
     const XPATH_HTML = 2;
+
     // loadXPath loads HTML namespace
     const XPATH_PHP = 4;
+
     // loadXPath loads PHP functions
     const XPATH_SLOTHSOFT = 8;
+
     // loadXPath loads Slothsoft namespaces
     public static function loadDocument($filePath, $asHTML = false)
     {

@@ -13,7 +13,9 @@ namespace Slothsoft\Core;
 use Slothsoft\DBMS\Manager;
 use Exception;
 use DOMDocument;
+use DOMDocumentFragment;
 use DOMNode;
+use Slothsoft\DBMS\Table;
 
 class Storage
 {
@@ -24,7 +26,12 @@ class Storage
 
     protected static $storageList = [];
 
-    public static function loadStorage($name)
+    /**
+     *
+     * @param string $name
+     * @return Storage
+     */
+    public static function loadStorage(string $name)
     {
         if (! isset(self::$storageList[$name])) {
             self::$storageList[$name] = new Storage($name);
@@ -32,7 +39,15 @@ class Storage
         return self::$storageList[$name];
     }
 
-    public static function loadExternalDocument($uri, $cacheTime = null, $data = null, $options = null)
+    /**
+     *
+     * @param string $uri
+     * @param int $cacheTime
+     * @param mixed $data
+     * @param mixed $options
+     * @return null|DOMDocument
+     */
+    public static function loadExternalDocument(string $uri, int $cacheTime = null, $data = null, $options = null)
     {
         $cacheTime = (int) $cacheTime;
         self::_httpOptions($options);
@@ -49,7 +64,15 @@ class Storage
         return $storage->retrieveDocument($name, $storageTime);
     }
 
-    public static function clearExternalDocument($uri, $cacheTime = null, $data = null, $options = null)
+    /**
+     *
+     * @param string $uri
+     * @param int $cacheTime
+     * @param mixed $data
+     * @param mixed $options
+     * @return boolean
+     */
+    public static function clearExternalDocument(string $uri, int $cacheTime = null, $data = null, $options = null)
     {
         $cacheTime = (int) $cacheTime;
         self::_httpOptions($options);
@@ -58,7 +81,15 @@ class Storage
         return $storage->delete($name);
     }
 
-    public static function loadExternalXPath($uri, $cacheTime = null, $data = null, $options = null)
+    /**
+     *
+     * @param string $uri
+     * @param int $cacheTime
+     * @param mixed $data
+     * @param mixed $options
+     * @return NULL|\DOMXPath
+     */
+    public static function loadExternalXPath(string $uri, int $cacheTime = null, $data = null, $options = null)
     {
         $ret = null;
         if ($doc = self::loadExternalDocument($uri, $cacheTime, $data, $options)) {
@@ -67,7 +98,15 @@ class Storage
         return $ret;
     }
 
-    public static function loadExternalJSON($uri, $cacheTime = null, $data = null, $options = null)
+    /**
+     *
+     * @param string $uri
+     * @param int $cacheTime
+     * @param mixed $data
+     * @param mixed $options
+     * @return NULL|mixed
+     */
+    public static function loadExternalJSON(string $uri, int $cacheTime = null, $data = null, $options = null)
     {
         $cacheTime = (int) $cacheTime;
         self::_httpOptions($options);
@@ -84,7 +123,15 @@ class Storage
         return $storage->retrieveJSON($name, $storageTime);
     }
 
-    public static function loadExternalFile($uri, $cacheTime = null, $data = null, $options = null)
+    /**
+     *
+     * @param string $uri
+     * @param int $cacheTime
+     * @param mixed $data
+     * @param mixed $options
+     * @return NULL|string
+     */
+    public static function loadExternalFile(string $uri, int $cacheTime = null, $data = null, $options = null)
     {
         $cacheTime = (int) $cacheTime;
         self::_httpOptions($options);
@@ -110,7 +157,15 @@ class Storage
         return $ret;
     }
 
-    public static function loadExternalHeader($uri, $cacheTime = null, $data = null, $options = null)
+    /**
+     *
+     * @param string $uri
+     * @param int $cacheTime
+     * @param mixed $data
+     * @param mixed $options
+     * @return NULL|array
+     */
+    public static function loadExternalHeader(string $uri, int $cacheTime = null, $data = null, $options = null)
     {
         $cacheTime = (int) $cacheTime;
         self::_httpOptions($options);
@@ -131,7 +186,11 @@ class Storage
         return $ret;
     }
 
-    // randomly force-download an already existing resource
+    /**
+     * randomly force-download an already existing resource
+     *
+     * @return boolean
+     */
     protected static function _randomCheck()
     {
         return ! rand(0, 999);
@@ -182,6 +241,10 @@ class Storage
         return $req;
     }
 
+    /**
+     *
+     * @param mixed $options
+     */
     protected static function _httpOptions(&$options)
     {
         if (! is_array($options)) {
@@ -203,7 +266,7 @@ class Storage
         }
     }
 
-    protected static function _httpOAuth(array $options, $uri)
+    protected static function _httpOAuth(array $options, string $uri)
     {
         $params = [];
         $params['realm'] = $uri;
@@ -249,7 +312,13 @@ class Storage
         return sprintf('OAuth %s', implode(', ', $arr));
     }
 
-    protected static function _getStorageByURI($uri)
+    /**
+     *
+     * @param string $uri
+     * @throws Exception
+     * @return Storage
+     */
+    protected static function _getStorageByURI(string $uri)
     {
         $scheme = self::_getSchemeFromURI($uri);
         $host = self::_getHostFromURI($uri);
@@ -361,6 +430,10 @@ class Storage
         $this->touchList = [];
     }
 
+    /**
+     *
+     * @return null|Table
+     */
     protected function getDBMSTable()
     {
         return Manager::getTable($this->dbName, $this->tableName);
@@ -384,43 +457,53 @@ class Storage
             'modify-time',
             'access-time'
         ];
-        $options = [            // 'engine' => 'MyISAM', //http://www.sitepoint.com/mysql-mistakes-php-developers/
-        ];
+        $options = [ // 'engine' => 'MyISAM', //http://www.sitepoint.com/mysql-mistakes-php-developers/
+];
         $this->dbmsTable->createTable($sqlCols, $sqlKeys, $options);
     }
 
-    public function exists($name, $modifyTime)
+    /**
+     *
+     * @param string $name
+     * @param int $modifyTime
+     * @return boolean
+     */
+    public function exists(string $name, int $modifyTime)
     {
         $sql = sprintf('`id` = "%s" AND `modify-time` >= %d', $this->dbmsTable->escape(self::_hash($name)), $modifyTime);
         $ret = (bool) count($this->dbmsTable->select('id', $sql));
-        if ($this->logFile) {
-            $this->_createLog('exists', $name, $ret);
-        }
+        
+        $this->_createLog('exists', $name, $ret);
+        
         return $ret;
     }
 
-    public function retrieve($name, $modifyTime)
+    /**
+     *
+     * @param string $name
+     * @param int $modifyTime
+     * @return NULL|mixed
+     */
+    public function retrieve(string $name, int $modifyTime)
     {
         $ret = null;
         $sql = sprintf('`id` = "%s" AND `modify-time` >= %d', $this->dbmsTable->escape(self::_hash($name)), $modifyTime);
         if ($res = $this->dbmsTable->select('payload', $sql)) {
             $ret = current($res);
         }
-        /*
-         * if ($res = $this->dbmsTable->select(['payload', 'id'], $sql)) {
-         * $res = current($res);
-         * $ret = $res['payload'];
-         * $this->touch($res['id']);
-         * }
-         * //
-         */
-        if ($this->logFile) {
-            $this->_createLog('retrieve', $name, $ret);
-        }
+        $this->_createLog('retrieve', $name, $ret);
+        
         return $ret;
     }
 
-    public function retrieveXML($name, $modifyTime, DOMDocument $targetDoc = null)
+    /**
+     *
+     * @param string $name
+     * @param int $modifyTime
+     * @param DOMDocument $targetDoc
+     * @return NULL|DOMDocumentFragment
+     */
+    public function retrieveXML(string $name, int $modifyTime, DOMDocument $targetDoc = null)
     {
         $ret = null;
         if ($data = $this->retrieve($name, $modifyTime)) {
@@ -430,7 +513,13 @@ class Storage
         return $ret;
     }
 
-    public function retrieveDocument($name, $modifyTime)
+    /**
+     *
+     * @param string $name
+     * @param int $modifyTime
+     * @return NULL|DOMDocument
+     */
+    public function retrieveDocument(string $name, int $modifyTime)
     {
         $retDoc = null;
         $data = $this->retrieve($name, $modifyTime);
@@ -439,9 +528,9 @@ class Storage
             @$retDoc->loadXML($data, LIBXML_PARSEHUGE);
             if (! $retDoc->documentElement) {
                 $retDoc = null;
-                if ($this->logFile) {
-                    $this->_createLog('retrieveDocument', $name, false);
-                }
+                
+                $this->_createLog('retrieveDocument', $name, false);
+                
                 $this->delete($name);
                 // echo sprintf('"%s" is not a valid Document!', $name) . PHP_EOL;
                 // $retDoc->loadXML($data);
@@ -451,7 +540,14 @@ class Storage
         return $retDoc;
     }
 
-    public function retrieveJSON($name, $modifyTime)
+    /**
+     *
+     * @param string $name
+     * @param int $modifyTime
+     * @throws Exception
+     * @return mixed
+     */
+    public function retrieveJSON(string $name, int $modifyTime)
     {
         $retObject = null;
         $data = $this->retrieve($name, $modifyTime);
@@ -464,23 +560,27 @@ class Storage
         return $retObject;
     }
 
-    public function delete($name)
+    /**
+     *
+     * @param string $name
+     * @return boolean
+     */
+    public function delete(string $name)
     {
         $ret = $this->dbmsTable->delete(self::_hash($name));
-        /*
-         * if ($idList = $this->dbmsTable->select('id', sprintf('name = "%s"', $this->dbmsTable->escape(self::_hash($name))))) {
-         * $this->dbmsTable->delete($idList);
-         * $ret = true;
-         * }
-         * //
-         */
-        if ($this->logFile) {
-            $this->_createLog('delete', $name, $ret);
-        }
+        $this->_createLog('delete', $name, $ret);
+        
         return $ret;
     }
 
-    public function store($name, $payload, $modifyTime)
+    /**
+     *
+     * @param string $name
+     * @param string $payload
+     * @param int $modifyTime
+     * @return boolean
+     */
+    public function store(string $name, string $payload, int $modifyTime)
     {
         $ret = null;
         
@@ -498,55 +598,49 @@ class Storage
         } catch (Exception $e) {
             $ret = false;
         }
-        /*
-         * $arr = [];
-         * $arr['payload'] = (string) $payload;
-         * $arr['modify-time'] = (int) $modifyTime;
-         * $arr['access-time'] = $this->now;
-         * if ($idList = $this->dbmsTable->select('id', sprintf('name = "%s"', $this->dbmsTable->escape(self::_hash($name))))) {
-         * $id = array_shift($idList);
-         * if (count($idList)) {
-         * $this->dbmsTable->delete($idList);
-         * }
-         * try {
-         * $ret = (bool) $this->dbmsTable->update($arr, $id);
-         * } catch(Exception $e) {
-         * $ret = false;
-         * }
-         * } else {
-         * $arr['name'] = self::_hash($name);
-         * $arr['create-time'] = $this->now;
-         * try {
-         * $ret = (bool) $this->dbmsTable->insert($arr);
-         * } catch(Exception $e) {
-         * $ret = false;
-         * }
-         * }
-         * //
-         */
-        if ($this->logFile) {
-            $this->_createLog('store', $name, $ret);
-        }
+        $this->_createLog('store', $name, $ret);
+        
         return $ret;
     }
 
-    public function storeXML($name, DOMNode $dataNode, $modifyTime)
+    /**
+     *
+     * @param string $name
+     * @param DOMNode $dataNode
+     * @param int $modifyTime
+     * @return boolean
+     */
+    public function storeXML(string $name, DOMNode $dataNode, int $modifyTime)
     {
         $dom = self::_DOMHelper();
         return $this->store($name, $dom->stringify($dataNode), $modifyTime);
     }
 
-    public function storeDocument($name, DOMDocument $dataDoc, $modifyTime)
+    /**
+     *
+     * @param string $name
+     * @param DOMDocument $dataDoc
+     * @param int $modifyTime
+     * @return boolean
+     */
+    public function storeDocument(string $name, DOMDocument $dataDoc, int $modifyTime)
     {
         return $dataDoc->documentElement ? $this->store($name, $dataDoc->saveXML(), $modifyTime) : false;
     }
 
-    public function storeJSON($name, $dataObject, $modifyTime)
+    /**
+     *
+     * @param string $name
+     * @param mixed $dataObject
+     * @param int $modifyTime
+     * @return boolean
+     */
+    public function storeJSON(string $name, $dataObject, int $modifyTime)
     {
         return $this->store($name, json_encode($dataObject), $modifyTime);
     }
 
-    protected function touch($id)
+    protected function touch(int $id)
     {
         if ($id = (int) $id) {
             $this->touchList[$id] = $id;
