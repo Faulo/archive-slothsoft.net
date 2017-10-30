@@ -147,36 +147,24 @@
 		
 		<update
 			name="MagicAssistant"
+			active="0"
 			dest-path = "C:\NetzwerkDaten\Downloads\cron\MagicAssistant.zip"
 			source-uri = "http://sourceforge.net/projects/mtgbrowser/files/Magic_Assistant/"
 			source-xpath-0 = ".//table[@id='files_list']/tbody/tr/th/a/@href"
 			source-xpath-1 = "concat(.//a[contains(@href, 'download')][contains(@href, '64.zip')]/@href, '?r=&amp;ts=1&amp;use_mirror=netcologne')"
 			source-xpath-2 = ".//a[@class='direct-download']/@href"
 			success-cmd = "7z e %s com.reflexit.magiccards.db*.jar -r -y -oD:\backups\MagicAssistant"
-		>
-		<!--<php><![CDATA[
-$sourcePath = 'D:\\backups\\MagicAssistant';
-$destPath = SERVER_ROOT . 'mod\\mtg\\res\\db';
-
-$command = '7z e %s *.txt -r -y -o%s';
-
-$fileList = \FileSystem::scanDir($sourcePath, \FileSystem::SCANDIR_REALPATH);
-
-if ($fileList) {
-	$file = array_pop($fileList);
-	$cmd = sprintf($command, $file, $destPath);
-	exec($cmd);
-}
-			]]></php>-->
-		</update>
+			/>
 		<update
 			name="PCSX2"
 			dest-path = "C:\NetzwerkDaten\Downloads\cron\pcsx2.7z"
-			source-uri = "http://buildbot.orphis.net/pcsx2/index.php"
-			source-xpath=".//html:a[. = 'Download'][1]/@href"
+			source-uri = "https://buildbot.orphis.net/pcsx2/index.php"
+			source-xpath=".//*[. = 'Download']/@href"
 			success-cmd = "7z x %s -y -oD:\backups\PCSX2"
 			>
 			<php><![CDATA[
+use Slothsoft\CMS\FileSystem;
+
 $sourcePath = 'D:\\backups\\PCSX2';
 $destPath = 'C:\\NetzwerkDaten\\Dropbox\\Symlinks\\Pcsx2';
 $copyDirList = array();
@@ -186,7 +174,7 @@ $copyDirList[] = '\\plugins\\';
 
 $copyFileList = [];
 
-$dirList = \FileSystem::scanDir($sourcePath, \FileSystem::SCANDIR_REALPATH | \FileSystem::SCANDIR_EXCLUDE_FILES);
+$dirList = FileSystem::scanDir($sourcePath, FileSystem::SCANDIR_REALPATH | FileSystem::SCANDIR_EXCLUDE_FILES);
 rsort($dirList);
 foreach ($dirList as $dir) {
 	if (preg_match('/-(\d+)-/', $dir, $match)) {
@@ -195,7 +183,7 @@ foreach ($dirList as $dir) {
 		foreach ($copyDirList as $copyDir) {
 			$sourceDir = $sourcePath . $copyDir;
 			$destDir = $destPath . $copyDir;
-			$fileList = \FileSystem::scanDir($sourceDir, \FileSystem::SCANDIR_EXCLUDE_DIRS);
+			$fileList = FileSystem::scanDir($sourceDir, FileSystem::SCANDIR_EXCLUDE_DIRS);
 			foreach ($fileList as $file) {
 				if (!preg_match('/-r\d+/', $file)) {
 					$sourceFile = $sourceDir . $file;
@@ -216,15 +204,17 @@ foreach ($copyFileList as $sourceFile => $destFile) {
 		<update
 			name="Minecraft MapCrafter"
 			dest-path = "C:\NetzwerkDaten\Downloads\cron\mapcrafter.zip"
-			source-uri = "http://mapcrafter.org/downloads"
-			source-xpath = "(.//a[contains(@href, 'win64') and contains(@href, '.zip')]/@href)[1]"
+			source-uri = "https://mapcrafter.org/downloads"
+			source-xpath = ".//*/@href[contains(., 'win64') and contains(., '.zip')]"
 			success-cmd = "7z x %s -y -oD:\backups\MapCrafter"
 			>
 			<php><![CDATA[
+use Slothsoft\CMS\FileSystem;
+
 $sourcePath = 'D:\\backups\\MapCrafter';
 $destPath = 'C:\\Minecraft\\Tools\\MapCrafter';
 
-$dirList = \FileSystem::scanDir($sourcePath, \FileSystem::SCANDIR_REALPATH | \FileSystem::SCANDIR_EXCLUDE_FILES);
+$dirList = FileSystem::scanDir($sourcePath, FileSystem::SCANDIR_REALPATH | FileSystem::SCANDIR_EXCLUDE_FILES);
 rsort($dirList);
 if ($dirList) {
 	$dir = reset($dirList);
@@ -283,7 +273,7 @@ if ($dirList) {
 			name="youtube-dl"
 			dest-path = "C:\NetzwerkDaten\Downloads\cron\youtube-dl.exe"
 			source-uri = "https://github.com/rg3/youtube-dl/releases/latest"
-			source-xpath = ".//@href[contains(., '.exe')]"
+			source-xpath = ".//*/@href[contains(., '.exe')]"
 			success-cmd="copy %s C:\NetzwerkDaten\Dropbox\Tools\youtube-dl /y"
 		/><!--https://rg3.github.io/youtube-dl/download.html-->
 		

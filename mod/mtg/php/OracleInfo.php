@@ -38,7 +38,7 @@ class OracleInfo
 
     const URL_LEGALITY_COMMANDER = 'http://magic.wizards.com/en/gameinfo/gameplay/formats/commander';
 
-    const URL_LEGALITY_VINTAGE = 'http://mtgsalvation.gamepedia.com/Set';
+    const URL_LEGALITY_VINTAGE = 'https://mtg.gamepedia.com/Set';
 
     const URL_GALLERY_HOST = 'http://magic.wizards.com';
 
@@ -448,7 +448,9 @@ class OracleInfo
                         }
                     }
                 }
-            }
+            } else {
+				throw new Exception(sprintf('no XML document at %s', self::URL_LEGALITY_VINTAGE));
+			}
             self::$_setList = array_reverse($setList);
         }
     }

@@ -701,17 +701,22 @@ class DownloadWork extends Stackable
         while (count($sourceXPathList)) {
             $sourceXPath = array_shift($sourceXPathList);
             $this->log(sprintf('Checking website "%s"...', $sourceURI));
-            if ($uri = $this->downloadURI($sourceURI, $sourceXPath)) {
-                if (count($sourceXPathList)) {
-                    $sourceURI = $uri;
-                } else {
-                    $options['source-uri'] = $uri;
-                    $ret[] = $options;
-                }
-            } else {
-                $this->log(sprintf('Could not find URL at %s (%s) ???', $sourceURI, $sourceXPath), true);
-                break;
-            }
+			if ($xpath = $this->downloadXPath($sourceURI)) {
+				if ($uri = $this->downloadURI($sourceURI, $sourceXPath, $xpath)) {
+					if (count($sourceXPathList)) {
+						$sourceURI = $uri;
+					} else {
+						$options['source-uri'] = $uri;
+						$ret[] = $options;
+					}
+				} else {
+					$this->log(sprintf('Could not find URL at %s (%s) ???', $sourceURI, $sourceXPath), true);
+					break;
+				}
+			} else {
+				$this->log(sprintf('Could not find XML document at %s ???', $sourceURI), true);
+				break;
+			}
         }
         // $this->log(sprintf('Prepared to download %d files for %s!', count($ret), $options['name']));
         return $ret;
@@ -893,19 +898,25 @@ class DownloadWork extends Stackable
         return $ret;
     }
 
-    protected function downloadNode($sourceURI, $query)
+    protected function downloadNode($sourceURI, $query, DOMXPath $xpath = null)
     {
         $ret = null;
-        if ($xpath = $this->downloadXPath($sourceURI)) {
+		if (!$xpath) {
+			$xpath = $this->downloadXPath($sourceURI);
+		}
+        if ($xpath) {
             $ret = $xpath->evaluate($query);
         }
         return $ret;
     }
 
-    protected function downloadNodeList($sourceURI, $query)
+    protected function downloadNodeList($sourceURI, $query, DOMXPath $xpath = null)
     {
         $ret = [];
-        if ($xpath = $this->downloadXPath($sourceURI)) {
+		if (!$xpath) {
+			$xpath = $this->downloadXPath($sourceURI);
+		}
+        if ($xpath) {
             $nodeList = $xpath->evaluate($query);
             foreach ($nodeList as $node) {
                 $ret[] = $node;
@@ -914,10 +925,13 @@ class DownloadWork extends Stackable
         return $ret;
     }
 
-    protected function downloadString($sourceURI, $query)
+    protected function downloadString($sourceURI, $query, DOMXPath $xpath = null)
     {
         $ret = null;
-        if ($xpath = $this->downloadXPath($sourceURI)) {
+		if (!$xpath) {
+			$xpath = $this->downloadXPath($sourceURI);
+		}
+        if ($xpath) {
             $ret = $xpath->evaluate(sprintf('string(%s)', $query));
         } else {
             // $this->log(sprintf('downloadString could not download: %s', $sourceURI), true);
@@ -925,10 +939,13 @@ class DownloadWork extends Stackable
         return $ret;
     }
 
-    protected function downloadStringList($sourceURI, $query)
+    protected function downloadStringList($sourceURI, $query, DOMXPath $xpath = null)
     {
         $ret = [];
-        if ($xpath = $this->downloadXPath($sourceURI)) {
+		if (!$xpath) {
+			$xpath = $this->downloadXPath($sourceURI);
+		}
+        if ($xpath) {
             $nodeList = $xpath->evaluate($query);
             if (is_object($nodeList)) {
                 foreach ($nodeList as $node) {
@@ -941,20 +958,20 @@ class DownloadWork extends Stackable
         return $ret;
     }
 
-    protected function downloadURI($sourceURI, $query)
+    protected function downloadURI($sourceURI, $query, DOMXPath $xpath = null)
     {
         $ret = null;
-        $uri = $this->downloadString($sourceURI, $query);
+        $uri = $this->downloadString($sourceURI, $query, $xpath);
         if (strlen($uri)) {
             $ret = $this->_fixURI($uri, $sourceURI);
         }
         return $ret;
     }
 
-    protected function downloadURIList($sourceURI, $query)
+    protected function downloadURIList($sourceURI, $query, DOMXPath $xpath = null)
     {
         $ret = [];
-        $uriList = $this->downloadStringList($sourceURI, $query);
+        $uriList = $this->downloadStringList($sourceURI, $query, $xpath);
         foreach ($uriList as $uri) {
             if (strlen($uri)) {
                 $ret[] = $this->_fixURI($uri, $sourceURI);

@@ -11,7 +11,7 @@ namespace Slothsoft\CMS;
 use Slothsoft\Core\Storage;
 use Slothsoft\Core\DOMHelper;
 use Slothsoft\PT\Repository;
-use Error;
+use Throwable;
 use Exception;
 use DOMImplementation;
 use DOMDocument;
@@ -1168,10 +1168,15 @@ class HTTPDocument
                 $dataRoot->setAttribute('path', $path);
                 try {
                     $dataRes = $this->includeFile($file, $dataDoc);
-                } catch(Exception $e) {
-                    $dataRes = null;
-                } catch(Error $e) {
-                    $dataRes = null;
+                } catch(Throwable $e) {
+                    $dataRes = $dataDoc->createElement('error');
+					$dataRes->setAttribute('type', get_class($e));
+					$dataRes->setAttribute('message', $e->getMessage());
+					$dataRes->setAttribute('code', $e->getCode());
+					$dataRes->setAttribute('file', $e->getFile());
+					$dataRes->setAttribute('line', $e->getLine());
+					$dataRes->setAttribute('trace', $e->getTraceAsString());
+					$dataRes->textContent = (string) $e;
                 }
                 while ($dataRes instanceof HTTPClosure) {
                     if ($dataRes->isThreaded() and PHP_SAPI === 'apache2handler') {
