@@ -633,7 +633,7 @@ class DownloadWork extends Stackable
                 $path = $options['dest-root'] . $title . DIRECTORY_SEPARATOR;
                 
                 if (strlen($title) and strlen($uri)) {
-                    $this->log(sprintf('Downloading hentai "%s" (%s)', $title, $uri));
+					$firstPage = true;
                     
                     $xpath = $options['downloader']->getXPath($uri);
                     foreach ($xpath->evaluate('//script') as $scriptNode) {
@@ -641,9 +641,6 @@ class DownloadWork extends Stackable
                             $chapters = $match[1];
                             $chapters = json_decode($chapters, true);
                             if ($chapters) {
-                                if (! is_dir($path)) {
-                                    mkdir($path, 0777, true);
-                                }
                                 foreach ($chapters as $chapter) {
                                     $image = $chapter['image'];
                                     $file = sprintf('%s%03d.%s', $path, $chapter['page'], pathinfo($chapter['image'], PATHINFO_EXTENSION));
@@ -652,12 +649,16 @@ class DownloadWork extends Stackable
                                         // nothing to do \o/
                                     } else {
                                         if ($data = $options['downloader']->getFile($image)) {
+											if ($firstPage) {
+												if (! is_dir($path)) {
+													mkdir($path, 0777, true);
+												}
+												$this->log(sprintf('Downloading hentai "%s" (%s)', $title, $uri));
+												$firstPage = false;
+											}
                                             file_put_contents($file, $data);
                                         }
                                     }
-                                }
-                                if (! FileSystem::scanDir($path)) {
-                                    unlink($path);
                                 }
                             }
                         }
@@ -665,19 +666,6 @@ class DownloadWork extends Stackable
                 }
             }
         }
-        /*
-         * if ($uri = $this->downloadURI($options['source-uri'], $options['source-xpath-download'])) {
-         * if ($file = HTTPFile::createFromURL($uri)) {
-         * FileSystem::extractArchive($file->getPath(), $options['dest-root'] . $options['dest-path']);
-         * $this->log(sprintf('Downloaded "%s"!', $options['chapter']));
-         * } else {
-         * $this->log(sprintf('Download Archive not found: %s!', $uri));
-         * }
-         * } else {
-         * $this->log(sprintf('Download URL not found: %s! (%s)', $options['source-uri'], $options['source-xpath-download']));
-         * }
-         * //
-         */
         return $ret;
     }
 
