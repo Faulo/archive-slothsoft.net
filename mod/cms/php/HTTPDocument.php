@@ -1168,6 +1168,16 @@ class HTTPDocument
                 $dataRoot->setAttribute('path', $path);
                 try {
                     $dataRes = $this->includeFile($file, $dataDoc);
+                    
+                    while ($dataRes instanceof HTTPClosure) {
+                        if ($dataRes->isThreaded() and PHP_SAPI === 'apache2handler') {
+                            // switch to CLI
+                            $cmd = sprintf('php %s %s', SERVER_ROOT . 'vhosts\\cmd\\getData.php', $path);
+                            $dataRes = new HTTPCommand($cmd);
+                        } else {
+                            $dataRes = $dataRes->run();
+                        }
+                    }
                 } catch(Throwable $e) {
                     $dataRes = $dataDoc->createElement('error');
 					$dataRes->setAttribute('type', get_class($e));
@@ -1177,15 +1187,6 @@ class HTTPDocument
 					$dataRes->setAttribute('line', $e->getLine());
 					$dataRes->setAttribute('trace', $e->getTraceAsString());
 					$dataRes->textContent = (string) $e;
-                }
-                while ($dataRes instanceof HTTPClosure) {
-                    if ($dataRes->isThreaded() and PHP_SAPI === 'apache2handler') {
-                        // switch to CLI
-                        $cmd = sprintf('php %s %s', SERVER_ROOT . 'vhosts\\cmd\\getData.php', $path);
-                        $dataRes = new HTTPCommand($cmd);
-                    } else {
-                        $dataRes = $dataRes->run();
-                    }
                 }
                 
                 switch (true) {

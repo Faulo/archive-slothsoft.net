@@ -1,32 +1,20 @@
 <?php
 namespace Slothsoft\CMS;
 
-use Slothsoft\Savegame\Editor;
-$mode = $this->httpRequest->getInputValue('SaveDefault', 'thalion');
-$mode = preg_replace('~[^\w]~', '', $mode);
-$name = $this->httpRequest->getInputValue('SaveName', null);
-$name = preg_replace('~[^\w]~', '', $name);
+use Slothsoft\Amber\SavegameController;
+$this->httpRequest->setInputValue('save', [
+    'editor' => [
+        'archives' => [
+            '1Map_texts.amb',
+            '2Map_texts.amb',
+            '3Map_texts.amb',
+        ]
+    ]
+]);
 
-$defaultDir = realpath(__DIR__ . '/../res/save/default');
-$tempDir = realpath(__DIR__ . '/../res/save/temp');
+$controller = new SavegameController(__DIR__);
+$editor = $controller->loadEditor($this->httpRequest, $this);
 
-$editorFile = $this->getResourcePath('/amber/AmbermoonAmberfiles2');
+$editorNode = $editor->asNode($dataDoc);
 
-$editorConfig = [];
-$editorConfig['defaultDir'] = $defaultDir;
-$editorConfig['tempDir'] = $tempDir;
-$editorConfig['mode'] = $mode;
-$editorConfig['id'] = $name;
-$editorConfig['ambtoolPath'] = 'mod\\amber\\cli\\ambtool.exe';
-$editorConfig['selectedArchives'] = [];
-$editorConfig['uploadedArchives'] = [];
-
-$editorConfig['selectedArchives']['1Map_texts.amb'] = true;
-$editorConfig['selectedArchives']['2Map_texts.amb'] = true;
-$editorConfig['selectedArchives']['3Map_texts.amb'] = true;
-
-$editor = new Editor($editorConfig);
-
-$editor->load($editorFile);
-
-return $editor->asNode($dataDoc);
+return $editorNode;

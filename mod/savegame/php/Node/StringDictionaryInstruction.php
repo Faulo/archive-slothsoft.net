@@ -43,9 +43,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                 $countSize = 2;
                 for ($countOffset = 0; $countOffset < 10; $countOffset += $countSize) {
                     $count = $this->ownerFile->extractContent($this->valueOffset + $countOffset, $countSize);
-                    $count = $this->decode($count, self::TYPE_INTEGER, [
-                        'size' => $countSize
-                    ]);
+                    $count = $this->converter->decodeInteger($count, $countSize);
                     if ($count > 0) {
                         $this->strucData['string-count'] = $count;
                         break;
@@ -107,9 +105,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                 $textOffset = $this->valueOffset + $countSize;
                 for ($i = 0; $i < $this->strucData['string-count']; $i ++) {
                     $textLength = $this->ownerFile->extractContent($textOffset, $textLengthSize);
-                    $textLength = $this->decode($textLength, self::TYPE_INTEGER, [
-                        'size' => $textLengthSize
-                    ]);
+                    $textLength = $this->converter->decodeInteger($textLength, $textLengthSize);
                     
                     $textOffset += $textLengthSize;
                     
@@ -131,9 +127,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                 $textLengthList = [];
                 for ($i = 0; $i < $this->strucData['string-count']; $i ++) {
                     $textLength = $this->ownerFile->extractContent($textOffset, $textLengthSize);
-                    $textLength = $this->decode($textLength, self::TYPE_INTEGER, [
-                        'size' => $textLengthSize
-                    ]);
+                    $textLength = $this->converter->decodeInteger($textLength, $textLengthSize);
                     
                     $textLengthList[] = $textLength;
                     

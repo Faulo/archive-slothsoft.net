@@ -64,7 +64,7 @@
 		<call name="itemlist-content" as="content" />
 	</fragment>
 	<fragment name="itemlist-content">
-		<template name="itemlist" />
+		<template name="editor.data-list" />
 		<struc name="default" />
 		<res name="AmbermoonItems" as="list" load="xml" />
 	</fragment>
@@ -74,7 +74,7 @@
 		<call name="portraitlist-content" as="content" />
 	</fragment>
 	<fragment name="portraitlist-content">
-		<template name="itemlist" />
+		<template name="editor.data-list" />
 		<struc name="default" />
 		<res name="AmbermoonPortraits" as="list" load="xml" />
 	</fragment>
@@ -91,25 +91,36 @@
 		<data name="items" />
 		<res name="item-map" load="status base64" />
 	</fragment>
-
-	<fragment name="extract-items">
-		<template name="extract-items" />
-		<data name="extract-items" />
+	
+	
+	<fragment name="extract-all">
+		<param name="standalone" scope="global" />
+		<data name="extract-all" />
+		<template name="editor.extract" />
 	</fragment>
 
-	<fragment name="extract-portraits">
-		<template name="extract-portraits" />
-		<data name="extract-portraits" />
+	<fragment name="extract-items">
+		<param name="standalone" scope="global" />
+		<data name="extract-items" />
+		<template name="editor.extract" />
 	</fragment>
 
 	<fragment name="extract-maps">
-		<template name="extract-maps" />
+		<param name="standalone" scope="global" />
 		<data name="extract-maps" />
+		<template name="editor.extract" />
 	</fragment>
 
 	<fragment name="extract-monsters">
-		<template name="extract-monsters" />
+		<param name="standalone" scope="global" />
 		<data name="extract-monsters" />
+		<template name="editor.extract" />
+	</fragment>
+
+	<fragment name="extract-classes">
+		<param name="standalone" scope="global" />
+		<data name="extract-classes" />
+		<template name="editor.extract" />
 	</fragment>
 
 	<struc name="default">

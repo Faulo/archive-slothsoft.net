@@ -16,6 +16,7 @@ class Script extends AbstractElement
     public function fromBinary($binary)
     {
         $this->init();
+        /*
         $offsetWordSize = 2;
         $eventWordSize = 12;
         $pointer = 0;
@@ -47,6 +48,8 @@ class Script extends AbstractElement
         }
         
         $this->setRawValue($value);
+        
+        //*/
     }
 
     public function fromCode($code)
