@@ -23,8 +23,8 @@
 	<xsl:template match="save:savegame.editor">
 		<xsl:variable name="monsters" select="save:archive[@file-name='Monster_char_data.amb']/*"/>
 		<xsl:if test="count($monsters)">
+			<xsl:variable name="categories" select="key('dictionary-option', 'monster-images')"/>
 			<monster-list>
-				<xsl:variable name="categories" select="key('dictionary-option', 'monster-images')"/>
 				<xsl:for-each select="$categories">
 					<xsl:variable name="category" select="."/>
 					<monster-category id="{@key}" name="{@val}">
@@ -42,8 +42,8 @@
 		
 		
 		<xsl:variable name="classes" select="save:archive//*[@name='classes']/*/*"/>
-		<xsl:variable name="expList" select="save:archive//*[@name='class-experience']/*"/>
 		<xsl:if test="count($classes)">
+			<xsl:variable name="expList" select="save:archive//*[@name='class-experience']/*"/>
 			<class-list>
 				<xsl:for-each select="$classes">
 					<xsl:variable name="id" select="position()"/>
@@ -58,8 +58,8 @@
 		<xsl:variable name="items" select="save:archive[@file-name='AM2_CPU'] | save:archive[@file-name='AM2_BLIT']//*[@name = 'items']/*/*"/>
 		
 		<xsl:if test="count($items)">
+			<xsl:variable name="categories" select="set:distinct($items//*[@name = 'type']/@value)"/>
 			<item-list>
-				<xsl:variable name="categories" select="set:distinct($items//*[@name = 'type']/@value)"/>
 				<xsl:for-each select="$categories">
 					<xsl:variable name="category" select="."/>
 					<item-category id="{.}" name="{key('dictionary-option', 'item-types')[@key = $category]/@val}">
@@ -75,14 +75,15 @@
 			</item-list>
 		</xsl:if>
 		
-		<xsl:variable name="maps" select="save:archive[@file-name[. = '1Map_texts.amb' or . = '2Map_texts.amb' or . = '3Map_texts.amb']]/*"/>
+		<xsl:variable name="maps" select="save:archive[@file-name[. = '1Map_data.amb' or . = '2Map_data.amb' or . = '3Map_data.amb']]/*"/>
 		<xsl:if test="count($maps)">
+			<xsl:variable name="texts" select="save:archive[@file-name[. = '1Map_texts.amb' or . = '2Map_texts.amb' or . = '3Map_texts.amb']]/*"/>
 			<map-list>
 				<xsl:for-each select="$maps">
-					<xsl:variable name="id" select="number(@file-name)"/>
-					
-					
+					<xsl:sort select="@file-name"/>
+					<xsl:variable name="id" select="@file-name"/>
 					<xsl:call-template name="extract-map">
+						<xsl:with-param name="root" select=". | $texts[@file-name = current()/@file-name]"/>
 						<xsl:with-param name="id" select="$id"/>
 					</xsl:call-template>
 				</xsl:for-each>
@@ -268,6 +269,9 @@
 		
 		<map id="{$id}">
 			<xsl:choose>
+				<xsl:when test="$id &gt; 512">
+					<xsl:attribute name="name"><xsl:value-of select="'MORAG'"/></xsl:attribute>
+				</xsl:when>
 				<xsl:when test="$id &gt; 256">
 					<xsl:apply-templates select="($root//save:string)[1]" mode="attr">
 						<xsl:with-param name="name" select="'name'"/>
@@ -277,6 +281,18 @@
 					<xsl:attribute name="name"><xsl:value-of select="'LYRAMIONISCHE INSELN'"/></xsl:attribute>
 				</xsl:otherwise>
 			</xsl:choose>
+			<xsl:apply-templates select="$root//save:select" mode="attr"/>
+			<xsl:apply-templates select="$root//save:integer" mode="attr"/>
+			
+			<!--
+			<xsl:for-each select="$root//*[@name = 'label']/*">
+				<label>
+					<xsl:apply-templates select="." mode="attr">
+						<xsl:with-param name="name" select="'name'"/>
+					</xsl:apply-templates>
+				</label>
+			</xsl:for-each>
+			-->
 		</map>
 	</xsl:template>	
 	

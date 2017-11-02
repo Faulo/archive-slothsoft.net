@@ -71,12 +71,43 @@
 		<integer name="event-payload" position="1" size="1"/>
 		<integer name="event-payload" position="2" size="1"/>
 		<select name="event-payload" position="3" size="1" dictionary-ref="map-directions"/>
+		<select name="event-payload" position="5" size="1" dictionary-ref="event-teleport-types"/>
 		<use-global ref="event-bit-goto"/>
 		
 		<integer name="event-null" position="4"/>
-		<integer name="event-null" position="5"/>
 		<integer name="event-null" position="8"/>
 		<integer name="event-null" position="9"/>
+	</global>
+	<global global-id="event-02">
+		<!-- door -->
+		<use-global ref="event-bit-type"/>
+		
+		<integer name="event-payload" position="1" size="1"/>
+		<integer name="event-payload" position="2" size="1"/>
+		
+		<select position="6" size="2" name="event-payload" dictionary-ref="items"/>
+		
+		<use-global ref="event-bit-goto"/>
+		
+		<integer name="event-FFFF" position="3"/>
+		<integer name="event-FFFF" position="4"/>
+		<integer name="event-FFFF" position="5"/>
+		<integer name="event-null" position="8"/>
+		<integer name="event-null" position="9"/>
+	</global>
+	<global global-id="event-03">
+		<!-- chest -->
+		<use-global ref="event-bit-type"/>
+		<use-global ref="event-bit-subtype"/>
+		<integer name="event-payload" position="2"/>
+		<integer name="event-payload" position="3"/>
+		<integer name="event-payload" position="4"/>
+		<integer name="event-payload" position="5"/>
+		<integer name="event-payload" position="6"/>
+		<integer name="event-payload" position="7"/>
+		<integer name="event-payload" position="8"/>
+		<integer name="event-payload" position="9"/>
+		<use-global ref="event-bit-goto"/>
 	</global>
 	<global global-id="event-09">
 		<!-- award -->
@@ -120,15 +151,30 @@
 		<integer name="event-null" position="6"/>
 		<integer name="event-null" position="7"/>
 	</global>
+	<global global-id="event-11">
+		<!-- battle -->
+		<use-global ref="event-bit-type"/>
+		<integer position="6" name="event-payload" size="2"/>
+		<use-global ref="event-bit-goto"/>
+		
+		<integer name="event-null" position="1"/>
+		<integer name="event-null" position="2"/>
+		<integer name="event-null" position="3"/>
+		<integer name="event-null" position="4"/>
+		<integer name="event-null" position="5"/>
+		<integer name="event-null" position="8"/>
+		<integer name="event-null" position="9"/>
+	</global>
 	<global global-id="event-13">
 		<!-- if -->
 		<use-global ref="event-bit-type"/>
 		<use-global ref="event-bit-if"/>
-		<integer position="6" name="event-payload" size="2"/>
 		<integer name="event-payload" position="2"/>
 		<integer name="event-payload" position="3"/>
 		<integer name="event-payload" position="4"/>
 		<integer name="event-payload" position="5"/>
+		<integer name="event-payload" position="6"/>
+		<integer name="event-payload" position="7"/>
 		<integer position="8" name="event-goto" size="2"/>
 		<use-global ref="event-bit-goto"/>
 	</global>
@@ -176,7 +222,7 @@
 		<integer name="event-null" position="5"/>
 	</global>
 	<global global-id="event-13.06">
-		<!-- inventory -->
+		<!-- item owned -->
 		<use-global ref="event-bit-type"/>
 		<use-global ref="event-bit-if"/>
 		
@@ -190,15 +236,45 @@
 		<integer name="event-null" position="4"/>
 		<integer name="event-null" position="5"/>
 	</global>
+	<global global-id="event-13.07">
+		<!-- item used -->
+		<use-global ref="event-bit-type"/>
+		<use-global ref="event-bit-if"/>
+		
+		<select position="6" size="2" name="event-payload" dictionary-ref="items"/>
+		<integer position="2" size="1" name="event-payload"/>
+		
+		<integer position="8" name="event-goto" size="2"/>
+		<use-global ref="event-bit-goto"/>
+		
+		<integer position="3" size="1" name="event-null" />
+		<integer name="event-null" position="4"/>
+		<integer name="event-null" position="5"/>
+	</global>
+	<global global-id="event-13.09">
+		<!-- break loop -->
+		<use-global ref="event-bit-type"/>
+		<use-global ref="event-bit-if"/>
+		
+		<integer position="2" size="2" name="event-payload"/>
+		<integer position="6" size="2" name="event-payload"/>
+		
+		<integer position="8" name="event-goto" size="2"/>
+		<use-global ref="event-bit-goto"/>
+		
+		<integer name="event-payload" position="4"/>
+		<integer name="event-payload" position="5"/>
+	</global>
 	<global global-id="event-14">
 		<!-- set -->
 		<use-global ref="event-bit-type"/>
 		<use-global ref="event-bit-set"/>
-		<integer position="6" name="event-payload" size="2"/>
 		<integer name="event-payload" position="2"/>
 		<integer name="event-payload" position="3"/>
 		<integer name="event-payload" position="4"/>
 		<integer name="event-payload" position="5"/>
+		<integer name="event-payload" position="6"/>
+		<integer name="event-payload" position="7"/>
 		<integer name="event-payload" position="8"/>
 		<integer name="event-payload" position="9"/>
 		<use-global ref="event-bit-goto"/>
@@ -843,19 +919,64 @@
 			<string-dictionary type="size-first" encoding="CP850" position="0" name="dialog"/>
 		</for-each-file>
 	</archive>
+	<global global-id="map-texts">
+		<string-dictionary type="size-first" encoding="CP850" position="0" name="label"/>
+	</global>
 	<archive file-name="1Map_texts.amb" type="AMBR">
 		<for-each-file>
-			<string-dictionary type="size-first" encoding="CP850" position="0" name="description"/>
+			<use-global ref="map-texts"/>
 		</for-each-file>
 	</archive>
 	<archive file-name="2Map_texts.amb" type="AMBR">
 		<for-each-file>
-			<string-dictionary type="size-first" encoding="CP850" position="0" name="description"/>
+			<use-global ref="map-texts"/>
 		</for-each-file>
 	</archive>
 	<archive file-name="3Map_texts.amb" type="AMBR">
 		<for-each-file>
-			<string-dictionary type="size-first" encoding="CP850" position="0" name="description"/>
+			<use-global ref="map-texts"/>
+		</for-each-file>
+	</archive>
+	<dictionary dictionary-id="map-types">
+		<option/>
+		<option val="3D"/>
+		<option val="2D"/>
+	</dictionary>
+	<global global-id="map-data">
+		<group name="unknown">
+			<integer position="0"/>
+			<integer position="1"/>
+			<integer position="3"/>
+			<integer position="6"/>
+			<integer position="7"/>
+			<integer position="8"/>
+		</group>
+		<select position="2" name="map-type" dictionary-ref="map-types"/>
+		<integer position="4" name="width"/>
+		<integer position="5" name="height"/>
+		<!--
+		<repeat-group position="">
+			<binary size="4"/>
+		</repeat-group>
+		<event-script position="auto">
+		-->
+	</global>
+	<archive file-name="1Map_data.amb" type="AMBR">
+		<for-each-file>
+			<use-global ref="map-data"/>
+			<group name="events">
+				<event-dictionary position="0x285C" />
+			</group>
+		</for-each-file>
+	</archive>
+	<archive file-name="2Map_data.amb" type="AMBR">
+		<for-each-file>
+			<use-global ref="map-data"/>
+		</for-each-file>
+	</archive>
+	<archive file-name="3Map_data.amb" type="AMBR">
+		<for-each-file>
+			<use-global ref="map-data"/>
 		</for-each-file>
 	</archive>
 	<global global-id="place-inn">
@@ -1386,11 +1507,16 @@
 	<dictionary dictionary-id="event-types">
 		<option key="0" val="debug"/>
 		<option key="1" val="teleport"/>
+		<option key="2" val="door"/>
+		<option key="3" val="chest"/>
+		<option key="4" val="popup text"/>
+		<option key="6" val="take damage"/>
 		<option key="9" val="award"/>
 		<option key="10" val="increase"/>
-		<option key="16" val="start"/>
+		<option key="11" val="battle"/>
 		<option key="13" val="if"/>
 		<option key="14" val="set"/>
+		<option key="16" val="start"/>
 		<option key="18" val="create"/>
 		<option key="17" val="print text"/>
 		<option key="20" val="play music"/>
@@ -1430,7 +1556,9 @@
 		<option key="0" val="global variable"/>
 		<option key="4" val="map variable"/>
 		<option key="5" val="partymember"/>
-		<option key="6" val="item"/>
+		<option key="6" val="item owned"/>
+		<option key="7" val="item used"/>
+		<option key="9" val="break loop"/>
 	</dictionary>
 	<dictionary dictionary-id="event-spawn-types">
 		<option key="1" val="horse"/>
@@ -1444,6 +1572,11 @@
 		<option key="9" val="lizard"/>
 		<option key="10" val="sandship"/>
 	</dictionary>
+	<dictionary dictionary-id="event-teleport-types">
+		<option key="0" val="default"/>
+		<option key="2" val="windtor"/>
+	</dictionary>
+	
 	<dictionary dictionary-id="boolean">
 		<option key="0" val="false"/>
 		<option key="1" val="true"/>
@@ -2126,6 +2259,7 @@
 	<option val="east"/>
 	<option val="south"/>
 	<option val="west"/>
+	<option val="no change"/>
 </dictionary>
 	
 <dictionary dictionary-id="map-ids">

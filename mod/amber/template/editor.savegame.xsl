@@ -235,6 +235,30 @@ window.addEventListener(
 		</xsl:call-template>
 	</xsl:template>
 	
+	<xsl:template match="save:archive[@file-name[. = '1Map_data.amb' or . = '2Map_data.amb' or . = '3Map_data.amb']]" mode="form-content">
+		<xsl:call-template name="savegame.tabs">
+			<xsl:with-param name="label" select="'Aktive Karte:'"/>
+			<xsl:with-param name="options" select="key('dictionary-option', 'map-ids')[number(@key) = current()/save:file/@file-name]/@val"/>
+			<xsl:with-param name="list">
+				<xsl:for-each select="save:file">
+					<li>
+						<xsl:call-template name="savegame.flex">
+							<xsl:with-param name="items">
+								<xsl:call-template name="savegame.table">
+									<xsl:with-param name="label" select="'data'"/>
+									<xsl:with-param name="items">
+										<xsl:apply-templates select="save:integer | save:select" mode="item"/>
+									</xsl:with-param>
+								</xsl:call-template>
+								<xsl:call-template name="savegame.amber.events"/>
+							</xsl:with-param>
+						</xsl:call-template>
+					</li>
+				</xsl:for-each>
+			</xsl:with-param>
+		</xsl:call-template>
+	</xsl:template>
+	
 	<xsl:template match="save:archive[@file-name='1Map_texts.amb']" mode="form-content">
 		<xsl:call-template name="savegame.tabs">
 			<xsl:with-param name="label" select="'Aktive Karte:'"/>
@@ -538,6 +562,7 @@ window.addEventListener(
 								<td>payload</td>
 								<td>goto #</td>
 								<td>null</td>
+								<td>FFFF</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -565,6 +590,9 @@ window.addEventListener(
 									</td>
 									<td>
 										<xsl:apply-templates select="*[@name='event-null'][@value != '0']" mode="form-content"/>
+									</td>
+									<td>
+										<xsl:apply-templates select="*[@name='event-FFFF'][@value != '255']" mode="form-content"/>
 									</td>
 								</tr>
 							</xsl:for-each>
