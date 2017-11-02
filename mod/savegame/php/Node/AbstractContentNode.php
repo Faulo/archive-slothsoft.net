@@ -157,4 +157,11 @@ abstract class AbstractContentNode extends AbstractNode
      * }
      * //
      */
+    
+    /**
+     * @return string
+     */
+    public function getName() {
+        return $this->strucData['name'];
+    }
 }

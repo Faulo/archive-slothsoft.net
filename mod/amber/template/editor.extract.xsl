@@ -281,8 +281,10 @@
 					<xsl:attribute name="name"><xsl:value-of select="'LYRAMIONISCHE INSELN'"/></xsl:attribute>
 				</xsl:otherwise>
 			</xsl:choose>
-			<xsl:apply-templates select="$root//save:select" mode="attr"/>
-			<xsl:apply-templates select="$root//save:integer" mode="attr"/>
+			
+			<xsl:apply-templates select="$root//*[@name='data']/*" mode="attr"/>
+			
+			<xsl:apply-templates select="$root//*[@name='unknown']" mode="unknown"/>
 			
 			<!--
 			<xsl:for-each select="$root//*[@name = 'label']/*">
@@ -302,4 +304,16 @@
 		<xsl:param name="name" select="@name"/>
 		<xsl:param name="value" select="@value"/>		<xsl:attribute name="{$name}"><xsl:value-of select="normalize-space($value)"/></xsl:attribute>	</xsl:template>		<xsl:template match="save:select" mode="attr">
 		<xsl:param name="name" select="@name"/>		<xsl:variable name="option" select="key('dictionary-option', @dictionary-ref)[@key = current()/@value]"/>		<xsl:attribute name="{$name}"><xsl:value-of select="$option/@title | $option/@val[not($option/@title)]"/></xsl:attribute>	</xsl:template>
+	
+	<xsl:template match="save:group" mode="unknown">
+		<unknown>
+			<xsl:for-each select="*">
+				<xsl:if test="position() &gt; 1">
+					<xsl:text> </xsl:text>
+				</xsl:if>
+				<xsl:value-of select="@value"/>
+				<!-- <xsl:value-of select="str:align(@value, '000', 'right')"/> -->
+			</xsl:for-each>
+		</unknown>
+	</xsl:template>
 </xsl:stylesheet>

@@ -10,13 +10,27 @@ class ArchiveNodeAMBR extends ArchiveNodeJH
     {
         $header = [];
         $body = [];
+        $maxId = 0;
         foreach ($this->childNodeList as $child) {
             if ($child instanceof FileContainer) {
+                $id = (int) $child->getFileName();
+                if ($id > $maxId) {
+                    $maxId = $id;
+                }
                 $val = $child->getContent();
-                $header[] = pack('N', strlen($val));
-                $body[] = $val;
+                $header[$id] = pack('N', strlen($val));
+                $body[$id] = $val;
             }
         }
+        for ($id = 1; $id < $maxId; $id++) {
+            if (!isset($header[$id])) {
+                $header[$id] = pack('N', 0);
+                $body[$id] = '';
+            }
+        }
+        ksort($header);
+        ksort($body);
+        
         array_unshift($header, 'AMBR' . pack('n', count($body)));
         
         $ret = implode('', $header) . implode('', $body);

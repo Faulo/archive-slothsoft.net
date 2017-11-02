@@ -23,6 +23,9 @@ class Editor
         'uploadedArchives' => []
     ];
 
+    /**
+     * @var \Slothsoft\Savegame\Node\AbstractValueContent[];
+     */
     protected $valueList = [];
 
     protected $dictionary = null;
@@ -204,22 +207,41 @@ class Editor
         $value->setValueId($id);
         $this->valueList[$id] = $value;
     }
+    
+    /**
+     * @param string $name
+     * @return NULL|\Slothsoft\Savegame\Node\AbstractValueContent
+     */
+    public function getValueByName(string $name) {
+        foreach ($this->valueList as $value) {
+            if ($value->getName() === $name) {
+                return $value;
+            }
+        }
+    }
 
+    /**
+     * @param \Slothsoft\Savegame\Node\AbstractNode $parentNode
+     * @param \DOMElement[] $strucElementList
+     */
     public function createNodes(Node\AbstractNode $parentNode, array $strucElementList)
     {
-        $ret = [];
         foreach ($strucElementList as $strucElement) {
             if ($node = $this->createNode($parentNode, $strucElement)) {
                 if ($node instanceof Node\AbstractInstructionContent) {
-                    $ret = array_merge($ret, $this->createNodes($parentNode, $node->getInstructionElements()));
+                    $this->createNodes($parentNode, $node->getInstructionElements());
                 } else {
-                    $ret[] = $node;
+                    $parentNode->appendNode($node);
                 }
             }
         }
-        return $ret;
     }
 
+    /**
+     * @param \Slothsoft\Savegame\Node\AbstractNode $parentValue
+     * @param \DOMElement $strucElement
+     * @return NULL|\Slothsoft\Savegame\Node\AbstractNode
+     */
     protected function createNode(Node\AbstractNode $parentValue, DOMElement $strucElement)
     {
         $ret = null;

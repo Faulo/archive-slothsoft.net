@@ -938,22 +938,42 @@
 		</for-each-file>
 	</archive>
 	<dictionary dictionary-id="map-types">
-		<option/>
-		<option val="3D"/>
-		<option val="2D"/>
+		<option key="1" val="3D"/>
+		<option key="2" val="2D"/>
+	</dictionary>
+	<dictionary dictionary-id="map-worlds">
+		<option val="-"/>
+		<option val="Lyramion"/>
+		<option val="Waldmond"/>
+		<option val="Wüstenmond"/>
 	</dictionary>
 	<global global-id="map-data">
 		<group name="unknown">
 			<integer position="0"/>
 			<integer position="1"/>
 			<integer position="3"/>
-			<integer position="6"/>
 			<integer position="7"/>
 			<integer position="8"/>
+			<integer position="9"/>
+			<integer position="10"/>
+			<integer position="11"/>
+			<integer position="12"/>
+			<integer position="13"/>
+			<integer position="14"/>
+			<integer position="15"/>
 		</group>
-		<select position="2" name="map-type" dictionary-ref="map-types"/>
-		<integer position="4" name="width"/>
-		<integer position="5" name="height"/>
+		<group name="data">
+			<select position="2" name="map-type" dictionary-ref="map-types"/>
+			<integer position="4" name="width"/>
+			<integer position="5" name="height"/>
+			<!--<select position="6" name="world" dictionary-ref="map-worlds"/>-->
+			<integer position="6" name="icondata-id"/>
+		</group>
+		<group name="tiles" position="0x14C">
+			<repeat-group group-count="{width * height}" group-size="4">
+				<binary size="4"/>
+			</repeat-group>
+		</group>
 		<!--
 		<repeat-group position="">
 			<binary size="4"/>
@@ -977,6 +997,25 @@
 	<archive file-name="3Map_data.amb" type="AMBR">
 		<for-each-file>
 			<use-global ref="map-data"/>
+		</for-each-file>
+	</archive>
+	<archive file-name="Icon_data.amb" type="AMBR">
+		<for-each-file>
+			<group name="unknown">
+				<integer position="2"/>
+				<integer position="3"/>
+				<integer position="4"/>
+				<integer position="5"/>
+			</group>
+			<group name="data">
+				<integer position="0" size="2" name="entry-count"/>
+			</group>
+			<group name="icons">
+				<repeat-group position="6" group-count="{entry-count}" group-size="8">
+					<binary size="8" name="data"/>
+				</repeat-group>
+				<!--<binary position="6" size="20000" name="data"/>-->
+			</group>
 		</for-each-file>
 	</archive>
 	<global global-id="place-inn">

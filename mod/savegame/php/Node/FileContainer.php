@@ -7,6 +7,9 @@ declare(ticks = 1000);
 class FileContainer extends AbstractContainerContent
 {
 
+    /**
+     * @var string
+     */
     protected $content;
 
     public function __construct()
@@ -75,9 +78,13 @@ class FileContainer extends AbstractContainerContent
     {
         $this->content = $content;
     }
-
+    
     public function getContent()
     {
         return $this->content;
+    }
+    public function getFileName()
+    {
+        return $this->strucData['file-name'];
     }
 }

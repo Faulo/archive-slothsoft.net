@@ -11,25 +11,50 @@ abstract class AbstractNode
 
     abstract protected function loadNode();
 
+    /**
+     * @var \Slothsoft\Savegame\Editor
+     */
     protected $ownerEditor;
 
+    /**
+     * @var \Slothsoft\Savegame\Node\ArchiveNode
+     */
     protected $ownerArchive;
 
+    /**
+     * @var \Slothsoft\Savegame\Node\FileContainer
+     */
     protected $ownerFile;
 
+    /**
+     * @var \Slothsoft\Savegame\Converter
+     */
     protected $converter;
 
+    /**
+     * @var \Slothsoft\Savegame\Node\AbstractNode
+     */
     public $parentNode;
 
+    /**
+     * @var \Slothsoft\Savegame\Node\AbstractNode[]
+     */
     protected $childNodeList;
 
+    /**
+     * @var \DOMElement
+     */
     protected $strucElement;
 
+    /**
+     * @var mixed[string]
+     */
     protected $strucData;
 
     public function __construct()
     {
         $this->strucData = [];
+        $this->childNodeList = [];
         $this->converter = Converter::getInstance();
     }
 
@@ -66,7 +91,8 @@ abstract class AbstractNode
                 $nodeList[] = $strucElement;
             }
         }
-        $this->childNodeList = $this->ownerEditor->createNodes($this, $nodeList);
+        $this->ownerEditor->createNodes($this, $nodeList);
+        
         while ($this->strucElement->hasChildNodes()) {
             $this->strucElement->removeChild($this->strucElement->lastChild);
         }
@@ -103,6 +129,9 @@ abstract class AbstractNode
         }
     }
 
+    /**
+     * @param array $struc
+     */
     public function setStrucData(array $struc)
     {
         foreach ($struc as $key => $val) {
@@ -112,14 +141,36 @@ abstract class AbstractNode
         }
     }
 
+    /**
+     * @return DOMElement
+     */
     public function getStrucElement()
     {
         return $this->strucElement;
     }
 
-    protected function parseInt($val)
+    /**
+     * @param string $val
+     * @return int
+     */
+    protected function parseInt(string $val)
     {
         $val = trim($val);
+        if (preg_match('/^{(.+)}$/', $val, $match)) {
+            $expr = $match[1];
+            preg_match_all('/[\w-]+/', $expr, $matches);
+            $translate = [];
+            foreach ($matches[0] as $key) {
+                if ($node = $this->ownerFile->getValueByName($key)) {
+                    $val = $node->getValue();
+                } else {
+                    $val = 0;
+                }
+                $translate[$key] = $val;
+            }
+            $expr = strtr($expr, $translate);
+            $val = eval("return ($expr);");
+        }
         if (preg_match('/^0x(\w+)$/', $val, $match)) {
             $val = hexdec($match[1]);
             // echo $match[1] . '=' . $val . PHP_EOL;
@@ -127,18 +178,54 @@ abstract class AbstractNode
         return (int) $val;
     }
 
-    protected function parseTokenList($val)
+    /**
+     * @param string $val
+     * @return string
+     */
+    protected function parseTokenList(string $val)
     {
         return $val;
     }
 
+    /**
+     * @return NULL|\Slothsoft\Savegame\Node\FileContainer
+     */
     public function getOwnerFile()
     {
         return $this->ownerFile;
     }
 
-    public function getOwnerArchive()
-    {
+    /**
+     * @return NULL|\Slothsoft\Savegame\Node\ArchiveNode
+     */
+    public function getOwnerArchive() {
         return $this->ownerArchive;
+    }
+    
+    /**
+     * @param string $name
+     * @return NULL|\Slothsoft\Savegame\Node\AbstractValueContent
+     */
+    public function getValueByName(string $name) {
+        $ret = null;
+        foreach ($this->childNodeList as $node) {
+            if ($node instanceof AbstractValueContent) {
+                if ($node->getName() === $name) {
+                    $ret = $node;
+                    break;
+                }
+            }
+            if ($ret = $node->getValueByName($name)) {
+                break;
+            }
+        }
+        return $ret;
+    }
+    
+    /**
+     * @param \Slothsoft\Savegame\Node\AbstractNode $node
+     */
+    public function appendNode(AbstractNode $node) {
+        $this->childNodeList[] = $node;
     }
 }

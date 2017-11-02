@@ -244,12 +244,19 @@ window.addEventListener(
 					<li>
 						<xsl:call-template name="savegame.flex">
 							<xsl:with-param name="items">
-								<xsl:call-template name="savegame.table">
-									<xsl:with-param name="label" select="'data'"/>
-									<xsl:with-param name="items">
-										<xsl:apply-templates select="save:integer | save:select" mode="item"/>
-									</xsl:with-param>
-								</xsl:call-template>
+								<xsl:for-each select=".//*[@name='data']">
+									<div>
+										<xsl:call-template name="savegame.table">
+											<xsl:with-param name="label" select="'data'"/>
+											<xsl:with-param name="items">
+												<xsl:apply-templates select="save:integer | save:select" mode="item"/>
+											</xsl:with-param>
+										</xsl:call-template>
+									</div>
+								</xsl:for-each>
+								<div>
+									<xsl:apply-templates select=".//*[@name='tiles']//save:binary" mode="item"/>
+								</div>
 								<xsl:call-template name="savegame.amber.events"/>
 							</xsl:with-param>
 						</xsl:call-template>

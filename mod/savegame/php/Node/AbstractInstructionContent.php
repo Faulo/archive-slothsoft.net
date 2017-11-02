@@ -8,6 +8,9 @@ abstract class AbstractInstructionContent extends AbstractContentNode
 
     abstract protected function loadInstruction();
 
+    /**
+     * @var \DOMElement[]
+     */
     protected $instructionElements;
 
     protected $dictionaryOptions;
@@ -64,6 +67,9 @@ abstract class AbstractInstructionContent extends AbstractContentNode
         return $instructionElement;
     }
 
+    /**
+     * @return \DOMElement[]
+     */
     public function getInstructionElements()
     {
         return $this->instructionElements;
