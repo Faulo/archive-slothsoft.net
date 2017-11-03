@@ -89,7 +89,9 @@ class Converter
             $c = hexdec($hex[$i] . $hex[$i + 1]);
             if ($c > 31) {
                 $ret .= chr($c);
-            }
+            } else {
+				break;
+			}
         }
         if ($encoding) {
             $ret = mb_convert_encoding($ret, 'UTF-8', $encoding);
