@@ -972,11 +972,12 @@
 		<group position="0x14C">
 			<group position="0" name="tiles">
 				<repeat-group group-count="{width * height}" group-size="4">
-					<!-- <binary size="4"/> -->
+					<integer position="0" size="1"/>
+					<!--<binary size="4"/>-->
 				</repeat-group>
 			</group>
 			<group position="{width * height * 4}" name="events">
-				<event-script/>
+				<event-dictionary/>
 			</group>
 		</group>
 		<!--
@@ -989,9 +990,6 @@
 	<archive file-name="1Map_data.amb" type="AMBR">
 		<for-each-file>
 			<use-global ref="map-data"/>
-			<group name="events">
-				<event-dictionary position="0x285C" />
-			</group>
 		</for-each-file>
 	</archive>
 	<archive file-name="2Map_data.amb" type="AMBR">
@@ -1000,6 +998,11 @@
 		</for-each-file>
 	</archive>
 	<archive file-name="3Map_data.amb" type="AMBR">
+		<for-each-file>
+			<use-global ref="map-data"/>
+		</for-each-file>
+	</archive>
+	<archive file-name="4Map_data.amb" type="AMBR">
 		<for-each-file>
 			<use-global ref="map-data"/>
 		</for-each-file>

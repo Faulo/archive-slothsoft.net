@@ -235,7 +235,7 @@ window.addEventListener(
 		</xsl:call-template>
 	</xsl:template>
 	
-	<xsl:template match="save:archive[@file-name[. = '1Map_data.amb' or . = '2Map_data.amb' or . = '3Map_data.amb']]" mode="form-content">
+	<xsl:template match="save:archive[@file-name[. = '1Map_data.amb' or . = '2Map_data.amb' or . = '3Map_data.amb' or . = '4Map_data.amb']]" mode="form-content">
 		<xsl:call-template name="savegame.tabs">
 			<xsl:with-param name="label" select="'Aktive Karte:'"/>
 			<xsl:with-param name="options" select="key('dictionary-option', 'map-ids')[number(@key) = current()/save:file/@file-name]/@val"/>
@@ -254,10 +254,8 @@ window.addEventListener(
 										</xsl:call-template>
 									</div>
 								</xsl:for-each>
-								<div>
-									<xsl:apply-templates select=".//*[@name='tiles']//save:binary" mode="item"/>
-								</div>
 								<xsl:call-template name="savegame.amber.events"/>
+								<xsl:call-template name="savegame.amber.tiles"/>
 							</xsl:with-param>
 						</xsl:call-template>
 					</li>
@@ -607,6 +605,31 @@ window.addEventListener(
 					</table>
 				</div>
 			</xsl:for-each>
+		</xsl:for-each>
+	</xsl:template>
+	<xsl:template name="savegame.amber.tiles">
+		<xsl:variable name="width" select=".//*[@name='width']/@value"/>
+		<xsl:variable name="height" select=".//*[@name='height']/@value"/>
+		<xsl:for-each select=".//*[@name='tiles']">
+			<xsl:variable name="tiles" select=".//save:integer"/>
+			<div>
+				<h3 class="name">Tiles</h3>
+				<table>
+					<tbody>
+						<xsl:for-each select="str:split(str:padding($height, '-'), '')">
+							<xsl:variable name="y" select="position()"/>
+							<tr>
+								<xsl:for-each select="str:split(str:padding($width, '-'), '')">
+									<xsl:variable name="x" select="position()"/>
+									<td title="{$x}|{$y}">
+										<xsl:apply-templates select="$tiles[($y - 1) * $width + $x]" mode="form-content"/>
+									</td>
+								</xsl:for-each>
+							</tr>
+						</xsl:for-each>
+					</tbody>
+				</table>
+			</div>
 		</xsl:for-each>
 	</xsl:template>
 	<xsl:template name="savegame.amber.character-common">

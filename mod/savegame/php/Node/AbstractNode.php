@@ -158,7 +158,7 @@ abstract class AbstractNode
         $val = trim($val);
         if (preg_match('/^{(.+)}$/', $val, $match)) {
             $expr = $match[1];
-            preg_match_all('/[\w-]+/', $expr, $matches);
+            preg_match_all('/[A-Za-z][\w-]+/', $expr, $matches);
             $translate = [];
             foreach ($matches[0] as $key) {
                 if ($node = $this->ownerFile->getValueByName($key)) {
@@ -169,7 +169,7 @@ abstract class AbstractNode
                 $translate[$key] = $val;
             }
             $expr = strtr($expr, $translate);
-            $val = eval("return ($expr);");
+			$val = eval("return ($expr);");
         }
         if (preg_match('/^0x(\w+)$/', $val, $match)) {
             $val = hexdec($match[1]);
