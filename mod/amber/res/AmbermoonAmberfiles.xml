@@ -969,10 +969,15 @@
 			<!--<select position="6" name="world" dictionary-ref="map-worlds"/>-->
 			<integer position="6" name="icondata-id"/>
 		</group>
-		<group name="tiles" position="0x14C">
-			<repeat-group group-count="{width * height}" group-size="4">
-				<binary size="4"/>
-			</repeat-group>
+		<group position="0x14C">
+			<group position="0" name="tiles">
+				<repeat-group group-count="{width * height}" group-size="4">
+					<!-- <binary size="4"/> -->
+				</repeat-group>
+			</group>
+			<group position="{width * height * 4}" name="events">
+				<event-script/>
+			</group>
 		</group>
 		<!--
 		<repeat-group position="">

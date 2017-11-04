@@ -280,7 +280,7 @@
 						</xsd:restriction>
 					</xsd:simpleType>
 				</xsd:attribute>
-				<xsd:attribute name="position" type="numberExpression" />
+				<xsd:attribute name="position" type="positionExpression" />
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -367,6 +367,19 @@
 			</xsd:simpleType>
 			<xsd:simpleType>
 				<xsd:restriction base="xsd:integer"/>
+			</xsd:simpleType>
+		</xsd:union>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="positionExpression">
+		<xsd:union>
+			<xsd:simpleType>
+				<xsd:restriction base="numberExpression"/>
+			</xsd:simpleType>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:token">
+					<xsd:enumeration value="append"/>
+				</xsd:restriction>
 			</xsd:simpleType>
 		</xsd:union>
 	</xsd:simpleType>
