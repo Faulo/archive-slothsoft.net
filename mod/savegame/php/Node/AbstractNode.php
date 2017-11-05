@@ -85,19 +85,28 @@ abstract class AbstractNode
 
     protected function loadChildren()
     {
-        $nodeList = [];
-        foreach ($this->strucElement->childNodes as $strucElement) {
-            if ($strucElement->nodeType === XML_ELEMENT_NODE) {
-                $nodeList[] = $strucElement;
+        foreach ($this->getStrucElementChildren() as $strucElement) {
+            $this->loadChild($strucElement, $strucElement);
+        }
+    }
+    protected function loadChild(DOMElement $strucElement, DOMElement $refElement) {
+        if ($node = $this->ownerEditor->createNode($this, $strucElement)) {
+            switch (true) {
+                case $node instanceof AbstractInstructionContent:
+                    foreach ($node->getInstructionElements() as $instructionElement) {
+                        $this->loadChild($instructionElement, $refElement);
+                    }
+                    if ($strucElement->parentNode === $this->strucElement) {
+                        $this->strucElement->removeChild($strucElement);
+                    }
+                    break;
+                default:
+                    if ($strucElement->parentNode !== $this->strucElement) {
+                        $this->strucElement->insertBefore($strucElement, $refElement);
+                    }
+                    $this->childNodeList[] = $node;
+                    break;
             }
-        }
-        $this->ownerEditor->createNodes($this, $nodeList);
-        
-        while ($this->strucElement->hasChildNodes()) {
-            $this->strucElement->removeChild($this->strucElement->lastChild);
-        }
-        foreach ($this->childNodeList as $childNode) {
-            $this->strucElement->appendChild($childNode->getStrucElement());
         }
     }
 
@@ -142,11 +151,24 @@ abstract class AbstractNode
     }
 
     /**
-     * @return DOMElement
+     * @return \DOMElement
      */
     public function getStrucElement()
     {
         return $this->strucElement;
+    }
+    /**
+     * @return \DOMElement[]
+     */
+    public function getStrucElementChildren()
+    {
+        $nodeList = [];
+        foreach ($this->strucElement->childNodes as $strucElement) {
+            if ($strucElement instanceof DOMElement) {
+                $nodeList[] = $strucElement;
+            }
+        }
+        return $nodeList;
     }
 
     /**
@@ -169,6 +191,7 @@ abstract class AbstractNode
                 $translate[$key] = $val;
             }
             $expr = strtr($expr, $translate);
+            //echo $expr . PHP_EOL;
 			$val = eval("return ($expr);");
         }
         if (preg_match('/^0x(\w+)$/', $val, $match)) {
@@ -220,12 +243,5 @@ abstract class AbstractNode
             }
         }
         return $ret;
-    }
-    
-    /**
-     * @param \Slothsoft\Savegame\Node\AbstractNode $node
-     */
-    public function appendNode(AbstractNode $node) {
-        $this->childNodeList[] = $node;
     }
 }
