@@ -35,19 +35,6 @@ abstract class AbstractInstructionContent extends AbstractContentNode
     protected function loadChildren()
     {}
 
-    protected function getInstructionContent()
-    {
-        $ret = null;
-        if ($this->strucElement->hasChildNodes()) {
-            $doc = $this->strucElement->ownerDocument;
-            $ret = $doc->createDocumentFragment();
-            foreach ($this->strucElement->childNodes as $childNode) {
-                $ret->appendChild($childNode->cloneNode(true));
-            }
-        }
-        return $ret;
-    }
-
     protected function createInstructionContainer()
     {
         return $this->createInstructionElement('group', [

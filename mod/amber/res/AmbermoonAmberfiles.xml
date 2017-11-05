@@ -948,7 +948,7 @@
 		<option val="Wüstenmond"/>
 	</dictionary>
 	<global global-id="map-data">
-		<group name="unknown">
+		<group name="testing">
 			<integer position="0"/>
 			<integer position="1"/>
 			<integer position="3"/>
@@ -971,12 +971,12 @@
 		</group>
 		<group position="0x14C">
 			<group position="0" name="tiles">
-				<repeat-group group-count="{width * height}" group-size="4">
+				<repeat-group group-count="{width * height}" group-size="{map-type * 2}">
 					<integer position="0" size="1"/>
 					<!--<binary size="4"/>-->
 				</repeat-group>
 			</group>
-			<group position="{width * height * 4}" name="events">
+			<group position="{width * height * map-type * 2}" name="events">
 				<event-dictionary/>
 			</group>
 		</group>
@@ -1003,6 +1003,11 @@
 		</for-each-file>
 	</archive>
 	<archive file-name="4Map_data.amb" type="AMBR">
+		<for-each-file>
+			<use-global ref="map-data"/>
+		</for-each-file>
+	</archive>
+	<archive file-name="5Map_data.amb" type="AMBR">
 		<for-each-file>
 			<use-global ref="map-data"/>
 		</for-each-file>

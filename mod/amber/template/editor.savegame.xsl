@@ -235,7 +235,7 @@ window.addEventListener(
 		</xsl:call-template>
 	</xsl:template>
 	
-	<xsl:template match="save:archive[@file-name[. = '1Map_data.amb' or . = '2Map_data.amb' or . = '3Map_data.amb' or . = '4Map_data.amb']]" mode="form-content">
+	<xsl:template match="save:archive[@file-name[. = '1Map_data.amb' or . = '2Map_data.amb' or . = '3Map_data.amb' or . = '4Map_data.amb' or . = '5Map_data.amb']]" mode="form-content">
 		<xsl:call-template name="savegame.tabs">
 			<xsl:with-param name="label" select="'Aktive Karte:'"/>
 			<xsl:with-param name="options" select="key('dictionary-option', 'map-ids')[number(@key) = current()/save:file/@file-name]/@val"/>
@@ -254,6 +254,9 @@ window.addEventListener(
 										</xsl:call-template>
 									</div>
 								</xsl:for-each>
+								<div>
+									<xsl:call-template name="savegame.amber.testing"/>
+								</div>
 								<xsl:call-template name="savegame.amber.events"/>
 								<xsl:call-template name="savegame.amber.tiles"/>
 							</xsl:with-param>

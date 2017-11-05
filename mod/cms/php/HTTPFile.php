@@ -19,6 +19,9 @@ class HTTPFile
 
     const CURL_COMMAND = 'curl %s --output %s --header %s --connect-timeout 300 --retry 3 --http1.1 --silent --fail --insecure --location';
 
+    /**
+     * @return string
+     */
     public static function getTempFile()
     {
         // $ret = tempnam(sys_get_temp_dir() . DIRECTORY_SEPARATOR . __NAMESPACE__, __CLASS__);
@@ -27,14 +30,25 @@ class HTTPFile
         return $ret;
     }
 
-    public static function createFromPath($filePath, $fileName = null)
+    /**
+     * @param string $filePath
+     * @param string $fileName
+     * @return \Slothsoft\CMS\HTTPFile
+     */
+    public static function createFromPath(string $filePath, string $fileName = '')
     {
         return new HTTPFile($filePath, $fileName);
     }
 
-    public static function createFromDocument(DOMDocument $doc, $fileName = null)
+    /**
+     * @param DOMDocument $doc
+     * @param string $fileName
+     * @return \Slothsoft\CMS\HTTPFile
+     */
+    public static function createFromDocument(DOMDocument $doc, string $fileName = '')
     {
-        if (! $fileName) {
+        $fileName = (string) $fileName;
+        if ($fileName === '') {
             $fileName = 'index.xml';
         }
         $filePath = self::getTempFile();
@@ -42,25 +56,42 @@ class HTTPFile
         return self::createFromPath($filePath, $fileName);
     }
 
-    public static function createFromString($content, $fileName = null)
+    /**
+     * @param string $content
+     * @param string $fileName
+     * @return \Slothsoft\CMS\HTTPFile
+     */
+    public static function createFromString(string $content, string $fileName = '')
     {
-        if (! $fileName) {
+        $fileName = (string) $fileName;
+        if ($fileName === '') {
             $fileName = 'index.txt';
         }
         $filePath = self::getTempFile();
         file_put_contents($filePath, $content);
         return self::createFromPath($filePath, $fileName);
     }
-
-    public static function createFromJSON($object, $fileName = null)
+    
+    /**
+     * @param mixed $object
+     * @param string $fileName
+     * @return \Slothsoft\CMS\HTTPFile
+     */
+    public static function createFromJSON($object, string $fileName = '')
     {
-        if (! $fileName) {
+        $fileName = (string) $fileName;
+        if ($fileName === '') {
             $fileName = 'data.json';
         }
         return self::createFromString(json_encode($object), $fileName);
     }
 
-    public static function createFromPHP($phpCommand, $fileName = null)
+    /**
+     * @param string $phpCommand
+     * @param string $fileName
+     * @return NULL|\Slothsoft\CMS\HTTPFile
+     */
+    public static function createFromPHP(string $phpCommand, string $fileName = '')
     {
         $fileName = (string) $fileName;
         if ($fileName === '') {
@@ -76,7 +107,12 @@ class HTTPFile
         return file_exists($filePath) ? self::createFromPath($filePath, $fileName) : null;
     }
 
-    public static function createFromURL($url, $fileName = null)
+    /**
+     * @param string $url
+     * @param string $fileName
+     * @return NULL|\Slothsoft\CMS\HTTPFile
+     */
+    public static function createFromURL(string $url, string $fileName = '')
     {
         $fileName = (string) $fileName;
         if ($fileName === '') {
@@ -104,7 +140,13 @@ class HTTPFile
         return $ret;
     }
 
-    public static function createFromDownload($filePath, $url, $headerCache = TIME_YEAR)
+    /**
+     * @param string $filePath
+     * @param string $url
+     * @param int $headerCache
+     * @return NULL|\Slothsoft\CMS\HTTPFile
+     */
+    public static function createFromDownload(string $filePath, string $url, int $headerCache = TIME_YEAR)
     {
         $ret = self::verifyDownload($filePath, $url, $headerCache);
         if (! $ret) {
@@ -115,7 +157,12 @@ class HTTPFile
         return $ret ? self::createFromPath($filePath) : null;
     }
 
-    public static function verifyURL($url, $headerCache = TIME_YEAR)
+    /**
+     * @param string $url
+     * @param int $headerCache
+     * @return boolean
+     */
+    public static function verifyURL(string $url, int $headerCache = TIME_YEAR)
     {
         $ret = false;
         if ($res = Storage::loadExternalHeader($url, $headerCache)) {
@@ -130,7 +177,13 @@ class HTTPFile
         return $ret;
     }
 
-    public static function verifyDownload($filePath, $url, $headerCache = TIME_YEAR)
+    /**
+     * @param string $filePath
+     * @param string $url
+     * @param int $headerCache
+     * @return boolean
+     */
+    public static function verifyDownload(string $filePath, string $url, int $headerCache = TIME_YEAR)
     {
         $ret = false;
         if (file_exists($filePath)) {

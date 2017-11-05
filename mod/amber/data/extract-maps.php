@@ -5,12 +5,15 @@ use Slothsoft\Amber\SavegameController;
 $this->httpRequest->setInputValue('save', [
     'editor' => [
         'archives' => [
+			/*
             '1Map_texts.amb',
             '2Map_texts.amb',
             '3Map_texts.amb',
             '1Map_data.amb',
             '2Map_data.amb',
             '3Map_data.amb',
+			//*/
+			'2Map_data.amb',
         ]
     ]
 ]);

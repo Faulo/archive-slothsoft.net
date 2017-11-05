@@ -12,7 +12,11 @@ class Converter
      */
     public static function getInstance()
     {
-        return new Converter();
+        static $instance;
+        if (!$instance) {
+            $instance = new Converter();
+        }
+        return $instance;
     }
 
     public function encodeInteger($val, $size = 1)

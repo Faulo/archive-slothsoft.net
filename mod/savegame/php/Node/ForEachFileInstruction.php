@@ -32,8 +32,8 @@ class ForEachFileInstruction extends AbstractInstructionContent
             $instruction['position'] = $this->strucData['position'];
             
             $instructionElement = $this->createInstructionElement('file', $instruction);
-            if ($instructionContent = $this->getInstructionContent()) {
-                $instructionElement->appendChild($instructionContent);
+            foreach ($this->getStrucElementChildren() as $node) {
+                $instructionElement->appendChild($node->cloneNode(true));
             }
             $this->instructionElements[] = $instructionElement;
         }

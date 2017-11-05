@@ -41,8 +41,8 @@ class RepeatGroupInstruction extends AbstractInstructionContent
                 $instruction['name'] = $this->dictionaryOptions[$i];
             }
             $instructionElement = $this->createInstructionElement('group', $instruction);
-            if ($instructionContent = $this->getInstructionContent()) {
-                $instructionElement->appendChild($instructionContent);
+            foreach ($this->getStrucElementChildren() as $node) {
+                $instructionElement->appendChild($node->cloneNode(true));
             }
             $parentNode->appendChild($instructionElement);
         }

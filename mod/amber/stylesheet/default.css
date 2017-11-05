@@ -133,7 +133,7 @@
 }
 
 .Amber details {
-	overflow: hidden;
+	overflow: auto;
 }
 .Amber details + details {
 	margin-top: 0.5em;

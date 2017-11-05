@@ -182,6 +182,9 @@ class Editor
         }
     }
 
+    /**
+     * @return \Slothsoft\CMS\HTTPFile
+     */
     public function asFile()
     {
         $this->strucDoc->formatOutput = true;
@@ -221,28 +224,11 @@ class Editor
     }
 
     /**
-     * @param \Slothsoft\Savegame\Node\AbstractNode $parentNode
-     * @param \DOMElement[] $strucElementList
-     */
-    public function createNodes(Node\AbstractNode $parentNode, array $strucElementList)
-    {
-        foreach ($strucElementList as $strucElement) {
-            if ($node = $this->createNode($parentNode, $strucElement)) {
-                if ($node instanceof Node\AbstractInstructionContent) {
-                    $this->createNodes($parentNode, $node->getInstructionElements());
-                } else {
-                    $parentNode->appendNode($node);
-                }
-            }
-        }
-    }
-
-    /**
      * @param \Slothsoft\Savegame\Node\AbstractNode $parentValue
      * @param \DOMElement $strucElement
      * @return NULL|\Slothsoft\Savegame\Node\AbstractNode
      */
-    protected function createNode(Node\AbstractNode $parentValue, DOMElement $strucElement)
+    public function createNode(Node\AbstractNode $parentValue, DOMElement $strucElement)
     {
         $ret = null;
         if ($value = $this->constructValue($strucElement->localName, $strucElement->getAttribute('type'))) {
