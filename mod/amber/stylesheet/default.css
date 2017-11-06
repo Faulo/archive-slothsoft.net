@@ -269,6 +269,42 @@
 .Amber .monster-sprite.picker {
 	border-style: ridge !important;
 }
+.Amber .tile.picker {
+	border-width: 0;
+	width: 32px;
+	height: 32px;
+}
+.Amber .picker > *[data-picker-name="low"]::after {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	font-size: 0.5em;
+	content: attr(data-picker-value);
+}
+.Amber .picker > *[data-picker-name="low"][data-picker-value="0"]::after {
+	display: none;
+}
+.Amber .picker > *[data-picker-name="high"]::after {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	font-size: 0.5em;
+	content: attr(data-picker-value);
+}
+.Amber .picker > *[data-picker-name="high"][data-picker-value="0"]::after {
+	display: none;
+}
+.Amber .picker > *[data-picker-name="event-id"]::after {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	font-size: 0.5em;
+	content: attr(data-picker-value);
+	color: rgb(170, 170, 68);
+}
+.Amber .picker > *[data-picker-name="event-id"][data-picker-value="0"]::after {
+	display: none;
+}
 .Amber *[data-template="equip"] .picker,
 .Amber *[data-template="item"] .picker,
 .Amber .equipment .picker {
@@ -364,6 +400,9 @@
 
 
 
+.Amber table.tiles {
+	border-spacing: 0;
+}
 
 .Amber *[data-hover-text],
 .Amber form *[type="submit"] {
