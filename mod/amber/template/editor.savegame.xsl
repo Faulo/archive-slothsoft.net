@@ -540,19 +540,19 @@ window.addEventListener(
 					<xsl:apply-templates select="." mode="form-content"/>
 				</div>
 			</xsl:for-each>
-			<xsl:for-each select="*[@type = 'event-dictionary'][*]">
+			<xsl:for-each select="*[@instruction = 'event-dictionary'][*]">
 				<div class="events">
 					<!--
 					<xsl:call-template name="savegame.flex">
 						<xsl:with-param name="label" select="'Events'"/>
 						<xsl:with-param name="class" select="'events'"/>
 						<xsl:with-param name="items">
-							<xsl:for-each select="save:group[@type = 'event']">
+							<xsl:for-each select="save:group[@instruction = 'event']">
 								<div>
 									<h3 class="name"><xsl:value-of select="@name"/></h3>
 									<xsl:call-template name="savegame.table">
 										<xsl:with-param name="items">
-											<xsl:apply-templates select="save:group[@type = 'event-step']/*" mode="item"/>
+											<xsl:apply-templates select="save:group[@instruction = 'event-step']/*" mode="item"/>
 										</xsl:with-param>
 									</xsl:call-template>
 								</div>
@@ -883,7 +883,7 @@ window.addEventListener(
 			<xsl:apply-templates select="." mode="form-content"/>
 		</div>
 	</xsl:template>
-	<xsl:template match="save:group[@type = 'bit-field']" mode="item">
+	<xsl:template match="save:group[@instruction = 'bit-field']" mode="item">
 		<xsl:param name="class" select="''"/>
 		<div>
 			<xsl:apply-templates select="." mode="form-attributes">
@@ -893,7 +893,7 @@ window.addEventListener(
 			<xsl:apply-templates select="." mode="form-content"/>
 		</div>
 	</xsl:template>
-	<xsl:template match="save:group[@type = 'string-dictionary']" mode="item">
+	<xsl:template match="save:group[@instruction = 'string-dictionary']" mode="item">
 		<xsl:param name="class" select="''"/>
 		<div>
 			<xsl:apply-templates select="." mode="form-attributes">
@@ -943,7 +943,7 @@ window.addEventListener(
 	<xsl:template match="save:group" mode="form-content">
 		<xsl:apply-templates select="*" mode="item"/>
 	</xsl:template>
-	<xsl:template match="save:group[@type = 'bit-field']" mode="form-content">
+	<xsl:template match="save:group[@instruction = 'bit-field']" mode="form-content">
 		<ul>
 			<xsl:for-each select="save:bit">
 				<li>
@@ -952,7 +952,7 @@ window.addEventListener(
 			</xsl:for-each>
 		</ul>
 	</xsl:template>
-	<xsl:template match="save:group[@type = 'event']" mode="form-content">
+	<xsl:template match="save:group[@instruction = 'event']" mode="form-content">
 		<xsl:apply-templates select="*" mode="form-content"/>
 	</xsl:template>
 	<xsl:template match="save:group[*[@name = 'current']]" mode="form-content">
@@ -1135,6 +1135,9 @@ window.addEventListener(
 		<xsl:if test="string-length(@type)">
 			<xsl:attribute name="data-type"><xsl:value-of select="@type"/></xsl:attribute>
 		</xsl:if>
+		<xsl:if test="string-length(@instruction)">
+			<xsl:attribute name="data-instruction"><xsl:value-of select="@instruction"/></xsl:attribute>
+		</xsl:if>
 		<xsl:if test="string-length(@name)">
 			<xsl:attribute name="data-name"><xsl:value-of select="@name"/></xsl:attribute>
 		</xsl:if>
@@ -1153,7 +1156,7 @@ window.addEventListener(
 			</span>
 		</xsl:if>
 	</xsl:template>
-	<xsl:template match="save:group[@type = 'bit-field']" mode="form-name">
+	<xsl:template match="save:group[@instruction = 'bit-field']" mode="form-name">
 		<xsl:if test="string-length(@name)">
 			<h3 class="name">
 				<xsl:if test="string-length(@title)">

@@ -7,13 +7,10 @@ abstract class AbstractInstructionContent extends AbstractContentNode
 {
 
     abstract protected function loadInstruction();
+    
+    protected $instructionList;
 
-    /**
-     * @var \DOMElement[]
-     */
-    protected $instructionElements;
-
-    protected $dictionaryOptions;
+    protected $dictionary;
 
     public function __construct()
     {
@@ -24,7 +21,10 @@ abstract class AbstractInstructionContent extends AbstractContentNode
     protected function loadStruc()
     {
         parent::loadStruc();
-        $this->dictionaryOptions = $this->ownerEditor->getDictionaryById($this->strucData['dictionary-ref']);
+        
+        if ($this->strucData['dictionary-ref'] !== '') {
+            $this->dictionary = $this->ownerEditor->getDictionaryById($this->strucData['dictionary-ref']);
+        }
     }
 
     protected function loadContent()
@@ -33,32 +33,16 @@ abstract class AbstractInstructionContent extends AbstractContentNode
     }
 
     protected function loadChildren()
-    {}
-
-    protected function createInstructionContainer()
     {
-        return $this->createInstructionElement('group', [
-            'name' => $this->strucData['name'],
-            'position' => $this->strucData['position'],
-            'type' => $this->strucElement->localName
-        ]);
-    }
-
-    protected function createInstructionElement($tagName, array $attributes)
-    {
-        $doc = $this->strucElement->ownerDocument;
-        $instructionElement = $doc->createElementNS($this->strucElement->namespaceURI, $tagName);
-        foreach ($attributes as $key => $val) {
-            $instructionElement->setAttribute($key, $val);
+        foreach ($this->instructionList as $instruction) {
+            $this->loadChild($instruction['element'], $instruction['tagName'], $instruction['strucData']);
         }
-        return $instructionElement;
     }
-
-    /**
-     * @return \DOMElement[]
-     */
-    public function getInstructionElements()
-    {
-        return $this->instructionElements;
+    public function asXML() {
+        $attributes = [];
+        $attributes['instruction'] = $this->tagName;
+        $attributes['name'] = $this->strucData['name'];
+        $attributes['position'] = $this->strucData['position'];
+        return $this->createXML('group', $attributes, $this->getChildrenXML());
     }
 }

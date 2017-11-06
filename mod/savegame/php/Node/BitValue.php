@@ -9,17 +9,18 @@ class BitValue extends AbstractValueContent
     public function __construct()
     {
         parent::__construct();
-        $this->strucData['size'] = '1';
-        $this->strucData['bit'] = '0';
-        $this->strucData['bit-value'] = '0';
+        $this->strucData['size'] = 1;
+        $this->strucData['bit'] = 0;
+        $this->strucData['bit-value'] = 0;
     }
 
     protected function loadStruc()
     {
         parent::loadStruc();
+        
         $this->strucData['bit'] = $this->parseInt($this->strucData['bit']);
         $this->strucData['size'] = $this->parseInt($this->strucData['size']);
-        $this->strucData['bit-value'] = pow(2, $this->strucData['bit']);
+        $this->strucData['bit-value'] = $this->converter->pow2($this->strucData['bit']);
     }
 
     public function setRawValue($value)

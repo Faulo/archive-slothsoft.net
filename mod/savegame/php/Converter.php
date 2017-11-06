@@ -82,8 +82,8 @@ class Converter
     public function decodeSignedInteger($val, $size = 1)
     {
         $ret = $this->decodeInteger($val, $size);
-        if ($ret > pow(256, $size) / 2) {
-            $ret -= pow(256, $size);
+        if ($ret > $this->pow256($size) / 2) {
+            $ret -= $this->pow256($size);
         }
         return $ret;
     }
@@ -115,5 +115,20 @@ class Converter
     {
         $parser = new Parser();
         return $parser->binary2code($val);
+    }
+    
+    public function pow2($size) {
+        static $powList = [];
+        if (!isset($powList[$size])) {
+            $powList[$size] = pow(2, $size);
+        }
+        return $powList[$size];
+    }
+    public function pow256($size) {
+        static $powList = [];
+        if (!isset($powList[$size])) {
+            $powList[$size] = pow(256, $size);
+        }
+        return $powList[$size];
     }
 }

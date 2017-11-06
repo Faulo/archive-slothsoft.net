@@ -14,17 +14,20 @@ class UseGlobalInstruction extends AbstractInstructionContent
 
     protected function loadInstruction()
     {
-        $this->instructionElements = [];
+        $this->instructionList = [];
         
         if ($node = $this->ownerEditor->getGlobalById($this->strucData['ref'])) {
-            foreach ($node->childNodes as $childNode) {
-                if ($childNode->nodeType === XML_ELEMENT_NODE) {
-                    $instructionNode = $childNode->cloneNode(true);
-                    $instructionNode->setAttribute('position', $this->parseInt($instructionNode->getAttribute('position')) + $this->strucData['position']);
-                    $this->instructionElements[] = $instructionNode;
-                }
+            foreach ($node->getStrucElementChildren() as $childNode) {
+                $this->instructionList[] = [
+                    'tagName' => $childNode->localName,
+                    'element' => $childNode,
+                    'strucData' => [],
+                ];
             }
         }
+    }
+    public function asXML() {
+        return $this->getChildrenXML();
     }
 }
 

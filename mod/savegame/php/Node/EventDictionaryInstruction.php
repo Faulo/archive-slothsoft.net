@@ -1,6 +1,8 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+use Exception;
+
 declare(ticks = 1000);
 
 class EventDictionaryInstruction extends AbstractInstructionContent
@@ -8,15 +10,17 @@ class EventDictionaryInstruction extends AbstractInstructionContent
 
     protected function loadInstruction()
     {
+        $this->instructionList = [];
+        
         $offsetWordSize = 2;
         $eventWordSize = 12;
         
-        $this->instructionElements = [];
-        
-        $parentNode = $this->createInstructionContainer();
-        
         $eventCount = $this->ownerFile->extractContent($this->valueOffset, $offsetWordSize);
         $eventCount = $this->converter->decodeInteger($eventCount, $offsetWordSize);
+        
+        if ($eventCount > 256) {
+           throw new Exception("there probably shouldn't be $eventCount events at $this->valueOffset in " . $this->ownerFile->getFileName()); 
+        }
         
         $eventSizeList = [];
         $lastEnd = 0;
@@ -33,16 +37,19 @@ class EventDictionaryInstruction extends AbstractInstructionContent
         $eventStartOffset = $this->valueOffset + 4 + $eventNo * $offsetWordSize;
         
         foreach ($eventSizeList as $i => $eventSize) {
-            $instruction = [];
-            $instruction['name'] = sprintf('event-%02d', $i + 1);
-            $instruction['position'] = $eventStartOffset - $this->valueOffset;
-            $instruction['size'] = $eventSize;
-            $instruction['step-size'] = $eventWordSize;
+            $strucData = [];
+            $strucData['name'] = sprintf('event-%02d', $i + 1);
+            $strucData['position'] = $eventStartOffset - $this->valueOffset;
+            $strucData['size'] = $eventSize;
+            $strucData['step-size'] = $eventWordSize;
             
-            $parentNode->appendChild($this->createInstructionElement('event', $instruction));
+            $this->instructionList[] = [
+                'tagName' => 'event',
+                'element' => $this->getStrucElement(),
+                'strucData' => $strucData,
+            ];
             
             $eventStartOffset += $eventSize;
         }
-        $this->instructionElements[] = $parentNode;
     }
 }

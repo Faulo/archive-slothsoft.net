@@ -15,7 +15,7 @@ abstract class AbstractValueContent extends AbstractContentNode
     public function __construct()
     {
         parent::__construct();
-        $this->strucData['size'] = '1';
+        $this->strucData['size'] = 1;
         $this->strucData['value'] = '';
         $this->strucData['value-id'] = '';
     }
@@ -23,6 +23,7 @@ abstract class AbstractValueContent extends AbstractContentNode
     protected function loadStruc()
     {
         parent::loadStruc();
+        
         $this->strucData['size'] = $this->parseInt($this->strucData['size']);
     }
 
@@ -31,6 +32,7 @@ abstract class AbstractValueContent extends AbstractContentNode
         if ($this->strucData['size'] and $this->ownerFile) {
             $this->setRawValue($this->ownerFile->extractContent($this->valueOffset, $this->strucData['size']));
         }
+        //echo $this->getName() . ': ' . $this->getValue() . PHP_EOL;
     }
 
     public function setValueId($id)

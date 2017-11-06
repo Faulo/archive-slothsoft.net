@@ -38,7 +38,7 @@
 					<xsd:choice minOccurs="0" maxOccurs="unbounded">
 						<xsd:group ref="contentNodes"/>
 					</xsd:choice>
-					<xsd:attribute name="global-id" type="xsd:ID"/>
+					<xsd:attribute name="global-id" type="id"/>
 				</xsd:extension>
 			</xsd:complexContent>
 		</xsd:complexType>
@@ -51,7 +51,7 @@
 					<xsd:sequence>
 						<xsd:element ref="option" minOccurs="0" maxOccurs="unbounded"/>
 					</xsd:sequence>
-					<xsd:attribute name="dictionary-id" type="xsd:ID"/>
+					<xsd:attribute name="dictionary-id" type="id"/>
 				</xsd:extension>
 			</xsd:complexContent>
 		</xsd:complexType>
@@ -72,9 +72,8 @@
 	<xsd:element name="archive">
 		<xsd:complexType>
 			<xsd:complexContent>
-				<xsd:extension base="genericNode">
+				<xsd:extension base="containerContentNode">
 					<xsd:choice minOccurs="0" maxOccurs="unbounded">
-						<xsd:element ref="for-each-file"/>
 						<xsd:element ref="file"/>
 					</xsd:choice>
 					<xsd:attribute name="file-name" type="xsd:normalizedString" use="required"/>
@@ -89,19 +88,6 @@
 							</xsd:restriction>
 						</xsd:simpleType>
 					</xsd:attribute>
-				</xsd:extension>
-			</xsd:complexContent>
-		</xsd:complexType>
-	</xsd:element>
-	
-	<xsd:element name="for-each-file">
-		<xsd:complexType>
-			<xsd:complexContent>
-				<xsd:extension base="instructionContentNode">
-					<!--
-					<xsd:attribute name="first-file" type="xsd:token" default="001"/>
-					<xsd:attribute name="last-file" type="xsd:token" default="auto"/>
-					-->
 				</xsd:extension>
 			</xsd:complexContent>
 		</xsd:complexType>
@@ -237,7 +223,6 @@
 					<xsd:attribute name="first-bit" type="xsd:integer" />
 					<xsd:attribute name="last-bit" type="xsd:integer" />
 					<xsd:attribute name="size" type="numberExpression" />
-					<xsd:attribute name="bit-namelist" type="xsd:IDREFS"/>
 				</xsd:extension>
 			</xsd:complexContent>
 		</xsd:complexType>
@@ -249,7 +234,6 @@
 				<xsd:extension base="instructionContentNode">
 					<xsd:attribute name="group-size" type="numberExpression" use="required"/>
 					<xsd:attribute name="group-count" type="numberExpression"/>
-					<xsd:attribute name="group-namelist" type="xsd:IDREFS"/>
 				</xsd:extension>
 			</xsd:complexContent>
 		</xsd:complexType>
@@ -259,7 +243,7 @@
 		<xsd:complexType>
 			<xsd:complexContent>
 				<xsd:extension base="instructionContentNode">
-					<xsd:attribute name="ref" type="xsd:IDREF" use="required"/>
+					<xsd:attribute name="ref" type="id" use="required"/>
 				</xsd:extension>
 			</xsd:complexContent>
 		</xsd:complexType>
@@ -273,13 +257,7 @@
 	<xsd:complexType name="contentNode">
 		<xsd:complexContent>
 			<xsd:extension base="genericNode">
-				<xsd:attribute name="name">
-					<xsd:simpleType>
-						<xsd:restriction base="xsd:token">
-							<xsd:pattern value="[\w-]+"/>
-						</xsd:restriction>
-					</xsd:simpleType>
-				</xsd:attribute>
+				<xsd:attribute name="name" type="name"/>
 				<xsd:attribute name="position" type="numberExpression" />
 			</xsd:extension>
 		</xsd:complexContent>
@@ -340,24 +318,30 @@
 	</xsd:group>
 	
 	<xsd:attributeGroup name="dictionary-ref">
-		<xsd:attribute name="dictionary-ref" use="optional">
-			<xsd:simpleType>
-				<xsd:restriction base="xsd:IDREF">
-					<xsd:pattern value="[a-z\-öäü]+"/>
-				</xsd:restriction>
-			</xsd:simpleType>
-		</xsd:attribute>
+		<xsd:attribute name="dictionary-ref" type="id" use="optional"/>
 	</xsd:attributeGroup>
 	
 	<xsd:attributeGroup name="encoding">
 		<xsd:attribute name="encoding" type="xsd:token"/>
 	</xsd:attributeGroup>
 	
+	<xsd:simpleType name="id">
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="[A-Za-z0-9\-\.]+"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="name">
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="[A-Za-z0-9\-\.]+"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
 	<xsd:simpleType name="numberExpression">
 		<xsd:union>
 			<xsd:simpleType>
 				<xsd:restriction base="xsd:token">
-					<xsd:pattern value="\{([\w-]+|\s+|\*)+\}"/>
+					<xsd:pattern value="\{(\$[A-Za-z0-9\-\.]+|\s+|\d+|\*|\+)+\}"/>
 				</xsd:restriction>
 			</xsd:simpleType>
 			<xsd:simpleType>

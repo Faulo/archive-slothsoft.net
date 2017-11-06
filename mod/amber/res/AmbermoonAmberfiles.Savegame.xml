@@ -102,7 +102,7 @@
 		<use-global ref="character-name"/>
 	</global>
 	<archive file-name="Party_char.amb" type="AMBR">
-		<for-each-file>
+		
 			<use-global ref="character"/>
 			
 			<repeat-group name="equipment" position="290" group-size="6" group-count="9" dictionary-ref="equipment-slots">
@@ -116,10 +116,10 @@
 			
 			<!--<event-dictionary position="488" name="events"/>-->
 			<!--<event-script position="488" name="events"/>-->
-		</for-each-file>
+		
 	</archive>
 	<archive file-name="Party_data.sav" type="JH">
-		<for-each-file>
+		
 			<group name="party-composition">
 				<repeat-group position="0x002E" group-size="2" group-count="6">
 					<select size="2" dictionary-ref="partymembers"/>
@@ -147,19 +147,19 @@
 				<bit name="partybit-leonardia-gone" position="0x2B8C" bit="0"/>
 				<bit name="partybit-gryban-gone" position="0x2BB8" bit="0"/>
 			</group>
-		</for-each-file>
+		
 	</archive>
 	<archive file-name="Merchant_data.amb" type="AMBR">
-		<for-each-file>
+		
 			<group name="inventory">
 				<repeat-group position="0" group-size="6" group-count="24">
 					<use-global ref="item"/>
 				</repeat-group>
 			</group>
-		</for-each-file>
+		
 	</archive>
 	<archive file-name="Chest_data.amb" type="AMBR">
-		<for-each-file>
+		
 			<group name="inventory">
 				<repeat-group position="0" group-size="6" group-count="24">
 					<use-global ref="item"/>
@@ -169,7 +169,7 @@
 				<signed-integer name="gold" position="144" size="2"/>
 				<signed-integer name="food" position="146" size="2"/>
 			</group>
-		</for-each-file>
+		
 	</archive>
 	
 	

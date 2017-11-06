@@ -673,15 +673,15 @@
 	
 	
 	<archive file-name="NPC_char.amb" type="AMBR">
-		<for-each-file>
+		
 			<!--<use-global ref="character-name"/>-->
 			<use-global ref="character"/>
 			<!--<event-dictionary position="290" name="events"/>-->
 			<!--<event-script position="290" name="events"/>-->
-		</for-each-file>
+		
 	</archive>
 	<archive file-name="Monster_char_data.amb" type="AMBR">
-		<for-each-file>
+		
 			<use-global ref="character"/>
 			
 			<repeat-group name="equipment" position="290" group-size="6" group-count="9" dictionary-ref="equipment-slots">
@@ -701,37 +701,37 @@
 				<integer name="events"/>
 			</repeat-group>
 			-->
-		</for-each-file>
+		
 	</archive>
 	<archive file-name="Dictionary.german" type="JH">
-		<for-each-file>
+		
 			<string-dictionary type="size-interspersed" encoding="CP850" position="0" name="keywords"/>
-		</for-each-file>
+		
 	</archive>
 	<archive file-name="NPC_texts.amb" type="AMBR">
-		<for-each-file>
+		
 			<string-dictionary type="size-first" encoding="CP850" position="0" name="dialog"/>
-		</for-each-file>
+		
 	</archive>
 	<archive file-name="Party_texts.amb" type="AMBR">
-		<for-each-file>
+		
 			<string-dictionary type="size-first" encoding="CP850" position="0" name="dialog"/>
-		</for-each-file>
+		
 	</archive>
 	<archive file-name="1Map_texts.amb" type="AMBR">
-		<for-each-file>
+		
 			<string-dictionary type="size-first" encoding="CP850" position="0" name="description"/>
-		</for-each-file>
+		
 	</archive>
 	<archive file-name="2Map_texts.amb" type="AMBR">
-		<for-each-file>
+		
 			<string-dictionary type="size-first" encoding="CP850" position="0" name="description"/>
-		</for-each-file>
+		
 	</archive>
 	<archive file-name="3Map_texts.amb" type="AMBR">
-		<for-each-file>
+		
 			<string-dictionary type="size-first" encoding="CP850" position="0" name="description"/>
-		</for-each-file>
+		
 	</archive>
 	<global global-id="place-inn">
 		<group>
@@ -782,7 +782,7 @@
 		</group>
 	</global>
 	<archive file-name="Place_data" type="JH">
-		<for-each-file>
+		
 			<!--
 			<repeat-group name="places" position="2" group-size="32" group-count="64">
 				<repeat-group group-size="2" group-count="16">
@@ -859,11 +859,11 @@
 				<use-global position="0x800" ref="place-blacksmith"/>
 			</group>
 			<string-dictionary position="0x822" name="names" type="size-fixed" encoding="CP850" string-size="30" string-count="64"/>
-		</for-each-file>
+		
 	</archive>
 	<!--
 	<archive file-name="AM2_CPU" type="AM2">
-		<for-each-file>
+		
 			<string-dictionary type="null-delimited" encoding="8bit" position="0x049B0A" name="spells-misc" string-count="30"/>
 			<string-dictionary type="null-delimited" encoding="8bit" position="0x04950B" name="spells-white" string-count="30"/>
 			<string-dictionary type="null-delimited" encoding="8bit" position="0x0496E4" name="spells-blue" string-count="30"/>
@@ -873,7 +873,7 @@
 			<repeat-group name="class-experience" position="0x451F0" group-size="2" group-count="10">
 				<integer size="2"/>
 			</repeat-group>
-		</for-each-file>
+		
 	</archive>
 	-->
 	<global global-id="AM2-strings">
@@ -928,7 +928,7 @@
 	</global>
 	<!--
 	<archive file-name="AM2_CPU" type="AM2">
-		<for-each-file>
+		
 			<group name="integers" position="0x453F0">
 				<use-global ref="AM2-integers"/>
 			</group>
@@ -938,11 +938,11 @@
 			<group name="items" position="0x4D348">
 				<use-global ref="AM2-items"/>
 			</group>
-		</for-each-file>
+		
 	</archive>
 	-->
 	<archive file-name="AM2_BLIT" type="AM2">
-		<for-each-file>
+		
 			<group name="integers" position="0x48140">
 				<use-global ref="AM2-integers"/>
 			</group>
@@ -952,14 +952,14 @@
 			<group name="items" position="0x50098">
 				<use-global ref="AM2-items"/>
 			</group>
-		</for-each-file>
+		
 	</archive>
 	
 	
 	
 	<!--
 	<archive file-name="AM2_CPU" type="AM2">
-		<for-each-file>
+		
 			<group>
 				<string-dictionary position="0x049B0A" name="spells-misc" string-count="30"/>
 				<string-dictionary position="0x04950B" name="spells-white" string-count="30"/>
@@ -971,7 +971,7 @@
 					<integer size="2"/>
 				</repeat-group>
 			</group>
-		</for-each-file>
+		
 	</archive>
 	-->
 	

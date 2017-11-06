@@ -24,14 +24,9 @@ class StringDictionaryInstruction extends AbstractInstructionContent
         $this->strucData['string-size'] = '';
     }
 
-    protected function loadStruc()
-    {
-        parent::loadStruc();
-    }
-
     protected function loadInstruction()
     {
-        $this->instructionElements = [];
+        $this->instructionList = [];
         
         // string-count
         switch ($this->strucData['type']) {
@@ -49,21 +44,6 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                         break;
                     }
                 }
-                /*
-                 * $this->strucData['string-count'] = $this->ownerFile->extractContent($this->valueOffset, $countSize);
-                 * $this->strucData['string-count'] = $this->decode($this->strucData['string-count'], self::TYPE_INTEGER, ['size' => $countSize]);
-                 * if (!$this->strucData['string-count']) {
-                 * $testOffset = 4;
-                 * $this->strucData['string-count'] = $this->ownerFile->extractContent($this->valueOffset + $testOffset, $countSize);
-                 * $this->strucData['string-count'] = $this->decode($this->strucData['string-count'], self::TYPE_INTEGER, ['size' => $countSize]);
-                 * if ($this->strucData['string-count']) {
-                 * $this->valueOffset += $testOffset;
-                 * }
-                 * } else {
-                 * $testOffset = 0;
-                 * }
-                 * //
-                 */
                 break;
             case self::LIST_TYPE_SIZE_FIXED:
                 $this->strucData['string-size'] = $this->parseInt($this->strucData['string-size']);
@@ -73,12 +53,8 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                 throw new Exception('unknown text-list type: ' . $this->strucData['type']);
         }
         
-        $parentNode = $this->createInstructionContainer();
-        
         switch ($this->strucData['type']) {
             case self::LIST_TYPE_NULL_DELIMITED:
-                $parentNode->appendChild($this->createInstructionElement('group', []));
-                
                 $textOffset = $this->valueOffset;
                 for ($i = 0; $i < $this->strucData['string-count']; $i ++) {
                     $text = $this->ownerFile->extractContent($textOffset, 'auto');
@@ -88,12 +64,16 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                         // break;
                     }
                     
-                    $instruction = [];
-                    $instruction['position'] = $textOffset - $this->valueOffset;
-                    $instruction['size'] = $textLength;
-                    $instruction['encoding'] = $this->strucData['encoding'];
+                    $strucData = [];
+                    $strucData['position'] = $textOffset - $this->valueOffset;
+                    $strucData['size'] = $textLength;
+                    $strucData['encoding'] = $this->strucData['encoding'];
                     
-                    $parentNode->appendChild($this->createInstructionElement('string', $instruction));
+                    $this->instructionList[] = [
+                        'tagName' => 'string',
+                        'element' => $this->getStrucElement(),
+                        'strucData' => $strucData,
+                    ];
                     
                     $textOffset += $textLength + 1;
                 }
@@ -109,12 +89,16 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                     
                     $textOffset += $textLengthSize;
                     
-                    $instruction = [];
-                    $instruction['position'] = $textOffset - $this->valueOffset;
-                    $instruction['size'] = $textLength;
-                    $instruction['encoding'] = $this->strucData['encoding'];
+                    $strucData = [];
+                    $strucData['position'] = $textOffset - $this->valueOffset;
+                    $strucData['size'] = $textLength;
+                    $strucData['encoding'] = $this->strucData['encoding'];
                     
-                    $parentNode->appendChild($this->createInstructionElement('string', $instruction));
+                    $this->instructionList[] = [
+                        'tagName' => 'string',
+                        'element' => $this->getStrucElement(),
+                        'strucData' => $strucData,
+                    ];
                     
                     $textOffset += $textLength;
                 }
@@ -135,12 +119,16 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                 }
                 $textOffset = $this->valueOffset + $countOffset + $countSize + $this->strucData['string-count'] * $textLengthSize;
                 foreach ($textLengthList as $textLength) {
-                    $instruction = [];
-                    $instruction['position'] = $textOffset - $this->valueOffset;
-                    $instruction['size'] = $textLength;
-                    $instruction['encoding'] = $this->strucData['encoding'];
+                    $strucData = [];
+                    $strucData['position'] = $textOffset - $this->valueOffset;
+                    $strucData['size'] = $textLength;
+                    $strucData['encoding'] = $this->strucData['encoding'];
                     
-                    $parentNode->appendChild($this->createInstructionElement('string', $instruction));
+                    $this->instructionList[] = [
+                        'tagName' => 'string',
+                        'element' => $this->getStrucElement(),
+                        'strucData' => $strucData,
+                    ];
                     
                     $textOffset += $textLength;
                 }
@@ -148,18 +136,20 @@ class StringDictionaryInstruction extends AbstractInstructionContent
             case self::LIST_TYPE_SIZE_FIXED:
                 $textPosition = 0;
                 for ($i = 0; $i < $this->strucData['string-count']; $i ++) {
-                    $instruction = [];
-                    $instruction['position'] = $textPosition;
-                    $instruction['size'] = $this->strucData['string-size'];
-                    $instruction['encoding'] = $this->strucData['encoding'];
+                    $strucData = [];
+                    $strucData['position'] = $textPosition;
+                    $strucData['size'] = $this->strucData['string-size'];
+                    $strucData['encoding'] = $this->strucData['encoding'];
                     
-                    $parentNode->appendChild($this->createInstructionElement('string', $instruction));
+                    $this->instructionList[] = [
+                        'tagName' => 'string',
+                        'element' => $this->getStrucElement(),
+                        'strucData' => $strucData,
+                    ];
                     
                     $textPosition += $this->strucData['string-size'];
                 }
                 break;
         }
-        
-        $this->instructionElements[] = $parentNode;
     }
 }

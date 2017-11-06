@@ -9,45 +9,44 @@ class RepeatGroupInstruction extends AbstractInstructionContent
     public function __construct()
     {
         parent::__construct();
-        $this->strucData['group-size'] = '1';
-        $this->strucData['group-count'] = '1';
+        $this->strucData['group-size'] = 1;
+        $this->strucData['group-count'] = 1;
     }
 
     protected function loadStruc()
     {
         parent::loadStruc();
+        
         $this->strucData['group-size'] = $this->parseInt($this->strucData['group-size']);
-        //$this->strucData['group-count'] = $this->parseInt($this->strucData['group-count']);
+        $this->strucData['group-count'] = $this->parseInt($this->strucData['group-count']);
     }
 
     protected function loadInstruction()
     {
-        $this->instructionElements = [];
+        $this->instructionList = [];
         
         $start = 0;
         $step = $this->strucData['group-size'];
-        $count = $this->parseInt($this->strucData['group-count']) * $step;
+        $count = $this->strucData['group-count'] * $step;
+        
         $positionList = [];
         for ($i = $start; $i < $count; $i += $step) {
             $positionList[] = $i;
         }
         
-        $parentNode = $this->createInstructionContainer();
-        
         foreach ($positionList as $i => $position) {
-            $instruction = [];
-            $instruction['position'] = $position;
-            if (isset($this->dictionaryOptions[$i])) {
-                $instruction['name'] = $this->dictionaryOptions[$i];
-            }
-            $instructionElement = $this->createInstructionElement('group', $instruction);
-            foreach ($this->getStrucElementChildren() as $node) {
-                $instructionElement->appendChild($node->cloneNode(true));
-            }
-            $parentNode->appendChild($instructionElement);
+            $strucData = [];
+            $strucData['position'] = $position;
+            $strucData['name'] = $this->dictionary
+                ? (string) $this->dictionary->getOption($i)
+                : '';
+                
+            $this->instructionList[] = [
+                'tagName' => 'group',
+                'element' => $this->getStrucElement(),
+                'strucData' => $strucData,
+            ];
         }
-        
-        $this->instructionElements[] = $parentNode;
     }
 }
 

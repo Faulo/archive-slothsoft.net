@@ -1,7 +1,7 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
-use Exception;
+
 declare(ticks = 1000);
 
 class FileContainer extends AbstractContainerContent
@@ -16,20 +16,22 @@ class FileContainer extends AbstractContainerContent
     {
         parent::__construct();
         $this->strucData['file-name'] = '';
-        $this->strucData['file-path'] = '';
     }
 
-    protected function loadStruc()
+    protected function initStrucAttributes(array $overrideData)
     {
+        assert(isset($overrideData['file-path']) and file_exists($overrideData['file-path']), '$overrideData must contain file-path');
+        
+        $this->setContent(file_get_contents($overrideData['file-path']));
+        unset($overrideData['file-path']);
+        
+        return parent::initStrucAttributes($overrideData);
+    }
+    protected function loadStruc()
+        {
         parent::loadStruc();
         
         $this->ownerFile = $this;
-        
-        if (! $this->strucData['file-path']) {
-            throw new Exception('empty filename?');
-        }
-        
-        $this->setContent(file_get_contents($this->strucData['file-path']));
     }
 
     public function extractContent($offset, $length)
