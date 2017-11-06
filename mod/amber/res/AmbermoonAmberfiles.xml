@@ -972,8 +972,11 @@
 		<group position="0x14C">
 			<group position="0" name="tiles">
 				<repeat-group group-count="{$width * $height}" group-size="{$map-type * 2}">
-					<integer position="0" size="1"/>
-					<!--<binary size="4"/>-->
+					<group name="tile">
+						<integer position="0" size="1" name="low"/>
+						<integer position="1" size="1" name="event-id"/>
+						<integer position="2" size="2" name="high"/>
+					</group>
 				</repeat-group>
 			</group>
 			<group position="{$width * $height * $map-type * 2}" name="events">
