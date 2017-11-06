@@ -132,20 +132,20 @@
 				<integer name="map-y" position="0x000E" size="2"/>
 			</group>
 			<group name="party-variables">
-				<bit name="partybit-netsrak-gone" position="0x2904" bit="0"/>
-				<bit name="partybit-mando-gone" position="0x2904" bit="1"/>
-				<bit name="partybit-erik-gone" position="0x2904" bit="2"/>
-				<bit name="partybit-chris-gone" position="0x2904" bit="3"/>
-				<bit name="partybit-monika-gone" position="0x2904" bit="4"/>
-				<bit name="partybit-tar-gone" position="0x292C" bit="1"/>
-				<bit name="partybit-egil-gone" position="0x2930" bit="3"/>
-				<bit name="partybit-selena-gone" position="0x292C" bit="2"/>
-				<bit name="partybit-nelvin-gone" position="0x2968" bit="1"/>
-				<bit name="partybit-sabine-gone" position="0x2978" bit="0"/>
-				<bit name="partybit-valdyn-gone" position="0x2984" bit="0"/>
-				<bit name="partybit-targor-gone" position="0x2B68" bit="0"/>
-				<bit name="partybit-leonardia-gone" position="0x2B8C" bit="0"/>
-				<bit name="partybit-gryban-gone" position="0x2BB8" bit="0"/>
+				<bit name="partybit-netsrak-absent" position="0x2904" bit="0"/>
+				<bit name="partybit-mando-absent" position="0x2904" bit="1"/>
+				<bit name="partybit-erik-absent" position="0x2904" bit="2"/>
+				<bit name="partybit-chris-absent" position="0x2904" bit="3"/>
+				<bit name="partybit-monika-absent" position="0x2904" bit="4"/>
+				<bit name="partybit-tar-absent" position="0x292C" bit="1"/>
+				<bit name="partybit-egil-absent" position="0x2930" bit="3"/>
+				<bit name="partybit-selena-absent" position="0x292C" bit="2"/>
+				<bit name="partybit-nelvin-absent" position="0x2968" bit="1"/>
+				<bit name="partybit-sabine-absent" position="0x2978" bit="0"/>
+				<bit name="partybit-valdyn-absent" position="0x2984" bit="0"/>
+				<bit name="partybit-targor-absent" position="0x2B68" bit="0"/>
+				<bit name="partybit-leonardia-absent" position="0x2B8C" bit="0"/>
+				<bit name="partybit-gryban-absent" position="0x2BB8" bit="0"/>
 			</group>
 		
 	</archive>

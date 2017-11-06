@@ -88,7 +88,7 @@ class ArchiveNode extends AbstractNode
                     // double-pass!
                     unset($output);
                     
-                    $tempDir = temp_dir(__CLASS__);
+                    $tempDir = temp_dir(__CLASS__ . DIRECTORY_SEPARATOR . '_JH');
                     $command = sprintf('%1$s %2$s %3$s', escapeshellarg($ambtoolPath), escapeshellarg($this->archivePath), escapeshellarg($tempDir));
                     exec($command);
                     $fileList = FileSystem::scanDir($tempDir, FileSystem::SCANDIR_REALPATH);
