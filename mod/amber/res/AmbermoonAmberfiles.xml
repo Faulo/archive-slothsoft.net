@@ -954,7 +954,6 @@
 			<integer position="3"/>
 			<integer position="7"/>
 			<integer position="8"/>
-			<integer position="9"/>
 			<integer position="10"/>
 			<integer position="11"/>
 			<integer position="12"/>
@@ -968,14 +967,15 @@
 			<integer position="5" name="height"/>
 			<!--<select position="6" name="world" dictionary-ref="map-worlds"/>-->
 			<integer position="6" name="icondata-id"/>
+			<integer position="9" name="palette-id"/>
 		</group>
 		<group position="0x14C">
 			<group position="0" name="tiles">
 				<repeat-group group-count="{$width * $height}" group-size="{$map-type * 2}">
 					<group name="tile">
-						<integer position="0" size="1" name="low"/>
+						<integer position="0" size="1" name="tile-id"/>
+						<integer position="2" size="{2 * ($map-type - 1)}" name="tile-id"/>
 						<integer position="1" size="1" name="event-id"/>
-						<integer position="2" size="2" name="high"/>
 					</group>
 				</repeat-group>
 			</group>
@@ -1017,7 +1017,7 @@
 	</archive>
 	<archive file-name="Icon_data.amb" type="AMBR">
 		
-			<group name="unknown">
+			<group name="testing">
 				<integer position="2"/>
 				<integer position="3"/>
 				<integer position="4"/>
@@ -1028,7 +1028,10 @@
 			</group>
 			<group name="icons">
 				<repeat-group position="6" group-count="{$entry-count}" group-size="8">
-					<binary size="8" name="data"/>
+					<!--<binary size="8" name="data"/>-->
+					<integer position="0" size="2" name="image-id"/>
+					<integer position="2" size="1" name="image-count"/>
+					<binary position="3" size="5" name="data"/>
 				</repeat-group>
 				<!--<binary position="6" size="20000" name="data"/>-->
 			</group>

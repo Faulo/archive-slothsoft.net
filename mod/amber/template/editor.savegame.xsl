@@ -257,8 +257,8 @@ window.addEventListener(
 								<div>
 									<xsl:call-template name="savegame.amber.testing"/>
 								</div>
-								<xsl:call-template name="savegame.amber.events"/>
 								<xsl:call-template name="savegame.amber.tiles"/>
+								<xsl:call-template name="savegame.amber.events"/>
 							</xsl:with-param>
 						</xsl:call-template>
 					</li>
@@ -266,6 +266,63 @@ window.addEventListener(
 			</xsl:with-param>
 		</xsl:call-template>
 	</xsl:template>
+	
+	<xsl:template match="save:archive[@file-name[. = 'Icon_data.amb']]" mode="form-content">
+		<xsl:call-template name="savegame.tabs">
+			<xsl:with-param name="label" select="'Aktives Tileset:'"/>
+			<xsl:with-param name="options" select="save:file/@file-name"/>
+			<xsl:with-param name="list">
+				<xsl:for-each select="save:file">
+					<li>
+						<xsl:call-template name="savegame.flex">
+							<xsl:with-param name="items">
+								<xsl:for-each select=".//*[@name='data']">
+									<div>
+										<xsl:call-template name="savegame.table">
+											<xsl:with-param name="label" select="'data'"/>
+											<xsl:with-param name="items">
+												<xsl:apply-templates select="save:integer | save:select" mode="item"/>
+											</xsl:with-param>
+										</xsl:call-template>
+									</div>
+								</xsl:for-each>
+								<div>
+									<xsl:call-template name="savegame.amber.testing"/>
+								</div>
+								<div>
+									<xsl:for-each select=".//*[@name = 'icons']">
+										<h3 class="name">icons</h3>
+										<table>
+											<thead>
+												<tr>
+													<td>icon-id</td>
+													<td>image-id</td>
+													<td>image-range</td>
+													<td>data</td>
+												</tr>
+											</thead>
+											<tbody>
+												<xsl:for-each select="*/*">
+													<tr>
+														<td><xsl:value-of select="position()"/></td>
+														<td><xsl:apply-templates select="save:integer[1]" mode="form-content"/></td>
+														<td><xsl:apply-templates select="save:integer[2]" mode="form-content"/></td>
+														<td><xsl:apply-templates select="save:binary" mode="form-content"/></td>
+													</tr>
+												</xsl:for-each>
+											</tbody>
+										</table>
+									</xsl:for-each>
+								</div>
+							</xsl:with-param>
+						</xsl:call-template>
+					</li>
+				</xsl:for-each>
+			</xsl:with-param>
+		</xsl:call-template>
+	</xsl:template>
+	
+	
 	
 	<xsl:template match="save:archive[@file-name='1Map_texts.amb']" mode="form-content">
 		<xsl:call-template name="savegame.tabs">
@@ -613,11 +670,24 @@ window.addEventListener(
 	<xsl:template name="savegame.amber.tiles">
 		<xsl:variable name="width" select=".//*[@name='width']/@value"/>
 		<xsl:variable name="height" select=".//*[@name='height']/@value"/>
+		<xsl:variable name="icondata" select=".//*[@name='icondata-id']/@value"/>
+		<xsl:variable name="palette" select=".//*[@name='palette-id']/@value"/>
+		<xsl:variable name="map-type" select=".//*[@name='map-type']/@value"/>
 		<xsl:for-each select=".//*[@name='tiles']">
 			<xsl:variable name="tiles" select=".//save:group[@name='tile']"/>
 			<div>
 				<h3 class="name">Tiles</h3>
-				<table class="tiles">
+				<table class="map" data-palette="{$palette}">
+					<xsl:choose>
+						<xsl:when test="$map-type = 1">
+							<!--3D-->
+							<xsl:attribute name="data-labset"><xsl:value-of select="$icondata"/></xsl:attribute>
+						</xsl:when>
+						<xsl:when test="$map-type = 2">
+							<!--2D-->
+							<xsl:attribute name="data-tileset"><xsl:value-of select="$icondata"/></xsl:attribute>
+						</xsl:when>
+					</xsl:choose>
 					<tbody>
 						<xsl:for-each select="str:split(str:padding($height, '-'), '')">
 							<xsl:variable name="y" select="position()"/>

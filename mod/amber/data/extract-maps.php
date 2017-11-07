@@ -13,7 +13,7 @@ $this->httpRequest->setInputValue('save', [
             '2Map_data.amb',
             '3Map_data.amb',
 			//*/
-			'2Map_data.amb',
+			'1Map_data.amb',
         ]
     ]
 ]);

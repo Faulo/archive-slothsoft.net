@@ -126,6 +126,7 @@
 	<struc name="default">
 		<style name="default" />
 		<style name="dictionary" />
+		<style name="tilesets" />
 	</struc>
 
 	<resource name="sites" path="sites.xml" type="application/xml" />
@@ -158,7 +159,7 @@
 	<resourceDir name="saves" path="save" type="application/octet-stream" />
 	<resourceDir name="portraits" path="portraits" type="image/png" />
 	<resourceDir name="items" path="items" type="image/png" />
-	<resourceDir name="icons" path="icons" type="image/png" />
+	<resourceDir name="tilesets" path="tilesets" type="image/png" />
 	<resourceDir name="monster-gfx" path="monster-gfx" type="image/png" />
 
 	<resourceDir name="AmbermoonPatch" path="save/patch" type="*/*" />

@@ -270,9 +270,28 @@
 	border-style: ridge !important;
 }
 .Amber .tile.picker {
-	border-width: 0;
+	border-width: 1px;
+	width: 34px;
+	height: 34px;
+}
+
+/* tilesets */
+.Amber .picker > *[data-picker-name="tile-id"]::after {
+	font-size: 32px;
+	width: 1em;
+	height: 1em;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.Amber .picker > *[data-picker-name="event-id"]::after {
+	position: absolute;
+	top: 0;
+	left: 0;
 	width: 32px;
-	height: 32px;
+	line-height: 32px;
+	content: attr(data-picker-value);
+	color: rgb(255, 153, 0);
 }
 .Amber .picker > *[data-picker-name="low"]::after {
 	position: absolute;
@@ -281,9 +300,6 @@
 	font-size: 0.5em;
 	content: attr(data-picker-value);
 }
-.Amber .picker > *[data-picker-name="low"][data-picker-value="0"]::after {
-	display: none;
-}
 .Amber .picker > *[data-picker-name="high"]::after {
 	position: absolute;
 	top: 0px;
@@ -291,20 +307,15 @@
 	font-size: 0.5em;
 	content: attr(data-picker-value);
 }
+.Amber .picker > *[data-picker-name="tile-id"][data-picker-value="0"]::after,
+.Amber .picker > *[data-picker-name="event-id"][data-picker-value="0"]::after,
+.Amber .picker > *[data-picker-name="low"][data-picker-value="0"]::after,
 .Amber .picker > *[data-picker-name="high"][data-picker-value="0"]::after {
 	display: none;
 }
-.Amber .picker > *[data-picker-name="event-id"]::after {
-	position: absolute;
-	left: 0px;
-	bottom: 0px;
-	font-size: 0.5em;
-	content: attr(data-picker-value);
-	color: rgb(170, 170, 68);
-}
-.Amber .picker > *[data-picker-name="event-id"][data-picker-value="0"]::after {
-	display: none;
-}
+
+
+
 .Amber *[data-template="equip"] .picker,
 .Amber *[data-template="item"] .picker,
 .Amber .equipment .picker {
@@ -400,8 +411,11 @@
 
 
 
-.Amber table.tiles {
+.Amber table.map {
 	border-spacing: 0;
+}
+.Amber table.map td {
+	padding: 0;
 }
 
 .Amber *[data-hover-text],
