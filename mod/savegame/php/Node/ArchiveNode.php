@@ -7,11 +7,15 @@ declare(ticks = 1000);
 
 class ArchiveNode extends AbstractNode
 {
-    const ARCHIVE_TYPE_RAW  = 'Raw';
-    const ARCHIVE_TYPE_AM2  = 'AM2';
+
+    const ARCHIVE_TYPE_RAW = 'Raw';
+
+    const ARCHIVE_TYPE_AM2 = 'AM2';
+
     const ARCHIVE_TYPE_AMBR = 'AMBR';
-    const ARCHIVE_TYPE_JH   = 'JH';
-    
+
+    const ARCHIVE_TYPE_JH = 'JH';
+
     protected $filePathList;
 
     protected $archivePath;
@@ -32,7 +36,6 @@ class ArchiveNode extends AbstractNode
 
     public function loadStruc()
     {
-        
         $this->ownerArchive = $this;
         
         parent::loadStruc();
@@ -55,13 +58,13 @@ class ArchiveNode extends AbstractNode
         if ($this->ownerEditor->shouldLoadArchive($this->strucData['file-name'])) {
             
             $this->filePathList = FileSystem::scanDir($this->tempDir, FileSystem::SCANDIR_REALPATH);
-            if (!count($this->filePathList)) {
+            if (! count($this->filePathList)) {
                 $this->loadArchive();
                 $this->filePathList = FileSystem::scanDir($this->tempDir, FileSystem::SCANDIR_REALPATH);
             }
-            
         }
     }
+
     protected function loadChildren()
     {
         foreach ($this->filePathList as $filePath) {
@@ -104,7 +107,7 @@ class ArchiveNode extends AbstractNode
                     if (isset($output[1])) {
                         break;
                     }
-                    //didn't need double-pass after all...
+                // didn't need double-pass after all...
                 case 'Format: AMBR (raw archive)':
                 case 'Format: AMNP (compressed/encrypted archive)':
                     $command = sprintf('%1$s %2$s %3$s', escapeshellarg($ambtoolPath), escapeshellarg($this->archivePath), escapeshellarg($this->tempDir));
@@ -146,8 +149,8 @@ class ArchiveNode extends AbstractNode
                     $header[$id] = pack('N', strlen($val));
                     $body[$id] = $val;
                 }
-                for ($id = 1; $id < $maxId; $id++) {
-                    if (!isset($header[$id])) {
+                for ($id = 1; $id < $maxId; $id ++) {
+                    if (! isset($header[$id])) {
                         $header[$id] = pack('N', 0);
                         $body[$id] = '';
                     }
@@ -190,7 +193,7 @@ class ArchiveNode extends AbstractNode
         
         $this->tempDir = implode(DIRECTORY_SEPARATOR, $dir);
         
-        if (!is_dir($this->tempDir)) {
+        if (! is_dir($this->tempDir)) {
             mkdir($this->tempDir, 0777, true);
         }
     }

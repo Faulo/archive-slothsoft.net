@@ -38,11 +38,13 @@ abstract class AbstractContentNode extends AbstractNode
     {
         return $this->valueOffset;
     }
-    
+
     /**
+     *
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->strucData['name'];
     }
 }

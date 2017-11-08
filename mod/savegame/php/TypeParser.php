@@ -9,19 +9,25 @@ use Slothsoft\Savegame\Node\AbstractNode;
  *        
  */
 class TypeParser
-{/**
-    * @return \Slothsoft\Savegame\TypeParser
-    */
+{
+
+    /**
+     *
+     * @return \Slothsoft\Savegame\TypeParser
+     */
     public static function getInstance()
     {
         static $instance;
-        if (!$instance) {
+        if (! $instance) {
             $instance = new TypeParser();
         }
         return $instance;
     }
+
     protected $resultCache = [];
-    public function evaluate($expression, AbstractNode $context) {
+
+    public function evaluate($expression, AbstractNode $context)
+    {
         if (is_int($expression)) {
             return $expression;
         }
@@ -37,10 +43,10 @@ class TypeParser
         }
         
         $id = $context->getNodeId();
-        if (!isset($this->resultCache[$id])) {
+        if (! isset($this->resultCache[$id])) {
             $this->resultCache[$id] = [];
         }
-        if (!isset($this->resultCache[$id][$expression])) {
+        if (! isset($this->resultCache[$id][$expression])) {
             preg_match_all('/\$([A-Za-z0-9\-\.]+)/', $expression, $matches);
             $translate = [];
             foreach ($matches[0] as $i => $key) {
@@ -53,18 +59,19 @@ class TypeParser
             }
             $code = strtr($expression, $translate);
             $code = trim($code);
-            //echo $code . PHP_EOL;
+            // echo $code . PHP_EOL;
             $this->resultCache[$id][$expression] = $this->evaluateMath($code);
-            //echo $expression . PHP_EOL . $code . PHP_EOL . $this->resultCache[$id][$expression] . PHP_EOL . PHP_EOL;
+            // echo $expression . PHP_EOL . $code . PHP_EOL . $this->resultCache[$id][$expression] . PHP_EOL . PHP_EOL;
         }
         return $this->resultCache[$id][$expression];
     }
-    
-    public function evaluateMath($code) {
+
+    public function evaluateMath($code)
+    {
         static $evalList = [];
-        if (!isset($evalList[$code])) {
+        if (! isset($evalList[$code])) {
             $evalList[$code] = eval("return ($code);");
-            //echo $code . PHP_EOL . $evalList[$code] . PHP_EOL . PHP_EOL;
+            // echo $code . PHP_EOL . $evalList[$code] . PHP_EOL . PHP_EOL;
         }
         return $evalList[$code];
     }

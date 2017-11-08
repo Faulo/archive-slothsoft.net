@@ -1,17 +1,17 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
-
 declare(ticks = 1000);
 
 class FileContainer extends AbstractContainerContent
 {
 
     /**
+     *
      * @var string
      */
     protected $content;
-    
+
     protected $valueList = [];
 
     public function __construct()
@@ -29,6 +29,7 @@ class FileContainer extends AbstractContainerContent
         
         return parent::initStrucAttributes($overrideData);
     }
+
     protected function loadStruc()
     {
         $this->ownerFile = $this;
@@ -82,17 +83,20 @@ class FileContainer extends AbstractContainerContent
     {
         $this->content = $content;
     }
-    
+
     public function getContent()
     {
         return $this->content;
     }
+
     public function getFileName()
     {
         return $this->strucData['file-name'];
     }
-    public function getValueByName(string $name) {
-        if (!isset($this->valueList[$name])) {
+
+    public function getValueByName(string $name)
+    {
+        if (! isset($this->valueList[$name])) {
             $this->valueList[$name] = parent::getValueByName($name);
         }
         return $this->valueList[$name];

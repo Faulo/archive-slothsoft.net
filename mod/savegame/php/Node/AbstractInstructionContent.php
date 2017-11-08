@@ -7,7 +7,7 @@ abstract class AbstractInstructionContent extends AbstractContentNode
 {
 
     abstract protected function loadInstruction();
-    
+
     protected $instructionList;
 
     protected $dictionary;
@@ -38,7 +38,9 @@ abstract class AbstractInstructionContent extends AbstractContentNode
             $this->loadChild($instruction['element'], $instruction['tagName'], $instruction['strucData']);
         }
     }
-    public function asXML() {
+
+    public function asXML()
+    {
         $attributes = [];
         $attributes['instruction'] = $this->tagName;
         $attributes['name'] = $this->strucData['name'];

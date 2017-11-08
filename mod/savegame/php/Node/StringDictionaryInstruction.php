@@ -72,7 +72,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                     $this->instructionList[] = [
                         'tagName' => 'string',
                         'element' => $this->getStrucElement(),
-                        'strucData' => $strucData,
+                        'strucData' => $strucData
                     ];
                     
                     $textOffset += $textLength + 1;
@@ -97,7 +97,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                     $this->instructionList[] = [
                         'tagName' => 'string',
                         'element' => $this->getStrucElement(),
-                        'strucData' => $strucData,
+                        'strucData' => $strucData
                     ];
                     
                     $textOffset += $textLength;
@@ -127,7 +127,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                     $this->instructionList[] = [
                         'tagName' => 'string',
                         'element' => $this->getStrucElement(),
-                        'strucData' => $strucData,
+                        'strucData' => $strucData
                     ];
                     
                     $textOffset += $textLength;
@@ -144,7 +144,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                     $this->instructionList[] = [
                         'tagName' => 'string',
                         'element' => $this->getStrucElement(),
-                        'strucData' => $strucData,
+                        'strucData' => $strucData
                     ];
                     
                     $textPosition += $this->strucData['string-size'];

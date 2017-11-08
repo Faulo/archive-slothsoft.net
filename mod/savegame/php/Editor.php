@@ -22,21 +22,22 @@ class Editor
         'selectedArchives' => [],
         'uploadedArchives' => []
     ];
+
     protected $strucDoc;
 
     protected $savegame;
-    
+
     protected $dictionaryList = [];
 
     protected $globalList = [];
-    
+
     protected $archiveList = [];
-    
+
     /**
+     *
      * @var \Slothsoft\Savegame\Node\AbstractValueContent[];
      */
     protected $valueList = [];
-    
 
     public function __construct(array $config = [])
     {
@@ -70,11 +71,11 @@ class Editor
         
         $strucElement = $this->strucDoc->documentElement;
         
-        //$strucElement->setAttribute('save-id', $this->config['id']);
-        //$strucElement->setAttribute('save-mode', $this->config['mode']);
+        // $strucElement->setAttribute('save-id', $this->config['id']);
+        // $strucElement->setAttribute('save-mode', $this->config['mode']);
         
-        //$this->globalList = [];
-        //$this->dictionaryList = [];
+        // $this->globalList = [];
+        // $this->dictionaryList = [];
         
         $strucData = [];
         $strucData['save-id'] = $this->config['id'];
@@ -83,38 +84,39 @@ class Editor
         $this->savegame = $this->createNode(null, $strucElement, $strucElement->tagName, $strucData);
         
         /*
-        foreach ($strucElement->childNodes as $node) {
-            if ($node->nodeType === XML_ELEMENT_NODE) {
-                switch ($node->localName) {
-                    case 'global':
-                        $this->globalList[$node->getAttribute('global-id')] = $node;
-                        break;
-                    case 'dictionary':
-                        $dictionary = [];
-                        foreach ($node->childNodes as $optionNode) {
-                            if ($optionNode->nodeType === XML_ELEMENT_NODE) {
-                                if (! $optionNode->hasAttribute('key')) {
-                                    $optionNode->setAttribute('key', count($dictionary));
-                                }
-                                $dictionary[$optionNode->getAttribute('key')] = $optionNode->getAttribute('val');
-                            }
-                        }
-                        $this->dictionaryList[$node->getAttribute('dictionary-id')] = $dictionary;
-                        break;
-                }
-            }
-        }
-        
-        $this->savegame = new Node\SavegameNode();
-        $this->savegame->init($this, $strucElement, null);
-        //*/
+         * foreach ($strucElement->childNodes as $node) {
+         * if ($node->nodeType === XML_ELEMENT_NODE) {
+         * switch ($node->localName) {
+         * case 'global':
+         * $this->globalList[$node->getAttribute('global-id')] = $node;
+         * break;
+         * case 'dictionary':
+         * $dictionary = [];
+         * foreach ($node->childNodes as $optionNode) {
+         * if ($optionNode->nodeType === XML_ELEMENT_NODE) {
+         * if (! $optionNode->hasAttribute('key')) {
+         * $optionNode->setAttribute('key', count($dictionary));
+         * }
+         * $dictionary[$optionNode->getAttribute('key')] = $optionNode->getAttribute('val');
+         * }
+         * }
+         * $this->dictionaryList[$node->getAttribute('dictionary-id')] = $dictionary;
+         * break;
+         * }
+         * }
+         * }
+         *
+         * $this->savegame = new Node\SavegameNode();
+         * $this->savegame->init($this, $strucElement, null);
+         * //
+         */
     }
-    
-    
+
     public function getDictionaryById($id)
     {
         return isset($this->dictionaryList[$id]) ? $this->dictionaryList[$id] : null;
     }
+
     public function getGlobalById($id)
     {
         return isset($this->globalList[$id]) ? $this->globalList[$id] : null;
@@ -186,6 +188,7 @@ class Editor
     }
 
     /**
+     *
      * @return \Slothsoft\CMS\HTTPFile
      */
     public function asFile()
@@ -205,17 +208,19 @@ class Editor
         $retFragment->appendXML($this->savegame->asXML());
         return $retFragment;
     }
-    
+
     public function registerDictionary(Node\DictionaryNode $node)
     {
         $id = $node->getDictionaryId();
         $this->dictionaryList[$id] = $node;
     }
+
     public function registerGlobal(Node\GlobalNode $node)
     {
         $id = $node->getGlobalId();
         $this->globalList[$id] = $node;
     }
+
     public function registerArchive(Node\ArchiveNode $node)
     {
         $id = $node->getArchiveId();
@@ -228,12 +233,14 @@ class Editor
         $node->setValueId($id);
         $this->valueList[$id] = $node;
     }
-    
+
     /**
+     *
      * @param string $name
      * @return NULL|\Slothsoft\Savegame\Node\AbstractValueContent
      */
-    public function getValueByName(string $name) {
+    public function getValueByName(string $name)
+    {
         foreach ($this->valueList as $value) {
             if ($value->getName() === $name) {
                 return $value;
@@ -242,6 +249,7 @@ class Editor
     }
 
     /**
+     *
      * @param \Slothsoft\Savegame\Node\AbstractNode $parentValue
      * @param \DOMElement $strucElement
      * @return NULL|\Slothsoft\Savegame\Node\AbstractNode
@@ -272,7 +280,7 @@ class Editor
     protected function constructValue($tagName)
     {
         switch ($tagName) {
-            //root
+            // root
             case 'savegame.editor':
                 return new Node\SavegameNode();
             case 'archive':
@@ -281,7 +289,7 @@ class Editor
                 return new Node\GlobalNode();
             case 'dictionary':
                 return new Node\DictionaryNode();
-                
+            
             // values
             case 'integer':
                 return new Node\IntegerValue();
@@ -319,7 +327,7 @@ class Editor
                 return new Node\RepeatGroupInstruction();
             case 'use-global':
                 return new Node\UseGlobalInstruction();
-                
+            
             default:
                 throw new Exception(sprintf('unknown tag: "%s"', $tagName));
         }

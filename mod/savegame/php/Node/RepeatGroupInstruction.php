@@ -37,14 +37,12 @@ class RepeatGroupInstruction extends AbstractInstructionContent
         foreach ($positionList as $i => $position) {
             $strucData = [];
             $strucData['position'] = $position;
-            $strucData['name'] = $this->dictionary
-                ? (string) $this->dictionary->getOption($i)
-                : '';
-                
+            $strucData['name'] = $this->dictionary ? (string) $this->dictionary->getOption($i) : '';
+            
             $this->instructionList[] = [
                 'tagName' => 'group',
                 'element' => $this->getStrucElement(),
-                'strucData' => $strucData,
+                'strucData' => $strucData
             ];
         }
     }

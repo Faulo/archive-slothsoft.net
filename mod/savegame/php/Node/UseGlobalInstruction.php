@@ -21,12 +21,14 @@ class UseGlobalInstruction extends AbstractInstructionContent
                 $this->instructionList[] = [
                     'tagName' => $childNode->localName,
                     'element' => $childNode,
-                    'strucData' => [],
+                    'strucData' => []
                 ];
             }
         }
     }
-    public function asXML() {
+
+    public function asXML()
+    {
         return $this->getChildrenXML();
     }
 }

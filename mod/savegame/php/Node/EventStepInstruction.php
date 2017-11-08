@@ -72,7 +72,7 @@ class EventStepInstruction extends AbstractInstructionContent
                 $this->instructionList[] = [
                     'tagName' => $childNode->localName,
                     'element' => $childNode,
-                    'strucData' => [],
+                    'strucData' => []
                 ];
             }
         }

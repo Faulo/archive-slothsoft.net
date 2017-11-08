@@ -33,7 +33,7 @@ class EventInstruction extends AbstractInstructionContent
             $this->instructionList[] = [
                 'tagName' => 'event-step',
                 'element' => $this->getStrucElement(),
-                'strucData' => $strucData,
+                'strucData' => $strucData
             ];
         }
     }

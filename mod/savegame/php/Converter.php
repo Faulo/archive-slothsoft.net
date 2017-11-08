@@ -9,12 +9,13 @@ class Converter
 {
 
     /**
+     *
      * @return \Slothsoft\Savegame\Converter
      */
     public static function getInstance()
     {
         static $instance;
-        if (!$instance) {
+        if (! $instance) {
             $instance = new Converter();
         }
         return $instance;
@@ -56,26 +57,42 @@ class Converter
         return $parser->code2binary($val);
     }
 
-    public function decodeInteger($val, $size = 1)
+    public function decodeInteger(string $val, int $size = 1)
     {
-        switch ($size) {
-            case 1:
-                $format = 'C';
-                break;
-            case 2:
-                $format = 'n';
-                break;
-            case 3:
-                $val = "\0" . $val;
-                $format = 'N';
-                break;
-            case 4:
-                $format = 'N';
-                break;
-            default:
-                throw new Exception('unknown integer size: ' . $size);
+        static $unpackList = [
+            [],
+            [],
+            [],
+            [],
+            []
+        ];
+        
+        assert($size >= 0 and $size <= 4, '$size must be 1/2/3/4');
+        
+        $key = bin2hex($val);
+        
+        if (! isset($unpackList[$size][$key])) {
+            switch ($size) {
+                case 1:
+                    $format = 'C';
+                    break;
+                case 2:
+                    $format = 'n';
+                    break;
+                case 3:
+                    $val = "\0" . $val;
+                    $format = 'N';
+                    break;
+                case 4:
+                    $format = 'N';
+                    break;
+                default:
+                    throw new Exception('unknown integer size: ' . $size);
+            }
+            $unpackList[$size][$key] = unpack($format, $val)[1];
         }
-        return unpack($format, $val)[1];
+        
+        return $unpackList[$size][$key];
     }
 
     public function decodeSignedInteger($val, $size = 1)
@@ -91,12 +108,10 @@ class Converter
     {
         $ret = '';
         $size = min($size, strlen($val));
-        for ($i = 0; $i < $size and $val[$i] !== "\0"; $i++) {
+        for ($i = 0; $i < $size and $val[$i] !== "\0"; $i ++) {
             $ret .= $val[$i];
         }
-        return $encoding === ''
-            ? $ret
-            : mb_convert_encoding($ret, 'UTF-8', $encoding);
+        return $encoding === '' ? $ret : mb_convert_encoding($ret, 'UTF-8', $encoding);
     }
 
     public function decodeBinary($val)
@@ -109,17 +124,20 @@ class Converter
         $parser = new Parser();
         return $parser->binary2code($val);
     }
-    
-    public function pow2($size) {
+
+    public function pow2($size)
+    {
         static $powList = [];
-        if (!isset($powList[$size])) {
+        if (! isset($powList[$size])) {
             $powList[$size] = pow(2, $size);
         }
         return $powList[$size];
     }
-    public function pow256($size) {
+
+    public function pow256($size)
+    {
         static $powList = [];
-        if (!isset($powList[$size])) {
+        if (! isset($powList[$size])) {
             $powList[$size] = pow(256, $size);
         }
         return $powList[$size];

@@ -12,8 +12,9 @@ class SavegameNode extends AbstractNode
         $this->strucData['save-id'] = '';
         $this->strucData['save-mode'] = '';
     }
-    
-    protected function initStrucChildren() {
+
+    protected function initStrucChildren()
+    {
         $nodeList = parent::initStrucChildren();
         
         $archiveList = [];
@@ -36,10 +37,14 @@ class SavegameNode extends AbstractNode
         
         return array_merge($dictionaryList, $globalList, $archiveList);
     }
+
     protected function loadNode()
     {}
-    
-    public function asXML() {
-        return $this->createXML($this->tagName, ['xmlns' => 'http://schema.slothsoft.net/savegame/editor'] + $this->strucData, $this->getChildrenXML());
+
+    public function asXML()
+    {
+        return $this->createXML($this->tagName, [
+            'xmlns' => 'http://schema.slothsoft.net/savegame/editor'
+        ] + $this->strucData, $this->getChildrenXML());
     }
 }

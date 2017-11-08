@@ -32,7 +32,7 @@ abstract class AbstractValueContent extends AbstractContentNode
         if ($this->strucData['size'] and $this->ownerFile) {
             $this->setRawValue($this->ownerFile->extractContent($this->valueOffset, $this->strucData['size']));
         }
-        //echo $this->getName() . ': ' . $this->getValue() . PHP_EOL;
+        // echo $this->getName() . ': ' . $this->getValue() . PHP_EOL;
     }
 
     public function setValueId($id)

@@ -14,50 +14,61 @@ abstract class AbstractNode
     abstract protected function loadNode();
 
     /**
+     *
      * @var \Slothsoft\Savegame\Editor
      */
     protected $ownerEditor;
 
     /**
+     *
      * @var \Slothsoft\Savegame\Node\ArchiveNode
      */
     protected $ownerArchive;
 
     /**
+     *
      * @var \Slothsoft\Savegame\Node\FileContainer
      */
     protected $ownerFile;
 
     /**
+     *
      * @var \Slothsoft\Savegame\Converter
      */
     protected $converter;
 
     /**
+     *
      * @var \Slothsoft\Savegame\Node\AbstractNode
      */
     public $parentNode;
 
     /**
+     *
      * @var \Slothsoft\Savegame\Node\AbstractNode[]
      */
     protected $childNodeList;
 
     /**
+     *
      * @var \DOMElement
      */
     private $strucElement;
+
     /**
+     *
      * @var \DOMElement[]
      */
     private $strucElementChildren = [];
 
     /**
+     *
      * @var mixed[string]
      */
     protected $strucData;
-    
+
     protected $tagName;
+
     protected $nodeId;
 
     public function __construct()
@@ -70,7 +81,7 @@ abstract class AbstractNode
         $this->parser = TypeParser::getInstance();
         $this->nodeId = $idCounter;
         
-        $idCounter++;
+        $idCounter ++;
     }
 
     public function init(Editor $ownerEditor, DOMElement $strucElement, AbstractNode $parentNode = null, string $tagName, array $overrideData)
@@ -94,8 +105,9 @@ abstract class AbstractNode
         
         return true;
     }
-    
-    protected function initStrucChildren() {
+
+    protected function initStrucChildren()
+    {
         $nodeList = [];
         foreach ($this->strucElement->childNodes as $node) {
             if ($node instanceof DOMElement) {
@@ -104,7 +116,9 @@ abstract class AbstractNode
         }
         return $nodeList;
     }
-    protected function initStrucAttributes(array $overrideData) {
+
+    protected function initStrucAttributes(array $overrideData)
+    {
         foreach ($this->strucData as $key => &$val) {
             if (isset($overrideData[$key])) {
                 $val = $overrideData[$key];
@@ -116,9 +130,7 @@ abstract class AbstractNode
     }
 
     protected function loadStruc()
-    {
-        
-    }
+    {}
 
     protected function loadChildren()
     {
@@ -126,9 +138,11 @@ abstract class AbstractNode
             $this->loadChild($strucElement, $strucElement->localName, []);
         }
     }
-    protected function loadChild(DOMElement $strucElement, string $tagName, array $strucData) {
+
+    protected function loadChild(DOMElement $strucElement, string $tagName, array $strucData)
+    {
         if ($node = $this->ownerEditor->createNode($this, $strucElement, $tagName, $strucData)) {
-            //echo get_class($node) . PHP_EOL;
+            // echo get_class($node) . PHP_EOL;
         }
     }
 
@@ -140,6 +154,7 @@ abstract class AbstractNode
     }
 
     /**
+     *
      * @param array $struc
      */
     public function setStrucData(array $struc)
@@ -152,23 +167,27 @@ abstract class AbstractNode
     }
 
     /**
+     *
      * @return \DOMElement
      */
     public function getStrucElement()
     {
         return $this->strucElement;
     }
+
     /**
+     *
      * @return \DOMElement[]
      */
     public function getStrucElementChildren()
     {
         return $this->strucElementChildren;
     }
-    
+
     private $expressionCache = [];
-    protected function parseExpression($expr) {
-        
+
+    protected function parseExpression($expr)
+    {
         preg_match_all('/\$([A-Za-z0-9\-\.]+)/', $expr, $matches);
         $translate = [];
         foreach ($matches[0] as $i => $key) {
@@ -183,7 +202,9 @@ abstract class AbstractNode
         echo $expr . PHP_EOL;
         return eval("return (int) ($expr);");
     }
+
     /**
+     *
      * @param mixed $val
      * @return int
      */
@@ -207,6 +228,7 @@ abstract class AbstractNode
     }
 
     /**
+     *
      * @param string $val
      * @return string
      */
@@ -216,6 +238,7 @@ abstract class AbstractNode
     }
 
     /**
+     *
      * @return NULL|\Slothsoft\Savegame\Node\FileContainer
      */
     public function getOwnerFile()
@@ -224,29 +247,35 @@ abstract class AbstractNode
     }
 
     /**
+     *
      * @return NULL|\Slothsoft\Savegame\Node\ArchiveNode
      */
-    public function getOwnerArchive() {
+    public function getOwnerArchive()
+    {
         return $this->ownerArchive;
     }
-    
+
     /**
+     *
      * @return int
      */
-    public function getNodeId() {
+    public function getNodeId()
+    {
         return $this->nodeId;
     }
-    
+
     /**
+     *
      * @param string $name
      * @return NULL|\Slothsoft\Savegame\Node\AbstractValueContent
      */
-    public function getValueByName(string $name) {
+    public function getValueByName(string $name)
+    {
         $ret = null;
-        //echo count($this->childNodeList) . PHP_EOL;
+        // echo count($this->childNodeList) . PHP_EOL;
         foreach ($this->childNodeList as $node) {
             if ($node instanceof AbstractValueContent) {
-                //echo $node->getName() . PHP_EOL;
+                // echo $node->getName() . PHP_EOL;
                 if ($node->getName() === $name) {
                     $ret = $node;
                     break;
@@ -258,37 +287,40 @@ abstract class AbstractNode
         }
         return $ret;
     }
-    public function appendNode(AbstractNode $node) {
+
+    public function appendNode(AbstractNode $node)
+    {
         $this->childNodeList[] = $node;
     }
-    
-    public function asXML() {        
+
+    public function asXML()
+    {
         return $this->createXML($this->tagName, $this->strucData, $this->getChildrenXML());
     }
-    
-    protected function getChildrenXML() {
+
+    protected function getChildrenXML()
+    {
         $content = '';
         foreach ($this->childNodeList as $child) {
             $content .= $child->asXML();
         }
         return $content;
     }
-    
-    protected function createXML(string $tagName, array $attributes, string $content) {
-        //$ret = sprintf('<%s', $tagName);
-        $ret = '<'.$tagName;
-            
+
+    protected function createXML(string $tagName, array $attributes, string $content)
+    {
+        // $ret = sprintf('<%s', $tagName);
+        $ret = '<' . $tagName;
+        
         foreach ($attributes as $key => $val) {
             $val = (string) $val;
             if ($val !== '') {
-                //$ret .= sprintf(' %s="%s"', $key, htmlentities($val, ENT_XML1));
-                $ret .= ' '.$key.'="'.htmlentities($val, ENT_COMPAT | ENT_XML1).'"';
+                // $ret .= sprintf(' %s="%s"', $key, htmlentities($val, ENT_XML1));
+                $ret .= ' ' . $key . '="' . htmlentities($val, ENT_COMPAT | ENT_XML1) . '"';
             }
         }
         
-        $ret .= $content === ''
-            ? '/>'
-            : '>'.$content.'</'.$tagName.'>'; //sprintf('>%s</%s>', $content, $tagName);
+        $ret .= $content === '' ? '/>' : '>' . $content . '</' . $tagName . '>'; // sprintf('>%s</%s>', $content, $tagName);
         return $ret;
     }
 }

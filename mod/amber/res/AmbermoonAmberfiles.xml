@@ -979,9 +979,11 @@
 					</group>
 				</repeat-group>
 			</group>
+			<!--
 			<group position="$width * $height * $map-type * 2" name="events">
 				<event-dictionary/>
 			</group>
+			-->
 		</group>
 		<!--
 		<repeat-group position="">

@@ -2,7 +2,6 @@
 namespace Slothsoft\Savegame\Node;
 
 use Exception;
-
 declare(ticks = 1000);
 
 class EventDictionaryInstruction extends AbstractInstructionContent
@@ -19,7 +18,7 @@ class EventDictionaryInstruction extends AbstractInstructionContent
         $eventCount = $this->converter->decodeInteger($eventCount, $offsetWordSize);
         
         if ($eventCount > 256) {
-           throw new Exception("there probably shouldn't be $eventCount events at $this->valueOffset in " . $this->ownerFile->getFileName()); 
+            throw new Exception("there probably shouldn't be $eventCount events at $this->valueOffset in " . $this->ownerFile->getFileName());
         }
         
         $eventSizeList = [];
@@ -46,7 +45,7 @@ class EventDictionaryInstruction extends AbstractInstructionContent
             $this->instructionList[] = [
                 'tagName' => 'event',
                 'element' => $this->getStrucElement(),
-                'strucData' => $strucData,
+                'strucData' => $strucData
             ];
             
             $eventStartOffset += $eventSize;

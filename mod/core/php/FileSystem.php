@@ -245,7 +245,9 @@ abstract class FileSystem
     public static function size($fileName)
     {
         $size = null;
-        if ($file = self::lookupFile($fileName)) {
+        if (is_readable($fileName)) {
+            $size = filesize($fileName);
+        } elseif ($file = self::lookupFile($fileName)) {
             $size = $file->Size;
         }
         return $size;
