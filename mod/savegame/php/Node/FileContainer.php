@@ -11,6 +11,8 @@ class FileContainer extends AbstractContainerContent
      * @var string
      */
     protected $content;
+    
+    protected $valueList = [];
 
     public function __construct()
     {
@@ -28,10 +30,10 @@ class FileContainer extends AbstractContainerContent
         return parent::initStrucAttributes($overrideData);
     }
     protected function loadStruc()
-        {
-        parent::loadStruc();
-        
+    {
         $this->ownerFile = $this;
+        
+        parent::loadStruc();
     }
 
     public function extractContent($offset, $length)
@@ -88,5 +90,11 @@ class FileContainer extends AbstractContainerContent
     public function getFileName()
     {
         return $this->strucData['file-name'];
+    }
+    public function getValueByName(string $name) {
+        if (!isset($this->valueList[$name])) {
+            $this->valueList[$name] = parent::getValueByName($name);
+        }
+        return $this->valueList[$name];
     }
 }

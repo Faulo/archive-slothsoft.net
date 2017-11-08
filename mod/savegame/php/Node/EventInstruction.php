@@ -17,8 +17,8 @@ class EventInstruction extends AbstractInstructionContent
     {
         parent::loadStruc();
         
-        $this->strucData['size'] = $this->parseInt($this->strucData['size']);
-        $this->strucData['step-size'] = $this->parseInt($this->strucData['step-size']);
+        $this->strucData['size'] = $this->parser->evaluate($this->strucData['size'], $this->ownerFile);
+        $this->strucData['step-size'] = $this->parser->evaluate($this->strucData['step-size'], $this->ownerFile);
     }
 
     protected function loadInstruction()

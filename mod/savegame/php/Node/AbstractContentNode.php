@@ -21,7 +21,7 @@ abstract class AbstractContentNode extends AbstractNode
     {
         parent::loadStruc();
         
-        $this->strucData['position'] = $this->parseInt($this->strucData['position']);
+        $this->strucData['position'] = $this->parser->evaluate($this->strucData['position'], $this->ownerFile);
         
         $this->valueOffset = $this->strucData['position'];
         if ($this->parentNode instanceof AbstractContentNode) {

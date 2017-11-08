@@ -31,7 +31,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
         // string-count
         switch ($this->strucData['type']) {
             case self::LIST_TYPE_NULL_DELIMITED:
-                $this->strucData['string-count'] = $this->parseInt($this->strucData['string-count']);
+                $this->strucData['string-count'] = $this->parser->evaluate($this->strucData['string-count'], $this->ownerFile);
                 break;
             case self::LIST_TYPE_SIZE_INTERSPERSED:
             case self::LIST_TYPE_SIZE_FIRST:
@@ -46,8 +46,8 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                 }
                 break;
             case self::LIST_TYPE_SIZE_FIXED:
-                $this->strucData['string-size'] = $this->parseInt($this->strucData['string-size']);
-                $this->strucData['string-count'] = $this->parseInt($this->strucData['string-count']);
+                $this->strucData['string-size'] = $this->parser->evaluate($this->strucData['string-size'], $this->ownerFile);
+                $this->strucData['string-count'] = $this->parser->evaluate($this->strucData['string-count'], $this->ownerFile);
                 break;
             default:
                 throw new Exception('unknown text-list type: ' . $this->strucData['type']);

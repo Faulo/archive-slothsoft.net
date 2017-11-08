@@ -17,8 +17,8 @@ class IntegerValue extends AbstractValueContent
     {
         parent::loadStruc();
         
-        $this->strucData['min'] = $this->parseInt($this->strucData['min']);
-        $this->strucData['max'] = $this->parseInt($this->strucData['max']);
+        $this->strucData['min'] = $this->parser->evaluate($this->strucData['min'], $this->ownerFile);
+        $this->strucData['max'] = $this->parser->evaluate($this->strucData['max'], $this->ownerFile);
         
         if (! $this->strucData['max']) {
             $this->strucData['max'] = $this->converter->pow256($this->strucData['size']);

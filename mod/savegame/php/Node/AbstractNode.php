@@ -5,6 +5,7 @@ use Slothsoft\Savegame\Converter;
 use Slothsoft\Savegame\Editor;
 use DOMElement;
 use Exception;
+use Slothsoft\Savegame\TypeParser;
 declare(ticks = 1000);
 
 abstract class AbstractNode
@@ -57,12 +58,19 @@ abstract class AbstractNode
     protected $strucData;
     
     protected $tagName;
+    protected $nodeId;
 
     public function __construct()
     {
+        static $idCounter = 0;
+        
         $this->strucData = [];
         $this->childNodeList = [];
         $this->converter = Converter::getInstance();
+        $this->parser = TypeParser::getInstance();
+        $this->nodeId = $idCounter;
+        
+        $idCounter++;
     }
 
     public function init(Editor $ownerEditor, DOMElement $strucElement, AbstractNode $parentNode = null, string $tagName, array $overrideData)
@@ -157,7 +165,24 @@ abstract class AbstractNode
     {
         return $this->strucElementChildren;
     }
-
+    
+    private $expressionCache = [];
+    protected function parseExpression($expr) {
+        
+        preg_match_all('/\$([A-Za-z0-9\-\.]+)/', $expr, $matches);
+        $translate = [];
+        foreach ($matches[0] as $i => $key) {
+            if ($node = $this->ownerFile->getValueByName($matches[1][$i])) {
+                $val = $node->getValue();
+            } else {
+                $val = 0;
+            }
+            $translate[$key] = $val;
+        }
+        $expr = strtr($expr, $translate);
+        echo $expr . PHP_EOL;
+        return eval("return (int) ($expr);");
+    }
     /**
      * @param mixed $val
      * @return int
@@ -176,19 +201,7 @@ abstract class AbstractNode
         }
         if (preg_match('/^{(.+)}$/', $val, $match)) {
             $expr = $match[1];
-            preg_match_all('/\$([A-Za-z0-9\-\.]+)/', $expr, $matches);
-            $translate = [];
-            foreach ($matches[0] as $i => $key) {
-                if ($node = $this->ownerFile->getValueByName($matches[1][$i])) {
-                    $val = $node->getValue();
-                } else {
-                    $val = 0;
-                }
-                $translate[$key] = $val;
-            }
-            $expr = strtr($expr, $translate);
-            //echo $expr . PHP_EOL;
-			return eval("return (int) ($expr);");
+            return (int) $this->ownerFile->parseExpression($expr);
         }
         throw new Exception(sprintf('unknown integer type "%s"', $val));
     }
@@ -215,6 +228,13 @@ abstract class AbstractNode
      */
     public function getOwnerArchive() {
         return $this->ownerArchive;
+    }
+    
+    /**
+     * @return int
+     */
+    public function getNodeId() {
+        return $this->nodeId;
     }
     
     /**

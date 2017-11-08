@@ -18,8 +18,8 @@ class BitValue extends AbstractValueContent
     {
         parent::loadStruc();
         
-        $this->strucData['bit'] = $this->parseInt($this->strucData['bit']);
-        $this->strucData['size'] = $this->parseInt($this->strucData['size']);
+        $this->strucData['bit'] = $this->parser->evaluate($this->strucData['bit'], $this->ownerFile);
+        $this->strucData['size'] = $this->parser->evaluate($this->strucData['size'], $this->ownerFile);
         $this->strucData['bit-value'] = $this->converter->pow2($this->strucData['bit']);
     }
 

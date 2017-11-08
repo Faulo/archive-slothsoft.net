@@ -2,6 +2,7 @@
 namespace Slothsoft\Savegame;
 
 use Slothsoft\Savegame\Script\Parser;
+use Exception;
 declare(ticks = 1000);
 
 class Converter
@@ -72,9 +73,7 @@ class Converter
                 $format = 'N';
                 break;
             default:
-                my_dump('unknown integer size: ' . $size);
-                die();
-                break;
+                throw new Exception('unknown integer size: ' . $size);
         }
         return unpack($format, $val)[1];
     }
@@ -90,20 +89,14 @@ class Converter
 
     public function decodeString($val, $size = 1, $encoding = '')
     {
-        $hex = bin2hex($val);
         $ret = '';
-        for ($i = 0, $j = strlen($hex); $i < $j; $i += 2) {
-            $c = hexdec($hex[$i] . $hex[$i + 1]);
-            if ($c > 31) {
-                $ret .= chr($c);
-            } else {
-				break;
-			}
+        $size = min($size, strlen($val));
+        for ($i = 0; $i < $size and $val[$i] !== "\0"; $i++) {
+            $ret .= $val[$i];
         }
-        if ($encoding) {
-            $ret = mb_convert_encoding($ret, 'UTF-8', $encoding);
-        }
-        return $ret;
+        return $encoding === ''
+            ? $ret
+            : mb_convert_encoding($ret, 'UTF-8', $encoding);
     }
 
     public function decodeBinary($val)

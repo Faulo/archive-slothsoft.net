@@ -18,8 +18,8 @@ class BitFieldInstruction extends AbstractInstructionContent
     {
         parent::loadStruc();
         
-        $this->strucData['first-bit'] = $this->parseInt($this->strucData['first-bit']);
-        $this->strucData['last-bit'] = $this->parseInt($this->strucData['last-bit']);
+        $this->strucData['first-bit'] = $this->parser->evaluate($this->strucData['first-bit'], $this->ownerFile);
+        $this->strucData['last-bit'] = $this->parser->evaluate($this->strucData['last-bit'], $this->ownerFile);
         
         if (! $this->strucData['last-bit']) {
             $this->strucData['last-bit'] = $this->strucData['size'] * 8 - 1;

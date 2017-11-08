@@ -32,9 +32,10 @@ class ArchiveNode extends AbstractNode
 
     public function loadStruc()
     {
-        parent::loadStruc();
         
         $this->ownerArchive = $this;
+        
+        parent::loadStruc();
         
         $defaultFile = $this->ownerEditor->buildDefaultFile($this->strucData['file-name']);
         $tempFile = $this->ownerEditor->buildTempFile($this->strucData['file-name']);

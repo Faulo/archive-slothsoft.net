@@ -341,7 +341,7 @@
 		<xsd:union>
 			<xsd:simpleType>
 				<xsd:restriction base="xsd:token">
-					<xsd:pattern value="\{(\$[A-Za-z0-9\-\.]+|\s+|\d+|\*|\+)+\}"/>
+					<xsd:pattern value="(\$[A-Za-z0-9\-\.]+|\s+|\d+|[\*\+\-\(\)])+"/>
 				</xsd:restriction>
 			</xsd:simpleType>
 			<xsd:simpleType>

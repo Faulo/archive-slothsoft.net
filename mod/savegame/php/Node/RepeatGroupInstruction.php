@@ -17,8 +17,8 @@ class RepeatGroupInstruction extends AbstractInstructionContent
     {
         parent::loadStruc();
         
-        $this->strucData['group-size'] = $this->parseInt($this->strucData['group-size']);
-        $this->strucData['group-count'] = $this->parseInt($this->strucData['group-count']);
+        $this->strucData['group-size'] = $this->parser->evaluate($this->strucData['group-size'], $this->ownerFile);
+        $this->strucData['group-count'] = $this->parser->evaluate($this->strucData['group-count'], $this->ownerFile);
     }
 
     protected function loadInstruction()
