@@ -31,14 +31,14 @@ class StringDictionaryInstruction extends AbstractInstructionContent
         // string-count
         switch ($this->strucData['type']) {
             case self::LIST_TYPE_NULL_DELIMITED:
-                $this->strucData['string-count'] = $this->parser->evaluate($this->strucData['string-count'], $this->ownerFile);
+                $this->strucData['string-count'] = $this->getParser()->evaluate($this->strucData['string-count'], $this->ownerFile);
                 break;
             case self::LIST_TYPE_SIZE_INTERSPERSED:
             case self::LIST_TYPE_SIZE_FIRST:
                 $countSize = 2;
                 for ($countOffset = 0; $countOffset < 10; $countOffset += $countSize) {
                     $count = $this->ownerFile->extractContent($this->valueOffset + $countOffset, $countSize);
-                    $count = $this->converter->decodeInteger($count, $countSize);
+                    $count = $this->getConverter()->decodeInteger($count, $countSize);
                     if ($count > 0) {
                         $this->strucData['string-count'] = $count;
                         break;
@@ -46,8 +46,8 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                 }
                 break;
             case self::LIST_TYPE_SIZE_FIXED:
-                $this->strucData['string-size'] = $this->parser->evaluate($this->strucData['string-size'], $this->ownerFile);
-                $this->strucData['string-count'] = $this->parser->evaluate($this->strucData['string-count'], $this->ownerFile);
+                $this->strucData['string-size'] = $this->getParser()->evaluate($this->strucData['string-size'], $this->ownerFile);
+                $this->strucData['string-count'] = $this->getParser()->evaluate($this->strucData['string-count'], $this->ownerFile);
                 break;
             default:
                 throw new Exception('unknown text-list type: ' . $this->strucData['type']);
@@ -85,7 +85,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                 $textOffset = $this->valueOffset + $countSize;
                 for ($i = 0; $i < $this->strucData['string-count']; $i ++) {
                     $textLength = $this->ownerFile->extractContent($textOffset, $textLengthSize);
-                    $textLength = $this->converter->decodeInteger($textLength, $textLengthSize);
+                    $textLength = $this->getConverter()->decodeInteger($textLength, $textLengthSize);
                     
                     $textOffset += $textLengthSize;
                     
@@ -111,7 +111,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                 $textLengthList = [];
                 for ($i = 0; $i < $this->strucData['string-count']; $i ++) {
                     $textLength = $this->ownerFile->extractContent($textOffset, $textLengthSize);
-                    $textLength = $this->converter->decodeInteger($textLength, $textLengthSize);
+                    $textLength = $this->getConverter()->decodeInteger($textLength, $textLengthSize);
                     
                     $textLengthList[] = $textLength;
                     

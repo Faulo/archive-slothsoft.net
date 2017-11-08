@@ -24,7 +24,7 @@ abstract class AbstractValueContent extends AbstractContentNode
     {
         parent::loadStruc();
         
-        $this->strucData['size'] = $this->parser->evaluate($this->strucData['size'], $this->ownerFile);
+        $this->strucData['size'] = $this->getParser()->evaluate($this->strucData['size'], $this->ownerFile);
     }
 
     protected function loadContent()

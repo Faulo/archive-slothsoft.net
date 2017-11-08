@@ -18,9 +18,9 @@ class BitValue extends AbstractValueContent
     {
         parent::loadStruc();
         
-        $this->strucData['bit'] = $this->parser->evaluate($this->strucData['bit'], $this->ownerFile);
-        $this->strucData['size'] = $this->parser->evaluate($this->strucData['size'], $this->ownerFile);
-        $this->strucData['bit-value'] = $this->converter->pow2($this->strucData['bit']);
+        $this->strucData['bit'] = $this->getParser()->evaluate($this->strucData['bit'], $this->ownerFile);
+        $this->strucData['size'] = $this->getParser()->evaluate($this->strucData['size'], $this->ownerFile);
+        $this->strucData['bit-value'] = $this->getConverter()->pow2($this->strucData['bit']);
     }
 
     public function setRawValue($value)
@@ -46,11 +46,11 @@ class BitValue extends AbstractValueContent
 
     protected function decodeValue()
     {
-        return $this->converter->decodeInteger($this->rawValue, $this->strucData['size']);
+        return $this->getConverter()->decodeInteger($this->rawValue, $this->strucData['size']);
     }
 
     protected function encodeValue()
     {
-        return $this->converter->encodeInteger($this->strucData['value'], $this->strucData['size']);
+        return $this->getConverter()->encodeInteger($this->strucData['value'], $this->strucData['size']);
     }
 }

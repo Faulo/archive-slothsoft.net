@@ -226,14 +226,6 @@ function temp_dir($folder, $prefix = null) {
 	throw new \Exception(sprintf('Could not create temporary directory at "%s" D:', $path));
 }
 
-function print_execution_time($echo = true) {
-	$ret = sprintf('Execution so far has taken %d ms and %.2f MB.%s', get_execution_time(), memory_get_peak_usage() / 1048576, PHP_EOL);
-	if ($echo) {
-		echo $ret;
-	}
-	return $ret;
-}
-
 function get_execution_time() {
     static $microtime_start = null;
 	if ($microtime_start === null) {
@@ -243,3 +235,41 @@ function get_execution_time() {
 	}
 }
 get_execution_time();
+
+function log_execution_time($file, $line) {
+    if (isset($_REQUEST['dev-time'])) {
+    	static $previousMemory = null;
+    	static $previousTime = null;
+    	
+    	$nowMemory = memory_get_usage();
+    	$nowTime = get_execution_time();
+    	
+    	$diffMemory = $previousMemory === null
+    		? 0
+    		: $nowMemory - $previousMemory;
+    	$diffTime = $previousTime === null
+    		? 0
+    		: $nowTime - $previousTime;
+    		
+    	$previousMemory = $nowMemory;
+    	$previousTime = $nowTime;
+	
+		printf(
+			'Took %5dMB (+%5dMB) and %6dms (+%4dms) to get to line %4d in file "%s"%s',
+			$nowMemory / MEMORY_MEGABYTE, $diffMemory / MEMORY_MEGABYTE,
+			$nowTime, $diffTime,
+			$line, basename($file),
+			PHP_EOL
+		);
+		flush();
+	}
+}
+log_execution_time(__FILE__, __LINE__);
+
+function print_execution_time($echo = true) {
+	$ret = sprintf('Execution so far has taken %d ms and %.2f MB.%s', get_execution_time(), memory_get_peak_usage() / 1048576, PHP_EOL);
+	if ($echo) {
+		echo $ret;
+	}
+	return $ret;
+}

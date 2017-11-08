@@ -47,7 +47,11 @@ class DictionaryNode extends AbstractNode
     {
         $ret = '';
         foreach ($this->optionList as $key => $val) {
-            $ret .= sprintf('<option key="%s" val="%s"/>', htmlentities($key, ENT_COMPAT | ENT_XML1), htmlentities($val, ENT_COMPAT | ENT_XML1));
+            $ret .= sprintf(
+                '<option key="%s" val="%s"/>',
+                htmlspecialchars($key, ENT_COMPAT | ENT_XML1),
+                htmlspecialchars($val, ENT_COMPAT | ENT_XML1)
+            );
         }
         return $ret;
     }

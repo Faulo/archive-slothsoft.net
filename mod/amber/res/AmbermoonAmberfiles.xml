@@ -970,20 +970,14 @@
 			<integer position="9" name="palette-id"/>
 		</group>
 		<group position="0x14C">
-			<group position="0" name="tiles">
-				<repeat-group group-count="$width * $height" group-size="$map-type * 2">
-					<group name="tile">
-						<integer position="0" size="1" name="tile-id"/>
-						<integer position="2" size="2 * ($map-type - 1)" name="tile-id"/>
-						<integer position="1" size="1" name="event-id"/>
-					</group>
-				</repeat-group>
-			</group>
-			<!--
+			<repeat-group name="tiles" group-count="$width * $height" group-size="$map-type * 2">
+				<integer position="0" size="1" name="tile-id"/>
+				<integer position="2" size="2 * ($map-type - 1)" name="tile-id"/>
+				<integer position="1" size="1" name="event-id"/>
+			</repeat-group>
 			<group position="$width * $height * $map-type * 2" name="events">
 				<event-dictionary/>
 			</group>
-			-->
 		</group>
 		<!--
 		<repeat-group position="">
@@ -2323,7 +2317,7 @@
 </dictionary>
 	
 <dictionary dictionary-id="map-ids">
-  <option key="0" val="Error"/>
+  <option key="0" val="-"/>
   <option key="1" val="Lyramion (000|000)"/>
   <option key="2" val="Lyramion (050|000)"/>
   <option key="3" val="Lyramion (100|000)"/>

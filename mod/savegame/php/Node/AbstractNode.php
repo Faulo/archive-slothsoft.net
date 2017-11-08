@@ -21,33 +21,21 @@ abstract class AbstractNode
 
     /**
      *
-     * @var \Slothsoft\Savegame\Node\ArchiveNode
-     */
-    protected $ownerArchive;
-
-    /**
-     *
      * @var \Slothsoft\Savegame\Node\FileContainer
      */
     protected $ownerFile;
 
     /**
      *
-     * @var \Slothsoft\Savegame\Converter
-     */
-    protected $converter;
-
-    /**
-     *
      * @var \Slothsoft\Savegame\Node\AbstractNode
      */
-    public $parentNode;
+    protected $parentNode;
 
     /**
      *
      * @var \Slothsoft\Savegame\Node\AbstractNode[]
      */
-    protected $childNodeList;
+    protected $childNodeList = [];
 
     /**
      *
@@ -65,23 +53,12 @@ abstract class AbstractNode
      *
      * @var mixed[string]
      */
-    protected $strucData;
+    protected $strucData = [];
 
     protected $tagName;
 
-    protected $nodeId;
-
     public function __construct()
     {
-        static $idCounter = 0;
-        
-        $this->strucData = [];
-        $this->childNodeList = [];
-        $this->converter = Converter::getInstance();
-        $this->parser = TypeParser::getInstance();
-        $this->nodeId = $idCounter;
-        
-        $idCounter ++;
     }
 
     public function init(Editor $ownerEditor, DOMElement $strucElement, AbstractNode $parentNode = null, string $tagName, array $overrideData)
@@ -91,7 +68,6 @@ abstract class AbstractNode
         if ($parentNode) {
             $this->parentNode = $parentNode;
             $this->ownerFile = $this->parentNode->getOwnerFile();
-            $this->ownerArchive = $this->parentNode->getOwnerArchive();
             $this->parentNode->appendNode($this);
         }
         $this->tagName = $tagName;
@@ -248,20 +224,11 @@ abstract class AbstractNode
 
     /**
      *
-     * @return NULL|\Slothsoft\Savegame\Node\ArchiveNode
-     */
-    public function getOwnerArchive()
-    {
-        return $this->ownerArchive;
-    }
-
-    /**
-     *
      * @return int
      */
     public function getNodeId()
     {
-        return $this->nodeId;
+        return spl_object_hash($this);
     }
 
     /**
@@ -316,11 +283,24 @@ abstract class AbstractNode
             $val = (string) $val;
             if ($val !== '') {
                 // $ret .= sprintf(' %s="%s"', $key, htmlentities($val, ENT_XML1));
-                $ret .= ' ' . $key . '="' . htmlentities($val, ENT_COMPAT | ENT_XML1) . '"';
+                $ret .= ' ' . $key . '="' . htmlspecialchars($val, ENT_COMPAT | ENT_XML1) . '"';
             }
         }
         
         $ret .= $content === '' ? '/>' : '>' . $content . '</' . $tagName . '>'; // sprintf('>%s</%s>', $content, $tagName);
         return $ret;
+    }
+    
+    /**
+     * @return \Slothsoft\Savegame\Converter
+     */
+    protected function getConverter() {
+        return Converter::getInstance();
+    }
+    /**
+     * @return \Slothsoft\Savegame\TypeParser
+     */
+    protected function getParser() {
+        return TypeParser::getInstance();
     }
 }

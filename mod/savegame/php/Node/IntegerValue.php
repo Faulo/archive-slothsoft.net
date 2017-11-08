@@ -17,21 +17,21 @@ class IntegerValue extends AbstractValueContent
     {
         parent::loadStruc();
         
-        $this->strucData['min'] = $this->parser->evaluate($this->strucData['min'], $this->ownerFile);
-        $this->strucData['max'] = $this->parser->evaluate($this->strucData['max'], $this->ownerFile);
+        $this->strucData['min'] = $this->getParser()->evaluate($this->strucData['min'], $this->ownerFile);
+        $this->strucData['max'] = $this->getParser()->evaluate($this->strucData['max'], $this->ownerFile);
         
         if (! $this->strucData['max']) {
-            $this->strucData['max'] = $this->converter->pow256($this->strucData['size']);
+            $this->strucData['max'] = $this->getConverter()->pow256($this->strucData['size']);
         }
     }
 
     protected function decodeValue()
     {
-        return $this->converter->decodeInteger($this->rawValue, $this->strucData['size']);
+        return $this->getConverter()->decodeInteger($this->rawValue, $this->strucData['size']);
     }
 
     protected function encodeValue()
     {
-        return $this->converter->encodeInteger($this->strucData['value'], $this->strucData['size']);
+        return $this->getConverter()->encodeInteger($this->strucData['value'], $this->strucData['size']);
     }
 }

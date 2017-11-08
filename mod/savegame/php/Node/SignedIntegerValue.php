@@ -17,24 +17,24 @@ class SignedIntegerValue extends AbstractValueContent
     {
         parent::loadStruc();
         
-        $this->strucData['min'] = $this->parser->evaluate($this->strucData['min'], $this->ownerFile);
-        $this->strucData['max'] = $this->parser->evaluate($this->strucData['max'], $this->ownerFile);
+        $this->strucData['min'] = $this->getParser()->evaluate($this->strucData['min'], $this->ownerFile);
+        $this->strucData['max'] = $this->getParser()->evaluate($this->strucData['max'], $this->ownerFile);
         
         if (! $this->strucData['min']) {
-            $this->strucData['min'] = $this->converter->pow256($this->strucData['size']) / - 2 + 1;
+            $this->strucData['min'] = $this->getConverter()->pow256($this->strucData['size']) / - 2 + 1;
         }
         if (! $this->strucData['max']) {
-            $this->strucData['max'] = $this->converter->pow256($this->strucData['size']) / 2 - 1;
+            $this->strucData['max'] = $this->getConverter()->pow256($this->strucData['size']) / 2 - 1;
         }
     }
 
     protected function decodeValue()
     {
-        return $this->converter->decodeSignedInteger($this->rawValue, $this->strucData['size']);
+        return $this->getConverter()->decodeSignedInteger($this->rawValue, $this->strucData['size']);
     }
 
     protected function encodeValue()
     {
-        return $this->converter->encodeSignedInteger($this->strucData['value'], $this->strucData['size']);
+        return $this->getConverter()->encodeSignedInteger($this->strucData['value'], $this->strucData['size']);
     }
 }

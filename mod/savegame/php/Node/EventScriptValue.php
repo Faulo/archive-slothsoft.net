@@ -14,13 +14,13 @@ class EventScriptValue extends AbstractValueContent
         $eventWordSize = 12;
         
         $eventCount = $this->ownerFile->extractContent($this->valueOffset, $offsetWordSize);
-        $eventCount = $this->converter->decodeInteger($eventCount, $offsetWordSize);
+        $eventCount = $this->getConverter()->decodeInteger($eventCount, $offsetWordSize);
         
         $lastEnd = 0;
         $eventSizeOffset = $this->valueOffset + 4;
         for ($eventNo = 0; $eventNo < $eventCount; $eventNo ++) {
             $eventEnd = $this->ownerFile->extractContent($eventSizeOffset, $offsetWordSize);
-            $eventEnd = $this->converter->decodeInteger($eventEnd, $offsetWordSize);
+            $eventEnd = $this->getConverter()->decodeInteger($eventEnd, $offsetWordSize);
             $eventEnd *= $eventWordSize;
             
             $scriptSize += $offsetWordSize;
@@ -36,11 +36,11 @@ class EventScriptValue extends AbstractValueContent
 
     protected function decodeValue()
     {
-        return $this->converter->decodeScript($this->rawValue);
+        return $this->getConverter()->decodeScript($this->rawValue);
     }
 
     protected function encodeValue()
     {
-        return $this->converter->encodeScript($this->strucData['value']);
+        return $this->getConverter()->encodeScript($this->strucData['value']);
     }
 }

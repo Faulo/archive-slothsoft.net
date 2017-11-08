@@ -40,7 +40,7 @@ class EventStepInstruction extends AbstractInstructionContent
     {
         parent::loadStruc();
         
-        $this->strucData['size'] = $this->parser->evaluate($this->strucData['size'], $this->ownerFile);
+        $this->strucData['size'] = $this->getParser()->evaluate($this->strucData['size'], $this->ownerFile);
     }
 
     protected function loadInstruction()
@@ -48,10 +48,10 @@ class EventStepInstruction extends AbstractInstructionContent
         $this->instructionList = [];
         
         $eventType = $this->ownerFile->extractContent($this->valueOffset, 1);
-        $eventType = $this->converter->decodeInteger($eventType, 1);
+        $eventType = $this->getConverter()->decodeInteger($eventType, 1);
         
         $eventSubType = $this->ownerFile->extractContent($this->valueOffset + 1, 1);
-        $eventSubType = $this->converter->decodeInteger($eventSubType, 1);
+        $eventSubType = $this->getConverter()->decodeInteger($eventSubType, 1);
         
         $ref = sprintf('event-%02d.%02d', $eventType, $eventSubType);
         

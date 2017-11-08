@@ -15,7 +15,7 @@ class EventDictionaryInstruction extends AbstractInstructionContent
         $eventWordSize = 12;
         
         $eventCount = $this->ownerFile->extractContent($this->valueOffset, $offsetWordSize);
-        $eventCount = $this->converter->decodeInteger($eventCount, $offsetWordSize);
+        $eventCount = $this->getConverter()->decodeInteger($eventCount, $offsetWordSize);
         
         if ($eventCount > 256) {
             throw new Exception("there probably shouldn't be $eventCount events at $this->valueOffset in " . $this->ownerFile->getFileName());
@@ -27,7 +27,7 @@ class EventDictionaryInstruction extends AbstractInstructionContent
             $eventOffset = $this->valueOffset + 4 + $eventNo * $offsetWordSize;
             
             $eventEnd = $this->ownerFile->extractContent($eventOffset, $offsetWordSize);
-            $eventEnd = $this->converter->decodeInteger($eventEnd, $offsetWordSize);
+            $eventEnd = $this->getConverter()->decodeInteger($eventEnd, $offsetWordSize);
             $eventEnd *= $eventWordSize;
             
             $eventSizeList[] = $eventEnd - $lastEnd;

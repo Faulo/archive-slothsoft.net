@@ -674,7 +674,7 @@ window.addEventListener(
 		<xsl:variable name="palette" select=".//*[@name='palette-id']/@value"/>
 		<xsl:variable name="map-type" select=".//*[@name='map-type']/@value"/>
 		<xsl:for-each select=".//*[@name='tiles']">
-			<xsl:variable name="tiles" select=".//save:group[@name='tile']"/>
+			<xsl:variable name="tiles" select="*"/>
 			<div>
 				<h3 class="name">Tiles</h3>
 				<table class="map" data-palette="{$palette}">
@@ -1081,7 +1081,7 @@ window.addEventListener(
 			<xsl:apply-templates select=".//*[@name = 'item-charge']" mode="form-picker"/>
 		</div>
 	</xsl:template>
-	<xsl:template match="*[@name = 'tile']" mode="form-content">
+	<xsl:template match="save:group[*[@name = 'tile-id']]" mode="form-content">
 		<div role="button" tabindex="0" class="tile picker" 
 			contextmenu="amber-picker-tile" onclick="savegameEditor.openPopup(arguments[0])">
 			<xsl:apply-templates select="*" mode="form-picker"/>

@@ -1,9 +1,5 @@
 <?php // © 2017 Daniel Schulz
 
-require 'config.php';
-require 'functions.php';
-require sprintf('%s%sconstants-%s.php', __DIR__, DIRECTORY_SEPARATOR, PHP_SAPI);
-
 const NAMESPACE_SEPARATOR = '\\';
 
 const DIR_PHP 			= 'php/';
@@ -36,6 +32,10 @@ const BCP47_PREGMATCH = '/(?<language>[a-z]{2,3})(?:-(?<extlang>aao|abh|abv|acm|
 
 
 //side effects:
+require 'config.php';
+require 'functions.php';
+require sprintf('%s%sconstants-%s.php', __DIR__, DIRECTORY_SEPARATOR, PHP_SAPI);
+
 chdir(SERVER_ROOT);
 
 ini_set('mysqli.default_user', DB_USER);

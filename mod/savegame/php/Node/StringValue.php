@@ -14,11 +14,11 @@ class StringValue extends AbstractValueContent
 
     protected function decodeValue()
     {
-        return $this->converter->decodeString($this->rawValue, $this->strucData['size'], $this->strucData['encoding']);
+        return $this->getConverter()->decodeString($this->rawValue, $this->strucData['size'], $this->strucData['encoding']);
     }
 
     protected function encodeValue()
     {
-        return $this->converter->encodeString($this->strucData['value'], $this->strucData['size'], $this->strucData['encoding']);
+        return $this->getConverter()->encodeString($this->strucData['value'], $this->strucData['size'], $this->strucData['encoding']);
     }
 }

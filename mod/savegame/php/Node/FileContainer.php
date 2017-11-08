@@ -18,6 +18,8 @@ class FileContainer extends AbstractContainerContent
     {
         parent::__construct();
         $this->strucData['file-name'] = '';
+        
+        log_execution_time(__FILE__, __LINE__);
     }
 
     protected function initStrucAttributes(array $overrideData)
