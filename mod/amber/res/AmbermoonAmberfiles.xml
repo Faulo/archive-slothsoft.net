@@ -49,7 +49,7 @@
 		<select position="1" name="event-subtype" dictionary-ref="event-award-types"/>
 	</global>
 	<global global-id="event-bit-goto">
-		<integer position="10" name="event-goto" size="2"/>
+		<select position="10" name="event-goto" size="2" dictionary-ref="gotos"/>
 	</global>
 	<global global-id="event-unknown">
 		<use-global ref="event-bit-type"/>
@@ -202,7 +202,8 @@
 		<integer name="event-payload" position="5"/>
 		<integer name="event-payload" position="6"/>
 		<integer name="event-payload" position="7"/>
-		<integer position="8" name="event-goto" size="2"/>
+		<select name="event-payload" position="8" size="2" dictionary-ref="gotos"/>
+		
 		<use-global ref="event-bit-goto"/>
 	</global>
 	<global global-id="event-13.00">
@@ -212,8 +213,8 @@
 		
 		<integer name="event-payload" position="6" size="2"/>
 		<select name="event-payload" position="2" size="2" dictionary-ref="boolean-reverse"/>
+		<select name="event-payload" position="8" size="2" dictionary-ref="gotos"/>
 		
-		<integer position="8" name="event-goto" size="2"/>
 		<use-global ref="event-bit-goto"/>
 
 		<integer name="event-null" position="4"/>
@@ -227,8 +228,8 @@
 		<integer name="event-payload" position="6"/>
 		<integer name="event-payload" position="7"/>
 		<select name="event-payload" position="2" size="2" dictionary-ref="boolean-reverse"/>
+		<select name="event-payload" position="8" size="2" dictionary-ref="gotos"/>
 		
-		<integer position="8" name="event-goto" size="2"/>
 		<use-global ref="event-bit-goto"/>
 		
 		<integer name="event-null" position="4"/>
@@ -241,8 +242,8 @@
 		
 		<select name="event-payload" position="6" size="2" dictionary-ref="partymembers"/>
 		<select name="event-payload" position="2" size="2" dictionary-ref="boolean-reverse"/>
+		<select name="event-payload" position="8" size="2" dictionary-ref="gotos"/>
 		
-		<integer position="8" name="event-goto" size="2"/>
 		<use-global ref="event-bit-goto"/>
 		
 		<integer name="event-null" position="4"/>
@@ -256,8 +257,8 @@
 		<select position="6" size="2" name="event-payload" dictionary-ref="items"/>
 		<select position="2" size="1" name="event-payload" dictionary-ref="proportionality"/>
 		<integer position="3" size="1" name="event-payload" />
+		<select name="event-payload" position="8" size="2" dictionary-ref="gotos"/>
 		
-		<integer position="8" name="event-goto" size="2"/>
 		<use-global ref="event-bit-goto"/>
 		
 		<integer name="event-null" position="4"/>
@@ -270,8 +271,8 @@
 		
 		<select position="6" size="2" name="event-payload" dictionary-ref="items"/>
 		<integer position="2" size="1" name="event-payload"/>
+		<select name="event-payload" position="8" size="2" dictionary-ref="gotos"/>
 		
-		<integer position="8" name="event-goto" size="2"/>
 		<use-global ref="event-bit-goto"/>
 		
 		<integer position="3" size="1" name="event-null" />
@@ -285,8 +286,8 @@
 		
 		<integer position="2" size="2" name="event-payload"/>
 		<integer position="6" size="2" name="event-payload"/>
+		<select name="event-payload" position="8" size="2" dictionary-ref="gotos"/>
 		
-		<integer position="8" name="event-goto" size="2"/>
 		<use-global ref="event-bit-goto"/>
 		
 		<integer name="event-payload" position="4"/>
@@ -995,6 +996,7 @@
 			<integer position="15"/>
 		</group>
 		<group position="0x14C">
+			<!--
 			<repeat-group name="tiles" group-count="$width * $height" group-size="$map-type * 2">
 				<integer position="0" size="1" name="tile-id"/>
 				<integer position="2" size="2 * ($map-type - 1)" name="tile-id"/>
@@ -1003,6 +1005,7 @@
 			<group position="$width * $height * $map-type * 2" name="events">
 				<event-dictionary/>
 			</group>
+			-->
 		</group>
 		<!--
 		<repeat-group position="">
@@ -2703,5 +2706,9 @@
 
 <dictionary dictionary-id="places">
 <option val="-"/><option val="GÄSTEZIMMER VON SPANNENBERG"/><option val="SPANNENBERG DIEBES GILDE"/><option val="SPANNENBERG DIEBES GILDE"/><option val="SPANNENBERG DIEBES GILDE"/><option val="HEILER VON SPANNENBERG"/><option val="HEILER VON SPANNENBERG"/><option val="BIBLIOTHEK DER HEILER"/><option val="SCHLAFSAAL DER HEILER"/><option val="MEISTER KARL'S ATTACKE TRAIN."/><option val="MEISTER ROLF'S PARADE TRAIN."/><option val="TOLIMARS PFERDE"/><option val="WARENHÄNDLER VON SPANNENBERG"/><option val="YNNEP LEBENSMITTEL"/><option val="SAGE VON SPANNENBERG"/><option val="TORLES WERFT"/><option val="LADEN DER DIEBESGILDE"/><option val="NAGIER'S K-TREFFER TRAINING"/><option val="BIBLIOTHEK DER MYSTIK"/><option val="BIBLIOTHEK DER ALCHEMIE"/><option val="LADEN DER ALCHEMIE"/><option val="BIBLIOTHEK DER HEILER"/><option val="HEILER VON BURNVILLE"/><option val="BIBLIOTHEK DES MILZOR"/><option val="THERESA'S SCHMUCKLADEN"/><option val="REZEPTION DES KAKTUS"/><option val="SULP LEBENSMITTEL"/><option val="WARENHÄNDLER VON BURNVILLE"/><option val="NALVEN'S SPRUCH TRAINING"/><option val="NALVEN'S LESE TRAINING"/><option val="NALVEN'S BIBLIOTHEK"/><option val="SCHWIMMSCHULE VON BURNVILLE"/><option val="SCHMIEDE VON BURNVILLE"/><option val="LEBAB'S VERZAUBERUNGEN"/><option val="GASTHAUS 'GEMSTONE'"/><option val="FERRIN'S SCHMIEDE"/><option val="DER HEILER ASRUB"/><option val="DIE SCHÄTZE DES WALDES"/><option val="DAS NEST"/><option val="DRELB'S SUCH TRAINING"/><option val="BROM'S WARENHAUS"/><option val="REZEPTION - ZUM SCHACHT"/><option val="LENDRAIS MAGISCHE WAFFEN"/><option val="MANA - LEBENSMITTEL"/><option val="SPRUCHROLLEN BIBLIOTHEK"/><option val="AIOLU'S TRÄNKE ALLER ART"/><option val="HEILER VON ILLIEN"/><option val="REZEPTION DES ADLER'S"/><option val="SAGE VON SNAKESIGN"/><option val="SCHMIEDE VON SNAKESIGN"/><option val="RATIONEN BEI SCHLANGENFRASS"/><option val="WARENHÄNDLER VON SNAKESIGN"/><option val="HEILER DER SANSRIE"/><option val="REZEPTION DER GÖTTIN"/><option val="SCHMIEDE VON NEWLAKE"/><option val="HAUS DER HEILER"/><option val="SIERPINIM - LEBENSMITTEL"/><option val="WARENHANDEL VON NEWLAKE"/><option val="REZEPTION DES KRATER'S"/><option val="FERRIN'S SCHMIEDE:REPARATUREN"/><option val="FERRIN'S SCHMIEDE:REPARATUREN"/><option val="RANDOR'S LÄDCHEN"/><option val="LEBENSMITTEL IN S'ANGRILA"/><option val="WARENHÄNDLER VON S'ANGRILA"/><option val="SCHMIEDE VON S'ANGRILA"/>
+</dictionary>
+
+<dictionary dictionary-id="gotos">
+<option key="1" val="GOTO 1"/><option key="2" val="GOTO 2"/><option key="3" val="GOTO 3"/><option key="4" val="GOTO 4"/><option key="5" val="GOTO 5"/><option key="6" val="GOTO 6"/><option key="7" val="GOTO 7"/><option key="8" val="GOTO 8"/><option key="9" val="GOTO 9"/><option key="10" val="GOTO 10"/><option key="11" val="GOTO 11"/><option key="12" val="GOTO 12"/><option key="13" val="GOTO 13"/><option key="14" val="GOTO 14"/><option key="15" val="GOTO 15"/><option key="16" val="GOTO 16"/><option key="17" val="GOTO 17"/><option key="18" val="GOTO 18"/><option key="19" val="GOTO 19"/><option key="20" val="GOTO 20"/><option key="21" val="GOTO 21"/><option key="22" val="GOTO 22"/><option key="23" val="GOTO 23"/><option key="24" val="GOTO 24"/><option key="25" val="GOTO 25"/><option key="26" val="GOTO 26"/><option key="27" val="GOTO 27"/><option key="28" val="GOTO 28"/><option key="29" val="GOTO 29"/><option key="30" val="GOTO 30"/><option key="31" val="GOTO 31"/><option key="32" val="GOTO 32"/><option key="33" val="GOTO 33"/><option key="34" val="GOTO 34"/><option key="35" val="GOTO 35"/><option key="36" val="GOTO 36"/><option key="37" val="GOTO 37"/><option key="38" val="GOTO 38"/><option key="39" val="GOTO 39"/><option key="40" val="GOTO 40"/><option key="41" val="GOTO 41"/><option key="42" val="GOTO 42"/><option key="43" val="GOTO 43"/><option key="44" val="GOTO 44"/><option key="45" val="GOTO 45"/><option key="46" val="GOTO 46"/><option key="47" val="GOTO 47"/><option key="48" val="GOTO 48"/><option key="49" val="GOTO 49"/><option key="50" val="GOTO 50"/><option key="51" val="GOTO 51"/><option key="52" val="GOTO 52"/><option key="53" val="GOTO 53"/><option key="54" val="GOTO 54"/><option key="55" val="GOTO 55"/><option key="56" val="GOTO 56"/><option key="57" val="GOTO 57"/><option key="58" val="GOTO 58"/><option key="59" val="GOTO 59"/><option key="60" val="GOTO 60"/><option key="61" val="GOTO 61"/><option key="62" val="GOTO 62"/><option key="63" val="GOTO 63"/><option key="64" val="GOTO 64"/><option key="65" val="GOTO 65"/><option key="66" val="GOTO 66"/><option key="67" val="GOTO 67"/><option key="68" val="GOTO 68"/><option key="69" val="GOTO 69"/><option key="70" val="GOTO 70"/><option key="71" val="GOTO 71"/><option key="72" val="GOTO 72"/><option key="73" val="GOTO 73"/><option key="74" val="GOTO 74"/><option key="75" val="GOTO 75"/><option key="76" val="GOTO 76"/><option key="77" val="GOTO 77"/><option key="78" val="GOTO 78"/><option key="79" val="GOTO 79"/><option key="80" val="GOTO 80"/><option key="81" val="GOTO 81"/><option key="82" val="GOTO 82"/><option key="83" val="GOTO 83"/><option key="84" val="GOTO 84"/><option key="85" val="GOTO 85"/><option key="86" val="GOTO 86"/><option key="87" val="GOTO 87"/><option key="88" val="GOTO 88"/><option key="89" val="GOTO 89"/><option key="90" val="GOTO 90"/><option key="91" val="GOTO 91"/><option key="92" val="GOTO 92"/><option key="93" val="GOTO 93"/><option key="94" val="GOTO 94"/><option key="95" val="GOTO 95"/><option key="96" val="GOTO 96"/><option key="97" val="GOTO 97"/><option key="98" val="GOTO 98"/><option key="99" val="GOTO 99"/><option key="100" val="GOTO 100"/><option key="101" val="GOTO 101"/><option key="102" val="GOTO 102"/><option key="103" val="GOTO 103"/><option key="104" val="GOTO 104"/><option key="105" val="GOTO 105"/><option key="106" val="GOTO 106"/><option key="107" val="GOTO 107"/><option key="108" val="GOTO 108"/><option key="109" val="GOTO 109"/><option key="110" val="GOTO 110"/><option key="111" val="GOTO 111"/><option key="112" val="GOTO 112"/><option key="113" val="GOTO 113"/><option key="114" val="GOTO 114"/><option key="115" val="GOTO 115"/><option key="116" val="GOTO 116"/><option key="117" val="GOTO 117"/><option key="118" val="GOTO 118"/><option key="119" val="GOTO 119"/><option key="120" val="GOTO 120"/><option key="121" val="GOTO 121"/><option key="122" val="GOTO 122"/><option key="123" val="GOTO 123"/><option key="124" val="GOTO 124"/><option key="125" val="GOTO 125"/><option key="126" val="GOTO 126"/><option key="127" val="GOTO 127"/><option key="128" val="GOTO 128"/><option key="129" val="GOTO 129"/><option key="130" val="GOTO 130"/><option key="131" val="GOTO 131"/><option key="132" val="GOTO 132"/><option key="133" val="GOTO 133"/><option key="134" val="GOTO 134"/><option key="135" val="GOTO 135"/><option key="136" val="GOTO 136"/><option key="137" val="GOTO 137"/><option key="138" val="GOTO 138"/><option key="139" val="GOTO 139"/><option key="140" val="GOTO 140"/><option key="141" val="GOTO 141"/><option key="142" val="GOTO 142"/><option key="143" val="GOTO 143"/><option key="144" val="GOTO 144"/><option key="145" val="GOTO 145"/><option key="146" val="GOTO 146"/><option key="147" val="GOTO 147"/><option key="148" val="GOTO 148"/><option key="149" val="GOTO 149"/><option key="150" val="GOTO 150"/><option key="151" val="GOTO 151"/><option key="152" val="GOTO 152"/><option key="153" val="GOTO 153"/><option key="154" val="GOTO 154"/><option key="155" val="GOTO 155"/><option key="156" val="GOTO 156"/><option key="157" val="GOTO 157"/><option key="158" val="GOTO 158"/><option key="159" val="GOTO 159"/><option key="160" val="GOTO 160"/><option key="161" val="GOTO 161"/><option key="162" val="GOTO 162"/><option key="163" val="GOTO 163"/><option key="164" val="GOTO 164"/><option key="165" val="GOTO 165"/><option key="166" val="GOTO 166"/><option key="167" val="GOTO 167"/><option key="168" val="GOTO 168"/><option key="169" val="GOTO 169"/><option key="170" val="GOTO 170"/><option key="171" val="GOTO 171"/><option key="172" val="GOTO 172"/><option key="173" val="GOTO 173"/><option key="174" val="GOTO 174"/><option key="175" val="GOTO 175"/><option key="176" val="GOTO 176"/><option key="177" val="GOTO 177"/><option key="178" val="GOTO 178"/><option key="179" val="GOTO 179"/><option key="180" val="GOTO 180"/><option key="181" val="GOTO 181"/><option key="182" val="GOTO 182"/><option key="183" val="GOTO 183"/><option key="184" val="GOTO 184"/><option key="185" val="GOTO 185"/><option key="186" val="GOTO 186"/><option key="187" val="GOTO 187"/><option key="188" val="GOTO 188"/><option key="189" val="GOTO 189"/><option key="190" val="GOTO 190"/><option key="191" val="GOTO 191"/><option key="192" val="GOTO 192"/><option key="193" val="GOTO 193"/><option key="194" val="GOTO 194"/><option key="195" val="GOTO 195"/><option key="196" val="GOTO 196"/><option key="197" val="GOTO 197"/><option key="198" val="GOTO 198"/><option key="199" val="GOTO 199"/><option key="200" val="GOTO 200"/><option key="201" val="GOTO 201"/><option key="202" val="GOTO 202"/><option key="203" val="GOTO 203"/><option key="204" val="GOTO 204"/><option key="205" val="GOTO 205"/><option key="206" val="GOTO 206"/><option key="207" val="GOTO 207"/><option key="208" val="GOTO 208"/><option key="209" val="GOTO 209"/><option key="210" val="GOTO 210"/><option key="211" val="GOTO 211"/><option key="212" val="GOTO 212"/><option key="213" val="GOTO 213"/><option key="214" val="GOTO 214"/><option key="215" val="GOTO 215"/><option key="216" val="GOTO 216"/><option key="217" val="GOTO 217"/><option key="218" val="GOTO 218"/><option key="219" val="GOTO 219"/><option key="220" val="GOTO 220"/><option key="221" val="GOTO 221"/><option key="222" val="GOTO 222"/><option key="223" val="GOTO 223"/><option key="224" val="GOTO 224"/><option key="225" val="GOTO 225"/><option key="226" val="GOTO 226"/><option key="227" val="GOTO 227"/><option key="228" val="GOTO 228"/><option key="229" val="GOTO 229"/><option key="230" val="GOTO 230"/><option key="231" val="GOTO 231"/><option key="232" val="GOTO 232"/><option key="233" val="GOTO 233"/><option key="234" val="GOTO 234"/><option key="235" val="GOTO 235"/><option key="236" val="GOTO 236"/><option key="237" val="GOTO 237"/><option key="238" val="GOTO 238"/><option key="239" val="GOTO 239"/><option key="240" val="GOTO 240"/><option key="241" val="GOTO 241"/><option key="242" val="GOTO 242"/><option key="243" val="GOTO 243"/><option key="244" val="GOTO 244"/><option key="245" val="GOTO 245"/><option key="246" val="GOTO 246"/><option key="247" val="GOTO 247"/><option key="248" val="GOTO 248"/><option key="249" val="GOTO 249"/><option key="250" val="GOTO 250"/><option key="251" val="GOTO 251"/><option key="252" val="GOTO 252"/><option key="253" val="GOTO 253"/><option key="254" val="GOTO 254"/><option key="255" val="GOTO 255"/><option key="65535" val="RETURN"/>
 </dictionary>
 </savegame.editor>

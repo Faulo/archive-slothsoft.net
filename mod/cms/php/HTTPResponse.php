@@ -275,7 +275,6 @@ class HTTPResponse
         if (! headers_sent() and ! connection_aborted()) {
             if ($this->bodyHasChanged() === false) {
                 $this->setStatus(self::STATUS_NOT_MODIFIED);
-                $this->includeBody = false;
             }
             
             if ($this->status === self::STATUS_OK and $this->rangeStart !== $this->rangeEnd) {
@@ -369,13 +368,16 @@ class HTTPResponse
     {
         if (isset(self::$httpStatusCodes[$code])) {
             $this->status = $code;
-            if ($code >= self::STATUS_MULTIPLE_CHOICES or $code === self::STATUS_NO_CONTENT) {
+            if ($code >= self::STATUS_MULTIPLE_CHOICES or $code === self::STATUS_NO_CONTENT or $code === self::STATUS_NOT_MODIFIED) {
                 $this->includeBody = false;
             }
             if ($code >= self::STATUS_BAD_REQUEST) {
                 $this->includeBody = true;
                 $this->setBody(sprintf('%d %s', $this->status, self::$httpStatusCodes[$this->status]) . PHP_EOL . $message);
             }
+			if ($code === self::STATUS_REQUESTED_RANGE_NOT_SATISFIABLE) {
+                $this->includeBody = false;
+			}
         }
     }
 
@@ -384,7 +386,6 @@ class HTTPResponse
         if (preg_match('/^bytes=(\d*)-(\d*)(.*)$/', $range, $match)) {
             if ($match[3]) {
                 $this->setStatus(self::STATUS_REQUESTED_RANGE_NOT_SATISFIABLE);
-                $this->includeBody = false;
             } else {
                 $this->rangeStart = strlen($match[1]) ? (float) $match[1] : null;
                 $this->rangeEnd = strlen($match[2]) ? (float) $match[2] + 1 : null;
@@ -789,7 +790,7 @@ EOT;
 
     protected function sendHeaderList()
     {
-        $this->addHeader('connection', 'Keep-Alive');
+        //$this->addHeader('connection', 'Keep-Alive');
         if ($this->rangeEnd !== null) {
             $this->addHeader('accept-ranges', 'bytes');
         }
@@ -806,7 +807,9 @@ EOT;
                 rawurlencode($file)
             ]);
             if ($this->rangeEnd !== null) {
-                $this->addHeader('content-length', $this->rangeEnd - $this->rangeStart);
+				if ($this->transferEncoding === self::TRANSFER_ENCODING_RAW) {
+					$this->addHeader('content-length', $this->rangeEnd - $this->rangeStart);
+				}
                 if ($this->status === self::STATUS_PARTIAL_CONTENT or $this->status === self::STATUS_REQUESTED_RANGE_NOT_SATISFIABLE) {
                     $this->addHeader('content-range', 'bytes %1$.0f-%2$.0f/%3$.0f', [
                         $this->rangeStart,

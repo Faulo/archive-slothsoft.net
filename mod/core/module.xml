@@ -54,7 +54,7 @@
 	</struc>
 
 	<struc name="HTML5">
-		<script name="HTML5" />
+		<!--<script name="HTML5" />-->
 		<style name="HTML5" />
 	</struc>
 
