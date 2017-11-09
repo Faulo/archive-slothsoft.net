@@ -410,12 +410,19 @@
 }
 
 
-
-.Amber table.map {
-	border-spacing: 0;
+.Amber .map {
+	max-width: 100%;
+	max-height: 80vh;
+	overflow: auto;
 }
-.Amber table.map td {
+.Amber .map table {
+	border-spacing: 0;
+	table-layout: fixed;
+}
+.Amber .map td {
 	padding: 0;
+	width: 34px;
+	height: 34px;
 }
 
 .Amber *[data-hover-text],

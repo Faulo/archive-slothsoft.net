@@ -84,14 +84,14 @@
 		
 		<integer name="event-payload" position="1" size="1"/>
 		<integer name="event-payload" position="2" size="1"/>
+		<integer name="event-payload" position="3"/>
+		<integer name="event-payload" position="4"/>
+		<integer name="event-payload" position="5"/>
 		
 		<select position="6" size="2" name="event-payload" dictionary-ref="items"/>
 		
 		<use-global ref="event-bit-goto"/>
 		
-		<integer name="event-FFFF" position="3"/>
-		<integer name="event-FFFF" position="4"/>
-		<integer name="event-FFFF" position="5"/>
 		<integer name="event-null" position="8"/>
 		<integer name="event-null" position="9"/>
 	</global>
@@ -151,6 +151,22 @@
 		<integer name="event-null" position="6"/>
 		<integer name="event-null" position="7"/>
 	</global>
+	<global global-id="event-10">
+		<!-- set tile -->
+		<use-global ref="event-bit-type"/>
+		
+		<integer name="event-payload" position="1"/>
+		<integer name="event-payload" position="2"/>
+		<integer name="event-payload" position="6" size="2"/>
+		
+		<use-global ref="event-bit-goto"/>
+		
+		<integer name="event-null" position="3"/>
+		<integer name="event-null" position="4"/>
+		<integer name="event-null" position="5"/>
+		<integer name="event-null" position="8"/>
+		<integer name="event-null" position="9"/>
+	</global>
 	<global global-id="event-11">
 		<!-- battle -->
 		<use-global ref="event-bit-type"/>
@@ -164,6 +180,17 @@
 		<integer name="event-null" position="5"/>
 		<integer name="event-null" position="8"/>
 		<integer name="event-null" position="9"/>
+	</global>
+	<global global-id="event-12">
+		<!-- place -->
+		<use-global ref="event-bit-type"/>
+		<integer name="event-payload" position="2" size="2"/>
+		<integer name="event-payload" position="4" size="2"/>
+		<select position="6" name="event-payload" size="2" dictionary-ref="places"/>
+		<select position="8" name="event-payload" size="2" dictionary-ref="merchants"/>
+		<use-global ref="event-bit-goto"/>
+		
+		<integer name="event-FFFF" position="1"/>
 	</global>
 	<global global-id="event-13">
 		<!-- if -->
@@ -567,7 +594,7 @@
 	<global global-id="event-20">
 		<!-- play music -->
 		<use-global ref="event-bit-type"/>
-		<integer name="event-payload" position="2"/>
+		<select name="event-payload" position="2" dictionary-ref="songs"/>
 		<use-global ref="event-bit-goto"/>
 		
 		<integer name="event-null" position="1"/>
@@ -942,32 +969,30 @@
 		<option key="2" val="2D"/>
 	</dictionary>
 	<dictionary dictionary-id="map-worlds">
-		<option val="-"/>
 		<option val="Lyramion"/>
 		<option val="Waldmond"/>
 		<option val="Wüstenmond"/>
 	</dictionary>
 	<global global-id="map-data">
-		<group name="testing">
+		<group name="data">
+			<select position="10" name="world" dictionary-ref="map-worlds"/>
+			<select position="2" name="map-type" dictionary-ref="map-types"/>
+			<integer position="4" name="width"/>
+			<integer position="5" name="height"/>
+			<integer position="6" name="icondata-id"/>
+			<integer position="9" name="palette-id"/>
+			<select position="3" name="bgm-id" dictionary-ref="songs"/>
+		</group>
+		<group name="unknown">
 			<integer position="0"/>
 			<integer position="1"/>
-			<integer position="3"/>
 			<integer position="7"/>
 			<integer position="8"/>
-			<integer position="10"/>
 			<integer position="11"/>
 			<integer position="12"/>
 			<integer position="13"/>
 			<integer position="14"/>
 			<integer position="15"/>
-		</group>
-		<group name="data">
-			<select position="2" name="map-type" dictionary-ref="map-types"/>
-			<integer position="4" name="width"/>
-			<integer position="5" name="height"/>
-			<!--<select position="6" name="world" dictionary-ref="map-worlds"/>-->
-			<integer position="6" name="icondata-id"/>
-			<integer position="9" name="palette-id"/>
 		</group>
 		<group position="0x14C">
 			<repeat-group name="tiles" group-count="$width * $height" group-size="$map-type * 2">
@@ -1249,13 +1274,17 @@
 			<group name="integers" position="0x48140">
 				<use-global ref="AM2-integers"/>
 			</group>
+			<group name="strings">
+				<string-dictionary type="null-delimited" encoding="8bit" position="0x4C1E2" name="music" string-count="32"/>
+			</group>
 			<group name="strings" position="0x4C430">
 				<use-global ref="AM2-strings"/>
 			</group>
+			<!--
 			<group name="items" position="0x50098">
 				<use-global ref="AM2-items"/>
 			</group>
-		
+			-->
 	</archive>
 	
 	<global global-id="config">
@@ -1566,8 +1595,9 @@
 		<option key="4" val="popup text"/>
 		<option key="6" val="take damage"/>
 		<option key="9" val="award"/>
-		<option key="10" val="increase"/>
+		<option key="10" val="set tile"/>
 		<option key="11" val="battle"/>
+		<option key="12" val="place"/>
 		<option key="13" val="if"/>
 		<option key="14" val="set"/>
 		<option key="16" val="start"/>
@@ -1596,7 +1626,7 @@
 	</dictionary>
 	<dictionary dictionary-id="event-set-types">
 		<option key="0" val="global variable"/>
-		<option key="1" val="party sprite"/>
+		<option key="1" val="map event?"/>
 		<option key="4" val="map variable"/>
 		<option key="6" val="take item"/>
 		<option key="8" val="keyword"/>
@@ -2573,7 +2603,7 @@
   <option key="253" val="Lyramion (600|750)"/>
   <option key="254" val="Lyramion (650|750)"/>
   <option key="255" val="Lyramion (700|750)"/>
-  <option key="256" val="Lyramion (750|750)"/><option key="257" val=" THALION BÜRO  "/><option key="258" val=" GROSSVATERS HAUS  "/><option key="259" val=" GROSSVATERS KELLER  "/><option key="260" val=" ALTE HÖHLE - 1.EBENE  "/><option key="261" val=" ALTE HÖHLE - 2.EBENE  "/><option key="262" val=" GEHEIMZIMMER  "/><option key="263" val=" DIE STADT SPANNENBERG  "/><option key="264" val=" ZUM HINKENDEN GAUNER  "/><option key="265" val=" GAUNERS WEINKELLER  "/><option key="266" val=" HAUS DER HEILER  "/><option key="267" val=" ZELLENTRAKT  "/><option key="268" val=" HAUS DER TRAINER  "/><option key="269" val=" HAUS DES FREIHERRN  "/><option key="270" val=" TOLIMARS PFERDESTALL  "/><option key="271" val=" KAPITÄN TORLES WERFT  "/><option key="272" val=" HAUS DES FISCHERS  "/><option key="273" val=" STADTHAUS  "/><option key="274" val=" HAUS DER BANDITEN  "/><option key="275" val=" HAUS - OBERGESCHOSS  "/><option key="276" val=" HAUS - KELLER  "/><option key="277" val=" TEMPEL DER GALA  "/><option key="278" val=" HAUS DES WEISEN  "/><option key="279" val=" SYLPHEN-HÖHLE  "/><option key="280" val=" ORKHÖHLE  "/><option key="281" val=" ALCHEMISTENTURM - 1  "/><option key="282" val=" ALCHEMISTENTURM - 2  "/><option key="283" val=" ALTE KRYPTA  "/><option key="284" val=" BURNVILLE-TUNNEL  "/><option key="285" val=" STADT BURNVILLE  "/><option key="286" val=" HEILERHAUS BURNVILLE  "/><option key="287" val=" HAUS DER KÜNSTE  "/><option key="288" val=" TAVERNE ZUM KAKTUS  "/><option key="289" val=" GÄSTEZIMMER  "/><option key="290" val=" NALVENS MAGIERSCHULE  "/><option key="291" val=" BOLLGAR-TUNNEL  "/><option key="292" val=" TORHAUS  "/><option key="293" val=" LUMINORS FOLTERKAMMER  "/><option key="294" val=" LUMINORS TURM - 1  "/><option key="295" val=" LUMINORS TURM - 2  "/><option key="296" val=" LUMINORS TURM - 3  "/><option key="297" val=" LUMINORS TURM - 4  "/><option key="298" val=" LUMINORS TURM - 5  "/><option key="299" val=" HÜGELHÖHLEN  "/><option key="400" val=" LEBABS TURM - 1  "/><option key="401" val=" LEBABS TURM - 2  "/><option key="402" val=" LEBABS TURM - 3  "/><option key="403" val=" LEBABS TURM - 4  "/><option key="404" val=" LEBABS TURM - 5  "/><option key="405" val=" TURMSPITZE  "/><option key="406" val=" GEMSTONE RUINEN  "/><option key="407" val=" WAFFENKAMMER  "/><option key="408" val=" WINDSCHREIN  "/><option key="409" val=" GNOMMINE  "/><option key="410" val=" TAVERNE ZUM SCHACHT  "/><option key="411" val=" HEXENHAUS  "/><option key="412" val=" HEXENHAUS KELLER  "/><option key="413" val=" DÖNNERS ALTE MINE  "/><option key="414" val=" HÜTTE DES WALDHÜTERS  "/><option key="415" val=" HÖHLE DER BESTIE  "/><option key="416" val=" ILLIEN - ELFENSTADT  "/><option key="417" val=" PELANIS PALAST  "/><option key="418" val=" HAUS DES HARFNERS  "/><option key="419" val=" ZUM ADLERHORST  "/><option key="420" val=" DAS DORF SNAKESIGN  "/><option key="421" val=" TAVERNE ZUR GÖTTIN  "/><option key="422" val=" SANSRIETEMPEL - 1  "/><option key="423" val=" SANSRIETEMPEL - 2  "/><option key="424" val=" SANSRIES TUNNEL  "/><option key="425" val=" DIE STADT NEWLAKE  "/><option key="426" val=" TAVERNE ZUM KRATER  "/><option key="427" val=" PALAST DES BARONS  "/><option key="428" val=" GRUFT VON NEWLAKE  "/><option key="429" val=" BIBLIOTHEK - NEWLAKE  "/><option key="430" val=" DIE FESTE GODSBANE  "/><option key="431" val=" TEMPEL DER BRUDERSCHAFT  "/><option key="432" val=" OBERPRIESTER GEMÄCHER  "/><option key="433" val=" TARBOS SARGHALLE  "/><option key="434" val=" HANGAR AUF LYRAMION  "/><option key="435" val=" F-SCHIFF: LYRAMION  "/><option key="436" val=" F-SCHIFF: WALDMOND  "/><option key="437" val=" F-SCHIFF: MORAG  "/><option key="438" val=" ALTE ZWERGENMINE  "/><option key="439" val=" HANGAR AUF MORAG  "/><option key="440" val=" GEFÄNGNIS - S'ANGRILA  "/><option key="441" val=" DIE STADT S'ANGRILA  "/><option key="442" val=" ZUM FLIEGENDEN MORANER  "/><option key="443" val=" REITECHSENHÄNDLERIN  "/><option key="444" val=" PALAST DES S'RIEL  "/><option key="445" val=" PALAST DES S'OREL  "/><option key="446" val=" PALAST DES S'ARIN  "/><option key="447" val=" PALAST DES S'ENDAR  "/><option key="448" val=" PALAST DES S'TROG  "/><option key="449" val=" PALAST DES S'KAT  "/><option key="450" val=" PALAST DES S'LORWIN  "/><option key="451" val=" SANDBOOTBAUER  "/><option key="452" val=" MORAG-TURM  "/><option key="453" val=" MASCHINENRAUM  "/><option key="454" val=" HANGAR AUF MORAG  "/><option key="455" val=" GEFÄNGNIS - S'ANGRILA  "/><option key="300" val=" KIRES MOND  "/><option key="301" val=" KIRES MOND  "/><option key="302" val=" KIRES MOND  "/><option key="303" val=" KIRES MOND  "/><option key="304" val=" KIRES MOND  "/><option key="305" val=" KIRES MOND  "/><option key="306" val=" KIRES MOND  "/><option key="307" val=" KIRES MOND  "/><option key="308" val=" KIRES MOND  "/><option key="309" val=" KIRES MOND  "/><option key="310" val=" KIRES MOND  "/><option key="311" val=" KIRES MOND  "/><option key="312" val=" KIRES MOND  "/><option key="313" val=" KIRES MOND  "/><option key="314" val=" KIRES MOND  "/><option key="315" val=" KIRES MOND  "/><option key="316" val=" KIRES MOND  "/><option key="317" val=" KIRES MOND  "/><option key="318" val=" KIRES MOND  "/><option key="319" val=" KIRES MOND  "/><option key="320" val=" KIRES MOND  "/><option key="321" val=" KIRES MOND  "/><option key="322" val=" KIRES MOND  "/><option key="323" val=" KIRES MOND  "/><option key="324" val=" KIRES MOND  "/><option key="325" val=" KIRES MOND  "/><option key="326" val=" KIRES MOND  "/><option key="327" val=" KIRES MOND  "/><option key="328" val=" KIRES MOND  "/><option key="329" val=" KIRES MOND  "/><option key="330" val=" KIRES MOND  "/><option key="331" val=" KIRES MOND  "/><option key="332" val=" KIRES MOND  "/><option key="333" val=" KIRES MOND  "/><option key="334" val=" KIRES MOND  "/><option key="335" val=" KIRES MOND  "/><option key="336" val=" GASTHAUS GEMSTONE  "/><option key="337" val=" KIRES RESIDENZ  "/><option key="338" val=" EINGANGSBEREICH RUINEN  "/><option key="339" val=" DOR GRESTIN  "/><option key="340" val=" FERRINS KELLER  "/><option key="341" val=" RATSHALLE  "/><option key="342" val=" RUINENUNTERGRUND  "/><option key="343" val=" DOR KIREDON  "/><option key="344" val=" FERRINS SCHMIEDE  "/><option key="345" val=" MINE  "/><option key="346" val=" DORINAS HÖHLE  "/><option key="347" val=" DORINAS HÖHLE UNTEN  "/><option key="348" val=" MINE - 2. EBENE  "/><option key="349" val=" RUINENTURM  "/><option key="350" val=" EINGANG DER ALTEN RUINEN  "/><option key="351" val=" KELLERGEWÖLBE  "/><option key="352" val=" MINE - 2. EBENE  "/><option key="353" val=" KIRES RESIDENZ  "/><option key="354" val=" MINE - 3. EBENE  "/><option key="355" val=" FERRINS LAGERKELLER  "/><option key="356" val=" TORNAK-HÖHLE  "/><option key="357" val=" TORNAK-HÖHLE  "/><option key="358" val=" KLEINE HÖHLE  "/><option key="359" val=" FERRINS SCHMIEDE  "/><option key="360" val=" HAUS DES HEILERS ASRUB  "/><option key="361" val=" GADLON: KELLER 2  "/><option key="362" val=" GADLON: KELLER 1  "/><option key="363" val=" GADLON: ERDGESCHOSS  "/><option key="364" val=" GADLON: 1. STOCK  "/><option key="365" val=" GADLON: 2. STOCK  "/><option key="366" val=" ANTIKE ANLAGE 1  "/><option key="367" val=" ANTIKE ANLAGE 2  "/><option key="368" val=" ANTIKE ANLAGE 3  "/><option key="369" val=" ANTIKE ANLAGE 4  "/>
+  <option key="256" val="Lyramion (750|750)"/><option key="257" val=" THALION BÜRO  "/><option key="258" val=" GROSSVATERS HAUS  "/><option key="259" val=" GROSSVATERS KELLER  "/><option key="260" val=" ALTE HÖHLE - 1.EBENE  "/><option key="261" val=" ALTE HÖHLE - 2.EBENE  "/><option key="262" val=" GEHEIMZIMMER  "/><option key="263" val=" DIE STADT SPANNENBERG  "/><option key="264" val=" ZUM HINKENDEN GAUNER  "/><option key="265" val=" GAUNERS WEINKELLER  "/><option key="266" val=" HAUS DER HEILER  "/><option key="267" val=" ZELLENTRAKT  "/><option key="268" val=" HAUS DER TRAINER  "/><option key="269" val=" HAUS DES FREIHERRN  "/><option key="270" val=" TOLIMARS PFERDESTALL  "/><option key="271" val=" KAPITÄN TORLES WERFT  "/><option key="272" val=" HAUS DES FISCHERS  "/><option key="273" val=" STADTHAUS  "/><option key="274" val=" HAUS DER BANDITEN  "/><option key="275" val=" HAUS - OBERGESCHOSS  "/><option key="276" val=" HAUS - KELLER  "/><option key="277" val=" TEMPEL DER GALA  "/><option key="278" val=" HAUS DES WEISEN  "/><option key="279" val=" SYLPHEN-HÖHLE  "/><option key="280" val=" ORKHÖHLE  "/><option key="281" val=" ALCHEMISTENTURM - 1  "/><option key="282" val=" ALCHEMISTENTURM - 2  "/><option key="283" val=" ALTE KRYPTA  "/><option key="284" val=" BURNVILLE-TUNNEL  "/><option key="285" val=" STADT BURNVILLE  "/><option key="286" val=" HEILERHAUS BURNVILLE  "/><option key="287" val=" HAUS DER KÜNSTE  "/><option key="288" val=" TAVERNE ZUM KAKTUS  "/><option key="289" val=" GÄSTEZIMMER  "/><option key="290" val=" NALVENS MAGIERSCHULE  "/><option key="291" val=" BOLLGAR-TUNNEL  "/><option key="292" val=" TORHAUS  "/><option key="293" val=" LUMINORS FOLTERKAMMER  "/><option key="294" val=" LUMINORS TURM - 1  "/><option key="295" val=" LUMINORS TURM - 2  "/><option key="296" val=" LUMINORS TURM - 3  "/><option key="297" val=" LUMINORS TURM - 4  "/><option key="298" val=" LUMINORS TURM - 5  "/><option key="299" val=" HÜGELHÖHLEN  "/><option key="400" val=" LEBABS TURM - 1  "/><option key="401" val=" LEBABS TURM - 2  "/><option key="402" val=" LEBABS TURM - 3  "/><option key="403" val=" LEBABS TURM - 4  "/><option key="404" val=" LEBABS TURM - 5  "/><option key="405" val=" TURMSPITZE  "/><option key="406" val=" GEMSTONE RUINEN  "/><option key="407" val=" WAFFENKAMMER  "/><option key="408" val=" WINDSCHREIN  "/><option key="409" val=" GNOMMINE  "/><option key="410" val=" TAVERNE ZUM SCHACHT  "/><option key="411" val=" HEXENHAUS  "/><option key="412" val=" HEXENHAUS KELLER  "/><option key="413" val=" DÖNNERS ALTE MINE  "/><option key="414" val=" HÜTTE DES WALDHÜTERS  "/><option key="415" val=" HÖHLE DER BESTIE  "/><option key="416" val=" ILLIEN - ELFENSTADT  "/><option key="417" val=" PELANIS PALAST  "/><option key="418" val=" HAUS DES HARFNERS  "/><option key="419" val=" ZUM ADLERHORST  "/><option key="420" val=" DAS DORF SNAKESIGN  "/><option key="421" val=" TAVERNE ZUR GÖTTIN  "/><option key="422" val=" SANSRIETEMPEL - 1  "/><option key="423" val=" SANSRIETEMPEL - 2  "/><option key="424" val=" SANSRIES TUNNEL  "/><option key="425" val=" DIE STADT NEWLAKE  "/><option key="426" val=" TAVERNE ZUM KRATER  "/><option key="427" val=" PALAST DES BARONS  "/><option key="428" val=" GRUFT VON NEWLAKE  "/><option key="429" val=" BIBLIOTHEK - NEWLAKE  "/><option key="430" val=" DIE FESTE GODSBANE  "/><option key="431" val=" TEMPEL DER BRUDERSCHAFT  "/><option key="432" val=" OBERPRIESTER GEMÄCHER  "/><option key="433" val=" TARBOS SARGHALLE  "/><option key="434" val=" HANGAR AUF LYRAMION  "/><option key="435" val=" F-SCHIFF: LYRAMION  "/><option key="436" val=" F-SCHIFF: WALDMOND  "/><option key="437" val=" F-SCHIFF: MORAG  "/><option key="438" val=" ALTE ZWERGENMINE  "/><option key="439" val=" HANGAR AUF MORAG  "/><option key="440" val=" GEFÄNGNIS - S'ANGRILA  "/><option key="441" val=" DIE STADT S'ANGRILA  "/><option key="442" val=" ZUM FLIEGENDEN MORANER  "/><option key="443" val=" REITECHSENHÄNDLERIN  "/><option key="444" val=" PALAST DES S'RIEL  "/><option key="445" val=" PALAST DES S'OREL  "/><option key="446" val=" PALAST DES S'ARIN  "/><option key="447" val=" PALAST DES S'ENDAR  "/><option key="448" val=" PALAST DES S'TROG  "/><option key="449" val=" PALAST DES S'KAT  "/><option key="450" val=" PALAST DES S'LORWIN  "/><option key="451" val=" SANDBOOTBAUER  "/><option key="452" val=" MORAG-TURM  "/><option key="453" val=" MASCHINENRAUM  "/><option key="454" val=" HANGAR AUF MORAG  "/><option key="455" val=" GEFÄNGNIS - S'ANGRILA  "/><option key="300" val=" KIRES MOND  "/><option key="301" val=" KIRES MOND  "/><option key="302" val=" KIRES MOND  "/><option key="303" val=" KIRES MOND  "/><option key="304" val=" KIRES MOND  "/><option key="305" val=" KIRES MOND  "/><option key="306" val=" KIRES MOND  "/><option key="307" val=" KIRES MOND  "/><option key="308" val=" KIRES MOND  "/><option key="309" val=" KIRES MOND  "/><option key="310" val=" KIRES MOND  "/><option key="311" val=" KIRES MOND  "/><option key="312" val=" KIRES MOND  "/><option key="313" val=" KIRES MOND  "/><option key="314" val=" KIRES MOND  "/><option key="315" val=" KIRES MOND  "/><option key="316" val=" KIRES MOND  "/><option key="317" val=" KIRES MOND  "/><option key="318" val=" KIRES MOND  "/><option key="319" val=" KIRES MOND  "/><option key="320" val=" KIRES MOND  "/><option key="321" val=" KIRES MOND  "/><option key="322" val=" KIRES MOND  "/><option key="323" val=" KIRES MOND  "/><option key="324" val=" KIRES MOND  "/><option key="325" val=" KIRES MOND  "/><option key="326" val=" KIRES MOND  "/><option key="327" val=" KIRES MOND  "/><option key="328" val=" KIRES MOND  "/><option key="329" val=" KIRES MOND  "/><option key="330" val=" KIRES MOND  "/><option key="331" val=" KIRES MOND  "/><option key="332" val=" KIRES MOND  "/><option key="333" val=" KIRES MOND  "/><option key="334" val=" KIRES MOND  "/><option key="335" val=" KIRES MOND  "/><option key="336" val=" GASTHAUS GEMSTONE  "/><option key="337" val=" KIRES RESIDENZ  "/><option key="338" val=" EINGANGSBEREICH RUINEN  "/><option key="339" val=" DOR GRESTIN  "/><option key="340" val=" FERRINS KELLER  "/><option key="341" val=" RATSHALLE  "/><option key="342" val=" RUINENUNTERGRUND  "/><option key="343" val=" DOR KIREDON  "/><option key="344" val=" FERRINS SCHMIEDE  "/><option key="345" val=" MINE  "/><option key="346" val=" DORINAS HÖHLE  "/><option key="347" val=" DORINAS HÖHLE UNTEN  "/><option key="348" val=" MINE - 2. EBENE  "/><option key="349" val=" RUINENTURM  "/><option key="350" val=" EINGANG DER ALTEN RUINEN  "/><option key="351" val=" KELLERGEWÖLBE  "/><option key="352" val=" MINE - 2. EBENE  "/><option key="353" val=" KIRES RESIDENZ  "/><option key="354" val=" MINE - 3. EBENE  "/><option key="355" val=" FERRINS LAGERKELLER  "/><option key="356" val=" TORNAK-HÖHLE  "/><option key="357" val=" TORNAK-HÖHLE  "/><option key="358" val=" KLEINE HÖHLE  "/><option key="359" val=" FERRINS SCHMIEDE  "/><option key="360" val=" HAUS DES HEILERS ASRUB  "/><option key="361" val=" GADLON: KELLER 2  "/><option key="362" val=" GADLON: KELLER 1  "/><option key="363" val=" GADLON: ERDGESCHOSS  "/><option key="364" val=" GADLON: 1. STOCK  "/><option key="365" val=" GADLON: 2. STOCK  "/><option key="366" val=" ANTIKE ANLAGE 1  "/><option key="367" val=" ANTIKE ANLAGE 2  "/><option key="368" val=" ANTIKE ANLAGE 3  "/><option key="369" val=" ANTIKE ANLAGE 4  "/><option key="513" val=" Morag"/>
 </dictionary>
 
 <dictionary dictionary-id="shops">
@@ -2598,5 +2628,80 @@
 <option key="032" val="Dor Grestin, Randor's Lädchen"/>
 <option key="018" val="S'Angrila, Warenhändler von S'Angrila"/>
 <option key="033" val="-"/>
+</dictionary>
+
+<dictionary dictionary-id="songs">
+<option val="-"/>
+
+<option val="Who said &quot;Hi Ho&quot; ?"/>
+
+<option val="Mellow camel funk"/>
+
+<option val="Close to the hedge"/>
+
+<option val="Voice of the bagpipe"/>
+
+<option val="Downtown"/>
+
+<option val="SHIP"/>
+
+<option val="Whole lotta dove"/>
+
+<option val="Horse is no disgrace"/>
+
+<option val="Don't look Bach"/>
+
+<option val="Rough waterfront tavern"/>
+
+<option val="Sapphire fireballs of pure love"/>
+
+<option val="The Aum remains the same"/>
+
+<option val="CAPITAL"/>
+
+<option val="Plodding along"/>
+
+<option val="Compact disc"/>
+
+<option val="Riverside travelling blues"/>
+
+<option val="Nobody's vault but mine"/>
+
+<option val="La Crypta Strangiato"/>
+
+<option val="Misty dungeon hop"/>
+
+<option val="Burn baby burn!"/>
+
+<option val="Bar brawlin'"/>
+
+<option val="Psychedelic dune groove"/>
+
+<option val="Stairway to level 50"/>
+
+<option val="That hunch is back"/>
+
+<option val="Chicken soup"/>
+
+<option val="Dragon chase in creepy dungeon"/>
+
+<option val="His master's voice"/>
+
+<option val="To the Unknown"/>
+
+<option val="Oh no not another magical event"/>
+
+<option val="The Uh-oh song"/>
+
+<option val="Owner of a lonely sword"/>
+
+<option val="GAME OVER"/>
+
+<option key="255" val="[stop]"/>
+</dictionary>
+
+
+<dictionary dictionary-id="places">
+<option val="-"/><option val="GÄSTEZIMMER VON SPANNENBERG"/><option val="SPANNENBERG DIEBES GILDE"/><option val="SPANNENBERG DIEBES GILDE"/><option val="SPANNENBERG DIEBES GILDE"/><option val="HEILER VON SPANNENBERG"/><option val="HEILER VON SPANNENBERG"/><option val="BIBLIOTHEK DER HEILER"/><option val="SCHLAFSAAL DER HEILER"/><option val="MEISTER KARL'S ATTACKE TRAIN."/><option val="MEISTER ROLF'S PARADE TRAIN."/><option val="TOLIMARS PFERDE"/><option val="WARENHÄNDLER VON SPANNENBERG"/><option val="YNNEP LEBENSMITTEL"/><option val="SAGE VON SPANNENBERG"/><option val="TORLES WERFT"/><option val="LADEN DER DIEBESGILDE"/><option val="NAGIER'S K-TREFFER TRAINING"/><option val="BIBLIOTHEK DER MYSTIK"/><option val="BIBLIOTHEK DER ALCHEMIE"/><option val="LADEN DER ALCHEMIE"/><option val="BIBLIOTHEK DER HEILER"/><option val="HEILER VON BURNVILLE"/><option val="BIBLIOTHEK DES MILZOR"/><option val="THERESA'S SCHMUCKLADEN"/><option val="REZEPTION DES KAKTUS"/><option val="SULP LEBENSMITTEL"/><option val="WARENHÄNDLER VON BURNVILLE"/><option val="NALVEN'S SPRUCH TRAINING"/><option val="NALVEN'S LESE TRAINING"/><option val="NALVEN'S BIBLIOTHEK"/><option val="SCHWIMMSCHULE VON BURNVILLE"/><option val="SCHMIEDE VON BURNVILLE"/><option val="LEBAB'S VERZAUBERUNGEN"/><option val="GASTHAUS 'GEMSTONE'"/><option val="FERRIN'S SCHMIEDE"/><option val="DER HEILER ASRUB"/><option val="DIE SCHÄTZE DES WALDES"/><option val="DAS NEST"/><option val="DRELB'S SUCH TRAINING"/><option val="BROM'S WARENHAUS"/><option val="REZEPTION - ZUM SCHACHT"/><option val="LENDRAIS MAGISCHE WAFFEN"/><option val="MANA - LEBENSMITTEL"/><option val="SPRUCHROLLEN BIBLIOTHEK"/><option val="AIOLU'S TRÄNKE ALLER ART"/><option val="HEILER VON ILLIEN"/><option val="REZEPTION DES ADLER'S"/><option val="SAGE VON SNAKESIGN"/><option val="SCHMIEDE VON SNAKESIGN"/><option val="RATIONEN BEI SCHLANGENFRASS"/><option val="WARENHÄNDLER VON SNAKESIGN"/><option val="HEILER DER SANSRIE"/><option val="REZEPTION DER GÖTTIN"/><option val="SCHMIEDE VON NEWLAKE"/><option val="HAUS DER HEILER"/><option val="SIERPINIM - LEBENSMITTEL"/><option val="WARENHANDEL VON NEWLAKE"/><option val="REZEPTION DES KRATER'S"/><option val="FERRIN'S SCHMIEDE:REPARATUREN"/><option val="FERRIN'S SCHMIEDE:REPARATUREN"/><option val="RANDOR'S LÄDCHEN"/><option val="LEBENSMITTEL IN S'ANGRILA"/><option val="WARENHÄNDLER VON S'ANGRILA"/><option val="SCHMIEDE VON S'ANGRILA"/>
 </dictionary>
 </savegame.editor>

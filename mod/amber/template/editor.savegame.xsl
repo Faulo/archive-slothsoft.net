@@ -236,32 +236,36 @@ window.addEventListener(
 	</xsl:template>
 	
 	<xsl:template match="save:archive[@file-name[. = '1Map_data.amb' or . = '2Map_data.amb' or . = '3Map_data.amb' or . = '4Map_data.amb' or . = '5Map_data.amb']]" mode="form-content">
+		<xsl:variable name="fileList" select="save:file"/>
+		<xsl:variable name="nameList" select="key('dictionary-option', 'map-ids')[number(@key) = $fileList/@file-name]"/>
+		
 		<xsl:call-template name="savegame.tabs">
 			<xsl:with-param name="label" select="'Aktive Karte:'"/>
-			<xsl:with-param name="options" select="key('dictionary-option', 'map-ids')[number(@key) = current()/save:file/@file-name]/@val"/>
+			<xsl:with-param name="options" select="$nameList/@val"/>
 			<xsl:with-param name="list">
-				<xsl:for-each select="save:file">
-					<li>
-						<xsl:call-template name="savegame.flex">
-							<xsl:with-param name="items">
-								<xsl:for-each select=".//*[@name='data']">
+				<xsl:for-each select="$nameList">
+					<xsl:for-each select="$fileList[@file-name = number(current()/@key)]">
+						<li>
+							<!--
+							<xsl:call-template name="savegame.flex">
+								<xsl:with-param name="items">
+							-->
 									<div>
 										<xsl:call-template name="savegame.table">
 											<xsl:with-param name="label" select="'data'"/>
 											<xsl:with-param name="items">
-												<xsl:apply-templates select="save:integer | save:select" mode="item"/>
+												<xsl:apply-templates select=".//*[@name='data']/* | .//*[@name='unknown']" mode="item"/>
 											</xsl:with-param>
 										</xsl:call-template>
 									</div>
-								</xsl:for-each>
-								<div>
-									<xsl:call-template name="savegame.amber.testing"/>
-								</div>
-								<xsl:call-template name="savegame.amber.tiles"/>
-								<xsl:call-template name="savegame.amber.events"/>
-							</xsl:with-param>
-						</xsl:call-template>
-					</li>
+									<xsl:call-template name="savegame.amber.tiles"/>
+									<xsl:call-template name="savegame.amber.events"/>
+							<!--
+								</xsl:with-param>
+							</xsl:call-template>
+							-->
+						</li>
+					</xsl:for-each>
 				</xsl:for-each>
 			</xsl:with-param>
 		</xsl:call-template>
@@ -427,6 +431,18 @@ window.addEventListener(
 					<xsl:with-param name="items">
 						<xsl:apply-templates select=".//*[@name = 'version']" mode="item"/>
 						<xsl:apply-templates select=".//*[@name = 'date']" mode="item"/>
+					</xsl:with-param>
+				</xsl:call-template>
+				<xsl:call-template name="savegame.table">
+					<xsl:with-param name="label" select="'integers'"/>
+					<xsl:with-param name="items">
+						<xsl:apply-templates select=".//*[@name = 'integers']/*" mode="item"/>
+					</xsl:with-param>
+				</xsl:call-template>
+				<xsl:call-template name="savegame.table">
+					<xsl:with-param name="label" select="'strings'"/>
+					<xsl:with-param name="items">
+						<xsl:apply-templates select=".//*[@name = 'strings']/*" mode="item"/>
 					</xsl:with-param>
 				</xsl:call-template>
 			</div>
@@ -677,31 +693,34 @@ window.addEventListener(
 			<xsl:variable name="tiles" select="*"/>
 			<div>
 				<h3 class="name">Tiles</h3>
-				<table class="map" data-palette="{$palette}">
-					<xsl:choose>
-						<xsl:when test="$map-type = 1">
-							<!--3D-->
-							<xsl:attribute name="data-labset"><xsl:value-of select="$icondata"/></xsl:attribute>
-						</xsl:when>
-						<xsl:when test="$map-type = 2">
-							<!--2D-->
-							<xsl:attribute name="data-tileset"><xsl:value-of select="$icondata"/></xsl:attribute>
-						</xsl:when>
-					</xsl:choose>
-					<tbody>
-						<xsl:for-each select="str:split(str:padding($height, '-'), '')">
-							<xsl:variable name="y" select="position()"/>
-							<tr>
-								<xsl:for-each select="str:split(str:padding($width, '-'), '')">
-									<xsl:variable name="x" select="position()"/>
-									<td title="{$x}|{$y}">
-										<xsl:apply-templates select="$tiles[($y - 1) * $width + $x]" mode="form-content"/>
-									</td>
-								</xsl:for-each>
-							</tr>
-						</xsl:for-each>
-					</tbody>
-				</table>
+				<div class="map">
+				
+					<table data-palette="{$palette}">
+						<xsl:choose>
+							<xsl:when test="$map-type = 1">
+								<!--3D-->
+								<xsl:attribute name="data-labset"><xsl:value-of select="$icondata"/></xsl:attribute>
+							</xsl:when>
+							<xsl:when test="$map-type = 2">
+								<!--2D-->
+								<xsl:attribute name="data-tileset"><xsl:value-of select="$icondata"/></xsl:attribute>
+							</xsl:when>
+						</xsl:choose>
+						<tbody>
+							<xsl:for-each select="str:split(str:padding($height, '-'), '')">
+								<xsl:variable name="y" select="position()"/>
+								<tr>
+									<xsl:for-each select="str:split(str:padding($width, '-'), '')">
+										<xsl:variable name="x" select="position()"/>
+										<td title="{$x}|{$y}">
+											<xsl:apply-templates select="$tiles[($y - 1) * $width + $x]" mode="form-content"/>
+										</td>
+									</xsl:for-each>
+								</tr>
+							</xsl:for-each>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</xsl:for-each>
 	</xsl:template>

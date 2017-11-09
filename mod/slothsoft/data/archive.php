@@ -61,7 +61,7 @@ $downloadDirs = $tmpList;
 
 $uploadDir = reset($downloadDirs);
 
-$verifyTree = ! ($this->httpRequest->getInputValue('watch') or $this->httpRequest->getInputValue('subtitle') or $this->httpRequest->getInputValue('download') or $this->httpRequest->getInputValue('show'));
+$verifyTree = $this->httpRequest->hasInputValue('refresh') or ! ($this->httpRequest->getInputValue('watch') or $this->httpRequest->getInputValue('subtitle') or $this->httpRequest->getInputValue('download') or $this->httpRequest->getInputValue('show'));
 
 if ($uri = $this->httpRequest->getInputValue('youtube-uri')) {
     $dir = 'C:/NetzwerkDaten/YouTube/';

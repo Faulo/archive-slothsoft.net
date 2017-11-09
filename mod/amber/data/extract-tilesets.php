@@ -26,8 +26,19 @@ if ($this->httpRequest->hasInputValue('css')) {
 		$fileId = (int) $fileNode->getAttribute('file-name');
 		
 		$paletteCount = 50;
+		$tilesetsDir = __DIR__ . '/../res/tilesets';
+		
+		$ret[] = sprintf(
+			'*[data-tileset="%d"] *[data-picker-name="tile-id"]::after { background-image: url(/getResource.php/amber/tilesets/%d-%d); }',
+			$fileId, $fileId, 0
+		);
 		for ($paletteId = 0; $paletteId < $paletteCount; $paletteId++) {
-			$ret[] = sprintf('*[data-tileset="%d"][data-palette="%d"] *[data-picker-name="tile-id"]::after { background-image: url(/getResource.php/amber/tilesets/%d-%d); }', $fileId, $paletteId, $fileId, $paletteId);
+			if (file_exists(sprintf('%s/%d-%d.png', $tilesetsDir, $fileId, $paletteId))) {
+				$ret[] = sprintf(
+					'*[data-tileset="%d"][data-palette="%d"] *[data-picker-name="tile-id"]::after { background-image: url(/getResource.php/amber/tilesets/%d-%d); }',
+					$fileId, $paletteId, $fileId, $paletteId
+				);
+			}
 		}
 		$ret[] = '';
 		

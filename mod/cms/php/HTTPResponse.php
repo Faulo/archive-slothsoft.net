@@ -18,8 +18,7 @@ declare(ticks = 1000);
 class HTTPResponse
 {
 
-    const CHUNK_EOL = "
-";
+    const CHUNK_EOL = "\r\n";
 
     const STATUS_OK = 200;
 
@@ -69,7 +68,7 @@ class HTTPResponse
         'cache-duration' => 30, // max-age, Sekunden
         'file-size' => 16 * MEMORY_MEGABYTE, // maximum setFile-load
         'seek-size' => 1 * MEMORY_MEGABYTE, // maximum fseek
-        'chunk-size' => 256 * MEMORY_KILOBYTE, // transfer-encoding
+        'chunk-size' => 1 * MEMORY_MEGABYTE, // transfer-encoding
         'gzip-level' => 9 // encoding-level
     ];
 
@@ -566,7 +565,7 @@ EOT;
             if ($doc->documentElement->hasAttribute('xml:lang')) {
                 $this->setLanguage($doc->documentElement->getAttribute('xml:lang'));
             } elseif ($this->language) {
-                $doc->documentElement->setAttribute('xml:lang', $this->language);
+                //$doc->documentElement->setAttribute('xml:lang', $this->language);
             }
         }
         if ($this->charset) {
@@ -986,9 +985,7 @@ EOT;
             case self::TRANSFER_ENCODING_RAW:
                 break;
             case self::TRANSFER_ENCODING_CHUNKED:
-                echo "0
-
-";
+                echo '0' . self::CHUNK_EOL . self::CHUNK_EOL;
                 break;
         }
     }
