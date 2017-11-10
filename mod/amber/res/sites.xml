@@ -8,5 +8,25 @@
 		<page name="ExperienceChart" title="ExperienceChart" ref="epchart" status-active="" status-public=""/>
 		<page name="ItemList" title="ItemList" ref="itemlist" status-active="" status-public=""/>
 		<page name="PortraitList" title="PortraitList" ref="portraitlist" status-active="" status-public=""/>
+		
+		<param name="game" value="ambermoon"/>
+		<page name="Thalion-v1.05-DE" title="Thalion-v1.05-DE" ref="mod" status-active="">
+			<param name="mod" value="Thalion-v1.05-DE"/>
+			<page name="SaveEditor" title="SavegameEditor" ref="editor" status-active="" status-public="">
+				<param name="struc" value="structure.savegame"/>
+			</page>
+			<page name="GameEditor" title="GameEditor" ref="editor" status-active="" status-public="">
+				<param name="struc" value="structure.savegame"/>
+			</page>
+		</page>
+		<page name="Thalion-v1.06-DE" title="Thalion-v1.06-DE" ref="mod" status-active="">
+			<param name="mod" value="Thalion-v1.06-DE"/>
+			<page name="SaveEditor" title="SavegameEditor" ref="editor" status-active="" status-public="">
+				<param name="struc" value="structure.savegame"/>
+			</page>
+			<page name="GameEditor" title="GameEditor" ref="editor" status-active="" status-public="">
+				<param name="struc" value="structure.savegame"/>
+			</page>
+		</page>
 	</page>
 </data>

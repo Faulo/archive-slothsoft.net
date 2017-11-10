@@ -128,13 +128,11 @@
 	<p key="Last system message:">Last system message:</p>
 	<p key="Currently online:">Currently online:</p>
 	<p key="About">About</p>
-	<p
-		key="This editor allows you to find useful Craymel Configurations by showing all available Greater Craymels and spells, and which craymel mage they would end up with.">This editor allows you to find useful Craymel Configurations by
+	<p key="This editor allows you to find useful Craymel Configurations by showing all available Greater Craymels and spells, and which craymel mage they would end up with.">This editor allows you to find useful Craymel Configurations by
 		showing all available Greater Craymels and spells, and which craymel
 		mage they would end up with.</p>
 	<p key="Instructions">Instructions</p>
-	<p
-		key="Click on a Greater Craymels name to have him switch to the other craymel mage. The list will update accordingly.">Click on a Greater Craymel's name to have him switch to the other
+	<p key="Click on a Greater Craymels name to have him switch to the other craymel mage. The list will update accordingly.">Click on a Greater Craymel's name to have him switch to the other
 		craymel mage. The list will update accordingly.</p>
 	<p key="Credits">Credits</p>
 	<p key="(code)">(code)</p>
@@ -149,8 +147,7 @@
 	<p key="players/laston">players/laston</p>
 	<p key="Fire Emblem">Fire Emblem</p>
 	<p key="(awesome stat guide)">
-		<a
-			href="http://www.gamefaqs.com/ds/943695-fire-emblem-shadow-dragon/faqs/54527">(awesome stat guide)</a>
+		<a href="http://www.gamefaqs.com/ds/943695-fire-emblem-shadow-dragon/faqs/54527">(awesome stat guide)</a>
 	</p>
 	<p key="(awesome wiki)">
 		<a href="http://fireemblem.wikia.com/wiki/Fire_Emblem_Wikia">(awesome wiki)</a>
@@ -203,7 +200,7 @@
 	<p key="Audio">Audio</p>
 	<p key="Stroke Order">Stroke Order</p>
 	<p key="[dont know]"> [don't know]</p>
-	<p key="lang/" />
+	<p key="lang/"/>
 	<p key="lang/ja-jp">Japanese</p>
 	<p key="lang/de-de">German</p>
 	<p key="lang/en-us">English</p>
@@ -236,14 +233,12 @@
 			<rp>） </rp>
 		</ruby>
 		properly,
-		<a href="https://addons.mozilla.org/de/firefox/addon/html-ruby/"
-			rel="external">there's a plugin</a>
+		<a href="https://addons.mozilla.org/de/firefox/addon/html-ruby/" rel="external">there's a plugin</a>
 		for that.
 	</p>
 	<p key="vocab/kanji/test">
 		A memorization test that asks you to translate
-		<abbr
-			title="the exact number of questions is √(total number of kanji in the list) :3">a number of</abbr>
+		<abbr title="the exact number of questions is √(total number of kanji in the list) :3">a number of</abbr>
 		kanji from the accompanying
 		<a href="../../KanjiList/">list</a>
 		. /o/
@@ -289,7 +284,7 @@
 	</p>
 	<p key="Chat">Chat</p>
 	<p key="Shoutbox List">Active Shoutboxes</p>
-	<p key="" />
+	<p key=""/>
 	<p key="Claudia Osthof">Claudia Osthof</p>
 	<p key="Portfolio">Portfolio</p>
 	<p key="Grammar">Grammar</p>
@@ -304,113 +299,113 @@
 	<p key="Add Word">Add Word</p>
 	<p key="vocab/type/v5b">
 		五段
-		<br />
+		<br/>
 		～ぶ
 	</p>
 	<p key="vocab/type/v5k">
 		五段
-		<br />
+		<br/>
 		～く
 	</p>
 	<p key="vocab/type/v5m">
 		五段
-		<br />
+		<br/>
 		～む
 	</p>
 	<p key="vocab/type/v5r">
 		五段
-		<br />
+		<br/>
 		～る
 	</p>
 	<p key="vocab/type/v5s">
 		五段
-		<br />
+		<br/>
 		～す
 	</p>
 	<p key="vocab/type/v5t">
 		五段
-		<br />
+		<br/>
 		～つ
 	</p>
 	<p key="vocab/type/v5g">
 		五段
-		<br />
+		<br/>
 		～ぐ
 	</p>
 	<p key="vocab/type/v5u">
 		五段
-		<br />
+		<br/>
 		～う
 	</p>
 	<p key="vocab/type/v5n">
 		五段
-		<br />
+		<br/>
 		～ぬ
 	</p>
 	<p key="vocab/type/v1">一段</p>
 	<p key="vocab/type/vs">?</p>
 	<p key="vocab/form/dictionary">
 		Dictionary Form
-		<br />
+		<br/>
 	</p>
 	<p key="vocab/form/te">
 		"te" Form
-		<br />
+		<br/>
 		～て
 	</p>
 	<p key="vocab/form/negative">
 		Negative
-		<br />
+		<br/>
 		～ない
 	</p>
 	<p key="vocab/form/perfective">
 		Perfective
-		<br />
+		<br/>
 		～た
 	</p>
 	<p key="vocab/form/polite">
 		Polite Form
-		<br />
+		<br/>
 		～ます
 	</p>
 	<p key="vocab/form/potential">
 		Potential
-		<br />
+		<br/>
 		～える
 	</p>
 	<p key="vocab/form/volitional">
 		Volitional
-		<br />
+		<br/>
 		～おう
 	</p>
 	<p key="vocab/form/passive">
 		Passive
-		<br />
+		<br/>
 		～あれる
 	</p>
 	<p key="vocab/form/causative">
 		Causative
-		<br />
+		<br/>
 		～あせる
 	</p>
 	<p key="vocab/form/imperative">
 		Imperative
-		<br />
+		<br/>
 		～え
 	</p>
 	<p key="vocab/form/conditional">
 		Conditional
-		<br />
+		<br/>
 		～ら
 	</p>
 	<p key="vocab/form/polite-negative">
 		Polite Negative
-		<br />
+		<br/>
 		～ません
 	</p>
 	<p key="vocab/form/polite-volitional">
 		Polite Volitional
-		<br />
+		<br/>
 		～ましょう
 	</p>
 	<p key="Missing Sloth">Missing Sloth</p>
@@ -473,4 +468,5 @@
 	<p key="PortraitList">Portrait List</p>
 	<p key="LinkPulls">Tales of Link Summoning Simulator</p>
 	<p key="GamedataEditor">GamedataEditor</p>
+<p key="Thalion-v1.05-DE">Thalion-v1.05-DE</p>
 </html>

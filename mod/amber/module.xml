@@ -8,6 +8,32 @@
 		</fragment>
 		<call name="chat" />
 	</fragment>
+	
+	<fragment name="mod">
+		<struc name="/slothsoft/default" />
+		<fragment name="content">
+			<template name="mod" />
+			<struc name="default" />
+			
+			<data name="resource">
+				<param name="type" value="amberdata" />
+				<param name="name" value="classes.xml" />
+			</data>
+			<data name="resource">
+				<param name="type" value="amberdata" />
+				<param name="name" value="items.xml" />
+			</data>
+		</fragment>
+	</fragment>
+	<fragment name="editor">
+		<struc name="/slothsoft/default" />
+		<fragment name="content">
+			<data name="editor" />
+			<template name="editor" />
+			<struc name="default" />
+		</fragment>
+	</fragment>
+	
 	<fragment name="editor-savegame">
 		<struc name="/slothsoft/default" />
 		<param name="EditorConfig" value="/amber/AmbermoonSavegame" />
