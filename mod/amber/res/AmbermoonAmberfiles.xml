@@ -965,6 +965,7 @@
 		<option val="?" />
 	</dictionary>
 	<archive file-name="Monster_char_data.amb" type="AMBR">
+<<<<<<< HEAD
 
 		<use-global ref="character" />
 
@@ -995,10 +996,47 @@
 			<group name="width">
 				<integer name="target" position="806" size="2" />
 				<integer name="source" position="802" size="2" />
+=======
+		
+			<!--<use-global ref="character"/>-->
+			
+			<use-global ref="character"/>
+			
+			<bit-field position="18" name="monster-type" size="1" first-bit="0" last-bit="3" dictionary-ref="monster-types"/>
+			
+			<group name="testing">
+				<binary position="13" size="4"/>
+				<binary position="19" size="2"/>
+				<binary position="34" size="8"/>
+				<binary position="110" size="12"/>
+				<binary position="258" size="13"/>
+>>>>>>> refs/remotes/origin/master
 			</group>
+<<<<<<< HEAD
 			<group name="height">
 				<integer name="target" position="808" size="2" />
 				<integer name="source" position="804" size="2" />
+=======
+			
+			<group name="gfx">
+				<select name="gfx-id" position="11" size="2" dictionary-ref="monster-images"/>
+				<repeat-group position="488" group-size="32" group-count="7" dictionary-ref="sprite-cycles">
+					<binary name="cycle" size="32"/>
+				</repeat-group>
+				<repeat-group position="744" group-size="1" group-count="7" dictionary-ref="sprite-cycles">
+					<integer name="length" max="32"/>
+				</repeat-group>
+				<binary name="palette-index" position="752" size="48"/>
+				<bit-field position="800" size="1" name="mirror" dictionary-ref="sprite-cycles"/>
+				<group name="width">
+					<integer name="target" position="806" size="2"/>
+					<integer name="source" position="802" size="2"/>
+				</group>
+				<group name="height">
+					<integer name="target" position="808" size="2"/>
+					<integer name="source" position="804" size="2"/>
+				</group>
+>>>>>>> refs/remotes/origin/master
 			</group>
 		</group>
 
@@ -1393,6 +1431,7 @@
 		</archive>
 	-->
 	<archive file-name="AM2_BLIT" type="AM2">
+<<<<<<< HEAD
 
 		<string name="version" position="0x3E" size="15" encoding="CP850" />
 		<string name="date" position="0x4E" size="19" encoding="CP850" />
@@ -1407,10 +1446,27 @@
 			<use-global ref="AM2-strings" />
 		</group>
 		<!--
+=======
+		
+			<string name="version" position="0x3E" size="15" encoding="CP850"/>
+			<string name="date" position="0x4E" size="19" encoding="CP850"/>
+			<group name="integers" position="0x48140">
+				<use-global ref="AM2-integers"/>
+			</group>
+			<group name="strings">
+				<string-dictionary type="null-delimited" encoding="8bit" position="0x4C1E2" name="music" string-count="32"/>
+			</group>
+			<group name="strings" position="0x4C430">
+				<use-global ref="AM2-strings"/>
+			</group>
+>>>>>>> refs/remotes/origin/master
 			<group name="items" position="0x50098">
 			<use-global ref="AM2-items"/>
 			</group>
+<<<<<<< HEAD
 		-->
+=======
+>>>>>>> refs/remotes/origin/master
 	</archive>
 
 	<global global-id="config">

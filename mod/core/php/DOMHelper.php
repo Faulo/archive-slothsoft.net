@@ -210,7 +210,7 @@ class DOMHelper
         return $doc;
     }
 
-    public function transform($dataDoc, $templateDoc)
+    public function transform($dataDoc, $templateDoc, array $param = [])
     {
         if (! ($dataDoc instanceof DOMDocument)) {
             $dataDoc = $this->load($dataDoc);
@@ -222,6 +222,7 @@ class DOMHelper
         $returnAsString = false;
         
         $xslt = new XSLTProcessor();
+		$xslt->setParameter(null, $param);
         
         $xslt->registerPHPFunctions();
         $xslt->importStylesheet($templateDoc);

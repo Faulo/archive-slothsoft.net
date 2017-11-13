@@ -9,18 +9,206 @@
 	xmlns:save="http://schema.slothsoft.net/savegame/editor"
 	extension-element-prefixes="exsl func str set php">
 	
+	<xsl:param name="lib" select="''"/>
+	
 	<xsl:key name="dictionary-option" match="save:savegame.editor/save:dictionary/save:option" use="../@dictionary-id"/>	<xsl:key name="string-dictionary" match="save:group[@type='string-dictionary']/save:string" use="../@name"/>	
-	<xsl:template match="/data">
+	<xsl:template match="/">
 		<amberdata>
-			<xsl:apply-templates select="*"/>
+			<xsl:for-each select=".//save:savegame.editor">
+				<xsl:choose>
+					<xsl:when test="$lib = 'graphics'">
+						<xsl:call-template name="extract-graphics"/>
+					</xsl:when>
+					<xsl:when test="$lib = 'monsters'">
+						<xsl:call-template name="extract-monsters"/>
+					</xsl:when>
+					<xsl:when test="$lib = 'classes'">
+						<xsl:call-template name="extract-classes"/>
+					</xsl:when>
+					<xsl:when test="$lib = 'items'">
+						<xsl:call-template name="extract-items"/>
+					</xsl:when>
+					<xsl:when test="$lib = 'maps'">
+						<xsl:call-template name="extract-maps"/>
+					</xsl:when>
+					<xsl:when test="$lib = 'tileset.icon'">
+						<xsl:call-template name="extract-tileset.icon"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text>Unknown lib: </xsl:text>
+						<xsl:value-of select="$lib"/>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:for-each>
 		</amberdata>
 	</xsl:template>
 	
-	<xsl:template match="error">
-		<xsl:copy-of select="."/>
+	<xsl:template name="extract-graphics">
+		<gfx-archive-list>
+			<!--
+'Static_data.amb' => [
+	'width' => [16, 32],
+	'bitplanes' => [3, 5],
+	'palette' => 0,
+	'color' => 24,
+],
+'Palettes.amb' => [
+	'width' => 256,
+	'bitplanes' => 2,
+	'palette' => 0,
+],
+'Lab_background.amb' => [
+	'width' => 144,
+	'bitplanes' => 4,
+	'palette' => 0,
+],
+'Floors.amb' => [
+	'width' => 64,
+	'bitplanes' => 4,
+	'palette' => 0,
+],
+'1Icon_gfx.amb' => [
+	'width' => 16,
+	'bitplanes' => 5,
+	'palette' => null,
+],
+'2Icon_gfx.amb' => [
+	'width' => 16,
+	'bitplanes' => 5,
+	'palette' => null,
+],
+'3Icon_gfx.amb' => [
+	'width' => 16,
+	'bitplanes' => 5,
+	'palette' => null,
+],
+'Automap_graphics' => [
+	'width' => null,
+	'bitplanes' => null,
+	'palette' => 0,
+],
+'Combat_background.amb' => [
+	'width' => 320,
+	'bitplanes' => 5,
+	'palette' => 5,
+],
+'Combat_graphics' => [
+	'width' => null,
+	'bitplanes' => null,
+	'palette' => 0,
+],
+'Event_pix.amb' => [
+	'width' => 320,
+	'bitplanes' => 5,
+	'palette' => 31,
+],
+'Layouts.amb' => [
+	'width' => 320,
+	'bitplanes' => 3,
+	'palette' => 10,
+],
+'Monster_gfx.amb' => [
+	'width' => 80, //[64, 48, 80, 96], //[48, 64, 96, 128],
+	'bitplanes' => 5,
+	'palette' => null,
+],
+'NPC_gfx.amb' => [
+	'width' => 16,
+	'bitplanes' => 5,
+	'palette' => null,
+],
+'Object_icons' => [
+	'width' => 16,
+	'bitplanes' => 5,
+	'palette' => 49,
+],
+'Party_gfx.amb' => [
+	'width' => 16,
+	'bitplanes' => 5,
+	'palette' => 0,
+],
+'Pics_80x80.amb' => [
+	'width' => 80,
+	'bitplanes' => 5,
+	'palette' => 49,
+],
+'PICS80.AMB' => [
+	'width' => 80,
+	'bitplanes' => null,
+	'palette' => 49,
+],
+'Portraits.amb' => [
+	'width' => 32,
+	'bitplanes' => 5,
+	'palette' => 49,
+	//'createSprite' => true,
+],
+'Stationary' => [
+	'width' => [32, 48],
+	'bitplanes' => 5,
+	'palette' => 0,
+],
+'Travel_gfx.amb' => [
+	'width' => 16,
+	'bitplanes' => 4,
+	'palette' => null,
+],
+-->
+			<gfx-archive file-name="items" file-path="./Object_icons">
+				<for-each-file width="16" bitplanes="5" palette="49" transparent="1"/>
+			</gfx-archive>
+			
+			<gfx-archive file-name="portraits" file-path="./Portraits.amb">
+				<for-each-file width="32" bitplanes="5" palette="49" transparent="0"/>
+			</gfx-archive>
+			
+			<gfx-archive file-name="events" file-path="./Event_pix.amb">
+				<for-each-file width="320" bitplanes="5" palette="31" transparent="0"/>
+			</gfx-archive>
+			
+			<gfx-archive file-name="combat-backgrounds" file-path="./Combat_background.amb">
+				<for-each-file width="320" bitplanes="5" palette="5" transparent="0"/>
+			</gfx-archive>
+			
+			<gfx-archive file-name="places" file-path="./Pics_80x80.amb">
+				<for-each-file width="80" bitplanes="5" palette="49" transparent="0"/>
+			</gfx-archive>
+			
+			<gfx-archive file-name="palettes" file-path="Palettes.amb">
+				<for-each-file width="256" bitplanes="2" palette="0" transparent="0"/>
+			</gfx-archive>
+			
+			<gfx-archive file-name="tilesets.icon" file-path="1Icon_gfx.amb">
+				<for-each-file width="16" bitplanes="5" palette="0" transparent="1"/>
+			</gfx-archive>
+			<gfx-archive file-name="tilesets.icon" file-path="2Icon_gfx.amb">
+				<for-each-file width="16" bitplanes="5" palette="0" transparent="1"/>
+			</gfx-archive>
+			<gfx-archive file-name="tilesets.icon" file-path="3Icon_gfx.amb">
+				<for-each-file width="16" bitplanes="5" palette="0" transparent="1"/>
+			</gfx-archive>
+			
+			<!--
+			<gfx-archive file-name="transports" file-path="Travel_gfx.amb">
+				<for-each-file width="16" bitplanes="4" palette="0" transparent="0"/>
+			</gfx-archive>
+			<gfx-archive file-name="tilesets.floor" file-path="Floors.amb">
+				<for-each-file width="64" bitplanes="4" palette="0" transparent="0"/>
+			</gfx-archive>
+			-->
+			
+			<xsl:variable name="monsters" select="save:archive[@file-name='Monster_char_data.amb']/*"/>
+			<xsl:if test="count($monsters)">
+				<gfx-archive file-name="monsters" file-path="Monster_gfx.amb">
+					<xsl:for-each select="$monsters">
+						<file id="{.//*[@name='gfx-id']/@value}" width="{.//*[@name='width']/*[@name='source']/@value}" height="{.//*[@name='height']/*[@name='source']/@value}" bitplanes="5" palette="15" transparent="1"/>
+					</xsl:for-each>
+				</gfx-archive>
+			</xsl:if>
+		</gfx-archive-list>
 	</xsl:template>
 	
-	<xsl:template match="save:savegame.editor">
+	<xsl:template name="extract-monsters">
 		<xsl:variable name="monsters" select="save:archive[@file-name='Monster_char_data.amb']/*"/>
 		<xsl:if test="count($monsters)">
 			<xsl:variable name="categories" select="key('dictionary-option', 'monster-images')"/>
@@ -39,8 +227,9 @@
 				</xsl:for-each>
 			</monster-list>
 		</xsl:if>
-		
-		
+	</xsl:template>
+	
+	<xsl:template name="extract-classes">
 		<xsl:variable name="classes" select="save:archive//*[@name='classes']/*/*"/>
 		<xsl:if test="count($classes)">
 			<xsl:variable name="expList" select="save:archive//*[@name='class-experience']/*"/>
@@ -54,8 +243,10 @@
 				</xsl:for-each>
 			</class-list>
 		</xsl:if>
-		
-		<xsl:variable name="items" select="save:archive[@file-name='AM2_CPU'] | save:archive[@file-name='AM2_BLIT']//*[@name = 'items']/*/*"/>
+	</xsl:template>
+	
+	<xsl:template name="extract-items">
+		<xsl:variable name="items" select="(save:archive[@file-name='AM2_CPU'] | save:archive[@file-name='AM2_BLIT'])//*[@name = 'items']/*/*"/>
 		
 		<xsl:if test="count($items)">
 			<xsl:variable name="categories" select="set:distinct($items//*[@name = 'type']/@value)"/>
@@ -74,7 +265,9 @@
 				</xsl:for-each>
 			</item-list>
 		</xsl:if>
-		
+	</xsl:template>
+	
+	<xsl:template name="extract-maps">
 		<xsl:variable name="maps" select="save:archive[@file-name[. = '1Map_data.amb' or . = '2Map_data.amb' or . = '3Map_data.amb']]/*"/>
 		<xsl:if test="count($maps)">
 			<xsl:variable name="texts" select="save:archive[@file-name[. = '1Map_texts.amb' or . = '2Map_texts.amb' or . = '3Map_texts.amb']]/*"/>
@@ -89,6 +282,9 @@
 				</xsl:for-each>
 			</map-list>
 		</xsl:if>
+	</xsl:template>
+	
+	<xsl:template name="extract-tileset.icon">
 	</xsl:template>
 	
 	
@@ -150,8 +346,8 @@
 	<xsl:template name="extract-gfx">
 		<xsl:param name="root" select="."/>
 	
-		<xsl:variable name="width" select=".//*[@name = 'gfx-width']"/>
-		<xsl:variable name="height" select=".//*[@name = 'gfx-height']"/>
+		<xsl:variable name="width" select=".//*[@name = 'width']"/>
+		<xsl:variable name="height" select=".//*[@name = 'height']"/>
 		<xsl:variable name="animationCycles" select=".//*[@name = 'cycle']"/>
 		<xsl:variable name="animationLengths" select=".//*[@name = 'length']"/>
 		<xsl:variable name="animationMirrors" select=".//*[@name = 'mirror']/*"/>

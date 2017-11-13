@@ -12,6 +12,7 @@ class Editor
 {
 
     protected $config = [
+		'structureFile' => '',
         'defaultDir' => '',
         'tempDir' => '',
         'id' => '',
@@ -23,6 +24,8 @@ class Editor
         'uploadedArchives' => []
     ];
 
+	protected $dom;
+	
     protected $strucDoc;
 
     protected $savegame;
@@ -59,11 +62,13 @@ class Editor
         if (! $this->config['id']) {
             $this->config['id'] = md5(time());
         }
+		
+		$this->dom = new DOMHelper();
     }
 
-    public function load($strucFile)
+    public function load()
     {
-        $this->strucDoc = DOMHelper::loadDocument($strucFile);
+        $this->strucDoc = $this->dom->load($this->config['structureFile']);
         
         if (! ($this->strucDoc and $this->strucDoc->documentElement)) {
             throw new Exception('Structure document is empty');
@@ -202,6 +207,12 @@ class Editor
         return $this->strucDoc;
     }
 
+    public function asDocument()
+    {
+		$ret = new DOMDocument();
+		$ret->loadXML($this->savegame->asXML());
+        return $ret;
+    }
     public function asNode(DOMDocument $dataDoc)
     {
         $retFragment = $dataDoc->createDocumentFragment();

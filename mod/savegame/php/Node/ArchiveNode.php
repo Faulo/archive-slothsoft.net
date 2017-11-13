@@ -2,6 +2,7 @@
 namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Core\FileSystem;
+use Slothsoft\Amber\ArchiveManager;
 use Exception;
 declare(ticks = 1000);
 
@@ -54,12 +55,15 @@ class ArchiveNode extends AbstractNode
     protected function loadNode()
     {
         if ($this->ownerEditor->shouldLoadArchive($this->strucData['file-name'])) {
-            
-            $this->filePathList = FileSystem::scanDir($this->tempDir, FileSystem::SCANDIR_REALPATH);
-            if (! count($this->filePathList)) {
-                $this->loadArchive();
-                $this->filePathList = FileSystem::scanDir($this->tempDir, FileSystem::SCANDIR_REALPATH);
-            }
+            if ($this->tempDir) {
+				$this->filePathList = FileSystem::scanDir($this->tempDir, FileSystem::SCANDIR_REALPATH);
+				if (! count($this->filePathList)) {
+					$this->loadArchive();
+					$this->filePathList = FileSystem::scanDir($this->tempDir, FileSystem::SCANDIR_REALPATH);
+				}
+			} else {
+				$this->filePathList = [];
+			}
         }
     }
 
@@ -77,47 +81,20 @@ class ArchiveNode extends AbstractNode
     protected function loadArchive()
     {
         $ambtoolPath = $this->ownerEditor->getConfigValue('ambtoolPath');
-        
-        if (! file_exists($ambtoolPath)) {
-            throw new Exception('ambtool not found at ' . $ambtoolPath);
-        }
-        $command = sprintf('%1$s %2$s', escapeshellarg($ambtoolPath), escapeshellarg($this->archivePath));
-        exec($command, $output);
-        
-        if (isset($output[1])) {
-            switch ($output[1]) {
-                case 'Format: JH (encrypted)':
-                    // double-pass!
-                    unset($output);
-                    
-                    $tempDir = temp_dir(__CLASS__ . DIRECTORY_SEPARATOR . '_JH');
-                    $command = sprintf('%1$s %2$s %3$s', escapeshellarg($ambtoolPath), escapeshellarg($this->archivePath), escapeshellarg($tempDir));
-                    exec($command);
-                    $fileList = FileSystem::scanDir($tempDir, FileSystem::SCANDIR_REALPATH);
-                    
-                    assert('count($fileList) === 1', 'JH archive must contain 1 file');
-                    
-                    $file = $fileList[0];
-                    
-                    $command = sprintf('%1$s %2$s %3$s', escapeshellarg($ambtoolPath), escapeshellarg($file), escapeshellarg($this->tempDir));
-                    exec($command, $output);
-                    
-                    if (isset($output[1])) {
-                        break;
-                    }
-                // didn't need double-pass after all...
-                case 'Format: AMBR (raw archive)':
-                case 'Format: AMNP (compressed/encrypted archive)':
-                    $command = sprintf('%1$s %2$s %3$s', escapeshellarg($ambtoolPath), escapeshellarg($this->archivePath), escapeshellarg($this->tempDir));
-                    exec($command);
-                    break;
-                default:
-                    throw new Exception('unknown ambtool format: ' . $output[1]);
-            }
-        } else {
-            // switching to raw mode
-            copy($this->archivePath, $this->tempDir . DIRECTORY_SEPARATOR . '1');
-        }
+		
+        switch ($this->strucData['type']) {
+            case self::ARCHIVE_TYPE_AMBR:
+            case self::ARCHIVE_TYPE_JH:
+				$manager = new ArchiveManager($ambtoolPath);
+				$manager->extractArchive($this->archivePath, $this->tempDir);
+				break;
+            case self::ARCHIVE_TYPE_AM2:
+            case self::ARCHIVE_TYPE_RAW:
+				copy($this->archivePath, $this->tempDir . DIRECTORY_SEPARATOR . '1');
+				break;
+			default:
+				throw new Exception(sprintf('unknown archive type "%s"!', $this->strucData['type']));
+		}
     }
 
     public function writeArchive()
@@ -160,12 +137,16 @@ class ArchiveNode extends AbstractNode
                 
                 $ret = implode('', $header) . implode('', $body);
                 break;
-            default:
+            case self::ARCHIVE_TYPE_JH:
+            case self::ARCHIVE_TYPE_AM2:
+            case self::ARCHIVE_TYPE_RAW:
                 $ret = '';
                 foreach ($this->childNodeList as $child) {
                     $ret .= $child->getContent();
                 }
                 break;
+			default:
+				throw new Exception(sprintf('unknown archive type "%s"!', $this->strucData['type']));
         }
         return $ret;
     }
@@ -179,20 +160,22 @@ class ArchiveNode extends AbstractNode
     {
         $this->archivePath = $path;
         
-        $this->strucData['file-size'] = FileSystem::size($this->archivePath);
-        $this->strucData['file-time'] = date(DATE_DATETIME, FileSystem::changetime($this->archivePath));
-        $this->strucData['file-md5'] = md5_file($this->archivePath);
+		if (file_exists($this->archivePath)) {
+			$this->strucData['file-size'] = FileSystem::size($this->archivePath);
+			$this->strucData['file-time'] = date(DATE_DATETIME, FileSystem::changetime($this->archivePath));
+			$this->strucData['file-md5'] = md5_file($this->archivePath);
         
-        $dir = [];
-        $dir[] = sys_get_temp_dir();
-        $dir[] = str_replace(NAMESPACE_SEPARATOR, DIRECTORY_SEPARATOR, __CLASS__);
-        $dir[] = $this->strucData['file-name'];
-        $dir[] = $this->strucData['file-md5'];
-        
-        $this->tempDir = implode(DIRECTORY_SEPARATOR, $dir);
-        
-        if (! is_dir($this->tempDir)) {
-            mkdir($this->tempDir, 0777, true);
-        }
+			$dir = [];
+			$dir[] = sys_get_temp_dir();
+			$dir[] = str_replace(NAMESPACE_SEPARATOR, DIRECTORY_SEPARATOR, __CLASS__);
+			$dir[] = $this->strucData['file-name'];
+			$dir[] = $this->strucData['file-md5'];
+			
+			$this->tempDir = implode(DIRECTORY_SEPARATOR, $dir);
+			
+			if (! is_dir($this->tempDir)) {
+				mkdir($this->tempDir, 0777, true);
+			}
+		}
     }
 }

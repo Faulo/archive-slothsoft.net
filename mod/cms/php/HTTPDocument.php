@@ -1015,6 +1015,7 @@ class HTTPDocument
 
     private function transform(DOMDocument $dataDoc, DOMDocument $templateDoc)
     {
+		/* //lets be real... nobody cares
         $outputElements = $templateDoc->getElementsByTagNameNS(self::NS_XSL, 'output');
         foreach ($outputElements as $outputElement) {
             // $outputElement->setAttribute('media-type', $this->mime);
@@ -1023,6 +1024,7 @@ class HTTPDocument
             $outputElement->setAttribute('version', $this->version);
             $outputElement->setAttribute('indent', $this->indent);
         }
+		//*/
         $this->xslt->importStylesheet($templateDoc);
         return $this->xslt->transformToDoc($dataDoc);
     }
@@ -1179,14 +1181,19 @@ class HTTPDocument
                         }
                     }
                 } catch(Throwable $e) {
-                    $dataRes = $dataDoc->createElement('error');
-					$dataRes->setAttribute('type', get_class($e));
-					$dataRes->setAttribute('message', $e->getMessage());
-					$dataRes->setAttribute('code', $e->getCode());
-					$dataRes->setAttribute('file', $e->getFile());
-					$dataRes->setAttribute('line', $e->getLine());
-					$dataRes->setAttribute('trace', $e->getTraceAsString());
-					$dataRes->textContent = (string) $e;
+					if (headers_sent()) {
+						//too late for graceful error catching...
+						throw $e;
+					} else {
+						$dataRes = $dataDoc->createElement('error');
+						$dataRes->setAttribute('type', get_class($e));
+						$dataRes->setAttribute('message', $e->getMessage());
+						$dataRes->setAttribute('code', $e->getCode());
+						$dataRes->setAttribute('file', $e->getFile());
+						$dataRes->setAttribute('line', $e->getLine());
+						$dataRes->setAttribute('trace', $e->getTraceAsString());
+						$dataRes->textContent = (string) $e;
+					}
                 }
                 
                 switch (true) {
@@ -1284,7 +1291,7 @@ class HTTPDocument
         $paramList = $this->parseParam($fragmentNode);
         $templateDoc = null;
         foreach ($fragmentNode->childNodes as $childNode) {
-            if ($childNode->nodeType === XML_ELEMENT_NODE and $this->progressStatus & self::STATUS_CONTINUE) {
+            if ($childNode->nodeType === XML_ELEMENT_NODE and $this->progressStatus & self::STATUS_CONTINUE) {				
                 $this->currentElement = $childNode;
                 $name = $childNode->getAttribute('name');
                 $module = $this->getOwnerModule($childNode);
@@ -1302,7 +1309,9 @@ class HTTPDocument
                         $newDoc = $this->getResourceDir($path, $childNode->getAttribute('load'));
                         break;
                     case self::TAG_DATA_REF:
+						$childParamList = $this->parseParam($childNode);
                         $newDoc = $this->getDataDoc($path);
+						$this->resetParam($childParamList);
                         break;
                     case self::TAG_FRAGMENT:
                         $path = $this->getModulePath($childNode);

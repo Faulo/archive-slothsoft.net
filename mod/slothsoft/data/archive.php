@@ -145,7 +145,7 @@ $storage = FileSystem::getStorage();
 
 foreach ($downloadDirs as $key => $dir) {
     $newNode = null;
-    if ($verifyTree) {
+    if ($verifyTree or !$storage->exists($key, 0)) {
         $newNode = FileSystem::asNode($dir, $dataDoc);
     } else {
         $newNode = $storage->retrieveXML($key, 0, $dataDoc);
@@ -298,6 +298,7 @@ if (isset($this->httpRequest->input['convert'])) {
 
 if (isset($this->httpRequest->input['rename'])) {
     // grrrrrrrrr
+	/*
     $expr = sprintf('.//folder//file[@name = "_index.txt.ccc"]');
     $nodeList = $dataPath->evaluate($expr, $retNode);
     foreach ($nodeList as $node) {
@@ -305,6 +306,7 @@ if (isset($this->httpRequest->input['rename'])) {
         file_put_contents(substr($path, 0, - 4), '');
         unlink($path);
     }
+	//*/
     
     $renameCount = (int) $this->httpRequest->getInputValue('rename', 0);
     $expr = sprintf('.//folder//file[@name = "_index.txt"]');
