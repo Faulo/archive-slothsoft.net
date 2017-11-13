@@ -12,7 +12,7 @@ class SavegameController
     protected $baseDir;
 
     public function __construct($baseDir)
-    {        
+    {
         assert('strlen($baseDir) and is_dir($baseDir)');
         
         $this->baseDir = $baseDir;
@@ -45,7 +45,7 @@ class SavegameController
         $tempDir = realpath($this->baseDir . '/../res/save/temp');
         
         $editorConfig = [];
-		$editorConfig['structureFile'] = $editorFile;
+        $editorConfig['structureFile'] = $editorFile;
         $editorConfig['defaultDir'] = $defaultDir;
         $editorConfig['tempDir'] = $tempDir;
         $editorConfig['mode'] = $mode;

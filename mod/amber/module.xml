@@ -8,7 +8,7 @@
 		</fragment>
 		<call name="chat" />
 	</fragment>
-	
+
 	<fragment name="mod">
 		<struc name="/slothsoft/default" />
 		<fragment name="content">
@@ -24,32 +24,33 @@
 			<struc name="default" />
 		</fragment>
 	</fragment>
-	
+
 	<fragment name="mod.editor">
 		<struc name="/slothsoft/default" />
 		<fragment name="content">
-			<data name="mod.editor"/>
+			<data name="mod.editor" />
 			<template name="editor" />
 			<struc name="default" />
 			<script name="SavegameEditor" />
-			
+
 			<data name="mod.resource" as="items">
-				<param name="id" value="items"/>
+				<param name="id" value="items" />
 			</data>
-			
+
 			<data name="mod.resource" as="portraits">
-				<param name="id" value="portraits"/>
+				<param name="id" value="portraits" />
 			</data>
 		</fragment>
 	</fragment>
-	
+
 	<fragment name="editor-savegame">
 		<struc name="/slothsoft/default" />
 		<param name="EditorConfig" value="/amber/AmbermoonSavegame" />
 		<call name="editor-content" as="content" />
-		<!-- <fragment name="content"> <data name="editor"/> <template name="editor"/> 
-			<struc name="default"/> <script name="SavegameEditor"/> <res name="AmbermoonItems" 
-			as="items" load="xml"/> <res name="AmbermoonPortraits" as="portraits" load="xml"/> 
+		<!-- <fragment name="content"> <data name="editor"/> <template name="editor"/>
+			<struc name="default"/> <script name="SavegameEditor"/> <res name="AmbermoonItems"
+			as="items" load="xml"/> <res name="AmbermoonPortraits" as="portraits"
+			load="xml"/>
 			<call name="itemlist-content"/> <call name="portraitlist-content"/> </fragment> -->
 	</fragment>
 
@@ -126,8 +127,8 @@
 		<data name="items" />
 		<res name="item-map" load="status base64" />
 	</fragment>
-	
-	
+
+
 	<fragment name="extract-all">
 		<param name="standalone" scope="global" />
 		<data name="extract-all" />
@@ -161,7 +162,7 @@
 	<struc name="default">
 		<style name="default" />
 		<style name="dictionary" />
-		<!--<style name="tilesets" />-->
+		<!--<style name="tilesets" /> -->
 	</struc>
 
 	<resource name="sites" path="sites.xml" type="application/xml" />
@@ -177,9 +178,9 @@
 		type="application/xml" />
 	<resource name="AmbermoonGamedata" path="AmbermoonAmberfiles.Gamedata.xml"
 		type="application/xml" />
-	<!-- <resource name="AmbermoonDictionary" path="AmbermoonDictionary.xml" 
-		type="application/xml"/> <resource name="AmbermoonItems" path="AmbermoonItems.svg" 
-		type="image/svg+xml"/> <resource name="AmbermoonCPU" path="AmbermoonCPU.xml" 
+	<!-- <resource name="AmbermoonDictionary" path="AmbermoonDictionary.xml"
+		type="application/xml"/> <resource name="AmbermoonItems" path="AmbermoonItems.svg"
+		type="image/svg+xml"/> <resource name="AmbermoonCPU" path="AmbermoonCPU.xml"
 		type="application/xml"/> -->
 
 	<resource name="items-map" path="AmbermoonItems.png" type="image/png" />

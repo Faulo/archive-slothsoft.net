@@ -1,1333 +1,1524 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<savegame.editor xmlns="http://schema.slothsoft.net/savegame/editor" schemaVersion="0.3">
+<savegame.editor xmlns="http://schema.slothsoft.net/savegame/editor"
+	schemaVersion="0.3">
 	<global global-id="item">
-		<integer name="item-amount" position="0"/>
-		<integer name="item-charge" position="1"/>
-		<bit-field name="item-status" position="3" first-bit="0" last-bit="1" dictionary-ref="item-status"/>
-		<integer name="item-id" position="4" size="2"/>
+		<integer name="item-amount" position="0" />
+		<integer name="item-charge" position="1" />
+		<bit-field name="item-status" position="3" first-bit="0"
+			last-bit="1" dictionary-ref="item-status" />
+		<integer name="item-id" position="4" size="2" />
 	</global>
 	<global global-id="stat">
-		<signed-integer name="current" position="0" size="2" min="0" max="999"/>
-		<signed-integer name="maximum" position="2" size="2" min="0" max="999"/>
-		<signed-integer name="current-mod" position="4" size="2"/>
-		<!--<signed-integer name="maximum-mod" position="6" size="2"/>-->
+		<signed-integer name="current" position="0" size="2"
+			min="0" max="999" />
+		<signed-integer name="maximum" position="2" size="2"
+			min="0" max="999" />
+		<signed-integer name="current-mod" position="4" size="2" />
+		<!--<signed-integer name="maximum-mod" position="6" size="2"/> -->
 	</global>
 	<global global-id="skill">
-		<signed-integer name="current" position="0" size="2" min="0" max="99"/>
-		<signed-integer name="maximum" position="2" size="2" min="0" max="99"/>
-		<signed-integer name="current-mod" position="4" size="2"/>
-		<!--<signed-integer name="maximum-mod" position="6" size="2"/>-->
+		<signed-integer name="current" position="0" size="2"
+			min="0" max="99" />
+		<signed-integer name="maximum" position="2" size="2"
+			min="0" max="99" />
+		<signed-integer name="current-mod" position="4" size="2" />
+		<!--<signed-integer name="maximum-mod" position="6" size="2"/> -->
 	</global>
 	<global global-id="age">
-		<signed-integer name="current" position="0" size="2" min="0" max="999"/>
-		<signed-integer name="maximum" position="2" size="2" min="0" max="999"/>
+		<signed-integer name="current" position="0" size="2"
+			min="0" max="999" />
+		<signed-integer name="maximum" position="2" size="2"
+			min="0" max="999" />
 	</global>
 	<global global-id="hitpoint">
-		<signed-integer name="current" position="0" size="2" min="0" max="9999"/>
-		<signed-integer name="maximum" position="2" size="2" min="0" max="9999"/>
-		<signed-integer name="maximum-mod" position="4" size="2"/>
+		<signed-integer name="current" position="0" size="2"
+			min="0" max="9999" />
+		<signed-integer name="maximum" position="2" size="2"
+			min="0" max="9999" />
+		<signed-integer name="maximum-mod" position="4" size="2" />
 	</global>
 	<global global-id="character-name">
-		<string name="name" position="274" size="15" encoding="CP850"/>
+		<string name="name" position="274" size="15" encoding="CP850" />
 	</global>
 	<global global-id="character">
 		<!-- 000-100 -->
-		<select name="character-type" position="0" dictionary-ref="character-types"/>
-		<select name="gender" position="1" dictionary-ref="genders"/>
-		<select name="race" position="2" dictionary-ref="races"/>
-		<select name="class" position="3" dictionary-ref="classes"/>
-		<select name="school" position="4" dictionary-ref="schools"/>
-		<integer name="level" position="5" min="0" max="99"/>
-		<select name="hand" position="6" dictionary-ref="hands"/>
-		<select name="finger" position="7" dictionary-ref="fingers"/>
-		<bit-field name="languages" position="8" dictionary-ref="languages"/>	
-		
-		<integer name="portrait" position="9" size="2"/>
-		<integer name="combat-icon" position="11" size="2"/>
-		
-		<integer name="attacks-per-round" position="17" max="99"/>
-		
-		<integer name="spelllearn-points" position="20" size="2" max="9999"/>
-		<integer name="training-points" position="22" size="2" max="9999"/>
-		<integer name="gold" position="24" size="2"/>
-		<integer name="food" position="26" size="2"/>
-		<integer name="fixed-FFFF" position="28" size="2"/>
-		<bit-field position="30" size="2" name="ailments-current" dictionary-ref="ailments"/>
-		<integer name="combat-experience" position="32" size="2"/>
-		
-		<repeat-group name="attributes" position="42" group-size="8" group-count="8" dictionary-ref="attributes">
-			<use-global ref="stat"/>
+		<select name="character-type" position="0" dictionary-ref="character-types" />
+		<select name="gender" position="1" dictionary-ref="genders" />
+		<select name="race" position="2" dictionary-ref="races" />
+		<select name="class" position="3" dictionary-ref="classes" />
+		<select name="school" position="4" dictionary-ref="schools" />
+		<integer name="level" position="5" min="0" max="99" />
+		<select name="hand" position="6" dictionary-ref="hands" />
+		<select name="finger" position="7" dictionary-ref="fingers" />
+		<bit-field name="languages" position="8" dictionary-ref="languages" />
+
+		<integer name="portrait" position="9" size="2" />
+		<integer name="combat-icon" position="11" size="2" />
+
+		<integer name="attacks-per-round" position="17" max="99" />
+
+		<integer name="spelllearn-points" position="20" size="2" max="9999" />
+		<integer name="training-points" position="22" size="2" max="9999" />
+		<integer name="gold" position="24" size="2" />
+		<integer name="food" position="26" size="2" />
+		<integer name="fixed-FFFF" position="28" size="2" />
+		<bit-field position="30" size="2" name="ailments-current"
+			dictionary-ref="ailments" />
+		<integer name="combat-experience" position="32" size="2" />
+
+		<repeat-group name="attributes" position="42" group-size="8"
+			group-count="8" dictionary-ref="attributes">
+			<use-global ref="stat" />
 		</repeat-group>
-		
+
 		<!-- 100-200 -->
 		<group name="age" position="106">
-			<use-global ref="age"/>
+			<use-global ref="age" />
 		</group>
-		
-		<repeat-group name="skills" position="122" group-size="8" group-count="10" dictionary-ref="skills">
-			<use-global ref="skill"/>
+
+		<repeat-group name="skills" position="122" group-size="8"
+			group-count="10" dictionary-ref="skills">
+			<use-global ref="skill" />
 		</repeat-group>
-		
+
 		<!-- 200-300 -->
 		<group name="hit-points" position="202">
-			<use-global ref="hitpoint"/>
+			<use-global ref="hitpoint" />
 		</group>
 		<group name="spell-points" position="208">
-			<use-global ref="hitpoint"/>
+			<use-global ref="hitpoint" />
 		</group>
-		
-		<signed-integer name="combat-defense" position="215"/>
-		<signed-integer name="defense" position="217"/>
-		
-		<signed-integer name="combat-attack" position="218" size="2"/>
-		<signed-integer name="attack" position="220" size="2"/>
-		
-		<integer name="magic-attack" position="223" max="99"/>
-		
-		<integer name="magic-defense" position="225" max="99"/>
-		<integer name="apr-per-level" position="226" size="2" max="50"/>
-		<integer name="hp-per-level" position="228" size="2" max="99"/>
-		<integer name="sp-per-level" position="230" size="2" max="99"/>
-		<integer name="slp-per-level" position="232" size="2" max="99"/>
-		<integer name="tp-per-level" position="234" size="2" max="99"/>
-		<integer name="experience" position="238" size="4"/>
+
+		<signed-integer name="combat-defense" position="215" />
+		<signed-integer name="defense" position="217" />
+
+		<signed-integer name="combat-attack" position="218"
+			size="2" />
+		<signed-integer name="attack" position="220" size="2" />
+
+		<integer name="magic-attack" position="223" max="99" />
+
+		<integer name="magic-defense" position="225" max="99" />
+		<integer name="apr-per-level" position="226" size="2" max="50" />
+		<integer name="hp-per-level" position="228" size="2" max="99" />
+		<integer name="sp-per-level" position="230" size="2" max="99" />
+		<integer name="slp-per-level" position="232" size="2" max="99" />
+		<integer name="tp-per-level" position="234" size="2" max="99" />
+		<integer name="experience" position="238" size="4" />
 		<group name="spells">
-			<bit-field name="spells-white" position="242" size="4" first-bit="1" last-bit="30" dictionary-ref="spells-white"/>
-			<bit-field name="spells-blue" position="246" size="4" first-bit="1" last-bit="29" dictionary-ref="spells-blue"/>
-			<bit-field name="spells-green" position="250" size="4" first-bit="1" last-bit="17" dictionary-ref="spells-green"/>
-			<bit-field name="spells-black" position="254" size="4" first-bit="1" last-bit="30" dictionary-ref="spells-black"/>
+			<bit-field name="spells-white" position="242" size="4"
+				first-bit="1" last-bit="30" dictionary-ref="spells-white" />
+			<bit-field name="spells-blue" position="246" size="4"
+				first-bit="1" last-bit="29" dictionary-ref="spells-blue" />
+			<bit-field name="spells-green" position="250" size="4"
+				first-bit="1" last-bit="17" dictionary-ref="spells-green" />
+			<bit-field name="spells-black" position="254" size="4"
+				first-bit="1" last-bit="30" dictionary-ref="spells-black" />
 		</group>
-		
-		<integer name="weight" position="271" size="3"/>
-		<use-global ref="character-name"/>
+
+		<integer name="weight" position="271" size="3" />
+		<use-global ref="character-name" />
 	</global>
 	<archive file-name="Party_char.amb" type="AMBR">
-		
-			<use-global ref="character"/>
-			
-			<repeat-group name="equipment" position="290" group-size="6" group-count="9" dictionary-ref="equipment-slots">
-				<use-global ref="item"/>
-			</repeat-group>
-			
-			<!-- 300-400 -->
-			<repeat-group name="inventory" position="344" group-size="6" group-count="24">
-				<use-global ref="item"/>
-			</repeat-group>
-			
-			<!--<event-dictionary position="488" name="events"/>-->
-			<!--<event-script position="488" name="events"/>-->
-		
+
+		<use-global ref="character" />
+
+		<repeat-group name="equipment" position="290" group-size="6"
+			group-count="9" dictionary-ref="equipment-slots">
+			<use-global ref="item" />
+		</repeat-group>
+
+		<!-- 300-400 -->
+		<repeat-group name="inventory" position="344" group-size="6"
+			group-count="24">
+			<use-global ref="item" />
+		</repeat-group>
+
+		<!--<event-dictionary position="488" name="events"/> -->
+		<!--<event-script position="488" name="events"/> -->
+
 	</archive>
 	<archive file-name="Party_data.sav" type="JH">
-		
-			<group name="party-composition">
-				<repeat-group position="0x002E" group-size="2" group-count="6">
-					<select size="2" dictionary-ref="partymembers"/>
-				</repeat-group>
-			</group>
-			<group name="party-data">
-				<integer name="member-count" position="0x002B" max="6"/>
-				<select name="map-id" position="0x000A" size="2" dictionary-ref="map-ids"/>
-				<integer name="map-x" position="0x000C" size="2"/>
-				<integer name="map-y" position="0x000E" size="2"/>
-			</group>
-			<group name="party-variables">
-				<bit name="partybit-netsrak-absent" position="0x2904" bit="0"/>
-				<bit name="partybit-mando-absent" position="0x2904" bit="1"/>
-				<bit name="partybit-erik-absent" position="0x2904" bit="2"/>
-				<bit name="partybit-chris-absent" position="0x2904" bit="3"/>
-				<bit name="partybit-monika-absent" position="0x2904" bit="4"/>
-				<bit name="partybit-tar-absent" position="0x292C" bit="1"/>
-				<bit name="partybit-egil-absent" position="0x2930" bit="3"/>
-				<bit name="partybit-selena-absent" position="0x292C" bit="2"/>
-				<bit name="partybit-nelvin-absent" position="0x2968" bit="1"/>
-				<bit name="partybit-sabine-absent" position="0x2978" bit="0"/>
-				<bit name="partybit-valdyn-absent" position="0x2984" bit="0"/>
-				<bit name="partybit-targor-absent" position="0x2B68" bit="0"/>
-				<bit name="partybit-leonardia-absent" position="0x2B8C" bit="0"/>
-				<bit name="partybit-gryban-absent" position="0x2BB8" bit="0"/>
-			</group>
-		
+
+		<group name="party-composition">
+			<repeat-group position="0x002E" group-size="2"
+				group-count="6">
+				<select size="2" dictionary-ref="partymembers" />
+			</repeat-group>
+		</group>
+		<group name="party-data">
+			<integer name="member-count" position="0x002B" max="6" />
+			<select name="map-id" position="0x000A" size="2"
+				dictionary-ref="map-ids" />
+			<integer name="map-x" position="0x000C" size="2" />
+			<integer name="map-y" position="0x000E" size="2" />
+		</group>
+		<group name="party-variables">
+			<bit name="partybit-netsrak-absent" position="0x2904" bit="0" />
+			<bit name="partybit-mando-absent" position="0x2904" bit="1" />
+			<bit name="partybit-erik-absent" position="0x2904" bit="2" />
+			<bit name="partybit-chris-absent" position="0x2904" bit="3" />
+			<bit name="partybit-monika-absent" position="0x2904" bit="4" />
+			<bit name="partybit-tar-absent" position="0x292C" bit="1" />
+			<bit name="partybit-egil-absent" position="0x2930" bit="3" />
+			<bit name="partybit-selena-absent" position="0x292C" bit="2" />
+			<bit name="partybit-nelvin-absent" position="0x2968" bit="1" />
+			<bit name="partybit-sabine-absent" position="0x2978" bit="0" />
+			<bit name="partybit-valdyn-absent" position="0x2984" bit="0" />
+			<bit name="partybit-targor-absent" position="0x2B68" bit="0" />
+			<bit name="partybit-leonardia-absent" position="0x2B8C" bit="0" />
+			<bit name="partybit-gryban-absent" position="0x2BB8" bit="0" />
+		</group>
+
 	</archive>
 	<archive file-name="Merchant_data.amb" type="AMBR">
-		
-			<group name="inventory">
-				<repeat-group position="0" group-size="6" group-count="24">
-					<use-global ref="item"/>
-				</repeat-group>
-			</group>
-		
+
+		<group name="inventory">
+			<repeat-group position="0" group-size="6" group-count="24">
+				<use-global ref="item" />
+			</repeat-group>
+		</group>
+
 	</archive>
 	<archive file-name="Chest_data.amb" type="AMBR">
-		
-			<group name="inventory">
-				<repeat-group position="0" group-size="6" group-count="24">
-					<use-global ref="item"/>
-				</repeat-group>
-			</group>
-			<group name="valuables">
-				<signed-integer name="gold" position="144" size="2"/>
-				<signed-integer name="food" position="146" size="2"/>
-			</group>
-		
+
+		<group name="inventory">
+			<repeat-group position="0" group-size="6" group-count="24">
+				<use-global ref="item" />
+			</repeat-group>
+		</group>
+		<group name="valuables">
+			<signed-integer name="gold" position="144" size="2" />
+			<signed-integer name="food" position="146" size="2" />
+		</group>
+
 	</archive>
-	
-	
+
+
 	<dictionary dictionary-id="character-types">
-		<option key="0" val="Partymitglied"/>
-		<option key="1" val="NPC"/>
-		<option key="2" val="Monster"/>
+		<option key="0" val="Partymitglied" />
+		<option key="1" val="NPC" />
+		<option key="2" val="Monster" />
 	</dictionary>
-	
+
 	<dictionary dictionary-id="item-status">
-		<option val="identified"/>
-		<option val="broken"/>
+		<option val="identified" />
+		<option val="broken" />
 	</dictionary>
 	<dictionary dictionary-id="item-properties">
-		<option key="0" val="cursed"/>
-		<option key="1" val="purchaseable"/>
-		<option key="2" val="stackable"/>
-		<option key="3" val="combat-equippable"/>
-		<option key="4" val="useable"/>
-		<option key="5" val="readable"/>
-		<option key="6" val="cloneable"/>
-		<option key="7" val="?"/>
+		<option key="0" val="cursed" />
+		<option key="1" val="purchaseable" />
+		<option key="2" val="stackable" />
+		<option key="3" val="combat-equippable" />
+		<option key="4" val="useable" />
+		<option key="5" val="readable" />
+		<option key="6" val="cloneable" />
+		<option key="7" val="?" />
 	</dictionary>
 	<dictionary dictionary-id="item-spell-types">
-		<option key="0" val="Heilung"/>
-		<option key="1" val="Alchemie"/>
-		<option key="2" val="Mystik"/>
-		<option key="3" val="Destruktion"/>
-		<option key="4" val=""/>
-		<option key="5" val=""/>
-		<option key="6" val="Funktion"/>
+		<option key="0" val="Heilung" />
+		<option key="1" val="Alchemie" />
+		<option key="2" val="Mystik" />
+		<option key="3" val="Destruktion" />
+		<option key="4" val="" />
+		<option key="5" val="" />
+		<option key="6" val="Funktion" />
 	</dictionary>
 	<dictionary dictionary-id="item-types">
-		<option key="21" val="Zustandsveränderung"/>
-		<option key="1" val="Rüstung"/>
-		<option key="2" val="Helm"/>
-		<option key="3" val="Schuhe"/>
-		<option key="4" val="Schild"/>
-		<option key="5" val="Nahkampfwaffe"/>
-		<option key="6" val="Fernkampfwaffe"/>
-		<option key="7" val="Munition"/>
-		<option key="8" val="Textrolle"/>
-		<option key="9" val="Spruchrolle"/>
-		<option key="10" val="Trank"/>
-		<option key="11" val="Amulett"/>
-		<option key="12" val="Brosche"/>
-		<option key="13" val="Ring"/>
-		<option key="14" val="Gemme"/>
-		<option key="15" val="Werkzeug"/>
-		<option key="16" val="Schlüssel"/>
-		<option key="17" val="Gegenstand"/>
-		<option key="18" val="Mag. Gegenstand"/>
-		<option key="19" val="Spezialgegenstand"/>
-		<option key="20" val="Transportmittel"/>
+		<option key="21" val="Zustandsveränderung" />
+		<option key="1" val="Rüstung" />
+		<option key="2" val="Helm" />
+		<option key="3" val="Schuhe" />
+		<option key="4" val="Schild" />
+		<option key="5" val="Nahkampfwaffe" />
+		<option key="6" val="Fernkampfwaffe" />
+		<option key="7" val="Munition" />
+		<option key="8" val="Textrolle" />
+		<option key="9" val="Spruchrolle" />
+		<option key="10" val="Trank" />
+		<option key="11" val="Amulett" />
+		<option key="12" val="Brosche" />
+		<option key="13" val="Ring" />
+		<option key="14" val="Gemme" />
+		<option key="15" val="Werkzeug" />
+		<option key="16" val="Schlüssel" />
+		<option key="17" val="Gegenstand" />
+		<option key="18" val="Mag. Gegenstand" />
+		<option key="19" val="Spezialgegenstand" />
+		<option key="20" val="Transportmittel" />
 	</dictionary>
 	<dictionary dictionary-id="item-slots">
-		<option key="0" val="-"/>
-		<option key="1" val="Amulett"/>
-		<option key="2" val="Helm"/>
-		<option key="3" val="Brosche"/>
-		<option key="4" val="Waffe"/>
-		<option key="5" val="Rüstung"/>
-		<option key="6" val="Schild"/>
-		<option key="7" val="Ring"/>
-		<option key="8" val="Schuhe"/>
+		<option key="0" val="-" />
+		<option key="1" val="Amulett" />
+		<option key="2" val="Helm" />
+		<option key="3" val="Brosche" />
+		<option key="4" val="Waffe" />
+		<option key="5" val="Rüstung" />
+		<option key="6" val="Schild" />
+		<option key="7" val="Ring" />
+		<option key="8" val="Schuhe" />
 	</dictionary>
-	
+
 	<dictionary dictionary-id="ailments">
-		<option val="Irritation"/>
-		<option val="Verrücktheit"/>
-		<option val="Schlaf"/>
-		<option val="Panik"/>
-		<option val="Erblindet"/>
-		<option val="Stoned"/>
-		<option val="Erschöpfung"/>
-		<option val="-"/>
-		<option val="Gelähmt"/>
-		<option val="Vergiftet"/>
-		<option val="Versteinert"/>
-		<option val="Krank"/>
-		<option val="Alterung"/>
-		<option val="Tot (Leiche)"/>
-		<option val="Tot (Asche)"/>
-		<option val="Tot (Staub)"/>
+		<option val="Irritation" />
+		<option val="Verrücktheit" />
+		<option val="Schlaf" />
+		<option val="Panik" />
+		<option val="Erblindet" />
+		<option val="Stoned" />
+		<option val="Erschöpfung" />
+		<option val="-" />
+		<option val="Gelähmt" />
+		<option val="Vergiftet" />
+		<option val="Versteinert" />
+		<option val="Krank" />
+		<option val="Alterung" />
+		<option val="Tot (Leiche)" />
+		<option val="Tot (Asche)" />
+		<option val="Tot (Staub)" />
 	</dictionary>
-	
+
 	<dictionary dictionary-id="ailments-healer">
-		<option val="Gelähmt"/>
-		<option val="Vergiftet"/>
-		<option val="Versteinert"/>
-		<option val="Krank"/>
-		<option val="Alterung"/>
-		<option val="Tot (Leiche)"/>
-		<option val="Tot (Asche)"/>
-		<option val="Tot (Staub)"/>
-		<option val="Verrücktheit"/>
-		<option val="Erblindet"/>
-		<option val="Stoned"/>
-		<option val="HP"/>
-		<option val="Fluch"/>
+		<option val="Gelähmt" />
+		<option val="Vergiftet" />
+		<option val="Versteinert" />
+		<option val="Krank" />
+		<option val="Alterung" />
+		<option val="Tot (Leiche)" />
+		<option val="Tot (Asche)" />
+		<option val="Tot (Staub)" />
+		<option val="Verrücktheit" />
+		<option val="Erblindet" />
+		<option val="Stoned" />
+		<option val="HP" />
+		<option val="Fluch" />
 	</dictionary>
-	
+
 	<dictionary dictionary-id="language-operations">
-		<option key="6" val="add"/>
+		<option key="6" val="add" />
 	</dictionary>
 	<dictionary dictionary-id="languages">
-		<option key="0" val="Mensch"/>
-		<option key="1" val="Elfisch"/>
-		<option key="2" val="Zwergisch"/>
-		<option key="3" val="Gnomisch"/>
-		<option key="4" val="Sylphisch"/>
-		<option key="5" val="Felinisch"/>
-		<option key="6" val="Morag"/>
-		<option key="7" val="Tiersprache"/>
+		<option key="0" val="Mensch" />
+		<option key="1" val="Elfisch" />
+		<option key="2" val="Zwergisch" />
+		<option key="3" val="Gnomisch" />
+		<option key="4" val="Sylphisch" />
+		<option key="5" val="Felinisch" />
+		<option key="6" val="Morag" />
+		<option key="7" val="Tiersprache" />
 	</dictionary>
 	<dictionary dictionary-id="attributes">
-		<option key="0" val="STÄ" title="Stärke"/>
-		<option key="1" val="INT" title="Intelligenz"/>
-		<option key="2" val="GES" title="Geschicklichkeit"/>
-		<option key="3" val="SCH" title="Schnelligkeit"/>
-		<option key="4" val="KON" title="Konstitution"/>
-		<option key="5" val="KAR" title="Karisma"/>
-		<option key="6" val="GLÜ" title="Glück"/>
-		<option key="7" val="A-M" title="Anti-Magie"/>
+		<option key="0" val="STÄ" title="Stärke" />
+		<option key="1" val="INT" title="Intelligenz" />
+		<option key="2" val="GES" title="Geschicklichkeit" />
+		<option key="3" val="SCH" title="Schnelligkeit" />
+		<option key="4" val="KON" title="Konstitution" />
+		<option key="5" val="KAR" title="Karisma" />
+		<option key="6" val="GLÜ" title="Glück" />
+		<option key="7" val="A-M" title="Anti-Magie" />
 	</dictionary>
 	<dictionary dictionary-id="skills">
-		<option key="0" val="ATT" title="Attacke"/>
-		<option key="1" val="PAR" title="Parade"/>
-		<option key="2" val="SCH" title="Schwimmen"/>
-		<option key="3" val="KRI" title="Kritische Treffer"/>
-		<option key="4" val="F-F" title="Fallen Finden"/>
-		<option key="5" val="F-E" title="Fallen Entschärfen"/>
-		<option key="6" val="S-Ö" title="Schlösser Knacken"/>
-		<option key="7" val="SUC" title="Suchen"/>
-		<option key="8" val="SRL" title="Spruchrollen Lesen"/>
-		<option key="9" val="M-B" title="Magie Benutzen"/>
+		<option key="0" val="ATT" title="Attacke" />
+		<option key="1" val="PAR" title="Parade" />
+		<option key="2" val="SCH" title="Schwimmen" />
+		<option key="3" val="KRI" title="Kritische Treffer" />
+		<option key="4" val="F-F" title="Fallen Finden" />
+		<option key="5" val="F-E" title="Fallen Entschärfen" />
+		<option key="6" val="S-Ö" title="Schlösser Knacken" />
+		<option key="7" val="SUC" title="Suchen" />
+		<option key="8" val="SRL" title="Spruchrollen Lesen" />
+		<option key="9" val="M-B" title="Magie Benutzen" />
 	</dictionary>
 	<dictionary dictionary-id="equipment-slots">
-		<option key="0" val="Amulett"/>
-		<option key="1" val="Helm"/>
-		<option key="2" val="Brosche"/>
-		<option key="3" val="Waffe"/>
-		<option key="4" val="Rüstung"/>
-		<option key="5" val="Schild"/>
-		<option key="6" val="Ring"/>
-		<option key="7" val="Schuhe"/>
-		<option key="8" val="Ring"/>
+		<option key="0" val="Amulett" />
+		<option key="1" val="Helm" />
+		<option key="2" val="Brosche" />
+		<option key="3" val="Waffe" />
+		<option key="4" val="Rüstung" />
+		<option key="5" val="Schild" />
+		<option key="6" val="Ring" />
+		<option key="7" val="Schuhe" />
+		<option key="8" val="Ring" />
 	</dictionary>
-	
-	
-	
-	
-	
+
+
+
+
+
 	<dictionary dictionary-id="genders">
-	  <option key="0" val="männlich"/>
-	  <option key="1" val="weiblich"/>
+		<option key="0" val="männlich" />
+		<option key="1" val="weiblich" />
 	</dictionary>
 	<dictionary dictionary-id="races">
-	  <option key="0" val="Mensch"/>
-	  <option key="1" val="Elf"/>
-	  <option key="2" val="Zwerg"/>
-	  <option key="3" val="Gnom"/>
-	  <option key="4" val="Halb-Elf"/>
-	  <option key="5" val="Sylphe"/>
-	  <option key="6" val="Feline"/>
-	  <option key="7" val="Moraner"/>
-	  <option key="8" val="Thalioner"/>
-	  <option key="13" val="(leer)"/>
-	  <option key="14" val="Tier"/>
+		<option key="0" val="Mensch" />
+		<option key="1" val="Elf" />
+		<option key="2" val="Zwerg" />
+		<option key="3" val="Gnom" />
+		<option key="4" val="Halb-Elf" />
+		<option key="5" val="Sylphe" />
+		<option key="6" val="Feline" />
+		<option key="7" val="Moraner" />
+		<option key="8" val="Thalioner" />
+		<option key="13" val="(leer)" />
+		<option key="14" val="Tier" />
 	</dictionary>
 	<dictionary dictionary-id="classes">
-	  <option key="0" val="Abenteurer"/>
-	  <option key="1" val="Krieger"/>
-	  <option key="2" val="Paladin"/>
-	  <option key="3" val="Dieb"/>
-	  <option key="4" val="Ranger"/>
-	  <option key="5" val="Heiler"/>
-	  <option key="6" val="Alchemist"/>
-	  <option key="7" val="Mystiker"/>
-	  <option key="8" val="Magier"/>
-	  <option key="9" val="Katze"/>
-	  <option key="10" val="(leer)"/>
+		<option key="0" val="Abenteurer" />
+		<option key="1" val="Krieger" />
+		<option key="2" val="Paladin" />
+		<option key="3" val="Dieb" />
+		<option key="4" val="Ranger" />
+		<option key="5" val="Heiler" />
+		<option key="6" val="Alchemist" />
+		<option key="7" val="Mystiker" />
+		<option key="8" val="Magier" />
+		<option key="9" val="Katze" />
+		<option key="10" val="(leer)" />
 	</dictionary>
 	<dictionary dictionary-id="schools">
-		<option key="0" val="Keine"/>
-		<option key="1" val="Weiß (Paladin)"/>
-		<option key="129" val="Weiß (Heiler)"/>
-		<option key="2" val="Blau (Abenteurer)"/>
-		<option key="130" val="Blau (Alchemist)"/>
-		<option key="4" val="Grün (Ranger)"/>
-		<option key="132" val="Grün (Mystiker)"/>
-		<option key="8" val="Schwarz (Magier)"/>
+		<option key="0" val="Keine" />
+		<option key="1" val="Weiß (Paladin)" />
+		<option key="129" val="Weiß (Heiler)" />
+		<option key="2" val="Blau (Abenteurer)" />
+		<option key="130" val="Blau (Alchemist)" />
+		<option key="4" val="Grün (Ranger)" />
+		<option key="132" val="Grün (Mystiker)" />
+		<option key="8" val="Schwarz (Magier)" />
 	</dictionary>
 	<dictionary dictionary-id="hands">
-		<option key="0" val="Beide Hände frei"/>
-		<option key="1" val="Eine Hand frei"/>
-		<option key="2" val="Keine Hand frei"/>
+		<option key="0" val="Beide Hände frei" />
+		<option key="1" val="Eine Hand frei" />
+		<option key="2" val="Keine Hand frei" />
 	</dictionary>
 	<dictionary dictionary-id="fingers">
-		<option key="0" val="Beide Finger frei"/>
-		<option key="1" val="Ein Finger frei"/>
-		<option key="2" val="Kein Finger frei"/>
+		<option key="0" val="Beide Finger frei" />
+		<option key="1" val="Ein Finger frei" />
+		<option key="2" val="Kein Finger frei" />
 	</dictionary>
 	<dictionary dictionary-id="ammunitions">
-		<option key="0" val="-"/>
-		<option key="1" val="Schleuderstein"/>
-		<option key="2" val="Pfeil"/>
-		<option key="3" val="Bolzen"/>
-		<option key="4" val="Schleuderdolch"/>
+		<option key="0" val="-" />
+		<option key="1" val="Schleuderstein" />
+		<option key="2" val="Pfeil" />
+		<option key="3" val="Bolzen" />
+		<option key="4" val="Schleuderdolch" />
 	</dictionary>
-	
-	<dictionary dictionary-id="keywords">
-		<option val="HALLO"/>
-		<option val="WEIN"/>
-		<option val="EINSTURZ"/>
-		<option val="WERKZEUG"/>
-		<option val="DIEBESGILDE"/>
-		<option val="BANDITEN"/>
-		<option val="GEGENSTAND"/>
-		<option val="SILK"/>
-		<option val="STADTGARTEN"/>
-		<option val="REISE"/>
-		<option val="NEWLAKE"/>
-		<option val="BRUDERSCHAFT"/>
-		<option val="GEGENMITTEL"/>
-		<option val="KATER"/>
-		<option val="TOCHTER"/>
-		<option val="SABINE"/>
-		<option val="BURNVILLE"/>
-		<option val="KATZE"/>
-		<option val="FELIX"/>
-		<option val="SANDRA"/>
-		<option val="KELLER"/>
-		<option val="VERRÜCKTER"/>
-		<option val="ORKS"/>
-		<option val="PROBLEME"/>
-		<option val="FEEN"/>
-		<option val="FEE"/>
-		<option val="PFERDE"/>
-		<option val="SILBERHAND"/>
-		<option val="WEINPOKALE"/>
-		<option val="HEIMAT"/>
-		<option val="SCHICKSAL"/>
-		<option val="GASTHOF"/>
-		<option val="DORINA"/>
-		<option val="BIER"/>
-		<option val="ZIMMER"/>
-		<option val="DOR GRESTIN"/>
-		<option val="MAGIE"/>
-		<option val="DOR KIREDON"/>
-		<option val="TORNAK"/>
-		<option val="TORNAK-EI"/>
-		<option val="EI"/>
-		<option val="SCHLÜSSEL"/>
-		<option val="MINE"/>
-		<option val="BERNSTEIN"/>
-		<option val="KIRE"/>
-		<option val="ÖFFNUNGSWORT"/>
-		<option val="PASTETEN"/>
-		<option val="BAUM"/>
-		<option val="SYLPHE"/>
-		<option val="SCHWESTER"/>
-		<option val="OKNARD"/>
-		<option val="SARIEL"/>
-		<option val="MAGIER"/>
-		<option val="SPHÄRE DER ÖFFNUNG"/>
-		<option val="RING"/>
-		<option val="BIBLIOTHEK"/>
-		<option val="LADEN"/>
-		<option val="KETNAR"/>
-		<option val="REISEN"/>
-		<option val="TRAUER"/>
-		<option val="LAGERKELLER"/>
-		<option val="TOR"/>
-		<option val="KARTOGRAPHIE"/>
-		<option val="KUNSTMALER"/>
-		<option val="MAGISCHE WÖRTER"/>
-		<option val="SCHNISM"/>
-		<option val="TEMPUS FUGIT"/>
-		<option val="RINGE"/>
-		<option val="REPERATUR"/>
-		<option val="FLUCH"/>
-		<option val="AMULETT"/>
-		<option val="PATIENT"/>
-		<option val="BRUDER"/>
-		<option val="BROG"/>
-		<option val="TURM"/>
-		<option val="DREK"/>
-		<option val="KRÄUTER"/>
-		<option val="FLIEGEN"/>
-		<option val="DÖNNER"/>
-		<option val="GRÜNER JUWEL"/>
-		<option val="PROBLEM"/>
-		<option val="NERA"/>
-		<option val="KAY"/>
-		<option val="BIEST"/>
-		<option val="XENOBIL"/>
-		<option val="SCHULE"/>
-		<option val="GADLON"/>
-		<option val="ÜBUNGSHALLEN"/>
-		<option val="RINAKLES"/>
-		<option val="DRACHEN"/>
-		<option val="BLADUS"/>
-		<option val="ANDARIEL"/>
-		<option val="DOBRANUR"/>
-		<option val="DAMBRANO"/>
-		<option val="HALFTON"/>
-		<option val="NETALDUR"/>
-		<option val="NASE"/>
-		<option val="NÄHNADEL"/>
-		<option val="SPIEGEL"/>
-		<option val="REIF"/>
-		<option val="NADEL"/>
-		<option val="TEST"/>
-		<option val="SORGEN"/>
-		<option val="HARFE"/>
-		<option val="BROM"/>
-		<option val="REITECHSE"/>
-		<option val="242"/>
-		<option val="301"/>
-		<option val="MORAG"/>
-		<option val="ANTONIUS"/>
-		<option val="VATER ANTONIUS"/>
-		<option val="GRYBAN"/>
-		<option val="ÄRGER"/>
-		<option val="GRUFTSCHLÜSSEL"/>
-		<option val="RUINEN"/>
-	</dictionary>
-	
-<dictionary dictionary-id="spells-white">
-  <option  val="?"/>
-  <option  val="HAND AUFLEGEN"/>
-  <option  val="FURCHT LÖSEN"/>
-  <option  val="PANIK BESEITIGEN"/>
-  <option  val="SCHATTEN LÖSEN"/>
-  <option  val="BLINDHEIT HEILEN"/>
-  <option  val="SCHMERZEN LINDERN"/>
-  <option  val="KRANKHEIT HEILEN"/>
-  <option  val="LEICHTE HEILUNG"/>
-  <option  val="GIFT LÖSEN"/>
-  <option  val="GIFT NEUTRALISIEREN"/>
-  <option  val="MITTLERE HEILUNG"/>
-  <option  val="VERTREIBE UNTOTE"/>
-  <option  val="ZERSTÖRE UNTOTE"/>
-  <option  val="HEILIGES WORT"/>
-  <option  val="TOTE ERWECKEN"/>
-  <option  val="ASCHE WANDELN"/>
-  <option  val="STAUB WANDELN"/>
-  <option  val="GROSSE HEILUNG"/>
-  <option  val="MASSENHEILUNG"/>
-  <option  val="WIEDERBELEBUNG"/>
-  <option  val="STARRE LÖSEN"/>
-  <option  val="LÄHMUNG HEILEN"/>
-  <option  val="ALTERUNG HEILEN"/>
-  <option  val="ALTERUNG STOPPEN"/>
-  <option  val="STEIN ZU FLEISCH"/>
-  <option  val="AUFWECKEN"/>
-  <option  val="IRRITATION HEILEN"/>
-  <option  val="DROGEN AUFLÖSEN"/>
-  <option  val="VERRÜCKTHEIT HEILEN"/>
-  <option  val="AUSDAUER KRÄFTIGEN"/>
-</dictionary>
-<dictionary dictionary-id="spells-blue">
-  <option  val="?"/>
-  <option  val="GEGENSTAND LADEN"/>
-  <option  val="LICHT"/>
-  <option  val="MAGISCHE FACKEL"/>
-  <option  val="MAGISCHE LATERNE"/>
-  <option  val="IMITIERTE SONNE"/>
-  <option  val="GEISTERWAFFE"/>
-  <option  val="ESSEN ERSCHAFFEN"/>
-  <option  val="FLUCH BESEITIGEN"/>
-  <option  val="BLINK"/>
-  <option  val="SPRUNG"/>
-  <option  val="FLUCHT"/>
-  <option  val="WORT DES MARKIERENS"/>
-  <option  val="WORT DER RÜCKKEHR"/>
-  <option  val="MAGISCHER SHIELD"/>
-  <option  val="MAGISCHE WAND"/>
-  <option  val="MAGISCHE BARRIERE"/>
-  <option  val="MAGISCHE WAFFE"/>
-  <option  val="MAGISCHER ANGRIFF"/>
-  <option  val="MAGISCHE ATTACKE"/>
-  <option  val="LEVITATION"/>
-  <option  val="ANTI-MAGIE WAND"/>
-  <option  val="ANTI-MAGIE SPHÄRE"/>
-  <option  val="ALCHEMISTISCHER GLOBUS"/>
-  <option  val="HAST"/>
-  <option  val="MASSENHAST"/>
-  <option  val="REPARIERE GEGENSTAND"/>
-  <option  val="VERDOPPELE GEGENSTAND"/>
-  <option  val="LP-STEHLER"/>
-  <option  val="SP-SAUGER"/>
-</dictionary>
-<dictionary dictionary-id="spells-green">
-  <option  val="?"/>
-  <option  val="MONSTERWISSEN"/>
-  <option  val="IDENTIFIKATION"/>
-  <option  val="WISSEN"/>
-  <option  val="HELLSICHT"/>
-  <option  val="WAHRHEIT SEHEN"/>
-  <option  val="KARTENSCHAU"/>
-  <option  val="MAGISCHER KOMPASS"/>
-  <option  val="FALLEN FINDEN"/>
-  <option  val="MONSTER FINDEN"/>
-  <option  val="PERSONEN FINDEN"/>
-  <option  val="GEHEIMTÜREN FINDEN"/>
-  <option  val="MYSTISCHE KARTENZEICHNUNG"/>
-  <option  val="MYSTISCHE KARTE I"/>
-  <option  val="MYSTISCHE KARTE II"/>
-  <option  val="MYSTISCHE KARTE III"/>
-  <option  val="MYSTISCHE GLOBUS"/>
-  <option  val="ZEIGE MONSTER-LP"/>
-</dictionary>
-<dictionary dictionary-id="spells-black">
-  <option  val="?"/>
-  <option  val="MAGISCHES GESCHOSS"/>
-  <option  val="MAGISCHER PFEIL"/>
-  <option  val="LÄHMEN"/>
-  <option  val="VERGIFTEN"/>
-  <option  val="VERSTEINERN"/>
-  <option  val="KRANKHEIT"/>
-  <option  val="ALTERN"/>
-  <option  val="IRRITATION"/>
-  <option  val="VERRÜCKTHEIT"/>
-  <option  val="SCHLAF"/>
-  <option  val="FURCHT"/>
-  <option  val="BLENDEN"/>
-  <option  val="DROGEN"/>
-  <option  val="OPFER AUFLÖSEN"/>
-  <option  val="DRECKSCHLEUDER"/>
-  <option  val="STEINSCHLAG"/>
-  <option  val="ERDRUTSCH"/>
-  <option  val="ERDBEBEN"/>
-  <option  val="WINDTEUFEL"/>
-  <option  val="WINDHEULER"/>
-  <option  val="DONNERSCHLAG"/>
-  <option  val="WIRBELSTURM"/>
-  <option  val="FEUERSTRAHL"/>
-  <option  val="FEUERBALL"/>
-  <option  val="FEUERSTURM"/>
-  <option  val="FEUERSÄULE"/>
-  <option  val="WASSERFALL"/>
-  <option  val="EISBALL"/>
-  <option  val="EISSTURM"/>
-  <option  val="EISSCHAUER"/>
-  <option  val="EISSCHAUER"/>
-</dictionary>
-<dictionary dictionary-id="items">
-  <option key="0" val="-"/>
-  <option key="1" val="GELÄHMT"/>
-  <option key="2" val="VERGIFTET"/>
-  <option key="3" val="VERSTEINERT"/>
-  <option key="4" val="KRANK"/>
-  <option key="5" val="ALTERUNG"/>
-  <option key="6" val="TOT"/>
-  <option key="7" val="VERRÜCKT"/>
-  <option key="8" val="ERBLINDET"/>
-  <option key="9" val="STONED"/>
-  <option key="10" val="HAND AUFLEGEN"/>
-  <option key="11" val="FURCHT LÖSEN"/>
-  <option key="12" val="PANIK BESEITIGEN"/>
-  <option key="13" val="SCHATTEN LÖSEN"/>
-  <option key="14" val="BLINDHEIT HEILEN"/>
-  <option key="15" val="SCHMERZEN LINDERN"/>
-  <option key="16" val="KRANKHEIT HEILEN"/>
-  <option key="17" val="LEICHTE HEILUNG"/>
-  <option key="18" val="GIFT LÖSEN"/>
-  <option key="19" val="GIFT NEUTRAL."/>
-  <option key="20" val="MITTLERE HEILUNG"/>
-  <option key="21" val="VERTREIBE UNTOTEN"/>
-  <option key="22" val="ZERSTÖRE UNTOTE"/>
-  <option key="23" val="HEILIGES WORT"/>
-  <option key="24" val="TOTE ERWECKEN"/>
-  <option key="25" val="ASCHE WANDELN"/>
-  <option key="26" val="STAUB WANDELN"/>
-  <option key="27" val="GROSSE HEILUNG"/>
-  <option key="28" val="MASSENHEILUNG"/>
-  <option key="29" val="WIEDERBELEBUNG"/>
-  <option key="30" val="STARRE AUFLÖSEN"/>
-  <option key="31" val="LÄHMUNG HEILEN"/>
-  <option key="32" val="ALTERUNG HEILEN"/>
-  <option key="33" val="ALTERUNG STOPPEN"/>
-  <option key="34" val="STEIN ZU FLEISCH"/>
-  <option key="35" val="AUFWECKEN"/>
-  <option key="36" val="IRRITATION HEILEN"/>
-  <option key="37" val="DROGEN AUFLÖSEN"/>
-  <option key="38" val="VERRÜCKTHEIT HEILEN"/>
-  <option key="39" val="AUSDAUER KRÄFTIGEN"/>
-  <option key="40" val="GEGENSTAND LADEN"/>
-  <option key="41" val="LICHT"/>
-  <option key="42" val="MAGISCHE FACKEL"/>
-  <option key="43" val="MAGISCHE LATERNE"/>
-  <option key="44" val="IMITIERTE SONNE"/>
-  <option key="45" val="GEISTERWAFFE"/>
-  <option key="46" val="ESSEN ERSCHAFFEN"/>
-  <option key="47" val="FLUCH BESEITIGEN"/>
-  <option key="48" val="BLINK"/>
-  <option key="49" val="SPRUNG"/>
-  <option key="50" val="FLUCHT"/>
-  <option key="51" val="WORT DES MARKIERENS"/>
-  <option key="52" val="WORT DER RÜCKKEHR"/>
-  <option key="53" val="MAGISCHES SCHILD"/>
-  <option key="54" val="MAGISCHE WAND"/>
-  <option key="55" val="MAGISCHE BARRIERE"/>
-  <option key="56" val="MAGISCHE WAFFE"/>
-  <option key="57" val="MAGISCHER ANGRIFF"/>
-  <option key="58" val="MAGISCHE ATTACKE"/>
-  <option key="59" val="LEVITATION"/>
-  <option key="60" val="ANTI MAGIE WAND"/>
-  <option key="61" val="ANTI MAGIE SPHERE"/>
-  <option key="62" val="ALCHEMISTIS. GLOBE"/>
-  <option key="63" val="HAST"/>
-  <option key="64" val="MASSENHAST"/>
-  <option key="65" val="REPARIERE GEGENST."/>
-  <option key="66" val="VERDOPPLE GEGENST."/>
-  <option key="67" val="LP-STEHLER"/>
-  <option key="68" val="SP-SAUGER"/>
-  <option key="69" val="ALCHEMIE SPRUCH -30"/>
-  <option key="70" val="MONSTER WISSEN"/>
-  <option key="71" val="IDENTIFIKATION"/>
-  <option key="72" val="WISSEN"/>
-  <option key="73" val="HELLSICHT"/>
-  <option key="74" val="WAHRHEIT SEHEN"/>
-  <option key="75" val="KARTENSCHAU"/>
-  <option key="76" val="MAGISCHER KOMPASS"/>
-  <option key="77" val="FALLEN FINDEN"/>
-  <option key="78" val="MONSTER FINDEN"/>
-  <option key="79" val="PERSONEN FINDEN"/>
-  <option key="80" val="GEHEIMTÜREN FINDEN"/>
-  <option key="81" val="MYSTISCHE KARTENZE."/>
-  <option key="82" val="MYSTISCHE KARTE I"/>
-  <option key="83" val="MYSTISCHE KARTE II"/>
-  <option key="84" val="MYSTISCHE KARTE III"/>
-  <option key="85" val="MYSTISCHER GLOBE"/>
-  <option key="86" val="ZEIGE MONSTER LP"/>
-  <option key="87" val="MYSTIK SPRUCH -18-"/>
-  <option key="88" val="MYSTIK SPRUCH -19-"/>
-  <option key="89" val="MYSTIK SPRUCH -20-"/>
-  <option key="90" val="MYSTIK SPRUCH -21-"/>
-  <option key="91" val="MYSTIK SPRUCH -22-"/>
-  <option key="92" val="MYSTIK SPRUCH -23-"/>
-  <option key="93" val="MYSTIK SPRUCH -24-"/>
-  <option key="94" val="MYSTIK SPRUCH -25-"/>
-  <option key="95" val="MYSTIK SPRUCH -26-"/>
-  <option key="96" val="MYSTIK SPRUCH -27-"/>
-  <option key="97" val="MYSTIK SPRUCH -28-"/>
-  <option key="98" val="MYSTIK SPRUCH -29-"/>
-  <option key="99" val="MYSTIK SPRUCH -30-"/>
-  <option key="100" val="MAGISCHES GESCHOSS"/>
-  <option key="101" val="MAGISCHE PFEILE"/>
-  <option key="102" val="LÄHMEN"/>
-  <option key="103" val="VERGIFTEN"/>
-  <option key="104" val="VERSTEINERN"/>
-  <option key="105" val="KRANKHEIT"/>
-  <option key="106" val="ALTERN"/>
-  <option key="107" val="IRRITATION"/>
-  <option key="108" val="VERRÜCKTHEIT"/>
-  <option key="109" val="SCHLAF"/>
-  <option key="110" val="FURCHT"/>
-  <option key="111" val="BLENDEN"/>
-  <option key="112" val="DROGEN"/>
-  <option key="113" val="OPFER AUFLÖSEN"/>
-  <option key="114" val="DRECKSCHLEUDER"/>
-  <option key="115" val="STEINSCHLAG"/>
-  <option key="116" val="ERDRUTSCH"/>
-  <option key="117" val="ERDBEBEN"/>
-  <option key="118" val="WINDTEUFEL"/>
-  <option key="119" val="WINDHEULER"/>
-  <option key="120" val="DONNERSCHLAG"/>
-  <option key="121" val="WIRBELSTURM"/>
-  <option key="122" val="FEUERSTRAHL"/>
-  <option key="123" val="FEUERBALL"/>
-  <option key="124" val="FEUERSTURM"/>
-  <option key="125" val="FEUERSÄULE"/>
-  <option key="126" val="WASSERFALL"/>
-  <option key="127" val="EISBALL"/>
-  <option key="128" val="EISSTURM"/>
-  <option key="129" val="EISSCHAUER"/>
-  <option key="130" val="FACKEL"/>
-  <option key="131" val="KRISTALLKUGEL"/>
-  <option key="132" val="KOMPASS"/>
-  <option key="133" val="MAGISCHES BILD"/>
-  <option key="134" val="WINDKETTE"/>
-  <option key="135" val="WINDPERLE"/>
-  <option key="136" val="KARTENLOKATOR"/>
-  <option key="137" val="UHR"/>
-  <option key="138" val="DIETRICH"/>
-  <option key="139" val="MAGISCHE FLUGSCHEIB"/>
-  <option key="140" val="HEXENBESEN"/>
-  <option key="141" val="BRECHEISEN"/>
-  <option key="142" val="SPITZHACKE"/>
-  <option key="143" val="SCHAUFEL"/>
-  <option key="144" val="SEIL"/>
-  <option key="145" val="RUNENALPHABET"/>
-  <option key="146" val="GEMME"/>
-  <option key="147" val="DIAMANT"/>
-  <option key="148" val="SMARAGD"/>
-  <option key="149" val="RUBIN"/>
-  <option key="150" val="ERDSTEIN"/>
-  <option key="151" val="BERNSTEIN"/>
-  <option key="152" val="REGENBOGENSTEIN"/>
-  <option key="153" val="BERGKRISTALL"/>
-  <option key="154" val="TOPAZ"/>
-  <option key="155" val="FLÖTE"/>
-  <option key="156" val="PILZ"/>
-  <option key="157" val="PILZ"/>
-  <option key="158" val="ELFENHARFE"/>
-  <option key="159" val="KRISTALLHARFE"/>
-  <option key="160" val="KARTE VON LYRAMION"/>
-  <option key="161" val="MAGISCHE LANDKARTE"/>
-  <option key="162" val="HUT"/>
-  <option key="163" val="HORNHELM"/>
-  <option key="164" val="STAHLHELM"/>
-  <option key="165" val="KLEIDUNG"/>
-  <option key="166" val="ROBE"/>
-  <option key="167" val="LEDER"/>
-  <option key="168" val="WATTIERTES LEDER"/>
-  <option key="169" val="BESCHLAGENES LEDER"/>
-  <option key="170" val="KETTENHEMD"/>
-  <option key="171" val="BÄNDERPANZER"/>
-  <option key="172" val="PLATTENPANZER"/>
-  <option key="173" val="RITTERRÜSTUNG"/>
-  <option key="174" val="SANDALEN"/>
-  <option key="175" val="LEDERSCHUHE"/>
-  <option key="176" val="LEDERSTIEFEL"/>
-  <option key="177" val="BUCKLER"/>
-  <option key="178" val="RUNDSCHILD"/>
-  <option key="179" val="KLEINES TURMSCHILD"/>
-  <option key="180" val="GROSSES TURMSCHILD"/>
-  <option key="181" val="MESSER"/>
-  <option key="182" val="DOLCH"/>
-  <option key="183" val="KURZSCHWERT"/>
-  <option key="184" val="LANGSCHWERT"/>
-  <option key="185" val="SCIMITAR"/>
-  <option key="186" val="ZWEIHÄNDER"/>
-  <option key="187" val="HEILIGES SCHWERT"/>
-  <option key="188" val="KAMPFSTAB"/>
-  <option key="189" val="KEULE"/>
-  <option key="190" val="DRESCHFLEGEL"/>
-  <option key="191" val="STREITKOLBEN"/>
-  <option key="192" val="MORGENSTERN"/>
-  <option key="193" val="KAMPFHAMMER"/>
-  <option key="194" val="AXT"/>
-  <option key="195" val="KAMPFAXT"/>
-  <option key="196" val="TRIDENT"/>
-  <option key="197" val="PEITSCHE"/>
-  <option key="198" val="SCHLEUDER"/>
-  <option key="199" val="KURZBOGEN"/>
-  <option key="200" val="LANGBOGEN"/>
-  <option key="201" val="ARMBRUST"/>
-  <option key="202" val="SCHLEUDERSTEINE"/>
-  <option key="203" val="PFEIL"/>
-  <option key="204" val="BOLZEN"/>
-  <option key="205" val="SCHRANKSCHLÜSSEL"/>
-  <option key="206" val="TESTAMENT"/>
-  <option key="207" val="EISENRING"/>
-  <option key="208" val="SILBERBESTECK"/>
-  <option key="209" val="SHANDRAS BERNSTEIN"/>
-  <option key="210" val="BUCH DER ARACHNIDEN"/>
-  <option key="211" val="HEILTRANK I"/>
-  <option key="212" val="HEILTRANK II"/>
-  <option key="213" val="HEILTRANK III"/>
-  <option key="214" val="HEILTRANK IV"/>
-  <option key="215" val="ALLHEILUNGS PHIOLE"/>
-  <option key="216" val="STÄRKUNGS PHIOLE"/>
-  <option key="217" val="ENTGIFTUNGS PHIOLE"/>
-  <option key="218" val="LEERE PHIOLE"/>
-  <option key="219" val="JUNGBRUNNEN PHIOLE"/>
-  <option key="220" val="SPRUCHPUNKTE I"/>
-  <option key="221" val="SPRUCHPUNKTE II"/>
-  <option key="222" val="SPRUCHPUNKTE III"/>
-  <option key="223" val="SPRUCHPUNKTE IV"/>
-  <option key="224" val="SPRUCHPUNKTE V"/>
-  <option key="225" val="STÄRKE TRUNK"/>
-  <option key="226" val="INTELLIGENZ TRUNK"/>
-  <option key="227" val="GESCHICKLICH. TRUNK"/>
-  <option key="228" val="SCHNELLICHKE. TRUNK"/>
-  <option key="229" val="KONSTITUTION TRUNK"/>
-  <option key="230" val="KARISMA TRUNK"/>
-  <option key="231" val="STEINSCHLEUDER"/>
-  <option key="232" val="MANDO'S SCHWERT"/>
-  <option key="233" val="MAGISCHE PFEILE"/>
-  <option key="234" val="PERLMUTT KETTE"/>
-  <option key="235" val="NETSRAKS ZAUBERSTAB"/>
-  <option key="236" val="WUNSCHMÜNZEN"/>
-  <option key="237" val="NECROMANTEN DOLCH"/>
-  <option key="238" val="NECROMANTEN BROSCHE"/>
-  <option key="239" val="EI"/>
-  <option key="240" val="BERNSTEINBROCKEN"/>
-  <option key="241" val="DREBLIN'S NOTIZEN"/>
-  <option key="242" val="BLASENFRUCHT"/>
-  <option key="243" val="LATERNE"/>
-  <option key="244" val="TEXTROLLE"/>
-  <option key="245" val="MAGENBITTER"/>
-  <option key="246" val="TÜRSCHLÜSSEL (I)"/>
-  <option key="247" val="TÜRSCHLÜSSEL (II)"/>
-  <option key="248" val="TARNKAPPE"/>
-  <option key="249" val="SCHATTENGÜRTEL"/>
-  <option key="250" val="FLINKSCHUHE"/>
-  <option key="251" val="MÖRDERKLINGE"/>
-  <option key="252" val="ANTI-MAGIE TRUNK"/>
-  <option key="253" val="GEGENMITTEL"/>
-  <option key="254" val="WASSER DES LEBENS"/>
-  <option key="255" val="SUMPFLILIE"/>
-  <option key="256" val="ANTONIUS SCHLÜSSEL"/>
-  <option key="257" val="SANDRA'S SCHLÜSSEL"/>
-  <option key="258" val="BURNVILLE SCHLÜSSEL"/>
-  <option key="259" val="HEILIGES HORN"/>
-  <option key="260" val="GALA'S STAB"/>
-  <option key="261" val="ZELLENSCHLÜSSEL"/>
-  <option key="262" val="ALTE ROBE"/>
-  <option key="263" val="AMULETT B O S"/>
-  <option key="264" val="AMULETT T A R"/>
-  <option key="265" val="AMULETT T A R B O S"/>
-  <option key="266" val="SILBERHAND"/>
-  <option key="267" val="NAGIERS BRIEF"/>
-  <option key="268" val="KOPF HÜGELRIESEN"/>
-  <option key="269" val="AMTSKETTE"/>
-  <option key="270" val="GOLDENE HUFEISEN"/>
-  <option key="271" val="RING DES SOBEK"/>
-  <option key="272" val="GOLDENER WEINPOKAL"/>
-  <option key="273" val="GOLDBROSCHE"/>
-  <option key="274" val="ZETTEL DES BANDITEN"/>
-  <option key="275" val="SCHATTENLEDER"/>
-  <option key="276" val="FEUERBRAND"/>
-  <option key="277" val="ZIELBOGEN"/>
-  <option key="278" val="SONNENHELM"/>
-  <option key="279" val="NAGIERS SCHLÜSSEL"/>
-  <option key="280" val="KIRE'S BRIEF"/>
-  <option key="281" val="FEUERSTEIN &amp; EISEN"/>
-  <option key="282" val="GALASTEIN"/>
-  <option key="283" val="SELTSAMER STEIN"/>
-  <option key="284" val="GEFÄNGNISSSCHLÜSSEL"/>
-  <option key="285" val="WURFSICHEL"/>
-  <option key="286" val="ROBE DES MAGUS"/>
-  <option key="287" val="SPHÄRE DER ÖFFNUNG"/>
-  <option key="288" val="ALKEM'S RING"/>
-  <option key="289" val="KRYPTA SCHLÜSSEL"/>
-  <option key="290" val="LICH KRONE"/>
-  <option key="291" val="KIRE'S SCHLÜSSEL"/>
-  <option key="292" val="MINENSCHLÜSSEL"/>
-  <option key="293" val="DORINA'S BROSCHE"/>
-  <option key="294" val="FERRIN'S SCHLÜSSEL"/>
-  <option key="295" val="FERRIN'S LIKÖR"/>
-  <option key="296" val="FERRIN'S ARMBRUST"/>
-  <option key="297" val="BOLLGAR SCHLÜSSEL"/>
-  <option key="298" val="KEULE DER GALA"/>
-  <option key="299" val="ROBE DER GALA"/>
-  <option key="300" val="SABINE'S TAGEBUCH"/>
-  <option key="301" val="AMBERMOON BILD"/>
-  <option key="302" val="RING DER STÄRKE"/>
-  <option key="303" val="RING DER INTELLI."/>
-  <option key="304" val="RING DER GESCHICK."/>
-  <option key="305" val="RING DER SCHNELL."/>
-  <option key="306" val="RING DER KONSTIT."/>
-  <option key="307" val="KARISMA RING"/>
-  <option key="308" val="GLÜCKS RING"/>
-  <option key="309" val="ANTIMAGIE RING"/>
-  <option key="310" val="MOND AMULETT"/>
-  <option key="311" val="VALDYN'S LEDERCAPE"/>
-  <option key="312" val="VALDYNS LEDERSCHUHE"/>
-  <option key="313" val="VALDYN'S SCHWERT"/>
-  <option key="314" val="VALDYN'S AMULETT"/>
-  <option key="315" val="LUMINOR'S SCHLÜSSEL"/>
-  <option key="316" val="EISWASSER"/>
-  <option key="317" val="KALMIR KRAUT"/>
-  <option key="318" val="DREK'S SCHLÜSSEL"/>
-  <option key="319" val="DÄMONENSPIESS"/>
-  <option key="320" val="XENOBIL HOLZ"/>
-  <option key="321" val="STAB DES AUFBAUS"/>
-  <option key="322" val="MITRHIL HEMD"/>
-  <option key="323" val="MAGISCHE BOLZEN"/>
-  <option key="324" val="AROMATISCHES KRAUT"/>
-  <option key="325" val="LEUCHTENDE BLÜTEN"/>
-  <option key="326" val="LÄNGLICHE BLÄTTER"/>
-  <option key="327" val="BLAUE HALME"/>
-  <option key="328" val="FUNKELNDE PILZE"/>
-  <option key="329" val="KIRE'S BUCH"/>
-  <option key="330" val="ZWERGENAXT"/>
-  <option key="331" val="ZWERGENSCHLEUDER"/>
-  <option key="332" val="ZIELBROSCHE"/>
-  <option key="333" val="PARADERING"/>
-  <option key="334" val="ÖFFNUNGSSTAB"/>
-  <option key="335" val="SCHLEUDERMESSER"/>
-  <option key="336" val="SCHLEUDERDOLCH"/>
-  <option key="337" val="SCHNELLSTICH"/>
-  <option key="338" val="DOLCHSCHLEUDER"/>
-  <option key="339" val="WINDTOR BUCH"/>
-  <option key="340" val="SCHREIN SCHLÜSSEL"/>
-  <option key="341" val="BRALUM'S SCHLÜSSEL"/>
-  <option key="342" val="NERA'S RING"/>
-  <option key="343" val="DÄMONENSCHLAF"/>
-  <option key="344" val="FEUERDISTEL"/>
-  <option key="345" val="REZEPT"/>
-  <option key="346" val="DÖNNER'S SCHLÜSSEL"/>
-  <option key="347" val="BLITZSTIEFEL"/>
-  <option key="348" val="KAY'S AMULETT"/>
-  <option key="349" val="NOREL'S SCHLÜSSEL"/>
-  <option key="350" val="ELFENBOGEN"/>
-  <option key="351" val="MAGISCHE WURFAXT"/>
-  <option key="352" val="SANSRIE'S BLUT"/>
-  <option key="353" val="PELANI'S SCHLÜSSEL"/>
-  <option key="354" val="KRISTALLSAITEN"/>
-  <option key="355" val="SCHLANGENSTEIN"/>
-  <option key="356" val="ZEITSTOPPER"/>
-  <option key="357" val="SANSRIE'S SCHLÜSSEL"/>
-  <option key="358" val="SANSRIES HALSBAND"/>
-  <option key="359" val="SANSRIE'S RING"/>
-  <option key="360" val="SCHLANGENHELM"/>
-  <option key="361" val="MAGIERSTIEFEL"/>
-  <option key="362" val="ANTIKES BUCH"/>
-  <option key="363" val="ANTIKER GEGENSTAND"/>
-  <option key="364" val="GRAV. SCHEIBE GELB"/>
-  <option key="365" val="GRAVIERTE KUGEL ROT"/>
-  <option key="366" val="BUCH SCHLÜSSEL"/>
-  <option key="367" val="GRAVIER. KUGEL GELB"/>
-  <option key="368" val="GRAV. SCHEIBE GRÜN"/>
-  <option key="369" val="GRAV. SCHEIBE BLAU"/>
-  <option key="370" val="HANGARSCHLÜSSEL"/>
-  <option key="371" val="S'OREL SCHLÜSSEL"/>
-  <option key="372" val="S'OREL NACHRICHTEN"/>
-  <option key="373" val="PALADIN BUCH"/>
-  <option key="374" val="KRÄUTER BUCH"/>
-  <option key="375" val="AMBERSTAR"/>
-  <option key="376" val="AMBERMOON NOVELLE"/>
-  <option key="377" val="BLAUER NAVSTEIN"/>
-  <option key="378" val="GRÜNER NAVSTEIN"/>
-  <option key="379" val="GELBER NAVSTEIN"/>
-  <option key="380" val="STINKENDER PILZ"/>
-  <option key="381" val="KIRE'S NACHRICHT"/>
-  <option key="382" val="MORAG ROBE"/>
-  <option key="383" val="MORAG DART"/>
-  <option key="384" val="TRUHENSCHLÜSSEL"/>
-  <option key="385" val="ZELLENSCHLÜSSEL"/>
-  <option key="386" val="MONSTERAUGE"/>
-  <option key="387" val="MORAG KARTE"/>
-  <option key="388" val="PALAST S'OREL"/>
-  <option key="389" val="PALAST S'ARIN"/>
-  <option key="390" val="PALAST S'ENDAR"/>
-  <option key="391" val="PALAST S'TROG"/>
-  <option key="392" val="PALAST S'KAT"/>
-  <option key="393" val="PALAST S'LORWIN"/>
-  <option key="394" val="MORAG SCHWERT"/>
-  <option key="395" val="MORAG SCHILD"/>
-  <option key="396" val="MORAG RÜSTUNG"/>
-  <option key="397" val="BESTELLUNG SANDBOOT"/>
-  <option key="398" val="MORAG WASSERFLASCHE"/>
-  <option key="399" val="LÄHMUNG HEILEN"/>
-  <option key="400" val="GRUFTSCHLÜSSEL"/>
-  <option key="401" val="SCHATZSCHLÜSSEL 1"/>
-  <option key="402" val="SCHATZSCHLÜSSEL 2"/>
-</dictionary>
-<dictionary dictionary-id="partymembers">
-	<option key="1" val="THALION"/>
-	<option key="2" val="NETSRAK"/>
-	<option key="3" val="MANDO"/>
-	<option key="4" val="ERIK"/>
-	<option key="5" val="CHRIS"/>
-	<option key="6" val="MONIKA"/>
-	<option key="7" val="TAR DER DUNKLE"/>
-	<option key="8" val="EGIL"/>
-	<option key="9" val="SELENA"/>
-	<option key="10" val="NELVIN"/>
-	<option key="11" val="SABINE"/>
-	<option key="12" val="VALDYN"/>
-	<option key="13" val="TARGOR"/>
-	<option key="14" val="LEONARIA"/>
-	<option key="15" val="GRYBAN"/>
-</dictionary>
-<dictionary dictionary-id="map-directions">
-	<option val="north"/>
-	<option val="east"/>
-	<option val="south"/>
-	<option val="west"/>
-</dictionary>
-	
-<dictionary dictionary-id="map-ids">
-  <option key="0" val="Error"/>
-  <option key="1" val="Lyramion (000|000)"/>
-  <option key="2" val="Lyramion (050|000)"/>
-  <option key="3" val="Lyramion (100|000)"/>
-  <option key="4" val="Lyramion (150|000)"/>
-  <option key="5" val="Lyramion (200|000)"/>
-  <option key="6" val="Lyramion (250|000)"/>
-  <option key="7" val="Lyramion (300|000)"/>
-  <option key="8" val="Lyramion (350|000)"/>
-  <option key="9" val="Lyramion (400|000)"/>
-  <option key="10" val="Lyramion (450|000)"/>
-  <option key="11" val="Lyramion (500|000)"/>
-  <option key="12" val="Lyramion (550|000)"/>
-  <option key="13" val="Lyramion (600|000)"/>
-  <option key="14" val="Lyramion (650|000)"/>
-  <option key="15" val="Lyramion (700|000)"/>
-  <option key="16" val="Lyramion (750|000)"/>
-  <option key="17" val="Lyramion (000|050)"/>
-  <option key="18" val="Lyramion (050|050)"/>
-  <option key="19" val="Lyramion (100|050)"/>
-  <option key="20" val="Lyramion (150|050)"/>
-  <option key="21" val="Lyramion (200|050)"/>
-  <option key="22" val="Lyramion (250|050)"/>
-  <option key="23" val="Lyramion (300|050)"/>
-  <option key="24" val="Lyramion (350|050)"/>
-  <option key="25" val="Lyramion (400|050)"/>
-  <option key="26" val="Lyramion (450|050)"/>
-  <option key="27" val="Lyramion (500|050)"/>
-  <option key="28" val="Lyramion (550|050)"/>
-  <option key="29" val="Lyramion (600|050)"/>
-  <option key="30" val="Lyramion (650|050)"/>
-  <option key="31" val="Lyramion (700|050)"/>
-  <option key="32" val="Lyramion (750|050)"/>
-  <option key="33" val="Lyramion (000|100)"/>
-  <option key="34" val="Lyramion (050|100)"/>
-  <option key="35" val="Lyramion (100|100)"/>
-  <option key="36" val="Lyramion (150|100)"/>
-  <option key="37" val="Lyramion (200|100)"/>
-  <option key="38" val="Lyramion (250|100)"/>
-  <option key="39" val="Lyramion (300|100)"/>
-  <option key="40" val="Lyramion (350|100)"/>
-  <option key="41" val="Lyramion (400|100)"/>
-  <option key="42" val="Lyramion (450|100)"/>
-  <option key="43" val="Lyramion (500|100)"/>
-  <option key="44" val="Lyramion (550|100)"/>
-  <option key="45" val="Lyramion (600|100)"/>
-  <option key="46" val="Lyramion (650|100)"/>
-  <option key="47" val="Lyramion (700|100)"/>
-  <option key="48" val="Lyramion (750|100)"/>
-  <option key="49" val="Lyramion (000|150)"/>
-  <option key="50" val="Lyramion (050|150)"/>
-  <option key="51" val="Lyramion (100|150)"/>
-  <option key="52" val="Lyramion (150|150)"/>
-  <option key="53" val="Lyramion (200|150)"/>
-  <option key="54" val="Lyramion (250|150)"/>
-  <option key="55" val="Lyramion (300|150)"/>
-  <option key="56" val="Lyramion (350|150)"/>
-  <option key="57" val="Lyramion (400|150)"/>
-  <option key="58" val="Lyramion (450|150)"/>
-  <option key="59" val="Lyramion (500|150)"/>
-  <option key="60" val="Lyramion (550|150)"/>
-  <option key="61" val="Lyramion (600|150)"/>
-  <option key="62" val="Lyramion (650|150)"/>
-  <option key="63" val="Lyramion (700|150)"/>
-  <option key="64" val="Lyramion (750|150)"/>
-  <option key="65" val="Lyramion (000|200)"/>
-  <option key="66" val="Lyramion (050|200)"/>
-  <option key="67" val="Lyramion (100|200)"/>
-  <option key="68" val="Lyramion (150|200)"/>
-  <option key="69" val="Lyramion (200|200)"/>
-  <option key="70" val="Lyramion (250|200)"/>
-  <option key="71" val="Lyramion (300|200)"/>
-  <option key="72" val="Lyramion (350|200)"/>
-  <option key="73" val="Lyramion (400|200)"/>
-  <option key="74" val="Lyramion (450|200)"/>
-  <option key="75" val="Lyramion (500|200)"/>
-  <option key="76" val="Lyramion (550|200)"/>
-  <option key="77" val="Lyramion (600|200)"/>
-  <option key="78" val="Lyramion (650|200)"/>
-  <option key="79" val="Lyramion (700|200)"/>
-  <option key="80" val="Lyramion (750|200)"/>
-  <option key="81" val="Lyramion (000|250)"/>
-  <option key="82" val="Lyramion (050|250)"/>
-  <option key="83" val="Lyramion (100|250)"/>
-  <option key="84" val="Lyramion (150|250)"/>
-  <option key="85" val="Lyramion (200|250)"/>
-  <option key="86" val="Lyramion (250|250)"/>
-  <option key="87" val="Lyramion (300|250)"/>
-  <option key="88" val="Lyramion (350|250)"/>
-  <option key="89" val="Lyramion (400|250)"/>
-  <option key="90" val="Lyramion (450|250)"/>
-  <option key="91" val="Lyramion (500|250)"/>
-  <option key="92" val="Lyramion (550|250)"/>
-  <option key="93" val="Lyramion (600|250)"/>
-  <option key="94" val="Lyramion (650|250)"/>
-  <option key="95" val="Lyramion (700|250)"/>
-  <option key="96" val="Lyramion (750|250)"/>
-  <option key="97" val="Lyramion (000|300)"/>
-  <option key="98" val="Lyramion (050|300)"/>
-  <option key="99" val="Lyramion (100|300)"/>
-  <option key="100" val="Lyramion (150|300)"/>
-  <option key="101" val="Lyramion (200|300)"/>
-  <option key="102" val="Lyramion (250|300)"/>
-  <option key="103" val="Lyramion (300|300)"/>
-  <option key="104" val="Lyramion (350|300)"/>
-  <option key="105" val="Lyramion (400|300)"/>
-  <option key="106" val="Lyramion (450|300)"/>
-  <option key="107" val="Lyramion (500|300)"/>
-  <option key="108" val="Lyramion (550|300)"/>
-  <option key="109" val="Lyramion (600|300)"/>
-  <option key="110" val="Lyramion (650|300)"/>
-  <option key="111" val="Lyramion (700|300)"/>
-  <option key="112" val="Lyramion (750|300)"/>
-  <option key="113" val="Lyramion (000|350)"/>
-  <option key="114" val="Lyramion (050|350)"/>
-  <option key="115" val="Lyramion (100|350)"/>
-  <option key="116" val="Lyramion (150|350)"/>
-  <option key="117" val="Lyramion (200|350)"/>
-  <option key="118" val="Lyramion (250|350)"/>
-  <option key="119" val="Lyramion (300|350)"/>
-  <option key="120" val="Lyramion (350|350)"/>
-  <option key="121" val="Lyramion (400|350)"/>
-  <option key="122" val="Lyramion (450|350)"/>
-  <option key="123" val="Lyramion (500|350)"/>
-  <option key="124" val="Lyramion (550|350)"/>
-  <option key="125" val="Lyramion (600|350)"/>
-  <option key="126" val="Lyramion (650|350)"/>
-  <option key="127" val="Lyramion (700|350)"/>
-  <option key="128" val="Lyramion (750|350)"/>
-  <option key="129" val="Lyramion (000|400)"/>
-  <option key="130" val="Lyramion (050|400)"/>
-  <option key="131" val="Lyramion (100|400)"/>
-  <option key="132" val="Lyramion (150|400)"/>
-  <option key="133" val="Lyramion (200|400)"/>
-  <option key="134" val="Lyramion (250|400)"/>
-  <option key="135" val="Lyramion (300|400)"/>
-  <option key="136" val="Lyramion (350|400)"/>
-  <option key="137" val="Lyramion (400|400)"/>
-  <option key="138" val="Lyramion (450|400)"/>
-  <option key="139" val="Lyramion (500|400)"/>
-  <option key="140" val="Lyramion (550|400)"/>
-  <option key="141" val="Lyramion (600|400)"/>
-  <option key="142" val="Lyramion (650|400)"/>
-  <option key="143" val="Lyramion (700|400)"/>
-  <option key="144" val="Lyramion (750|400)"/>
-  <option key="145" val="Lyramion (000|450)"/>
-  <option key="146" val="Lyramion (050|450)"/>
-  <option key="147" val="Lyramion (100|450)"/>
-  <option key="148" val="Lyramion (150|450)"/>
-  <option key="149" val="Lyramion (200|450)"/>
-  <option key="150" val="Lyramion (250|450)"/>
-  <option key="151" val="Lyramion (300|450)"/>
-  <option key="152" val="Lyramion (350|450)"/>
-  <option key="153" val="Lyramion (400|450)"/>
-  <option key="154" val="Lyramion (450|450)"/>
-  <option key="155" val="Lyramion (500|450)"/>
-  <option key="156" val="Lyramion (550|450)"/>
-  <option key="157" val="Lyramion (600|450)"/>
-  <option key="158" val="Lyramion (650|450)"/>
-  <option key="159" val="Lyramion (700|450)"/>
-  <option key="160" val="Lyramion (750|450)"/>
-  <option key="161" val="Lyramion (000|500)"/>
-  <option key="162" val="Lyramion (050|500)"/>
-  <option key="163" val="Lyramion (100|500)"/>
-  <option key="164" val="Lyramion (150|500)"/>
-  <option key="165" val="Lyramion (200|500)"/>
-  <option key="166" val="Lyramion (250|500)"/>
-  <option key="167" val="Lyramion (300|500)"/>
-  <option key="168" val="Lyramion (350|500)"/>
-  <option key="169" val="Lyramion (400|500)"/>
-  <option key="170" val="Lyramion (450|500)"/>
-  <option key="171" val="Lyramion (500|500)"/>
-  <option key="172" val="Lyramion (550|500)"/>
-  <option key="173" val="Lyramion (600|500)"/>
-  <option key="174" val="Lyramion (650|500)"/>
-  <option key="175" val="Lyramion (700|500)"/>
-  <option key="176" val="Lyramion (750|500)"/>
-  <option key="177" val="Lyramion (000|550)"/>
-  <option key="178" val="Lyramion (050|550)"/>
-  <option key="179" val="Lyramion (100|550)"/>
-  <option key="180" val="Lyramion (150|550)"/>
-  <option key="181" val="Lyramion (200|550)"/>
-  <option key="182" val="Lyramion (250|550)"/>
-  <option key="183" val="Lyramion (300|550)"/>
-  <option key="184" val="Lyramion (350|550)"/>
-  <option key="185" val="Lyramion (400|550)"/>
-  <option key="186" val="Lyramion (450|550)"/>
-  <option key="187" val="Lyramion (500|550)"/>
-  <option key="188" val="Lyramion (550|550)"/>
-  <option key="189" val="Lyramion (600|550)"/>
-  <option key="190" val="Lyramion (650|550)"/>
-  <option key="191" val="Lyramion (700|550)"/>
-  <option key="192" val="Lyramion (750|550)"/>
-  <option key="193" val="Lyramion (000|600)"/>
-  <option key="194" val="Lyramion (050|600)"/>
-  <option key="195" val="Lyramion (100|600)"/>
-  <option key="196" val="Lyramion (150|600)"/>
-  <option key="197" val="Lyramion (200|600)"/>
-  <option key="198" val="Lyramion (250|600)"/>
-  <option key="199" val="Lyramion (300|600)"/>
-  <option key="200" val="Lyramion (350|600)"/>
-  <option key="201" val="Lyramion (400|600)"/>
-  <option key="202" val="Lyramion (450|600)"/>
-  <option key="203" val="Lyramion (500|600)"/>
-  <option key="204" val="Lyramion (550|600)"/>
-  <option key="205" val="Lyramion (600|600)"/>
-  <option key="206" val="Lyramion (650|600)"/>
-  <option key="207" val="Lyramion (700|600)"/>
-  <option key="208" val="Lyramion (750|600)"/>
-  <option key="209" val="Lyramion (000|650)"/>
-  <option key="210" val="Lyramion (050|650)"/>
-  <option key="211" val="Lyramion (100|650)"/>
-  <option key="212" val="Lyramion (150|650)"/>
-  <option key="213" val="Lyramion (200|650)"/>
-  <option key="214" val="Lyramion (250|650)"/>
-  <option key="215" val="Lyramion (300|650)"/>
-  <option key="216" val="Lyramion (350|650)"/>
-  <option key="217" val="Lyramion (400|650)"/>
-  <option key="218" val="Lyramion (450|650)"/>
-  <option key="219" val="Lyramion (500|650)"/>
-  <option key="220" val="Lyramion (550|650)"/>
-  <option key="221" val="Lyramion (600|650)"/>
-  <option key="222" val="Lyramion (650|650)"/>
-  <option key="223" val="Lyramion (700|650)"/>
-  <option key="224" val="Lyramion (750|650)"/>
-  <option key="225" val="Lyramion (000|700)"/>
-  <option key="226" val="Lyramion (050|700)"/>
-  <option key="227" val="Lyramion (100|700)"/>
-  <option key="228" val="Lyramion (150|700)"/>
-  <option key="229" val="Lyramion (200|700)"/>
-  <option key="230" val="Lyramion (250|700)"/>
-  <option key="231" val="Lyramion (300|700)"/>
-  <option key="232" val="Lyramion (350|700)"/>
-  <option key="233" val="Lyramion (400|700)"/>
-  <option key="234" val="Lyramion (450|700)"/>
-  <option key="235" val="Lyramion (500|700)"/>
-  <option key="236" val="Lyramion (550|700)"/>
-  <option key="237" val="Lyramion (600|700)"/>
-  <option key="238" val="Lyramion (650|700)"/>
-  <option key="239" val="Lyramion (700|700)"/>
-  <option key="240" val="Lyramion (750|700)"/>
-  <option key="241" val="Lyramion (000|750)"/>
-  <option key="242" val="Lyramion (050|750)"/>
-  <option key="243" val="Lyramion (100|750)"/>
-  <option key="244" val="Lyramion (150|750)"/>
-  <option key="245" val="Lyramion (200|750)"/>
-  <option key="246" val="Lyramion (250|750)"/>
-  <option key="247" val="Lyramion (300|750)"/>
-  <option key="248" val="Lyramion (350|750)"/>
-  <option key="249" val="Lyramion (400|750)"/>
-  <option key="250" val="Lyramion (450|750)"/>
-  <option key="251" val="Lyramion (500|750)"/>
-  <option key="252" val="Lyramion (550|750)"/>
-  <option key="253" val="Lyramion (600|750)"/>
-  <option key="254" val="Lyramion (650|750)"/>
-  <option key="255" val="Lyramion (700|750)"/>
-  <option key="256" val="Lyramion (750|750)"/><option key="257" val=" THALION BÜRO  "/><option key="258" val=" GROSSVATERS HAUS  "/><option key="259" val=" GROSSVATERS KELLER  "/><option key="260" val=" ALTE HÖHLE - 1.EBENE  "/><option key="261" val=" ALTE HÖHLE - 2.EBENE  "/><option key="262" val=" GEHEIMZIMMER  "/><option key="263" val=" DIE STADT SPANNENBERG  "/><option key="264" val=" ZUM HINKENDEN GAUNER  "/><option key="265" val=" GAUNERS WEINKELLER  "/><option key="266" val=" HAUS DER HEILER  "/><option key="267" val=" ZELLENTRAKT  "/><option key="268" val=" HAUS DER TRAINER  "/><option key="269" val=" HAUS DES FREIHERRN  "/><option key="270" val=" TOLIMARS PFERDESTALL  "/><option key="271" val=" KAPITÄN TORLES WERFT  "/><option key="272" val=" HAUS DES FISCHERS  "/><option key="273" val=" STADTHAUS  "/><option key="274" val=" HAUS DER BANDITEN  "/><option key="275" val=" HAUS - OBERGESCHOSS  "/><option key="276" val=" HAUS - KELLER  "/><option key="277" val=" TEMPEL DER GALA  "/><option key="278" val=" HAUS DES WEISEN  "/><option key="279" val=" SYLPHEN-HÖHLE  "/><option key="280" val=" ORKHÖHLE  "/><option key="281" val=" ALCHEMISTENTURM - 1  "/><option key="282" val=" ALCHEMISTENTURM - 2  "/><option key="283" val=" ALTE KRYPTA  "/><option key="284" val=" BURNVILLE-TUNNEL  "/><option key="285" val=" STADT BURNVILLE  "/><option key="286" val=" HEILERHAUS BURNVILLE  "/><option key="287" val=" HAUS DER KÜNSTE  "/><option key="288" val=" TAVERNE ZUM KAKTUS  "/><option key="289" val=" GÄSTEZIMMER  "/><option key="290" val=" NALVENS MAGIERSCHULE  "/><option key="291" val=" BOLLGAR-TUNNEL  "/><option key="292" val=" TORHAUS  "/><option key="293" val=" LUMINORS FOLTERKAMMER  "/><option key="294" val=" LUMINORS TURM - 1  "/><option key="295" val=" LUMINORS TURM - 2  "/><option key="296" val=" LUMINORS TURM - 3  "/><option key="297" val=" LUMINORS TURM - 4  "/><option key="298" val=" LUMINORS TURM - 5  "/><option key="299" val=" HÜGELHÖHLEN  "/><option key="400" val=" LEBABS TURM - 1  "/><option key="401" val=" LEBABS TURM - 2  "/><option key="402" val=" LEBABS TURM - 3  "/><option key="403" val=" LEBABS TURM - 4  "/><option key="404" val=" LEBABS TURM - 5  "/><option key="405" val=" TURMSPITZE  "/><option key="406" val=" GEMSTONE RUINEN  "/><option key="407" val=" WAFFENKAMMER  "/><option key="408" val=" WINDSCHREIN  "/><option key="409" val=" GNOMMINE  "/><option key="410" val=" TAVERNE ZUM SCHACHT  "/><option key="411" val=" HEXENHAUS  "/><option key="412" val=" HEXENHAUS KELLER  "/><option key="413" val=" DÖNNERS ALTE MINE  "/><option key="414" val=" HÜTTE DES WALDHÜTERS  "/><option key="415" val=" HÖHLE DER BESTIE  "/><option key="416" val=" ILLIEN - ELFENSTADT  "/><option key="417" val=" PELANIS PALAST  "/><option key="418" val=" HAUS DES HARFNERS  "/><option key="419" val=" ZUM ADLERHORST  "/><option key="420" val=" DAS DORF SNAKESIGN  "/><option key="421" val=" TAVERNE ZUR GÖTTIN  "/><option key="422" val=" SANSRIETEMPEL - 1  "/><option key="423" val=" SANSRIETEMPEL - 2  "/><option key="424" val=" SANSRIES TUNNEL  "/><option key="425" val=" DIE STADT NEWLAKE  "/><option key="426" val=" TAVERNE ZUM KRATER  "/><option key="427" val=" PALAST DES BARONS  "/><option key="428" val=" GRUFT VON NEWLAKE  "/><option key="429" val=" BIBLIOTHEK - NEWLAKE  "/><option key="430" val=" DIE FESTE GODSBANE  "/><option key="431" val=" TEMPEL DER BRUDERSCHAFT  "/><option key="432" val=" OBERPRIESTER GEMÄCHER  "/><option key="433" val=" TARBOS SARGHALLE  "/><option key="434" val=" HANGAR AUF LYRAMION  "/><option key="435" val=" F-SCHIFF: LYRAMION  "/><option key="436" val=" F-SCHIFF: WALDMOND  "/><option key="437" val=" F-SCHIFF: MORAG  "/><option key="438" val=" ALTE ZWERGENMINE  "/><option key="439" val=" HANGAR AUF MORAG  "/><option key="440" val=" GEFÄNGNIS - S'ANGRILA  "/><option key="441" val=" DIE STADT S'ANGRILA  "/><option key="442" val=" ZUM FLIEGENDEN MORANER  "/><option key="443" val=" REITECHSENHÄNDLERIN  "/><option key="444" val=" PALAST DES S'RIEL  "/><option key="445" val=" PALAST DES S'OREL  "/><option key="446" val=" PALAST DES S'ARIN  "/><option key="447" val=" PALAST DES S'ENDAR  "/><option key="448" val=" PALAST DES S'TROG  "/><option key="449" val=" PALAST DES S'KAT  "/><option key="450" val=" PALAST DES S'LORWIN  "/><option key="451" val=" SANDBOOTBAUER  "/><option key="452" val=" MORAG-TURM  "/><option key="453" val=" MASCHINENRAUM  "/><option key="454" val=" HANGAR AUF MORAG  "/><option key="455" val=" GEFÄNGNIS - S'ANGRILA  "/><option key="300" val=" KIRES MOND  "/><option key="301" val=" KIRES MOND  "/><option key="302" val=" KIRES MOND  "/><option key="303" val=" KIRES MOND  "/><option key="304" val=" KIRES MOND  "/><option key="305" val=" KIRES MOND  "/><option key="306" val=" KIRES MOND  "/><option key="307" val=" KIRES MOND  "/><option key="308" val=" KIRES MOND  "/><option key="309" val=" KIRES MOND  "/><option key="310" val=" KIRES MOND  "/><option key="311" val=" KIRES MOND  "/><option key="312" val=" KIRES MOND  "/><option key="313" val=" KIRES MOND  "/><option key="314" val=" KIRES MOND  "/><option key="315" val=" KIRES MOND  "/><option key="316" val=" KIRES MOND  "/><option key="317" val=" KIRES MOND  "/><option key="318" val=" KIRES MOND  "/><option key="319" val=" KIRES MOND  "/><option key="320" val=" KIRES MOND  "/><option key="321" val=" KIRES MOND  "/><option key="322" val=" KIRES MOND  "/><option key="323" val=" KIRES MOND  "/><option key="324" val=" KIRES MOND  "/><option key="325" val=" KIRES MOND  "/><option key="326" val=" KIRES MOND  "/><option key="327" val=" KIRES MOND  "/><option key="328" val=" KIRES MOND  "/><option key="329" val=" KIRES MOND  "/><option key="330" val=" KIRES MOND  "/><option key="331" val=" KIRES MOND  "/><option key="332" val=" KIRES MOND  "/><option key="333" val=" KIRES MOND  "/><option key="334" val=" KIRES MOND  "/><option key="335" val=" KIRES MOND  "/><option key="336" val=" GASTHAUS GEMSTONE  "/><option key="337" val=" KIRES RESIDENZ  "/><option key="338" val=" EINGANGSBEREICH RUINEN  "/><option key="339" val=" DOR GRESTIN  "/><option key="340" val=" FERRINS KELLER  "/><option key="341" val=" RATSHALLE  "/><option key="342" val=" RUINENUNTERGRUND  "/><option key="343" val=" DOR KIREDON  "/><option key="344" val=" FERRINS SCHMIEDE  "/><option key="345" val=" MINE  "/><option key="346" val=" DORINAS HÖHLE  "/><option key="347" val=" DORINAS HÖHLE UNTEN  "/><option key="348" val=" MINE - 2. EBENE  "/><option key="349" val=" RUINENTURM  "/><option key="350" val=" EINGANG DER ALTEN RUINEN  "/><option key="351" val=" KELLERGEWÖLBE  "/><option key="352" val=" MINE - 2. EBENE  "/><option key="353" val=" KIRES RESIDENZ  "/><option key="354" val=" MINE - 3. EBENE  "/><option key="355" val=" FERRINS LAGERKELLER  "/><option key="356" val=" TORNAK-HÖHLE  "/><option key="357" val=" TORNAK-HÖHLE  "/><option key="358" val=" KLEINE HÖHLE  "/><option key="359" val=" FERRINS SCHMIEDE  "/><option key="360" val=" HAUS DES HEILERS ASRUB  "/><option key="361" val=" GADLON: KELLER 2  "/><option key="362" val=" GADLON: KELLER 1  "/><option key="363" val=" GADLON: ERDGESCHOSS  "/><option key="364" val=" GADLON: 1. STOCK  "/><option key="365" val=" GADLON: 2. STOCK  "/><option key="366" val=" ANTIKE ANLAGE 1  "/><option key="367" val=" ANTIKE ANLAGE 2  "/><option key="368" val=" ANTIKE ANLAGE 3  "/><option key="369" val=" ANTIKE ANLAGE 4  "/>
-</dictionary>
 
-<dictionary dictionary-id="shops">
-<option key="003" val="Spannenberg, Warenhändler von Spannenberg"/>
-<option key="002" val="Spannenberg, Bibliothek der Heiler"/>
-<option key="004" val="Spannenberg, Bibliothek der Mystik"/>
-<option key="001" val="Spannenberg, Laden der Diebesgilde"/>
-<option key="005" val="Alchemistenturm, Bibliothek der Alchemie"/>
-<option key="006" val="Alchemistenturm, Laden der Alchemie"/>
-<option key="010" val="Burnville, Warenhändler von Burnville"/>
-<option key="011" val="Burnville, Nalven's Bibliothek"/>
-<option key="007" val="Burnville, Bibliothek der Heiler"/>
-<option key="008" val="Burnville, Bibliothek des Milzor"/>
-<option key="009" val="Burnville, Theresa's Schmuckladen"/>
-<option key="012" val="Newlake, Warenhandel von Newlake"/>
-<option key="013" val="Illien, Lendrai's Magische Waffen"/>
-<option key="015" val="Illien, Aiolu's Tränke Aller Art"/>
-<option key="014" val="Illien, Spruchrollen Bibliothek"/>
-<option key="017" val="Gnommine, Brom's Warenhaus"/>
-<option key="016" val="Snakesign, Warenhändler von Snakesign"/>
-<option key="031" val="Dor Kiredon, Ferrin's Schmiede"/>
-<option key="032" val="Dor Grestin, Randor's Lädchen"/>
-<option key="018" val="S'Angrila, Warenhändler von S'Angrila"/>
-<option key="033" val="-"/>
-</dictionary>
+	<dictionary dictionary-id="keywords">
+		<option val="HALLO" />
+		<option val="WEIN" />
+		<option val="EINSTURZ" />
+		<option val="WERKZEUG" />
+		<option val="DIEBESGILDE" />
+		<option val="BANDITEN" />
+		<option val="GEGENSTAND" />
+		<option val="SILK" />
+		<option val="STADTGARTEN" />
+		<option val="REISE" />
+		<option val="NEWLAKE" />
+		<option val="BRUDERSCHAFT" />
+		<option val="GEGENMITTEL" />
+		<option val="KATER" />
+		<option val="TOCHTER" />
+		<option val="SABINE" />
+		<option val="BURNVILLE" />
+		<option val="KATZE" />
+		<option val="FELIX" />
+		<option val="SANDRA" />
+		<option val="KELLER" />
+		<option val="VERRÜCKTER" />
+		<option val="ORKS" />
+		<option val="PROBLEME" />
+		<option val="FEEN" />
+		<option val="FEE" />
+		<option val="PFERDE" />
+		<option val="SILBERHAND" />
+		<option val="WEINPOKALE" />
+		<option val="HEIMAT" />
+		<option val="SCHICKSAL" />
+		<option val="GASTHOF" />
+		<option val="DORINA" />
+		<option val="BIER" />
+		<option val="ZIMMER" />
+		<option val="DOR GRESTIN" />
+		<option val="MAGIE" />
+		<option val="DOR KIREDON" />
+		<option val="TORNAK" />
+		<option val="TORNAK-EI" />
+		<option val="EI" />
+		<option val="SCHLÜSSEL" />
+		<option val="MINE" />
+		<option val="BERNSTEIN" />
+		<option val="KIRE" />
+		<option val="ÖFFNUNGSWORT" />
+		<option val="PASTETEN" />
+		<option val="BAUM" />
+		<option val="SYLPHE" />
+		<option val="SCHWESTER" />
+		<option val="OKNARD" />
+		<option val="SARIEL" />
+		<option val="MAGIER" />
+		<option val="SPHÄRE DER ÖFFNUNG" />
+		<option val="RING" />
+		<option val="BIBLIOTHEK" />
+		<option val="LADEN" />
+		<option val="KETNAR" />
+		<option val="REISEN" />
+		<option val="TRAUER" />
+		<option val="LAGERKELLER" />
+		<option val="TOR" />
+		<option val="KARTOGRAPHIE" />
+		<option val="KUNSTMALER" />
+		<option val="MAGISCHE WÖRTER" />
+		<option val="SCHNISM" />
+		<option val="TEMPUS FUGIT" />
+		<option val="RINGE" />
+		<option val="REPERATUR" />
+		<option val="FLUCH" />
+		<option val="AMULETT" />
+		<option val="PATIENT" />
+		<option val="BRUDER" />
+		<option val="BROG" />
+		<option val="TURM" />
+		<option val="DREK" />
+		<option val="KRÄUTER" />
+		<option val="FLIEGEN" />
+		<option val="DÖNNER" />
+		<option val="GRÜNER JUWEL" />
+		<option val="PROBLEM" />
+		<option val="NERA" />
+		<option val="KAY" />
+		<option val="BIEST" />
+		<option val="XENOBIL" />
+		<option val="SCHULE" />
+		<option val="GADLON" />
+		<option val="ÜBUNGSHALLEN" />
+		<option val="RINAKLES" />
+		<option val="DRACHEN" />
+		<option val="BLADUS" />
+		<option val="ANDARIEL" />
+		<option val="DOBRANUR" />
+		<option val="DAMBRANO" />
+		<option val="HALFTON" />
+		<option val="NETALDUR" />
+		<option val="NASE" />
+		<option val="NÄHNADEL" />
+		<option val="SPIEGEL" />
+		<option val="REIF" />
+		<option val="NADEL" />
+		<option val="TEST" />
+		<option val="SORGEN" />
+		<option val="HARFE" />
+		<option val="BROM" />
+		<option val="REITECHSE" />
+		<option val="242" />
+		<option val="301" />
+		<option val="MORAG" />
+		<option val="ANTONIUS" />
+		<option val="VATER ANTONIUS" />
+		<option val="GRYBAN" />
+		<option val="ÄRGER" />
+		<option val="GRUFTSCHLÜSSEL" />
+		<option val="RUINEN" />
+	</dictionary>
+
+	<dictionary dictionary-id="spells-white">
+		<option val="?" />
+		<option val="HAND AUFLEGEN" />
+		<option val="FURCHT LÖSEN" />
+		<option val="PANIK BESEITIGEN" />
+		<option val="SCHATTEN LÖSEN" />
+		<option val="BLINDHEIT HEILEN" />
+		<option val="SCHMERZEN LINDERN" />
+		<option val="KRANKHEIT HEILEN" />
+		<option val="LEICHTE HEILUNG" />
+		<option val="GIFT LÖSEN" />
+		<option val="GIFT NEUTRALISIEREN" />
+		<option val="MITTLERE HEILUNG" />
+		<option val="VERTREIBE UNTOTE" />
+		<option val="ZERSTÖRE UNTOTE" />
+		<option val="HEILIGES WORT" />
+		<option val="TOTE ERWECKEN" />
+		<option val="ASCHE WANDELN" />
+		<option val="STAUB WANDELN" />
+		<option val="GROSSE HEILUNG" />
+		<option val="MASSENHEILUNG" />
+		<option val="WIEDERBELEBUNG" />
+		<option val="STARRE LÖSEN" />
+		<option val="LÄHMUNG HEILEN" />
+		<option val="ALTERUNG HEILEN" />
+		<option val="ALTERUNG STOPPEN" />
+		<option val="STEIN ZU FLEISCH" />
+		<option val="AUFWECKEN" />
+		<option val="IRRITATION HEILEN" />
+		<option val="DROGEN AUFLÖSEN" />
+		<option val="VERRÜCKTHEIT HEILEN" />
+		<option val="AUSDAUER KRÄFTIGEN" />
+	</dictionary>
+	<dictionary dictionary-id="spells-blue">
+		<option val="?" />
+		<option val="GEGENSTAND LADEN" />
+		<option val="LICHT" />
+		<option val="MAGISCHE FACKEL" />
+		<option val="MAGISCHE LATERNE" />
+		<option val="IMITIERTE SONNE" />
+		<option val="GEISTERWAFFE" />
+		<option val="ESSEN ERSCHAFFEN" />
+		<option val="FLUCH BESEITIGEN" />
+		<option val="BLINK" />
+		<option val="SPRUNG" />
+		<option val="FLUCHT" />
+		<option val="WORT DES MARKIERENS" />
+		<option val="WORT DER RÜCKKEHR" />
+		<option val="MAGISCHER SHIELD" />
+		<option val="MAGISCHE WAND" />
+		<option val="MAGISCHE BARRIERE" />
+		<option val="MAGISCHE WAFFE" />
+		<option val="MAGISCHER ANGRIFF" />
+		<option val="MAGISCHE ATTACKE" />
+		<option val="LEVITATION" />
+		<option val="ANTI-MAGIE WAND" />
+		<option val="ANTI-MAGIE SPHÄRE" />
+		<option val="ALCHEMISTISCHER GLOBUS" />
+		<option val="HAST" />
+		<option val="MASSENHAST" />
+		<option val="REPARIERE GEGENSTAND" />
+		<option val="VERDOPPELE GEGENSTAND" />
+		<option val="LP-STEHLER" />
+		<option val="SP-SAUGER" />
+	</dictionary>
+	<dictionary dictionary-id="spells-green">
+		<option val="?" />
+		<option val="MONSTERWISSEN" />
+		<option val="IDENTIFIKATION" />
+		<option val="WISSEN" />
+		<option val="HELLSICHT" />
+		<option val="WAHRHEIT SEHEN" />
+		<option val="KARTENSCHAU" />
+		<option val="MAGISCHER KOMPASS" />
+		<option val="FALLEN FINDEN" />
+		<option val="MONSTER FINDEN" />
+		<option val="PERSONEN FINDEN" />
+		<option val="GEHEIMTÜREN FINDEN" />
+		<option val="MYSTISCHE KARTENZEICHNUNG" />
+		<option val="MYSTISCHE KARTE I" />
+		<option val="MYSTISCHE KARTE II" />
+		<option val="MYSTISCHE KARTE III" />
+		<option val="MYSTISCHE GLOBUS" />
+		<option val="ZEIGE MONSTER-LP" />
+	</dictionary>
+	<dictionary dictionary-id="spells-black">
+		<option val="?" />
+		<option val="MAGISCHES GESCHOSS" />
+		<option val="MAGISCHER PFEIL" />
+		<option val="LÄHMEN" />
+		<option val="VERGIFTEN" />
+		<option val="VERSTEINERN" />
+		<option val="KRANKHEIT" />
+		<option val="ALTERN" />
+		<option val="IRRITATION" />
+		<option val="VERRÜCKTHEIT" />
+		<option val="SCHLAF" />
+		<option val="FURCHT" />
+		<option val="BLENDEN" />
+		<option val="DROGEN" />
+		<option val="OPFER AUFLÖSEN" />
+		<option val="DRECKSCHLEUDER" />
+		<option val="STEINSCHLAG" />
+		<option val="ERDRUTSCH" />
+		<option val="ERDBEBEN" />
+		<option val="WINDTEUFEL" />
+		<option val="WINDHEULER" />
+		<option val="DONNERSCHLAG" />
+		<option val="WIRBELSTURM" />
+		<option val="FEUERSTRAHL" />
+		<option val="FEUERBALL" />
+		<option val="FEUERSTURM" />
+		<option val="FEUERSÄULE" />
+		<option val="WASSERFALL" />
+		<option val="EISBALL" />
+		<option val="EISSTURM" />
+		<option val="EISSCHAUER" />
+		<option val="EISSCHAUER" />
+	</dictionary>
+	<dictionary dictionary-id="items">
+		<option key="0" val="-" />
+		<option key="1" val="GELÄHMT" />
+		<option key="2" val="VERGIFTET" />
+		<option key="3" val="VERSTEINERT" />
+		<option key="4" val="KRANK" />
+		<option key="5" val="ALTERUNG" />
+		<option key="6" val="TOT" />
+		<option key="7" val="VERRÜCKT" />
+		<option key="8" val="ERBLINDET" />
+		<option key="9" val="STONED" />
+		<option key="10" val="HAND AUFLEGEN" />
+		<option key="11" val="FURCHT LÖSEN" />
+		<option key="12" val="PANIK BESEITIGEN" />
+		<option key="13" val="SCHATTEN LÖSEN" />
+		<option key="14" val="BLINDHEIT HEILEN" />
+		<option key="15" val="SCHMERZEN LINDERN" />
+		<option key="16" val="KRANKHEIT HEILEN" />
+		<option key="17" val="LEICHTE HEILUNG" />
+		<option key="18" val="GIFT LÖSEN" />
+		<option key="19" val="GIFT NEUTRAL." />
+		<option key="20" val="MITTLERE HEILUNG" />
+		<option key="21" val="VERTREIBE UNTOTEN" />
+		<option key="22" val="ZERSTÖRE UNTOTE" />
+		<option key="23" val="HEILIGES WORT" />
+		<option key="24" val="TOTE ERWECKEN" />
+		<option key="25" val="ASCHE WANDELN" />
+		<option key="26" val="STAUB WANDELN" />
+		<option key="27" val="GROSSE HEILUNG" />
+		<option key="28" val="MASSENHEILUNG" />
+		<option key="29" val="WIEDERBELEBUNG" />
+		<option key="30" val="STARRE AUFLÖSEN" />
+		<option key="31" val="LÄHMUNG HEILEN" />
+		<option key="32" val="ALTERUNG HEILEN" />
+		<option key="33" val="ALTERUNG STOPPEN" />
+		<option key="34" val="STEIN ZU FLEISCH" />
+		<option key="35" val="AUFWECKEN" />
+		<option key="36" val="IRRITATION HEILEN" />
+		<option key="37" val="DROGEN AUFLÖSEN" />
+		<option key="38" val="VERRÜCKTHEIT HEILEN" />
+		<option key="39" val="AUSDAUER KRÄFTIGEN" />
+		<option key="40" val="GEGENSTAND LADEN" />
+		<option key="41" val="LICHT" />
+		<option key="42" val="MAGISCHE FACKEL" />
+		<option key="43" val="MAGISCHE LATERNE" />
+		<option key="44" val="IMITIERTE SONNE" />
+		<option key="45" val="GEISTERWAFFE" />
+		<option key="46" val="ESSEN ERSCHAFFEN" />
+		<option key="47" val="FLUCH BESEITIGEN" />
+		<option key="48" val="BLINK" />
+		<option key="49" val="SPRUNG" />
+		<option key="50" val="FLUCHT" />
+		<option key="51" val="WORT DES MARKIERENS" />
+		<option key="52" val="WORT DER RÜCKKEHR" />
+		<option key="53" val="MAGISCHES SCHILD" />
+		<option key="54" val="MAGISCHE WAND" />
+		<option key="55" val="MAGISCHE BARRIERE" />
+		<option key="56" val="MAGISCHE WAFFE" />
+		<option key="57" val="MAGISCHER ANGRIFF" />
+		<option key="58" val="MAGISCHE ATTACKE" />
+		<option key="59" val="LEVITATION" />
+		<option key="60" val="ANTI MAGIE WAND" />
+		<option key="61" val="ANTI MAGIE SPHERE" />
+		<option key="62" val="ALCHEMISTIS. GLOBE" />
+		<option key="63" val="HAST" />
+		<option key="64" val="MASSENHAST" />
+		<option key="65" val="REPARIERE GEGENST." />
+		<option key="66" val="VERDOPPLE GEGENST." />
+		<option key="67" val="LP-STEHLER" />
+		<option key="68" val="SP-SAUGER" />
+		<option key="69" val="ALCHEMIE SPRUCH -30" />
+		<option key="70" val="MONSTER WISSEN" />
+		<option key="71" val="IDENTIFIKATION" />
+		<option key="72" val="WISSEN" />
+		<option key="73" val="HELLSICHT" />
+		<option key="74" val="WAHRHEIT SEHEN" />
+		<option key="75" val="KARTENSCHAU" />
+		<option key="76" val="MAGISCHER KOMPASS" />
+		<option key="77" val="FALLEN FINDEN" />
+		<option key="78" val="MONSTER FINDEN" />
+		<option key="79" val="PERSONEN FINDEN" />
+		<option key="80" val="GEHEIMTÜREN FINDEN" />
+		<option key="81" val="MYSTISCHE KARTENZE." />
+		<option key="82" val="MYSTISCHE KARTE I" />
+		<option key="83" val="MYSTISCHE KARTE II" />
+		<option key="84" val="MYSTISCHE KARTE III" />
+		<option key="85" val="MYSTISCHER GLOBE" />
+		<option key="86" val="ZEIGE MONSTER LP" />
+		<option key="87" val="MYSTIK SPRUCH -18-" />
+		<option key="88" val="MYSTIK SPRUCH -19-" />
+		<option key="89" val="MYSTIK SPRUCH -20-" />
+		<option key="90" val="MYSTIK SPRUCH -21-" />
+		<option key="91" val="MYSTIK SPRUCH -22-" />
+		<option key="92" val="MYSTIK SPRUCH -23-" />
+		<option key="93" val="MYSTIK SPRUCH -24-" />
+		<option key="94" val="MYSTIK SPRUCH -25-" />
+		<option key="95" val="MYSTIK SPRUCH -26-" />
+		<option key="96" val="MYSTIK SPRUCH -27-" />
+		<option key="97" val="MYSTIK SPRUCH -28-" />
+		<option key="98" val="MYSTIK SPRUCH -29-" />
+		<option key="99" val="MYSTIK SPRUCH -30-" />
+		<option key="100" val="MAGISCHES GESCHOSS" />
+		<option key="101" val="MAGISCHE PFEILE" />
+		<option key="102" val="LÄHMEN" />
+		<option key="103" val="VERGIFTEN" />
+		<option key="104" val="VERSTEINERN" />
+		<option key="105" val="KRANKHEIT" />
+		<option key="106" val="ALTERN" />
+		<option key="107" val="IRRITATION" />
+		<option key="108" val="VERRÜCKTHEIT" />
+		<option key="109" val="SCHLAF" />
+		<option key="110" val="FURCHT" />
+		<option key="111" val="BLENDEN" />
+		<option key="112" val="DROGEN" />
+		<option key="113" val="OPFER AUFLÖSEN" />
+		<option key="114" val="DRECKSCHLEUDER" />
+		<option key="115" val="STEINSCHLAG" />
+		<option key="116" val="ERDRUTSCH" />
+		<option key="117" val="ERDBEBEN" />
+		<option key="118" val="WINDTEUFEL" />
+		<option key="119" val="WINDHEULER" />
+		<option key="120" val="DONNERSCHLAG" />
+		<option key="121" val="WIRBELSTURM" />
+		<option key="122" val="FEUERSTRAHL" />
+		<option key="123" val="FEUERBALL" />
+		<option key="124" val="FEUERSTURM" />
+		<option key="125" val="FEUERSÄULE" />
+		<option key="126" val="WASSERFALL" />
+		<option key="127" val="EISBALL" />
+		<option key="128" val="EISSTURM" />
+		<option key="129" val="EISSCHAUER" />
+		<option key="130" val="FACKEL" />
+		<option key="131" val="KRISTALLKUGEL" />
+		<option key="132" val="KOMPASS" />
+		<option key="133" val="MAGISCHES BILD" />
+		<option key="134" val="WINDKETTE" />
+		<option key="135" val="WINDPERLE" />
+		<option key="136" val="KARTENLOKATOR" />
+		<option key="137" val="UHR" />
+		<option key="138" val="DIETRICH" />
+		<option key="139" val="MAGISCHE FLUGSCHEIB" />
+		<option key="140" val="HEXENBESEN" />
+		<option key="141" val="BRECHEISEN" />
+		<option key="142" val="SPITZHACKE" />
+		<option key="143" val="SCHAUFEL" />
+		<option key="144" val="SEIL" />
+		<option key="145" val="RUNENALPHABET" />
+		<option key="146" val="GEMME" />
+		<option key="147" val="DIAMANT" />
+		<option key="148" val="SMARAGD" />
+		<option key="149" val="RUBIN" />
+		<option key="150" val="ERDSTEIN" />
+		<option key="151" val="BERNSTEIN" />
+		<option key="152" val="REGENBOGENSTEIN" />
+		<option key="153" val="BERGKRISTALL" />
+		<option key="154" val="TOPAZ" />
+		<option key="155" val="FLÖTE" />
+		<option key="156" val="PILZ" />
+		<option key="157" val="PILZ" />
+		<option key="158" val="ELFENHARFE" />
+		<option key="159" val="KRISTALLHARFE" />
+		<option key="160" val="KARTE VON LYRAMION" />
+		<option key="161" val="MAGISCHE LANDKARTE" />
+		<option key="162" val="HUT" />
+		<option key="163" val="HORNHELM" />
+		<option key="164" val="STAHLHELM" />
+		<option key="165" val="KLEIDUNG" />
+		<option key="166" val="ROBE" />
+		<option key="167" val="LEDER" />
+		<option key="168" val="WATTIERTES LEDER" />
+		<option key="169" val="BESCHLAGENES LEDER" />
+		<option key="170" val="KETTENHEMD" />
+		<option key="171" val="BÄNDERPANZER" />
+		<option key="172" val="PLATTENPANZER" />
+		<option key="173" val="RITTERRÜSTUNG" />
+		<option key="174" val="SANDALEN" />
+		<option key="175" val="LEDERSCHUHE" />
+		<option key="176" val="LEDERSTIEFEL" />
+		<option key="177" val="BUCKLER" />
+		<option key="178" val="RUNDSCHILD" />
+		<option key="179" val="KLEINES TURMSCHILD" />
+		<option key="180" val="GROSSES TURMSCHILD" />
+		<option key="181" val="MESSER" />
+		<option key="182" val="DOLCH" />
+		<option key="183" val="KURZSCHWERT" />
+		<option key="184" val="LANGSCHWERT" />
+		<option key="185" val="SCIMITAR" />
+		<option key="186" val="ZWEIHÄNDER" />
+		<option key="187" val="HEILIGES SCHWERT" />
+		<option key="188" val="KAMPFSTAB" />
+		<option key="189" val="KEULE" />
+		<option key="190" val="DRESCHFLEGEL" />
+		<option key="191" val="STREITKOLBEN" />
+		<option key="192" val="MORGENSTERN" />
+		<option key="193" val="KAMPFHAMMER" />
+		<option key="194" val="AXT" />
+		<option key="195" val="KAMPFAXT" />
+		<option key="196" val="TRIDENT" />
+		<option key="197" val="PEITSCHE" />
+		<option key="198" val="SCHLEUDER" />
+		<option key="199" val="KURZBOGEN" />
+		<option key="200" val="LANGBOGEN" />
+		<option key="201" val="ARMBRUST" />
+		<option key="202" val="SCHLEUDERSTEINE" />
+		<option key="203" val="PFEIL" />
+		<option key="204" val="BOLZEN" />
+		<option key="205" val="SCHRANKSCHLÜSSEL" />
+		<option key="206" val="TESTAMENT" />
+		<option key="207" val="EISENRING" />
+		<option key="208" val="SILBERBESTECK" />
+		<option key="209" val="SHANDRAS BERNSTEIN" />
+		<option key="210" val="BUCH DER ARACHNIDEN" />
+		<option key="211" val="HEILTRANK I" />
+		<option key="212" val="HEILTRANK II" />
+		<option key="213" val="HEILTRANK III" />
+		<option key="214" val="HEILTRANK IV" />
+		<option key="215" val="ALLHEILUNGS PHIOLE" />
+		<option key="216" val="STÄRKUNGS PHIOLE" />
+		<option key="217" val="ENTGIFTUNGS PHIOLE" />
+		<option key="218" val="LEERE PHIOLE" />
+		<option key="219" val="JUNGBRUNNEN PHIOLE" />
+		<option key="220" val="SPRUCHPUNKTE I" />
+		<option key="221" val="SPRUCHPUNKTE II" />
+		<option key="222" val="SPRUCHPUNKTE III" />
+		<option key="223" val="SPRUCHPUNKTE IV" />
+		<option key="224" val="SPRUCHPUNKTE V" />
+		<option key="225" val="STÄRKE TRUNK" />
+		<option key="226" val="INTELLIGENZ TRUNK" />
+		<option key="227" val="GESCHICKLICH. TRUNK" />
+		<option key="228" val="SCHNELLICHKE. TRUNK" />
+		<option key="229" val="KONSTITUTION TRUNK" />
+		<option key="230" val="KARISMA TRUNK" />
+		<option key="231" val="STEINSCHLEUDER" />
+		<option key="232" val="MANDO'S SCHWERT" />
+		<option key="233" val="MAGISCHE PFEILE" />
+		<option key="234" val="PERLMUTT KETTE" />
+		<option key="235" val="NETSRAKS ZAUBERSTAB" />
+		<option key="236" val="WUNSCHMÜNZEN" />
+		<option key="237" val="NECROMANTEN DOLCH" />
+		<option key="238" val="NECROMANTEN BROSCHE" />
+		<option key="239" val="EI" />
+		<option key="240" val="BERNSTEINBROCKEN" />
+		<option key="241" val="DREBLIN'S NOTIZEN" />
+		<option key="242" val="BLASENFRUCHT" />
+		<option key="243" val="LATERNE" />
+		<option key="244" val="TEXTROLLE" />
+		<option key="245" val="MAGENBITTER" />
+		<option key="246" val="TÜRSCHLÜSSEL (I)" />
+		<option key="247" val="TÜRSCHLÜSSEL (II)" />
+		<option key="248" val="TARNKAPPE" />
+		<option key="249" val="SCHATTENGÜRTEL" />
+		<option key="250" val="FLINKSCHUHE" />
+		<option key="251" val="MÖRDERKLINGE" />
+		<option key="252" val="ANTI-MAGIE TRUNK" />
+		<option key="253" val="GEGENMITTEL" />
+		<option key="254" val="WASSER DES LEBENS" />
+		<option key="255" val="SUMPFLILIE" />
+		<option key="256" val="ANTONIUS SCHLÜSSEL" />
+		<option key="257" val="SANDRA'S SCHLÜSSEL" />
+		<option key="258" val="BURNVILLE SCHLÜSSEL" />
+		<option key="259" val="HEILIGES HORN" />
+		<option key="260" val="GALA'S STAB" />
+		<option key="261" val="ZELLENSCHLÜSSEL" />
+		<option key="262" val="ALTE ROBE" />
+		<option key="263" val="AMULETT B O S" />
+		<option key="264" val="AMULETT T A R" />
+		<option key="265" val="AMULETT T A R B O S" />
+		<option key="266" val="SILBERHAND" />
+		<option key="267" val="NAGIERS BRIEF" />
+		<option key="268" val="KOPF HÜGELRIESEN" />
+		<option key="269" val="AMTSKETTE" />
+		<option key="270" val="GOLDENE HUFEISEN" />
+		<option key="271" val="RING DES SOBEK" />
+		<option key="272" val="GOLDENER WEINPOKAL" />
+		<option key="273" val="GOLDBROSCHE" />
+		<option key="274" val="ZETTEL DES BANDITEN" />
+		<option key="275" val="SCHATTENLEDER" />
+		<option key="276" val="FEUERBRAND" />
+		<option key="277" val="ZIELBOGEN" />
+		<option key="278" val="SONNENHELM" />
+		<option key="279" val="NAGIERS SCHLÜSSEL" />
+		<option key="280" val="KIRE'S BRIEF" />
+		<option key="281" val="FEUERSTEIN &amp; EISEN" />
+		<option key="282" val="GALASTEIN" />
+		<option key="283" val="SELTSAMER STEIN" />
+		<option key="284" val="GEFÄNGNISSSCHLÜSSEL" />
+		<option key="285" val="WURFSICHEL" />
+		<option key="286" val="ROBE DES MAGUS" />
+		<option key="287" val="SPHÄRE DER ÖFFNUNG" />
+		<option key="288" val="ALKEM'S RING" />
+		<option key="289" val="KRYPTA SCHLÜSSEL" />
+		<option key="290" val="LICH KRONE" />
+		<option key="291" val="KIRE'S SCHLÜSSEL" />
+		<option key="292" val="MINENSCHLÜSSEL" />
+		<option key="293" val="DORINA'S BROSCHE" />
+		<option key="294" val="FERRIN'S SCHLÜSSEL" />
+		<option key="295" val="FERRIN'S LIKÖR" />
+		<option key="296" val="FERRIN'S ARMBRUST" />
+		<option key="297" val="BOLLGAR SCHLÜSSEL" />
+		<option key="298" val="KEULE DER GALA" />
+		<option key="299" val="ROBE DER GALA" />
+		<option key="300" val="SABINE'S TAGEBUCH" />
+		<option key="301" val="AMBERMOON BILD" />
+		<option key="302" val="RING DER STÄRKE" />
+		<option key="303" val="RING DER INTELLI." />
+		<option key="304" val="RING DER GESCHICK." />
+		<option key="305" val="RING DER SCHNELL." />
+		<option key="306" val="RING DER KONSTIT." />
+		<option key="307" val="KARISMA RING" />
+		<option key="308" val="GLÜCKS RING" />
+		<option key="309" val="ANTIMAGIE RING" />
+		<option key="310" val="MOND AMULETT" />
+		<option key="311" val="VALDYN'S LEDERCAPE" />
+		<option key="312" val="VALDYNS LEDERSCHUHE" />
+		<option key="313" val="VALDYN'S SCHWERT" />
+		<option key="314" val="VALDYN'S AMULETT" />
+		<option key="315" val="LUMINOR'S SCHLÜSSEL" />
+		<option key="316" val="EISWASSER" />
+		<option key="317" val="KALMIR KRAUT" />
+		<option key="318" val="DREK'S SCHLÜSSEL" />
+		<option key="319" val="DÄMONENSPIESS" />
+		<option key="320" val="XENOBIL HOLZ" />
+		<option key="321" val="STAB DES AUFBAUS" />
+		<option key="322" val="MITRHIL HEMD" />
+		<option key="323" val="MAGISCHE BOLZEN" />
+		<option key="324" val="AROMATISCHES KRAUT" />
+		<option key="325" val="LEUCHTENDE BLÜTEN" />
+		<option key="326" val="LÄNGLICHE BLÄTTER" />
+		<option key="327" val="BLAUE HALME" />
+		<option key="328" val="FUNKELNDE PILZE" />
+		<option key="329" val="KIRE'S BUCH" />
+		<option key="330" val="ZWERGENAXT" />
+		<option key="331" val="ZWERGENSCHLEUDER" />
+		<option key="332" val="ZIELBROSCHE" />
+		<option key="333" val="PARADERING" />
+		<option key="334" val="ÖFFNUNGSSTAB" />
+		<option key="335" val="SCHLEUDERMESSER" />
+		<option key="336" val="SCHLEUDERDOLCH" />
+		<option key="337" val="SCHNELLSTICH" />
+		<option key="338" val="DOLCHSCHLEUDER" />
+		<option key="339" val="WINDTOR BUCH" />
+		<option key="340" val="SCHREIN SCHLÜSSEL" />
+		<option key="341" val="BRALUM'S SCHLÜSSEL" />
+		<option key="342" val="NERA'S RING" />
+		<option key="343" val="DÄMONENSCHLAF" />
+		<option key="344" val="FEUERDISTEL" />
+		<option key="345" val="REZEPT" />
+		<option key="346" val="DÖNNER'S SCHLÜSSEL" />
+		<option key="347" val="BLITZSTIEFEL" />
+		<option key="348" val="KAY'S AMULETT" />
+		<option key="349" val="NOREL'S SCHLÜSSEL" />
+		<option key="350" val="ELFENBOGEN" />
+		<option key="351" val="MAGISCHE WURFAXT" />
+		<option key="352" val="SANSRIE'S BLUT" />
+		<option key="353" val="PELANI'S SCHLÜSSEL" />
+		<option key="354" val="KRISTALLSAITEN" />
+		<option key="355" val="SCHLANGENSTEIN" />
+		<option key="356" val="ZEITSTOPPER" />
+		<option key="357" val="SANSRIE'S SCHLÜSSEL" />
+		<option key="358" val="SANSRIES HALSBAND" />
+		<option key="359" val="SANSRIE'S RING" />
+		<option key="360" val="SCHLANGENHELM" />
+		<option key="361" val="MAGIERSTIEFEL" />
+		<option key="362" val="ANTIKES BUCH" />
+		<option key="363" val="ANTIKER GEGENSTAND" />
+		<option key="364" val="GRAV. SCHEIBE GELB" />
+		<option key="365" val="GRAVIERTE KUGEL ROT" />
+		<option key="366" val="BUCH SCHLÜSSEL" />
+		<option key="367" val="GRAVIER. KUGEL GELB" />
+		<option key="368" val="GRAV. SCHEIBE GRÜN" />
+		<option key="369" val="GRAV. SCHEIBE BLAU" />
+		<option key="370" val="HANGARSCHLÜSSEL" />
+		<option key="371" val="S'OREL SCHLÜSSEL" />
+		<option key="372" val="S'OREL NACHRICHTEN" />
+		<option key="373" val="PALADIN BUCH" />
+		<option key="374" val="KRÄUTER BUCH" />
+		<option key="375" val="AMBERSTAR" />
+		<option key="376" val="AMBERMOON NOVELLE" />
+		<option key="377" val="BLAUER NAVSTEIN" />
+		<option key="378" val="GRÜNER NAVSTEIN" />
+		<option key="379" val="GELBER NAVSTEIN" />
+		<option key="380" val="STINKENDER PILZ" />
+		<option key="381" val="KIRE'S NACHRICHT" />
+		<option key="382" val="MORAG ROBE" />
+		<option key="383" val="MORAG DART" />
+		<option key="384" val="TRUHENSCHLÜSSEL" />
+		<option key="385" val="ZELLENSCHLÜSSEL" />
+		<option key="386" val="MONSTERAUGE" />
+		<option key="387" val="MORAG KARTE" />
+		<option key="388" val="PALAST S'OREL" />
+		<option key="389" val="PALAST S'ARIN" />
+		<option key="390" val="PALAST S'ENDAR" />
+		<option key="391" val="PALAST S'TROG" />
+		<option key="392" val="PALAST S'KAT" />
+		<option key="393" val="PALAST S'LORWIN" />
+		<option key="394" val="MORAG SCHWERT" />
+		<option key="395" val="MORAG SCHILD" />
+		<option key="396" val="MORAG RÜSTUNG" />
+		<option key="397" val="BESTELLUNG SANDBOOT" />
+		<option key="398" val="MORAG WASSERFLASCHE" />
+		<option key="399" val="LÄHMUNG HEILEN" />
+		<option key="400" val="GRUFTSCHLÜSSEL" />
+		<option key="401" val="SCHATZSCHLÜSSEL 1" />
+		<option key="402" val="SCHATZSCHLÜSSEL 2" />
+	</dictionary>
+	<dictionary dictionary-id="partymembers">
+		<option key="1" val="THALION" />
+		<option key="2" val="NETSRAK" />
+		<option key="3" val="MANDO" />
+		<option key="4" val="ERIK" />
+		<option key="5" val="CHRIS" />
+		<option key="6" val="MONIKA" />
+		<option key="7" val="TAR DER DUNKLE" />
+		<option key="8" val="EGIL" />
+		<option key="9" val="SELENA" />
+		<option key="10" val="NELVIN" />
+		<option key="11" val="SABINE" />
+		<option key="12" val="VALDYN" />
+		<option key="13" val="TARGOR" />
+		<option key="14" val="LEONARIA" />
+		<option key="15" val="GRYBAN" />
+	</dictionary>
+	<dictionary dictionary-id="map-directions">
+		<option val="north" />
+		<option val="east" />
+		<option val="south" />
+		<option val="west" />
+	</dictionary>
+
+	<dictionary dictionary-id="map-ids">
+		<option key="0" val="Error" />
+		<option key="1" val="Lyramion (000|000)" />
+		<option key="2" val="Lyramion (050|000)" />
+		<option key="3" val="Lyramion (100|000)" />
+		<option key="4" val="Lyramion (150|000)" />
+		<option key="5" val="Lyramion (200|000)" />
+		<option key="6" val="Lyramion (250|000)" />
+		<option key="7" val="Lyramion (300|000)" />
+		<option key="8" val="Lyramion (350|000)" />
+		<option key="9" val="Lyramion (400|000)" />
+		<option key="10" val="Lyramion (450|000)" />
+		<option key="11" val="Lyramion (500|000)" />
+		<option key="12" val="Lyramion (550|000)" />
+		<option key="13" val="Lyramion (600|000)" />
+		<option key="14" val="Lyramion (650|000)" />
+		<option key="15" val="Lyramion (700|000)" />
+		<option key="16" val="Lyramion (750|000)" />
+		<option key="17" val="Lyramion (000|050)" />
+		<option key="18" val="Lyramion (050|050)" />
+		<option key="19" val="Lyramion (100|050)" />
+		<option key="20" val="Lyramion (150|050)" />
+		<option key="21" val="Lyramion (200|050)" />
+		<option key="22" val="Lyramion (250|050)" />
+		<option key="23" val="Lyramion (300|050)" />
+		<option key="24" val="Lyramion (350|050)" />
+		<option key="25" val="Lyramion (400|050)" />
+		<option key="26" val="Lyramion (450|050)" />
+		<option key="27" val="Lyramion (500|050)" />
+		<option key="28" val="Lyramion (550|050)" />
+		<option key="29" val="Lyramion (600|050)" />
+		<option key="30" val="Lyramion (650|050)" />
+		<option key="31" val="Lyramion (700|050)" />
+		<option key="32" val="Lyramion (750|050)" />
+		<option key="33" val="Lyramion (000|100)" />
+		<option key="34" val="Lyramion (050|100)" />
+		<option key="35" val="Lyramion (100|100)" />
+		<option key="36" val="Lyramion (150|100)" />
+		<option key="37" val="Lyramion (200|100)" />
+		<option key="38" val="Lyramion (250|100)" />
+		<option key="39" val="Lyramion (300|100)" />
+		<option key="40" val="Lyramion (350|100)" />
+		<option key="41" val="Lyramion (400|100)" />
+		<option key="42" val="Lyramion (450|100)" />
+		<option key="43" val="Lyramion (500|100)" />
+		<option key="44" val="Lyramion (550|100)" />
+		<option key="45" val="Lyramion (600|100)" />
+		<option key="46" val="Lyramion (650|100)" />
+		<option key="47" val="Lyramion (700|100)" />
+		<option key="48" val="Lyramion (750|100)" />
+		<option key="49" val="Lyramion (000|150)" />
+		<option key="50" val="Lyramion (050|150)" />
+		<option key="51" val="Lyramion (100|150)" />
+		<option key="52" val="Lyramion (150|150)" />
+		<option key="53" val="Lyramion (200|150)" />
+		<option key="54" val="Lyramion (250|150)" />
+		<option key="55" val="Lyramion (300|150)" />
+		<option key="56" val="Lyramion (350|150)" />
+		<option key="57" val="Lyramion (400|150)" />
+		<option key="58" val="Lyramion (450|150)" />
+		<option key="59" val="Lyramion (500|150)" />
+		<option key="60" val="Lyramion (550|150)" />
+		<option key="61" val="Lyramion (600|150)" />
+		<option key="62" val="Lyramion (650|150)" />
+		<option key="63" val="Lyramion (700|150)" />
+		<option key="64" val="Lyramion (750|150)" />
+		<option key="65" val="Lyramion (000|200)" />
+		<option key="66" val="Lyramion (050|200)" />
+		<option key="67" val="Lyramion (100|200)" />
+		<option key="68" val="Lyramion (150|200)" />
+		<option key="69" val="Lyramion (200|200)" />
+		<option key="70" val="Lyramion (250|200)" />
+		<option key="71" val="Lyramion (300|200)" />
+		<option key="72" val="Lyramion (350|200)" />
+		<option key="73" val="Lyramion (400|200)" />
+		<option key="74" val="Lyramion (450|200)" />
+		<option key="75" val="Lyramion (500|200)" />
+		<option key="76" val="Lyramion (550|200)" />
+		<option key="77" val="Lyramion (600|200)" />
+		<option key="78" val="Lyramion (650|200)" />
+		<option key="79" val="Lyramion (700|200)" />
+		<option key="80" val="Lyramion (750|200)" />
+		<option key="81" val="Lyramion (000|250)" />
+		<option key="82" val="Lyramion (050|250)" />
+		<option key="83" val="Lyramion (100|250)" />
+		<option key="84" val="Lyramion (150|250)" />
+		<option key="85" val="Lyramion (200|250)" />
+		<option key="86" val="Lyramion (250|250)" />
+		<option key="87" val="Lyramion (300|250)" />
+		<option key="88" val="Lyramion (350|250)" />
+		<option key="89" val="Lyramion (400|250)" />
+		<option key="90" val="Lyramion (450|250)" />
+		<option key="91" val="Lyramion (500|250)" />
+		<option key="92" val="Lyramion (550|250)" />
+		<option key="93" val="Lyramion (600|250)" />
+		<option key="94" val="Lyramion (650|250)" />
+		<option key="95" val="Lyramion (700|250)" />
+		<option key="96" val="Lyramion (750|250)" />
+		<option key="97" val="Lyramion (000|300)" />
+		<option key="98" val="Lyramion (050|300)" />
+		<option key="99" val="Lyramion (100|300)" />
+		<option key="100" val="Lyramion (150|300)" />
+		<option key="101" val="Lyramion (200|300)" />
+		<option key="102" val="Lyramion (250|300)" />
+		<option key="103" val="Lyramion (300|300)" />
+		<option key="104" val="Lyramion (350|300)" />
+		<option key="105" val="Lyramion (400|300)" />
+		<option key="106" val="Lyramion (450|300)" />
+		<option key="107" val="Lyramion (500|300)" />
+		<option key="108" val="Lyramion (550|300)" />
+		<option key="109" val="Lyramion (600|300)" />
+		<option key="110" val="Lyramion (650|300)" />
+		<option key="111" val="Lyramion (700|300)" />
+		<option key="112" val="Lyramion (750|300)" />
+		<option key="113" val="Lyramion (000|350)" />
+		<option key="114" val="Lyramion (050|350)" />
+		<option key="115" val="Lyramion (100|350)" />
+		<option key="116" val="Lyramion (150|350)" />
+		<option key="117" val="Lyramion (200|350)" />
+		<option key="118" val="Lyramion (250|350)" />
+		<option key="119" val="Lyramion (300|350)" />
+		<option key="120" val="Lyramion (350|350)" />
+		<option key="121" val="Lyramion (400|350)" />
+		<option key="122" val="Lyramion (450|350)" />
+		<option key="123" val="Lyramion (500|350)" />
+		<option key="124" val="Lyramion (550|350)" />
+		<option key="125" val="Lyramion (600|350)" />
+		<option key="126" val="Lyramion (650|350)" />
+		<option key="127" val="Lyramion (700|350)" />
+		<option key="128" val="Lyramion (750|350)" />
+		<option key="129" val="Lyramion (000|400)" />
+		<option key="130" val="Lyramion (050|400)" />
+		<option key="131" val="Lyramion (100|400)" />
+		<option key="132" val="Lyramion (150|400)" />
+		<option key="133" val="Lyramion (200|400)" />
+		<option key="134" val="Lyramion (250|400)" />
+		<option key="135" val="Lyramion (300|400)" />
+		<option key="136" val="Lyramion (350|400)" />
+		<option key="137" val="Lyramion (400|400)" />
+		<option key="138" val="Lyramion (450|400)" />
+		<option key="139" val="Lyramion (500|400)" />
+		<option key="140" val="Lyramion (550|400)" />
+		<option key="141" val="Lyramion (600|400)" />
+		<option key="142" val="Lyramion (650|400)" />
+		<option key="143" val="Lyramion (700|400)" />
+		<option key="144" val="Lyramion (750|400)" />
+		<option key="145" val="Lyramion (000|450)" />
+		<option key="146" val="Lyramion (050|450)" />
+		<option key="147" val="Lyramion (100|450)" />
+		<option key="148" val="Lyramion (150|450)" />
+		<option key="149" val="Lyramion (200|450)" />
+		<option key="150" val="Lyramion (250|450)" />
+		<option key="151" val="Lyramion (300|450)" />
+		<option key="152" val="Lyramion (350|450)" />
+		<option key="153" val="Lyramion (400|450)" />
+		<option key="154" val="Lyramion (450|450)" />
+		<option key="155" val="Lyramion (500|450)" />
+		<option key="156" val="Lyramion (550|450)" />
+		<option key="157" val="Lyramion (600|450)" />
+		<option key="158" val="Lyramion (650|450)" />
+		<option key="159" val="Lyramion (700|450)" />
+		<option key="160" val="Lyramion (750|450)" />
+		<option key="161" val="Lyramion (000|500)" />
+		<option key="162" val="Lyramion (050|500)" />
+		<option key="163" val="Lyramion (100|500)" />
+		<option key="164" val="Lyramion (150|500)" />
+		<option key="165" val="Lyramion (200|500)" />
+		<option key="166" val="Lyramion (250|500)" />
+		<option key="167" val="Lyramion (300|500)" />
+		<option key="168" val="Lyramion (350|500)" />
+		<option key="169" val="Lyramion (400|500)" />
+		<option key="170" val="Lyramion (450|500)" />
+		<option key="171" val="Lyramion (500|500)" />
+		<option key="172" val="Lyramion (550|500)" />
+		<option key="173" val="Lyramion (600|500)" />
+		<option key="174" val="Lyramion (650|500)" />
+		<option key="175" val="Lyramion (700|500)" />
+		<option key="176" val="Lyramion (750|500)" />
+		<option key="177" val="Lyramion (000|550)" />
+		<option key="178" val="Lyramion (050|550)" />
+		<option key="179" val="Lyramion (100|550)" />
+		<option key="180" val="Lyramion (150|550)" />
+		<option key="181" val="Lyramion (200|550)" />
+		<option key="182" val="Lyramion (250|550)" />
+		<option key="183" val="Lyramion (300|550)" />
+		<option key="184" val="Lyramion (350|550)" />
+		<option key="185" val="Lyramion (400|550)" />
+		<option key="186" val="Lyramion (450|550)" />
+		<option key="187" val="Lyramion (500|550)" />
+		<option key="188" val="Lyramion (550|550)" />
+		<option key="189" val="Lyramion (600|550)" />
+		<option key="190" val="Lyramion (650|550)" />
+		<option key="191" val="Lyramion (700|550)" />
+		<option key="192" val="Lyramion (750|550)" />
+		<option key="193" val="Lyramion (000|600)" />
+		<option key="194" val="Lyramion (050|600)" />
+		<option key="195" val="Lyramion (100|600)" />
+		<option key="196" val="Lyramion (150|600)" />
+		<option key="197" val="Lyramion (200|600)" />
+		<option key="198" val="Lyramion (250|600)" />
+		<option key="199" val="Lyramion (300|600)" />
+		<option key="200" val="Lyramion (350|600)" />
+		<option key="201" val="Lyramion (400|600)" />
+		<option key="202" val="Lyramion (450|600)" />
+		<option key="203" val="Lyramion (500|600)" />
+		<option key="204" val="Lyramion (550|600)" />
+		<option key="205" val="Lyramion (600|600)" />
+		<option key="206" val="Lyramion (650|600)" />
+		<option key="207" val="Lyramion (700|600)" />
+		<option key="208" val="Lyramion (750|600)" />
+		<option key="209" val="Lyramion (000|650)" />
+		<option key="210" val="Lyramion (050|650)" />
+		<option key="211" val="Lyramion (100|650)" />
+		<option key="212" val="Lyramion (150|650)" />
+		<option key="213" val="Lyramion (200|650)" />
+		<option key="214" val="Lyramion (250|650)" />
+		<option key="215" val="Lyramion (300|650)" />
+		<option key="216" val="Lyramion (350|650)" />
+		<option key="217" val="Lyramion (400|650)" />
+		<option key="218" val="Lyramion (450|650)" />
+		<option key="219" val="Lyramion (500|650)" />
+		<option key="220" val="Lyramion (550|650)" />
+		<option key="221" val="Lyramion (600|650)" />
+		<option key="222" val="Lyramion (650|650)" />
+		<option key="223" val="Lyramion (700|650)" />
+		<option key="224" val="Lyramion (750|650)" />
+		<option key="225" val="Lyramion (000|700)" />
+		<option key="226" val="Lyramion (050|700)" />
+		<option key="227" val="Lyramion (100|700)" />
+		<option key="228" val="Lyramion (150|700)" />
+		<option key="229" val="Lyramion (200|700)" />
+		<option key="230" val="Lyramion (250|700)" />
+		<option key="231" val="Lyramion (300|700)" />
+		<option key="232" val="Lyramion (350|700)" />
+		<option key="233" val="Lyramion (400|700)" />
+		<option key="234" val="Lyramion (450|700)" />
+		<option key="235" val="Lyramion (500|700)" />
+		<option key="236" val="Lyramion (550|700)" />
+		<option key="237" val="Lyramion (600|700)" />
+		<option key="238" val="Lyramion (650|700)" />
+		<option key="239" val="Lyramion (700|700)" />
+		<option key="240" val="Lyramion (750|700)" />
+		<option key="241" val="Lyramion (000|750)" />
+		<option key="242" val="Lyramion (050|750)" />
+		<option key="243" val="Lyramion (100|750)" />
+		<option key="244" val="Lyramion (150|750)" />
+		<option key="245" val="Lyramion (200|750)" />
+		<option key="246" val="Lyramion (250|750)" />
+		<option key="247" val="Lyramion (300|750)" />
+		<option key="248" val="Lyramion (350|750)" />
+		<option key="249" val="Lyramion (400|750)" />
+		<option key="250" val="Lyramion (450|750)" />
+		<option key="251" val="Lyramion (500|750)" />
+		<option key="252" val="Lyramion (550|750)" />
+		<option key="253" val="Lyramion (600|750)" />
+		<option key="254" val="Lyramion (650|750)" />
+		<option key="255" val="Lyramion (700|750)" />
+		<option key="256" val="Lyramion (750|750)" />
+		<option key="257" val=" THALION BÜRO  " />
+		<option key="258" val=" GROSSVATERS HAUS  " />
+		<option key="259" val=" GROSSVATERS KELLER  " />
+		<option key="260" val=" ALTE HÖHLE - 1.EBENE  " />
+		<option key="261" val=" ALTE HÖHLE - 2.EBENE  " />
+		<option key="262" val=" GEHEIMZIMMER  " />
+		<option key="263" val=" DIE STADT SPANNENBERG  " />
+		<option key="264" val=" ZUM HINKENDEN GAUNER  " />
+		<option key="265" val=" GAUNERS WEINKELLER  " />
+		<option key="266" val=" HAUS DER HEILER  " />
+		<option key="267" val=" ZELLENTRAKT  " />
+		<option key="268" val=" HAUS DER TRAINER  " />
+		<option key="269" val=" HAUS DES FREIHERRN  " />
+		<option key="270" val=" TOLIMARS PFERDESTALL  " />
+		<option key="271" val=" KAPITÄN TORLES WERFT  " />
+		<option key="272" val=" HAUS DES FISCHERS  " />
+		<option key="273" val=" STADTHAUS  " />
+		<option key="274" val=" HAUS DER BANDITEN  " />
+		<option key="275" val=" HAUS - OBERGESCHOSS  " />
+		<option key="276" val=" HAUS - KELLER  " />
+		<option key="277" val=" TEMPEL DER GALA  " />
+		<option key="278" val=" HAUS DES WEISEN  " />
+		<option key="279" val=" SYLPHEN-HÖHLE  " />
+		<option key="280" val=" ORKHÖHLE  " />
+		<option key="281" val=" ALCHEMISTENTURM - 1  " />
+		<option key="282" val=" ALCHEMISTENTURM - 2  " />
+		<option key="283" val=" ALTE KRYPTA  " />
+		<option key="284" val=" BURNVILLE-TUNNEL  " />
+		<option key="285" val=" STADT BURNVILLE  " />
+		<option key="286" val=" HEILERHAUS BURNVILLE  " />
+		<option key="287" val=" HAUS DER KÜNSTE  " />
+		<option key="288" val=" TAVERNE ZUM KAKTUS  " />
+		<option key="289" val=" GÄSTEZIMMER  " />
+		<option key="290" val=" NALVENS MAGIERSCHULE  " />
+		<option key="291" val=" BOLLGAR-TUNNEL  " />
+		<option key="292" val=" TORHAUS  " />
+		<option key="293" val=" LUMINORS FOLTERKAMMER  " />
+		<option key="294" val=" LUMINORS TURM - 1  " />
+		<option key="295" val=" LUMINORS TURM - 2  " />
+		<option key="296" val=" LUMINORS TURM - 3  " />
+		<option key="297" val=" LUMINORS TURM - 4  " />
+		<option key="298" val=" LUMINORS TURM - 5  " />
+		<option key="299" val=" HÜGELHÖHLEN  " />
+		<option key="400" val=" LEBABS TURM - 1  " />
+		<option key="401" val=" LEBABS TURM - 2  " />
+		<option key="402" val=" LEBABS TURM - 3  " />
+		<option key="403" val=" LEBABS TURM - 4  " />
+		<option key="404" val=" LEBABS TURM - 5  " />
+		<option key="405" val=" TURMSPITZE  " />
+		<option key="406" val=" GEMSTONE RUINEN  " />
+		<option key="407" val=" WAFFENKAMMER  " />
+		<option key="408" val=" WINDSCHREIN  " />
+		<option key="409" val=" GNOMMINE  " />
+		<option key="410" val=" TAVERNE ZUM SCHACHT  " />
+		<option key="411" val=" HEXENHAUS  " />
+		<option key="412" val=" HEXENHAUS KELLER  " />
+		<option key="413" val=" DÖNNERS ALTE MINE  " />
+		<option key="414" val=" HÜTTE DES WALDHÜTERS  " />
+		<option key="415" val=" HÖHLE DER BESTIE  " />
+		<option key="416" val=" ILLIEN - ELFENSTADT  " />
+		<option key="417" val=" PELANIS PALAST  " />
+		<option key="418" val=" HAUS DES HARFNERS  " />
+		<option key="419" val=" ZUM ADLERHORST  " />
+		<option key="420" val=" DAS DORF SNAKESIGN  " />
+		<option key="421" val=" TAVERNE ZUR GÖTTIN  " />
+		<option key="422" val=" SANSRIETEMPEL - 1  " />
+		<option key="423" val=" SANSRIETEMPEL - 2  " />
+		<option key="424" val=" SANSRIES TUNNEL  " />
+		<option key="425" val=" DIE STADT NEWLAKE  " />
+		<option key="426" val=" TAVERNE ZUM KRATER  " />
+		<option key="427" val=" PALAST DES BARONS  " />
+		<option key="428" val=" GRUFT VON NEWLAKE  " />
+		<option key="429" val=" BIBLIOTHEK - NEWLAKE  " />
+		<option key="430" val=" DIE FESTE GODSBANE  " />
+		<option key="431" val=" TEMPEL DER BRUDERSCHAFT  " />
+		<option key="432" val=" OBERPRIESTER GEMÄCHER  " />
+		<option key="433" val=" TARBOS SARGHALLE  " />
+		<option key="434" val=" HANGAR AUF LYRAMION  " />
+		<option key="435" val=" F-SCHIFF: LYRAMION  " />
+		<option key="436" val=" F-SCHIFF: WALDMOND  " />
+		<option key="437" val=" F-SCHIFF: MORAG  " />
+		<option key="438" val=" ALTE ZWERGENMINE  " />
+		<option key="439" val=" HANGAR AUF MORAG  " />
+		<option key="440" val=" GEFÄNGNIS - S'ANGRILA  " />
+		<option key="441" val=" DIE STADT S'ANGRILA  " />
+		<option key="442" val=" ZUM FLIEGENDEN MORANER  " />
+		<option key="443" val=" REITECHSENHÄNDLERIN  " />
+		<option key="444" val=" PALAST DES S'RIEL  " />
+		<option key="445" val=" PALAST DES S'OREL  " />
+		<option key="446" val=" PALAST DES S'ARIN  " />
+		<option key="447" val=" PALAST DES S'ENDAR  " />
+		<option key="448" val=" PALAST DES S'TROG  " />
+		<option key="449" val=" PALAST DES S'KAT  " />
+		<option key="450" val=" PALAST DES S'LORWIN  " />
+		<option key="451" val=" SANDBOOTBAUER  " />
+		<option key="452" val=" MORAG-TURM  " />
+		<option key="453" val=" MASCHINENRAUM  " />
+		<option key="454" val=" HANGAR AUF MORAG  " />
+		<option key="455" val=" GEFÄNGNIS - S'ANGRILA  " />
+		<option key="300" val=" KIRES MOND  " />
+		<option key="301" val=" KIRES MOND  " />
+		<option key="302" val=" KIRES MOND  " />
+		<option key="303" val=" KIRES MOND  " />
+		<option key="304" val=" KIRES MOND  " />
+		<option key="305" val=" KIRES MOND  " />
+		<option key="306" val=" KIRES MOND  " />
+		<option key="307" val=" KIRES MOND  " />
+		<option key="308" val=" KIRES MOND  " />
+		<option key="309" val=" KIRES MOND  " />
+		<option key="310" val=" KIRES MOND  " />
+		<option key="311" val=" KIRES MOND  " />
+		<option key="312" val=" KIRES MOND  " />
+		<option key="313" val=" KIRES MOND  " />
+		<option key="314" val=" KIRES MOND  " />
+		<option key="315" val=" KIRES MOND  " />
+		<option key="316" val=" KIRES MOND  " />
+		<option key="317" val=" KIRES MOND  " />
+		<option key="318" val=" KIRES MOND  " />
+		<option key="319" val=" KIRES MOND  " />
+		<option key="320" val=" KIRES MOND  " />
+		<option key="321" val=" KIRES MOND  " />
+		<option key="322" val=" KIRES MOND  " />
+		<option key="323" val=" KIRES MOND  " />
+		<option key="324" val=" KIRES MOND  " />
+		<option key="325" val=" KIRES MOND  " />
+		<option key="326" val=" KIRES MOND  " />
+		<option key="327" val=" KIRES MOND  " />
+		<option key="328" val=" KIRES MOND  " />
+		<option key="329" val=" KIRES MOND  " />
+		<option key="330" val=" KIRES MOND  " />
+		<option key="331" val=" KIRES MOND  " />
+		<option key="332" val=" KIRES MOND  " />
+		<option key="333" val=" KIRES MOND  " />
+		<option key="334" val=" KIRES MOND  " />
+		<option key="335" val=" KIRES MOND  " />
+		<option key="336" val=" GASTHAUS GEMSTONE  " />
+		<option key="337" val=" KIRES RESIDENZ  " />
+		<option key="338" val=" EINGANGSBEREICH RUINEN  " />
+		<option key="339" val=" DOR GRESTIN  " />
+		<option key="340" val=" FERRINS KELLER  " />
+		<option key="341" val=" RATSHALLE  " />
+		<option key="342" val=" RUINENUNTERGRUND  " />
+		<option key="343" val=" DOR KIREDON  " />
+		<option key="344" val=" FERRINS SCHMIEDE  " />
+		<option key="345" val=" MINE  " />
+		<option key="346" val=" DORINAS HÖHLE  " />
+		<option key="347" val=" DORINAS HÖHLE UNTEN  " />
+		<option key="348" val=" MINE - 2. EBENE  " />
+		<option key="349" val=" RUINENTURM  " />
+		<option key="350" val=" EINGANG DER ALTEN RUINEN  " />
+		<option key="351" val=" KELLERGEWÖLBE  " />
+		<option key="352" val=" MINE - 2. EBENE  " />
+		<option key="353" val=" KIRES RESIDENZ  " />
+		<option key="354" val=" MINE - 3. EBENE  " />
+		<option key="355" val=" FERRINS LAGERKELLER  " />
+		<option key="356" val=" TORNAK-HÖHLE  " />
+		<option key="357" val=" TORNAK-HÖHLE  " />
+		<option key="358" val=" KLEINE HÖHLE  " />
+		<option key="359" val=" FERRINS SCHMIEDE  " />
+		<option key="360" val=" HAUS DES HEILERS ASRUB  " />
+		<option key="361" val=" GADLON: KELLER 2  " />
+		<option key="362" val=" GADLON: KELLER 1  " />
+		<option key="363" val=" GADLON: ERDGESCHOSS  " />
+		<option key="364" val=" GADLON: 1. STOCK  " />
+		<option key="365" val=" GADLON: 2. STOCK  " />
+		<option key="366" val=" ANTIKE ANLAGE 1  " />
+		<option key="367" val=" ANTIKE ANLAGE 2  " />
+		<option key="368" val=" ANTIKE ANLAGE 3  " />
+		<option key="369" val=" ANTIKE ANLAGE 4  " />
+	</dictionary>
+
+	<dictionary dictionary-id="shops">
+		<option key="003" val="Spannenberg, Warenhändler von Spannenberg" />
+		<option key="002" val="Spannenberg, Bibliothek der Heiler" />
+		<option key="004" val="Spannenberg, Bibliothek der Mystik" />
+		<option key="001" val="Spannenberg, Laden der Diebesgilde" />
+		<option key="005" val="Alchemistenturm, Bibliothek der Alchemie" />
+		<option key="006" val="Alchemistenturm, Laden der Alchemie" />
+		<option key="010" val="Burnville, Warenhändler von Burnville" />
+		<option key="011" val="Burnville, Nalven's Bibliothek" />
+		<option key="007" val="Burnville, Bibliothek der Heiler" />
+		<option key="008" val="Burnville, Bibliothek des Milzor" />
+		<option key="009" val="Burnville, Theresa's Schmuckladen" />
+		<option key="012" val="Newlake, Warenhandel von Newlake" />
+		<option key="013" val="Illien, Lendrai's Magische Waffen" />
+		<option key="015" val="Illien, Aiolu's Tränke Aller Art" />
+		<option key="014" val="Illien, Spruchrollen Bibliothek" />
+		<option key="017" val="Gnommine, Brom's Warenhaus" />
+		<option key="016" val="Snakesign, Warenhändler von Snakesign" />
+		<option key="031" val="Dor Kiredon, Ferrin's Schmiede" />
+		<option key="032" val="Dor Grestin, Randor's Lädchen" />
+		<option key="018" val="S'Angrila, Warenhändler von S'Angrila" />
+		<option key="033" val="-" />
+	</dictionary>
 </savegame.editor>

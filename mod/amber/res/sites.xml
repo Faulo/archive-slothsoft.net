@@ -1,34 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
-	<page name="Ambermoon" title="Ambermoon" module="amber" ref="home" status-active="" status-public="">
-		<page name="EditorHelp" title="EditorHelp" ref="help" status-active="" status-public=""/>
-		<page name="SavegameEditor" title="SavegameEditor" ref="editor-savegame" status-active="" status-public=""/>
-		<page name="GamedataEditor" title="GamedataEditor" ref="editor-gamedata" status-active=""/>
-		<page name="GameEditor" title="GameEditor" ref="editor-amberfiles" status-active=""/>
-		<page name="ExperienceChart" title="ExperienceChart" ref="epchart" status-active="" status-public=""/>
-		<page name="ItemList" title="ItemList" ref="itemlist" status-active="" status-public=""/>
-		<page name="PortraitList" title="PortraitList" ref="portraitlist" status-active="" status-public=""/>
-		
-		<param name="game" value="ambermoon"/>
-		<page name="Thalion-v1.05-DE" title="Thalion-v1.05-DE" ref="mod" status-active="">
-			<param name="mod" value="Thalion-v1.05-DE"/>
-			<page name="SaveEditor" title="SavegameEditor" ref="mod.editor" status-active="" status-public="">
-				<param name="struc" value="structure.savegame"/>
+	<page name="Ambermoon" title="Ambermoon" module="amber" ref="home"
+		status-active="" status-public="">
+		<page name="EditorHelp" title="EditorHelp" ref="help"
+			status-active="" status-public="" />
+		<page name="SavegameEditor" title="SavegameEditor" ref="editor-savegame"
+			status-active="" status-public="" />
+		<page name="GamedataEditor" title="GamedataEditor" ref="editor-gamedata"
+			status-active="" />
+		<page name="GameEditor" title="GameEditor" ref="editor-amberfiles"
+			status-active="" />
+		<page name="ExperienceChart" title="ExperienceChart" ref="epchart"
+			status-active="" status-public="" />
+		<page name="ItemList" title="ItemList" ref="itemlist"
+			status-active="" status-public="" />
+		<page name="PortraitList" title="PortraitList" ref="portraitlist"
+			status-active="" status-public="" />
+
+		<param name="game" value="ambermoon" />
+		<page name="Thalion-v1.05-DE" title="Thalion-v1.05-DE" ref="mod"
+			status-active="">
+			<param name="mod" value="Thalion-v1.05-DE" />
+			<page name="SaveEditor" title="SavegameEditor" ref="mod.editor"
+				status-active="" status-public="">
+				<param name="struc" value="structure.savegame" />
 			</page>
-			<page name="GameEditor" title="GameEditor" ref="mod.editor" status-active="" status-public="">
-				<param name="struc" value="structure"/>
+			<page name="GameEditor" title="GameEditor" ref="mod.editor"
+				status-active="" status-public="">
+				<param name="struc" value="structure" />
 			</page>
-			<page name="ItemList" title="ItemList" ref="mod.resource" status-active="" status-public="">
-				<param name="resource" value="items"/>
+			<page name="ItemList" title="ItemList" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="resource" value="items" />
 			</page>
 		</page>
-		<page name="Thalion-v1.06-DE" title="Thalion-v1.06-DE" ref="mod" status-active="">
-			<param name="mod" value="Thalion-v1.06-DE"/>
-			<page name="SaveEditor" title="SavegameEditor" ref="editor2" status-active="" status-public="">
-				<param name="struc" value="structure.savegame"/>
+		<page name="Thalion-v1.06-DE" title="Thalion-v1.06-DE" ref="mod"
+			status-active="">
+			<param name="mod" value="Thalion-v1.06-DE" />
+			<page name="SaveEditor" title="SavegameEditor" ref="editor2"
+				status-active="" status-public="">
+				<param name="struc" value="structure.savegame" />
 			</page>
-			<page name="GameEditor" title="GameEditor" ref="editor2" status-active="" status-public="">
-				<param name="struc" value="structure.savegame"/>
+			<page name="GameEditor" title="GameEditor" ref="editor2"
+				status-active="" status-public="">
+				<param name="struc" value="structure.savegame" />
 			</page>
 		</page>
 	</page>

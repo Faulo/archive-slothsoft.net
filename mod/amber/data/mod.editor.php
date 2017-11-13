@@ -2,7 +2,6 @@
 namespace Slothsoft\CMS;
 
 use Slothsoft\Amber\ModController;
-
 $controller = new ModController(__DIR__ . '/..');
 
 $editor = $controller->editorAction($this->httpRequest);

@@ -1061,7 +1061,7 @@
 		</group>
 		<group position="0x14C">
 			<!--
-				<repeat-group name="tiles" group-count="$width * $height" group-size="$map-type 
+				<repeat-group name="tiles" group-count="$width * $height" group-size="$map-type
 				* 2">
 				<integer position="0" size="1" name="tile-id"/>
 				<integer position="2" size="2 * ($map-type - 1)" name="tile-id"/>
@@ -1260,18 +1260,18 @@
 	<!--
 		<archive file-name="AM2_CPU" type="AM2">
 
-		<string-dictionary type="null-delimited" encoding="8bit" position="0x049B0A" 
+		<string-dictionary type="null-delimited" encoding="8bit" position="0x049B0A"
 		name="spells-misc" string-count="30"/>
-		<string-dictionary type="null-delimited" encoding="8bit" position="0x04950B" 
+		<string-dictionary type="null-delimited" encoding="8bit" position="0x04950B"
 		name="spells-white" string-count="30"/>
-		<string-dictionary type="null-delimited" encoding="8bit" position="0x0496E4" 
+		<string-dictionary type="null-delimited" encoding="8bit" position="0x0496E4"
 		name="spells-blue" string-count="30"/>
-		<string-dictionary type="null-delimited" encoding="8bit" position="0x049874" 
+		<string-dictionary type="null-delimited" encoding="8bit" position="0x049874"
 		name="spells-green" string-count="30"/>
-		<string-dictionary type="null-delimited" encoding="8bit" position="0x049989" 
+		<string-dictionary type="null-delimited" encoding="8bit" position="0x049989"
 		name="spells-black" string-count="30"/>
 
-		<repeat-group name="class-experience" position="0x451F0" group-size="2" 
+		<repeat-group name="class-experience" position="0x451F0" group-size="2"
 		group-count="10">
 		<integer size="2"/>
 		</repeat-group>
@@ -1413,7 +1413,7 @@
 		<string-dictionary position="0x049874" name="spells-green" string-count="30"/>
 		<string-dictionary position="0x049989" name="spells-black" string-count="30"/>
 
-		<repeat-group name="class-experience" position="0x451F0" group-size="2" 
+		<repeat-group name="class-experience" position="0x451F0" group-size="2"
 		group-count="10">
 		<integer size="2"/>
 		</repeat-group>

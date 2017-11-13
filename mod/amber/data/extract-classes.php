@@ -6,7 +6,7 @@ $this->httpRequest->setInputValue('save', [
     'editor' => [
         'archives' => [
             'AM2_BLIT',
-            'CONFIG_THALION',
+            'CONFIG_THALION'
         ]
     ]
 ]);
