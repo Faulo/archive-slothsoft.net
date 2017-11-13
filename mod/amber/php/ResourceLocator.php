@@ -1,7 +1,6 @@
 <?php
 namespace Slothsoft\Amber;
 
-use Slothsoft\CMS\HTTPRequest;
 
 class ResourceLocator {
 	const TYPE_LIBRARY 			= 'lib';
@@ -77,11 +76,11 @@ class ResourceLocator {
 	}
 	
 	public function getResource(string $fileType, string $fileName) {
-		switch ($fileType) {
-			case self::TYPE_GAMEFILE:	return $this->gameDir . DIRECTORY_SEPARATOR . $fileName;
-			case self::TYPE_GAMEFOLDER:	return $this->gameDir . DIRECTORY_SEPARATOR . $fileName;
-			case self::TYPE_MODFOLDER:	return $this->modDir . DIRECTORY_SEPARATOR . $fileName;
-			case self::TYPE_MODFILE:	return $this->modDir . DIRECTORY_SEPARATOR . $fileName;
+	    switch ($fileType) {
+	        case self::TYPE_GAMEFOLDER:	return $this->ensureFolder($this->gameDir . DIRECTORY_SEPARATOR . $fileName);
+	        case self::TYPE_MODFOLDER:	return $this->ensureFolder($this->modDir . DIRECTORY_SEPARATOR . $fileName);
+	        case self::TYPE_GAMEFILE:	return $this->ensureParentFolder($this->gameDir . DIRECTORY_SEPARATOR . $fileName);
+	        case self::TYPE_MODFILE:	return $this->ensureParentFolder($this->modDir . DIRECTORY_SEPARATOR . $fileName);
 			case self::TYPE_CLI:		return $this->cliDir . DIRECTORY_SEPARATOR . $fileName;
 			
 			case self::TYPE_STRUCTURE:	return $this->getResource(self::TYPE_GAMEFILE, $fileName . '.xml');
@@ -97,6 +96,17 @@ class ResourceLocator {
 		assert('isset(self::$repository[$id])');
 		
 		return $this->getResource(self::$repository[$id]['type'], self::$repository[$id]['name']);
+	}
+	
+	private function ensureFolder(string $folder) {
+	   if (!file_exists($folder)) {
+	       mkdir($folder, 0777, true);
+	   }
+	   return $folder;
+	}
+	private function ensureParentFolder(string $file) {
+	    $this->ensureFolder(dirname($file));
+	    return $file;
 	}
 	
 }

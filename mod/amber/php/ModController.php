@@ -1,14 +1,13 @@
 <?php
 namespace Slothsoft\Amber;
 
-use Slothsoft\Core\FileSystem;
-use Slothsoft\CMS\HTTPFile;
-use Slothsoft\CMS\HTTPRequest;
 use Slothsoft\CMS\HTTPDocument;
+use Slothsoft\CMS\HTTPRequest;
 use Slothsoft\Core\DOMHelper;
+use Slothsoft\Core\FileSystem;
 use Slothsoft\Savegame\Editor;
-use Exception;
 use Error;
+use Exception;
 
 class ModController {
 	private $moduleDir;

@@ -2,7 +2,6 @@
 namespace Slothsoft\Amber;
 
 use Slothsoft\Core\Image;
-use Exception;
 
 class GraphicsManager {
 	private $ambgfxPath;
