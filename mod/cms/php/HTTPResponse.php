@@ -68,7 +68,7 @@ class HTTPResponse
         'cache-duration' => 30, // max-age, Sekunden
         'file-size' => 16 * MEMORY_MEGABYTE, // maximum setFile-load
         'seek-size' => 1 * MEMORY_MEGABYTE, // maximum fseek
-        'chunk-size' => 1 * MEMORY_MEGABYTE, // transfer-encoding
+        'chunk-size' => 256 * MEMORY_KILOBYTE, // transfer-encoding
         'gzip-level' => 9 // encoding-level
     ];
 

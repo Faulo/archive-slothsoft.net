@@ -14,15 +14,6 @@
 		<fragment name="content">
 			<template name="mod" />
 			<struc name="default" />
-			
-			<data name="resource">
-				<param name="type" value="amberdata" />
-				<param name="name" value="classes.xml" />
-			</data>
-			<data name="resource">
-				<param name="type" value="amberdata" />
-				<param name="name" value="items.xml" />
-			</data>
 		</fragment>
 	</fragment>
 	<fragment name="editor">
@@ -31,6 +22,24 @@
 			<data name="editor" />
 			<template name="editor" />
 			<struc name="default" />
+		</fragment>
+	</fragment>
+	
+	<fragment name="mod.editor">
+		<struc name="/slothsoft/default" />
+		<fragment name="content">
+			<data name="mod.editor"/>
+			<template name="editor" />
+			<struc name="default" />
+			<script name="SavegameEditor" />
+			
+			<data name="mod.resource" as="items">
+				<param name="id" value="items"/>
+			</data>
+			
+			<data name="mod.resource" as="portraits">
+				<param name="id" value="portraits"/>
+			</data>
 		</fragment>
 	</fragment>
 	
@@ -152,7 +161,7 @@
 	<struc name="default">
 		<style name="default" />
 		<style name="dictionary" />
-		<style name="tilesets" />
+		<!--<style name="tilesets" />-->
 	</struc>
 
 	<resource name="sites" path="sites.xml" type="application/xml" />

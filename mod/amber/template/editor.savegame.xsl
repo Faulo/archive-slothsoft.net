@@ -760,8 +760,8 @@ window.addEventListener(
 	<xsl:template name="savegame.amber.character-gfx">
 		<xsl:variable name="id" select="concat('monster-gfx-', generate-id(.))"/>
 		<xsl:variable name="gfx-id" select=".//*[@name = 'gfx-id']/@value"/>
-		<xsl:variable name="width" select=".//*[@name = 'gfx-width']/*[@name = 'target']/@value"/>
-		<xsl:variable name="height" select=".//*[@name = 'gfx-height']/*[@name = 'target']/@value"/>
+		<xsl:variable name="width" select=".//*[@name = 'width']/*[@name = 'target']/@value"/>
+		<xsl:variable name="height" select=".//*[@name = 'height']/*[@name = 'target']/@value"/>
 		<xsl:variable name="animation" select="str:tokenize(string(.//*[@name = 'cycle']/@value))"/>
 		<style scoped="scoped"><![CDATA[
 .]]><xsl:value-of select="$id"/><![CDATA[ > *[data-picker-name="gfx-id"]::after {
@@ -793,8 +793,9 @@ window.addEventListener(
 			<xsl:with-param name="label" select="'sprite data'"/>
 			<xsl:with-param name="items">
 				<xsl:apply-templates select=".//*[@name = 'gfx-id']" mode="item"/>
-				<xsl:apply-templates select=".//*[@name = 'gfx-width']" mode="item"/>
-				<xsl:apply-templates select=".//*[@name = 'gfx-height']" mode="item"/>
+				<xsl:apply-templates select=".//*[@name = 'width']" mode="item"/>
+				<xsl:apply-templates select=".//*[@name = 'height']" mode="item"/>
+				<xsl:apply-templates select=".//*[@name = 'palette-index']" mode="item"/>
 			</xsl:with-param>
 		</xsl:call-template>
 		<xsl:variable name="animationCycles" select=".//*[@name = 'cycle']"/>

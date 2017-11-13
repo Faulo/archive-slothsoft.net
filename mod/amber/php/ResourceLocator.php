@@ -4,24 +4,28 @@ namespace Slothsoft\Amber;
 use Slothsoft\CMS\HTTPRequest;
 
 class ResourceLocator {
-	const TYPE_DATA 			= 'amberdata';
-	const TYPE_AMBERFILE 		= 'amberfile';
-	const TYPE_GFX 				= 'gfx';
-	const TYPE_SAVE 			= 'save';
+	const TYPE_LIBRARY 			= 'lib';
+	const TYPE_SOURCE 			= 'src';
+	const TYPE_GRAPHIC 			= 'gfx';
+	const TYPE_USERFILE 		= 'user';
 	const TYPE_CLI				= 'exe';
 	const TYPE_GAMEFILE			= 'gamefile';
+	const TYPE_GAMEFOLDER		= 'gamefolder';
+	const TYPE_MODFILE			= 'modfile';
 	const TYPE_MODFOLDER		= 'modfolder';
+	const TYPE_STRUCTURE		= 'structure';
+	const TYPE_TEMPLATE			= 'template';
 	
 	private static $repository = [
 		'structure' => [
-			'type' => self::TYPE_GAMEFILE,
-			'name' => 'structure.xml',
+			'type' => self::TYPE_STRUCTURE,
+			'name' => 'structure',
 		],
 		'ambtool' => [
 			'type' => self::TYPE_CLI,
 			'name' => 'ambtool.exe',
 		],
-		'amgfx' => [
+		'ambgfx' => [
 			'type' => self::TYPE_CLI,
 			'name' => 'amgfx.exe',
 		],
@@ -32,6 +36,18 @@ class ResourceLocator {
 		'amberfiles' => [
 			'type' => self::TYPE_MODFOLDER,
 			'name' => 'amberfiles',
+		],
+		'items' => [
+			'type' => self::TYPE_LIBRARY,
+			'name' => 'items',
+		],
+		'portraits' => [
+			'type' => self::TYPE_LIBRARY,
+			'name' => 'portraits',
+		],
+		'graphics' => [
+			'type' => self::TYPE_LIBRARY,
+			'name' => 'graphics',
 		],
 	];
 	
@@ -62,15 +78,18 @@ class ResourceLocator {
 	
 	public function getResource(string $fileType, string $fileName) {
 		switch ($fileType) {
-			case self::TYPE_DATA:			return $this->modDir . DIRECTORY_SEPARATOR . 'amberdata' . DIRECTORY_SEPARATOR . $fileName;
-			case self::TYPE_AMBERFILE:		return $this->modDir . DIRECTORY_SEPARATOR . 'amberfiles' . DIRECTORY_SEPARATOR . $fileName;
-			case self::TYPE_GFX:			return $this->modDir . DIRECTORY_SEPARATOR . 'ambergraphics' . DIRECTORY_SEPARATOR . $fileName;
-			case self::TYPE_SAVE:			return $this->modDir . DIRECTORY_SEPARATOR . 'savegames' . DIRECTORY_SEPARATOR . $fileName;
+			case self::TYPE_GAMEFILE:	return $this->gameDir . DIRECTORY_SEPARATOR . $fileName;
+			case self::TYPE_GAMEFOLDER:	return $this->gameDir . DIRECTORY_SEPARATOR . $fileName;
+			case self::TYPE_MODFOLDER:	return $this->modDir . DIRECTORY_SEPARATOR . $fileName;
+			case self::TYPE_MODFILE:	return $this->modDir . DIRECTORY_SEPARATOR . $fileName;
+			case self::TYPE_CLI:		return $this->cliDir . DIRECTORY_SEPARATOR . $fileName;
 			
-			case self::TYPE_CLI:			return $this->cliDir . DIRECTORY_SEPARATOR . $fileName;
+			case self::TYPE_STRUCTURE:	return $this->getResource(self::TYPE_GAMEFILE, $fileName . '.xml');
+			case self::TYPE_TEMPLATE:	return $this->getResource(self::TYPE_GAMEFILE, 'template.' . $fileName . '.xsl');
 			
-			case self::TYPE_MODFOLDER:		return $this->modDir . DIRECTORY_SEPARATOR . $fileName;
-			case self::TYPE_GAMEFILE:		return $this->gameDir . DIRECTORY_SEPARATOR . $fileName;
+			case self::TYPE_LIBRARY:	return $this->getResource(self::TYPE_MODFILE, 'lib' . DIRECTORY_SEPARATOR . $fileName . '.xml');
+			case self::TYPE_SOURCE:		return $this->getResource(self::TYPE_MODFILE, 'src' . DIRECTORY_SEPARATOR . $fileName);
+			case self::TYPE_GRAPHIC:	return $this->getResource(self::TYPE_MODFILE, 'gfx' . DIRECTORY_SEPARATOR . $fileName . '.png');			
 		}
 	}
 	

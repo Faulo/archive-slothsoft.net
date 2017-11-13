@@ -43,6 +43,7 @@ class SavegameController
         $tempDir = realpath($this->baseDir . '/../res/save/temp');
         
         $editorConfig = [];
+		$editorConfig['structureFile'] = $editorFile;
         $editorConfig['defaultDir'] = $defaultDir;
         $editorConfig['tempDir'] = $tempDir;
         $editorConfig['mode'] = $mode;
@@ -80,7 +81,7 @@ class SavegameController
         
         $editor = new Editor($editorConfig);
         
-        $editor->load($editorFile);
+        $editor->load();
         
         $editor->parseRequest($request);
         
