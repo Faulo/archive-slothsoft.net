@@ -35,7 +35,7 @@ if ($this->httpRequest->hasInputValue('css')) {
 		for ($paletteId = 0; $paletteId < $paletteCount; $paletteId++) {
 			if (file_exists(sprintf('%s/%d-%d.png', $tilesetsDir, $fileId, $paletteId))) {
 				$ret[] = sprintf(
-					'*[data-tileset="%d"][data-palette="%d"] *[data-picker-name="tile-id"]::after { background-image: url(/getResource.php/amber/tilesets/%d-%d); }',
+					'*[data-tileset-icon="%d"][data-palette="%d"] *[data-picker-name="tile-id"]::after { background-image: url(/getResource.php/amber/tilesets/%d-%d); }',
 					$fileId, $paletteId, $fileId, $paletteId
 				);
 			}
@@ -50,7 +50,7 @@ if ($this->httpRequest->hasInputValue('css')) {
 			$tileId++;
 			$imageId--;
 			
-			$ret[] = sprintf('*[data-tileset="%d"] *[data-picker-name="tile-id"][data-picker-value="%d"]::after { background-position-y: -%dem; }', $fileId, $tileId, $imageId);
+			$ret[] = sprintf('*[data-tileset-icon="%d"] *[data-picker-name="tile-id"][data-picker-value="%d"]::after { background-position-y: -%dem; }', $fileId, $tileId, $imageId);
 		}
 		
 		$ret[] = '';

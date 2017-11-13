@@ -276,13 +276,21 @@
 }
 
 /* tilesets */
-.Amber .picker > *[data-picker-name="tile-id"]::after {
+.Amber *[data-tileset-icon] .picker > *[data-picker-name="tile-id"]::after {
 	font-size: 32px;
 	width: 1em;
 	height: 1em;
 	position: absolute;
 	top: 0;
 	left: 0;
+}
+.Amber *[data-tileset-lab] .picker > *[data-picker-name="tile-id"]::after {
+	position: absolute;
+	bottom: 0;
+	right: 1px;
+	font-size: 0.5em;
+	line-height: 1em;
+	content: attr(data-picker-value);
 }
 .Amber .picker > *[data-picker-name="event-id"]::after {
 	position: absolute;
@@ -292,20 +300,6 @@
 	line-height: 32px;
 	content: attr(data-picker-value);
 	color: rgb(255, 153, 0);
-}
-.Amber .picker > *[data-picker-name="low"]::after {
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-	font-size: 0.5em;
-	content: attr(data-picker-value);
-}
-.Amber .picker > *[data-picker-name="high"]::after {
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	font-size: 0.5em;
-	content: attr(data-picker-value);
 }
 .Amber .picker > *[data-picker-name="tile-id"][data-picker-value="0"]::after,
 .Amber .picker > *[data-picker-name="event-id"][data-picker-value="0"]::after,

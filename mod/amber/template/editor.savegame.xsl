@@ -271,7 +271,7 @@ window.addEventListener(
 		</xsl:call-template>
 	</xsl:template>
 	
-	<xsl:template match="save:archive[@file-name[. = 'Icon_data.amb']]" mode="form-content">
+	<xsl:template match="save:archive[@file-name[. = 'Icon_data.amb' or . = '2Lab_data.amb' or . = '3Lab_data.amb' or . = '5Lab_data.amb']]" mode="form-content">
 		<xsl:call-template name="savegame.tabs">
 			<xsl:with-param name="label" select="'Aktives Tileset:'"/>
 			<xsl:with-param name="options" select="save:file/@file-name"/>
@@ -294,12 +294,12 @@ window.addEventListener(
 									<xsl:call-template name="savegame.amber.testing"/>
 								</div>
 								<div>
-									<xsl:for-each select=".//*[@name = 'icons']">
-										<h3 class="name">icons</h3>
+									<xsl:for-each select=".//*[@name = 'tiles']">
+										<h3 class="name">tiles</h3>
 										<table>
 											<thead>
 												<tr>
-													<td>icon-id</td>
+													<td>tile-id</td>
 													<td>image-id</td>
 													<td>image-range</td>
 													<td>data</td>
@@ -686,7 +686,7 @@ window.addEventListener(
 	<xsl:template name="savegame.amber.tiles">
 		<xsl:variable name="width" select=".//*[@name='width']/@value"/>
 		<xsl:variable name="height" select=".//*[@name='height']/@value"/>
-		<xsl:variable name="icondata" select=".//*[@name='icondata-id']/@value"/>
+		<xsl:variable name="tileset" select=".//*[@name='tileset-id']/@value"/>
 		<xsl:variable name="palette" select=".//*[@name='palette-id']/@value"/>
 		<xsl:variable name="map-type" select=".//*[@name='map-type']/@value"/>
 		<xsl:for-each select=".//*[@name='tiles']">
@@ -699,11 +699,11 @@ window.addEventListener(
 						<xsl:choose>
 							<xsl:when test="$map-type = 1">
 								<!--3D-->
-								<xsl:attribute name="data-labset"><xsl:value-of select="$icondata"/></xsl:attribute>
+								<xsl:attribute name="data-tileset-lab"><xsl:value-of select="$tileset"/></xsl:attribute>
 							</xsl:when>
 							<xsl:when test="$map-type = 2">
 								<!--2D-->
-								<xsl:attribute name="data-tileset"><xsl:value-of select="$icondata"/></xsl:attribute>
+								<xsl:attribute name="data-tileset-icon"><xsl:value-of select="$tileset"/></xsl:attribute>
 							</xsl:when>
 						</xsl:choose>
 						<tbody>
@@ -760,8 +760,8 @@ window.addEventListener(
 	<xsl:template name="savegame.amber.character-gfx">
 		<xsl:variable name="id" select="concat('monster-gfx-', generate-id(.))"/>
 		<xsl:variable name="gfx-id" select=".//*[@name = 'gfx-id']/@value"/>
-		<xsl:variable name="width" select=".//*[@name = 'gfx-width']/*[@name = 'target']/@value"/>
-		<xsl:variable name="height" select=".//*[@name = 'gfx-height']/*[@name = 'target']/@value"/>
+		<xsl:variable name="width" select=".//*[@name = 'width']/*[@name = 'target']/@value"/>
+		<xsl:variable name="height" select=".//*[@name = 'height']/*[@name = 'target']/@value"/>
 		<xsl:variable name="animation" select="str:tokenize(string(.//*[@name = 'cycle']/@value))"/>
 		<style scoped="scoped"><![CDATA[
 .]]><xsl:value-of select="$id"/><![CDATA[ > *[data-picker-name="gfx-id"]::after {
@@ -793,8 +793,8 @@ window.addEventListener(
 			<xsl:with-param name="label" select="'sprite data'"/>
 			<xsl:with-param name="items">
 				<xsl:apply-templates select=".//*[@name = 'gfx-id']" mode="item"/>
-				<xsl:apply-templates select=".//*[@name = 'gfx-width']" mode="item"/>
-				<xsl:apply-templates select=".//*[@name = 'gfx-height']" mode="item"/>
+				<xsl:apply-templates select=".//*[@name = 'width']" mode="item"/>
+				<xsl:apply-templates select=".//*[@name = 'height']" mode="item"/>
 			</xsl:with-param>
 		</xsl:call-template>
 		<xsl:variable name="animationCycles" select=".//*[@name = 'cycle']"/>

@@ -12,7 +12,9 @@ class SavegameController
     protected $baseDir;
 
     public function __construct($baseDir)
-    {
+    {        
+        assert('strlen($baseDir) and is_dir($baseDir)');
+        
         $this->baseDir = $baseDir;
     }
 
