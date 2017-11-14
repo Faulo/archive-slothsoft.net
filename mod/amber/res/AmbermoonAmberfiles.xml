@@ -124,6 +124,38 @@
 			dictionary-ref="gotos" />
 		<use-global ref="event-bit-goto" />
 	</global>
+	<dictionary dictionary-id="events">
+		<option val="valdyn"/>
+		<option val="grandfather"/>
+		<option val="blue-green"/>
+		<option val="blue-orange"/>
+		<option val="green-blue"/>
+		<option val="green-orange"/>
+		<option val="orange-blue"/>
+		<option val="orange-green"/>
+		<option val="game over"/>
+		<option key="255" val="-"/>
+	</dictionary>
+	<dictionary dictionary-id="popup-bitmask">
+		<option key="1" val="1"/>
+		<option key="2" val="2"/>
+		<option key="3" val="3"/>
+	</dictionary>
+	<global global-id="event-04">
+		<!-- popup text -->
+		<use-global ref="event-bit-type" />
+		
+		<select name="event-payload" position="1" dictionary-ref="events"/>
+		<select name="event-payload" position="2" size="2" dictionary-ref="popup-bitmask"/>
+		<select name="event-payload" position="5" dictionary-ref="map-texts"/>
+		
+		<use-global ref="event-bit-goto" />
+		
+		<integer name="event-null" position="6" />
+		<integer name="event-null" position="7" />
+		<integer name="event-null" position="8" />
+		<integer name="event-null" position="9" />
+	</global>
 	<global global-id="event-09">
 		<!-- award -->
 		<use-global ref="event-bit-type" />
@@ -196,14 +228,13 @@
 		<integer name="event-payload" position="1" />
 		<integer name="event-payload" position="2" />
 		<integer name="event-payload" position="6" size="2" />
+		<select name="event-payload" position="8" size="2" dictionary-ref="map-ids"/>
 
 		<use-global ref="event-bit-goto" />
 
 		<integer name="event-null" position="3" />
 		<integer name="event-null" position="4" />
 		<integer name="event-null" position="5" />
-		<integer name="event-null" position="8" />
-		<integer name="event-null" position="9" />
 	</global>
 	<global global-id="event-11">
 		<!-- battle -->
@@ -667,6 +698,21 @@
 		<integer name="event-null" position="5" />
 		<integer name="event-null" position="8" />
 		<integer name="event-null" position="9" />
+	</global>
+	<global global-id="event-19">
+		<!-- prompt -->
+		<use-global ref="event-bit-type" />
+		<integer name="event-payload" position="1" min="1" max="99" />
+		<integer name="event-null" position="2" />
+		<integer name="event-null" position="3" />
+		<integer name="event-null" position="4" />
+		<integer name="event-null" position="5" />
+		<integer name="event-null" position="6" />
+		<integer name="event-null" position="7" />
+		<select name="event-payload" position="8" size="2"
+			dictionary-ref="gotos" />
+
+		<use-global ref="event-bit-goto" />
 	</global>
 	<global global-id="event-20">
 		<!-- play music -->
@@ -1723,6 +1769,7 @@
 		<option key="2" val="door" />
 		<option key="3" val="chest" />
 		<option key="4" val="popup text" />
+		<option key="5" val="spinner" />
 		<option key="6" val="take damage" />
 		<option key="8" val="riddlemouth" />
 		<option key="9" val="award" />
@@ -1794,7 +1841,10 @@
 	</dictionary>
 	<dictionary dictionary-id="event-teleport-types">
 		<option key="0" val="default" />
+		<option key="1" val="teleporter" />
 		<option key="2" val="windtor" />
+		<option key="3" val="upwards" />
+		<option key="5" val="downwards" />
 	</dictionary>
 
 	<dictionary dictionary-id="boolean">

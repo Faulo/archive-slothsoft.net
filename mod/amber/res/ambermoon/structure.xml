@@ -105,10 +105,10 @@
 		<select position="6" size="2" name="event-payload"
 			dictionary-ref="items" />
 
-		<use-global ref="event-bit-goto" />
+		<select position="8" size="2" name="event-payload"
+			dictionary-ref="gotos" />
 
-		<integer name="event-null" position="8" />
-		<integer name="event-null" position="9" />
+		<use-global ref="event-bit-goto" />
 	</global>
 	<global global-id="event-03">
 		<!-- chest -->
@@ -120,9 +120,26 @@
 		<integer name="event-payload" position="5" />
 		<integer name="event-payload" position="6" />
 		<integer name="event-payload" position="7" />
-		<integer name="event-payload" position="8" />
-		<integer name="event-payload" position="9" />
+		<select name="event-payload" position="8" size="2"
+			dictionary-ref="gotos" />
 		<use-global ref="event-bit-goto" />
+	</global>
+	<global global-id="event-04">
+		<!-- popup text -->
+		<use-global ref="event-bit-type" />
+		
+		<select name="event-payload" position="1" dictionary-ref="events-pix"/>
+		<select name="event-payload" position="2" dictionary-ref="popup-bitmask"/>
+		<select name="event-payload" position="5" dictionary-ref="map-texts"/>
+		
+		<use-global ref="event-bit-goto" />
+		
+		<integer name="event-null" position="2" />
+		<integer name="event-null" position="3" />
+		<integer name="event-null" position="6" />
+		<integer name="event-null" position="7" />
+		<integer name="event-null" position="8" />
+		<integer name="event-null" position="9" />
 	</global>
 	<global global-id="event-09">
 		<!-- award -->
@@ -138,12 +155,30 @@
 		<integer name="event-payload" position="9" />
 		<use-global ref="event-bit-goto" />
 	</global>
-	<global global-id="event-09.07">
-		<!-- language -->
+	<global global-id="event-09.00">
+		<!-- award attribute -->
 		<use-global ref="event-bit-type" />
 		<use-global ref="event-bit-award" />
 		<select position="2" size="1" name="event-payload"
-			dictionary-ref="language-operations" />
+			dictionary-ref="award-operations" />
+		<select position="4" size="1" name="event-payload"
+			dictionary-ref="target" />
+		<select position="6" size="2" name="event-payload"
+			dictionary-ref="attributes" />
+		<integer name="event-payload" position="8" />
+		<integer name="event-payload" position="9" />
+
+		<use-global ref="event-bit-goto" />
+
+		<integer name="event-null" position="3" />
+		<integer name="event-null" position="5" />
+	</global>
+	<global global-id="event-09.07">
+		<!-- award language -->
+		<use-global ref="event-bit-type" />
+		<use-global ref="event-bit-award" />
+		<select position="2" size="1" name="event-payload"
+			dictionary-ref="award-operations" />
 		<select position="4" size="1" name="event-payload"
 			dictionary-ref="target" />
 		<select position="6" size="2" name="event-payload"
@@ -156,15 +191,16 @@
 		<integer name="event-null" position="9" />
 	</global>
 	<global global-id="event-09.08">
-		<!-- experience -->
+		<!-- award experience -->
 		<use-global ref="event-bit-type" />
 		<use-global ref="event-bit-award" />
+		<select position="2" size="1" name="event-payload"
+			dictionary-ref="award-operations" />
 		<select position="4" size="1" name="event-payload"
 			dictionary-ref="target" />
 		<integer position="8" size="2" name="event-payload" />
 		<use-global ref="event-bit-goto" />
 
-		<integer name="event-null" position="2" />
 		<integer name="event-null" position="3" />
 		<integer name="event-null" position="5" />
 		<integer name="event-null" position="6" />
@@ -177,14 +213,13 @@
 		<integer name="event-payload" position="1" />
 		<integer name="event-payload" position="2" />
 		<integer name="event-payload" position="6" size="2" />
+		<select name="event-payload" position="8" size="2" dictionary-ref="map-ids"/>
 
 		<use-global ref="event-bit-goto" />
 
 		<integer name="event-null" position="3" />
 		<integer name="event-null" position="4" />
 		<integer name="event-null" position="5" />
-		<integer name="event-null" position="8" />
-		<integer name="event-null" position="9" />
 	</global>
 	<global global-id="event-11">
 		<!-- battle -->
@@ -314,7 +349,7 @@
 		<integer name="event-null" position="5" />
 	</global>
 	<global global-id="event-13.09">
-		<!-- break loop -->
+		<!-- exit -->
 		<use-global ref="event-bit-type" />
 		<use-global ref="event-bit-if" />
 
@@ -405,6 +440,21 @@
 		<integer name="event-null" position="5" />
 		<integer name="event-null" position="8" />
 		<integer name="event-null" position="9" />
+	</global>
+	<global global-id="event-15">
+		<!-- if-1d100 -->
+		<use-global ref="event-bit-type" />
+		<integer name="event-payload" position="1" min="1" max="99" />
+		<integer name="event-null" position="2" />
+		<integer name="event-null" position="3" />
+		<integer name="event-null" position="4" />
+		<integer name="event-null" position="5" />
+		<integer name="event-null" position="6" />
+		<integer name="event-null" position="7" />
+		<select name="event-payload" position="8" size="2"
+			dictionary-ref="gotos" />
+
+		<use-global ref="event-bit-goto" />
 	</global>
 	<global global-id="event-16">
 		<!-- start -->
@@ -633,6 +683,21 @@
 		<integer name="event-null" position="5" />
 		<integer name="event-null" position="8" />
 		<integer name="event-null" position="9" />
+	</global>
+	<global global-id="event-19">
+		<!-- prompt -->
+		<use-global ref="event-bit-type" />
+		<integer name="event-payload" position="1" min="1" max="99" />
+		<integer name="event-null" position="2" />
+		<integer name="event-null" position="3" />
+		<integer name="event-null" position="4" />
+		<integer name="event-null" position="5" />
+		<integer name="event-null" position="6" />
+		<integer name="event-null" position="7" />
+		<select name="event-payload" position="8" size="2"
+			dictionary-ref="gotos" />
+
+		<use-global ref="event-bit-goto" />
 	</global>
 	<global global-id="event-20">
 		<!-- play music -->
@@ -981,16 +1046,6 @@
 			group-count="24">
 			<use-global ref="item" />
 		</repeat-group>
-
-		<!--
-			<event-dictionary position="488" name="events"/>
-		-->
-		<!--
-			<repeat-group position="488" group-size="1" group-count="322">
-			<integer name="events"/>
-			</repeat-group>
-		-->
-
 	</archive>
 	<archive file-name="Dictionary.german" type="JH">
 
@@ -1044,7 +1099,7 @@
 			<select position="2" name="map-type" dictionary-ref="map-types" />
 			<integer position="4" name="width" />
 			<integer position="5" name="height" />
-			<integer position="6" name="icondata-id" />
+			<integer position="6" name="tileset-id" />
 			<integer position="9" name="palette-id" />
 			<select position="3" name="bgm-id" dictionary-ref="songs" />
 		</group>
@@ -1060,17 +1115,16 @@
 			<integer position="15" />
 		</group>
 		<group position="0x14C">
-			<!--
-				<repeat-group name="tiles" group-count="$width * $height" group-size="$map-type 
+			<repeat-group name="tiles" group-count="$width * $height"
+				group-size="$map-type 
 				* 2">
-				<integer position="0" size="1" name="tile-id"/>
-				<integer position="2" size="2 * ($map-type - 1)" name="tile-id"/>
-				<integer position="1" size="1" name="event-id"/>
-				</repeat-group>
-				<group position="$width * $height * $map-type * 2" name="events">
-				<event-dictionary/>
-				</group>
-			-->
+				<integer position="0" size="1" name="tile-id" />
+				<integer position="2" size="2 * ($map-type - 1)" name="tile-id" />
+				<integer position="1" size="1" name="event-id" />
+			</repeat-group>
+			<group position="$width * $height * $map-type * 2" name="events">
+				<event-dictionary />
+			</group>
 		</group>
 		<!--
 			<repeat-group position="">
@@ -1115,7 +1169,7 @@
 		<group name="data">
 			<integer position="0" size="2" name="entry-count" />
 		</group>
-		<group name="icons">
+		<group name="tiles">
 			<repeat-group position="6" group-count="$entry-count"
 				group-size="8">
 				<!--<binary size="8" name="data"/> -->
@@ -1126,6 +1180,23 @@
 			<!--<binary position="6" size="20000" name="data"/> -->
 		</group>
 
+	</archive>
+	<archive file-name="5Lab_data.amb" type="AMBR">
+		<group name="testing">
+			<integer position="2" />
+			<integer position="3" />
+			<integer position="4" />
+			<integer position="5" />
+		</group>
+		<group name="data">
+			<integer position="0" size="2" name="entry-count" />
+		</group>
+		<group name="tiles">
+			<repeat-group position="0x84" group-count="255"
+				group-size="8">
+				<binary size="8" name="data" />
+			</repeat-group>
+		</group>
 	</archive>
 	<global global-id="place-inn">
 		<group>
@@ -1260,18 +1331,18 @@
 	<!--
 		<archive file-name="AM2_CPU" type="AM2">
 
-		<string-dictionary type="null-delimited" encoding="8bit" position="0x049B0A" 
+		<string-dictionary type="null-delimited" encoding="8bit" position="0x049B0A"
 		name="spells-misc" string-count="30"/>
-		<string-dictionary type="null-delimited" encoding="8bit" position="0x04950B" 
+		<string-dictionary type="null-delimited" encoding="8bit" position="0x04950B"
 		name="spells-white" string-count="30"/>
-		<string-dictionary type="null-delimited" encoding="8bit" position="0x0496E4" 
+		<string-dictionary type="null-delimited" encoding="8bit" position="0x0496E4"
 		name="spells-blue" string-count="30"/>
-		<string-dictionary type="null-delimited" encoding="8bit" position="0x049874" 
+		<string-dictionary type="null-delimited" encoding="8bit" position="0x049874"
 		name="spells-green" string-count="30"/>
-		<string-dictionary type="null-delimited" encoding="8bit" position="0x049989" 
+		<string-dictionary type="null-delimited" encoding="8bit" position="0x049989"
 		name="spells-black" string-count="30"/>
 
-		<repeat-group name="class-experience" position="0x451F0" group-size="2" 
+		<repeat-group name="class-experience" position="0x451F0" group-size="2"
 		group-count="10">
 		<integer size="2"/>
 		</repeat-group>
@@ -1413,7 +1484,7 @@
 		<string-dictionary position="0x049874" name="spells-green" string-count="30"/>
 		<string-dictionary position="0x049989" name="spells-black" string-count="30"/>
 
-		<repeat-group name="class-experience" position="0x451F0" group-size="2" 
+		<repeat-group name="class-experience" position="0x451F0" group-size="2"
 		group-count="10">
 		<integer size="2"/>
 		</repeat-group>
@@ -1554,8 +1625,9 @@
 		<option val="Fluch" />
 	</dictionary>
 
-	<dictionary dictionary-id="language-operations">
-		<option key="6" val="add" />
+	<dictionary dictionary-id="award-operations">
+		<option key="0" val="+=" />
+		<option key="6" val="|=" />
 	</dictionary>
 	<dictionary dictionary-id="languages">
 		<option key="0" val="Mensch" />
@@ -1682,16 +1754,20 @@
 		<option key="2" val="door" />
 		<option key="3" val="chest" />
 		<option key="4" val="popup text" />
+		<option key="5" val="spinner" />
 		<option key="6" val="take damage" />
+		<option key="8" val="riddlemouth" />
 		<option key="9" val="award" />
 		<option key="10" val="set tile" />
 		<option key="11" val="battle" />
 		<option key="12" val="place" />
 		<option key="13" val="if" />
 		<option key="14" val="set" />
+		<option key="15" val="if-1d100" />
 		<option key="16" val="start" />
 		<option key="18" val="create" />
 		<option key="17" val="print text" />
+		<option key="19" val="prompt" />
 		<option key="20" val="play music" />
 		<option key="21" val="exit" />
 		<option key="22" val="spawn" />
@@ -1709,9 +1785,10 @@
 		<option val="end conversation" />
 	</dictionary>
 	<dictionary dictionary-id="event-award-types">
+		<option key="0" val="attribute" />
 		<option key="7" val="language" />
 		<option key="8" val="experience" />
-		<option key="9" val="stat" />
+		<option key="9" val="alkemstat" />
 	</dictionary>
 	<dictionary dictionary-id="event-set-types">
 		<option key="0" val="global variable" />
@@ -1731,7 +1808,9 @@
 		<option key="5" val="partymember" />
 		<option key="6" val="item owned" />
 		<option key="7" val="item used" />
-		<option key="9" val="break loop" />
+		<option key="9" val="exit" />
+		<option key="14" val="touch-action" />
+		<option key="20" val="inspect-action" />
 	</dictionary>
 	<dictionary dictionary-id="event-spawn-types">
 		<option key="1" val="horse" />
@@ -1747,12 +1826,16 @@
 	</dictionary>
 	<dictionary dictionary-id="event-teleport-types">
 		<option key="0" val="default" />
+		<option key="1" val="teleporter" />
 		<option key="2" val="windtor" />
+		<option key="3" val="upwards" />
+		<option key="5" val="downwards" />
 	</dictionary>
 
 	<dictionary dictionary-id="boolean">
 		<option key="0" val="false" />
 		<option key="1" val="true" />
+		<option key="2" val="toggle" />
 	</dictionary>
 	<dictionary dictionary-id="boolean-reverse">
 		<option key="0" val="true" />
@@ -2891,71 +2974,38 @@
 
 	<dictionary dictionary-id="songs">
 		<option val="-" />
-
 		<option val="Who said &quot;Hi Ho&quot; ?" />
-
 		<option val="Mellow camel funk" />
-
 		<option val="Close to the hedge" />
-
 		<option val="Voice of the bagpipe" />
-
 		<option val="Downtown" />
-
 		<option val="SHIP" />
-
 		<option val="Whole lotta dove" />
-
 		<option val="Horse is no disgrace" />
-
 		<option val="Don't look Bach" />
-
 		<option val="Rough waterfront tavern" />
-
 		<option val="Sapphire fireballs of pure love" />
-
 		<option val="The Aum remains the same" />
-
 		<option val="CAPITAL" />
-
 		<option val="Plodding along" />
-
 		<option val="Compact disc" />
-
 		<option val="Riverside travelling blues" />
-
 		<option val="Nobody's vault but mine" />
-
 		<option val="La Crypta Strangiato" />
-
 		<option val="Misty dungeon hop" />
-
 		<option val="Burn baby burn!" />
-
 		<option val="Bar brawlin'" />
-
 		<option val="Psychedelic dune groove" />
-
 		<option val="Stairway to level 50" />
-
 		<option val="That hunch is back" />
-
 		<option val="Chicken soup" />
-
 		<option val="Dragon chase in creepy dungeon" />
-
 		<option val="His master's voice" />
-
 		<option val="To the Unknown" />
-
 		<option val="Oh no not another magical event" />
-
 		<option val="The Uh-oh song" />
-
 		<option val="Owner of a lonely sword" />
-
 		<option val="GAME OVER" />
-
 		<option key="255" val="[stop]" />
 	</dictionary>
 
@@ -3061,229 +3111,231 @@
 		<option key="30" val="GOTO 30" />
 		<option key="31" val="GOTO 31" />
 		<option key="32" val="GOTO 32" />
-		<option key="33" val="GOTO 33" />
-		<option key="34" val="GOTO 34" />
-		<option key="35" val="GOTO 35" />
-		<option key="36" val="GOTO 36" />
-		<option key="37" val="GOTO 37" />
-		<option key="38" val="GOTO 38" />
-		<option key="39" val="GOTO 39" />
-		<option key="40" val="GOTO 40" />
-		<option key="41" val="GOTO 41" />
-		<option key="42" val="GOTO 42" />
-		<option key="43" val="GOTO 43" />
-		<option key="44" val="GOTO 44" />
-		<option key="45" val="GOTO 45" />
-		<option key="46" val="GOTO 46" />
-		<option key="47" val="GOTO 47" />
-		<option key="48" val="GOTO 48" />
-		<option key="49" val="GOTO 49" />
-		<option key="50" val="GOTO 50" />
-		<option key="51" val="GOTO 51" />
-		<option key="52" val="GOTO 52" />
-		<option key="53" val="GOTO 53" />
-		<option key="54" val="GOTO 54" />
-		<option key="55" val="GOTO 55" />
-		<option key="56" val="GOTO 56" />
-		<option key="57" val="GOTO 57" />
-		<option key="58" val="GOTO 58" />
-		<option key="59" val="GOTO 59" />
-		<option key="60" val="GOTO 60" />
-		<option key="61" val="GOTO 61" />
-		<option key="62" val="GOTO 62" />
-		<option key="63" val="GOTO 63" />
-		<option key="64" val="GOTO 64" />
-		<option key="65" val="GOTO 65" />
-		<option key="66" val="GOTO 66" />
-		<option key="67" val="GOTO 67" />
-		<option key="68" val="GOTO 68" />
-		<option key="69" val="GOTO 69" />
-		<option key="70" val="GOTO 70" />
-		<option key="71" val="GOTO 71" />
-		<option key="72" val="GOTO 72" />
-		<option key="73" val="GOTO 73" />
-		<option key="74" val="GOTO 74" />
-		<option key="75" val="GOTO 75" />
-		<option key="76" val="GOTO 76" />
-		<option key="77" val="GOTO 77" />
-		<option key="78" val="GOTO 78" />
-		<option key="79" val="GOTO 79" />
-		<option key="80" val="GOTO 80" />
-		<option key="81" val="GOTO 81" />
-		<option key="82" val="GOTO 82" />
-		<option key="83" val="GOTO 83" />
-		<option key="84" val="GOTO 84" />
-		<option key="85" val="GOTO 85" />
-		<option key="86" val="GOTO 86" />
-		<option key="87" val="GOTO 87" />
-		<option key="88" val="GOTO 88" />
-		<option key="89" val="GOTO 89" />
-		<option key="90" val="GOTO 90" />
-		<option key="91" val="GOTO 91" />
-		<option key="92" val="GOTO 92" />
-		<option key="93" val="GOTO 93" />
-		<option key="94" val="GOTO 94" />
-		<option key="95" val="GOTO 95" />
-		<option key="96" val="GOTO 96" />
-		<option key="97" val="GOTO 97" />
-		<option key="98" val="GOTO 98" />
-		<option key="99" val="GOTO 99" />
-		<option key="100" val="GOTO 100" />
-		<option key="101" val="GOTO 101" />
-		<option key="102" val="GOTO 102" />
-		<option key="103" val="GOTO 103" />
-		<option key="104" val="GOTO 104" />
-		<option key="105" val="GOTO 105" />
-		<option key="106" val="GOTO 106" />
-		<option key="107" val="GOTO 107" />
-		<option key="108" val="GOTO 108" />
-		<option key="109" val="GOTO 109" />
-		<option key="110" val="GOTO 110" />
-		<option key="111" val="GOTO 111" />
-		<option key="112" val="GOTO 112" />
-		<option key="113" val="GOTO 113" />
-		<option key="114" val="GOTO 114" />
-		<option key="115" val="GOTO 115" />
-		<option key="116" val="GOTO 116" />
-		<option key="117" val="GOTO 117" />
-		<option key="118" val="GOTO 118" />
-		<option key="119" val="GOTO 119" />
-		<option key="120" val="GOTO 120" />
-		<option key="121" val="GOTO 121" />
-		<option key="122" val="GOTO 122" />
-		<option key="123" val="GOTO 123" />
-		<option key="124" val="GOTO 124" />
-		<option key="125" val="GOTO 125" />
-		<option key="126" val="GOTO 126" />
-		<option key="127" val="GOTO 127" />
-		<option key="128" val="GOTO 128" />
-		<option key="129" val="GOTO 129" />
-		<option key="130" val="GOTO 130" />
-		<option key="131" val="GOTO 131" />
-		<option key="132" val="GOTO 132" />
-		<option key="133" val="GOTO 133" />
-		<option key="134" val="GOTO 134" />
-		<option key="135" val="GOTO 135" />
-		<option key="136" val="GOTO 136" />
-		<option key="137" val="GOTO 137" />
-		<option key="138" val="GOTO 138" />
-		<option key="139" val="GOTO 139" />
-		<option key="140" val="GOTO 140" />
-		<option key="141" val="GOTO 141" />
-		<option key="142" val="GOTO 142" />
-		<option key="143" val="GOTO 143" />
-		<option key="144" val="GOTO 144" />
-		<option key="145" val="GOTO 145" />
-		<option key="146" val="GOTO 146" />
-		<option key="147" val="GOTO 147" />
-		<option key="148" val="GOTO 148" />
-		<option key="149" val="GOTO 149" />
-		<option key="150" val="GOTO 150" />
-		<option key="151" val="GOTO 151" />
-		<option key="152" val="GOTO 152" />
-		<option key="153" val="GOTO 153" />
-		<option key="154" val="GOTO 154" />
-		<option key="155" val="GOTO 155" />
-		<option key="156" val="GOTO 156" />
-		<option key="157" val="GOTO 157" />
-		<option key="158" val="GOTO 158" />
-		<option key="159" val="GOTO 159" />
-		<option key="160" val="GOTO 160" />
-		<option key="161" val="GOTO 161" />
-		<option key="162" val="GOTO 162" />
-		<option key="163" val="GOTO 163" />
-		<option key="164" val="GOTO 164" />
-		<option key="165" val="GOTO 165" />
-		<option key="166" val="GOTO 166" />
-		<option key="167" val="GOTO 167" />
-		<option key="168" val="GOTO 168" />
-		<option key="169" val="GOTO 169" />
-		<option key="170" val="GOTO 170" />
-		<option key="171" val="GOTO 171" />
-		<option key="172" val="GOTO 172" />
-		<option key="173" val="GOTO 173" />
-		<option key="174" val="GOTO 174" />
-		<option key="175" val="GOTO 175" />
-		<option key="176" val="GOTO 176" />
-		<option key="177" val="GOTO 177" />
-		<option key="178" val="GOTO 178" />
-		<option key="179" val="GOTO 179" />
-		<option key="180" val="GOTO 180" />
-		<option key="181" val="GOTO 181" />
-		<option key="182" val="GOTO 182" />
-		<option key="183" val="GOTO 183" />
-		<option key="184" val="GOTO 184" />
-		<option key="185" val="GOTO 185" />
-		<option key="186" val="GOTO 186" />
-		<option key="187" val="GOTO 187" />
-		<option key="188" val="GOTO 188" />
-		<option key="189" val="GOTO 189" />
-		<option key="190" val="GOTO 190" />
-		<option key="191" val="GOTO 191" />
-		<option key="192" val="GOTO 192" />
-		<option key="193" val="GOTO 193" />
-		<option key="194" val="GOTO 194" />
-		<option key="195" val="GOTO 195" />
-		<option key="196" val="GOTO 196" />
-		<option key="197" val="GOTO 197" />
-		<option key="198" val="GOTO 198" />
-		<option key="199" val="GOTO 199" />
-		<option key="200" val="GOTO 200" />
-		<option key="201" val="GOTO 201" />
-		<option key="202" val="GOTO 202" />
-		<option key="203" val="GOTO 203" />
-		<option key="204" val="GOTO 204" />
-		<option key="205" val="GOTO 205" />
-		<option key="206" val="GOTO 206" />
-		<option key="207" val="GOTO 207" />
-		<option key="208" val="GOTO 208" />
-		<option key="209" val="GOTO 209" />
-		<option key="210" val="GOTO 210" />
-		<option key="211" val="GOTO 211" />
-		<option key="212" val="GOTO 212" />
-		<option key="213" val="GOTO 213" />
-		<option key="214" val="GOTO 214" />
-		<option key="215" val="GOTO 215" />
-		<option key="216" val="GOTO 216" />
-		<option key="217" val="GOTO 217" />
-		<option key="218" val="GOTO 218" />
-		<option key="219" val="GOTO 219" />
-		<option key="220" val="GOTO 220" />
-		<option key="221" val="GOTO 221" />
-		<option key="222" val="GOTO 222" />
-		<option key="223" val="GOTO 223" />
-		<option key="224" val="GOTO 224" />
-		<option key="225" val="GOTO 225" />
-		<option key="226" val="GOTO 226" />
-		<option key="227" val="GOTO 227" />
-		<option key="228" val="GOTO 228" />
-		<option key="229" val="GOTO 229" />
-		<option key="230" val="GOTO 230" />
-		<option key="231" val="GOTO 231" />
-		<option key="232" val="GOTO 232" />
-		<option key="233" val="GOTO 233" />
-		<option key="234" val="GOTO 234" />
-		<option key="235" val="GOTO 235" />
-		<option key="236" val="GOTO 236" />
-		<option key="237" val="GOTO 237" />
-		<option key="238" val="GOTO 238" />
-		<option key="239" val="GOTO 239" />
-		<option key="240" val="GOTO 240" />
-		<option key="241" val="GOTO 241" />
-		<option key="242" val="GOTO 242" />
-		<option key="243" val="GOTO 243" />
-		<option key="244" val="GOTO 244" />
-		<option key="245" val="GOTO 245" />
-		<option key="246" val="GOTO 246" />
-		<option key="247" val="GOTO 247" />
-		<option key="248" val="GOTO 248" />
-		<option key="249" val="GOTO 249" />
-		<option key="250" val="GOTO 250" />
-		<option key="251" val="GOTO 251" />
-		<option key="252" val="GOTO 252" />
-		<option key="253" val="GOTO 253" />
-		<option key="254" val="GOTO 254" />
-		<option key="255" val="GOTO 255" />
+		<!--
+			<option key="33" val="GOTO 33" />
+			<option key="34" val="GOTO 34" />
+			<option key="35" val="GOTO 35" />
+			<option key="36" val="GOTO 36" />
+			<option key="37" val="GOTO 37" />
+			<option key="38" val="GOTO 38" />
+			<option key="39" val="GOTO 39" />
+			<option key="40" val="GOTO 40" />
+			<option key="41" val="GOTO 41" />
+			<option key="42" val="GOTO 42" />
+			<option key="43" val="GOTO 43" />
+			<option key="44" val="GOTO 44" />
+			<option key="45" val="GOTO 45" />
+			<option key="46" val="GOTO 46" />
+			<option key="47" val="GOTO 47" />
+			<option key="48" val="GOTO 48" />
+			<option key="49" val="GOTO 49" />
+			<option key="50" val="GOTO 50" />
+			<option key="51" val="GOTO 51" />
+			<option key="52" val="GOTO 52" />
+			<option key="53" val="GOTO 53" />
+			<option key="54" val="GOTO 54" />
+			<option key="55" val="GOTO 55" />
+			<option key="56" val="GOTO 56" />
+			<option key="57" val="GOTO 57" />
+			<option key="58" val="GOTO 58" />
+			<option key="59" val="GOTO 59" />
+			<option key="60" val="GOTO 60" />
+			<option key="61" val="GOTO 61" />
+			<option key="62" val="GOTO 62" />
+			<option key="63" val="GOTO 63" />
+			<option key="64" val="GOTO 64" />
+			<option key="65" val="GOTO 65" />
+			<option key="66" val="GOTO 66" />
+			<option key="67" val="GOTO 67" />
+			<option key="68" val="GOTO 68" />
+			<option key="69" val="GOTO 69" />
+			<option key="70" val="GOTO 70" />
+			<option key="71" val="GOTO 71" />
+			<option key="72" val="GOTO 72" />
+			<option key="73" val="GOTO 73" />
+			<option key="74" val="GOTO 74" />
+			<option key="75" val="GOTO 75" />
+			<option key="76" val="GOTO 76" />
+			<option key="77" val="GOTO 77" />
+			<option key="78" val="GOTO 78" />
+			<option key="79" val="GOTO 79" />
+			<option key="80" val="GOTO 80" />
+			<option key="81" val="GOTO 81" />
+			<option key="82" val="GOTO 82" />
+			<option key="83" val="GOTO 83" />
+			<option key="84" val="GOTO 84" />
+			<option key="85" val="GOTO 85" />
+			<option key="86" val="GOTO 86" />
+			<option key="87" val="GOTO 87" />
+			<option key="88" val="GOTO 88" />
+			<option key="89" val="GOTO 89" />
+			<option key="90" val="GOTO 90" />
+			<option key="91" val="GOTO 91" />
+			<option key="92" val="GOTO 92" />
+			<option key="93" val="GOTO 93" />
+			<option key="94" val="GOTO 94" />
+			<option key="95" val="GOTO 95" />
+			<option key="96" val="GOTO 96" />
+			<option key="97" val="GOTO 97" />
+			<option key="98" val="GOTO 98" />
+			<option key="99" val="GOTO 99" />
+			<option key="100" val="GOTO 100" />
+			<option key="101" val="GOTO 101" />
+			<option key="102" val="GOTO 102" />
+			<option key="103" val="GOTO 103" />
+			<option key="104" val="GOTO 104" />
+			<option key="105" val="GOTO 105" />
+			<option key="106" val="GOTO 106" />
+			<option key="107" val="GOTO 107" />
+			<option key="108" val="GOTO 108" />
+			<option key="109" val="GOTO 109" />
+			<option key="110" val="GOTO 110" />
+			<option key="111" val="GOTO 111" />
+			<option key="112" val="GOTO 112" />
+			<option key="113" val="GOTO 113" />
+			<option key="114" val="GOTO 114" />
+			<option key="115" val="GOTO 115" />
+			<option key="116" val="GOTO 116" />
+			<option key="117" val="GOTO 117" />
+			<option key="118" val="GOTO 118" />
+			<option key="119" val="GOTO 119" />
+			<option key="120" val="GOTO 120" />
+			<option key="121" val="GOTO 121" />
+			<option key="122" val="GOTO 122" />
+			<option key="123" val="GOTO 123" />
+			<option key="124" val="GOTO 124" />
+			<option key="125" val="GOTO 125" />
+			<option key="126" val="GOTO 126" />
+			<option key="127" val="GOTO 127" />
+			<option key="128" val="GOTO 128" />
+			<option key="129" val="GOTO 129" />
+			<option key="130" val="GOTO 130" />
+			<option key="131" val="GOTO 131" />
+			<option key="132" val="GOTO 132" />
+			<option key="133" val="GOTO 133" />
+			<option key="134" val="GOTO 134" />
+			<option key="135" val="GOTO 135" />
+			<option key="136" val="GOTO 136" />
+			<option key="137" val="GOTO 137" />
+			<option key="138" val="GOTO 138" />
+			<option key="139" val="GOTO 139" />
+			<option key="140" val="GOTO 140" />
+			<option key="141" val="GOTO 141" />
+			<option key="142" val="GOTO 142" />
+			<option key="143" val="GOTO 143" />
+			<option key="144" val="GOTO 144" />
+			<option key="145" val="GOTO 145" />
+			<option key="146" val="GOTO 146" />
+			<option key="147" val="GOTO 147" />
+			<option key="148" val="GOTO 148" />
+			<option key="149" val="GOTO 149" />
+			<option key="150" val="GOTO 150" />
+			<option key="151" val="GOTO 151" />
+			<option key="152" val="GOTO 152" />
+			<option key="153" val="GOTO 153" />
+			<option key="154" val="GOTO 154" />
+			<option key="155" val="GOTO 155" />
+			<option key="156" val="GOTO 156" />
+			<option key="157" val="GOTO 157" />
+			<option key="158" val="GOTO 158" />
+			<option key="159" val="GOTO 159" />
+			<option key="160" val="GOTO 160" />
+			<option key="161" val="GOTO 161" />
+			<option key="162" val="GOTO 162" />
+			<option key="163" val="GOTO 163" />
+			<option key="164" val="GOTO 164" />
+			<option key="165" val="GOTO 165" />
+			<option key="166" val="GOTO 166" />
+			<option key="167" val="GOTO 167" />
+			<option key="168" val="GOTO 168" />
+			<option key="169" val="GOTO 169" />
+			<option key="170" val="GOTO 170" />
+			<option key="171" val="GOTO 171" />
+			<option key="172" val="GOTO 172" />
+			<option key="173" val="GOTO 173" />
+			<option key="174" val="GOTO 174" />
+			<option key="175" val="GOTO 175" />
+			<option key="176" val="GOTO 176" />
+			<option key="177" val="GOTO 177" />
+			<option key="178" val="GOTO 178" />
+			<option key="179" val="GOTO 179" />
+			<option key="180" val="GOTO 180" />
+			<option key="181" val="GOTO 181" />
+			<option key="182" val="GOTO 182" />
+			<option key="183" val="GOTO 183" />
+			<option key="184" val="GOTO 184" />
+			<option key="185" val="GOTO 185" />
+			<option key="186" val="GOTO 186" />
+			<option key="187" val="GOTO 187" />
+			<option key="188" val="GOTO 188" />
+			<option key="189" val="GOTO 189" />
+			<option key="190" val="GOTO 190" />
+			<option key="191" val="GOTO 191" />
+			<option key="192" val="GOTO 192" />
+			<option key="193" val="GOTO 193" />
+			<option key="194" val="GOTO 194" />
+			<option key="195" val="GOTO 195" />
+			<option key="196" val="GOTO 196" />
+			<option key="197" val="GOTO 197" />
+			<option key="198" val="GOTO 198" />
+			<option key="199" val="GOTO 199" />
+			<option key="200" val="GOTO 200" />
+			<option key="201" val="GOTO 201" />
+			<option key="202" val="GOTO 202" />
+			<option key="203" val="GOTO 203" />
+			<option key="204" val="GOTO 204" />
+			<option key="205" val="GOTO 205" />
+			<option key="206" val="GOTO 206" />
+			<option key="207" val="GOTO 207" />
+			<option key="208" val="GOTO 208" />
+			<option key="209" val="GOTO 209" />
+			<option key="210" val="GOTO 210" />
+			<option key="211" val="GOTO 211" />
+			<option key="212" val="GOTO 212" />
+			<option key="213" val="GOTO 213" />
+			<option key="214" val="GOTO 214" />
+			<option key="215" val="GOTO 215" />
+			<option key="216" val="GOTO 216" />
+			<option key="217" val="GOTO 217" />
+			<option key="218" val="GOTO 218" />
+			<option key="219" val="GOTO 219" />
+			<option key="220" val="GOTO 220" />
+			<option key="221" val="GOTO 221" />
+			<option key="222" val="GOTO 222" />
+			<option key="223" val="GOTO 223" />
+			<option key="224" val="GOTO 224" />
+			<option key="225" val="GOTO 225" />
+			<option key="226" val="GOTO 226" />
+			<option key="227" val="GOTO 227" />
+			<option key="228" val="GOTO 228" />
+			<option key="229" val="GOTO 229" />
+			<option key="230" val="GOTO 230" />
+			<option key="231" val="GOTO 231" />
+			<option key="232" val="GOTO 232" />
+			<option key="233" val="GOTO 233" />
+			<option key="234" val="GOTO 234" />
+			<option key="235" val="GOTO 235" />
+			<option key="236" val="GOTO 236" />
+			<option key="237" val="GOTO 237" />
+			<option key="238" val="GOTO 238" />
+			<option key="239" val="GOTO 239" />
+			<option key="240" val="GOTO 240" />
+			<option key="241" val="GOTO 241" />
+			<option key="242" val="GOTO 242" />
+			<option key="243" val="GOTO 243" />
+			<option key="244" val="GOTO 244" />
+			<option key="245" val="GOTO 245" />
+			<option key="246" val="GOTO 246" />
+			<option key="247" val="GOTO 247" />
+			<option key="248" val="GOTO 248" />
+			<option key="249" val="GOTO 249" />
+			<option key="250" val="GOTO 250" />
+			<option key="251" val="GOTO 251" />
+			<option key="252" val="GOTO 252" />
+			<option key="253" val="GOTO 253" />
+			<option key="254" val="GOTO 254" />
+			<option key="255" val="GOTO 255" />
+		-->
 		<option key="65535" val="RETURN" />
 	</dictionary>
 </savegame.editor>
