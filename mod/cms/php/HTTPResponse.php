@@ -239,15 +239,6 @@ class HTTPResponse
         $this->protocolName = $httpRequest->protocolName;
         $this->protocolMajorVersion = $httpRequest->protocolMajorVersion;
         $this->protocolMinorVersion = $httpRequest->protocolMinorVersion;
-        
-        switch ($this->protocolName) {
-            case HTTPRequest::PROTOCOL_HTTP:
-                if ($this->protocolMajorVersion >= 1 and $this->protocolMinorVersion >= 1) {
-                    $this->transferEncoding = self::TRANSFER_ENCODING_CHUNKED;
-                }
-            default:
-                break;
-        }
     }
 
     public function track()
@@ -455,6 +446,14 @@ class HTTPResponse
         $this->bodyLength = null;
         $this->bodyType = self::BODY_STREAM;
         $this->contentEncoding = self::CONTENT_ENCODING_RAW;
+        switch ($this->protocolName) {
+            case HTTPRequest::PROTOCOL_HTTP:
+                if ($this->protocolMajorVersion >= 1 and $this->protocolMinorVersion >= 1) {
+                    $this->transferEncoding = self::TRANSFER_ENCODING_CHUNKED;
+                }
+            default:
+                break;
+        }
         
         $headerList = $this->body->getHeaderList();
         foreach ($headerList as $key => $val) {
