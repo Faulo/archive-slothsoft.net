@@ -11,6 +11,8 @@ namespace Slothsoft\CMS;
 use Slothsoft\Core\Storage;
 use Slothsoft\Core\DOMHelper;
 use Slothsoft\PT\Repository;
+use DomainException;
+use RuntimeException;
 use Throwable;
 use Exception;
 use DOMImplementation;
@@ -171,7 +173,7 @@ class HTTPDocument
     public static function createRequestURI($path, $mode, array $req = null)
     {
         if (! isset(self::$lookupURIList[$mode])) {
-            throw new Exception('unknown mode: ' . $mode);
+            throw new DomainException('unknown mode: ' . $mode);
         }
         $ret = self::$lookupURIList[$mode];
         $ret .= $path;
@@ -1118,7 +1120,7 @@ class HTTPDocument
     {
         $file = $this->getResourcePath($path);
         if (! $file) {
-            throw new Exception('unknown path: ' . $path);
+            throw new RuntimeException('unknown path: ' . $path);
         }
         if ($resNode instanceof DOMDocument) {
             $resDoc = $resNode;
@@ -1397,7 +1399,9 @@ class HTTPDocument
             if (isset($this->httpRequest->input[$key])) {
                 if (is_array($val)) {
                     $this->httpRequest->input[$key] = array_merge((array) $val, (array) $this->httpRequest->input[$key]);
-                }
+                } else {
+					$this->httpRequest->input[$key] = $val;
+				}
             } else {
                 $this->httpRequest->input[$key] = $val;
             }

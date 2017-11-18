@@ -2,6 +2,7 @@
 namespace Slothsoft\Core;
 
 use Slothsoft\CMS\Cache;
+use DomainException;
 use Exception;
 
 class Image
@@ -103,7 +104,7 @@ class Image
             case 'image/png':
                 return imagecreatefrompng($file); // png file
             default:
-                throw new Exception(sprintf('MIME TYPE NOT SUPPORTED: "%s"', basename($file)));
+                throw new DomainException(sprintf('MIME TYPE NOT SUPPORTED: "%s"', basename($file)));
         }
     }
 

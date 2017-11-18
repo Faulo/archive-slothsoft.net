@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common"
 	xmlns:func="http://exslt.org/functions" xmlns:str="http://exslt.org/strings"
 	xmlns:php="http://php.net/xsl" xmlns:save="http://schema.slothsoft.net/savegame/editor"
@@ -7,9 +8,6 @@
 
 	<xsl:key name="dictionary-option"
 		match="save:savegame.editor/save:dictionary/save:option" use="../@dictionary-id" />
-	<xsl:key name="item" match="item" use="@id" />
-
-	<xsl:param name="ARCHIVE_FILENAME" select="''" />
 
 	<!--
 		<func:function name="save:splitNames">
@@ -48,11 +46,6 @@
 		</func:function>
 	-->
 
-	<xsl:template match="save:savegame.editor">
-		<xsl:apply-templates select="save:archive[@file-name = $ARCHIVE_FILENAME]"
-			mode="form" />
-	</xsl:template>
-
 	<!-- form -->
 	<xsl:template match="save:archive" mode="form">
 		<form action="./?SaveName={../@save-id}" method="POST">
@@ -60,9 +53,9 @@
 				<input value="{../@save-id}" name="SaveName" type="hidden" />
 				<input value="{../@save-mode}" name="SaveDefault" type="hidden" />
 			-->
-			<button name="SaveFile" type="submit" class="yellow" value="{@file-name}">Zwischenspeichern</button>
+			<button name="SaveFile" type="submit" class="yellow" value="{@name}">Zwischenspeichern</button>
 			<button name="DownloadFile" type="submit" class="yellow"
-				value="{@file-name}">Download</button>
+				value="{@name}">Download</button>
 
 			<xsl:apply-templates select="." mode="form-content" />
 		</form>
@@ -107,8 +100,11 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="save:archive[@file-name='Party_char.amb']"
+	<xsl:template match="save:archive[@name='Party_char.amb']"
 		mode="form-content">
+		<xsl:apply-templates select="$amberdata/amber:item-list" mode="picker"/>
+		<xsl:apply-templates select="$amberdata/amber:portrait-list" mode="picker"/>
+		
 		<xsl:call-template name="savegame.tabs">
 			<xsl:with-param name="label" select="'Aktiver Charakter:'" />
 			<xsl:with-param name="options" select=".//*[@name = 'name']/@value" />
@@ -119,9 +115,9 @@
 						window.addEventListener(
 						"load",
 						(eve) => {
-						AngularAmber.controller("character]]><xsl:value-of select="@file-name"/><![CDATA[", 
+						AngularAmber.controller("character]]><xsl:value-of select="@name"/><![CDATA[", 
 						function($scope) {
-						$scope.name = "]]><xsl:value-of select="@file-name"/><![CDATA[";
+						$scope.name = "]]><xsl:value-of select="@name"/><![CDATA[";
 						alert($scope.name);
 						});
 						},
@@ -129,7 +125,7 @@
 						);
 						]]></script>
 					-->
-					<li><!--ng-controller="character{@file-name}" -->
+					<li><!--ng-controller="character{@name}" -->
 						<xsl:call-template name="savegame.flex">
 							<xsl:with-param name="items">
 								<div>
@@ -163,8 +159,11 @@
 		</xsl:call-template>
 	</xsl:template>
 
-	<xsl:template match="save:archive[@file-name='NPC_char.amb']"
+	<xsl:template match="save:archive[@name='NPC_char.amb']"
 		mode="form-content">
+		<xsl:apply-templates select="$amberdata/amber:item-list" mode="picker"/>
+		<xsl:apply-templates select="$amberdata/amber:portrait-list" mode="picker"/>
+		
 		<xsl:call-template name="savegame.tabs">
 			<xsl:with-param name="label" select="'Aktiver NPC:'" />
 			<xsl:with-param name="options" select=".//*[@name = 'name']/@value" />
@@ -194,8 +193,11 @@
 		</xsl:call-template>
 	</xsl:template>
 
-	<xsl:template match="save:archive[@file-name='Monster_char_data.amb']"
+	<xsl:template match="save:archive[@name='Monster_char_data.amb']"
 		mode="form-content">
+		<xsl:apply-templates select="$amberdata/amber:item-list" mode="picker"/>
+		<xsl:apply-templates select="$amberdata/amber:portrait-list" mode="picker"/>
+		
 		<xsl:call-template name="savegame.tabs">
 			<xsl:with-param name="label" select="'Aktives Monster:'" />
 			<xsl:with-param name="options" select=".//*[@name = 'name']/@value" />
@@ -239,8 +241,10 @@
 	</xsl:template>
 
 	<xsl:template
-		match="save:archive[@file-name[. = '1Map_data.amb' or . = '2Map_data.amb' or . = '3Map_data.amb' or . = '4Map_data.amb' or . = '5Map_data.amb']]"
+		match="save:archive[contains(@name, 'Map_data.amb')]"
 		mode="form-content">
+		<xsl:apply-templates select="$amberdata/amber:tileset.icon-list" mode="picker"/>
+		
 		<xsl:variable name="fileList" select="save:file" />
 		<xsl:variable name="nameList"
 			select="key('dictionary-option', 'map-ids')[number(@key) = $fileList/@file-name]" />
@@ -279,13 +283,14 @@
 	</xsl:template>
 
 	<xsl:template
-		match="save:archive[@file-name[. = 'Icon_data.amb' or . = '2Lab_data.amb' or . = '3Lab_data.amb' or . = '5Lab_data.amb']]"
+		match="save:archive[contains(@name, 'Icon_data.amb') or contains(@name, 'Lab_data.amb')]"
 		mode="form-content">
 		<xsl:call-template name="savegame.tabs">
 			<xsl:with-param name="label" select="'Aktives Tileset:'" />
 			<xsl:with-param name="options" select="save:file/@file-name" />
 			<xsl:with-param name="list">
 				<xsl:for-each select="save:file">
+					<xsl:variable name="tilesetId" select="number(@file-name)"/>
 					<li>
 						<xsl:call-template name="savegame.flex">
 							<xsl:with-param name="items">
@@ -306,34 +311,64 @@
 								<div>
 									<xsl:for-each select=".//*[@name = 'tiles']">
 										<h3 class="name">tiles</h3>
-										<table>
+										<table data-tileset-icon="{$tilesetId}" data-palette="1">
 											<thead>
 												<tr>
 													<td>tile-id</td>
+													<td></td>
 													<td>image-id</td>
-													<td>image-range</td>
+													<td>count</td>
+													
+													<td>foot</td>
+													<td>horse</td>
+													<td>raft</td>
+													<td>ship</td>
+													<td>broom</td>
+													<td>eagle</td>
+													<td>cape</td>
+													<td>water</td>
+													
 													<td>data</td>
+													<td>color</td>
 												</tr>
 											</thead>
 											<tbody>
 												<xsl:for-each select="*/*">
-													<tr>
-														<td>
-															<xsl:value-of select="position()" />
-														</td>
-														<td>
-															<xsl:apply-templates select="save:integer[1]"
-																mode="form-content" />
-														</td>
-														<td>
-															<xsl:apply-templates select="save:integer[2]"
-																mode="form-content" />
-														</td>
-														<td>
-															<xsl:apply-templates select="save:binary"
-																mode="form-content" />
-														</td>
-													</tr>
+													<xsl:if test="*[@name='image-count']/@value &gt; 0">
+														<tr>
+															<td class="right-aligned">
+																<xsl:value-of select="position()" />
+															</td>
+															<td>
+																<amber-picker type="tileset.icon-{$tilesetId}" class="tile-picker"
+																	role="button" tabindex="0">
+																	<amber-tile-id value="{position()}"/>
+																</amber-picker>
+															</td>
+															<td>
+																<xsl:apply-templates select="save:integer[1]"
+																	mode="form-content" />
+															</td>
+															<td>
+																<xsl:apply-templates select="save:integer[2]"
+																	mode="form-content" />
+															</td>
+															<xsl:for-each select="*[@name='mobility']/*">
+																<td>
+																	<xsl:apply-templates select="."
+																		mode="form-content" />
+																</td>
+															</xsl:for-each>
+															<td>
+																<xsl:apply-templates select="*[@name='testing']/*"
+																	mode="form-content" />
+															</td>
+															<td>
+																<xsl:apply-templates select="save:select"
+																	mode="form-content" />
+															</td>
+														</tr>
+													</xsl:if>
 												</xsl:for-each>
 											</tbody>
 										</table>
@@ -349,7 +384,7 @@
 
 
 
-	<xsl:template match="save:archive[@file-name='1Map_texts.amb']"
+	<xsl:template match="save:archive[@name='1Map_texts.amb']"
 		mode="form-content">
 		<xsl:call-template name="savegame.tabs">
 			<xsl:with-param name="label" select="'Aktive Karte:'" />
@@ -373,7 +408,7 @@
 	</xsl:template>
 
 	<xsl:template
-		match="save:archive[@file-name='2Map_texts.amb'] | save:archive[@file-name='3Map_texts.amb']"
+		match="save:archive[@name='2Map_texts.amb'] | save:archive[@name='3Map_texts.amb']"
 		mode="form-content">
 		<xsl:call-template name="savegame.tabs">
 			<xsl:with-param name="label" select="'Aktive Karte:'" />
@@ -396,7 +431,7 @@
 		</xsl:call-template>
 	</xsl:template>
 
-	<xsl:template match="save:archive[@file-name='Party_data.sav']"
+	<xsl:template match="save:archive[@name='Party_data.sav']"
 		mode="form-content">
 		<xsl:for-each select="save:file">
 			<xsl:call-template name="savegame.flex">
@@ -416,8 +451,10 @@
 		</xsl:for-each>
 	</xsl:template>
 
-	<xsl:template match="save:archive[@file-name='Merchant_data.amb']"
+	<xsl:template match="save:archive[@name='Merchant_data.amb']"
 		mode="form-content">
+		<xsl:apply-templates select="$amberdata/amber:item-list" mode="picker"/>
+		
 		<xsl:variable name="fileList" select="save:file" />
 		<xsl:call-template name="savegame.tabs">
 			<xsl:with-param name="label" select="'Aktiver Händler:'" />
@@ -435,8 +472,10 @@
 		</xsl:call-template>
 	</xsl:template>
 
-	<xsl:template match="save:archive[@file-name='Chest_data.amb']"
+	<xsl:template match="save:archive[@name='Chest_data.amb']"
 		mode="form-content">
+		<xsl:apply-templates select="$amberdata/amber:item-list" mode="picker"/>
+		
 		<xsl:variable name="fileList" select="save:file" />
 		<xsl:call-template name="savegame.tabs">
 			<xsl:with-param name="label" select="'Aktive Truhe:'" />
@@ -452,7 +491,7 @@
 	</xsl:template>
 
 	<xsl:template
-		match="save:archive[@file-name='AM2_CPU'] | save:archive[@file-name='AM2_BLIT']"
+		match="save:archive[@name='AM2_CPU'] | save:archive[@name='AM2_BLIT']"
 		mode="form-content">
 		<xsl:for-each select="save:file">
 			<div>
@@ -608,7 +647,7 @@
 		</xsl:for-each>
 	</xsl:template>
 
-	<xsl:template match="save:archive[@file-name='Place_data']"
+	<xsl:template match="save:archive[@name='Place_data']"
 		mode="form-content">
 		<xsl:for-each select="save:file">
 			<xsl:call-template name="savegame.flex">
@@ -640,7 +679,7 @@
 	</xsl:template>
 
 	<xsl:template
-		match="save:archive[@file-name='CONFIG_THALION' or @file-name='CONFIG_SLOTHSOFT']"
+		match="save:archive[@name='Abstract_data.amb']"
 		mode="form-content">
 		<xsl:for-each select="save:file">
 			<xsl:call-template name="savegame.flex">
@@ -798,7 +837,7 @@
 										<xsl:variable name="x" select="position()" />
 										<td title="{$x}|{$y}">
 											<xsl:apply-templates select="$tiles[($y - 1) * $width + $x]"
-												mode="form-content" />
+												mode="tile-picker" />
 										</td>
 									</xsl:for-each>
 								</tr>
@@ -813,8 +852,13 @@
 		<xsl:call-template name="savegame.table">
 			<xsl:with-param name="label" select="'Allgemein'" />
 			<xsl:with-param name="items">
-				<xsl:apply-templates select=".//*[@name = 'portrait']"
-					mode="item" />
+				<xsl:for-each select=".//*[@name = 'portrait']">
+					<div>
+						<xsl:apply-templates select="." mode="form-name"/>
+						<xsl:apply-templates select="."
+					mode="portrait-picker" />
+					</div>
+				</xsl:for-each>
 				<xsl:apply-templates select=".//*[@name = 'name']"
 					mode="item" />
 				<xsl:apply-templates select=".//*[@name = 'gender']"
@@ -858,44 +902,7 @@
 			mode="item" />
 	</xsl:template>
 	<xsl:template name="savegame.amber.character-gfx">
-		<xsl:variable name="id"
-			select="concat('monster-gfx-', generate-id(.))" />
-		<xsl:variable name="gfx-id" select=".//*[@name = 'gfx-id']/@value" />
-		<xsl:variable name="width"
-			select=".//*[@name = 'width']/*[@name = 'target']/@value" />
-		<xsl:variable name="height"
-			select=".//*[@name = 'height']/*[@name = 'target']/@value" />
-		<xsl:variable name="animation"
-			select="str:tokenize(string(.//*[@name = 'cycle']/@value))" />
-		<style scoped="scoped"><![CDATA[
-.]]><xsl:value-of select="$id" /><![CDATA[ > *[data-picker-name="gfx-id"]::after {
-	width: ]]><xsl:value-of select="2 * $width" /><![CDATA[px;
-	height: ]]><xsl:value-of select="2 * $height" /><![CDATA[px;
-	font-size: ]]><xsl:value-of select="2 * $height" /><![CDATA[px;
-	background-image: url("/getResource.php/amber/monster-gfx/]]><xsl:value-of
-			select="$gfx-id" /><![CDATA[");
-	/*
-	animation-name: ]]><xsl:value-of select="$id" /><![CDATA[;
-	animation-iteration-count: infinite;
-	animation-timing-function: steps(1, end);
-	animation-duration: 4s;
-	*/
-}
-@keyframes ]]><xsl:value-of select="$id" /><![CDATA[ {
-	]]>
-			<xsl:for-each select="$animation">
-				<xsl:variable name="step" select="100 * position() div last()" />
-				<xsl:value-of
-					select="concat($step, '% { background-position-y: -', php:functionString('hexdec', .), 'em; } ')" />
-			</xsl:for-each>
-	<![CDATA[
-}
-		]]></style>
-		<div role="button" tabindex="0" class="monster-sprite picker {$id}"
-			contextmenu="amber-picker-monster-sprite" onclick="savegameEditor.openPopup(arguments[0])">
-			<xsl:apply-templates select=".//*[@name = 'gfx-id']"
-				mode="form-picker" />
-		</div>
+		<xsl:apply-templates select="." mode="monster-sprite-picker"/>
 		<xsl:call-template name="savegame.table">
 			<xsl:with-param name="label" select="'sprite data'" />
 			<xsl:with-param name="items">
@@ -1008,7 +1015,12 @@
 				<xsl:with-param name="label" select="'Ausrüstung'" />
 				<xsl:with-param name="class" select="'equipment'" />
 				<xsl:with-param name="items">
-					<xsl:apply-templates select="*" mode="item" />
+					<xsl:for-each select="*">
+						<div>
+							<xsl:apply-templates select="." mode="item-picker" />
+							<xsl:apply-templates select="." mode="form-name" />
+						</div>
+					</xsl:for-each>
 				</xsl:with-param>
 			</xsl:call-template>
 		</xsl:for-each>
@@ -1046,7 +1058,7 @@
 				<xsl:with-param name="label" select="'Inventar'" />
 				<xsl:with-param name="class" select="'inventory'" />
 				<xsl:with-param name="items">
-					<xsl:apply-templates select="*" mode="item" />
+					<xsl:apply-templates select="*" mode="item-picker" />
 				</xsl:with-param>
 			</xsl:call-template>
 		</xsl:for-each>
@@ -1071,7 +1083,7 @@
 							<xsl:with-param name="label" select="'Inventar'" />
 							<xsl:with-param name="class" select="'shop'" />
 							<xsl:with-param name="items">
-								<xsl:apply-templates select="*/*" mode="item" />
+								<xsl:apply-templates select="*/*" mode="item-picker" />
 							</xsl:with-param>
 						</xsl:call-template>
 					</div>
@@ -1254,21 +1266,20 @@
 			mode="form-content" />
 	</xsl:template>
 
-	<xsl:template match="*[@name = 'portrait']" mode="form-content">
-		<div role="button" tabindex="0" class="portrait picker"
-			contextmenu="amber-picker-portrait" onclick="savegameEditor.openPopup(arguments[0])">
+	<xsl:template match="*" mode="portrait-picker">
+		<amber-picker type="portrait" class="portrait-picker" contextmenu="amber-picker-portrait"
+			role="button" tabindex="0" onclick="savegameEditor.openPopup(arguments[0])">
 			<xsl:apply-templates select="." mode="form-picker" />
-		</div>
+		</amber-picker>
 	</xsl:template>
-	<xsl:template match="save:group[*[@name = 'item-id']]"
-		mode="form-content">
+	<xsl:template match="*" mode="item-picker">
 		<xsl:variable name="itemId" select=".//*[@name = 'item-id']/@value" />
-		<xsl:variable name="item" select="key('item', $itemId)" />
-		<div role="button" tabindex="0" class="item picker"
-			data-hover-text="{$item/@name}" contextmenu="amber-picker-item"
-			onclick="savegameEditor.openPopup(arguments[0])">
+		<!--<xsl:variable name="item" select="key('item', $itemId)" />
+			data-hover-text="{$item/@name}"-->
+		<amber-picker type="item" class="item-picker" contextmenu="amber-picker-item"
+			role="button" tabindex="0" onclick="savegameEditor.openPopup(arguments[0])">
 			<xsl:if test="../@name = 'equipment'">
-				<xsl:attribute name="data-picker-filter-item-id"><xsl:value-of select="@name" /></xsl:attribute>
+				<xsl:attribute name="data-picker-filter-amber-item-id"><xsl:value-of select="@name" /></xsl:attribute>
 			</xsl:if>
 			<xsl:apply-templates select=".//*[@name = 'item-id']"
 				mode="form-picker" />
@@ -1280,14 +1291,20 @@
 				mode="form-picker" />
 			<xsl:apply-templates select=".//*[@name = 'item-charge']"
 				mode="form-picker" />
-		</div>
+		</amber-picker>
 	</xsl:template>
-	<xsl:template match="save:group[*[@name = 'tile-id']]"
-		mode="form-content">
-		<div role="button" tabindex="0" class="tile picker" contextmenu="amber-picker-tile"
-			onclick="savegameEditor.openPopup(arguments[0])">
+	<xsl:template match="*" mode="tile-picker">
+		<amber-picker type="tileset.icon" class="tile-picker" contextmenu="amber-picker-tileset.icon"
+			role="button" tabindex="0" onclick="savegameEditor.openPopup(arguments[0])">
 			<xsl:apply-templates select="*" mode="form-picker" />
-		</div>
+		</amber-picker>
+	</xsl:template>
+	<xsl:template match="*" mode="monster-sprite-picker">
+		<amber-picker type="monster-sprite" class="monster-sprite-picker" contextmenu="amber-picker-monster-sprite"
+			role="button" tabindex="0" onclick="savegameEditor.openPopup(arguments[0])">
+			<xsl:apply-templates select=".//*[@name = 'gfx-id']"
+				mode="form-picker" />
+		</amber-picker>
 	</xsl:template>
 
 	<!-- form-content values -->
@@ -1382,18 +1399,6 @@
 					<xsl:if test="@key = $node/@value">
 						<xsl:attribute name="selected">selected</xsl:attribute>
 					</xsl:if>
-					<!--
-						<xsl:choose>
-						<xsl:when test="$node/@dict = 'Portrait'">
-						<xsl:attribute name="style">background-image:url('/getResource.php/amber/portraits/<xsl:value-of 
-						select="@val"/>');</xsl:attribute>
-						</xsl:when>
-						<xsl:when test="$node/@dict = 'ItemId'">
-						<xsl:attribute name="style">background-image:url('/getResource.php/amber/items/<xsl:value-of 
-						select="@key"/>');</xsl:attribute>
-						</xsl:when>
-						</xsl:choose>
-					-->
 					<xsl:value-of select="@val" />
 				</option>
 			</xsl:for-each>
@@ -1468,10 +1473,10 @@
 	<xsl:template
 		match="save:string | save:integer | save:signed-integer | save:bit | save:select"
 		mode="form-picker">
-		<div data-picker-value="{@value}" data-picker-name="{@name}">
-			<xsl:apply-templates select="." mode="form-attributes" />
+		<xsl:element name="{concat('amber-', @name)}"><!--  namespace="http://schema.slothsoft.net/amber/xhtml" -->
+			<xsl:attribute name="value"><xsl:value-of select="@value"/></xsl:attribute>
 			<xsl:apply-templates select="." mode="form-hidden" />
-		</div>
+		</xsl:element>
 	</xsl:template>
 
 

@@ -1,0 +1,200 @@
+                *** AMBERMOON Troubleshooting Dokument ***
+                       Version 1.0 / 21-10-1993
+
+
+****************************************************************************
+*                    TIPS FÜR DAS SPIELEN VON DISKETTE                     *
+****************************************************************************
+
+DAS PROGRAMM FRAGT MICH NACH DER SPIELSTAND-DISKETTE (DISK J)!
+  Bevor Sie mit dem Spielen beginnen, müssen Sie sich mit Hilfe des 
+Installationsprogrammes eine Diskette erstellen, auf der während des Spieles
+die Spielstände gespeichert werden. Sie können jede beliebige Diskette
+verwenden, da jedoch sehr oft auf diese Diskette zugegriffen wird, ist es
+empfehlenswert, eine Disk guter Qualität zu verwenden. Die Diskette wird
+vom Installationsprogramm automatisch formatiert und vorbereitet. Alle
+alten Daten auf dieser Diskette werden dabei gelöscht! Nach dem Erstellen
+der Spielstanddiskette laden Sie bitte AMBERMOON durch Neustart Ihres
+Rechners und legen die Spielstand-Disk (bzw. Disk J) ein, wenn dies vom
+Programm gefordert wird.
+
+
+DIE VIELEN DISKWECHSEL FANGEN AN, MICH ZU NERVEN!
+  Sorry, aber glauben Sie uns bitte, daß wir uns viel Arbeit gemacht haben,
+um das Wechseln der Disks so weit wie irgend möglich zu verringern. Aber
+AMBERMOON ist ein wirklich riesiges Programm mit enormen Datenmengen und so
+läßt sich das Wechseln von Disketten nicht völlig umgehen. Hier sind jedoch
+ein paar Tips, wie Sie sich das Spielen von Diskette etwas erleichtern
+können:
+
+- Schalten Sie die Musik im Options-Menü AUS. Das wird unseren Musiker
+  Matthias Steinwachs zwar betrüben, aber Ihnen einige Diskwechsel ersparen
+  (weil alle Szenarien im Spiel auf z.T. die gleichen Musikfiles zugreifen,
+  wird diese Disk sehr oft angefordert). Eine Bitte: Hören Sie beim Spielen
+  stattdessen aber nicht unbedingt Techno oder House...
+
+- Wenn Sie über mehr als 1 Laufwerk verfügen, lassen Sie möglichst die
+  Spielstand-Disk in einem der Laufwerke (alle Änderungen im Spiel und
+  die Automaps werden darauf gespeichert) und/oder die Disk G, die
+  ebenfalls oft benötigte Daten beinhaltet.
+
+- Erwägen Sie die Anschaffung einer Festplatte. Kleinere Festplatten sind
+  mittlerweile sehr günstig zu haben.
+
+
+DIE LADEZEITEN KÖNNTEN AUCH RUHIG EIN BISSCHEN KÜRZER SEIN!
+  Falls Sie über einen Amiga mit Kickstart >= V2.0 oder einen installierten
+FFS(Fast-File-System)-Treiber verfügen, läßt sich da etwas machen. Forma-
+tieren Sie unter FFS 9 Disketten. Kopieren Sie dann alle Files einer jeden
+AMBERMOON-Originaldisk auf eine der entsprechenden FFS-formatierten Disks
+und versehen Sie diese ANSCHLIESSEND mit den gleichen Disknamen wie die 
+Ambermoon-Originaldisketten (aufpassen, das Sie die richtigen Namen der
+richtigen Diskette zuordnen). Wie man dies alles genau macht, steht in den
+Handbüchern zu Ihrem Amiga. Wenn alles geklappt hat, sind die Ladevorgänge
+nun eine ganze Ecke flotter als vorher. Wir konnten die Disketten leider
+nicht gleich im Fast-File-System - Format ausliefern, da diese von Rechnern
+mit Kickstart < V2.0 (ohne FFS-Treiber) nicht gelesen werden können.
+
+
+
+****************************************************************************
+*                ALLGEMEINE TECHNISCHE ZUSATZINFORMATIONEN                 *
+****************************************************************************
+
+SPIELSTÄNDE
+  Wollen Sie von Ihren Spielständen ein Backup machen oder mit Ihrer tollen 
+Party einen Freund beeindrucken oder uns (hoffentlich nie nötig) Ihre Spiel-
+stände schicken, weil ein Fehler aufgetaucht ist, so ist dies ganz einfach,
+wenn Sie von Diskette spielen: Machen sie eine Kopie der Spielstand-Diskette
+(Disk J).
+  Haben Sie das Spiel auf Festplatte installiert, müssen Sie die Spielstände
+von der Festplatte auf eine Diskette kopieren. Hier ist eine Liste aller 
+Verzeichnisse und Dateien, die zu den Spielständen gehören (Sie finden diese
+im Verzeichnis >Amberfiles<, welches wiederum im >Ambermoon< - Verzeichnis
+steht):
+
+- Alle Verzeichnisse, die mit >Save.< beginnen, also >Save.00< bis
+  >Save.10<.
+- Das File >Saves<.
+
+
+DIE BOOTDISKETTE
+Mit der Option 3 des Installationsprogrammes können Sie sich eine Bootdisk
+erstellen lassen. Starten Sie den Rechner (und die Festplatte) mit dieser
+Diskette in Laufwerk DF0: .  AMBERMOON wird dann ohne speicherfressende 
+Umwege direkt von der Festplatte geladen. Dazu fragt Sie das Installations-
+programm, wo sich AMBERMOON und das Betriebsystemverzeichnis >C< auf Ihrer 
+Festplatte befindet. Daraus folgt, das die Bootdisk speziell auf Ihre
+Konfiguration eingestellt ist, und nur einwandfrei funktioniert, wenn Sie
+AMBERMOON nicht auf Ihrer Festplatte verschieben. Außerdem merkt sich die
+Bootdisk, welche Kickstartversion beim Erstellen benutzt wurde. Wechseln
+Sie die Kickstart-Version, müssen Sie sich eine neue Bootdisk erstellen. 
+
+
+****************************************************************************
+*                       FEHLER UND IHRE BESEITIGUNG                        *
+****************************************************************************
+
+ZU WENIG SPEICHER 
+Fehlermeldung: 
+>Nicht genügend freier Speicher.<
+>Nicht genug CHIP-Speicher verfügbar.<
+Programm-Meldung:
+>Das Programm führt einen Neustart aus...<
+>Das Programm schaltet nun die Musik ab...<
+
+  Sollte sich das Programm über zuwenig Speicher beschweren, gibt es
+einige Möglichkeiten Speicher frei zu bekommen:
+
+- Festplatte:
+  Benutzen Sie im Installationsprogramm die Option >Boot-Disk erstellen<.
+  Das Programm erzeugt Ihnen eine Diskette (alte Daten auf der Boot-Disk 
+  werden gelöscht), die sofort nach Einschalten des Rechners AMBERMOON aus
+  dem Verzeichnis von der Festplatte lädt, in das Sie es installiert haben.
+  Alle speicherfressenden Zusatzprogramme werden dadurch umgangen, und Sie
+  brauchen nichts auf Ihrer Festplatte zu ändern. Siehe auch oben,
+  DIE BOOTDISKETTE.
+
+- Festplatte:
+  Sie können speicherintensive Startup-Sequence - Befehle entfernen und 
+  Zusatzprogramme deaktivieren. Praktischer ist jedoch obige Methode.
+
+- Disk & Festplatte:
+  Schalten Sie, falls es öfter zu den oben genannten Programm-Meldungen
+  kommen sollte, die Musik im Options-Menü ab. 
+
+- Disk:
+  Spielen Sie von Diskette, könnte es bei Rechnern mit 1MB Speicher und 3
+  oder mehr Laufwerken manchmal knapp werden. Entfernen Sie eines der
+  Laufwerke, falls es zu Speichermangel kommt.
+
+
+DATEIFEHLER
+Fehlermeldung: 
+>Verzeichnis nicht gefunden.<
+>Datei nicht gefunden.<
+>Read Error< oder >Checksum Error< beim Installieren
+
+Wenn Sie von Festplatte spielen:
+  Der beste Weg ist eine Neuinstallation des Spieles. Um Ihr Spiel nicht von
+vorne beginnen zu müssen, kopieren Sie Ihre Spielstände auf eine Diskette
+oder in ein anderes Verzeichnis. Was Sie dazu tun müssen steht in diesem
+Dokument unter der Überschrift SPIELSTÄNDE.
+  Wenn Sie neu installiert haben, könnte theoretisch der aktuelle Spielstand
+durch den Dateifehler defekt sein. In diesem Fall wählen Sie 
+NEUE QUEST STARTEN im Hauptmenü. Im Spiel können Sie dann versuchen, einen 
+Ihrer alten Spielstände zu laden.
+
+Wenn Sie von Diskette spielen:
+  ...ist vermutlich eine der Disketten defekt. Wenn Sie ein Backup der 
+Originaldisketten gemacht haben, machen Sie sich eine neue Kopie. Falls 
+nicht, schicken sie uns Ihre Originaldisketten zusammen mit einer Fehler-
+beschreibung und wir lassen Ihnen lauffähige Disketten zukommen 
+(Adresse siehe unten).
+
+Beim Installieren auf Festplatte:
+Wenn während der Installation eine Fehlermeldung vom Betriebssystem 
+erscheint, sind vermutlich Ihre Originaldisketten fehlerhaft. Schicken Sie
+uns bitte Ihre Originaldisketten, wir lassen Ihnen schnellstens lauffähige
+Ersatzdisks zukommen (Adresse siehe unten).
+
+
+INTERNE FEHLER
+Fehlermeldung:
+>Das Betriebsystem hat während des Spieles einen Fehler gemeldet.<
+>680x0 Addressfehler.<
+>680x0 Illegaler Befehl.<
+>680x0 Division durch Null.<
+>Zu langer Text nach Formatierung.<
+>Zu langer Text nach Bearbeitung.<
+>Endlosschleife in Eventkette.<
+>Unbekannter Fehler.<
+
+  Fehler dieser Art sollten eigentlich gar nicht erst auftreten. Falls dies
+doch der Fall sein sollte, bitten wir schon im voraus um Entschuldigung,
+unseren Testspielern ist dann eine Fehlerquelle entgangen. Starten Sie bitte
+Ihren Rechner neu und versuchen Sie einfach weiterzuspielen. Es kann sein,
+daß ein solcher Fehler nicht jedes Mal auftritt. Falls sich der Fehler als
+hartnäckig erweisen sollte, so daß Sie nicht weiterspielen können, schicken
+Sie uns bitte folgendes in einem gepolstertem Umschlag zu:
+
+- Die genaue Fehlermeldung.
+- Ihre Original-Disk A.
+- Eine genaue Beschreibung Ihrer Spielschritte bevor
+  der Fehler aufgetreten ist.
+- Eine genaue Beschreibung Ihrer Rechnerkonfiguration
+  (welches Amiga-Modell, wieviel Speicher, welche
+  Peripheriegeräte, Kickstart-Version, etc.).
+- Falls Sie von Disk spielen, eine Kopie Ihrer
+  Spielstand-Disk.
+- Falls Sie von Festplatte spielen, eine Diskette mit allen Ihren Spielständen
+  (siehe oben: SPIELSTÄNDE)
+
+Wir werden Ihnen so schnell wie möglich eine neue Version zurückschicken. 
+Unsere Anschrift:
+
+HotLine Support THALION
+Postfach 1953
+D-33249 Gütersloh
+
+Hotline: 05241/986020 (Mo.-Fr. 11-18 Uhr)

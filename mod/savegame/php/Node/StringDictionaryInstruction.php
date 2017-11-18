@@ -1,7 +1,7 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
-use Exception;
+use DomainException;
 declare(ticks = 1000);
 
 class StringDictionaryInstruction extends AbstractInstructionContent
@@ -50,7 +50,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                 $this->strucData['string-count'] = $this->getParser()->evaluate($this->strucData['string-count'], $this->ownerFile);
                 break;
             default:
-                throw new Exception('unknown text-list type: ' . $this->strucData['type']);
+                throw new DomainException('unknown text-list type: ' . $this->strucData['type']);
         }
         
         switch ($this->strucData['type']) {

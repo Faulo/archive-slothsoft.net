@@ -118,24 +118,40 @@
 		<integer name="event-payload" position="3" />
 		<integer name="event-payload" position="4" />
 		<integer name="event-payload" position="5" />
-		<integer name="event-payload" position="6" />
-		<integer name="event-payload" position="7" />
+		<select position="6" size="2" name="event-payload"
+			dictionary-ref="items" />
 		<select name="event-payload" position="8" size="2"
 			dictionary-ref="gotos" />
 		<use-global ref="event-bit-goto" />
 	</global>
+	<dictionary dictionary-id="events">
+		<option val="valdyn" />
+		<option val="grandfather" />
+		<option val="blue-green" />
+		<option val="blue-orange" />
+		<option val="green-blue" />
+		<option val="green-orange" />
+		<option val="orange-blue" />
+		<option val="orange-green" />
+		<option val="game over" />
+		<option key="255" val="-" />
+	</dictionary>
+	<dictionary dictionary-id="popup-bitmask">
+		<option key="1" val="1" />
+		<option key="2" val="2" />
+		<option key="3" val="3" />
+	</dictionary>
 	<global global-id="event-04">
 		<!-- popup text -->
 		<use-global ref="event-bit-type" />
-		
-		<select name="event-payload" position="1" dictionary-ref="events-pix"/>
-		<select name="event-payload" position="2" dictionary-ref="popup-bitmask"/>
-		<select name="event-payload" position="5" dictionary-ref="map-texts"/>
-		
+
+		<select name="event-payload" position="1" dictionary-ref="events" />
+		<select name="event-payload" position="2" size="2"
+			dictionary-ref="popup-bitmask" />
+		<select name="event-payload" position="5" dictionary-ref="map-texts" />
+
 		<use-global ref="event-bit-goto" />
-		
-		<integer name="event-null" position="2" />
-		<integer name="event-null" position="3" />
+
 		<integer name="event-null" position="6" />
 		<integer name="event-null" position="7" />
 		<integer name="event-null" position="8" />
@@ -213,7 +229,8 @@
 		<integer name="event-payload" position="1" />
 		<integer name="event-payload" position="2" />
 		<integer name="event-payload" position="6" size="2" />
-		<select name="event-payload" position="8" size="2" dictionary-ref="map-ids"/>
+		<select name="event-payload" position="8" size="2"
+			dictionary-ref="map-ids" />
 
 		<use-global ref="event-bit-goto" />
 
@@ -890,7 +907,7 @@
 			</group>
 		-->
 	</global>
-	<archive file-name="Party_char.amb" type="AMBR">
+	<archive path="Amberfiles/Save.00/Party_char.amb" type="AMBR">
 
 		<use-global ref="character" />
 
@@ -913,7 +930,7 @@
 		</group>
 
 	</archive>
-	<archive file-name="Party_data.sav" type="JH">
+	<archive path="Amberfiles/Save.00/Party_data.sav" type="JH">
 
 		<group name="party-composition">
 			<repeat-group position="0x002E" group-size="2"
@@ -946,7 +963,7 @@
 		</group>
 
 	</archive>
-	<archive file-name="Merchant_data.amb" type="AMBR">
+	<archive path="Amberfiles/Save.00/Merchant_data.amb" type="AMBR">
 
 		<group name="inventory">
 			<repeat-group position="0" group-size="6" group-count="24">
@@ -955,7 +972,7 @@
 		</group>
 
 	</archive>
-	<archive file-name="Chest_data.amb" type="AMBR">
+	<archive path="Amberfiles/Save.00/Chest_data.amb" type="AMBR">
 
 		<group name="inventory">
 			<repeat-group position="0" group-size="6" group-count="24">
@@ -972,7 +989,7 @@
 
 
 
-	<archive file-name="NPC_char.amb" type="AMBR">
+	<archive path="Amberfiles/NPC_char.amb" type="AMBR">
 
 		<!--<use-global ref="character-name"/> -->
 		<use-global ref="character" />
@@ -995,7 +1012,7 @@
 		<option val="battle start" />
 		<option val="?" />
 	</dictionary>
-	<archive file-name="Monster_char_data.amb" type="AMBR">
+	<archive path="Amberfiles/Monster_char_data.amb" type="AMBR">
 
 		<!--<use-global ref="character"/> -->
 
@@ -1047,19 +1064,19 @@
 			<use-global ref="item" />
 		</repeat-group>
 	</archive>
-	<archive file-name="Dictionary.german" type="JH">
+	<archive path="Amberfiles/Dictionary.german" type="JH">
 
 		<string-dictionary type="size-interspersed"
 			encoding="CP850" position="0" name="keywords" />
 
 	</archive>
-	<archive file-name="NPC_texts.amb" type="AMBR">
+	<archive path="Amberfiles/NPC_texts.amb" type="AMBR">
 
 		<string-dictionary type="size-first" encoding="CP850"
 			position="0" name="dialog" />
 
 	</archive>
-	<archive file-name="Party_texts.amb" type="AMBR">
+	<archive path="Amberfiles/Party_texts.amb" type="AMBR">
 
 		<string-dictionary type="size-first" encoding="CP850"
 			position="0" name="dialog" />
@@ -1069,17 +1086,17 @@
 		<string-dictionary type="size-first" encoding="CP850"
 			position="0" name="label" />
 	</global>
-	<archive file-name="1Map_texts.amb" type="AMBR">
+	<archive path="Amberfiles/1Map_texts.amb" type="AMBR">
 
 		<use-global ref="map-texts" />
 
 	</archive>
-	<archive file-name="2Map_texts.amb" type="AMBR">
+	<archive path="Amberfiles/2Map_texts.amb" type="AMBR">
 
 		<use-global ref="map-texts" />
 
 	</archive>
-	<archive file-name="3Map_texts.amb" type="AMBR">
+	<archive path="Amberfiles/3Map_texts.amb" type="AMBR">
 
 		<use-global ref="map-texts" />
 
@@ -1133,33 +1150,22 @@
 			<event-script position="auto">
 		-->
 	</global>
-	<archive file-name="1Map_data.amb" type="AMBR">
+	<archive path="Amberfiles/1Map_data.amb" type="AMBR">
 
 		<use-global ref="map-data" />
 
 	</archive>
-	<archive file-name="2Map_data.amb" type="AMBR">
+	<archive path="Amberfiles/2Map_data.amb" type="AMBR">
 
 		<use-global ref="map-data" />
 
 	</archive>
-	<archive file-name="3Map_data.amb" type="AMBR">
+	<archive path="Amberfiles/3Map_data.amb" type="AMBR">
 
 		<use-global ref="map-data" />
 
 	</archive>
-	<archive file-name="4Map_data.amb" type="AMBR">
-
-		<use-global ref="map-data" />
-
-	</archive>
-	<archive file-name="5Map_data.amb" type="AMBR">
-
-		<use-global ref="map-data" />
-
-	</archive>
-	<archive file-name="Icon_data.amb" type="AMBR">
-
+	<archive path="Amberfiles/Icon_data.amb" type="AMBR">
 		<group name="testing">
 			<integer position="2" />
 			<integer position="3" />
@@ -1172,29 +1178,9 @@
 		<group name="tiles">
 			<repeat-group position="6" group-count="$entry-count"
 				group-size="8">
-				<!--<binary size="8" name="data"/> -->
 				<integer position="0" size="2" name="image-id" />
 				<integer position="2" size="1" name="image-count" />
-				<binary position="3" size="5" name="data" />
-			</repeat-group>
-			<!--<binary position="6" size="20000" name="data"/> -->
-		</group>
-
-	</archive>
-	<archive file-name="5Lab_data.amb" type="AMBR">
-		<group name="testing">
-			<integer position="2" />
-			<integer position="3" />
-			<integer position="4" />
-			<integer position="5" />
-		</group>
-		<group name="data">
-			<integer position="0" size="2" name="entry-count" />
-		</group>
-		<group name="tiles">
-			<repeat-group position="0x84" group-count="255"
-				group-size="8">
-				<binary size="8" name="data" />
+				<binary position="3" size="5"/>
 			</repeat-group>
 		</group>
 	</archive>
@@ -1247,7 +1233,7 @@
 			<select position="8" name="spawn" size="2" dictionary-ref="event-spawn-types" />
 		</group>
 	</global>
-	<archive file-name="Place_data" type="JH">
+	<archive path="Amberfiles/Place_data" type="JH">
 
 		<!--
 			<repeat-group name="places" position="2" group-size="32" group-count="64">
@@ -1329,7 +1315,7 @@
 
 	</archive>
 	<!--
-		<archive file-name="AM2_CPU" type="AM2">
+		<archive path="Amberfiles/AM2_CPU" type="AM2">
 
 		<string-dictionary type="null-delimited" encoding="8bit" position="0x049B0A"
 		name="spells-misc" string-count="30"/>
@@ -1412,7 +1398,7 @@
 		</repeat-group>
 	</global>
 	<!--
-		<archive file-name="AM2_CPU" type="AM2">
+		<archive path="Amberfiles/AM2_CPU" type="AM2">
 
 		<group name="integers" position="0x453F0">
 		<use-global ref="AM2-integers"/>
@@ -1426,7 +1412,7 @@
 
 		</archive>
 	-->
-	<archive file-name="AM2_BLIT" type="AM2">
+	<archive path="Amberfiles/AM2_BLIT" type="AM2">
 
 		<string name="version" position="0x3E" size="15" encoding="CP850" />
 		<string name="date" position="0x4E" size="19" encoding="CP850" />
@@ -1445,37 +1431,17 @@
 		</group>
 	</archive>
 
-	<global global-id="config">
-		<group name="classes" position="0">
-			<repeat-group group-size="42" group-count="10">
-				<string position="0" name="name" size="12" />
-				<repeat-group position="12" name="skills" group-size="2"
-					group-count="10" dictionary-ref="skills">
-					<integer size="2" max="99" />
-				</repeat-group>
-				<integer position="32" name="apr-per-level" size="2" max="50" />
-				<integer position="34" name="hp-per-level" size="2" max="99" />
-				<integer position="36" name="sp-per-level" size="2" max="99" />
-				<integer position="38" name="slp-per-level" size="2" max="99" />
-				<integer position="40" name="tp-per-level" size="2" max="99" />
-			</repeat-group>
-		</group>
-	</global>
-	<archive file-name="CONFIG_THALION" type="Raw">
 
-		<use-global ref="config" />
+	<archive path="Amberfiles/Object_texts.amb" type="AMBR">
 
-	</archive>
-	<archive file-name="CONFIG_SLOTHSOFT" type="Raw">
-
-		<use-global ref="config" />
-
+		<string-dictionary type="size-first" encoding="CP850"
+			position="0" name="label" />
 	</archive>
 
 
 
 	<!--
-		<archive file-name="AM2_CPU" type="AM2">
+		<archive path="Amberfiles/AM2_CPU" type="AM2">
 
 		<group>
 		<string-dictionary position="0x049B0A" name="spells-misc" string-count="30"/>
@@ -3338,4 +3304,134 @@
 		-->
 		<option key="65535" val="RETURN" />
 	</dictionary>
+	
+	<dictionary dictionary-id="colors">
+		<option val="00 transparent"/>
+		<option val="01 white"/>
+		<option val="02 light gray"/>
+		<option val="03 medium gray"/>
+		<option val="04 dark gray"/>
+		<option val="05 really dark gray"/>
+		<option val="06 dark brown"/>
+		<option val="07 dark yellow"/>
+		<option val="08 medium brown"/>
+		<option val="09 light brown"/>
+		<option val="10"/>
+		<option val="11"/>
+		<option val="12 blue"/>
+		<option val="13 light blue"/>
+		<option val="14 yellow"/>
+		<option val="15 orange"/>
+	</dictionary>
+	
+	<dictionary dictionary-id="tile-icon-data-0">
+		<option key="0" val=""/>
+		<option key="1" val=""/>
+		<option key="2" val=""/>
+		<option key="3" val=""/>
+		<option key="4" val=""/>
+		<option key="5" val=""/>
+		<option key="6" val=""/>
+		<option key="7" val=""/>
+	</dictionary>
+	<dictionary dictionary-id="tile-icon-data-1">
+		<option key="0" val=""/>
+		<option key="1" val=""/>
+		<option key="2" val=""/>
+		<option key="3" val=""/>
+		<option key="4" val=""/>
+		<option key="5" val=""/>
+		<option key="6" val=""/>
+		<option key="7" val=""/>
+	</dictionary>
+	<dictionary dictionary-id="tile-icon-mobility">
+		<option key="0" val="foot"/>
+		<option key="1" val="horse"/>
+		<option key="2" val="raft"/>
+		<option key="3" val="ship"/>
+		<option key="4" val="broom"/>
+		<option key="5" val="eagle"/>
+		<option key="6" val="cape"/>
+		<option key="7" val="is-water"/>
+	</dictionary>
+	<dictionary dictionary-id="tile-icon-data-3">
+		<option key="0" val=""/>
+		<option key="1" val=""/>
+		<option key="2" val=""/>
+		<option key="3" val=""/>
+		<option key="4" val=""/>
+		<option key="5" val=""/>
+		<option key="6" val=""/>
+		<option key="7" val=""/>
+	</dictionary>
+	
+	<archive path="Extrafiles/Abstract_data.amb" type="Raw">
+		<group name="classes" position="0">
+			<repeat-group group-size="42" group-count="10">
+				<string position="0" name="name" size="12" />
+				<repeat-group position="12" name="skills" group-size="2"
+					group-count="10" dictionary-ref="skills">
+					<integer size="2" max="99" />
+				</repeat-group>
+				<integer position="32" name="apr-per-level" size="2" max="50" />
+				<integer position="34" name="hp-per-level" size="2" max="99" />
+				<integer position="36" name="sp-per-level" size="2" max="99" />
+				<integer position="38" name="slp-per-level" size="2" max="99" />
+				<integer position="40" name="tp-per-level" size="2" max="99" />
+			</repeat-group>
+		</group>
+	</archive>
+
+	<archive path="Extrafiles/2D_Map_data.amb" type="AMBR">
+
+		<use-global ref="map-data" />
+
+	</archive>
+	<archive path="Extrafiles/2D_Icon_data.amb" type="AMBR">
+		<!--
+		<group name="testing">
+			<integer position="2" />
+			<integer position="3" />
+			<integer position="4" />
+			<integer position="5" />
+		</group>
+		-->
+		<group name="data">
+			<integer position="0" size="2" name="entry-count" />
+		</group>
+		<group name="tiles">
+			<repeat-group position="2" group-count="$entry-count"
+				group-size="8">
+				<bit-field position="2" size="1" name="mobility" dictionary-ref="tile-icon-mobility"/>
+				<integer position="4" size="2" name="image-id" />
+				<integer position="6" size="1" name="image-count" />
+				<select position="7" size="1" name="image-color" dictionary-ref="colors"/>
+			</repeat-group>
+		</group>
+	</archive>
+	
+	
+	
+	<archive path="Extrafiles/3D_Map_data.amb" type="AMBR">
+
+		<use-global ref="map-data" />
+
+	</archive>
+	<archive path="Extrafiles/3D_Lab_data.amb" type="AMBR">
+		<group name="testing">
+			<integer position="2" />
+			<integer position="3" />
+			<integer position="4" />
+			<integer position="5" />
+		</group>
+		<group name="data">
+			<integer position="0" size="2" name="entry-count" />
+		</group>
+		<group name="tiles">
+			<repeat-group position="0x84" group-count="255"
+				group-size="8">
+				<binary size="8" name="data" />
+			</repeat-group>
+		</group>
+	</archive>
 </savegame.editor>

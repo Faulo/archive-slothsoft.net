@@ -56,7 +56,7 @@ class Model
             if (! $this->dbmsTable->tableExists()) {
                 $this->install();
             }
-        } catch (Exception $e) {
+        } finally {
             $this->dbmsTable = null;
         }
     }

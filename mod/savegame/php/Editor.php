@@ -5,14 +5,16 @@ use Slothsoft\CMS\HTTPFile;
 use Slothsoft\Core\DOMHelper;
 use DOMDocument;
 use DOMElement;
-use Exception;
+use DomainException;
+use RuntimeException;
+use UnexpectedValueException;
 declare(ticks = 1000);
 
 class Editor
 {
 
     protected $config = [
-		'structureFile' => '',
+        'structureFile' => '',
         'defaultDir' => '',
         'tempDir' => '',
         'id' => '',
@@ -24,8 +26,8 @@ class Editor
         'uploadedArchives' => []
     ];
 
-	protected $dom;
-	
+    protected $dom;
+
     protected $strucDoc;
 
     protected $savegame;
@@ -51,19 +53,19 @@ class Editor
         }
         unset($val);
         if (! $this->config['defaultDir']) {
-            throw new Exception('Missing directory for: default saves');
+            throw new RuntimeException('Missing directory for: default saves');
         }
         if (! $this->config['tempDir']) {
-            throw new Exception('Missing directory for: temp saves');
+            throw new RuntimeException('Missing directory for: temp saves');
         }
         if (! $this->config['mode']) {
-            throw new Exception('Missing editor mode');
+            throw new RuntimeException('Missing editor mode');
         }
         if (! $this->config['id']) {
             $this->config['id'] = md5(time());
         }
-		
-		$this->dom = new DOMHelper();
+        
+        $this->dom = new DOMHelper();
     }
 
     public function load()
@@ -71,7 +73,7 @@ class Editor
         $this->strucDoc = $this->dom->load($this->config['structureFile']);
         
         if (! ($this->strucDoc and $this->strucDoc->documentElement)) {
-            throw new Exception('Structure document is empty');
+            throw new UnexpectedValueException('Structure document is empty');
         }
         
         $strucElement = $this->strucDoc->documentElement;
@@ -209,10 +211,11 @@ class Editor
 
     public function asDocument()
     {
-		$ret = new DOMDocument();
-		$ret->loadXML($this->savegame->asXML());
+        $ret = new DOMDocument();
+        $ret->loadXML($this->savegame->asXML());
         return $ret;
     }
+
     public function asNode(DOMDocument $dataDoc)
     {
         $retFragment = $dataDoc->createDocumentFragment();
@@ -340,7 +343,7 @@ class Editor
                 return new Node\UseGlobalInstruction();
             
             default:
-                throw new Exception(sprintf('unknown tag: "%s"', $tagName));
+                throw new DomainException(sprintf('unknown tag: "%s"', $tagName));
         }
         return null;
     }

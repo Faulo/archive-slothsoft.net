@@ -31,15 +31,29 @@
 			<data name="mod.editor" />
 			<template name="editor" />
 			<struc name="default" />
-			<script name="SavegameEditor" />
-
-			<data name="mod.resource" as="items">
+			<struc name="SavegameEditor" />
+			<!--
+				<data name="mod.resource-document" as="items">
 				<param name="id" value="items" />
-			</data>
+				</data>
 
-			<data name="mod.resource" as="portraits">
+				<data name="mod.resource-document" as="portraits">
 				<param name="id" value="portraits" />
+				</data>
+			-->
+			<data name="mod.resource-document">
+				<param name="id" value="libs" />
 			</data>
+		</fragment>
+	</fragment>
+
+	<fragment name="mod.resource">
+		<struc name="/slothsoft/default" />
+		<fragment name="content">
+			<data name="mod.resource-document" as="list" />
+			<template name="editor.data-list" />
+			<struc name="default" />
+			<struc name="SavegameEditor" />
 		</fragment>
 	</fragment>
 
@@ -161,8 +175,21 @@
 
 	<struc name="default">
 		<style name="default" />
-		<style name="dictionary" />
-		<!--<style name="tilesets" /> -->
+		<style name="amber-picker" />
+		<data name="mod.resource-stylesheet">
+			<param name="id" value="styles" />
+		</data>
+		<!--
+			<style name="items" />
+			<style name="portraits" />
+			<style name="tileset.icons"/>
+		-->
+		<!-- <style name="dictionary" /> -->
+		<!-- <style name="tilesets" /> -->
+	</struc>
+	<struc name="SavegameEditor">
+		<script name="/core/XSLT" />
+		<script name="SavegameEditor" />
 	</struc>
 
 	<resource name="sites" path="sites.xml" type="application/xml" />
@@ -187,7 +214,7 @@
 	<resource name="portraits-map" path="AmbermoonPortraits.png"
 		type="image/png" />
 
-	<resource name="AmbermoonItems" path="AmbermoonItems.xml"
+	<resource name="AmbermoonItems" path="ambermoon\Thalion-v1.05-DE\lib\items.xml"
 		type="application/xml" />
 	<resource name="AmbermoonPortraits" path="AmbermoonPortraits.xml"
 		type="application/xml" />

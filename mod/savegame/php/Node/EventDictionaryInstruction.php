@@ -1,7 +1,7 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
-use Exception;
+use RangeException;
 declare(ticks = 1000);
 
 class EventDictionaryInstruction extends AbstractInstructionContent
@@ -18,7 +18,7 @@ class EventDictionaryInstruction extends AbstractInstructionContent
         $eventCount = $this->getConverter()->decodeInteger($eventCount, $offsetWordSize);
         
         if ($eventCount > 256) {
-            throw new Exception("there probably shouldn't be $eventCount events at $this->valueOffset in " . $this->ownerFile->getFileName());
+            throw new RangeException("there probably shouldn't be $eventCount events at $this->valueOffset in " . $this->ownerFile->getFileName());
         }
         
         $eventSizeList = [];

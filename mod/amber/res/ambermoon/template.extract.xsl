@@ -4,18 +4,28 @@
 	xmlns:exsl="http://exslt.org/common" xmlns:func="http://exslt.org/functions"
 	xmlns:str="http://exslt.org/strings" xmlns:set="http://exslt.org/sets"
 	xmlns:php="http://php.net/xsl" xmlns:save="http://schema.slothsoft.net/savegame/editor"
+	xmlns:html="http://www.w3.org/1999/xhtml"
 	extension-element-prefixes="exsl func str set php">
 
 	<xsl:param name="lib" select="''" />
 
 	<xsl:key name="dictionary-option"
-		match="save:savegame.editor/save:dictionary/save:option" use="../@dictionary-id" />	<xsl:key name="string-dictionary"		match="save:group[@type='string-dictionary']/save:string" use="../@name" />
+		match="save:savegame.editor/save:dictionary/save:option" use="../@dictionary-id" />	<xsl:key name="string-dictionary"		match="save:group[@instruction='string-dictionary']/save:string" use="../@name" />
 	<xsl:template match="/">
 		<amberdata>
 			<xsl:for-each select=".//save:savegame.editor">
 				<xsl:choose>
 					<xsl:when test="$lib = 'graphics'">
 						<xsl:call-template name="extract-graphics" />
+					</xsl:when>
+					<xsl:when test="$lib = 'portraits'">
+						<xsl:call-template name="extract-portraits" />
+					</xsl:when>
+					<xsl:when test="$lib = 'pcs'">
+						<xsl:call-template name="extract-pcs" />
+					</xsl:when>
+					<xsl:when test="$lib = 'npcs'">
+						<xsl:call-template name="extract-npcs" />
 					</xsl:when>
 					<xsl:when test="$lib = 'monsters'">
 						<xsl:call-template name="extract-monsters" />
@@ -29,8 +39,8 @@
 					<xsl:when test="$lib = 'maps'">
 						<xsl:call-template name="extract-maps" />
 					</xsl:when>
-					<xsl:when test="$lib = 'tileset.icon'">
-						<xsl:call-template name="extract-tileset.icon" />
+					<xsl:when test="$lib = 'tileset.icons'">
+						<xsl:call-template name="extract-tileset.icons" />
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:text>Unknown lib: </xsl:text>
@@ -152,62 +162,71 @@
 				'palette' => null,
 				],
 			-->
-			<gfx-archive file-name="items" file-path="./Object_icons">
+			<gfx-archive file-name="items" file-path="Amberfiles/Object_icons">
 				<for-each-file width="16" bitplanes="5" palette="49"
 					transparent="1" />
 			</gfx-archive>
 
-			<gfx-archive file-name="portraits" file-path="./Portraits.amb">
+			<gfx-archive file-name="portraits" file-path="Amberfiles/Portraits.amb">
 				<for-each-file width="32" bitplanes="5" palette="49"
 					transparent="0" />
 			</gfx-archive>
 
-			<gfx-archive file-name="events" file-path="./Event_pix.amb">
+			<gfx-archive file-name="events" file-path="Amberfiles/Event_pix.amb">
 				<for-each-file width="320" bitplanes="5" palette="31"
 					transparent="0" />
 			</gfx-archive>
 
-			<gfx-archive file-name="combat-backgrounds" file-path="./Combat_background.amb">
+			<gfx-archive file-name="combat-backgrounds" file-path="Amberfiles/Combat_background.amb">
 				<for-each-file width="320" bitplanes="5" palette="5"
 					transparent="0" />
 			</gfx-archive>
 
-			<gfx-archive file-name="places" file-path="./Pics_80x80.amb">
+			<gfx-archive file-name="places" file-path="Amberfiles/Pics_80x80.amb">
 				<for-each-file width="80" bitplanes="5" palette="49"
 					transparent="0" />
 			</gfx-archive>
 
-			<gfx-archive file-name="palettes" file-path="Palettes.amb">
+			<gfx-archive file-name="palettes" file-path="Amberfiles/Palettes.amb">
 				<for-each-file width="256" bitplanes="2" palette="0"
 					transparent="0" />
 			</gfx-archive>
 
-			<gfx-archive file-name="tilesets.icon" file-path="1Icon_gfx.amb">
-				<for-each-file width="16" bitplanes="5" palette="0"
+			<gfx-archive file-name="tileset.icons" file-path="Amberfiles/1Icon_gfx.amb">
+				<xsl:for-each select="str:split(str:padding(50, '-'), '')">
+				
+					<for-each-file width="16" bitplanes="5" palette="{position() - 1}"
 					transparent="1" />
+				</xsl:for-each>
 			</gfx-archive>
-			<gfx-archive file-name="tilesets.icon" file-path="2Icon_gfx.amb">
-				<for-each-file width="16" bitplanes="5" palette="0"
+			<gfx-archive file-name="tileset.icons" file-path="Amberfiles/2Icon_gfx.amb">
+				<xsl:for-each select="str:split(str:padding(50, '-'), '')">
+				
+					<for-each-file width="16" bitplanes="5" palette="{position() - 1}"
 					transparent="1" />
+				</xsl:for-each>
 			</gfx-archive>
-			<gfx-archive file-name="tilesets.icon" file-path="3Icon_gfx.amb">
-				<for-each-file width="16" bitplanes="5" palette="0"
+			<gfx-archive file-name="tileset.icons" file-path="Amberfiles/3Icon_gfx.amb">
+				<xsl:for-each select="str:split(str:padding(50, '-'), '')">
+				
+					<for-each-file width="16" bitplanes="5" palette="{position() - 1}"
 					transparent="1" />
+				</xsl:for-each>
 			</gfx-archive>
 
 			<!--
-				<gfx-archive file-name="transports" file-path="Travel_gfx.amb">
+				<gfx-archive file-name="transports" file-path="Amberfiles/Travel_gfx.amb">
 				<for-each-file width="16" bitplanes="4" palette="0" transparent="0"/>
 				</gfx-archive>
-				<gfx-archive file-name="tilesets.floor" file-path="Floors.amb">
+				<gfx-archive file-name="tilesets.floor" file-path="Amberfiles/Floors.amb">
 				<for-each-file width="64" bitplanes="4" palette="0" transparent="0"/>
 				</gfx-archive>
 			-->
 
 			<xsl:variable name="monsters"
-				select="save:archive[@file-name='Monster_char_data.amb']/*" />
+				select="save:archive[@name='Monster_char_data.amb']/*" />
 			<xsl:if test="count($monsters)">
-				<gfx-archive file-name="monsters" file-path="Monster_gfx.amb">
+				<gfx-archive file-name="monsters" file-path="Amberfiles/Monster_gfx.amb">
 					<xsl:for-each select="$monsters">
 						<file id="{.//*[@name='gfx-id']/@value}" width="{.//*[@name='width']/*[@name='source']/@value}"
 							height="{.//*[@name='height']/*[@name='source']/@value}"
@@ -217,17 +236,148 @@
 			</xsl:if>
 		</gfx-archive-list>
 	</xsl:template>
+	
+	<xsl:template name="extract-portraits">
+		<portrait-list>
+			<portrait-category name="Menschen und Halb-Elfen ♂">
+				<portrait id="1" name="A" />
+				<portrait id="2" name="B" />
+				<portrait id="3" name="C" />
+				<portrait id="4" name="D" />
+				<portrait id="5" name="E" />
+				<portrait id="6" name="F" />
+				<portrait id="7" name="G" />
+				<portrait id="8" name="H" />
+				<portrait id="9" name="I" />
+				<portrait id="10" name="J" />
+				<portrait id="11" name="K" />
+				<portrait id="12" name="L" />
+				<portrait id="13" name="M" />
+				<portrait id="14" name="N" />
+				<portrait id="15" name="O" />
+				<portrait id="16" name="P" />
+				<portrait id="17" name="Q" />
+				<portrait id="18" name="R" />
+				<portrait id="19" name="S" />
+				<portrait id="20" name="T" />
+				<portrait id="21" name="U" />
+				<portrait id="22" name="V" />
+				<portrait id="23" name="W" />
+				<portrait id="24" name="X" />
+				<portrait id="25" name="Y" />
+				<portrait id="26" name="Z" />
+				<portrait id="27" name="$" />
+				<portrait id="102" name="€" />
+			</portrait-category>
+			<portrait-category name="Menschen und Halb-Elfen ♀">
+				<portrait id="28" name="A" />
+				<portrait id="29" name="B" />
+				<portrait id="30" name="C" />
+				<portrait id="31" name="D" />
+				<portrait id="32" name="E" />
+				<portrait id="33" name="F" />
+				<portrait id="34" name="G" />
+				<portrait id="35" name="H" />
+				<portrait id="36" name="I" />
+				<portrait id="37" name="J" />
+				<portrait id="38" name="K" />
+				<portrait id="39" name="L" />
+				<portrait id="40" name="M" />
+				<portrait id="41" name="N" />
+				<portrait id="42" name="O" />
+				<portrait id="43" name="P" />
+				<portrait id="44" name="Q" />
+				<portrait id="45" name="R" />
+				<portrait id="46" name="S" />
+				<portrait id="47" name="T" />
+				<portrait id="48" name="U" />
+				<portrait id="49" name="V" />
+				<portrait id="50" name="W" />
+				<portrait id="51" name="X" />
+				<portrait id="52" name="Y" />
+				<portrait id="53" name="Z" />
+			</portrait-category>
+			<portrait-category name="Elfen ♂">
+				<portrait id="61" name="A" />
+				<portrait id="62" name="B" />
+				<portrait id="63" name="C" />
+				<portrait id="64" name="D" />
+				<portrait id="65" name="E" />
+				<portrait id="66" name="F" />
+				<portrait id="67" name="G" />
+				<portrait id="68" name="H" />
+			</portrait-category>
+			<portrait-category name="Elfen ♀">
+				<portrait id="69" name="A" />
+				<portrait id="70" name="B" />
+				<portrait id="71" name="C" />
+				<portrait id="72" name="D" />
+				<portrait id="73" name="E" />
+				<portrait id="74" name="F" />
+				<portrait id="75" name="G" />
+				<portrait id="76" name="H" />
+				<portrait id="77" name="I" />
+				<portrait id="78" name="J" />
+			</portrait-category>
+			<portrait-category name="Zwerge und Gnome ♂">
+				<portrait id="54" name="A" />
+				<portrait id="55" name="B" />
+				<portrait id="56" name="C" />
+				<portrait id="57" name="D" />
+				<portrait id="58" name="E" />
+				<portrait id="59" name="F" />
+				<portrait id="60" name="G" />
+				<portrait id="90" name="H" />
+				<portrait id="91" name="I" />
+				<portrait id="92" name="J" />
+				<portrait id="93" name="K" />
+				<portrait id="94" name="L" />
+				<portrait id="95" name="M" />
+				<portrait id="96" name="N" />
+				<portrait id="97" name="O" />
+				<portrait id="98" name="P" />
+			</portrait-category>
+			<portrait-category name="Zwerge und Gnome ♀">
+				<portrait id="99" name="A" />
+				<portrait id="100" name="B" />
+				<portrait id="101" name="C" />
+			</portrait-category>
+			<portrait-category name="Sylphen">
+				<portrait id="79" name="A" />
+				<portrait id="80" name="B" />
+			</portrait-category>
+			<portrait-category name="Moraner">
+				<portrait id="85" name="A" />
+				<portrait id="86" name="B" />
+				<portrait id="87" name="C" />
+				<portrait id="88" name="D" />
+				<portrait id="89" name="E" />
+			</portrait-category>
+			<portrait-category name="Tiere">
+				<portrait id="81" name="A" />
+				<portrait id="82" name="B" />
+				<portrait id="83" name="C" />
+				<portrait id="84" name="D" />
+			</portrait-category>
+		</portrait-list>
+	</xsl:template>
+	
+	<xsl:template name="extract-pcs">
+	</xsl:template>
+	
+	<xsl:template name="extract-npcs">
+	</xsl:template>
 
 	<xsl:template name="extract-monsters">
 		<xsl:variable name="monsters"
-			select="save:archive[@file-name='Monster_char_data.amb']/*" />
+			select="save:archive[@name='Monster_char_data.amb']/*" />
 		<xsl:if test="count($monsters)">
 			<xsl:variable name="categories"
 				select="key('dictionary-option', 'monster-images')" />
 			<monster-list>
 				<xsl:for-each select="$categories">
 					<xsl:variable name="category" select="." />
-					<monster-category id="{@key}" name="{@val}">
+					<monster-category name="{@val}">
 						<xsl:for-each select="$monsters">
 							<xsl:if test=".//*[@name = 'gfx-id']/@value = $category/@key">
 								<xsl:call-template name="extract-monster">
@@ -260,7 +410,9 @@
 
 	<xsl:template name="extract-items">
 		<xsl:variable name="items"
-			select="(save:archive[@file-name='AM2_CPU'] | save:archive[@file-name='AM2_BLIT'])//*[@name = 'items']/*/*" />
+			select="(save:archive[@name='AM2_CPU'] | save:archive[@name='AM2_BLIT'])//*[@name = 'items']/*/*" />
+		<xsl:variable name="texts"
+			select="save:archive[@name='Object_texts.amb']" />
 
 		<xsl:if test="count($items)">
 			<xsl:variable name="categories"
@@ -268,12 +420,13 @@
 			<item-list>
 				<xsl:for-each select="$categories">
 					<xsl:variable name="category" select="." />
-					<item-category id="{.}"
+					<item-category 
 						name="{key('dictionary-option', 'item-types')[@key = $category]/@val}">
 						<xsl:for-each select="$items">
 							<xsl:if test=".//*[@name = 'type']/@value = $category">
 								<xsl:call-template name="extract-item">
 									<xsl:with-param name="id" select="position()" />
+									<xsl:with-param name="texts" select="$texts" />
 								</xsl:call-template>
 							</xsl:if>
 						</xsl:for-each>
@@ -285,10 +438,10 @@
 
 	<xsl:template name="extract-maps">
 		<xsl:variable name="maps"
-			select="save:archive[@file-name[. = '1Map_data.amb' or . = '2Map_data.amb' or . = '3Map_data.amb']]/*" />
+			select="save:archive[contains(@name, 'Map_data.amb')]/*" />
 		<xsl:if test="count($maps)">
 			<xsl:variable name="texts"
-				select="save:archive[@file-name[. = '1Map_texts.amb' or . = '2Map_texts.amb' or . = '3Map_texts.amb']]/*" />
+				select="save:archive[contains(@name, 'Map_texts.amb')]/*" />
 			<map-list>
 				<xsl:for-each select="$maps">
 					<xsl:sort select="@file-name" />
@@ -303,7 +456,37 @@
 		</xsl:if>
 	</xsl:template>
 
+	<xsl:template name="extract-tileset.icons">
+		<xsl:variable name="tilesets"
+				select="save:archive[contains(@name, 'Icon_data.amb')]/*" />
+		<xsl:if test="count($tilesets)">
+			<tileset.icon-list>
+				<xsl:for-each select="$tilesets">
+					<xsl:sort select="@file-name" />
+					<xsl:variable name="id" select="@file-name" />
+					<xsl:call-template name="extract-tileset.icon">
+						<xsl:with-param name="id" select="$id" />
+					</xsl:call-template>
+				</xsl:for-each>
+			</tileset.icon-list>
+		</xsl:if>
+	</xsl:template>
+	
+
 	<xsl:template name="extract-tileset.icon">
+		<xsl:param name="root" select="." />
+		<xsl:param name="id" />
+		<tileset.icon id="{$id}">
+			<xsl:apply-templates select="$root//*[@name='data']//*[@value]"
+				mode="attr" />
+			<xsl:for-each select=".//*[@name = 'tiles']/*/*">
+				<xsl:if test="*[@name='image-count']/@value &gt; 0">
+					<tile id="{position()}">
+						<xsl:apply-templates select="*[@value]" mode="attr" />
+					</tile>
+				</xsl:if>
+			</xsl:for-each>
+		</tileset.icon>
 	</xsl:template>
 
 
@@ -347,7 +530,7 @@
 					<xsl:with-param name="name" select="'maximum-age'" />
 				</xsl:apply-templates>
 				<xsl:for-each select=".//*[@name = 'attributes']/*">
-					<attribue name="{@name}"
+					<attribute name="{@name}"
 						current="{*[@name = 'current']/@value + *[@name = 'current-mod']/@value}"
 						maximum="{*[@name = 'current']/@value}" />
 				</xsl:for-each>
@@ -375,12 +558,76 @@
 						maximum="{*[@name = 'current']/@value}" />
 				</xsl:for-each>
 			</class>
+			<xsl:call-template name="extract-equipment" />
+			<xsl:call-template name="extract-inventory" />
+			<xsl:call-template name="extract-spellbook" />
 			<xsl:for-each select=".//*[@name = 'gfx']">
 				<xsl:call-template name="extract-gfx" />
 			</xsl:for-each>
 		</monster>
 	</xsl:template>
-
+	
+	<xsl:template name="extract-spellbook">
+		<xsl:param name="root" select="." />
+		<xsl:for-each select=".//*[@name = 'spells']">
+			<spellbook>
+				<xsl:for-each select=".//*[string-length(@value) &gt; 0]">
+					<spell-instance name="{@name}"/>
+				</xsl:for-each>
+			</spellbook>
+		</xsl:for-each>
+	</xsl:template>
+	
+	<xsl:template name="extract-equipment">
+		<xsl:param name="root" select="." />
+		<xsl:for-each select="$root//*[@name = 'equipment']">
+			<equipment>
+				<xsl:for-each select="*">
+					<xsl:call-template name="extract-slot"/>
+				</xsl:for-each>
+			</equipment>
+		</xsl:for-each>
+	</xsl:template>
+	
+	<xsl:template name="extract-inventory">
+		<xsl:param name="root" select="." />
+		<xsl:for-each select="$root//*[@name = 'inventory']">
+			<inventory>
+				<xsl:for-each select="*">
+					<xsl:call-template name="extract-slot"/>
+				</xsl:for-each>
+			</inventory>
+		</xsl:for-each>
+	</xsl:template>
+	
+	<xsl:template name="extract-slot">
+		<xsl:param name="root" select="." />
+		<slot>
+			<xsl:if test="$root/@name">
+				<xsl:attribute name="name"><xsl:value-of select="@name"/></xsl:attribute>
+			</xsl:if>
+			<xsl:for-each select="$root//*[@name = 'item-id'][@value &gt; 0]/..">
+				<xsl:call-template name="extract-item-instance"/>
+			</xsl:for-each>
+		</slot>
+	</xsl:template>
+	
+	<xsl:template name="extract-item-instance">
+		<xsl:param name="root" select="." />
+		<item-instance>
+			<xsl:apply-templates select="$root//*[@name = 'item-id']"
+				mode="attr" />
+			<xsl:apply-templates select="$root//*[@name = 'item-amount']"
+				mode="attr" />
+			<xsl:apply-templates select="$root//*[@name = 'item-charge']"
+				mode="attr" />
+				
+			<xsl:for-each select=".//*[@name = 'item-status']/*[@value != '']">
+				<xsl:attribute name="is-{@name}" />
+			</xsl:for-each>
+		</item-instance>
+	</xsl:template>
+	
 	<xsl:template name="extract-gfx">
 		<xsl:param name="root" select="." />
 
@@ -440,9 +687,13 @@
 
 	<xsl:template name="extract-item">
 		<xsl:param name="root" select="." />
+		<xsl:param name="texts" select="/.." />
 		<xsl:param name="id" />
 
 		<item id="{$id}">
+			<xsl:variable name="type" select=".//*[@name = 'type']/@value" />
+			<xsl:variable name="subtype" select=".//*[@name = 'subtype']/@value" />
+			<xsl:variable name="subsubtype" select=".//*[@name = 'subsubtype']/@value" />
 			<xsl:variable name="spell-id" select=".//*[@name = 'spell-id']/@value" />
 			<xsl:variable name="spell-type" select=".//*[@name = 'spell-type']/@value" />
 			<xsl:variable name="spell-dictionary">
@@ -515,7 +766,24 @@
 			<xsl:for-each select=".//*[@name = 'classes']/*[@value != '']">
 				<class name="{@name}" />
 			</xsl:for-each>
+			<xsl:if test="$type = 8">
+				<xsl:call-template name="extract-text">
+					<xsl:with-param name="root" select="$texts/*[position() = $subtype]/*/*[position() = ($subsubtype + 1)]//@value" />
+					<xsl:with-param name="id" select="0"/>
+				</xsl:call-template>
+			</xsl:if>
 		</item>
+	</xsl:template>
+	
+	<xsl:template name="extract-text">
+		<xsl:param name="root" select="." />
+		<xsl:param name="id" />
+		<text id="{$id}">
+			<xsl:for-each select="str:split($root, '^')">
+				<xsl:value-of select="translate(., '$', '&#160;')"/>
+				<br xmlns="http://www.w3.org/1999/xhtml"/>
+			</xsl:for-each>
+		</text>
 	</xsl:template>
 
 	<xsl:template name="extract-map">

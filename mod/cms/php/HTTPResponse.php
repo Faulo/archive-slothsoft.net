@@ -13,6 +13,7 @@ use MatthiasMullie\Minify\CSS;
 use MatthiasMullie\Minify\JS;
 use DOMDocument;
 use Exception;
+use UnexpectedValueException;
 declare(ticks = 1000);
 
 class HTTPResponse
@@ -908,7 +909,7 @@ EOT;
                         try {
                             $status = $this->body->getStatus();
                             if ($timeoutTime > $heartbeatTimeout) {
-                                throw new Exception('HTTPStream timed out! Aborting stream...');
+                                throw new UnexpectedValueException('HTTPStream timed out! Aborting stream...');
                             }
                         } catch (Exception $e) {
                             $status = HTTPStream::STATUS_ERROR;

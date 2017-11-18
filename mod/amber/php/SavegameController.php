@@ -4,7 +4,7 @@ namespace Slothsoft\Amber;
 use Slothsoft\CMS\HTTPDocument;
 use Slothsoft\CMS\HTTPRequest;
 use Slothsoft\Savegame\Editor;
-use Exception;
+use RuntimeException;
 
 class SavegameController
 {
@@ -22,8 +22,8 @@ class SavegameController
     {
         $editorFilePath = $req->getInputValue('EditorConfig', '/amber/AmbermoonAmberfiles');
         $editorFile = $document->getResourcePath($editorFilePath);
-        if (! $editorFilePath) {
-            throw new Exception(sprintf('Failed to load EditorConfig "%s"!', $editorFilePath));
+        if (! $editorFile) {
+            throw new RuntimeException(sprintf('Failed to load EditorConfig "%s"!', $editorFilePath));
         }
         
         $mode = $req->getInputValue('SaveDefault', 'thalion');

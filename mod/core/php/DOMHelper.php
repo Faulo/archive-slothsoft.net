@@ -8,12 +8,12 @@
  ***********************************************************************/
 namespace Slothsoft\Core;
 
-use DOMImplementation;
-use DOMXPath;
 use DOMDocument;
+use DOMImplementation;
 use DOMNode;
+use DOMXPath;
+use RuntimeException;
 use XSLTProcessor;
-use Exception;
 declare(ticks = 1);
 
 class DOMHelper
@@ -144,7 +144,7 @@ class DOMHelper
                 $parseDoc->loadHTML(sprintf(self::HTML_FRAME, $xmlCode));
                 $error = ob_get_contents();
                 ob_end_clean();
-                throw new Exception(sprintf('Error loading HTML:%s%s%s%s', PHP_EOL, substr($xmlCode, 0, 1024), PHP_EOL, substr($error, 0, 1024)));
+                throw new RuntimeException(sprintf('Error loading HTML:%s%s%s%s', PHP_EOL, substr($xmlCode, 0, 1024), PHP_EOL, substr($error, 0, 1024)));
             }
             $rootNode = $parseDoc->documentElement->lastChild;
             
@@ -185,7 +185,7 @@ class DOMHelper
                     $retFragment->appendXML($xmlCode);
                     $error = ob_get_contents();
                     ob_end_clean();
-                    throw new Exception(sprintf('Error loading XML:%s%s%s%s', PHP_EOL, substr($xmlCode, 0, 1024), PHP_EOL, substr($error, 0, 1024)));
+                    throw new RuntimeException(sprintf('Error loading XML:%s%s%s%s', PHP_EOL, substr($xmlCode, 0, 1024), PHP_EOL, substr($error, 0, 1024)));
                 }
             }
         }

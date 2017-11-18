@@ -6,6 +6,12 @@ function SavegameEditor(rootNode) {
 SavegameEditor.prototype = Object.create(
 	Object.prototype, {
 		rootNode : { writable : true },
+		templateDoc : {
+			writable : true,
+		},
+		repositoryDoc : {
+			writable : true,
+		},
 		init : {
 			value : function() {
 				try {
@@ -23,6 +29,36 @@ SavegameEditor.prototype = Object.create(
 				} catch(e) {
 					this.rootNode.textContent = e.message;
 				}
+				try {
+					this.getDocument(
+						"/getTemplate.php/amber/editor.data-list",
+						(doc) => {
+							this.templateDoc = doc;
+						}
+					)
+					this.getDocument(
+						"/getData.php/amber/mod.resource?game=ambermoon&mod=Thalion-v1.05-DE&id=libs",
+						(doc) => {
+							this.repositoryDoc = doc;
+						}
+					)
+				} catch(e) {
+					this.rootNode.textContent = e.message;
+				}
+			}
+		},
+		getDocument : {
+			value : function(url, callback) {
+				let req = new XMLHttpRequest();
+				req.open("GET", url, true);
+				req.addEventListener(
+					"load",
+					(eve) => {
+						callback.call(this, req.responseXML);
+					},
+					false
+				);
+				req.send();
 			}
 		},
 		changeSectionEvent : {
@@ -58,11 +94,23 @@ SavegameEditor.prototype = Object.create(
 					this.closePopup(eve);
 					
 					let buttonNode = eve.currentTarget;
-					let menuNode = buttonNode.contextMenu;
+					//let menuNode = buttonNode.contextMenu;
 					let popupNode = document.querySelector(".Amber .popup");
 					if (popupNode) {
-						let entryType = buttonNode.getAttribute("contextmenu");
-						let entryId = buttonNode.querySelector("input").value;
+						let entryId = buttonNode.querySelector("*[value]").getAttribute("value");
+						let entryType = buttonNode.getAttribute("type");
+						if (entryId && entryType) {
+							if (this.templateDoc && this.repositoryDoc) {
+								let entryNode = this.getRepositoryElement(entryType, entryId);
+								if (entryNode) {
+									let articleNode = XSLT.transformToFragment(entryNode, this.templateDoc, document);
+									if (articleNode) {
+										popupNode.appendChild(articleNode);
+									}
+								}
+							}
+						}
+						/*
 						if (entryType && entryId) {
 							let entryNode = document.getElementById(entryType + "-" + entryId);
 							if (entryNode && entryNode.content) {
@@ -72,6 +120,7 @@ SavegameEditor.prototype = Object.create(
 								}
 							}
 						}
+						//*/
 					}
 				} catch(e) {
 					alert(e);
@@ -84,14 +133,13 @@ SavegameEditor.prototype = Object.create(
 					let pickerNode = document.activeElement;
 					let menuNode = eve.currentTarget;
 					
-					let targetNodeList = pickerNode.querySelectorAll("*[data-picker-value]");
+					let targetNodeList = pickerNode.children;
 					
 					for (let i = 0; i < targetNodeList.length; i++) {
 						let targetNode = targetNodeList[i];
 						
-						let name = targetNode.getAttribute("data-picker-name");
-						let value = targetNode.getAttribute("data-picker-value");
-						
+						let name = targetNode.localName;
+						let value = targetNode.getAttribute("value");
 						let itemNode = menuNode.querySelector("*[data-picker-name='" + name + "']");
 						
 						if (itemNode) {
@@ -109,7 +157,6 @@ SavegameEditor.prototype = Object.create(
 											node.parentNode.hidden = false;
 										},
 									);
-									
 									if (pickerNode.hasAttribute(filterName)) {
 										let filterValue = pickerNode.getAttribute(filterName);
 										itemNodeList.forEach(
@@ -152,31 +199,38 @@ SavegameEditor.prototype = Object.create(
 					
 					let name = itemNode.getAttribute("data-picker-name");
 					
-					let targetNode = pickerNode.querySelector("*[data-picker-name='" + name + "']");
-					let inputNode = pickerNode.querySelector("*[data-picker-name='" + name + "'] input");
+					let targetNode = pickerNode.querySelector(name);
+					let inputNode = pickerNode.querySelector(name + " input");
+					let value = 0;
 					
 					if (targetNode && inputNode) {
-						let value;
 						switch (itemNode.type) {
 							case "checkbox":
 								value = itemNode.checked;
 								
-								targetNode.setAttribute("data-picker-value", value ? "1" : "");
+								targetNode.setAttribute("value", value ? "1" : "");
 								inputNode.checked = value;
 								break;
 							case "radio":
 							default:
-								value = itemNode.getAttribute("data-picker-value");
+								value = parseInt(itemNode.getAttribute("data-picker-value"));
 								
-								targetNode.setAttribute("data-picker-value", value);
+								targetNode.setAttribute("value", value);
 								inputNode.value = value;
 								break;
 						}
 					}
 					
 					switch(name) {
-						case "item-id":
-							pickerNode.setAttribute("data-hover-text", itemNode.getAttribute("label"));
+						case "amber-item-id":
+							//pickerNode.setAttribute("data-hover-text", itemNode.getAttribute("label"));
+							break;
+						case "amber-item-amount":
+							if (value === 0) {
+								//pickerNode.setAttribute("data-hover-text", "");
+								pickerNode.querySelector("amber-item-id").setAttribute("value", "0");
+								pickerNode.querySelector("amber-item-id input").value = 0;
+							}
 							break;
 					}
 				} catch(e) {
@@ -184,6 +238,7 @@ SavegameEditor.prototype = Object.create(
 				}
 			}
 		},
+		/*
 		loadForm : {
 			value : function(eve) {
 				try {
@@ -224,11 +279,12 @@ SavegameEditor.prototype = Object.create(
 				}
 			}
 		},
+		//*/
 		setEquipment : {
 			value : function(buttonNode) {
 				try {
 					let characterNode = buttonNode.parentNode.parentNode.parentNode.parentNode;
-					let itemList = characterNode.querySelectorAll(".equipment .item");
+					let itemList = characterNode.querySelectorAll(".equipment amber-picker");
 					let attributeList = characterNode.querySelectorAll(".attributes tr");
 					let skillList = characterNode.querySelectorAll(".skills tr");
 					
@@ -268,11 +324,10 @@ SavegameEditor.prototype = Object.create(
 					}
 					
 					for (let i = 0; i < itemList.length; i++) {
-						let itemId = itemList[i].querySelector("*[data-picker-name='item-id'] input").value;
+						let itemId = itemList[i].querySelector("amber-item-id input").value;
 						if (itemId) {
-							let itemNode = document.getElementById("item-" + itemId);
+							let itemNode = this.getItemById(itemId);
 							if (itemNode) {
-								itemNode = itemNode.content.querySelector("item");
 								if (itemNode) {
 									for (let key in data) {
 										if (itemNode.hasAttribute(key)) {
@@ -301,5 +356,23 @@ SavegameEditor.prototype = Object.create(
 				}
 			}
 		},
+		getItemById : {
+			value : function(itemId) {
+				return this.getRepositoryElement("item", itemId);
+			}
+		},
+		getRepositoryElement : {
+			value : function(entryType, entryId) {
+				let ret = null;
+				try {
+					if (this.repositoryDoc) {
+						ret = this.repositoryDoc.querySelector(entryType + "[id='" + entryId + "']")
+					}
+				} catch(e) {
+					alert(e);
+				}
+				return ret;
+			}
+		}
 	}
 );

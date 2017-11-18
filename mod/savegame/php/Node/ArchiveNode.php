@@ -1,9 +1,9 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
-use Slothsoft\Core\FileSystem;
 use Slothsoft\Amber\ArchiveManager;
-use Exception;
+use Slothsoft\Core\FileSystem;
+use DomainException;
 declare(ticks = 1000);
 
 class ArchiveNode extends AbstractNode
@@ -26,9 +26,10 @@ class ArchiveNode extends AbstractNode
     public function __construct()
     {
         parent::__construct();
-        $this->strucData['file-name'] = '';
-        $this->strucData['file-time'] = '';
-        $this->strucData['file-md5'] = '';
+        $this->strucData['path'] = '';
+        $this->strucData['name'] = '';
+        $this->strucData['timestamp'] = '';
+        $this->strucData['md5'] = '';
         $this->strucData['type'] = '';
         
         $this->archivePath = '';
@@ -39,12 +40,16 @@ class ArchiveNode extends AbstractNode
     {
         parent::loadStruc();
         
-        $defaultFile = $this->ownerEditor->buildDefaultFile($this->strucData['file-name']);
-        $tempFile = $this->ownerEditor->buildTempFile($this->strucData['file-name']);
+        if (! $this->strucData['name']) {
+            $this->strucData['name'] = basename($this->strucData['path']);
+        }
+        
+        $defaultFile = $this->ownerEditor->buildDefaultFile($this->strucData['path']);
+        $tempFile = $this->ownerEditor->buildTempFile($this->strucData['name']);
         
         if ($uploadedArchives = $this->ownerEditor->getConfigValue('uploadedArchives')) {
-            if (isset($uploadedArchives[$this->strucData['file-name']])) {
-                move_uploaded_file($uploadedArchives[$this->strucData['file-name']], $tempFile);
+            if (isset($uploadedArchives[$this->strucData['name']])) {
+                move_uploaded_file($uploadedArchives[$this->strucData['name']], $tempFile);
             }
         }
         
@@ -54,16 +59,16 @@ class ArchiveNode extends AbstractNode
 
     protected function loadNode()
     {
-        if ($this->ownerEditor->shouldLoadArchive($this->strucData['file-name'])) {
+        if ($this->ownerEditor->shouldLoadArchive($this->strucData['name'])) {
             if ($this->tempDir) {
-				$this->filePathList = FileSystem::scanDir($this->tempDir, FileSystem::SCANDIR_REALPATH);
-				if (! count($this->filePathList)) {
-					$this->loadArchive();
-					$this->filePathList = FileSystem::scanDir($this->tempDir, FileSystem::SCANDIR_REALPATH);
-				}
-			} else {
-				$this->filePathList = [];
-			}
+                $this->filePathList = FileSystem::scanDir($this->tempDir, FileSystem::SCANDIR_REALPATH);
+                if (! count($this->filePathList)) {
+                    $this->loadArchive();
+                    $this->filePathList = FileSystem::scanDir($this->tempDir, FileSystem::SCANDIR_REALPATH);
+                }
+            } else {
+                $this->filePathList = [];
+            }
         }
     }
 
@@ -81,25 +86,25 @@ class ArchiveNode extends AbstractNode
     protected function loadArchive()
     {
         $ambtoolPath = $this->ownerEditor->getConfigValue('ambtoolPath');
-		
+        
         switch ($this->strucData['type']) {
             case self::ARCHIVE_TYPE_AMBR:
             case self::ARCHIVE_TYPE_JH:
-				$manager = new ArchiveManager($ambtoolPath);
-				$manager->extractArchive($this->archivePath, $this->tempDir);
-				break;
+                $manager = new ArchiveManager($ambtoolPath);
+                $manager->extractArchive($this->archivePath, $this->tempDir);
+                break;
             case self::ARCHIVE_TYPE_AM2:
             case self::ARCHIVE_TYPE_RAW:
-				copy($this->archivePath, $this->tempDir . DIRECTORY_SEPARATOR . '1');
-				break;
-			default:
-				throw new Exception(sprintf('unknown archive type "%s"!', $this->strucData['type']));
-		}
+                copy($this->archivePath, $this->tempDir . DIRECTORY_SEPARATOR . '1');
+                break;
+            default:
+                throw new DomainException(sprintf('unknown archive type "%s"!', $this->strucData['type']));
+        }
     }
 
     public function writeArchive()
     {
-        $path = $this->ownerEditor->buildTempFile($this->strucData['file-name']);
+        $path = $this->ownerEditor->buildTempFile($this->strucData['name']);
         $ret = file_put_contents($path, $this->getArchive());
         if ($ret) {
             $this->setArchivePath($path);
@@ -145,37 +150,37 @@ class ArchiveNode extends AbstractNode
                     $ret .= $child->getContent();
                 }
                 break;
-			default:
-				throw new Exception(sprintf('unknown archive type "%s"!', $this->strucData['type']));
+            default:
+                throw new DomainException(sprintf('unknown archive type "%s"!', $this->strucData['type']));
         }
         return $ret;
     }
 
     public function getArchiveId()
     {
-        return $this->strucData['file-name'];
+        return $this->strucData['name'];
     }
 
     protected function setArchivePath($path)
     {
         $this->archivePath = $path;
         
-		if (file_exists($this->archivePath)) {
-			$this->strucData['file-size'] = FileSystem::size($this->archivePath);
-			$this->strucData['file-time'] = date(DATE_DATETIME, FileSystem::changetime($this->archivePath));
-			$this->strucData['file-md5'] = md5_file($this->archivePath);
-        
-			$dir = [];
-			$dir[] = sys_get_temp_dir();
-			$dir[] = str_replace(NAMESPACE_SEPARATOR, DIRECTORY_SEPARATOR, __CLASS__);
-			$dir[] = $this->strucData['file-name'];
-			$dir[] = $this->strucData['file-md5'];
-			
-			$this->tempDir = implode(DIRECTORY_SEPARATOR, $dir);
-			
-			if (! is_dir($this->tempDir)) {
-				mkdir($this->tempDir, 0777, true);
-			}
-		}
+        if (file_exists($this->archivePath)) {
+            $this->strucData['size'] = FileSystem::size($this->archivePath);
+            $this->strucData['timestamp'] = date(DATE_DATETIME, FileSystem::changetime($this->archivePath));
+            $this->strucData['md5'] = md5_file($this->archivePath);
+            
+            $dir = [];
+            $dir[] = sys_get_temp_dir();
+            $dir[] = str_replace(NAMESPACE_SEPARATOR, DIRECTORY_SEPARATOR, __CLASS__);
+            $dir[] = $this->strucData['name'];
+            $dir[] = $this->strucData['md5'];
+            
+            $this->tempDir = implode(DIRECTORY_SEPARATOR, $dir);
+            
+            if (! is_dir($this->tempDir)) {
+                mkdir($this->tempDir, 0777, true);
+            }
+        }
     }
 }

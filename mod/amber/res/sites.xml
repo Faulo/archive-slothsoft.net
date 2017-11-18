@@ -4,22 +4,22 @@
 		status-active="" status-public="">
 		<page name="EditorHelp" title="EditorHelp" ref="help"
 			status-active="" status-public="" />
-		<page name="SavegameEditor" title="SavegameEditor" ref="editor-savegame"
-			status-active="" status-public="" />
-		<page name="GamedataEditor" title="GamedataEditor" ref="editor-gamedata"
-			status-active="" />
-		<page name="GameEditor" title="GameEditor" ref="editor-amberfiles"
-			status-active="" />
-		<page name="ExperienceChart" title="ExperienceChart" ref="epchart"
-			status-active="" status-public="" />
-		<page name="ItemList" title="ItemList" ref="itemlist"
-			status-active="" status-public="" />
-		<page name="PortraitList" title="PortraitList" ref="portraitlist"
-			status-active="" status-public="" />
+		<page name="SavegameEditor" title="SavegameEditor"
+			redirect="/Ambermoon/Thalion-v1.05-DE/SaveEditor" status-active="" />
+		<page name="GamedataEditor" title="GamedataEditor"
+			redirect="/Ambermoon/Thalion-v1.05-DE/GameEditor" status-active="" />
+		<page name="GameEditor" title="GameEditor"
+			redirect="/Ambermoon/Thalion-v1.05-DE/GameEditor" status-active="" />
+		<page name="ExperienceChart" title="ExperienceChart"
+			redirect="/Ambermoon/Thalion-v1.05-DE/ClassList" status-active="" />
+		<page name="ItemList" title="ItemList"
+			redirect="/Ambermoon/Thalion-v1.05-DE/ItemList" status-active="" />
+		<page name="PortraitList" title="PortraitList"
+			redirect="/Ambermoon/Thalion-v1.05-DE/PortraitList" status-active="" />
 
 		<param name="game" value="ambermoon" />
 		<page name="Thalion-v1.05-DE" title="Thalion-v1.05-DE" ref="mod"
-			status-active="">
+			status-active="" status-public="">
 			<param name="mod" value="Thalion-v1.05-DE" />
 			<page name="SaveEditor" title="SavegameEditor" ref="mod.editor"
 				status-active="" status-public="">
@@ -31,19 +31,63 @@
 			</page>
 			<page name="ItemList" title="ItemList" ref="mod.resource"
 				status-active="" status-public="">
-				<param name="resource" value="items" />
+				<param name="id" value="items" />
+			</page>
+			<page name="PCList" title="PCList" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="id" value="pcs" />
+			</page>
+			<page name="NPCList" title="NPCList" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="id" value="npcs" />
+			</page>
+			<page name="MonsterList" title="MonsterList" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="id" value="monsters" />
+			</page>
+			<page name="ClassList" title="ClassList" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="id" value="classes" />
+			</page>
+			<page name="PortraitList" title="PortraitList" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="id" value="portraits" />
 			</page>
 		</page>
 		<page name="Thalion-v1.06-DE" title="Thalion-v1.06-DE" ref="mod"
-			status-active="">
+			status-active="" status-public="">
 			<param name="mod" value="Thalion-v1.06-DE" />
-			<page name="SaveEditor" title="SavegameEditor" ref="editor2"
+			<page name="SaveEditor" title="SavegameEditor" ref="mod.editor"
 				status-active="" status-public="">
 				<param name="struc" value="structure.savegame" />
 			</page>
-			<page name="GameEditor" title="GameEditor" ref="editor2"
+			<page name="GameEditor" title="GameEditor" ref="mod.editor"
 				status-active="" status-public="">
-				<param name="struc" value="structure.savegame" />
+				<param name="struc" value="structure" />
+			</page>
+			<page name="ItemList" title="ItemList" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="id" value="items" />
+			</page>
+			<page name="PCList" title="PCList" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="id" value="pcs" />
+			</page>
+			<page name="NPCList" title="NPCList" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="id" value="npcs" />
+			</page>
+			<page name="MonsterList" title="MonsterList" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="id" value="monsters" />
+			</page>
+			<page name="ClassList" title="ClassList" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="id" value="classes" />
+			</page>
+			<page name="PortraitList" title="PortraitList" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="id" value="portraits" />
 			</page>
 		</page>
 	</page>

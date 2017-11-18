@@ -1,0 +1,197 @@
+/* alle picker */
+amber-picker {
+	display: block;
+	position: relative;
+	width: fit-content;
+	width: -moz-fit-content;
+	width: -webkit-fit-content;
+}
+
+/* items */
+amber-picker.item-picker {
+	margin: auto;
+}
+amber-item-id,
+amber-item-amount,
+amber-item-charge,
+amber-broken,
+amber-identified {
+	display: block;
+}
+amber-item-id:hover::before {
+	display: block;
+	pointer-events: none;
+	text-align: center;
+	position: absolute;
+	width: max-content;
+	width: -moz-max-content;
+	width: -webkit-max-content;
+	left: 50%;
+	top: 0.5ch;
+	transform: translate(-50%, -50%);
+	margin-left: -2px;
+	z-index: 20;
+}
+
+amber-item-id::after {
+	font-size: 32px;
+	width: 1em;
+	height: 1em;
+	border: 2px solid transparent;
+}
+
+amber-item-id[value=""]::after,
+amber-item-id[value="0"]::after {
+	background-image: none;
+}
+
+amber-item-amount::after {
+	content: attr(value);
+	display: block;
+	text-align: center;
+}
+
+amber-item-amount[value=""]::after,
+amber-item-amount[value="0"]::after {
+	content: " ";
+}
+
+amber-item-amount[value="255"]::after {
+	content: "**";
+}
+
+*[data-template="equip"] amber-item-amount {
+	display: none;
+}
+
+amber-broken::after {
+	font-size: 32px;
+	width: 1em;
+	height: 1em;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	display: block;
+	content: " ";
+	background-clip: content-box;
+	background-image: url(/getResource.php/amber/items-map);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+amber-broken[value=""]::after {
+	display: none;
+}
+
+amber-identified::after {
+	position: absolute;
+	top: 24px;
+	right: 2px;
+	font-size: 0.5em;
+	content: "👁";
+}
+
+amber-identified[value=""]::after {
+	display: none;
+}
+
+amber-item-charge::after {
+	position: absolute;
+	top: -2px;
+	right: 2px;
+	color: rgb(255, 204, 0);
+	font-size: 0.5em;
+	content: attr(value);
+}
+
+amber-item-charge[value=""]::after,
+amber-item-charge[value="0"]::after {
+	display: none;
+}
+
+amber-item-charge[value="255"]::after {
+	content: "**";
+}
+
+/* portraits */
+amber-picker.portrait-picker {
+	border-style: ridge !important;
+}
+amber-portrait {
+	display: block;
+}
+
+amber-portrait::after {
+	width: 64px;
+	height: 68px;
+	font-size: 68px;
+}
+
+.popup amber-portrait::after {
+	width: 128px;
+	height: 136px;
+	font-size: 136px;
+}
+
+/* monsters */
+amer-picker.monster-sprite-picker {
+	border-style: ridge;
+}
+amber-gfx-id {
+	display: block;
+}
+
+/* tilesets */
+amber-picker.tile-picker {
+	border-width: 1px !important;
+	width: 34px;
+	height: 34px;
+}
+amber-tile-id,
+amber-event-id {
+	display: block;
+}
+
+*[data-tileset-icon] amber-tile-id::after {
+	font-size: 32px;
+	width: 1em;
+	height: 1em;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+*[data-tileset-icon] amber-tile-id[value=""]::after,
+*[data-tileset-icon] amber-tile-id[value="0"]::after {
+	display: none;
+}
+
+*[data-tileset-lab] amber-tile-id::after {
+	position: absolute;
+	bottom: 0;
+	right: 1px;
+	font-size: 0.5em;
+	line-height: 1em;
+	content: attr(value);
+}
+
+*[data-tileset-lab] amber-tile-id[value=""]::after,
+*[data-tileset-lab] amber-tile-id[value="0"]::after {
+	display: none;
+}
+
+amber-event-id::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 32px;
+	line-height: 32px;
+	content: attr(value);
+	color: rgb(255, 153, 0);
+	text-align: center;
+}
+
+amber-event-id[value=""]::after,
+amber-event-id[value="0"]::after {
+	display: none;
+}

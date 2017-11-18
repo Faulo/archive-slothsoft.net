@@ -17,6 +17,7 @@ use DOMXPath;
 use DOMDocument;
 use DOMElement;
 use Exception;
+use RuntimeException;
 
 class Resource
 {
@@ -264,7 +265,7 @@ class Resource
         }
         $this->realpath = realpath($this->realpath);
         if (! $this->realpath) {
-            throw new Exception(sprintf(self::ERROR_FILE_NOTFOUND, $resNode->getAttribute('name'), $this->getPath()));
+            throw new RuntimeException(sprintf(self::ERROR_FILE_NOTFOUND, $resNode->getAttribute('name'), $this->getPath()));
         }
         $this->file = basename($this->realpath);
         if ($resNode->tagName === HTTPDocument::TAG_RESOURCE) {
@@ -373,7 +374,7 @@ class Resource
         }
         $this->resDoc->load($this->getPath());
         if (! $this->resDoc) {
-            throw new Exception(sprintf('Resource::loadMode document failed ;A; (%s)', $this->getPath));
+            throw new RuntimeException(sprintf('Resource::loadMode document failed ;A; (%s)', $this->getPath));
         }
         $this->resNode = $this->resDoc->documentElement;
         foreach ($attrList as $name => $value) {

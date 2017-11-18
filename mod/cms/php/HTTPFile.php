@@ -8,6 +8,7 @@
  ***********************************************************************/
 namespace Slothsoft\CMS;
 
+use Slothsoft\Core\DOMHelper;
 use Slothsoft\Core\Storage;
 use DOMDocument;
 declare(ticks = 1000);
@@ -223,10 +224,23 @@ class HTTPFile
     {
         return $this->name;
     }
-
+    
     public function getContents()
     {
         return file_get_contents($this->getPath());
+    }
+    public function setContents(string $content)
+    {
+        return file_put_contents($this->getPath(), $content);
+    }
+    
+    public function getDocument()
+    {
+        return DOMHelper::loadDocument($this->getPath());
+    }
+    public function setDocument(DOMDocument $content)
+    {
+        return $content->save($this->getPath());
     }
 
     public function copyTo($dir, $name = null, $copyClosure = null)

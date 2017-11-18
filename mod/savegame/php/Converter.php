@@ -2,7 +2,7 @@
 namespace Slothsoft\Savegame;
 
 use Slothsoft\Savegame\Script\Parser;
-use Exception;
+use RangeException;
 declare(ticks = 1000);
 
 class Converter
@@ -87,7 +87,7 @@ class Converter
                     $format = 'N';
                     break;
                 default:
-                    throw new Exception('unknown integer size: ' . $size);
+                    throw new RangeException('unknown integer size: ' . $size);
             }
             $unpackList[$size][$key] = unpack($format, $val)[1];
         }

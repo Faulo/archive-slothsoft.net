@@ -2,7 +2,7 @@
 namespace Slothsoft\Amber;
 
 use Slothsoft\Core\FileSystem;
-use Exception;
+use DomainException;
 
 class ArchiveManager
 {
@@ -13,7 +13,7 @@ class ArchiveManager
 
     public function __construct(string $ambtoolPath)
     {
-        assert(file_exists($ambtoolPath));
+        assert(file_exists($ambtoolPath), "ambtool not found at $ambtoolPath");
         
         $this->ambtoolPath = $ambtoolPath;
     }
@@ -70,7 +70,7 @@ class ArchiveManager
                     $ret = copy($archivePath, $targetDir . DIRECTORY_SEPARATOR . '1');
                     break;
                 default:
-                    throw new Exception(sprintf('unknown ambtool format "%s"!', $format));
+                    throw new DomainException(sprintf('unknown ambtool format "%s"!', $format));
             }
         }
         return $ret;

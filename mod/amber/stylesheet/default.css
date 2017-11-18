@@ -13,7 +13,7 @@
 	 */
 }
 
-.Amber, .Amber *:link, .Amber *:visited {
+.Amber, .Amber a:link, .Amber a:visited {
 	text-shadow: black 1px 1px, black 0px 1px, black 1px 0px;
 }
 
@@ -96,9 +96,25 @@
 .Amber .command {
 	border-style: groove;
 }
+.Amber .textbox {
+	white-space: pre-wrap;
+	border-style: ridge;
+	border-width: 2px;
+	padding: 0.5ch;
+	margin: 0.5ch;
+	width: 57ch;
+	max-height: 20ch;
+	overflow: auto;
+	font-size: smaller;
+	background-color: rgb(68, 68, 51);
+	border-color: rgb(68, 68, 51);
+}
 
 .Amber article {
 	border-style: ridge;
+}
+.Amber p.pre {
+	margin: auto;
 }
 
 .Amber input[type="submit"]:active, .Amber button:active, .Amber details:active,
@@ -111,7 +127,7 @@
 	border-color: rgb(255, 204, 0);
 }
 
-.Amber .orange, .Amber form:invalid *[type="submit"] {
+.Amber .orange, .Amber form:invalid button[type="submit"] {
 	color: rgb(255, 153, 0);
 }
 
@@ -120,11 +136,11 @@
 	color: rgb(255, 204, 0);
 }
 
-.Amber .green, .Amber .section>.name, .Amber caption, .Amber h3, .Amber *:link {
+.Amber .green, .Amber .section>.name, .Amber caption, .Amber h3, .Amber a:link {
 	color: rgb(170, 170, 68);
 }
 
-.Amber .gray, .Amber *:visited, .Amber *[data-type="string-dictionary"] li {
+.Amber .gray, .Amber a:visited, .Amber *[data-type="string-dictionary"] li {
 	color: rgb(170, 170, 153);
 }
 
@@ -268,169 +284,6 @@
 	}
 }
 
-.Amber .picker {
-	position: relative;
-	padding: 0;
-	display: block;
-	width: fit-content;
-	width: -moz-fit-content;
-	width: -webkit-fit-content;
-}
-
-.Amber *[data-template="portrait"] .picker, .Amber .portrait.picker {
-	border-style: ridge !important;
-}
-
-.Amber .monster-sprite.picker {
-	border-style: ridge !important;
-}
-
-.Amber .tile.picker {
-	border-width: 1px;
-	width: 34px;
-	height: 34px;
-}
-
-/* tilesets */
-.Amber *[data-tileset-icon] .picker>*[data-picker-name="tile-id"]::after {
-	font-size: 32px;
-	width: 1em;
-	height: 1em;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.Amber *[data-tileset-lab] .picker>*[data-picker-name="tile-id"]::after {
-	position: absolute;
-	bottom: 0;
-	right: 1px;
-	font-size: 0.5em;
-	line-height: 1em;
-	content: attr(data-picker-value);
-}
-
-.Amber .picker>*[data-picker-name="event-id"]::after {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 32px;
-	line-height: 32px;
-	content: attr(data-picker-value);
-	color: rgb(255, 153, 0);
-}
-
-.Amber .picker>*[data-picker-name="tile-id"][data-picker-value="0"]::after,
-	.Amber .picker>*[data-picker-name="event-id"][data-picker-value="0"]::after,
-	.Amber .picker>*[data-picker-name="low"][data-picker-value="0"]::after, .Amber .picker>*[data-picker-name="high"][data-picker-value="0"]::after
-	{
-	display: none;
-}
-
-.Amber *[data-template="equip"] .picker, .Amber *[data-template="item"] .picker,
-	.Amber .equipment .picker {
-	margin: auto;
-}
-
-.Amber .picker>*>* {
-	display: none;
-}
-
-.Amber .picker>*::after {
-	display: block;
-	content: " ";
-	text-align: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-
-.Amber .picker>*.PortraitId::after, .Amber .picker>*[data-picker-name="portrait"]::after
-	{
-	width: 64px;
-	height: 68px;
-	font-size: 68px;
-}
-
-.Amber .popup .picker>*.PortraitId::after, .Amber .popup .picker>*[data-picker-name="portrait"]::after
-	{
-	width: 128px;
-	height: 136px;
-	font-size: 136px;
-}
-
-.Amber .picker>*.ItemId::after, .Amber .picker>*[data-picker-name="item-id"]::after
-	{
-	font-size: 32px;
-	width: 1em;
-	height: 1em;
-	border: 2px solid transparent;
-	background-clip: content-box;
-}
-
-.Amber .picker>*.Broken[data-picker-value]::after, .Amber .picker>*[data-picker-name="broken"]::after
-	{
-	font-size: 32px;
-	width: 1em;
-	height: 1em;
-	position: absolute;
-	top: 2px;
-	left: 2px;
-	background-clip: content-box;
-	background-image: url(/getResource.php/amber/items-map);
-}
-
-.Amber .picker>*.Broken[data-picker-value=""]::after, .Amber .picker>*[data-picker-name="broken"][data-picker-value=""]::after
-	{
-	background-image: none;
-}
-
-.Amber .picker>*.Identified::after, .Amber .picker>*[data-picker-name="identified"]::after
-	{
-	position: absolute;
-	top: 24px;
-	right: 2px;
-	font-size: 0.5em;
-	content: "👁";
-}
-
-.Amber .picker>*.Identified[data-picker-value=""]::after, .Amber .picker>*[data-picker-name="identified"][data-picker-value=""]::after
-	{
-	content: "";
-}
-
-.Amber .picker>*.Charge::after, .Amber .picker>*[data-picker-name="item-charge"]::after
-	{
-	position: absolute;
-	top: -2px;
-	right: 2px;
-	color: rgb(255, 204, 0);
-	font-size: 0.5em;
-}
-
-.Amber .picker>*.Amount::after, .Amber .picker>*.Charge::after, .Amber .picker>*[data-picker-name="item-amount"]::after,
-	.Amber .picker>*[data-picker-name="item-charge"]::after {
-	content: attr(data-picker-value);
-}
-
-.Amber .picker>*.Amount[data-picker-value="0"]::after, .Amber .picker>*.Charge[data-picker-value="0"]::after,
-	.Amber .picker>*[data-picker-name="item-amount"][data-picker-value="0"]::after,
-	.Amber .picker>*[data-picker-name="item-charge"][data-picker-value="0"]::after
-	{
-	content: " ";
-}
-
-.Amber .picker>*.Amount[data-picker-value="255"]::after, .Amber .picker>*.Charge[data-picker-value="255"]::after,
-	.Amber .picker>*[data-picker-name="item-amount"][data-picker-value="255"]::after,
-	.Amber .picker>*[data-picker-name="item-charge"][data-picker-value="255"]::after
-	{
-	content: "**";
-}
-
-.Amber *[data-template="equip"] .picker>*.Amount, .Amber .equipment .picker>*[data-picker-name="item-amount"]
-	{
-	display: none;
-}
-
 .Amber .map {
 	max-width: 100%;
 	max-height: 80vh;
@@ -448,11 +301,11 @@
 	height: 34px;
 }
 
-.Amber *[data-hover-text], .Amber form *[type="submit"] {
+.Amber *[data-hover-text], .Amber form button[type="submit"] {
 	position: relative;
 }
-
-.Amber *[data-hover-text]:hover::after, .Amber form:invalid *[type="submit"]:hover::after
+/* , .Amber form:invalid button[type="submit"]:hover::after */
+.Amber *[data-hover-text]:hover::after
 	{
 	display: block;
 	content: attr(data-hover-text);
@@ -469,7 +322,7 @@
 	z-index: 10;
 }
 
-.Amber form:invalid *[type="submit"]:hover::after {
+.Amber form:invalid button[type="submit"]:hover::after {
 	content: "Formvalidierung fehlgeschlagen!";
 	color: rgb(255, 255, 238);
 }
@@ -483,31 +336,11 @@
 .Amber .ailments ul {
 	column-count: 2;
 }
-/*
-*[data-template="item"] img,
-*[data-template="equip"] img {
-	width: 32px;	
-}
-*[data-template="item"] input[data-name = "zerbrochen"]:checked ~ .picker::after,
-*[data-template="equip"] input[data-name = "zerbrochen"]:checked ~ .picker::after {
-	content: " ";
-	background-image: url(/getResource.php/amber/items/broken);
-	position: absolute;
-	top: 1px;
-	left: 0px;
-	width: 100%;
-	height: 100%;
-	background-repeat: no-repeat;
-}
-*[data-template="item"] *[data-item-amount]::after {
-	content: attr(data-item-amount);
-	display: block;
-	text-align: center;
-}
-*[data-template="item"] *[data-item-amount="0"]::after {
-	content: " ";
-}
-*/
+
+
+
+
+
 *[data-template="tabs"]>label {
 	display: block;
 	text-align: center;
@@ -566,12 +399,11 @@
 	text-align: center;
 }
 
-*[data-template="flex"].Spells>ul>li, *[data-template="flex"].spells>ul>li {
+*[data-template="flex"].spells>ul>li {
 	width: 17em;
-	font-size: smaller;
 }
-
-*[data-template="flex"].events>ul>li {
+.spells,
+.events {
 	font-size: smaller;
 }
 
@@ -583,24 +415,3 @@
 	display: table-cell;
 	vertical-align: top;
 }
-
-/*
-*[data-dictionary="Portrait"] option {
-	background-repeat: no-repeat;
-	display:block;
-	height:34px;
-	text-align:right;
-	background-position: left !important;
-}
-*[data-dictionary="ItemId"] option {
-	background-repeat: no-repeat;
-	background-size: contain;
-	display:block;
-	height:18px;
-	text-align:right;	
-}
-*[data-dictionary] *[value] {
-	background-repeat: no-repeat;
-	background-position: top center;
-}
-*/
