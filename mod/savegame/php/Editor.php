@@ -200,8 +200,10 @@ class Editor
      */
     public function asFile()
     {
-        $this->strucDoc->formatOutput = true;
-        return HTTPFile::createFromDocument($this->strucDoc, sprintf('savegame.%s.xml', $this->config['id']));
+		//$editorDoc = $this->strucDoc;
+		$editorDoc = $this->asDocument();
+        $editorDoc->formatOutput = true;
+        return HTTPFile::createFromDocument($editorDoc, sprintf('savegame.%s.xml', $this->config['id']));
     }
 
     public function getDocument()
@@ -211,8 +213,8 @@ class Editor
 
     public function asDocument()
     {
-        $ret = new DOMDocument();
-        $ret->loadXML($this->savegame->asXML());
+        $ret = new DOMDocument('1.0', 'UTF-8');
+        $ret->appendChild($this->asNode($ret));
         return $ret;
     }
 
