@@ -42,11 +42,7 @@ class BitFieldInstruction extends AbstractInstructionContent
             $strucData['size'] = 1;
             $strucData['name'] = $this->dictionary ? (string) $this->dictionary->getOption($i) : '';
             
-            $this->instructionList[] = [
-                'tagName' => 'bit',
-                'element' => $this->getStrucElement(),
-                'strucData' => $strucData
-            ];
+            $this->instructionList[] = $this->getStrucElement()->clone('bit', $strucData);
         }
     }
 }

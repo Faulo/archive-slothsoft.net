@@ -78,8 +78,7 @@ class ArchiveNode extends AbstractNode
             $strucData = [];
             $strucData['file-name'] = basename($filePath);
             $strucData['file-path'] = $filePath;
-            
-            $this->loadChild($this->getStrucElement(), 'file', $strucData);
+            $this->loadChild($this->getStrucElement()->clone('file', $strucData));
         }
     }
 

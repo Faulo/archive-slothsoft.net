@@ -30,11 +30,7 @@ class EventInstruction extends AbstractInstructionContent
             $strucData['position'] = $i;
             $strucData['size'] = $this->strucData['step-size'];
             
-            $this->instructionList[] = [
-                'tagName' => 'event-step',
-                'element' => $this->getStrucElement(),
-                'strucData' => $strucData
-            ];
+            $this->instructionList[] = $this->getStrucElement()->clone('event-step', $strucData);
         }
     }
 }

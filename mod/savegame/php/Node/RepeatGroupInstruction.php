@@ -39,11 +39,7 @@ class RepeatGroupInstruction extends AbstractInstructionContent
             $strucData['position'] = $position;
             $strucData['name'] = $this->dictionary ? (string) $this->dictionary->getOption($i) : '';
             
-            $this->instructionList[] = [
-                'tagName' => 'group',
-                'element' => $this->getStrucElement(),
-                'strucData' => $strucData
-            ];
+            $this->instructionList[] = $this->getStrucElement()->clone('group', $strucData);
         }
     }
 }

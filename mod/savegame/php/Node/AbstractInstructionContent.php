@@ -35,14 +35,14 @@ abstract class AbstractInstructionContent extends AbstractContentNode
     protected function loadChildren()
     {
         foreach ($this->instructionList as $instruction) {
-            $this->loadChild($instruction['element'], $instruction['tagName'], $instruction['strucData']);
+            $this->loadChild($instruction);
         }
     }
 
     public function asXML()
     {
         $attributes = [];
-        $attributes['instruction'] = $this->tagName;
+        $attributes['instruction'] = $this->getStrucElement()->getType();
         $attributes['name'] = $this->strucData['name'];
         $attributes['position'] = $this->strucData['position'];
         return $this->createXML('group', $attributes, $this->getChildrenXML());

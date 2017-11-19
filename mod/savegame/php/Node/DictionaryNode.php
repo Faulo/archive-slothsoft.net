@@ -17,9 +17,9 @@ class DictionaryNode extends AbstractNode
     protected function loadNode()
     {
         $this->optionList = [];
-        foreach ($this->getStrucElementChildren() as $optionNode) {
-            $key = $optionNode->hasAttribute('key') ? $optionNode->getAttribute('key') : (string) count($this->optionList);
-            $val = $optionNode->getAttribute('val');
+        foreach ($this->getStrucElementChildren() as $optionElement) {
+            $key = $optionElement->hasAttribute('key') ? $optionElement->getAttribute('key') : (string) count($this->optionList);
+            $val = $optionElement->getAttribute('val');
             
             $this->optionList[$key] = $val;
         }

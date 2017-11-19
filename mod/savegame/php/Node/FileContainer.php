@@ -17,24 +17,21 @@ class FileContainer extends AbstractContainerContent
     public function __construct()
     {
         parent::__construct();
+        $this->strucData['file-path'] = '';
         $this->strucData['file-name'] = '';
         
         log_execution_time(__FILE__, __LINE__);
     }
 
-    protected function initStrucAttributes(array $overrideData)
-    {
-        assert(isset($overrideData['file-path']) and file_exists($overrideData['file-path']), '$overrideData must contain file-path');
-        
-        $this->setContent(file_get_contents($overrideData['file-path']));
-        unset($overrideData['file-path']);
-        
-        return parent::initStrucAttributes($overrideData);
-    }
-
     protected function loadStruc()
     {
         $this->ownerFile = $this;
+        
+        assert(isset($this->strucData['file-path']) and file_exists($this->strucData['file-path']), '$this->strucData must contain file-path');
+        
+        $this->setContent(file_get_contents($this->strucData['file-path']));
+        
+        unset($this->strucData['file-path']);
         
         parent::loadStruc();
     }

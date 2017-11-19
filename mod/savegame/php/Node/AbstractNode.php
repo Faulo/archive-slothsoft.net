@@ -3,8 +3,8 @@ namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\Converter;
 use Slothsoft\Savegame\Editor;
+use Slothsoft\Savegame\EditorElement;
 use Slothsoft\Savegame\TypeParser;
-use DOMElement;
 declare(ticks = 1000);
 
 abstract class AbstractNode
@@ -38,13 +38,13 @@ abstract class AbstractNode
 
     /**
      *
-     * @var \DOMElement
+     * @var \Slothsoft\Savegame\EditorElement
      */
     private $strucElement;
 
     /**
      *
-     * @var \DOMElement[]
+     * @var \Slothsoft\Savegame\EditorElement[]
      */
     private $strucElementChildren = [];
 
@@ -54,12 +54,10 @@ abstract class AbstractNode
      */
     protected $strucData = [];
 
-    protected $tagName;
-
     public function __construct()
     {}
 
-    public function init(Editor $ownerEditor, DOMElement $strucElement, AbstractNode $parentNode = null, string $tagName, array $overrideData)
+    public function init(Editor $ownerEditor, EditorElement $strucElement, AbstractNode $parentNode = null)
     {
         $this->ownerEditor = $ownerEditor;
         $this->strucElement = $strucElement;
@@ -68,10 +66,9 @@ abstract class AbstractNode
             $this->ownerFile = $this->parentNode->getOwnerFile();
             $this->parentNode->appendNode($this);
         }
-        $this->tagName = $tagName;
         
         $this->strucElementChildren = $this->initStrucChildren();
-        $this->initStrucAttributes($overrideData);
+        $this->initStrucAttributes();
         
         $this->loadStruc();
         $this->loadNode();
@@ -82,25 +79,16 @@ abstract class AbstractNode
 
     protected function initStrucChildren()
     {
-        $nodeList = [];
-        foreach ($this->strucElement->childNodes as $node) {
-            if ($node instanceof DOMElement) {
-                $nodeList[] = $node;
-            }
+        $elementList = [];
+        foreach ($this->strucElement->getChildren() as $id) {
+            $elementList[] = $this->ownerEditor->getElementById($id);
         }
-        return $nodeList;
+        return $elementList;
     }
 
-    protected function initStrucAttributes(array $overrideData)
+    protected function initStrucAttributes()
     {
-        foreach ($this->strucData as $key => &$val) {
-            if (isset($overrideData[$key])) {
-                $val = $overrideData[$key];
-            } elseif ($this->strucElement->hasAttribute($key)) {
-                $val = $this->strucElement->getAttribute($key);
-            }
-        }
-        unset($val);
+        $this->setStrucData($this->strucElement->getAttributes());
     }
 
     protected function loadStruc()
@@ -109,13 +97,13 @@ abstract class AbstractNode
     protected function loadChildren()
     {
         foreach ($this->getStrucElementChildren() as $strucElement) {
-            $this->loadChild($strucElement, $strucElement->localName, []);
+            $this->loadChild($strucElement);
         }
     }
 
-    protected function loadChild(DOMElement $strucElement, string $tagName, array $strucData)
+    protected function loadChild(EditorElement $strucElement)
     {
-        if ($node = $this->ownerEditor->createNode($this, $strucElement, $tagName, $strucData)) {
+        if ($node = $this->ownerEditor->createNode($this, $strucElement)) {
             // echo get_class($node) . PHP_EOL;
         }
     }
@@ -142,7 +130,7 @@ abstract class AbstractNode
 
     /**
      *
-     * @return \DOMElement
+     * @return EditorElement
      */
     public function getStrucElement()
     {
@@ -151,7 +139,7 @@ abstract class AbstractNode
 
     /**
      *
-     * @return \DOMElement[]
+     * @return EditorElement[]
      */
     public function getStrucElementChildren()
     {
@@ -207,7 +195,7 @@ abstract class AbstractNode
 
     public function asXML()
     {
-        return $this->createXML($this->tagName, $this->strucData, $this->getChildrenXML());
+        return $this->createXML($this->strucElement->getType(), $this->strucData, $this->getChildrenXML());
     }
 
     protected function getChildrenXML()

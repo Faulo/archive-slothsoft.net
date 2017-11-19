@@ -17,13 +17,7 @@ class UseGlobalInstruction extends AbstractInstructionContent
         $this->instructionList = [];
         
         if ($node = $this->ownerEditor->getGlobalById($this->strucData['ref'])) {
-            foreach ($node->getStrucElementChildren() as $childNode) {
-                $this->instructionList[] = [
-                    'tagName' => $childNode->localName,
-                    'element' => $childNode,
-                    'strucData' => []
-                ];
-            }
+            $this->instructionList += $node->getStrucElementChildren();
         }
     }
 

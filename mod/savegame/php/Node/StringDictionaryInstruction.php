@@ -69,11 +69,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                     $strucData['size'] = $textLength;
                     $strucData['encoding'] = $this->strucData['encoding'];
                     
-                    $this->instructionList[] = [
-                        'tagName' => 'string',
-                        'element' => $this->getStrucElement(),
-                        'strucData' => $strucData
-                    ];
+                    $this->instructionList[] = $this->getStrucElement()->clone('string', $strucData);
                     
                     $textOffset += $textLength + 1;
                 }
@@ -94,11 +90,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                     $strucData['size'] = $textLength;
                     $strucData['encoding'] = $this->strucData['encoding'];
                     
-                    $this->instructionList[] = [
-                        'tagName' => 'string',
-                        'element' => $this->getStrucElement(),
-                        'strucData' => $strucData
-                    ];
+                    $this->instructionList[] = $this->getStrucElement()->clone('string', $strucData);
                     
                     $textOffset += $textLength;
                 }
@@ -124,11 +116,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                     $strucData['size'] = $textLength;
                     $strucData['encoding'] = $this->strucData['encoding'];
                     
-                    $this->instructionList[] = [
-                        'tagName' => 'string',
-                        'element' => $this->getStrucElement(),
-                        'strucData' => $strucData
-                    ];
+                    $this->instructionList[] = $this->getStrucElement()->clone('string', $strucData);
                     
                     $textOffset += $textLength;
                 }
@@ -141,11 +129,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                     $strucData['size'] = $this->strucData['string-size'];
                     $strucData['encoding'] = $this->strucData['encoding'];
                     
-                    $this->instructionList[] = [
-                        'tagName' => 'string',
-                        'element' => $this->getStrucElement(),
-                        'strucData' => $strucData
-                    ];
+                    $this->instructionList[] = $this->getStrucElement()->clone('string', $strucData);
                     
                     $textPosition += $this->strucData['string-size'];
                 }

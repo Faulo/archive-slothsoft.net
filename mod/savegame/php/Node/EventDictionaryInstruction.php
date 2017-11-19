@@ -42,11 +42,7 @@ class EventDictionaryInstruction extends AbstractInstructionContent
             $strucData['size'] = $eventSize;
             $strucData['step-size'] = $eventWordSize;
             
-            $this->instructionList[] = [
-                'tagName' => 'event',
-                'element' => $this->getStrucElement(),
-                'strucData' => $strucData
-            ];
+            $this->instructionList[] = $this->getStrucElement()->clone('event', $strucData);
             
             $eventStartOffset += $eventSize;
         }

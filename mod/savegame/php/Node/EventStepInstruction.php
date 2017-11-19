@@ -1,6 +1,7 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+
 declare(ticks = 1000);
 
 class EventStepInstruction extends AbstractInstructionContent
@@ -68,13 +69,7 @@ class EventStepInstruction extends AbstractInstructionContent
         }
         
         if ($node) {
-            foreach ($node->getStrucElementChildren() as $childNode) {
-                $this->instructionList[] = [
-                    'tagName' => $childNode->localName,
-                    'element' => $childNode,
-                    'strucData' => []
-                ];
-            }
+            $this->instructionList += $node->getStrucElementChildren();
         }
     }
 }

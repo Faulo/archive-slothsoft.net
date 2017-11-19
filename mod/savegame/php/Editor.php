@@ -28,8 +28,6 @@ class Editor
 
     protected $dom;
 
-    protected $strucDoc;
-
     protected $savegame;
 
     protected $dictionaryList = [];
@@ -37,10 +35,15 @@ class Editor
     protected $globalList = [];
 
     protected $archiveList = [];
+    
+    /**
+     * @var \Slothsoft\Savegame\EditorElement[]
+     */
+    protected $elementRepository = [];
 
     /**
      *
-     * @var \Slothsoft\Savegame\Node\AbstractValueContent[];
+     * @var \Slothsoft\Savegame\Node\AbstractValueContent[]
      */
     protected $valueList = [];
 
@@ -67,56 +70,56 @@ class Editor
         
         $this->dom = new DOMHelper();
     }
-
-    public function load()
-    {
-        $this->strucDoc = $this->dom->load($this->config['structureFile']);
+    
+    private function loadRepository($structureFile) {
+        $this->elementRepository = [];
         
-        if (! ($this->strucDoc and $this->strucDoc->documentElement)) {
+        $strucDoc = $this->dom->load($structureFile);
+        
+        if (! ($strucDoc and $strucDoc->documentElement)) {
             throw new UnexpectedValueException('Structure document is empty');
         }
         
-        $strucElement = $this->strucDoc->documentElement;
+        $structureIds = [];
         
-        // $strucElement->setAttribute('save-id', $this->config['id']);
-        // $strucElement->setAttribute('save-mode', $this->config['mode']);
+        $nodeList = $strucDoc->getElementsByTagName('*');
+        foreach ($nodeList as $node) {
+            $id = $this->loadRepositoryId($node, $structureIds);
+            $type = $node->localName;
+            $attributes = [];
+            foreach ($node->attributes as $attr) {
+                $attributes[$attr->name] = $attr->value;
+            }
+            $children = [];
+            foreach ($node->childNodes as $childNode) {
+                if ($childNode->nodeType === XML_ELEMENT_NODE) {
+                    $children[] = $this->loadRepositoryId($childNode, $structureIds);
+                }
+            }
+            
+            $this->elementRepository[$id] = new EditorElement($type, $attributes, $children);
+        }
+    }
+    private function loadRepositoryId(DOMElement $node, array &$repositoryIds) {
+        $id = array_search($node, $repositoryIds, true);
+        if ($id === false) {
+            $id = count($repositoryIds);
+            $repositoryIds[$id] = $node;
+        }
+        return $id;
+    }
+    public function load()
+    {
+        $this->loadRepository($this->config['structureFile']);
         
-        // $this->globalList = [];
-        // $this->dictionaryList = [];
+        $rootElement = $this->elementRepository[0]->clone(
+            null, [
+                'save-id' => $this->config['id'],
+                'save-mode' => $this->config['mode'],
+            ]
+        );
         
-        $strucData = [];
-        $strucData['save-id'] = $this->config['id'];
-        $strucData['save-mode'] = $this->config['mode'];
-        
-        $this->savegame = $this->createNode(null, $strucElement, $strucElement->tagName, $strucData);
-        
-        /*
-         * foreach ($strucElement->childNodes as $node) {
-         * if ($node->nodeType === XML_ELEMENT_NODE) {
-         * switch ($node->localName) {
-         * case 'global':
-         * $this->globalList[$node->getAttribute('global-id')] = $node;
-         * break;
-         * case 'dictionary':
-         * $dictionary = [];
-         * foreach ($node->childNodes as $optionNode) {
-         * if ($optionNode->nodeType === XML_ELEMENT_NODE) {
-         * if (! $optionNode->hasAttribute('key')) {
-         * $optionNode->setAttribute('key', count($dictionary));
-         * }
-         * $dictionary[$optionNode->getAttribute('key')] = $optionNode->getAttribute('val');
-         * }
-         * }
-         * $this->dictionaryList[$node->getAttribute('dictionary-id')] = $dictionary;
-         * break;
-         * }
-         * }
-         * }
-         *
-         * $this->savegame = new Node\SavegameNode();
-         * $this->savegame->init($this, $strucElement, null);
-         * //
-         */
+        $this->savegame = $this->createNode(null, $rootElement);
     }
 
     public function getDictionaryById($id)
@@ -200,15 +203,9 @@ class Editor
      */
     public function asFile()
     {
-		//$editorDoc = $this->strucDoc;
 		$editorDoc = $this->asDocument();
         $editorDoc->formatOutput = true;
         return HTTPFile::createFromDocument($editorDoc, sprintf('savegame.%s.xml', $this->config['id']));
-    }
-
-    public function getDocument()
-    {
-        return $this->strucDoc;
     }
 
     public function asDocument()
@@ -263,18 +260,27 @@ class Editor
             }
         }
     }
+    
+    /**
+     * @param string $id
+     * @return \Slothsoft\Savegame\EditorElement
+     */
+    public function getElementById(string $id) : EditorElement {
+        assert(isset($this->elementRepository[$id]));
+        return $this->elementRepository[$id];
+    }
 
     /**
      *
      * @param \Slothsoft\Savegame\Node\AbstractNode $parentValue
-     * @param \DOMElement $strucElement
+     * @param \Slothsoft\Savegame\EditorElement $strucElement
      * @return NULL|\Slothsoft\Savegame\Node\AbstractNode
      */
-    public function createNode(Node\AbstractNode $parentValue = null, DOMElement $strucElement, string $tagName, array $strucData)
+    public function createNode(Node\AbstractNode $parentValue = null, EditorElement $strucElement)
     {
         $ret = null;
-        if ($value = $this->constructValue($tagName)) {
-            if ($value->init($this, $strucElement, $parentValue, $tagName, $strucData)) {
+        if ($value = $this->constructValue($strucElement->getType())) {
+            if ($value->init($this, $strucElement, $parentValue)) {
                 if ($value instanceof Node\DictionaryNode) {
                     $this->registerDictionary($value);
                 }

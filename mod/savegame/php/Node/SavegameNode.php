@@ -15,22 +15,22 @@ class SavegameNode extends AbstractNode
 
     protected function initStrucChildren()
     {
-        $nodeList = parent::initStrucChildren();
+        $elementList = parent::initStrucChildren();
         
         $archiveList = [];
         $globalList = [];
         $dictionaryList = [];
         
-        foreach ($nodeList as $node) {
-            switch ($node->localName) {
+        foreach ($elementList as $element) {
+            switch ($element->getType()) {
                 case 'dictionary':
-                    $dictionaryList[] = $node;
+                    $dictionaryList[] = $element;
                     break;
                 case 'archive':
-                    $archiveList[] = $node;
+                    $archiveList[] = $element;
                     break;
                 case 'global':
-                    $globalList[] = $node;
+                    $globalList[] = $element;
                     break;
             }
         }
@@ -43,7 +43,7 @@ class SavegameNode extends AbstractNode
 
     public function asXML()
     {
-        return $this->createXML($this->tagName, [
+        return $this->createXML($this->getStrucElement()->getType(), [
             'xmlns' => 'http://schema.slothsoft.net/savegame/editor'
         ] + $this->strucData, $this->getChildrenXML());
     }
