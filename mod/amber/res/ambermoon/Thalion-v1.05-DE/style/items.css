@@ -203,7 +203,6 @@ content: " ";
  amber-item-id[value="261"]::after { background-position-y: -148em; }
  amber-item-id[value="279"]::after { background-position-y: -146em; }
  amber-item-id[value="284"]::after { background-position-y: -144em; }
- amber-item-id[value="289"]::after { background-position-y: -145em; }
  amber-item-id[value="291"]::after { background-position-y: -46em; }
  amber-item-id[value="292"]::after { background-position-y: -15em; }
  amber-item-id[value="294"]::after { background-position-y: -143em; }
@@ -400,14 +399,15 @@ content: " ";
  amber-item-id[value="234"]::after { background-position-y: -1em; }
  amber-item-id[value="265"]::after { background-position-y: -75em; }
  amber-item-id[value="269"]::after { background-position-y: -1em; }
+ amber-item-id[value="289"]::after { background-position-y: -145em; }
  amber-item-id[value="310"]::after { background-position-y: -2em; }
  amber-item-id[value="314"]::after { background-position-y: -2em; }
+ amber-item-id[value="332"]::after { background-position-y: -3em; }
  amber-item-id[value="348"]::after { background-position-y: -2em; }
  amber-item-id[value="358"]::after { background-position-y: -86em; }
  amber-item-id[value="238"]::after { background-position-y: -3em; }
  amber-item-id[value="273"]::after { background-position-y: -3em; }
  amber-item-id[value="293"]::after { background-position-y: -55em; }
- amber-item-id[value="332"]::after { background-position-y: -3em; }
  amber-item-id[value="1"]:hover::before { content: "GELÄHMT"; }
  amber-item-id[value="2"]:hover::before { content: "VERGIFTET"; }
  amber-item-id[value="3"]:hover::before { content: "VERSTEINERT"; }
@@ -605,7 +605,6 @@ content: " ";
  amber-item-id[value="261"]:hover::before { content: "ZELLENSCHLÜSSEL"; }
  amber-item-id[value="279"]:hover::before { content: "NAGIERS SCHLÜSSEL"; }
  amber-item-id[value="284"]:hover::before { content: "GEFÄNGNISSSCHLÜSSEL"; }
- amber-item-id[value="289"]:hover::before { content: "KRYPTA SCHLÜSSEL"; }
  amber-item-id[value="291"]:hover::before { content: "KIRE'S SCHLÜSSEL"; }
  amber-item-id[value="292"]:hover::before { content: "MINENSCHLÜSSEL"; }
  amber-item-id[value="294"]:hover::before { content: "FERRIN'S SCHLÜSSEL"; }
@@ -710,7 +709,7 @@ content: " ";
  amber-item-id[value="182"]:hover::before { content: "DOLCH"; }
  amber-item-id[value="183"]:hover::before { content: "KURZSCHWERT"; }
  amber-item-id[value="184"]:hover::before { content: "LANGSCHWERT"; }
- amber-item-id[value="185"]:hover::before { content: "Krummsäbel"; }
+ amber-item-id[value="185"]:hover::before { content: "SCIMITAR"; }
  amber-item-id[value="186"]:hover::before { content: "ZWEIHÄNDER"; }
  amber-item-id[value="187"]:hover::before { content: "HEILIGES SCHWERT"; }
  amber-item-id[value="188"]:hover::before { content: "KAMPFSTAB"; }
@@ -802,11 +801,12 @@ content: " ";
  amber-item-id[value="234"]:hover::before { content: "PERLMUTT KETTE"; }
  amber-item-id[value="265"]:hover::before { content: "AMULETT T A R B O S"; }
  amber-item-id[value="269"]:hover::before { content: "AMTSKETTE"; }
+ amber-item-id[value="289"]:hover::before { content: "KRYPTA SCHLÜSSEL"; }
  amber-item-id[value="310"]:hover::before { content: "MOND AMULETT"; }
  amber-item-id[value="314"]:hover::before { content: "VALDYN'S AMULETT"; }
+ amber-item-id[value="332"]:hover::before { content: "ZIELBROSCHE"; }
  amber-item-id[value="348"]:hover::before { content: "KAY'S AMULETT"; }
  amber-item-id[value="358"]:hover::before { content: "SANSRIES HALSBAND"; }
  amber-item-id[value="238"]:hover::before { content: "NECROMANTEN BROSCHE"; }
  amber-item-id[value="273"]:hover::before { content: "GOLDBROSCHE"; }
  amber-item-id[value="293"]:hover::before { content: "DORINA'S BROSCHE"; }
- amber-item-id[value="332"]:hover::before { content: "ZIELBROSCHE"; }

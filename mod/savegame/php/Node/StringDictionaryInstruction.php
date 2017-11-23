@@ -1,7 +1,11 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+use Slothsoft\Savegame\EditorElement;
 use DomainException;
+use Traversable;
+use DS\Vector;
+
 declare(ticks = 1000);
 
 class StringDictionaryInstruction extends AbstractInstructionContent
@@ -14,50 +18,57 @@ class StringDictionaryInstruction extends AbstractInstructionContent
     const LIST_TYPE_SIZE_FIRST = 'size-first';
 
     const LIST_TYPE_SIZE_FIXED = 'size-fixed';
-
-    public function __construct()
+    
+    private $type;
+    private $encoding;
+    private $stringCount;
+    private $stringSize;
+    
+    public function loadStruc()
     {
-        parent::__construct();
-        $this->strucData['type'] = '';
-        $this->strucData['encoding'] = '';
-        $this->strucData['string-count'] = '';
-        $this->strucData['string-size'] = '';
+        parent::loadStruc();
+        
+        $this->encoding = $this->loadStringAttribute('encoding');
+        $this->type = $this->loadStringAttribute('type');
+        
+        //$this->stringCount = $this->loadIntegerAttribute('string-count');
+        //$this->stringSize = $this->loadIntegerAttribute('string-size');
     }
 
     protected function loadInstruction()
     {
-        $this->instructionList = [];
+        $instructionList = [];
         
         // string-count
-        switch ($this->strucData['type']) {
+        switch ($this->type) {
             case self::LIST_TYPE_NULL_DELIMITED:
-                $this->strucData['string-count'] = $this->getParser()->evaluate($this->strucData['string-count'], $this->ownerFile);
+                $this->stringCount = $this->loadIntegerAttribute('string-count');
                 break;
             case self::LIST_TYPE_SIZE_INTERSPERSED:
             case self::LIST_TYPE_SIZE_FIRST:
                 $countSize = 2;
                 for ($countOffset = 0; $countOffset < 10; $countOffset += $countSize) {
-                    $count = $this->ownerFile->extractContent($this->valueOffset + $countOffset, $countSize);
+                    $count = $this->getOwnerFile()->extractContent($this->valueOffset + $countOffset, $countSize);
                     $count = $this->getConverter()->decodeInteger($count, $countSize);
                     if ($count > 0) {
-                        $this->strucData['string-count'] = $count;
+                        $this->stringCount = $count;
                         break;
                     }
                 }
                 break;
             case self::LIST_TYPE_SIZE_FIXED:
-                $this->strucData['string-size'] = $this->getParser()->evaluate($this->strucData['string-size'], $this->ownerFile);
-                $this->strucData['string-count'] = $this->getParser()->evaluate($this->strucData['string-count'], $this->ownerFile);
+                $this->stringCount = $this->loadIntegerAttribute('string-count');
+                $this->stringSize = $this->loadIntegerAttribute('string-size');
                 break;
             default:
-                throw new DomainException('unknown text-list type: ' . $this->strucData['type']);
+                throw new DomainException('unknown text-list type: ' . $this->type);
         }
         
-        switch ($this->strucData['type']) {
+        switch ($this->type) {
             case self::LIST_TYPE_NULL_DELIMITED:
                 $textOffset = $this->valueOffset;
-                for ($i = 0; $i < $this->strucData['string-count']; $i ++) {
-                    $text = $this->ownerFile->extractContent($textOffset, 'auto');
+                for ($i = 0; $i < $this->stringCount; $i ++) {
+                    $text = $this->getOwnerFile()->extractContent($textOffset, 'auto');
                     $textLength = strlen($text);
                     
                     if (! $textLength) {
@@ -67,9 +78,9 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                     $strucData = [];
                     $strucData['position'] = $textOffset - $this->valueOffset;
                     $strucData['size'] = $textLength;
-                    $strucData['encoding'] = $this->strucData['encoding'];
+                    $strucData['encoding'] = $this->encoding;
                     
-                    $this->instructionList[] = $this->getStrucElement()->clone('string', $strucData);
+                    $instructionList[] = $this->getStrucElement()->clone(EditorElement::NODE_TYPES['string'], $strucData);
                     
                     $textOffset += $textLength + 1;
                 }
@@ -79,8 +90,8 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                 $textLengthSize = 1;
                 
                 $textOffset = $this->valueOffset + $countSize;
-                for ($i = 0; $i < $this->strucData['string-count']; $i ++) {
-                    $textLength = $this->ownerFile->extractContent($textOffset, $textLengthSize);
+                for ($i = 0; $i < $this->stringCount; $i ++) {
+                    $textLength = $this->getOwnerFile()->extractContent($textOffset, $textLengthSize);
                     $textLength = $this->getConverter()->decodeInteger($textLength, $textLengthSize);
                     
                     $textOffset += $textLengthSize;
@@ -88,9 +99,9 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                     $strucData = [];
                     $strucData['position'] = $textOffset - $this->valueOffset;
                     $strucData['size'] = $textLength;
-                    $strucData['encoding'] = $this->strucData['encoding'];
+                    $strucData['encoding'] = $this->encoding;
                     
-                    $this->instructionList[] = $this->getStrucElement()->clone('string', $strucData);
+                    $instructionList[] = $this->getStrucElement()->clone(EditorElement::NODE_TYPES['string'], $strucData);
                     
                     $textOffset += $textLength;
                 }
@@ -101,39 +112,43 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                 
                 $textOffset = $this->valueOffset + $countOffset + $countSize;
                 $textLengthList = [];
-                for ($i = 0; $i < $this->strucData['string-count']; $i ++) {
-                    $textLength = $this->ownerFile->extractContent($textOffset, $textLengthSize);
+                for ($i = 0; $i < $this->stringCount; $i ++) {
+                    $textLength = $this->getOwnerFile()->extractContent($textOffset, $textLengthSize);
                     $textLength = $this->getConverter()->decodeInteger($textLength, $textLengthSize);
                     
                     $textLengthList[] = $textLength;
                     
                     $textOffset += $textLengthSize;
                 }
-                $textOffset = $this->valueOffset + $countOffset + $countSize + $this->strucData['string-count'] * $textLengthSize;
+                $textOffset = $this->valueOffset + $countOffset + $countSize + $this->stringCount * $textLengthSize;
                 foreach ($textLengthList as $textLength) {
                     $strucData = [];
                     $strucData['position'] = $textOffset - $this->valueOffset;
                     $strucData['size'] = $textLength;
-                    $strucData['encoding'] = $this->strucData['encoding'];
+                    $strucData['encoding'] = $this->encoding;
                     
-                    $this->instructionList[] = $this->getStrucElement()->clone('string', $strucData);
+                    $instructionList[] = $this->getStrucElement()->clone(EditorElement::NODE_TYPES['string'], $strucData);
                     
                     $textOffset += $textLength;
                 }
                 break;
             case self::LIST_TYPE_SIZE_FIXED:
                 $textPosition = 0;
-                for ($i = 0; $i < $this->strucData['string-count']; $i ++) {
+                for ($i = 0; $i < $this->stringCount; $i ++) {
                     $strucData = [];
                     $strucData['position'] = $textPosition;
-                    $strucData['size'] = $this->strucData['string-size'];
-                    $strucData['encoding'] = $this->strucData['encoding'];
+                    $strucData['size'] = $this->stringSize;
+                    $strucData['encoding'] = $this->encoding;
                     
-                    $this->instructionList[] = $this->getStrucElement()->clone('string', $strucData);
+                    $instructionList[] = $this->getStrucElement()->clone(EditorElement::NODE_TYPES['string'], $strucData);
                     
-                    $textPosition += $this->strucData['string-size'];
+                    $textPosition += $this->stringSize;
                 }
                 break;
         }
+        
+        return count($instructionList)
+        ? new Vector($instructionList)
+        : null;
     }
 }

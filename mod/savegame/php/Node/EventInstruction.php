@@ -1,36 +1,40 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+use Slothsoft\Savegame\EditorElement;
+use Traversable;
+use DS\Vector;
+
 declare(ticks = 1000);
 
 class EventInstruction extends AbstractInstructionContent
 {
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->strucData['size'] = 0;
-        $this->strucData['step-size'] = 0;
-    }
-
+    private $size;
+    private $stepSize;
+    
     protected function loadStruc()
     {
         parent::loadStruc();
         
-        $this->strucData['size'] = $this->getParser()->evaluate($this->strucData['size'], $this->ownerFile);
-        $this->strucData['step-size'] = $this->getParser()->evaluate($this->strucData['step-size'], $this->ownerFile);
+        $this->size = $this->loadIntegerAttribute('size', 1);
+        $this->stepSize = $this->loadIntegerAttribute('step-size', 1);
     }
 
     protected function loadInstruction()
     {
-        $this->instructionList = [];
+        $instructionList = [];
         
-        for ($i = 0; $i < $this->strucData['size']; $i += $this->strucData['step-size']) {
+        for ($i = 0; $i < $this->size; $i += $this->stepSize) {
             $strucData = [];
             $strucData['position'] = $i;
-            $strucData['size'] = $this->strucData['step-size'];
+            //$strucData['size'] = $this->stepSize;
             
-            $this->instructionList[] = $this->getStrucElement()->clone('event-step', $strucData);
+            $instructionList[] = $this->getStrucElement()->clone(EditorElement::NODE_TYPES['event-step'], $strucData);
         }
+        
+        return count($instructionList)
+            ? new Vector($instructionList)
+               : null;
     }
 }

@@ -5,33 +5,31 @@ declare(ticks = 1000);
 
 class IntegerValue extends AbstractValueContent
 {
-
-    public function __construct()
+    private $min;
+    private $max;
+    
+    public function getXmlAttributes() : string
     {
-        parent::__construct();
-        $this->strucData['min'] = 0;
-        $this->strucData['max'] = 0;
+        $ret = parent::getXmlAttributes();
+        $ret .= " min='$this->min' max='$this->max'";
+        return $ret;
     }
 
     protected function loadStruc()
     {
         parent::loadStruc();
         
-        $this->strucData['min'] = $this->getParser()->evaluate($this->strucData['min'], $this->ownerFile);
-        $this->strucData['max'] = $this->getParser()->evaluate($this->strucData['max'], $this->ownerFile);
-        
-        if (! $this->strucData['max']) {
-            $this->strucData['max'] = $this->getConverter()->pow256($this->strucData['size']);
-        }
+        $this->min = $this->loadIntegerAttribute('min');
+        $this->max = $this->loadIntegerAttribute('max', $this->getConverter()->pow256($this->size));
     }
 
     protected function decodeValue()
     {
-        return $this->getConverter()->decodeInteger($this->rawValue, $this->strucData['size']);
+        return $this->getConverter()->decodeInteger($this->rawValue, $this->size);
     }
 
     protected function encodeValue()
     {
-        return $this->getConverter()->encodeInteger($this->strucData['value'], $this->strucData['size']);
+        return $this->getConverter()->encodeInteger($this->value, $this->size);
     }
 }

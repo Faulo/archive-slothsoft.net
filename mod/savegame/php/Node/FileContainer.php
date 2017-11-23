@@ -5,35 +5,45 @@ declare(ticks = 1000);
 
 class FileContainer extends AbstractContainerContent
 {
-
+    private $filePath;
+    private $fileName;
+    
     /**
      *
      * @var string
      */
-    protected $content;
+    private $content;
+    
+    private $evaluateCache = [];
 
-    protected $valueList = [];
 
-    public function __construct()
+    protected function getXmlAttributes() : string
     {
-        parent::__construct();
-        $this->strucData['file-path'] = '';
-        $this->strucData['file-name'] = '';
-        
-        log_execution_time(__FILE__, __LINE__);
+        $ret = parent::getXmlAttributes();
+        $ret .= sprintf(
+            ' file-name="%s"',
+            htmlspecialchars($this->fileName, ENT_COMPAT | ENT_XML1)
+        );
+        return $ret;
+    }
+    
+    public function getOwnerFile()
+    {
+        return $this;
     }
 
     protected function loadStruc()
     {
-        $this->ownerFile = $this;
-        
-        assert(isset($this->strucData['file-path']) and file_exists($this->strucData['file-path']), '$this->strucData must contain file-path');
-        
-        $this->setContent(file_get_contents($this->strucData['file-path']));
-        
-        unset($this->strucData['file-path']);
-        
         parent::loadStruc();
+        
+        $this->filePath = $this->loadStringAttribute('file-path');
+        $this->fileName = $this->loadStringAttribute('file-name');
+        
+        assert(file_exists($this->filePath), '$this->filePath must exist');
+        
+        $this->setContent(file_get_contents($this->filePath));
+
+     
     }
 
     public function extractContent($offset, $length)
@@ -90,14 +100,52 @@ class FileContainer extends AbstractContainerContent
 
     public function getFileName()
     {
-        return $this->strucData['file-name'];
+        return $this->fileName;
     }
-
-    public function getValueByName(string $name)
+    
+    public function evaluate($expression)
     {
-        if (! isset($this->valueList[$name])) {
-            $this->valueList[$name] = parent::getValueByName($name);
+        if (is_int($expression)) {
+            return $expression;
         }
-        return $this->valueList[$name];
+        $expression = trim($expression);
+        if ($expression === '') {
+            return 0;
+        }
+        if (is_numeric($expression)) {
+            return (int) $expression;
+        }
+        if (preg_match('/^0x(\w+)$/', $expression, $match)) {
+            return hexdec($match[1]);
+        }
+        
+        if (! isset($this->evaluateCache[$expression])) {
+            preg_match_all('/\$([A-Za-z0-9\-\.]+)/', $expression, $matches);
+            $translate = [];
+            foreach ($matches[0] as $i => $key) {
+                if ($node = $this->getOwnerEditor()->getValueByName($matches[1][$i], $this)) {
+                    $val = $node->getValue();
+                } else {
+                    $val = 0;
+                }
+                $translate[$key] = $val;
+            }
+            $code = strtr($expression, $translate);
+            $code = trim($code);
+            // echo $code . PHP_EOL;
+            $this->evaluateCache[$expression] = $this->evaluateMath($code);
+            // echo $expression . PHP_EOL . $code . PHP_EOL . $this->evaluateCache[$expression] . PHP_EOL . PHP_EOL;
+        }
+        return $this->evaluateCache[$expression];
+    }
+    
+    public function evaluateMath($code)
+    {
+        static $evalList = [];
+        if (! isset($evalList[$code])) {
+            $evalList[$code] = eval("return ($code);");
+            // echo $code . PHP_EOL . $evalList[$code] . PHP_EOL . PHP_EOL;
+        }
+        return $evalList[$code];
     }
 }

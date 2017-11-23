@@ -9,57 +9,62 @@ abstract class AbstractValueContent extends AbstractContentNode
     abstract protected function decodeValue();
 
     abstract protected function encodeValue();
-
+    
+    private $valueId;
+    protected $size;
+    protected $value;
     protected $rawValue;
 
-    public function __construct()
+    protected function getXmlAttributes() : string
     {
-        parent::__construct();
-        $this->strucData['size'] = 1;
-        $this->strucData['value'] = '';
-        $this->strucData['value-id'] = '';
+        $ret = parent::getXmlAttributes();
+        $ret .= " size='$this->size' value-id='$this->valueId'";
+        $ret .= is_int($this->value)
+            ? " value='$this->value'"
+            : " value=\"" . htmlspecialchars($this->value, ENT_COMPAT | ENT_XML1) . "\"";
+        return $ret;
     }
 
     protected function loadStruc()
     {
         parent::loadStruc();
         
-        $this->strucData['size'] = $this->getParser()->evaluate($this->strucData['size'], $this->ownerFile);
+        $this->size = $this->loadIntegerAttribute('size', 1);
     }
 
     protected function loadContent()
     {
-        if ($this->strucData['size'] and $this->ownerFile) {
-            $this->setRawValue($this->ownerFile->extractContent($this->valueOffset, $this->strucData['size']));
+        if ($this->size and $this->getOwnerFile()) {
+            $this->setRawValue($this->getOwnerFile()->extractContent($this->getOffset(), $this->size));
         }
-        // echo $this->getName() . ': ' . $this->getValue() . PHP_EOL;
+        //echo $this->getName() . ': ' . $this->getValue() . PHP_EOL;
     }
 
-    public function setValueId($id)
+    public function setValueId(int $id)
     {
-        $this->strucData['value-id'] = $id;
+        $this->valueId = $id;
     }
 
-    public function getValueId()
+    public function getValueId() : int
     {
-        return $this->strucData['value-id'];
+        return $this->valueId;
     }
 
     public function setValue($value)
     {
-        $this->strucData['value'] = $value;
+        $this->value = $value;
         $this->rawValue = $this->encodeValue();
     }
 
     public function getValue()
     {
-        return $this->strucData['value'];
+        return $this->value;
     }
 
     public function setRawValue($value)
     {
         $this->rawValue = $value;
-        $this->strucData['value'] = $this->decodeValue();
+        $this->value = $this->decodeValue();
     }
 
     public function getRawValue()
@@ -69,9 +74,8 @@ abstract class AbstractValueContent extends AbstractContentNode
 
     public function updateContent()
     {
-        if ($this->strucData['size']) {
-            $this->ownerFile->insertContent($this->valueOffset, $this->strucData['size'], $this->rawValue);
+        if ($this->size) {
+            $this->getOwnerFile()->insertContent($this->valueOffset, $this->size, $this->rawValue);
         }
-        parent::updateContent();
     }
 }

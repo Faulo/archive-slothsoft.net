@@ -1,7 +1,7 @@
 <?php
 namespace Slothsoft\Savegame;
 
-use Slothsoft\Savegame\Node\AbstractNode;
+use Slothsoft\Savegame\Node\FileContainer;
 
 /**
  *
@@ -26,7 +26,7 @@ class TypeParser
 
     protected $resultCache = [];
 
-    public function evaluate($expression, AbstractNode $context)
+    public function evaluate($expression, FileContainer $context)
     {
         if (is_int($expression)) {
             return $expression;
@@ -42,7 +42,7 @@ class TypeParser
             return hexdec($match[1]);
         }
         
-        $id = $context->getNodeId();
+        $id = $context->getFileName();
         if (! isset($this->resultCache[$id])) {
             $this->resultCache[$id] = [];
         }

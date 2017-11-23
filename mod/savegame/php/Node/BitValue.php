@@ -5,52 +5,54 @@ declare(ticks = 1000);
 
 class BitValue extends AbstractValueContent
 {
-
-    public function __construct()
+    private $bit;
+    
+    protected function getXmlAttributes() : string
     {
-        parent::__construct();
-        $this->strucData['size'] = 1;
-        $this->strucData['bit'] = 0;
-        $this->strucData['bit-value'] = 0;
+        $ret = parent::getXmlAttributes();
+        $ret .= " bit='$this->bit'";
+        return $ret;
     }
 
     protected function loadStruc()
     {
         parent::loadStruc();
         
-        $this->strucData['bit'] = $this->getParser()->evaluate($this->strucData['bit'], $this->ownerFile);
-        $this->strucData['size'] = $this->getParser()->evaluate($this->strucData['size'], $this->ownerFile);
-        $this->strucData['bit-value'] = $this->getConverter()->pow2($this->strucData['bit']);
+        $this->bit = $this->loadIntegerAttribute('bit');
+    }
+    
+    private function getBitValue() {
+        return $this->getConverter()->pow2($this->bit);
     }
 
     public function setRawValue($value)
     {
         $this->rawValue = $value;
-        $this->strucData['value'] = (bool) ($this->decodeValue() & $this->strucData['bit-value']);
+        $this->value = (bool) ($this->decodeValue() & $this->getBitValue());
     }
 
     public function setValue($value)
     {
-        $this->strucData['value'] = (bool) $value;
-        if ($this->strucData['value']) {
-            $this->rawValue |= $this->strucData['bit-value'];
+        $this->value = (bool) $value;
+        if ($this->value) {
+            $this->rawValue |= $this->getBitValue();
         } else {
-            $this->rawValue &= ~ $this->strucData['bit-value'];
+            $this->rawValue &= ~ $this->getBitValue();
         }
     }
 
     public function updateContent()
     {
-        $this->ownerFile->insertContentBit($this->valueOffset, $this->strucData['bit-value'], $this->strucData['value']);
+        $this->getOwnerFile()->insertContentBit($this->valueOffset, $this->getBitValue(), $this->value);
     }
 
     protected function decodeValue()
     {
-        return $this->getConverter()->decodeInteger($this->rawValue, $this->strucData['size']);
+        return $this->getConverter()->decodeInteger($this->rawValue, $this->size);
     }
 
     protected function encodeValue()
     {
-        return $this->getConverter()->encodeInteger($this->strucData['value'], $this->strucData['size']);
+        return $this->getConverter()->encodeInteger($this->value, $this->size);
     }
 }

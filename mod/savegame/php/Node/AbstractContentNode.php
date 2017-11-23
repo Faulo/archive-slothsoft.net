@@ -6,32 +6,51 @@ declare(ticks = 1000);
 abstract class AbstractContentNode extends AbstractNode
 {
 
-    protected $valueOffset = 0;
+    private $name;
+    private $position;
+    protected $valueOffset;
 
     abstract protected function loadContent();
 
-    public function __construct()
+    protected function getXmlAttributes() : string
     {
-        parent::__construct();
-        $this->strucData['name'] = '';
-        $this->strucData['position'] = 0;
+        $ret = parent::getXmlAttributes();
+        if ($this->name) {
+            $ret .= " name='{$this->getName()}'";
+        }
+        return $ret;
     }
 
     protected function loadStruc()
     {
         parent::loadStruc();
         
-        $this->strucData['position'] = $this->getParser()->evaluate($this->strucData['position'], $this->ownerFile);
+        $this->name = $this->loadStringAttribute('name');
+        $this->position = $this->loadIntegerAttribute('position');
         
-        $this->valueOffset = $this->strucData['position'];
+        $this->valueOffset = $this->position;
         if ($this->parentNode instanceof AbstractContentNode) {
             $this->valueOffset += $this->parentNode->getOffset();
         }
+    }
+    protected function loadIntegerAttribute(string $key, int $default = 0) : int {
+        return $this->getStrucElement()->hasAttribute($key)
+            ? $this->getOwnerFile()->evaluate($this->getStrucElement()->getAttribute($key))
+            : $default;
     }
 
     protected function loadNode()
     {
         $this->loadContent();
+    }
+    
+    /**
+     *
+     * @return NULL|\Slothsoft\Savegame\Node\FileContainer
+     */
+    public function getOwnerFile()
+    {
+        return $this->parentNode->getOwnerFile();
     }
 
     public function getOffset()
@@ -45,6 +64,6 @@ abstract class AbstractContentNode extends AbstractNode
      */
     public function getName()
     {
-        return $this->strucData['name'];
+        return $this->name;
     }
 }

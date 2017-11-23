@@ -1,29 +1,32 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+
 declare(ticks = 1000);
 
 class UseGlobalInstruction extends AbstractInstructionContent
 {
-
-    public function __construct()
+    private $globalRef;
+    
+    protected function loadStruc()
     {
-        parent::__construct();
-        $this->strucData['ref'] = '';
+        parent::loadStruc();
+        
+        $this->globalRef = $this->loadStringAttribute('ref');
     }
 
     protected function loadInstruction()
     {
-        $this->instructionList = [];
-        
-        if ($node = $this->ownerEditor->getGlobalById($this->strucData['ref'])) {
-            $this->instructionList += $node->getStrucElementChildren();
+        $ret = null;
+        if ($node = $this->getOwnerEditor()->getGlobalById($this->globalRef)) {
+            $ret = $node->getStrucElementChildren();
         }
+        return $ret;
     }
 
-    public function asXML()
+    public function asXML() : string
     {
-        return $this->getChildrenXML();
+        return $this->getXmlContent();
     }
 }
 

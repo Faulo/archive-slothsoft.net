@@ -5,11 +5,22 @@ declare(ticks = 1000);
 
 class SelectValue extends IntegerValue
 {
+    protected $dictionaryRef;
 
-    public function __construct()
+    public function getXmlAttributes() : string
     {
-        parent::__construct();
-        $this->strucData['dictionary-ref'] = '';
+        $ret = parent::getXmlAttributes();
+        if ($this->dictionaryRef !== '') {
+            $ret .= " dictionary-ref='$this->dictionaryRef'";
+        }
+        return $ret;
+    }
+    
+    protected function loadStruc()
+    {
+        parent::loadStruc();
+        
+        $this->dictionaryRef = $this->loadStringAttribute('dictionary-ref');
     }
 }
 

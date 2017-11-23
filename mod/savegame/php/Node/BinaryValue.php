@@ -13,6 +13,6 @@ class BinaryValue extends AbstractValueContent
 
     protected function encodeValue()
     {
-        return $this->getConverter()->encodeBinary($this->strucData['value']);
+        return $this->getConverter()->encodeBinary($this->value);
     }
 }

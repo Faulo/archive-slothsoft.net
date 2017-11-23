@@ -6,12 +6,21 @@ declare(ticks = 1000);
 class DictionaryNode extends AbstractNode
 {
 
-    protected $optionList;
-
-    public function __construct()
+    private $dictionaryId;
+    private $optionList;
+    
+    protected function getXmlAttributes() : string
     {
-        parent::__construct();
-        $this->strucData['dictionary-id'] = '';
+        $ret = parent::getXmlAttributes();
+        $ret .= " dictionary-id='$this->dictionaryId'";
+        return $ret;
+    }
+    
+    protected function loadStruc()
+    {
+        parent::loadStruc();
+        
+        $this->dictionaryId = $this->loadStringAttribute('dictionary-id');
     }
 
     protected function loadNode()
@@ -35,19 +44,23 @@ class DictionaryNode extends AbstractNode
 
     public function getOption(string $key)
     {
-        return isset($this->optionList[$key]) ? $this->optionList[$key] : null;
+        return $this->optionList[$key] ?? null;
     }
 
-    public function getDictionaryId()
+    public function getDictionaryId() : string
     {
-        return $this->strucData['dictionary-id'];
+        return $this->dictionaryId;
     }
 
-    public function getChildrenXML()
+    public function getXmlContent() : string
     {
         $ret = '';
         foreach ($this->optionList as $key => $val) {
-            $ret .= sprintf('<option key="%s" val="%s"/>', htmlspecialchars($key, ENT_COMPAT | ENT_XML1), htmlspecialchars($val, ENT_COMPAT | ENT_XML1));
+            $ret .= sprintf(
+                '<option key="%s" val="%s"/>',
+                htmlspecialchars($key, ENT_COMPAT | ENT_XML1),
+                htmlspecialchars($val, ENT_COMPAT | ENT_XML1)
+            );
         }
         return $ret;
     }

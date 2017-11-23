@@ -5,20 +5,30 @@ declare(ticks = 1000);
 
 class StringValue extends AbstractValueContent
 {
-
-    public function __construct()
+    private $encoding;
+    
+    public function getXmlAttributes() : string
     {
-        parent::__construct();
-        $this->strucData['encoding'] = '';
+        $ret = parent::getXmlAttributes();
+        if ($this->encoding !== '') {
+            $ret .= " encoding='$this->encoding'";
+        }
+        return $ret;
+    }
+    protected function loadStruc()
+    {
+        parent::loadStruc();
+        
+        $this->encoding = $this->loadStringAttribute('encoding');
     }
 
     protected function decodeValue()
     {
-        return $this->getConverter()->decodeString($this->rawValue, $this->strucData['size'], $this->strucData['encoding']);
+        return $this->getConverter()->decodeString($this->rawValue, $this->size, $this->encoding);
     }
 
     protected function encodeValue()
     {
-        return $this->getConverter()->encodeString($this->strucData['value'], $this->strucData['size'], $this->strucData['encoding']);
+        return $this->getConverter()->encodeString($this->value, $this->size, $this->encoding);
     }
 }

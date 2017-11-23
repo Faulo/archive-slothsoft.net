@@ -1143,12 +1143,6 @@
 				<event-dictionary />
 			</group>
 		</group>
-		<!--
-			<repeat-group position="">
-			<binary size="4"/>
-			</repeat-group>
-			<event-script position="auto">
-		-->
 	</global>
 	<archive path="Amberfiles/1Map_data.amb" type="AMBR">
 

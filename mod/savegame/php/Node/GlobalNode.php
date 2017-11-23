@@ -5,11 +5,13 @@ declare(ticks = 1000);
 
 class GlobalNode extends AbstractNode
 {
-
-    public function __construct()
+    private $globalId;
+    
+    protected function loadStruc()
     {
-        parent::__construct();
-        $this->strucData['global-id'] = '';
+        parent::loadStruc();
+        
+        $this->globalId = $this->loadStringAttribute('global-id');
     }
 
     protected function loadNode()
@@ -18,13 +20,13 @@ class GlobalNode extends AbstractNode
     protected function loadChildren()
     {}
 
-    public function asXML()
+    public function asXML() : string
     {
-        return $this->getChildrenXML();
+        return $this->getXmlContent();
     }
 
-    public function getGlobalId()
+    public function getGlobalId() : string
     {
-        return $this->strucData['global-id'];
+        return $this->globalId;
     }
 }

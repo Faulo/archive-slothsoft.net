@@ -1,7 +1,10 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+use Slothsoft\Savegame\EditorElement;
 use RangeException;
+use Traversable;
+use DS\Vector;
 declare(ticks = 1000);
 
 class EventDictionaryInstruction extends AbstractInstructionContent
@@ -9,16 +12,16 @@ class EventDictionaryInstruction extends AbstractInstructionContent
 
     protected function loadInstruction()
     {
-        $this->instructionList = [];
+        $instructionList = [];
         
         $offsetWordSize = 2;
         $eventWordSize = 12;
         
-        $eventCount = $this->ownerFile->extractContent($this->valueOffset, $offsetWordSize);
+        $eventCount = $this->getOwnerFile()->extractContent($this->valueOffset, $offsetWordSize);
         $eventCount = $this->getConverter()->decodeInteger($eventCount, $offsetWordSize);
         
         if ($eventCount > 256) {
-            throw new RangeException("there probably shouldn't be $eventCount events at $this->valueOffset in " . $this->ownerFile->getFileName());
+            throw new RangeException("there probably shouldn't be $eventCount events at $this->valueOffset in " . $this->getOwnerFile()->getFileName());
         }
         
         $eventSizeList = [];
@@ -26,7 +29,7 @@ class EventDictionaryInstruction extends AbstractInstructionContent
         for ($eventNo = 0; $eventNo < $eventCount; $eventNo ++) {
             $eventOffset = $this->valueOffset + 4 + $eventNo * $offsetWordSize;
             
-            $eventEnd = $this->ownerFile->extractContent($eventOffset, $offsetWordSize);
+            $eventEnd = $this->getOwnerFile()->extractContent($eventOffset, $offsetWordSize);
             $eventEnd = $this->getConverter()->decodeInteger($eventEnd, $offsetWordSize);
             $eventEnd *= $eventWordSize;
             
@@ -42,9 +45,13 @@ class EventDictionaryInstruction extends AbstractInstructionContent
             $strucData['size'] = $eventSize;
             $strucData['step-size'] = $eventWordSize;
             
-            $this->instructionList[] = $this->getStrucElement()->clone('event', $strucData);
+            $instructionList[] = $this->getStrucElement()->clone(EditorElement::NODE_TYPES['event'], $strucData);
             
             $eventStartOffset += $eventSize;
         }
+        
+        return count($instructionList)
+        ? new Vector($instructionList)
+        : null;
     }
 }

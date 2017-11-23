@@ -2,9 +2,9 @@
 namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\Converter;
-use Slothsoft\Savegame\Editor;
 use Slothsoft\Savegame\EditorElement;
-use Slothsoft\Savegame\TypeParser;
+use DS\Vector;
+
 declare(ticks = 1000);
 
 abstract class AbstractNode
@@ -14,27 +14,9 @@ abstract class AbstractNode
 
     /**
      *
-     * @var \Slothsoft\Savegame\Editor
-     */
-    protected $ownerEditor;
-
-    /**
-     *
-     * @var \Slothsoft\Savegame\Node\FileContainer
-     */
-    protected $ownerFile;
-
-    /**
-     *
      * @var \Slothsoft\Savegame\Node\AbstractNode
      */
     protected $parentNode;
-
-    /**
-     *
-     * @var \Slothsoft\Savegame\Node\AbstractNode[]
-     */
-    protected $childNodeList = [];
 
     /**
      *
@@ -42,33 +24,15 @@ abstract class AbstractNode
      */
     private $strucElement;
 
-    /**
-     *
-     * @var \Slothsoft\Savegame\EditorElement[]
-     */
-    private $strucElementChildren = [];
-
-    /**
-     *
-     * @var mixed[string]
-     */
-    protected $strucData = [];
-
     public function __construct()
-    {}
-
-    public function init(Editor $ownerEditor, EditorElement $strucElement, AbstractNode $parentNode = null)
     {
-        $this->ownerEditor = $ownerEditor;
+		
+	}
+
+    public function init(EditorElement $strucElement, AbstractNode $parentNode = null)
+    {
         $this->strucElement = $strucElement;
-        if ($parentNode) {
-            $this->parentNode = $parentNode;
-            $this->ownerFile = $this->parentNode->getOwnerFile();
-            $this->parentNode->appendNode($this);
-        }
-        
-        $this->strucElementChildren = $this->initStrucChildren();
-        $this->initStrucAttributes();
+        $this->parentNode = $parentNode;
         
         $this->loadStruc();
         $this->loadNode();
@@ -77,22 +41,15 @@ abstract class AbstractNode
         return true;
     }
 
-    protected function initStrucChildren()
-    {
-        $elementList = [];
-        foreach ($this->strucElement->getChildren() as $id) {
-            $elementList[] = $this->ownerEditor->getElementById($id);
-        }
-        return $elementList;
-    }
-
-    protected function initStrucAttributes()
-    {
-        $this->setStrucData($this->strucElement->getAttributes());
-    }
-
     protected function loadStruc()
     {}
+    
+    
+    protected function loadStringAttribute(string $key, string $default = '') : string {
+        return $this->getStrucElement()->hasAttribute($key)
+        ? $this->getStrucElement()->getAttribute($key)
+        : $default;
+    }
 
     protected function loadChildren()
     {
@@ -103,28 +60,8 @@ abstract class AbstractNode
 
     protected function loadChild(EditorElement $strucElement)
     {
-        if ($node = $this->ownerEditor->createNode($this, $strucElement)) {
+        if ($node = $this->getOwnerEditor()->createNode($this, $strucElement)) {
             // echo get_class($node) . PHP_EOL;
-        }
-    }
-
-    public function updateContent()
-    {
-        foreach ($this->childNodeList as $value) {
-            $value->updateContent();
-        }
-    }
-
-    /**
-     *
-     * @param array $struc
-     */
-    public function setStrucData(array $struc)
-    {
-        foreach ($struc as $key => $val) {
-            if (isset($this->strucData[$key])) {
-                $this->strucData[$key] = $val;
-            }
         }
     }
 
@@ -143,72 +80,48 @@ abstract class AbstractNode
      */
     public function getStrucElementChildren()
     {
-        return $this->strucElementChildren;
+        return $this->strucElement->getChildren();
     }
-
+    
     /**
      *
-     * @return NULL|\Slothsoft\Savegame\Node\FileContainer
+     * @return NULL|\Slothsoft\Savegame\Editor
      */
-    public function getOwnerFile()
+    public function getOwnerEditor()
     {
-        return $this->ownerFile;
+        return $this->parentNode->getOwnerEditor();
     }
 
-    /**
-     *
-     * @return int
-     */
-    public function getNodeId()
+    public function asXML() : string
     {
-        return spl_object_hash($this);
+        return $this->createXML(
+            $this->getXmlTag(),
+            $this->getXmlAttributes(),
+            $this->getXmlContent()
+        );
     }
-
-    /**
-     *
-     * @param string $name
-     * @return NULL|\Slothsoft\Savegame\Node\AbstractValueContent
-     */
-    public function getValueByName(string $name)
+    protected function getXmlTag() : string {
+        return $this->strucElement->getTag();
+    }
+    protected function getXmlAttributes() : string
     {
-        $ret = null;
-        // echo count($this->childNodeList) . PHP_EOL;
-        foreach ($this->childNodeList as $node) {
-            if ($node instanceof AbstractValueContent) {
-                // echo $node->getName() . PHP_EOL;
-                if ($node->getName() === $name) {
-                    $ret = $node;
-                    break;
-                }
-            }
-            if ($ret = $node->getValueByName($name)) {
-                break;
-            }
-        }
-        return $ret;
+        return '';
     }
-
-    public function appendNode(AbstractNode $node)
-    {
-        $this->childNodeList[] = $node;
-    }
-
-    public function asXML()
-    {
-        return $this->createXML($this->strucElement->getType(), $this->strucData, $this->getChildrenXML());
-    }
-
-    protected function getChildrenXML()
+    protected function getXmlContent() : string
     {
         $content = '';
-        foreach ($this->childNodeList as $child) {
+        foreach ($this->getChildNodeList() as $child) {
             $content .= $child->asXML();
-        }
+		}
         return $content;
     }
 
-    protected function createXML(string $tagName, array $attributes, string $content)
+    protected function createXML(string $tagName, string $attributes, string $content) : string
     {
+        return $content === ''
+            ? "<$tagName $attributes />"
+            : "<$tagName $attributes>$content</$tagName>";
+        /*
         // $ret = sprintf('<%s', $tagName);
         $ret = '<' . $tagName;
         
@@ -222,6 +135,7 @@ abstract class AbstractNode
         
         $ret .= $content === '' ? '/>' : '>' . $content . '</' . $tagName . '>'; // sprintf('>%s</%s>', $content, $tagName);
         return $ret;
+        //*/
     }
 
     /**
@@ -232,13 +146,10 @@ abstract class AbstractNode
     {
         return Converter::getInstance();
     }
-
-    /**
-     *
-     * @return \Slothsoft\Savegame\TypeParser
-     */
-    protected function getParser()
-    {
-        return TypeParser::getInstance();
+    public function getParentNode() {
+        return $this->parentNode;
+    }
+    public function getChildNodeList() {
+        return $this->getOwnerEditor()->getNodeListByParentNode($this);
     }
 }

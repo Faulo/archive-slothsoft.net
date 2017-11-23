@@ -1,6 +1,8 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+use Traversable;
+use DS\Vector;
 
 declare(ticks = 1000);
 
@@ -31,45 +33,35 @@ class EventStepInstruction extends AbstractInstructionContent
      * const EVENT_CREATE_FOOD = 2;
      *
      */
-    public function __construct()
-    {
-        parent::__construct();
-        $this->strucData['size'] = 0;
-    }
-
-    protected function loadStruc()
-    {
-        parent::loadStruc();
-        
-        $this->strucData['size'] = $this->getParser()->evaluate($this->strucData['size'], $this->ownerFile);
-    }
 
     protected function loadInstruction()
     {
-        $this->instructionList = [];
+        $ret = null;
         
-        $eventType = $this->ownerFile->extractContent($this->valueOffset, 1);
+        $eventType = $this->getOwnerFile()->extractContent($this->valueOffset, 1);
         $eventType = $this->getConverter()->decodeInteger($eventType, 1);
         
-        $eventSubType = $this->ownerFile->extractContent($this->valueOffset + 1, 1);
+        $eventSubType = $this->getOwnerFile()->extractContent($this->valueOffset + 1, 1);
         $eventSubType = $this->getConverter()->decodeInteger($eventSubType, 1);
         
         $ref = sprintf('event-%02d.%02d', $eventType, $eventSubType);
         
-        $node = $this->ownerEditor->getGlobalById($ref);
+        $node = $this->getOwnerEditor()->getGlobalById($ref);
         
         if (! $node) {
             $ref = sprintf('event-%02d', $eventType);
-            $node = $this->ownerEditor->getGlobalById($ref);
+            $node = $this->getOwnerEditor()->getGlobalById($ref);
         }
         
         if (! $node) {
             $ref = 'event-unknown';
-            $node = $this->ownerEditor->getGlobalById($ref);
+            $node = $this->getOwnerEditor()->getGlobalById($ref);
         }
         
         if ($node) {
-            $this->instructionList += $node->getStrucElementChildren();
+            $ret = $node->getStrucElementChildren();
         }
+        
+        return $ret;
     }
 }

@@ -1,50 +1,53 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+use Traversable;
+use DS\Vector;
+
 declare(ticks = 1000);
 
 abstract class AbstractInstructionContent extends AbstractContentNode
 {
 
     abstract protected function loadInstruction();
-
-    protected $instructionList;
-
+    
     protected $dictionary;
-
-    public function __construct()
+    protected $dictionaryRef;
+    
+    public function getXmlTag()  : string {
+        return 'group';
+    }
+    final protected function getXmlAttributes() : string
     {
-        parent::__construct();
-        $this->strucData['dictionary-ref'] = '';
+        $ret = parent::getXmlAttributes();
+        $ret .= " instruction='{$this->getStrucElement()->getTag()}'";
+        if ($this->dictionaryRef !== '') {
+            $ret .= " dictionary-ref='$this->dictionaryRef'";
+        }
+        return $ret;
     }
 
     protected function loadStruc()
     {
         parent::loadStruc();
         
-        if ($this->strucData['dictionary-ref'] !== '') {
-            $this->dictionary = $this->ownerEditor->getDictionaryById($this->strucData['dictionary-ref']);
+        $this->dictionaryRef = $this->loadStringAttribute('dictionary-ref');
+        
+        if ($this->dictionaryRef !== '') {
+            $this->dictionary = $this->getOwnerEditor()->getDictionaryById($this->dictionaryRef);
         }
     }
 
     protected function loadContent()
     {
-        $this->loadInstruction();
     }
 
     protected function loadChildren()
     {
-        foreach ($this->instructionList as $instruction) {
-            $this->loadChild($instruction);
+        if ($instructionList = $this->loadInstruction()) {
+            foreach ($instructionList as $instruction) {
+                $this->loadChild($instruction);
+            }
         }
-    }
-
-    public function asXML()
-    {
-        $attributes = [];
-        $attributes['instruction'] = $this->getStrucElement()->getType();
-        $attributes['name'] = $this->strucData['name'];
-        $attributes['position'] = $this->strucData['position'];
-        return $this->createXML('group', $attributes, $this->getChildrenXML());
     }
 }
