@@ -18,6 +18,8 @@ use DOMDocument;
 use DOMElement;
 use DOMNode;
 use XSLTProcessor;
+use Slothsoft\CMS\Tracking\Manager;
+
 declare(ticks = 1000);
 
 class HTTPDocument
@@ -164,8 +166,44 @@ class HTTPDocument
         $httpDocument->init(SERVER_ROOT . FILE_SITEMAP);
         
         $response = $httpDocument->lookup($request);
-        $response->track();
+        
+		if (constant('CMS_TRACKING_ENABLED')) {
+			$track = !$request->hasInputValue('dnt');
+			$forceTrack = $request->getInputValue('dnt') === 'false';
+			
+			foreach (constant('CMS_TRACKING_DNT_URI') as $uri) {
+				if (strpos($env['REQUEST_URI'], $uri) === 0) {
+					$track = false;
+					break;
+				}
+			}
+			
+			if ($track or $forceTrack) {
+				$dbName = 'cms';
+				$tableName = 'access_log';
+				try {
+					$response->addTrackingInfo($env);
+					Manager::track($env);
+				} catch(Exception $e) {
+				}
+			}
+		}
+		
         $response->send();
+    }
+	public static function parseRequestTest($path, $mode, array $req, array $env)
+    {
+        $request = new HTTPRequest();
+        $request->init($env);
+        $request->setInput($req);
+        $request->setAllHeaders([]);
+        $request->setMode($mode);
+        $request->setPath($path);
+        
+        $httpDocument = new HTTPDocument();
+        $httpDocument->init(SERVER_ROOT . FILE_SITEMAP);
+        
+        return $httpDocument->lookup($request);
     }
 
     public static function createRequestURI($path, $mode, array $req = null)
@@ -461,6 +499,133 @@ class HTTPDocument
     }
 
     public function lookup(HTTPRequest $request)
+    {
+        $this->httpRequest = $request;
+        $this->httpResponse = new HTTPResponse();
+        $this->httpResponse->setRequest($this->httpRequest);
+        
+        $this->now = $this->httpRequest->time;
+        $this->dict = $this->httpRequest->dict;
+        
+        $this->lookupDomain($this->httpRequest->clientHost);
+        
+        if ($this->isBanned($this->httpRequest->clientIp)) {
+            // BANHAMMER
+            $this->httpResponse->setStatus(HTTPResponse::STATUS_PRECONDITION_FAILED, 'You have been found wanting.');
+            return $this->httpResponse;
+        }
+        
+        if ($this->requestedDomain) {
+            if ($this->requestedDomain->hasAttribute('dict-languages')) {
+                $this->dict->setSupportedLanguages($this->requestedDomain->getAttribute('dict-languages'));
+            }
+            $this->requestedDomain->setAttribute('active', '');
+            if ($this->requestedDomain->getAttribute('name') === $this->httpRequest->clientHost or strtolower($this->httpRequest->clientHost) === strtolower(SERVER_NAME)) {
+                /*
+                 * $nodeList = $this->sitesPath->evaluate(sprintf('. | .//%s', self::TAG_PAGE), $this->requestedDomain);
+                 * foreach ($nodeList as $node) {
+                 * $node->setAttribute('uri', $this->findUri($node));
+                 * $node->setAttribute('url', $this->findUri($node, true));
+                 * }
+                 * //
+                 */
+                $this->requestElement = $this->httpRequest->asNode($this->sitesDoc);
+                $this->sitesDoc->documentElement->appendChild($this->requestElement);
+                
+                if ($this->httpRequest->protocolRecognised) {
+                    switch ($this->httpRequest->protocolName) {
+                        case HTTPRequest::PROTOCOL_HTTP:
+                            if ($this->httpRequest->protocolMajorVersion >= 1 and $this->httpRequest->protocolMinorVersion >= 0) {
+                                switch ($this->httpRequest->method) {
+                                    case HTTPRequest::METHOD_HEAD:
+                                    case HTTPRequest::METHOD_GET:
+                                    case HTTPRequest::METHOD_POST:
+                                        $ret = null;
+                                        $this->httpResponse->setStatus(HTTPResponse::STATUS_GONE);
+                                        $this->httpResponse->setDownload(isset($this->httpRequest->input['download']));
+                                        foreach ($this->redirectUpAgents as $agent) {
+                                            if (strpos($this->httpRequest->clientAgent, $agent) !== false) {
+                                                $this->redirectUp = true;
+                                                break;
+                                            }
+                                        }
+                                        
+                                        switch ($this->httpRequest->mode) {
+                                            case self::LOOKUP_PAGE:
+                                                $ret = $this->loadPage();
+                                                break;
+                                            case self::LOOKUP_FRAGMENT:
+                                                $ret = $this->loadFragment();
+                                                break;
+                                            case self::LOOKUP_DATA:
+                                                $ret = $this->loadData();
+                                                break;
+                                            case self::LOOKUP_RESOURCE:
+                                                $ret = $this->loadResource();
+                                                break;
+                                            case self::LOOKUP_DOCUMENT:
+                                                $ret = $this->loadPTDocument();
+                                                break;
+                                            case self::LOOKUP_TEMPLATE:
+                                                $ret = $this->loadTemplate();
+                                                break;
+                                            case self::LOOKUP_SCRIPT:
+                                                $ret = $this->loadScript();
+                                                break;
+                                            case self::LOOKUP_STYLESHEET:
+                                                $ret = $this->loadStyle();
+                                                break;
+                                            case self::LOOKUP_CACHE:
+                                                $ret = $this->loadCache();
+                                                break;
+                                        }
+                                        if (! ($this->progressStatus & self::STATUS_RESPONSE_SET)) {
+                                            switch (true) {
+                                                case $ret instanceof DOMDocument:
+                                                    $this->httpResponse->setDocument($ret);
+                                                    $this->progressStatus |= self::STATUS_RESPONSE_SET;
+                                                    break;
+                                                case $ret instanceof HTTPFile:
+                                                    $this->httpResponse->setFile($ret->getPath(), $ret->getName());
+                                                    $this->progressStatus |= self::STATUS_RESPONSE_SET;
+                                                    break;
+                                                case $ret instanceof HTTPStream:
+                                                    $this->httpResponse->setStream($ret);
+                                                    $this->progressStatus |= self::STATUS_RESPONSE_SET;
+                                                    break;
+                                                case is_file($ret):
+                                                    $this->httpResponse->setFile($ret);
+                                                    $this->progressStatus |= self::STATUS_RESPONSE_SET;
+                                                    break;
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        $this->httpResponse->setStatus(HTTPResponse::STATUS_NOT_IMPLEMENTED);
+                                        break;
+                                }
+                            } else {
+                                $this->httpResponse->setStatus(HTTPResponse::STATUS_HTTP_VERSION_NOT_SUPPORTED);
+                            }
+                            break;
+                        default:
+                            $this->httpResponse->setStatus(HTTPResponse::STATUS_METHOD_NOT_ALLOWED);
+                            break;
+                    }
+                } else {
+                    $this->httpResponse->setStatus(HTTPResponse::STATUS_BAD_REQUEST);
+                }
+            } else {
+                $uri = 'http://' . $this->requestedDomain->getAttribute('name') . $_SERVER['REQUEST_URI'];
+                $this->httpResponse->setMoved($uri, true);
+            }
+        } else {
+            $this->httpResponse->setStatus(HTTPResponse::STATUS_NOT_FOUND);
+        }
+        
+        return $this->httpResponse;
+    }
+	public function lookupTest(HTTPRequest $request)
     {
         $this->httpRequest = $request;
         $this->httpResponse = new HTTPResponse();

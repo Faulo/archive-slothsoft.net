@@ -163,7 +163,7 @@
 			success-cmd = "7z x %s -y -oD:\backups\PCSX2"
 			>
 			<php><![CDATA[
-use Slothsoft\CMS\FileSystem;
+use Slothsoft\Core\FileSystem;
 
 $sourcePath = 'D:\\backups\\PCSX2';
 $destPath = 'C:\\NetzwerkDaten\\Dropbox\\Symlinks\\Pcsx2';
@@ -209,7 +209,7 @@ foreach ($copyFileList as $sourceFile => $destFile) {
 			success-cmd = "7z x %s -y -oD:\backups\MapCrafter"
 			>
 			<php><![CDATA[
-use Slothsoft\CMS\FileSystem;
+use Slothsoft\Core\FileSystem;
 
 $sourcePath = 'D:\\backups\\MapCrafter';
 $destPath = 'C:\\Minecraft\\Tools\\MapCrafter';
