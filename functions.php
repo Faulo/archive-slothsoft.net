@@ -19,57 +19,7 @@ function __autoload($class) {
 		$file = sprintf('%smod/lib/php/%s.php', SERVER_ROOT, $class);
 	}
 	if (file_exists($file)) {
-	   @include $file;
-	}
-}
-
-function track($request = null) {
-	return;
-	if ($request === null) {
-		$request = $_SERVER;
-	}
-	$doNotTrack = [
-		//*
-		//'/getTemplate',
-		//'/getScript',
-		//'/getFragment.php/core/',
-		'/getCache',
-		'/getResource.php/slothsoft/',
-		'/getResource.php/minecraft/',
-		'/getResource.php/mtg/',
-		'/getResource.php/twitter/',
-		'/getResource.php/amber/',
-		'/getData.php/slothsoft/archive',
-		'/getData.php/mtg/image',
-		'/getData.php/chat/watch',
-		'/getData.php/chat/sse?mode=pull',
-		'/getData.php/twitter/cron',
-		'/getFragment.php/minecraft/log-content',
-		'/getFragment.php/minecraft/status',
-		'/Minecraft/Tectonicus',
-		'/Minecraft/Overviewer',
-		'/Minecraft/Map',
-		'/favicon.ico',
-		//*/
-	];
-	//$doNotTrack = []; '/getResource', 
-	$track = !isset($_REQUEST['dnt']);
-	$forceTrack = (isset($_REQUEST['dnt']) and $_REQUEST['dnt'] === 'false');
-	
-	foreach ($doNotTrack as $uri) {
-		if (strpos($request['REQUEST_URI'], $uri) === 0) {
-			$track = false;
-			break;
-		}
-	}
-	if ($track or $forceTrack) {
-		$dbName = 'cms';
-		$tableName = 'access_log';
-		try {
-			\Slothsoft\CMS\Tracking\Manager::track($request);
-		} catch(Exception $e) {
-			//\Tracking\Manager::track($request);
-		}
+	    include $file;
 	}
 }
 

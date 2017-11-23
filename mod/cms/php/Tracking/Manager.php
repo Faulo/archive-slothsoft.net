@@ -26,14 +26,11 @@ class Manager
         return new View($archive);
     }
 
-    public static function track($request = null)
+    public static function track(array $request)
     {
-        if ($request === null) {
-            $request = $_SERVER;
-        }
         try {
             $archive = self::getArchive();
-            $archive->insertTemp(microtime(true), $request);
+            $archive->insertTemp($request['REQUEST_TIME_FLOAT'] ?? microtime(true), $request);
         } catch (Exception $e) {
             file_put_contents(__FILE__ . '.txt', $e->getMessage() . PHP_EOL, FILE_APPEND);
         }

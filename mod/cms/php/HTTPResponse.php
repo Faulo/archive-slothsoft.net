@@ -240,35 +240,24 @@ class HTTPResponse
         $this->protocolName = $httpRequest->protocolName;
         $this->protocolMajorVersion = $httpRequest->protocolMajorVersion;
         $this->protocolMinorVersion = $httpRequest->protocolMinorVersion;
-        
-        switch ($this->protocolName) {
-            case HTTPRequest::PROTOCOL_HTTP:
-                if ($this->protocolMajorVersion >= 1 and $this->protocolMinorVersion >= 1) {
-                    $this->transferEncoding = self::TRANSFER_ENCODING_CHUNKED;
-                }
-            default:
-                break;
-        }
     }
 
-    public function track()
+    public function addTrackingInfo(array &$env)
     {
-        $_SERVER['RESPONSE_TIME'] = get_execution_time();
-        $_SERVER['RESPONSE_MEMORY'] = sprintf('%.2f', memory_get_peak_usage() / 1048576);
-        $_SERVER['RESPONSE_STATUS'] = $this->status;
+        $env['RESPONSE_TIME'] = get_execution_time();
+        $env['RESPONSE_MEMORY'] = sprintf('%.2f', memory_get_peak_usage() / 1048576);
+        $env['RESPONSE_STATUS'] = $this->status;
         if ($this->status === self::STATUS_OK and $this->rangeStart !== $this->rangeEnd) {
-            $_SERVER['RESPONSE_STATUS'] = self::STATUS_PARTIAL_CONTENT;
+            $env['RESPONSE_STATUS'] = self::STATUS_PARTIAL_CONTENT;
         }
-        $_SERVER['RESPONSE_TYPE'] = $this->mime;
-        $_SERVER['RESPONSE_ENCODING'] = $this->contentEncoding;
-        $_SERVER['RESPONSE_LENGTH'] = $this->bodyLength;
-        $_SERVER['RESPONSE_LANGUAGE'] = $this->language;
+        $env['RESPONSE_TYPE'] = $this->mime;
+        $env['RESPONSE_ENCODING'] = $this->contentEncoding;
+        $env['RESPONSE_LENGTH'] = $this->bodyLength;
+        $env['RESPONSE_LANGUAGE'] = $this->language;
         $input = file_get_contents('php://input');
         if (strlen($input) > 0 and strlen($input) < self::$httpConfig['file-size']) {
-            $_SERVER['RESPONSE_INPUT'] = $input;
+            $env['RESPONSE_INPUT'] = $input;
         }
-        track();
-        // \Tracking\Manager::track($_SERVER);
     }
 
     public function send()
@@ -381,6 +370,9 @@ class HTTPResponse
 			}
         }
     }
+	public function getStatus() {
+		return $this->status;
+	}
 
     public function setRange($range)
     {
@@ -456,6 +448,14 @@ class HTTPResponse
         $this->bodyLength = null;
         $this->bodyType = self::BODY_STREAM;
         $this->contentEncoding = self::CONTENT_ENCODING_RAW;
+        switch ($this->protocolName) {
+            case HTTPRequest::PROTOCOL_HTTP:
+                if ($this->protocolMajorVersion >= 1 and $this->protocolMinorVersion >= 1) {
+                    $this->transferEncoding = self::TRANSFER_ENCODING_CHUNKED;
+                }
+            default:
+                break;
+        }
         
         $headerList = $this->body->getHeaderList();
         foreach ($headerList as $key => $val) {
