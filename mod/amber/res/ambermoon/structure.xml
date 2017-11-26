@@ -1930,7 +1930,7 @@
 	</dictionary>
 
 	<dictionary dictionary-id="spells-white">
-		<option val="?" />
+<!-- 		<option val="?" /> -->
 		<option val="HAND AUFLEGEN" />
 		<option val="FURCHT LÖSEN" />
 		<option val="PANIK BESEITIGEN" />
@@ -1963,7 +1963,7 @@
 		<option val="AUSDAUER KRÄFTIGEN" />
 	</dictionary>
 	<dictionary dictionary-id="spells-blue">
-		<option val="?" />
+<!-- 		<option val="?" /> -->
 		<option val="GEGENSTAND LADEN" />
 		<option val="LICHT" />
 		<option val="MAGISCHE FACKEL" />
@@ -1995,7 +1995,7 @@
 		<option val="SP-SAUGER" />
 	</dictionary>
 	<dictionary dictionary-id="spells-green">
-		<option val="?" />
+<!-- 		<option val="?" /> -->
 		<option val="MONSTERWISSEN" />
 		<option val="IDENTIFIKATION" />
 		<option val="WISSEN" />
@@ -2015,7 +2015,7 @@
 		<option val="ZEIGE MONSTER-LP" />
 	</dictionary>
 	<dictionary dictionary-id="spells-black">
-		<option val="?" />
+<!-- 		<option val="?" /> -->
 		<option val="MAGISCHES GESCHOSS" />
 		<option val="MAGISCHER PFEIL" />
 		<option val="LÄHMEN" />
