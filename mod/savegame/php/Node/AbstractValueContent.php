@@ -2,7 +2,6 @@
 namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\EditorElement;
-
 declare(ticks = 1000);
 
 abstract class AbstractValueContent extends AbstractContentNode
@@ -10,7 +9,7 @@ abstract class AbstractValueContent extends AbstractContentNode
 
     abstract protected function decodeValue(string $rawValue);
 
-    abstract protected function encodeValue($value) : string;
+    abstract protected function encodeValue($value): string;
 
     private $valueId;
 
@@ -20,10 +19,7 @@ abstract class AbstractValueContent extends AbstractContentNode
 
     protected function getXmlAttributes(): string
     {
-        return parent::getXmlAttributes()
-        . $this->createXmlTextAttribute('value', (string) $this->value)
-            . $this->createXmlIntegerAttribute('size', $this->size)
-            . $this->createXmlIntegerAttribute('value-id', $this->valueId);
+        return parent::getXmlAttributes() . $this->createXmlTextAttribute('value', (string) $this->value) . $this->createXmlIntegerAttribute('size', $this->size) . $this->createXmlIntegerAttribute('value-id', $this->valueId);
     }
 
     protected function loadStruc(EditorElement $strucElement)
@@ -37,8 +33,7 @@ abstract class AbstractValueContent extends AbstractContentNode
     protected function loadContent(EditorElement $strucElement)
     {
         if ($this->size and $this->ownerFile) {
-            $this->setRawValue($this->ownerFile
-                ->extractContent($this->contentOffset, $this->size));
+            $this->setRawValue($this->ownerFile->extractContent($this->contentOffset, $this->size));
         }
         // echo $this->getName() . ': ' . $this->getValue() . PHP_EOL;
     }

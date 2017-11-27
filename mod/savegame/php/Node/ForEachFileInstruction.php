@@ -6,14 +6,17 @@ declare(ticks = 1000);
 
 class ForEachFileInstruction extends AbstractNode
 {
+
     protected function getXmlTag(): string
     {
         return 'for-each-file';
     }
+
     protected function getXmlAttributes(): string
     {
         return '';
     }
+
     public function asXML(): string
     {
         return $this->getXmlContent();
@@ -34,7 +37,5 @@ class ForEachFileInstruction extends AbstractNode
     }
 
     protected function loadNode(EditorElement $strucElement)
-    {
-        
-    }
+    {}
 }

@@ -87,6 +87,8 @@
 							</xsd:restriction>
 						</xsd:simpleType>
 					</xsd:attribute>
+					<xsd:attribute name="name" type="xsd:normalizedString" use="optional"/>
+					<xsd:attribute name="size" type="xsd:integer" use="optional"/>
 					<xsd:attribute name="timestamp" type="xsd:normalizedString" use="optional"/>
 					<xsd:attribute name="md5" type="xsd:normalizedString" use="optional"/>
 				</xsd:extension>

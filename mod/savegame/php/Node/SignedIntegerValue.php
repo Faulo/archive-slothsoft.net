@@ -2,26 +2,39 @@
 namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\EditorElement;
-
 declare(ticks = 1000);
 
 class SignedIntegerValue extends AbstractValueContent
 {
-    const MIN_VALUES = [0, -127, -32767, -8388607, -2147483647];
-    const MAX_VALUES = [0, 127, 32767, 8388607, 2147483647];
+
+    const MIN_VALUES = [
+        0,
+        - 127,
+        - 32767,
+        - 8388607,
+        - 2147483647
+    ];
+
+    const MAX_VALUES = [
+        0,
+        127,
+        32767,
+        8388607,
+        2147483647
+    ];
 
     private $min;
 
     private $max;
+
     protected function getXmlTag(): string
     {
         return 'signed-integer';
     }
+
     public function getXmlAttributes(): string
     {
-        return parent::getXmlAttributes()
-        . $this->createXmlIntegerAttribute('min', $this->min)
-        . $this->createXmlIntegerAttribute('max', $this->max);
+        return parent::getXmlAttributes() . $this->createXmlIntegerAttribute('min', $this->min) . $this->createXmlIntegerAttribute('max', $this->max);
     }
 
     protected function loadStruc(EditorElement $strucElement)
@@ -34,11 +47,11 @@ class SignedIntegerValue extends AbstractValueContent
 
     protected function decodeValue(string $rawValue)
     {
-        return $this->getConverter()->decodeInteger($rawValue, $this->size);
+        return $this->getConverter()->decodeSignedInteger($rawValue, $this->size);
     }
 
-    protected function encodeValue($value) : string
+    protected function encodeValue($value): string
     {
-        return $this->getConverter()->encodeInteger($value, $this->size);
+        return $this->getConverter()->encodeSignedInteger($value, $this->size);
     }
 }

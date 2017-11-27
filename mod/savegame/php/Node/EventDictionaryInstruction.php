@@ -7,11 +7,13 @@ declare(ticks = 1000);
 
 class EventDictionaryInstruction extends AbstractInstructionContent
 {
+
     protected function getXmlTag(): string
     {
         return 'event-dictionary';
     }
-    protected function loadInstruction(EditorElement $strucElement) 
+
+    protected function loadInstruction(EditorElement $strucElement)
     {
         $instructionList = [];
         

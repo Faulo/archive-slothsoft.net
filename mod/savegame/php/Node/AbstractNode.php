@@ -11,8 +11,9 @@ abstract class AbstractNode
 {
 
     abstract protected function loadNode(EditorElement $strucElement);
-    
-    abstract protected function getXmlTag() : string;
+
+    abstract protected function getXmlTag(): string;
+
     abstract protected function getXmlAttributes(): string;
 
     /**
@@ -20,7 +21,7 @@ abstract class AbstractNode
      * @var \Slothsoft\Savegame\Node\AbstractNode
      */
     private $parentNode;
-    
+
     private $childNodeList;
 
     public function __construct()
@@ -40,8 +41,7 @@ abstract class AbstractNode
     }
 
     protected function loadStruc(EditorElement $strucElement)
-    {
-    }
+    {}
 
     protected function loadChildren(EditorElement $strucElement)
     {
@@ -61,26 +61,25 @@ abstract class AbstractNode
      *
      * @return \Slothsoft\Savegame\Editor
      */
-    public function getOwnerEditor() : Editor
+    public function getOwnerEditor(): Editor
     {
         return $this->getOwnerSavegame()->getOwnerEditor();
     }
+
     /**
      *
      * @return \Slothsoft\Savegame\Node\SavegameNode
      */
-    public function getOwnerSavegame() : SavegameNode
+    public function getOwnerSavegame(): SavegameNode
     {
-        return $this->parentNode instanceof SavegameNode
-            ? $this->parentNode
-        : $this->parentNode->getOwnerSavegame();
+        return $this->parentNode instanceof SavegameNode ? $this->parentNode : $this->parentNode->getOwnerSavegame();
     }
 
     public function asXML(): string
     {
         return $this->createXmlElement($this->getXmlTag(), $this->getXmlAttributes(), $this->getXmlContent());
     }
-    
+
     protected function getXmlContent(): string
     {
         $content = '';
@@ -92,23 +91,23 @@ abstract class AbstractNode
 
     protected function createXmlElement(string $tagName, string $attributes, string $content): string
     {
-        return $content === ''
-            ? "<$tagName $attributes />"
-            : "<$tagName $attributes>$content</$tagName>";
+        return $content === '' ? "<$tagName $attributes />" : "<$tagName $attributes>$content</$tagName>";
     }
-    protected function createXmlIntegerAttribute(string $name, int $value) : string {
+
+    protected function createXmlIntegerAttribute(string $name, int $value): string
+    {
         return " $name=\"$value\"";
     }
-    protected function createXmlIdAttribute(string $name, string $value) : string {
-        return $value === ''
-            ? ''
-            : " $name=\"$value\"";
+
+    protected function createXmlIdAttribute(string $name, string $value): string
+    {
+        return $value === '' ? '' : " $name=\"$value\"";
     }
-    protected function createXmlTextAttribute(string $name, string $value) : string {
+
+    protected function createXmlTextAttribute(string $name, string $value): string
+    {
         $value = htmlspecialchars($value, ENT_COMPAT | ENT_XML1);
-        return $value === ''
-            ? ''
-            : " $name=\"$value\"";
+        return $value === '' ? '' : " $name=\"$value\"";
     }
 
     /**
@@ -125,14 +124,14 @@ abstract class AbstractNode
         return $this->parentNode;
     }
 
-    
-    public function appendChild(AbstractNode $childNode) {
+    public function appendChild(AbstractNode $childNode)
+    {
         if ($this->childNodeList === null) {
             $this->childNodeList = new Vector();
         }
         $this->childNodeList[] = $childNode;
     }
-    
+
     public function getChildNodeList()
     {
         return $this->childNodeList ? $this->childNodeList : [];

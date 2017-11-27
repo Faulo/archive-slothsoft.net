@@ -2,18 +2,23 @@
 namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\EditorElement;
-
 declare(ticks = 1000);
 
 class GlobalNode extends AbstractNode
 {
 
     private $globalId;
-    
+
+    protected function getXmlAttributes(): string
+    {
+        return '';
+    }
+
     protected function getXmlTag(): string
     {
         return 'global';
     }
+
     protected function loadStruc(EditorElement $strucElement)
     {
         parent::loadStruc($strucElement);

@@ -35,21 +35,17 @@ class ArchiveNode extends AbstractNode
     private $archivePath;
 
     private $fileDirectory;
-    
+
     private $filePathList;
-    
+
     protected function getXmlTag(): string
     {
         return 'archive';
     }
+
     protected function getXmlAttributes(): string
     {
-        return $this->createXmlIdAttribute('name', $this->name)
-        . $this->createXmlIdAttribute('type', $this->type)
-        . $this->createXmlIdAttribute('path', $this->path)
-        . $this->createXmlIdAttribute('timestamp', $this->timestamp)
-        . $this->createXmlIdAttribute('md5', $this->md5)
-        . $this->createXmlIntegerAttribute('size', $this->size);
+        return $this->createXmlIdAttribute('name', $this->name) . $this->createXmlIdAttribute('type', $this->type) . $this->createXmlIdAttribute('path', $this->path) . $this->createXmlIdAttribute('timestamp', $this->timestamp) . $this->createXmlIdAttribute('md5', $this->md5) . $this->createXmlIntegerAttribute('size', $this->size);
     }
 
     public function loadStruc(EditorElement $strucElement)
@@ -193,12 +189,14 @@ class ArchiveNode extends AbstractNode
             }
         }
     }
-    
-    
-    public function getFileNameList() : array {
+
+    public function getFileNameList(): array
+    {
         return array_values($this->filePathList);
     }
-    public function getFilePathByName(string $name) : string {
+
+    public function getFilePathByName(string $name): string
+    {
         return array_search($name, $this->filePathList, true);
     }
 }

@@ -5,10 +5,12 @@ declare(ticks = 1000);
 
 class EventScriptValue extends AbstractValueContent
 {
+
     protected function getXmlTag(): string
     {
         return 'event-script';
     }
+
     protected function loadContent()
     {
         $scriptSize = 4;
@@ -42,7 +44,7 @@ class EventScriptValue extends AbstractValueContent
         return $this->getConverter()->decodeScript($rawValue);
     }
 
-    protected function encodeValue($value) : string
+    protected function encodeValue($value): string
     {
         return $this->getConverter()->encodeScript($value);
     }

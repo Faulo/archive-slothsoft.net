@@ -23,14 +23,16 @@ class FileContainer extends AbstractNode implements NodeEvaluatorInterface
     private $valueList;
 
     private $evaluateCache;
-    
+
     private $ownerEditor;
+
     private $ownerSavegame;
-    
+
     protected function getXmlTag(): string
     {
         return 'file';
     }
+
     protected function getXmlAttributes(): string
     {
         return $this->createXmlIdAttribute('file-name', $this->fileName);
@@ -41,9 +43,7 @@ class FileContainer extends AbstractNode implements NodeEvaluatorInterface
         parent::loadStruc($strucElement);
         
         $parent = $this->getParentNode();
-        $archive = $parent instanceof ArchiveNode
-            ? $parent
-            : $parent->getParentNode();
+        $archive = $parent instanceof ArchiveNode ? $parent : $parent->getParentNode();
         $this->ownerSavegame = $archive->getOwnerSavegame();
         $this->ownerEditor = $this->ownerSavegame->getOwnerEditor();
         
@@ -119,7 +119,7 @@ class FileContainer extends AbstractNode implements NodeEvaluatorInterface
     {
         return $this->fileName;
     }
-    
+
     public function getValueByName(string $name)
     {
         foreach ($this->valueList as $node) {
@@ -160,12 +160,12 @@ class FileContainer extends AbstractNode implements NodeEvaluatorInterface
             $code = trim($code);
             // echo $code . PHP_EOL;
             $this->evaluateCache[$expression] = $this->evaluateMath($code);
-            //echo $expression . PHP_EOL . $code . PHP_EOL . $this->evaluateCache[$expression] . PHP_EOL . PHP_EOL;
+            // echo $expression . PHP_EOL . $code . PHP_EOL . $this->evaluateCache[$expression] . PHP_EOL . PHP_EOL;
         }
         return $this->evaluateCache[$expression];
     }
 
-    public function evaluateMath(string $code) : int
+    public function evaluateMath(string $code): int
     {
         static $evalList = [];
         if (! isset($evalList[$code])) {
@@ -174,25 +174,27 @@ class FileContainer extends AbstractNode implements NodeEvaluatorInterface
         }
         return $evalList[$code];
     }
-    
-    public function registerValue(AbstractValueContent $node) {
+
+    public function registerValue(AbstractValueContent $node)
+    {
         $this->valueList[] = $node;
         return $this->ownerSavegame->nextValueId();
     }
-    
+
     /**
      *
      * @return \Slothsoft\Savegame\Editor
      */
-    public function getOwnerEditor() : Editor
+    public function getOwnerEditor(): Editor
     {
         return $this->ownerEditor;
     }
+
     /**
      *
      * @return \Slothsoft\Savegame\Node\SavegameNode
      */
-    public function getOwnerSavegame() : SavegameNode
+    public function getOwnerSavegame(): SavegameNode
     {
         return $this->ownerSavegame;
     }

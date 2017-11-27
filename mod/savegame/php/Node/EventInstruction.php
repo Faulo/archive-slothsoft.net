@@ -10,11 +10,12 @@ class EventInstruction extends AbstractInstructionContent
     private $size;
 
     private $stepSize;
-    
+
     protected function getXmlTag(): string
     {
         return 'event';
     }
+
     protected function loadStruc(EditorElement $strucElement)
     {
         parent::loadStruc($strucElement);
@@ -23,7 +24,7 @@ class EventInstruction extends AbstractInstructionContent
         $this->stepSize = (int) $strucElement->getAttribute('step-size');
     }
 
-    protected function loadInstruction(EditorElement $strucElement) 
+    protected function loadInstruction(EditorElement $strucElement)
     {
         $instructionList = [];
         

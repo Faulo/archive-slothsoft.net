@@ -23,11 +23,12 @@ class StringDictionaryInstruction extends AbstractInstructionContent
     private $stringCount;
 
     private $stringSize;
-    
+
     protected function getXmlTag(): string
     {
         return 'string-dictionary';
     }
+
     public function loadStruc(EditorElement $strucElement)
     {
         parent::loadStruc($strucElement);
@@ -36,7 +37,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
         $this->type = (string) $strucElement->getAttribute('type');
     }
 
-    protected function loadInstruction(EditorElement $strucElement) 
+    protected function loadInstruction(EditorElement $strucElement)
     {
         $instructionList = [];
         

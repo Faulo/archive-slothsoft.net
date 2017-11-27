@@ -3,7 +3,6 @@ namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\Editor;
 use Slothsoft\Savegame\EditorElement;
-
 declare(ticks = 1000);
 
 abstract class AbstractContentNode extends AbstractNode
@@ -49,19 +48,21 @@ abstract class AbstractContentNode extends AbstractNode
     {
         return $this->ownerFile;
     }
+
     /**
      *
      * @return \Slothsoft\Savegame\Editor
      */
-    public function getOwnerEditor() : Editor
+    public function getOwnerEditor(): Editor
     {
         return $this->ownerFile->getOwnerEditor();
     }
+
     /**
      *
      * @return \Slothsoft\Savegame\Node\SavegameNode
      */
-    public function getOwnerSavegame() : SavegameNode
+    public function getOwnerSavegame(): SavegameNode
     {
         return $this->ownerFile->getOwnerSavegame();
     }

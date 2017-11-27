@@ -213,20 +213,28 @@ class ModController
         
         assert(isset($this->editorConfig[$lib]));
         $config = $this->editorConfig[$lib];
+		
+		$struc = $config['structure'] ?? 'structure';
         
-        $libResource = $this->locator->getResource(ModResource::TYPE_EDITOR, $lib);
+        $strucResource = $this->locator->getResource(ModResource::TYPE_STRUCTURE, $struc);
+		
+		$libResource = $this->locator->getResource(ModResource::TYPE_EDITOR, $lib);
         
-        $req->setInputValue('struc', $config['structure'] ?? 'structure');
+        $req->setInputValue('struc', $struc);
         $req->setInputValue('save', [
             'editor' => [
                 'archives' => $config['archives']
             ]
         ]);
+		
+        if ($libResource->exists() and $libResource->getChangeTime() > $strucResource->getChangeTime()) {
+			$ret = true;
+		} else {
+			$editor = $this->editorAction($req);
         
-        $editor = $this->editorAction($req);
-        
-        $ret = $libResource->setContents($editor->asString());
-        
+			$ret = $libResource->setContents($editor->asString());
+        }
+		
         return $ret ? $libResource : null;
     }
 
@@ -245,21 +253,23 @@ class ModController
         $templateResource = $this->locator->getResource(ModResource::TYPE_TEMPLATE, 'extract');
         
         if ($editorResource->exists() and $templateResource->exists()) {
-			//if ($libResource->exists() and $libResource->getChangeTime() > $editorResource->getChangeTime() and $libResource->getChangeTime() > $templateResource->getChangeTime()) {
-				
-			$params = [];
-			$params['lib'] = $lib;
-			if ($lib !== 'dictionaries') {
-				$dictionaryResource = $this->locator->getResource(ModResource::TYPE_LIBRARY, 'dictionaries');
-				//$params['dictionaryURL'] = 'file://' . realpath($dictionaryResource->getPath());
-				$params['dictionaryURL'] = 'http://localhost' . $dictionaryResource->getUrl();
-			}
-			if ($extractDoc = $this->dom->transform(
-				 $editorResource->getPath(),
-				$templateResource->getPath(),
-				$params
-				)) {
-				$ret = $libResource->setContents($extractDoc->saveXML());
+			if ($libResource->exists() and $libResource->getChangeTime() > $editorResource->getChangeTime() and $libResource->getChangeTime() > $templateResource->getChangeTime()) {
+				$ret = true;
+			} else {
+				$params = [];
+				$params['lib'] = $lib;
+				if ($lib !== 'dictionaries') {
+					$dictionaryResource = $this->locator->getResource(ModResource::TYPE_LIBRARY, 'dictionaries');
+					//$params['dictionaryURL'] = 'file://' . realpath($dictionaryResource->getPath());
+					$params['dictionaryURL'] = 'http://localhost' . $dictionaryResource->getUrl();
+				}
+				if ($extractDoc = $this->dom->transform(
+					 $editorResource->getPath(),
+					$templateResource->getPath(),
+					$params
+					)) {
+					$ret = $libResource->setContents($extractDoc->saveXML());
+				}
 			}
         }
         
@@ -461,9 +471,9 @@ content: " ";
         $editorList[] = 'npcs';
         $editorList[] = 'monsters';
         $editorList[] = 'tileset.icons';
-        //$editorList[] = 'maps-lyramion';
-        //$editorList[] = 'maps-misc';
-        //$editorList[] = 'maps-kire';
+        $editorList[] = 'maps-lyramion';
+        $editorList[] = 'maps-misc';
+        $editorList[] = 'maps-kire';
 		
         // $libList = array_keys($this->extractionConfig);
         $libList = [];

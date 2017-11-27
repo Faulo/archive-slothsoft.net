@@ -12,11 +12,12 @@ class BitFieldInstruction extends AbstractInstructionContent
     private $firstBit;
 
     private $lastBit;
-    
+
     protected function getXmlTag(): string
     {
         return 'bit-field';
     }
+
     protected function loadStruc(EditorElement $strucElement)
     {
         parent::loadStruc($strucElement);
@@ -26,7 +27,8 @@ class BitFieldInstruction extends AbstractInstructionContent
         $this->lastBit = (int) $strucElement->getAttribute('last-bit', $this->size * 8 - 1);
     }
 
-    protected function loadInstruction(EditorElement $strucElement)    {
+    protected function loadInstruction(EditorElement $strucElement)
+    {
         $instructionList = [];
         
         $max = $this->size - 1;
@@ -39,7 +41,7 @@ class BitFieldInstruction extends AbstractInstructionContent
             $strucData['position'] = $pos;
             $strucData['bit'] = $bit;
             $strucData['size'] = 1;
-            //$strucData['name'] = $this->dictionary ? (string) $this->dictionary->getOption($i) : '';
+            // $strucData['name'] = $this->dictionary ? (string) $this->dictionary->getOption($i) : '';
             
             $instructionList[] = new EditorElement(EditorElement::NODE_TYPES['bit'], $strucData, $strucElement->getChildren());
         }

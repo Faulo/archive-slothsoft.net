@@ -2,22 +2,21 @@
 namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\EditorElement;
-
 declare(ticks = 1000);
 
 class BitValue extends AbstractValueContent
 {
 
     private $bit;
-    
+
     protected function getXmlTag(): string
     {
         return 'bit';
     }
+
     protected function getXmlAttributes(): string
     {
-        return parent::getXmlAttributes()
-        . $this->createXmlIntegerAttribute('bit', $this->bit);
+        return parent::getXmlAttributes() . $this->createXmlIntegerAttribute('bit', $this->bit);
     }
 
     protected function loadStruc(EditorElement $strucElement)
@@ -44,11 +43,7 @@ class BitValue extends AbstractValueContent
 
     public function updateContent()
     {
-        $this->ownerFile->insertContentBit(
-            $this->contentOffset,
-            $this->getBitValue(),
-            $this->value
-        );
+        $this->ownerFile->insertContentBit($this->contentOffset, $this->getBitValue(), $this->value);
     }
 
     protected function decodeValue(string $rawValue)
@@ -56,7 +51,7 @@ class BitValue extends AbstractValueContent
         return $this->getConverter()->decodeInteger($rawValue, $this->size);
     }
 
-    protected function encodeValue($value) : string
+    protected function encodeValue($value): string
     {
         return $this->getConverter()->encodeInteger($value, $this->size);
     }

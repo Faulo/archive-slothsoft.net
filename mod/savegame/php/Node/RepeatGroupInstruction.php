@@ -10,10 +10,12 @@ class RepeatGroupInstruction extends AbstractInstructionContent
     private $groupSize;
 
     private $groupCount;
+
     protected function getXmlTag(): string
     {
         return 'repeat-group';
     }
+
     protected function loadStruc(EditorElement $strucElement)
     {
         parent::loadStruc($strucElement);
@@ -22,7 +24,7 @@ class RepeatGroupInstruction extends AbstractInstructionContent
         $this->groupCount = (int) $strucElement->getAttribute('group-count', 0, $this->ownerFile);
     }
 
-    protected function loadInstruction(EditorElement $strucElement) 
+    protected function loadInstruction(EditorElement $strucElement)
     {
         $instructionList = [];
         
@@ -38,7 +40,7 @@ class RepeatGroupInstruction extends AbstractInstructionContent
         foreach ($positionList as $i => $position) {
             $strucData = [];
             $strucData['position'] = $position;
-            //$strucData['name'] = $this->dictionary ? (string) $this->dictionary->getOption($i) : '';
+            // $strucData['name'] = $this->dictionary ? (string) $this->dictionary->getOption($i) : '';
             
             $instructionList[] = new EditorElement(EditorElement::NODE_TYPES['group'], $strucData, $strucElement->getChildren());
         }
