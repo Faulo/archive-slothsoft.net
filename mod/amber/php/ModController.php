@@ -126,14 +126,16 @@ class ModController
         return $editor;
     }
 
-    private $extractionConfig = [
+    private $editorConfig = [
         'dictionaries' => [
-            'structure' => 'structure.dictionaries',
+            'structure' => 'structure', //.dictionaries
             'archives' => [
+				/*
                 'AM2_BLIT',
                 'Party_char.amb',
                 'NPC_char.amb',
                 'Monster_char_data.amb',
+				//*/
             ]
         ],
         'graphics' => [
@@ -181,11 +183,26 @@ class ModController
             'archives' => [
                 'Monster_char_data.amb'
             ]
+        ],
+        'maps-lyramion' => [
+            'archives' => [
+                '1Map_data.amb'
+            ]
+        ],
+        'maps-misc' => [
+            'archives' => [
+                '2Map_data.amb'
+            ]
+        ],
+        'maps-kire' => [
+            'archives' => [
+                '3Map_data.amb'
+            ]
         ]
     
     ];
-
-    public function extractAction(HTTPRequest $req)
+    
+    public function createEditorAction(HTTPRequest $req)
     {
         $ret = false;
         
@@ -194,10 +211,10 @@ class ModController
         assert($req->hasInputValue('lib'));
         $lib = $req->getInputValue('lib');
         
-        assert(isset($this->extractionConfig[$lib]));
-        $config = $this->extractionConfig[$lib];
+        assert(isset($this->editorConfig[$lib]));
+        $config = $this->editorConfig[$lib];
         
-        $libResource = $this->locator->getResource(ModResource::TYPE_LIBRARY, $lib);
+        $libResource = $this->locator->getResource(ModResource::TYPE_EDITOR, $lib);
         
         $req->setInputValue('struc', $config['structure'] ?? 'structure');
         $req->setInputValue('save', [
@@ -208,21 +225,48 @@ class ModController
         
         $editor = $this->editorAction($req);
         
-        $dataDoc = $editor->asDocument();
+        $ret = $libResource->setContents($editor->asString());
+        
+        return $ret ? $libResource : null;
+    }
+
+    public function createLibraryAction(HTTPRequest $req)
+    {
+        $ret = false;
+        
+        $this->defaultAction($req);
+        
+        assert($req->hasInputValue('lib'));
+        $lib = $req->getInputValue('lib');
+        
+        $libResource = $this->locator->getResource(ModResource::TYPE_LIBRARY, $lib);
+        
+        $editorResource = $this->locator->getResource(ModResource::TYPE_EDITOR, $lib);
         $templateResource = $this->locator->getResource(ModResource::TYPE_TEMPLATE, 'extract');
         
-        if ($dataDoc and $templateResource) {
-            if ($extractDoc = $this->dom->transform($dataDoc, $templateResource->getPath(), [
-                'lib' => $lib
-            ])) {
-                $ret = $libResource->setContents($extractDoc->saveXML());
-            }
+        if ($editorResource->exists() and $templateResource->exists()) {
+			//if ($libResource->exists() and $libResource->getChangeTime() > $editorResource->getChangeTime() and $libResource->getChangeTime() > $templateResource->getChangeTime()) {
+				
+			$params = [];
+			$params['lib'] = $lib;
+			if ($lib !== 'dictionaries') {
+				$dictionaryResource = $this->locator->getResource(ModResource::TYPE_LIBRARY, 'dictionaries');
+				//$params['dictionaryURL'] = 'file://' . realpath($dictionaryResource->getPath());
+				$params['dictionaryURL'] = 'http://localhost' . $dictionaryResource->getUrl();
+			}
+			if ($extractDoc = $this->dom->transform(
+				 $editorResource->getPath(),
+				$templateResource->getPath(),
+				$params
+				)) {
+				$ret = $libResource->setContents($extractDoc->saveXML());
+			}
         }
         
         return $ret ? $libResource : null;
     }
 
-    public function styleAction(HTTPRequest $req)
+    public function createStyleAction(HTTPRequest $req)
     {
         $ret = false;
         
@@ -398,7 +442,7 @@ content: " ";
         return $styleResource;
     }
 
-    public function cronAction(HTTPRequest $req)
+    public function installAction(HTTPRequest $req)
     {
         $gameList = [];
         $gameList[] = 'ambermoon';
@@ -409,6 +453,18 @@ content: " ";
         // $modList[] = 'Thalion-v1.07-DE';
         // $modList[] = 'Slothsoft-v1.00-DE';
         
+        $editorList = [];
+        $editorList[] = 'dictionaries';
+        $editorList[] = 'portraits';
+        $editorList[] = 'items';
+        $editorList[] = 'pcs';
+        $editorList[] = 'npcs';
+        $editorList[] = 'monsters';
+        $editorList[] = 'tileset.icons';
+        //$editorList[] = 'maps-lyramion';
+        //$editorList[] = 'maps-misc';
+        //$editorList[] = 'maps-kire';
+		
         // $libList = array_keys($this->extractionConfig);
         $libList = [];
         $libList[] = 'dictionaries';
@@ -443,6 +499,23 @@ content: " ";
                 
                 echo "\t" . $mod . PHP_EOL;
                 
+                echo "\t\teditor" . PHP_EOL;
+                foreach ($editorList as $lib) {
+                    $req->setInputValue('lib', $lib);
+                    
+                    echo "\t\t\t" . $lib . PHP_EOL;
+                    try {
+                        $libResource = $this->createEditorAction($req);
+                        $res = $libResource ? sprintf('Created resource "%s"!', $libResource->getName()) : sprintf('Failed to create resource "%s"!', $lib);
+                    } catch (Exception $e) {
+                        $res = 'EXCEPTION: ' . $e->getMessage();
+                    } catch (Error $e) {
+                        $res = 'ERROR: ' . $e->getMessage();
+                    }
+                    
+                    echo "\t\t\t\t" . $res . PHP_EOL;
+                }
+                
                 echo "\t\tlib" . PHP_EOL;
                 $libs = [];
                 foreach ($libList as $lib) {
@@ -450,7 +523,7 @@ content: " ";
                     
                     echo "\t\t\t" . $lib . PHP_EOL;
                     try {
-                        $libResource = $this->extractAction($req);
+                        $libResource = $this->createLibraryAction($req);
                         if ($libResource) {
                             if ($libDoc = $libResource->getDocument()) {
                                 foreach ($libDoc->documentElement->childNodes as $node) {
@@ -480,7 +553,7 @@ content: " ";
                     
                     echo "\t\t\t" . $lib . PHP_EOL;
                     try {
-                        $libResource = $this->styleAction($req);
+                        $libResource = $this->createStyleAction($req);
                         if ($libResource) {
                             $styles[] = $libResource->getContents();
                         }
@@ -503,7 +576,7 @@ content: " ";
                 
                 foreach ($graphicsList as $lib) {
                     $req->setInputValue('lib', $lib);
-                    $graphicsResource = $this->extractAction($req);
+                    $graphicsResource = $this->createLibraryAction($req);
                     // $graphicsResource = $this->locator->getResourceById($lib);
                     $graphicsDoc = $graphicsResource->getDocument();
                     foreach ($graphicsDoc->getElementsByTagNameNS('http://schema.slothsoft.net/amber/amberdata', 'gfx-archive') as $archiveNode) {

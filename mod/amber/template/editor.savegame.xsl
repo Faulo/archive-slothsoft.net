@@ -13,6 +13,35 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 		
 	<xsl:key name="dictionary-option"
 		match="amber:amberdata/amber:dictionary-list/amber:dictionary/amber:option" use="../@dictionary-id" />
+		
+	<func:function name="amber:getName">
+		<xsl:param name="context" select="."/>
+		
+		<xsl:choose>
+			<xsl:when test="@name">
+				<func:result select="string(@name)"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:if test="../@dictionary-ref">
+					<xsl:variable name="option" select="amber:getDictionaryOption(../@dictionary-ref, count(preceding-sibling::*))"/>
+					<func:result select="string($option/@val)"/>
+				</xsl:if>
+			</xsl:otherwise>
+		</xsl:choose>
+	</func:function>
+
+	<func:function name="amber:getDictionaryOption">
+		<xsl:param name="id"/>
+		<xsl:param name="key"/>
+		
+		<func:result select="amber:getDictionary($id)[@key = $key]"/>
+	</func:function>
+
+	<func:function name="amber:getDictionary">
+		<xsl:param name="id"/>
+		
+		<func:result select="key('dictionary-option', $id)"/>
+	</func:function>
 
 	<!--
 		<func:function name="save:splitNames">
@@ -1298,7 +1327,7 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 		<amber-picker type="item" class="item-picker" contextmenu="amber-picker-item"
 			role="button" tabindex="0" onclick="savegameEditor.openPopup(arguments[0])">
 			<xsl:if test="../@name = 'equipment'">
-				<xsl:attribute name="data-picker-filter-amber-item-id"><xsl:value-of select="@name" /></xsl:attribute>
+				<xsl:attribute name="data-picker-filter-amber-item-id"><xsl:value-of select="amber:getName()" /></xsl:attribute>
 			</xsl:if>
 			<xsl:apply-templates select=".//*[@name = 'item-id']"
 				mode="form-picker" />

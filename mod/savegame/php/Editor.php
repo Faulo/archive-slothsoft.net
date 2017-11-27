@@ -6,6 +6,7 @@ use Slothsoft\CMS\HTTPFile;
 use Slothsoft\Core\DOMHelper;
 use DOMDocument;
 use DOMElement;
+use DOMNode;
 use DomainException;
 use RuntimeException;
 use UnexpectedValueException;
@@ -157,19 +158,23 @@ class Editor
      *
      * @return \Slothsoft\CMS\HTTPFile
      */
-    public function asFile()
+    public function asFile() : HTTPFile
     {
-        return HTTPFile::createFromString($this->savegame->asXML(), sprintf('savegame.%s.xml', $this->config['id']));
+        return HTTPFile::createFromString($this->asString(), sprintf('savegame.%s.xml', $this->config['id']));
+    }
+    
+    public function asString() : string {
+        return $this->savegame->asXML();
     }
 
-    public function asDocument()
+    public function asDocument() : DOMDocument
     {
         $ret = new DOMDocument('1.0', 'UTF-8');
         $ret->appendChild($this->asNode($ret));
         return $ret;
     }
 
-    public function asNode(DOMDocument $dataDoc)
+    public function asNode(DOMDocument $dataDoc) : DOMNode
     {
         $retFragment = $dataDoc->createDocumentFragment();
         $retFragment->appendXML($this->savegame->asXML());

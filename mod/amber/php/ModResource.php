@@ -16,6 +16,8 @@ class ModResource extends HTTPFile
     const TYPE_STYLESHEET = 4;
 
     const TYPE_USERFILE = 5;
+    
+    const TYPE_EDITOR = 6;
 
     const TYPE_MODFILE = 8;
 
@@ -28,7 +30,7 @@ class ModResource extends HTTPFile
     const TYPE_GAMEFILE = 18;
 
     const TYPE_GAMEFOLDER = 19;
-
+    
     const TYPE_CLI = 21;
 
     const DIR_CLI = 'cli';
@@ -40,8 +42,10 @@ class ModResource extends HTTPFile
     const DIR_SOURCE = 'src';
 
     const DIR_GRAPHIC = 'gfx';
-
+    
     const DIR_STYLESHEET = 'style';
+    
+    const DIR_EDITOR = 'editor';
 
     protected $url;
 
@@ -99,15 +103,25 @@ class ModResource extends HTTPFile
                     $name
                 ];
                 break;
+            case self::TYPE_EDITOR:
+                $fileArgs = [
+                $baseDir,
+                self::DIR_RESOURCES,
+                $game,
+                $mod,
+                self::DIR_EDITOR,
+                $name . '.xml'
+                    ];
+                break;
             case self::TYPE_LIBRARY:
                 $fileArgs = [
-                    $baseDir,
-                    self::DIR_RESOURCES,
-                    $game,
-                    $mod,
-                    self::DIR_LIBRARY,
-                    $name . '.xml'
-                ];
+                $baseDir,
+                self::DIR_RESOURCES,
+                $game,
+                $mod,
+                self::DIR_LIBRARY,
+                $name . '.xml'
+                    ];
                 break;
             case self::TYPE_SOURCE:
                 $fileArgs = [
@@ -162,5 +176,22 @@ class ModResource extends HTTPFile
     public function getUrl()
     {
         return $this->url;
+    }
+	
+	public function exists() {
+		return file_exists($this->getPath());
+	}
+	
+	public function getChangeTime() {
+		return filemtime($this->getPath());
+	}
+    
+    public function setContents(string $content)
+    {
+        $folder = dirname($this->getPath());
+        if (! file_exists($folder)) {
+            mkdir($folder, 0777, true);
+        }
+        return parent::setContents($content);
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
-	xmlns="http://schema.slothsoft.net/amber/amberdata" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns="http://schema.slothsoft.net/amber/amberdata"
+	xmlns:amber="http://schema.slothsoft.net/amber/amberdata" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:exsl="http://exslt.org/common" xmlns:func="http://exslt.org/functions"
 	xmlns:str="http://exslt.org/strings" xmlns:set="http://exslt.org/sets"
 	xmlns:php="http://php.net/xsl" xmlns:save="http://schema.slothsoft.net/savegame/editor"
@@ -8,9 +9,51 @@
 	extension-element-prefixes="exsl func str set php">
 
 	<xsl:param name="lib" select="''" />
+	<xsl:param name="dictionaryURL" select="''"/>
+	
+	<xsl:variable name="dictionaryDocument" select="document($dictionaryURL)"/>
 
 	<xsl:key name="dictionary-option"
-		match="save:savegame.editor/save:dictionary/save:option" use="../@dictionary-id" />	<xsl:key name="string-dictionary"		match="save:group[@instruction='string-dictionary']/save:string" use="../@name" />
+		match="/amber:amberdata/amber:dictionary-list/amber:dictionary/amber:option" use="../@dictionary-id" />	<xsl:key name="string-dictionary"		match="save:group[@instruction='string-dictionary']/save:string" use="../@name" />
+		
+	<func:function name="amber:getName">
+		<xsl:param name="context" select="."/>
+		
+		<xsl:choose>
+			<xsl:when test="@name">
+				<func:result select="string(@name)"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:if test="../@dictionary-ref">
+					<xsl:variable name="option" select="amber:getDictionaryOption(../@dictionary-ref, count(preceding-sibling::*))"/>
+					<func:result select="string($option/@val)"/>
+				</xsl:if>
+			</xsl:otherwise>
+		</xsl:choose>
+	</func:function>
+
+	<func:function name="amber:getDictionaryOption">
+		<xsl:param name="id"/>
+		<xsl:param name="key"/>
+		
+		<func:result select="amber:getDictionary($id)[@key = $key]"/>
+	</func:function>
+
+	<func:function name="amber:getDictionary">
+		<xsl:param name="id"/>
+		
+		<xsl:choose>
+			<xsl:when test="$dictionaryDocument">
+				<xsl:for-each select="$dictionaryDocument">
+					<func:result select="key('dictionary-option', $id)"/>
+				</xsl:for-each>
+			</xsl:when>
+			<xsl:otherwise>
+				<func:result select="/.."/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</func:function>
+		
 	<xsl:template match="/">
 		<xsl:element name="amberdata" namespace="http://schema.slothsoft.net/amber/amberdata">
 			<xsl:for-each select=".//save:savegame.editor">
@@ -2058,7 +2101,7 @@
 			select="save:archive[@name='Monster_char_data.amb']/*" />
 		<xsl:if test="count($monsters)">
 			<xsl:variable name="categories"
-				select="key('dictionary-option', 'monster-images')" />
+				select="amber:getDictionary('monster-images')" />
 			<monster-list>
 				<xsl:for-each select="$categories">
 					<xsl:variable name="category" select="." />
@@ -2106,7 +2149,7 @@
 				<xsl:for-each select="$categories">
 					<xsl:variable name="category" select="." />
 					<item-category 
-						name="{key('dictionary-option', 'item-types')[@key = $category]/@val}">
+						name="{amber:getDictionaryOption('item-types', $category)/@val}">
 						<xsl:for-each select="$items">
 							<xsl:if test=".//*[@name = 'type']/@value = $category">
 								<xsl:call-template name="extract-item">
@@ -2199,7 +2242,7 @@
 			<xsl:apply-templates select=".//*[@name = 'magic-defense']"
 				mode="attr" />
 			<xsl:for-each select=".//*[@name = 'monster-type']/*[@value]">
-				<xsl:attribute name="is-{@name}" />
+				<xsl:attribute name="is-{amber:getName()}" />
 			</xsl:for-each>
 			<race>
 				<xsl:apply-templates select=".//*[@name = 'race']"
@@ -2215,7 +2258,7 @@
 					<xsl:with-param name="name" select="'maximum-age'" />
 				</xsl:apply-templates>
 				<xsl:for-each select=".//*[@name = 'attributes']/*">
-					<attribute name="{@name}"
+					<attribute name="{amber:getName()}"
 						current="{*[@name = 'current']/@value + *[@name = 'current-mod']/@value}"
 						maximum="{*[@name = 'current']/@value}" />
 				</xsl:for-each>
@@ -2238,7 +2281,7 @@
 				<xsl:apply-templates select=".//*[@name = 'slp-per-level']"
 					mode="attr" />
 				<xsl:for-each select=".//*[@name = 'skills']/*">
-					<skill name="{@name}"
+					<skill name="{amber:getName()}"
 						current="{*[@name = 'current']/@value + *[@name = 'current-mod']/@value}"
 						maximum="{*[@name = 'current']/@value}" />
 				</xsl:for-each>
@@ -2257,7 +2300,7 @@
 		<xsl:for-each select=".//*[@name = 'spells']">
 			<spellbook>
 				<xsl:for-each select=".//*[string-length(@value) &gt; 0]">
-					<spell-instance name="{@name}"/>
+					<spell-instance name="{amber:getName()}"/>
 				</xsl:for-each>
 			</spellbook>
 		</xsl:for-each>
@@ -2308,7 +2351,7 @@
 				mode="attr" />
 				
 			<xsl:for-each select=".//*[@name = 'item-status']/*[@value != '']">
-				<xsl:attribute name="is-{@name}" />
+				<xsl:attribute name="is-{amber:getName()}" />
 			</xsl:for-each>
 		</item-instance>
 	</xsl:template>
@@ -2366,7 +2409,7 @@
 			</xsl:apply-templates>
 
 			<xsl:for-each select="$root//*[@name = 'skills']/*">
-				<skill name="{@name}" maximum="{*/@value}" />
+				<skill name="{amber:getName()}" maximum="{*/@value}" />
 			</xsl:for-each>		</class>
 	</xsl:template>
 
@@ -2446,10 +2489,10 @@
 				</xsl:choose>
 			</xsl:attribute>
 			<xsl:for-each select=".//*[@name = 'properties']/*[@value != '']">
-				<xsl:attribute name="is-{@name}" />
+				<xsl:attribute name="is-{amber:getName()}" />
 			</xsl:for-each>
 			<xsl:for-each select=".//*[@name = 'classes']/*[@value != '']">
-				<class name="{@name}" />
+				<class name="{amber:getName()}" />
 			</xsl:for-each>
 			<xsl:if test="$type = 8">
 				<xsl:call-template name="extract-text">
@@ -2512,7 +2555,9 @@
 	</xsl:template>	<xsl:template match="save:integer | save:signed-integer | save:string"		mode="attr">
 		<xsl:param name="name" select="@name" />
 		<xsl:param name="value" select="@value" />		<xsl:attribute name="{$name}"><xsl:value-of			select="normalize-space($value)" /></xsl:attribute>	</xsl:template>	<xsl:template match="save:select" mode="attr">
-		<xsl:param name="name" select="@name" />		<xsl:variable name="option"			select="key('dictionary-option', @dictionary-ref)[@key = current()/@value]" />		<xsl:attribute name="{$name}"><xsl:value-of			select="$option/@title | $option/@val[not($option/@title)]" /></xsl:attribute>	</xsl:template>
+		<xsl:param name="name" select="@name" />		<xsl:variable name="option"			select="amber:getDictionaryOption(@dictionary-ref, @value)" />		<xsl:attribute name="{$name}">
+			<xsl:value-of			select="$option/@title | $option/@val[not($option/@title)]" />
+		</xsl:attribute>	</xsl:template>
 
 	<xsl:template match="save:group" mode="unknown">
 		<unknown>
