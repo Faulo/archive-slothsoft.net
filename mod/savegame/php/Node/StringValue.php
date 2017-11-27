@@ -1,34 +1,38 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+use Slothsoft\Savegame\EditorElement;
+
 declare(ticks = 1000);
 
 class StringValue extends AbstractValueContent
 {
+
     private $encoding;
-    
-    public function getXmlAttributes() : string
+    protected function getXmlTag(): string
     {
-        $ret = parent::getXmlAttributes();
-        if ($this->encoding !== '') {
-            $ret .= " encoding='$this->encoding'";
-        }
-        return $ret;
+        return 'string';
     }
-    protected function loadStruc()
+    public function getXmlAttributes(): string
     {
-        parent::loadStruc();
+        return parent::getXmlAttributes()
+        . $this->createXmlIdAttribute('encoding', $this->encoding);
+    }
+
+    protected function loadStruc(EditorElement $strucElement)
+    {
+        parent::loadStruc($strucElement);
         
-        $this->encoding = $this->loadStringAttribute('encoding');
+        $this->encoding = (string) $strucElement->getAttribute('encoding');
     }
 
-    protected function decodeValue()
+    protected function decodeValue(string $rawValue)
     {
-        return $this->getConverter()->decodeString($this->rawValue, $this->size, $this->encoding);
+        return $this->getConverter()->decodeString($rawValue, $this->size, $this->encoding);
     }
 
-    protected function encodeValue()
+    protected function encodeValue($value) : string
     {
-        return $this->getConverter()->encodeString($this->value, $this->size, $this->encoding);
+        return $this->getConverter()->encodeString($value, $this->size, $this->encoding);
     }
 }

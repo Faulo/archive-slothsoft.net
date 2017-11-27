@@ -1,26 +1,39 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+use Slothsoft\Savegame\EditorElement;
+
 declare(ticks = 1000);
 
-class SelectValue extends IntegerValue
+class SelectValue extends AbstractValueContent
 {
-    protected $dictionaryRef;
 
-    public function getXmlAttributes() : string
+    protected $dictionaryRef;
+    protected function getXmlTag(): string
     {
-        $ret = parent::getXmlAttributes();
-        if ($this->dictionaryRef !== '') {
-            $ret .= " dictionary-ref='$this->dictionaryRef'";
-        }
-        return $ret;
+        return 'select';
+    }
+    public function getXmlAttributes(): string
+    {
+        return parent::getXmlAttributes()
+        . $this->createXmlIdAttribute('dictionary-ref', $this->dictionaryRef);
+    }
+
+    protected function loadStruc(EditorElement $strucElement)
+    {
+        parent::loadStruc($strucElement);
+        
+        $this->dictionaryRef = (string) $strucElement->getAttribute('dictionary-ref');
     }
     
-    protected function loadStruc()
+    protected function decodeValue(string $rawValue)
     {
-        parent::loadStruc();
-        
-        $this->dictionaryRef = $this->loadStringAttribute('dictionary-ref');
+        return $this->getConverter()->decodeInteger($rawValue, $this->size);
+    }
+    
+    protected function encodeValue($value) : string
+    {
+        return $this->getConverter()->encodeInteger($value, $this->size);
     }
 }
 

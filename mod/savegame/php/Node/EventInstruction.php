@@ -2,39 +2,39 @@
 namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\EditorElement;
-use Traversable;
-use DS\Vector;
-
 declare(ticks = 1000);
 
 class EventInstruction extends AbstractInstructionContent
 {
 
     private $size;
+
     private $stepSize;
     
-    protected function loadStruc()
+    protected function getXmlTag(): string
     {
-        parent::loadStruc();
+        return 'event';
+    }
+    protected function loadStruc(EditorElement $strucElement)
+    {
+        parent::loadStruc($strucElement);
         
-        $this->size = $this->loadIntegerAttribute('size', 1);
-        $this->stepSize = $this->loadIntegerAttribute('step-size', 1);
+        $this->size = (int) $strucElement->getAttribute('size');
+        $this->stepSize = (int) $strucElement->getAttribute('step-size');
     }
 
-    protected function loadInstruction()
+    protected function loadInstruction(EditorElement $strucElement) 
     {
         $instructionList = [];
         
         for ($i = 0; $i < $this->size; $i += $this->stepSize) {
             $strucData = [];
             $strucData['position'] = $i;
-            //$strucData['size'] = $this->stepSize;
+            // $strucData['size'] = $this->stepSize;
             
-            $instructionList[] = $this->getStrucElement()->clone(EditorElement::NODE_TYPES['event-step'], $strucData);
+            $instructionList[] = new EditorElement(EditorElement::NODE_TYPES['event-step'], $strucData, $strucElement->getChildren());
         }
         
-        return count($instructionList)
-            ? new Vector($instructionList)
-               : null;
+        return $instructionList;
     }
 }

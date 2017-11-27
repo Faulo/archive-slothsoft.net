@@ -127,6 +127,15 @@ class ModController
     }
 
     private $extractionConfig = [
+        'dictionaries' => [
+            'structure' => 'structure.dictionaries',
+            'archives' => [
+                'AM2_BLIT',
+                'Party_char.amb',
+                'NPC_char.amb',
+                'Monster_char_data.amb',
+            ]
+        ],
         'graphics' => [
             'archives' => [
                 'Monster_char_data.amb'
@@ -190,7 +199,7 @@ class ModController
         
         $libResource = $this->locator->getResource(ModResource::TYPE_LIBRARY, $lib);
         
-        $req->setInputValue('struc', 'structure');
+        $req->setInputValue('struc', $config['structure'] ?? 'structure');
         $req->setInputValue('save', [
             'editor' => [
                 'archives' => $config['archives']
@@ -402,6 +411,7 @@ content: " ";
         
         // $libList = array_keys($this->extractionConfig);
         $libList = [];
+        $libList[] = 'dictionaries';
         $libList[] = 'portraits';
         $libList[] = 'items';
         $libList[] = 'pcs';

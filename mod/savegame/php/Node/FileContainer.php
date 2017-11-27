@@ -1,49 +1,66 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+use Ds\Vector;
+use Slothsoft\Savegame\Editor;
+use Slothsoft\Savegame\EditorElement;
+use Slothsoft\Savegame\NodeEvaluatorInterface;
 declare(ticks = 1000);
 
-class FileContainer extends AbstractContainerContent
+class FileContainer extends AbstractNode implements NodeEvaluatorInterface
 {
+
     private $filePath;
+
     private $fileName;
-    
+
     /**
      *
      * @var string
      */
     private $content;
+
+    private $valueList;
+
+    private $evaluateCache;
     
-    private $evaluateCache = [];
-
-
-    protected function getXmlAttributes() : string
+    private $ownerEditor;
+    private $ownerSavegame;
+    
+    protected function getXmlTag(): string
     {
-        $ret = parent::getXmlAttributes();
-        $ret .= sprintf(
-            ' file-name="%s"',
-            htmlspecialchars($this->fileName, ENT_COMPAT | ENT_XML1)
-        );
-        return $ret;
+        return 'file';
     }
-    
-    public function getOwnerFile()
+    protected function getXmlAttributes(): string
     {
-        return $this;
+        return $this->createXmlIdAttribute('file-name', $this->fileName);
     }
 
-    protected function loadStruc()
+    protected function loadStruc(EditorElement $strucElement)
     {
-        parent::loadStruc();
+        parent::loadStruc($strucElement);
         
-        $this->filePath = $this->loadStringAttribute('file-path');
-        $this->fileName = $this->loadStringAttribute('file-name');
+        $parent = $this->getParentNode();
+        $archive = $parent instanceof ArchiveNode
+            ? $parent
+            : $parent->getParentNode();
+        $this->ownerSavegame = $archive->getOwnerSavegame();
+        $this->ownerEditor = $this->ownerSavegame->getOwnerEditor();
         
+        $this->fileName = (string) $strucElement->getAttribute('file-name');
+        $this->filePath = $archive->getFilePathByName($this->fileName);
+        
+        $this->valueList = new Vector();
+        $this->evaluateCache = [];
+    }
+
+    protected function loadNode(EditorElement $strucElement)
+    {
         assert(file_exists($this->filePath), '$this->filePath must exist');
         
+        log_execution_time(__FILE__, __LINE__);
+        
         $this->setContent(file_get_contents($this->filePath));
-
-     
     }
 
     public function extractContent($offset, $length)
@@ -103,6 +120,15 @@ class FileContainer extends AbstractContainerContent
         return $this->fileName;
     }
     
+    public function getValueByName(string $name)
+    {
+        foreach ($this->valueList as $node) {
+            if ($node->getName() === $name) {
+                return $node;
+            }
+        }
+    }
+
     public function evaluate($expression)
     {
         if (is_int($expression)) {
@@ -123,7 +149,7 @@ class FileContainer extends AbstractContainerContent
             preg_match_all('/\$([A-Za-z0-9\-\.]+)/', $expression, $matches);
             $translate = [];
             foreach ($matches[0] as $i => $key) {
-                if ($node = $this->getOwnerEditor()->getValueByName($matches[1][$i], $this)) {
+                if ($node = $this->getValueByName($matches[1][$i])) {
                     $val = $node->getValue();
                 } else {
                     $val = 0;
@@ -134,18 +160,40 @@ class FileContainer extends AbstractContainerContent
             $code = trim($code);
             // echo $code . PHP_EOL;
             $this->evaluateCache[$expression] = $this->evaluateMath($code);
-            // echo $expression . PHP_EOL . $code . PHP_EOL . $this->evaluateCache[$expression] . PHP_EOL . PHP_EOL;
+            //echo $expression . PHP_EOL . $code . PHP_EOL . $this->evaluateCache[$expression] . PHP_EOL . PHP_EOL;
         }
         return $this->evaluateCache[$expression];
     }
-    
-    public function evaluateMath($code)
+
+    public function evaluateMath(string $code) : int
     {
         static $evalList = [];
         if (! isset($evalList[$code])) {
-            $evalList[$code] = eval("return ($code);");
+            $evalList[$code] = eval("return (int) ($code);");
             // echo $code . PHP_EOL . $evalList[$code] . PHP_EOL . PHP_EOL;
         }
         return $evalList[$code];
+    }
+    
+    public function registerValue(AbstractValueContent $node) {
+        $this->valueList[] = $node;
+        return $this->ownerSavegame->nextValueId();
+    }
+    
+    /**
+     *
+     * @return \Slothsoft\Savegame\Editor
+     */
+    public function getOwnerEditor() : Editor
+    {
+        return $this->ownerEditor;
+    }
+    /**
+     *
+     * @return \Slothsoft\Savegame\Node\SavegameNode
+     */
+    public function getOwnerSavegame() : SavegameNode
+    {
+        return $this->ownerSavegame;
     }
 }

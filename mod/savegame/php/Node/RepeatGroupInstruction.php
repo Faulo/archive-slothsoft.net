@@ -2,26 +2,27 @@
 namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\EditorElement;
-use DS\Vector;
-use Traversable;
-
 declare(ticks = 1000);
 
 class RepeatGroupInstruction extends AbstractInstructionContent
 {
-    
-    private $groupSize;
-    private $groupCount;
 
-    protected function loadStruc()
+    private $groupSize;
+
+    private $groupCount;
+    protected function getXmlTag(): string
     {
-        parent::loadStruc();
+        return 'repeat-group';
+    }
+    protected function loadStruc(EditorElement $strucElement)
+    {
+        parent::loadStruc($strucElement);
         
-        $this->groupSize = $this->loadIntegerAttribute('group-size');
-        $this->groupCount = $this->loadIntegerAttribute('group-count');
+        $this->groupSize = (int) $strucElement->getAttribute('group-size', 0, $this->ownerFile);
+        $this->groupCount = (int) $strucElement->getAttribute('group-count', 0, $this->ownerFile);
     }
 
-    protected function loadInstruction() 
+    protected function loadInstruction(EditorElement $strucElement) 
     {
         $instructionList = [];
         
@@ -37,14 +38,12 @@ class RepeatGroupInstruction extends AbstractInstructionContent
         foreach ($positionList as $i => $position) {
             $strucData = [];
             $strucData['position'] = $position;
-            $strucData['name'] = $this->dictionary ? (string) $this->dictionary->getOption($i) : '';
+            //$strucData['name'] = $this->dictionary ? (string) $this->dictionary->getOption($i) : '';
             
-            $instructionList[] = $this->getStrucElement()->clone(EditorElement::NODE_TYPES['group'], $strucData);
+            $instructionList[] = new EditorElement(EditorElement::NODE_TYPES['group'], $strucData, $strucElement->getChildren());
         }
         
-        return count($instructionList)
-        ? new Vector($instructionList)
-        : null;
+        return $instructionList;
     }
 }
 

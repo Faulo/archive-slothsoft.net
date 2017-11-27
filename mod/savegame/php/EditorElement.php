@@ -3,11 +3,11 @@ namespace Slothsoft\Savegame;
 
 use DomainException;
 use DS\Vector;
-
 declare(ticks = 1000);
 
 class EditorElement
 {
+
     const NODE_TYPES = [
         'savegame.editor' => 1,
         'archive' => 2,
@@ -33,100 +33,126 @@ class EditorElement
         'event-step' => 34,
         'repeat-group' => 35,
         'use-global' => 36,
+        'for-each-file' => 37
     ];
-    public static function getNodeTag(int $val) {
+
+    public static function getNodeTag(int $val)
+    {
         $key = array_search($val, self::NODE_TYPES, true);
         if ($key === false) {
             throw new DomainException('unknown node type: ' . $val);
         }
         return $key;
     }
-    public static function getNodeType(string $key) {
-        if (!isset(self::NODE_TYPES[$key])) {
+
+    public static function getNodeType(string $key)
+    {
+        if (! isset(self::NODE_TYPES[$key])) {
             throw new DomainException('unknown node tag: ' . $key);
         }
         return self::NODE_TYPES[$key];
     }
-    
+
     private $type;
+
     private $attributes;
+
     private $children;
 
     /**
+     *
      * @param int $type
      * @param array $attributes
      * @param \DS\Vector $children
      */
-    public function __construct(int $type, array $attributes, Vector $children) {
+    public function __construct(int $type, array $attributes, Vector $children)
+    {
         $this->type = $type;
         $this->attributes = $attributes;
         $this->children = $children;
     }
+
     /**
+     *
      * @param int $type
      * @param array $attributes
      * @param \DS\Vector $children
      * @return \Slothsoft\Savegame\EditorElement
      */
-    public function clone(int $type = null, array $attributes = null, Vector $children = null) {
-        return new EditorElement(
-            $type === null ? $this->type : $type,
-            $attributes === null ? $this->attributes : $attributes + $this->attributes,
-            $children === null ? $this->children : $children
-        );
+    public function clone(int $type = null, array $attributes = null, Vector $children = null)
+    {
+        return new EditorElement($type === null ? $this->type : $type, $attributes === null ? $this->attributes : $attributes + $this->attributes, $children === null ? $this->children : $children);
     }
+
     /**
+     *
      * @return int
      */
-    public function getType() : int
+    public function getType(): int
     {
         return $this->type;
     }
-    
+
     /**
+     *
      * @return string
      */
-    public function getTag() : string
+    public function getTag(): string
     {
         return self::getNodeTag($this->type);
     }
-    
+
     /**
+     *
      * @param string $key
      * @return bool
      */
-    public function hasAttribute(string $key) : bool {
+    public function hasAttribute(string $key): bool
+    {
         return isset($this->attributes[$key]);
     }
-    
+
     /**
+     *
      * @param string $key
      * @return mixed
      */
-    public function getAttribute(string $key) {
-        return $this->attributes[$key] ?? null;
+    public function getAttribute(string $key, $default = null, NodeEvaluatorInterface $evaluator = null)
+    {
+        if ($evaluator === null) {
+            return $this->attributes[$key] ?? $default;
+        } else {
+            return isset($this->attributes[$key])
+            ? $evaluator->evaluate($this->attributes[$key])
+            : $default;
+        }
+        
     }
-    
+
     /**
+     *
      * @param string $key
      * @param mixed $val
      */
-    public function setAttribute(string $key, $val) {
+    public function setAttribute(string $key, $val)
+    {
         $this->attributes[$key] = $val;
     }
-    
+
     /**
+     *
      * @return array
      */
-    public function getAttributes() : array
+    public function getAttributes(): array
     {
         return $this->attributes;
     }
-    
+
     /**
+     *
      * @return \DS\Vector
      */
-    public function getChildren() : Vector
+    public function getChildren(): Vector
     {
         return $this->children;
     }

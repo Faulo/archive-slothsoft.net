@@ -1,40 +1,66 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+use Slothsoft\Savegame\EditorElement;
+
 declare(ticks = 1000);
 
 class DictionaryNode extends AbstractNode
 {
 
     private $dictionaryId;
+
     private $optionList;
+    private $descriptionList;
     
-    protected function getXmlAttributes() : string
+    protected function getXmlTag(): string
     {
-        $ret = parent::getXmlAttributes();
-        $ret .= " dictionary-id='$this->dictionaryId'";
+        return 'dictionary';
+    }
+    protected function getXmlAttributes(): string
+    {
+        return $this->createXmlIdAttribute('dictionary-id', $this->dictionaryId);
+    }
+    protected function getXmlContent(): string
+    {
+        $ret = '';
+        foreach ($this->optionList as $key => $val) {
+            $ret .= $this->createXmlElement(
+                 'option',
+                $this->createXmlIntegerAttribute('key', $key)
+                .$this->createXmlTextAttribute('val', $val)
+                .$this->createXmlTextAttribute('description', $this->descriptionList[$key]),
+                ''
+                );
+            
+            //$ret .= sprintf('<option key="%s" val="%s"/>', htmlspecialchars($key, ENT_COMPAT | ENT_XML1), htmlspecialchars($val, ENT_COMPAT | ENT_XML1));
+            $ret .= PHP_EOL;
+        }
         return $ret;
     }
-    
-    protected function loadStruc()
+
+    protected function loadStruc(EditorElement $strucElement)
     {
-        parent::loadStruc();
+        parent::loadStruc($strucElement);
         
-        $this->dictionaryId = $this->loadStringAttribute('dictionary-id');
+        $this->dictionaryId = (string) $strucElement->getAttribute('dictionary-id');
     }
 
-    protected function loadNode()
+    protected function loadNode(EditorElement $strucElement)
     {
         $this->optionList = [];
-        foreach ($this->getStrucElementChildren() as $optionElement) {
-            $key = $optionElement->hasAttribute('key') ? $optionElement->getAttribute('key') : (string) count($this->optionList);
-            $val = $optionElement->getAttribute('val');
+        $this->descriptionList = [];
+        foreach ($strucElement->getChildren() as $optionElement) {
+            $key = (int) $optionElement->getAttribute('key', count($this->optionList));
+            $val = (string) $optionElement->getAttribute('val');
+            $title = (string) $optionElement->getAttribute('title');
             
             $this->optionList[$key] = $val;
+            $this->descriptionList[$key] = $title;
         }
     }
 
-    protected function loadChildren()
+    protected function loadChildren(EditorElement $strucElement)
     {}
 
     public function hasOption(string $key)
@@ -47,21 +73,8 @@ class DictionaryNode extends AbstractNode
         return $this->optionList[$key] ?? null;
     }
 
-    public function getDictionaryId() : string
+    public function getDictionaryId(): string
     {
         return $this->dictionaryId;
-    }
-
-    public function getXmlContent() : string
-    {
-        $ret = '';
-        foreach ($this->optionList as $key => $val) {
-            $ret .= sprintf(
-                '<option key="%s" val="%s"/>',
-                htmlspecialchars($key, ENT_COMPAT | ENT_XML1),
-                htmlspecialchars($val, ENT_COMPAT | ENT_XML1)
-            );
-        }
-        return $ret;
     }
 }

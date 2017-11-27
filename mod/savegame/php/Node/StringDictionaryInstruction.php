@@ -3,9 +3,6 @@ namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\EditorElement;
 use DomainException;
-use Traversable;
-use DS\Vector;
-
 declare(ticks = 1000);
 
 class StringDictionaryInstruction extends AbstractInstructionContent
@@ -18,37 +15,41 @@ class StringDictionaryInstruction extends AbstractInstructionContent
     const LIST_TYPE_SIZE_FIRST = 'size-first';
 
     const LIST_TYPE_SIZE_FIXED = 'size-fixed';
-    
+
     private $type;
+
     private $encoding;
+
     private $stringCount;
+
     private $stringSize;
     
-    public function loadStruc()
+    protected function getXmlTag(): string
     {
-        parent::loadStruc();
+        return 'string-dictionary';
+    }
+    public function loadStruc(EditorElement $strucElement)
+    {
+        parent::loadStruc($strucElement);
         
-        $this->encoding = $this->loadStringAttribute('encoding');
-        $this->type = $this->loadStringAttribute('type');
-        
-        //$this->stringCount = $this->loadIntegerAttribute('string-count');
-        //$this->stringSize = $this->loadIntegerAttribute('string-size');
+        $this->encoding = (string) $strucElement->getAttribute('encoding');
+        $this->type = (string) $strucElement->getAttribute('type');
     }
 
-    protected function loadInstruction()
+    protected function loadInstruction(EditorElement $strucElement) 
     {
         $instructionList = [];
         
         // string-count
         switch ($this->type) {
             case self::LIST_TYPE_NULL_DELIMITED:
-                $this->stringCount = $this->loadIntegerAttribute('string-count');
+                $this->stringCount = (int) $strucElement->getAttribute('string-count', 0, $this->ownerFile);
                 break;
             case self::LIST_TYPE_SIZE_INTERSPERSED:
             case self::LIST_TYPE_SIZE_FIRST:
                 $countSize = 2;
                 for ($countOffset = 0; $countOffset < 10; $countOffset += $countSize) {
-                    $count = $this->getOwnerFile()->extractContent($this->valueOffset + $countOffset, $countSize);
+                    $count = $this->ownerFile->extractContent($this->contentOffset + $countOffset, $countSize);
                     $count = $this->getConverter()->decodeInteger($count, $countSize);
                     if ($count > 0) {
                         $this->stringCount = $count;
@@ -57,18 +58,20 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                 }
                 break;
             case self::LIST_TYPE_SIZE_FIXED:
-                $this->stringCount = $this->loadIntegerAttribute('string-count');
-                $this->stringSize = $this->loadIntegerAttribute('string-size');
+                $this->stringCount = (int) $strucElement->getAttribute('string-count', 0, $this->ownerFile);
+                $this->stringSize = (int) $strucElement->getAttribute('string-size', 0, $this->ownerFile);
                 break;
             default:
                 throw new DomainException('unknown text-list type: ' . $this->type);
         }
         
+        $strucDataList = [];
+        
         switch ($this->type) {
             case self::LIST_TYPE_NULL_DELIMITED:
-                $textOffset = $this->valueOffset;
+                $textOffset = $this->contentOffset;
                 for ($i = 0; $i < $this->stringCount; $i ++) {
-                    $text = $this->getOwnerFile()->extractContent($textOffset, 'auto');
+                    $text = $this->ownerFile->extractContent($textOffset, 'auto');
                     $textLength = strlen($text);
                     
                     if (! $textLength) {
@@ -76,11 +79,11 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                     }
                     
                     $strucData = [];
-                    $strucData['position'] = $textOffset - $this->valueOffset;
+                    $strucData['position'] = $textOffset - $this->contentOffset;
                     $strucData['size'] = $textLength;
                     $strucData['encoding'] = $this->encoding;
                     
-                    $instructionList[] = $this->getStrucElement()->clone(EditorElement::NODE_TYPES['string'], $strucData);
+                    $strucDataList[] = $strucData;
                     
                     $textOffset += $textLength + 1;
                 }
@@ -89,19 +92,19 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                 $countSize = 2;
                 $textLengthSize = 1;
                 
-                $textOffset = $this->valueOffset + $countSize;
+                $textOffset = $this->contentOffset + $countSize;
                 for ($i = 0; $i < $this->stringCount; $i ++) {
-                    $textLength = $this->getOwnerFile()->extractContent($textOffset, $textLengthSize);
+                    $textLength = $this->ownerFile->extractContent($textOffset, $textLengthSize);
                     $textLength = $this->getConverter()->decodeInteger($textLength, $textLengthSize);
                     
                     $textOffset += $textLengthSize;
                     
                     $strucData = [];
-                    $strucData['position'] = $textOffset - $this->valueOffset;
+                    $strucData['position'] = $textOffset - $this->contentOffset;
                     $strucData['size'] = $textLength;
                     $strucData['encoding'] = $this->encoding;
                     
-                    $instructionList[] = $this->getStrucElement()->clone(EditorElement::NODE_TYPES['string'], $strucData);
+                    $strucDataList[] = $strucData;
                     
                     $textOffset += $textLength;
                 }
@@ -110,24 +113,24 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                 $countSize = 2;
                 $textLengthSize = 2;
                 
-                $textOffset = $this->valueOffset + $countOffset + $countSize;
+                $textOffset = $this->contentOffset + $countOffset + $countSize;
                 $textLengthList = [];
                 for ($i = 0; $i < $this->stringCount; $i ++) {
-                    $textLength = $this->getOwnerFile()->extractContent($textOffset, $textLengthSize);
+                    $textLength = $this->ownerFile->extractContent($textOffset, $textLengthSize);
                     $textLength = $this->getConverter()->decodeInteger($textLength, $textLengthSize);
                     
                     $textLengthList[] = $textLength;
                     
                     $textOffset += $textLengthSize;
                 }
-                $textOffset = $this->valueOffset + $countOffset + $countSize + $this->stringCount * $textLengthSize;
+                $textOffset = $this->contentOffset + $countOffset + $countSize + $this->stringCount * $textLengthSize;
                 foreach ($textLengthList as $textLength) {
                     $strucData = [];
-                    $strucData['position'] = $textOffset - $this->valueOffset;
+                    $strucData['position'] = $textOffset - $this->contentOffset;
                     $strucData['size'] = $textLength;
                     $strucData['encoding'] = $this->encoding;
                     
-                    $instructionList[] = $this->getStrucElement()->clone(EditorElement::NODE_TYPES['string'], $strucData);
+                    $strucDataList[] = $strucData;
                     
                     $textOffset += $textLength;
                 }
@@ -140,15 +143,17 @@ class StringDictionaryInstruction extends AbstractInstructionContent
                     $strucData['size'] = $this->stringSize;
                     $strucData['encoding'] = $this->encoding;
                     
-                    $instructionList[] = $this->getStrucElement()->clone(EditorElement::NODE_TYPES['string'], $strucData);
+                    $strucDataList[] = $strucData;
                     
                     $textPosition += $this->stringSize;
                 }
                 break;
         }
         
-        return count($instructionList)
-        ? new Vector($instructionList)
-        : null;
+        foreach ($strucDataList as $strucData) {
+            $instructionList[] = new EditorElement(EditorElement::NODE_TYPES['string'], $strucData, $strucElement->getChildren());
+        }
+        
+        return $instructionList;
     }
 }

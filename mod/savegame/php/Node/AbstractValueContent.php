@@ -1,43 +1,46 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+use Slothsoft\Savegame\EditorElement;
+
 declare(ticks = 1000);
 
 abstract class AbstractValueContent extends AbstractContentNode
 {
 
-    abstract protected function decodeValue();
+    abstract protected function decodeValue(string $rawValue);
 
-    abstract protected function encodeValue();
-    
+    abstract protected function encodeValue($value) : string;
+
     private $valueId;
+
     protected $size;
+
     protected $value;
-    protected $rawValue;
 
-    protected function getXmlAttributes() : string
+    protected function getXmlAttributes(): string
     {
-        $ret = parent::getXmlAttributes();
-        $ret .= " size='$this->size' value-id='$this->valueId'";
-        $ret .= is_int($this->value)
-            ? " value='$this->value'"
-            : " value=\"" . htmlspecialchars($this->value, ENT_COMPAT | ENT_XML1) . "\"";
-        return $ret;
+        return parent::getXmlAttributes()
+        . $this->createXmlTextAttribute('value', (string) $this->value)
+            . $this->createXmlIntegerAttribute('size', $this->size)
+            . $this->createXmlIntegerAttribute('value-id', $this->valueId);
     }
 
-    protected function loadStruc()
+    protected function loadStruc(EditorElement $strucElement)
     {
-        parent::loadStruc();
+        parent::loadStruc($strucElement);
         
-        $this->size = $this->loadIntegerAttribute('size', 1);
+        $this->size = (int) $strucElement->getAttribute('size', 1, $this->ownerFile);
+        $this->valueId = (int) $this->ownerFile->registerValue($this);
     }
 
-    protected function loadContent()
+    protected function loadContent(EditorElement $strucElement)
     {
-        if ($this->size and $this->getOwnerFile()) {
-            $this->setRawValue($this->getOwnerFile()->extractContent($this->getOffset(), $this->size));
+        if ($this->size and $this->ownerFile) {
+            $this->setRawValue($this->ownerFile
+                ->extractContent($this->contentOffset, $this->size));
         }
-        //echo $this->getName() . ': ' . $this->getValue() . PHP_EOL;
+        // echo $this->getName() . ': ' . $this->getValue() . PHP_EOL;
     }
 
     public function setValueId(int $id)
@@ -45,7 +48,7 @@ abstract class AbstractValueContent extends AbstractContentNode
         $this->valueId = $id;
     }
 
-    public function getValueId() : int
+    public function getValueId(): int
     {
         return $this->valueId;
     }
@@ -53,7 +56,6 @@ abstract class AbstractValueContent extends AbstractContentNode
     public function setValue($value)
     {
         $this->value = $value;
-        $this->rawValue = $this->encodeValue();
     }
 
     public function getValue()
@@ -61,21 +63,20 @@ abstract class AbstractValueContent extends AbstractContentNode
         return $this->value;
     }
 
-    public function setRawValue($value)
+    public function setRawValue(string $rawValue)
     {
-        $this->rawValue = $value;
-        $this->value = $this->decodeValue();
+        $this->value = $this->decodeValue($rawValue);
     }
 
     public function getRawValue()
     {
-        return $this->rawValue;
+        return $this->encodeValue($this->value);
     }
 
     public function updateContent()
     {
         if ($this->size) {
-            $this->getOwnerFile()->insertContent($this->valueOffset, $this->size, $this->rawValue);
+            $this->ownerFile->insertContent($this->contentOffset, $this->size, $this->getRawValue());
         }
     }
 }

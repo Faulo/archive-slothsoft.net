@@ -2,28 +2,31 @@
 namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\EditorElement;
-use Traversable;
-use DS\Vector;
-
 declare(ticks = 1000);
 
 class BitFieldInstruction extends AbstractInstructionContent
 {
-    private $size;
-    private $firstBit;
-    private $lastBit;
 
-    protected function loadStruc()
+    private $size;
+
+    private $firstBit;
+
+    private $lastBit;
+    
+    protected function getXmlTag(): string
     {
-        parent::loadStruc();
+        return 'bit-field';
+    }
+    protected function loadStruc(EditorElement $strucElement)
+    {
+        parent::loadStruc($strucElement);
         
-        $this->size = $this->loadIntegerAttribute('size', 1);
-        $this->firstBit = $this->loadIntegerAttribute('first-bit', 0);
-        $this->lastBit = $this->loadIntegerAttribute('last-bit', $this->size * 8 - 1);
+        $this->size = (int) $strucElement->getAttribute('size', 1, $this->ownerFile);
+        $this->firstBit = (int) $strucElement->getAttribute('first-bit', 0);
+        $this->lastBit = (int) $strucElement->getAttribute('last-bit', $this->size * 8 - 1);
     }
 
-    protected function loadInstruction() 
-    {
+    protected function loadInstruction(EditorElement $strucElement)    {
         $instructionList = [];
         
         $max = $this->size - 1;
@@ -36,12 +39,11 @@ class BitFieldInstruction extends AbstractInstructionContent
             $strucData['position'] = $pos;
             $strucData['bit'] = $bit;
             $strucData['size'] = 1;
-            $strucData['name'] = $this->dictionary ? (string) $this->dictionary->getOption($i) : '';
+            //$strucData['name'] = $this->dictionary ? (string) $this->dictionary->getOption($i) : '';
             
-            $instructionList[] = $this->getStrucElement()->clone(EditorElement::NODE_TYPES['bit'], $strucData);
+            $instructionList[] = new EditorElement(EditorElement::NODE_TYPES['bit'], $strucData, $strucElement->getChildren());
         }
-        return count($instructionList)
-            ? new Vector($instructionList)
-        : null;
+        
+        return $instructionList;
     }
 }

@@ -1,61 +1,79 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+use Slothsoft\Savegame\Editor;
+use Slothsoft\Savegame\EditorElement;
+
 declare(ticks = 1000);
 
 abstract class AbstractContentNode extends AbstractNode
 {
 
     private $name;
+
     private $position;
-    protected $valueOffset;
 
-    abstract protected function loadContent();
+    protected $ownerFile;
 
-    protected function getXmlAttributes() : string
+    protected $contentOffset;
+
+    abstract protected function loadContent(EditorElement $strucElement);
+
+    protected function getXmlAttributes(): string
     {
-        $ret = parent::getXmlAttributes();
-        if ($this->name) {
-            $ret .= " name='{$this->getName()}'";
-        }
-        return $ret;
+        return $this->createXmlIdAttribute('name', $this->getName());
     }
 
-    protected function loadStruc()
+    protected function loadStruc(EditorElement $strucElement)
     {
-        parent::loadStruc();
+        parent::loadStruc($strucElement);
         
-        $this->name = $this->loadStringAttribute('name');
-        $this->position = $this->loadIntegerAttribute('position');
+        $parentNode = $this->getParentNode();
         
-        $this->valueOffset = $this->position;
-        if ($this->parentNode instanceof AbstractContentNode) {
-            $this->valueOffset += $this->parentNode->getOffset();
+        $this->ownerFile = $parentNode instanceof FileContainer ? $parentNode : $parentNode->getOwnerFile();
+        
+        $this->name = (string) $strucElement->getAttribute('name');
+        $this->position = (int) $strucElement->getAttribute('position', 0, $this->ownerFile);
+        
+        $this->contentOffset = $this->position;
+        if ($parentNode instanceof AbstractContentNode) {
+            $this->contentOffset += $parentNode->getContentOffset();
         }
     }
-    protected function loadIntegerAttribute(string $key, int $default = 0) : int {
-        return $this->getStrucElement()->hasAttribute($key)
-            ? $this->getOwnerFile()->evaluate($this->getStrucElement()->getAttribute($key))
-            : $default;
-    }
 
-    protected function loadNode()
-    {
-        $this->loadContent();
-    }
-    
     /**
      *
-     * @return NULL|\Slothsoft\Savegame\Node\FileContainer
+     * @return \Slothsoft\Savegame\Node\FileContainer
      */
     public function getOwnerFile()
     {
-        return $this->parentNode->getOwnerFile();
+        return $this->ownerFile;
+    }
+    /**
+     *
+     * @return \Slothsoft\Savegame\Editor
+     */
+    public function getOwnerEditor() : Editor
+    {
+        return $this->ownerFile->getOwnerEditor();
+    }
+    /**
+     *
+     * @return \Slothsoft\Savegame\Node\SavegameNode
+     */
+    public function getOwnerSavegame() : SavegameNode
+    {
+        return $this->ownerFile->getOwnerSavegame();
     }
 
-    public function getOffset()
+    protected function loadNode(EditorElement $strucElement)
     {
-        return $this->valueOffset;
+        $this->loadContent($strucElement);
+    }
+
+    public function getContentOffset()
+    {
+        return $this->contentOffset;
     }
 
     /**

@@ -125,7 +125,7 @@ class Converter
         return $parser->binary2code($val);
     }
 
-    public function pow2($size)
+    public function pow2(int $size) : int
     {
         static $powList = [];
         if (! isset($powList[$size])) {
@@ -134,7 +134,7 @@ class Converter
         return $powList[$size];
     }
 
-    public function pow256($size)
+    public function pow256(int $size) : int
     {
         static $powList = [];
         if (! isset($powList[$size])) {

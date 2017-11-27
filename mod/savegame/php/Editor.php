@@ -1,6 +1,7 @@
 <?php
 namespace Slothsoft\Savegame;
 
+use Ds\Vector;
 use Slothsoft\CMS\HTTPFile;
 use Slothsoft\Core\DOMHelper;
 use DOMDocument;
@@ -8,15 +9,11 @@ use DOMElement;
 use DomainException;
 use RuntimeException;
 use UnexpectedValueException;
-use DS\Vector;
-use Slothsoft\Savegame\Node\FileContainer;
-use Slothsoft\Savegame\Node\AbstractValueContent;
-use Slothsoft\Savegame\Node\AbstractNode;
-
 declare(ticks = 1000);
 
 class Editor
 {
+
     private $config = [
         'structureFile' => '',
         'defaultDir' => '',
@@ -33,8 +30,6 @@ class Editor
     private $dom;
 
     private $savegame;
-	
-	private $nodeList;
 
     public function __construct(array $config = [])
     {
@@ -59,8 +54,9 @@ class Editor
         
         $this->dom = new DOMHelper();
     }
-    
-    private function loadDocument($structureFile) {
+
+    private function loadDocument($structureFile)
+    {
         $strucDoc = $this->dom->load($structureFile);
         
         if (! ($strucDoc and $strucDoc->documentElement)) {
@@ -69,7 +65,9 @@ class Editor
         
         return $this->loadDocumentElement($strucDoc->documentElement);
     }
-    private function loadDocumentElement(DOMElement $node) {
+
+    private function loadDocumentElement(DOMElement $node)
+    {
         $type = EditorElement::getNodeType($node->localName);
         $attributes = [];
         foreach ($node->attributes as $attr) {
@@ -85,6 +83,7 @@ class Editor
         
         return new EditorElement($type, $attributes, $children);
     }
+
     public function load()
     {
         $rootElement = $this->loadDocument($this->config['structureFile']);
@@ -92,61 +91,7 @@ class Editor
         $rootElement->setAttribute('save-id', $this->config['id']);
         $rootElement->setAttribute('save-mode', $this->config['mode']);
         
-		$this->nodeList = new Vector();
         $this->savegame = $this->createNode(null, $rootElement);
-    }
-    
-    public function getNodeListByParentNode(AbstractNode $parentNode) {
-        $ret = [];
-        foreach ($this->nodeList as $node) {
-            if ($node->getParentNode() === $parentNode) {
-                $ret[] = $node;
-            }
-        }
-        return new Vector($ret);
-    }
-    public function getDictionaryById(string $id)
-    {
-		foreach ($this->nodeList as $node) {
-			if ($node instanceof Node\DictionaryNode and $node->getDictionaryId() === $id) {
-				return $node;
-			}
-		}
-    }
-
-    public function getGlobalById(string $id)
-    {
-		foreach ($this->nodeList as $node) {
-			if ($node instanceof Node\GlobalNode and $node->getGlobalId() === $id) {
-				return $node;
-			}
-		}
-    }
-
-    public function getArchiveById(string $id)
-    {
-       foreach ($this->nodeList as $node) {
-			if ($node instanceof Node\ArchiveNode and $node->getArchiveId() === $id) {
-				return $node;
-			}
-		}
-    }
-    
-    public function getValueById(int $id)
-    {
-        foreach ($this->nodeList as $node) {
-            if ($node instanceof Node\AbstractValueContent and $node->getValueId() === $id) {
-                return $node;
-            }
-        }
-    }
-    public function getValueByName(string $name, FileContainer $ownerFile = null)
-    {
-        foreach ($this->nodeList as $node) {
-            if ($node instanceof Node\AbstractValueContent and $node->getName() === $name and ($ownerFile === null or $node->getOwnerFile() === $ownerFile)) {
-                return $node;
-            }
-        }
     }
 
     public function buildDefaultFile($name)
@@ -162,11 +107,7 @@ class Editor
 
     public function updateContent()
     {
-        foreach ($this->nodeList as $node) {
-            if ($node instanceof AbstractValueContent) {
-                $node->updateContent();
-            }
-        }
+        $this->savegame->updateContent();
     }
 
     public function getConfigValue($key)
@@ -218,7 +159,6 @@ class Editor
      */
     public function asFile()
     {
-        
         return HTTPFile::createFromString($this->savegame->asXML(), sprintf('savegame.%s.xml', $this->config['id']));
     }
 
@@ -235,14 +175,6 @@ class Editor
         $retFragment->appendXML($this->savegame->asXML());
         return $retFragment;
     }
-    
-	public function registerNode(Node\AbstractNode $node)
-    {
-		if ($node instanceof Node\AbstractValueContent) {
-			$node->setValueId(count($this->nodeList));
-		}
-		$this->nodeList[] = $node;
-    }
 
     /**
      *
@@ -253,13 +185,12 @@ class Editor
     public function createNode(Node\AbstractNode $parentValue = null, EditorElement $strucElement)
     {
         if ($value = $this->constructValue($strucElement->getType())) {
-            $this->registerNode($value);
             $value->init($strucElement, $parentValue);
-			return $value;
+            return $value;
         }
     }
 
-    protected function constructValue(int $type)
+    private function constructValue(int $type)
     {
         switch ($type) {
             // root
@@ -309,6 +240,8 @@ class Editor
                 return new Node\RepeatGroupInstruction();
             case EditorElement::NODE_TYPES['use-global']:
                 return new Node\UseGlobalInstruction();
+            case EditorElement::NODE_TYPES['for-each-file']:
+                return new Node\ForEachFileInstruction();
             
             default:
                 throw new DomainException(sprintf('unknown type: "%s"', $type));

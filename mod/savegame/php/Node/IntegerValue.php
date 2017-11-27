@@ -1,35 +1,43 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+use Slothsoft\Savegame\EditorElement;
+
 declare(ticks = 1000);
 
 class IntegerValue extends AbstractValueContent
 {
-    private $min;
-    private $max;
+    const MAX_VALUES = [0, 256, 65536, 16777216, 4294967296];
     
-    public function getXmlAttributes() : string
+    private $min;
+
+    private $max;
+    protected function getXmlTag(): string
     {
-        $ret = parent::getXmlAttributes();
-        $ret .= " min='$this->min' max='$this->max'";
-        return $ret;
+        return 'integer';
+    }
+    public function getXmlAttributes(): string
+    {
+        return parent::getXmlAttributes()
+        . $this->createXmlIntegerAttribute('min', $this->min)
+        . $this->createXmlIntegerAttribute('max', $this->max);
     }
 
-    protected function loadStruc()
+    protected function loadStruc(EditorElement $strucElement)
     {
-        parent::loadStruc();
+        parent::loadStruc($strucElement);
         
-        $this->min = $this->loadIntegerAttribute('min');
-        $this->max = $this->loadIntegerAttribute('max', $this->getConverter()->pow256($this->size));
+        $this->min = (int) $strucElement->getAttribute('min');
+        $this->max = (int) $strucElement->getAttribute('max', self::MAX_VALUES[$this->size]);
     }
 
-    protected function decodeValue()
+    protected function decodeValue(string $rawValue)
     {
-        return $this->getConverter()->decodeInteger($this->rawValue, $this->size);
+        return $this->getConverter()->decodeInteger($rawValue, $this->size);
     }
 
-    protected function encodeValue()
+    protected function encodeValue($value) : string
     {
-        return $this->getConverter()->encodeInteger($this->value, $this->size);
+        return $this->getConverter()->encodeInteger($value, $this->size);
     }
 }

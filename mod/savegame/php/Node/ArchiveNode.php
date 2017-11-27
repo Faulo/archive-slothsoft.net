@@ -19,79 +19,77 @@ class ArchiveNode extends AbstractNode
     const ARCHIVE_TYPE_JH = 'JH';
 
     private $path;
+
     private $name;
+
     private $type;
-    
+
     private $timestamp;
+
     private $md5;
+
     private $size;
-    
-    private $filePathList = [];
+
+    private $fileList;
 
     private $archivePath;
 
-    private $tempDir;
-
-    protected function getXmlAttributes() : string
+    private $fileDirectory;
+    
+    private $filePathList;
+    
+    protected function getXmlTag(): string
     {
-        $ret = parent::getXmlAttributes();
-        $ret .= sprintf(
-            ' name="%s" path="%s" timestamp="%s" md5="%s" type="%s" size="%d"',
-            htmlspecialchars($this->name, ENT_COMPAT | ENT_XML1),
-            htmlspecialchars($this->path, ENT_COMPAT | ENT_XML1),
-            htmlspecialchars($this->timestamp, ENT_COMPAT | ENT_XML1),
-            $this->md5,
-            $this->type,
-            $this->size
-        );
-        return $ret;
+        return 'archive';
+    }
+    protected function getXmlAttributes(): string
+    {
+        return $this->createXmlIdAttribute('name', $this->name)
+        . $this->createXmlIdAttribute('type', $this->type)
+        . $this->createXmlIdAttribute('path', $this->path)
+        . $this->createXmlIdAttribute('timestamp', $this->timestamp)
+        . $this->createXmlIdAttribute('md5', $this->md5)
+        . $this->createXmlIntegerAttribute('size', $this->size);
     }
 
-    public function loadStruc()
+    public function loadStruc(EditorElement $strucElement)
     {
-        parent::loadStruc();
+        parent::loadStruc($strucElement);
         
-        $this->path = $this->loadStringAttribute('path');
-        $this->name = $this->loadStringAttribute('name', basename($this->path));
-        $this->type = $this->loadStringAttribute('type');
+        $this->path = (string) $strucElement->getAttribute('path');
+        $this->name = (string) $strucElement->getAttribute('name', basename($this->path));
+        $this->type = (string) $strucElement->getAttribute('type');
         
+        $editor = $this->getOwnerEditor();
         
-        $defaultFile = $this->getOwnerEditor()->buildDefaultFile($this->path);
-        $tempFile = $this->getOwnerEditor()->buildTempFile($this->name);
+        $defaultFile = $editor->buildDefaultFile($this->path);
+        $tempFile = $editor->buildTempFile($this->name);
         
-        if ($uploadedArchives = $this->getOwnerEditor()->getConfigValue('uploadedArchives')) {
+        if ($uploadedArchives = $editor->getConfigValue('uploadedArchives')) {
             if (isset($uploadedArchives[$this->name])) {
                 move_uploaded_file($uploadedArchives[$this->name], $tempFile);
             }
         }
         
         $path = file_exists($tempFile) ? $tempFile : $defaultFile;
+        
         $this->setArchivePath($path);
     }
 
-    protected function loadNode()
+    protected function loadNode(EditorElement $strucElement)
     {
+        $this->filePathList = [];
         if ($this->getOwnerEditor()->shouldLoadArchive($this->name)) {
-            if ($this->tempDir) {
-                $this->filePathList = FileSystem::scanDir($this->tempDir, FileSystem::SCANDIR_REALPATH);
-                if (! count($this->filePathList)) {
+            if ($this->fileDirectory) {
+                $list = FileSystem::scanDir($this->fileDirectory, FileSystem::SCANDIR_REALPATH);
+                if (! count($list)) {
                     $this->loadArchive();
-                    $this->filePathList = FileSystem::scanDir($this->tempDir, FileSystem::SCANDIR_REALPATH);
+                    $list = FileSystem::scanDir($this->fileDirectory, FileSystem::SCANDIR_REALPATH);
                 }
-            } else {
-                $this->filePathList = [];
+                foreach ($list as $path) {
+                    $this->filePathList[$path] = basename($path);
+                }
             }
-        }
-    }
-
-    protected function loadChildren()
-    {
-        foreach ($this->filePathList as $filePath) {
-            $strucData = [];
-            $strucData['file-name'] = basename($filePath);
-            $strucData['file-path'] = $filePath;
-            $this->loadChild($this->getStrucElement()->clone(EditorElement::NODE_TYPES['file'], $strucData));
-            log_execution_time(__FILE__, __LINE__);
         }
     }
 
@@ -103,11 +101,11 @@ class ArchiveNode extends AbstractNode
             case self::ARCHIVE_TYPE_AMBR:
             case self::ARCHIVE_TYPE_JH:
                 $manager = new ArchiveManager($ambtoolPath);
-                $manager->extractArchive($this->archivePath, $this->tempDir);
+                $manager->extractArchive($this->archivePath, $this->fileDirectory);
                 break;
             case self::ARCHIVE_TYPE_AM2:
             case self::ARCHIVE_TYPE_RAW:
-                copy($this->archivePath, $this->tempDir . DIRECTORY_SEPARATOR . '1');
+                copy($this->archivePath, $this->fileDirectory . DIRECTORY_SEPARATOR . '1');
                 break;
             default:
                 throw new DomainException(sprintf('unknown archive type "%s"!', $this->type));
@@ -132,23 +130,23 @@ class ArchiveNode extends AbstractNode
                 $header = [];
                 $body = [];
                 $maxId = 0;
-				foreach ($this->getChildNodeList() as $child) {
-					$id = (int) $child->getFileName();
-					if ($id > $maxId) {
-						$maxId = $id;
-					}
-					$val = $child->getContent();
-					$header[$id] = pack('N', strlen($val));
-					$body[$id] = $val;
-				}
-				for ($id = 1; $id < $maxId; $id ++) {
-					if (! isset($header[$id])) {
-						$header[$id] = pack('N', 0);
-						$body[$id] = '';
-					}
-				}
-				ksort($header);
-				ksort($body);
+                foreach ($this->getChildNodeList() as $child) {
+                    $id = (int) $child->getFileName();
+                    if ($id > $maxId) {
+                        $maxId = $id;
+                    }
+                    $val = $child->getContent();
+                    $header[$id] = pack('N', strlen($val));
+                    $body[$id] = $val;
+                }
+                for ($id = 1; $id < $maxId; $id ++) {
+                    if (! isset($header[$id])) {
+                        $header[$id] = pack('N', 0);
+                        $body[$id] = '';
+                    }
+                }
+                ksort($header);
+                ksort($body);
                 
                 array_unshift($header, 'AMBR' . pack('n', count($body)));
                 
@@ -158,9 +156,9 @@ class ArchiveNode extends AbstractNode
             case self::ARCHIVE_TYPE_AM2:
             case self::ARCHIVE_TYPE_RAW:
                 $ret = '';
-				foreach ($this->getChildNodeList() as $child) {
-						$ret .= $child->getContent();
-				    }
+                foreach ($this->getChildNodeList() as $child) {
+                    $ret .= $child->getContent();
+                }
                 break;
             default:
                 throw new DomainException(sprintf('unknown archive type "%s"!', $this->type));
@@ -188,11 +186,19 @@ class ArchiveNode extends AbstractNode
             $dir[] = $this->name;
             $dir[] = $this->md5;
             
-            $this->tempDir = implode(DIRECTORY_SEPARATOR, $dir);
+            $this->fileDirectory = implode(DIRECTORY_SEPARATOR, $dir);
             
-            if (! is_dir($this->tempDir)) {
-                mkdir($this->tempDir, 0777, true);
+            if (! is_dir($this->fileDirectory)) {
+                mkdir($this->fileDirectory, 0777, true);
             }
         }
+    }
+    
+    
+    public function getFileNameList() : array {
+        return array_values($this->filePathList);
+    }
+    public function getFilePathByName(string $name) : string {
+        return array_search($name, $this->filePathList, true);
     }
 }

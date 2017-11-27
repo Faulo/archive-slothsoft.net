@@ -6,8 +6,13 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 	xmlns:php="http://php.net/xsl" xmlns:save="http://schema.slothsoft.net/savegame/editor"
 	extension-element-prefixes="exsl func str php">
 
+<!-- 
 	<xsl:key name="dictionary-option"
 		match="save:savegame.editor/save:dictionary/save:option" use="../@dictionary-id" />
+		-->
+		
+	<xsl:key name="dictionary-option"
+		match="amber:amberdata/amber:dictionary-list/amber:dictionary/amber:option" use="../@dictionary-id" />
 
 	<!--
 		<func:function name="save:splitNames">
@@ -1194,7 +1199,21 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 
 	<!-- form-content instructions -->
 	<xsl:template match="save:group" mode="form-content">
-		<xsl:apply-templates select="*" mode="item" />
+		<xsl:choose>
+			<xsl:when test="@dictionary-ref">
+				<xsl:variable name="options"
+				select="key('dictionary-option', @dictionary-ref)" />
+				<xsl:for-each select="*">
+					<xsl:variable name="key" select="position() - 1"/>
+					<xsl:apply-templates select="." mode="item">
+						<xsl:with-param name="name" select="$options[@key = $key]/@val"/>
+					</xsl:apply-templates>
+				</xsl:for-each>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:apply-templates select="*" mode="item" />
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 	<xsl:template match="save:group[@instruction = 'bit-field']"
 		mode="form-content">
@@ -1447,6 +1466,24 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 				</xsl:if>
 				<xsl:value-of select="@name" />
 			</span>
+		</xsl:if>
+		<xsl:if test="../@dictionary-ref">
+			<xsl:variable name="options" select="key('dictionary-option', ../@dictionary-ref)" />
+			<xsl:variable name="key" select="count(preceding-sibling::*)"/>
+			<xsl:for-each select="$options[@key = $key]">
+				<xsl:choose>
+					<xsl:when test="@description">
+						<abbr class="name" title="{@description}">
+							<xsl:value-of select="@val" />
+						</abbr>
+					</xsl:when>
+					<xsl:otherwise>
+						<span class="name">
+							<xsl:value-of select="@val" />
+						</span>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:for-each>
 		</xsl:if>
 	</xsl:template>
 	<xsl:template match="save:group[@instruction = 'bit-field']"

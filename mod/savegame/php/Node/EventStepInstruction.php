@@ -1,8 +1,7 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
-use Traversable;
-use DS\Vector;
+use Slothsoft\Savegame\EditorElement;
 
 declare(ticks = 1000);
 
@@ -33,35 +32,36 @@ class EventStepInstruction extends AbstractInstructionContent
      * const EVENT_CREATE_FOOD = 2;
      *
      */
-
-    protected function loadInstruction()
+    protected function getXmlTag(): string
     {
-        $ret = null;
+        return 'event-step';
+    }
+    protected function loadInstruction(EditorElement $strucElement) 
+    {
+        $instructionList = [];
         
-        $eventType = $this->getOwnerFile()->extractContent($this->valueOffset, 1);
+        $savegame = $this->getOwnerSavegame();
+        
+        $eventType = $this->ownerFile->extractContent($this->contentOffset, 1);
         $eventType = $this->getConverter()->decodeInteger($eventType, 1);
         
-        $eventSubType = $this->getOwnerFile()->extractContent($this->valueOffset + 1, 1);
+        $eventSubType = $this->ownerFile->extractContent($this->contentOffset + 1, 1);
         $eventSubType = $this->getConverter()->decodeInteger($eventSubType, 1);
         
         $ref = sprintf('event-%02d.%02d', $eventType, $eventSubType);
         
-        $node = $this->getOwnerEditor()->getGlobalById($ref);
+        $ret = $savegame->getGlobalElementsById($ref);
         
-        if (! $node) {
+        if (! $instructionList) {
             $ref = sprintf('event-%02d', $eventType);
-            $node = $this->getOwnerEditor()->getGlobalById($ref);
+            $instructionList = $savegame->getGlobalElementsById($ref);
         }
         
-        if (! $node) {
+        if (! $instructionList) {
             $ref = 'event-unknown';
-            $node = $this->getOwnerEditor()->getGlobalById($ref);
+            $instructionList = $savegame->getGlobalElementsById($ref);
         }
         
-        if ($node) {
-            $ret = $node->getStrucElementChildren();
-        }
-        
-        return $ret;
+        return $instructionList;
     }
 }

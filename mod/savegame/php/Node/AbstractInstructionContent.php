@@ -1,50 +1,48 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
-use Traversable;
-use DS\Vector;
+use Slothsoft\Savegame\EditorElement;
 
 declare(ticks = 1000);
 
 abstract class AbstractInstructionContent extends AbstractContentNode
 {
 
-    abstract protected function loadInstruction();
-    
-    protected $dictionary;
+    abstract protected function loadInstruction(EditorElement $strucElement);
+
+//     protected $dictionary;
+
     protected $dictionaryRef;
     
-    public function getXmlTag()  : string {
-        return 'group';
-    }
-    final protected function getXmlAttributes() : string
+    public function asXML(): string
     {
-        $ret = parent::getXmlAttributes();
-        $ret .= " instruction='{$this->getStrucElement()->getTag()}'";
-        if ($this->dictionaryRef !== '') {
-            $ret .= " dictionary-ref='$this->dictionaryRef'";
-        }
-        return $ret;
+        return $this->createXmlElement('group', $this->getXmlAttributes(), $this->getXmlContent());
     }
 
-    protected function loadStruc()
+    protected function getXmlAttributes(): string
     {
-        parent::loadStruc();
+        return parent::getXmlAttributes()
+            . $this->createXmlIdAttribute('instruction', $this->getXmlTag())
+            . $this->createXmlIdAttribute('dictionary-ref', $this->dictionaryRef);
+    }
+
+    protected function loadStruc(EditorElement $strucElement)
+    {
+        parent::loadStruc($strucElement);
         
-        $this->dictionaryRef = $this->loadStringAttribute('dictionary-ref');
+        $this->dictionaryRef = (string) $strucElement->getAttribute('dictionary-ref');
         
-        if ($this->dictionaryRef !== '') {
-            $this->dictionary = $this->getOwnerEditor()->getDictionaryById($this->dictionaryRef);
-        }
+//         if ($this->dictionaryRef !== '') {
+//             $this->dictionary = $this->getOwnerSavegame()->getDictionaryById($this->dictionaryRef);
+//         }
     }
 
-    protected function loadContent()
-    {
-    }
+    protected function loadContent(EditorElement $strucElement)
+    {}
 
-    protected function loadChildren()
+    protected function loadChildren(EditorElement $strucElement)
     {
-        if ($instructionList = $this->loadInstruction()) {
+        if ($instructionList = $this->loadInstruction($strucElement)) {
             foreach ($instructionList as $instruction) {
                 $this->loadChild($instruction);
             }

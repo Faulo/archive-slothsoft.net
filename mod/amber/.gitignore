@@ -1,6 +1,5 @@
 !/res/save/
 !/res/tilesets/
 !/res/ambermoon
-/res/ambermoon/*/user/
-/res/ambermoon/*/gfx/
-/res/ambermoon/*/lib/
+/res/ambermoon/*
+!/res/ambermoon/*/src/
