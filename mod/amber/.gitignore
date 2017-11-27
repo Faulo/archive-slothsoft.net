@@ -1,5 +1,3 @@
-!/res/save/
-!/res/tilesets/
 !/res/ambermoon
-/res/ambermoon/*
+/res/ambermoon/*/*
 !/res/ambermoon/*/src/
