@@ -759,19 +759,19 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 					<xsl:apply-templates select="." mode="form-content" />
 				</div>
 			</xsl:for-each>
-			<xsl:for-each select="*[@instruction = 'event-dictionary'][*]">
+			<xsl:for-each select="save:instruction[@type = 'event-dictionary'][*]">
 				<div class="events">
 					<!--
 						<xsl:call-template name="savegame.flex">
 						<xsl:with-param name="label" select="'Events'"/>
 						<xsl:with-param name="class" select="'events'"/>
 						<xsl:with-param name="items">
-						<xsl:for-each select="save:group[@instruction = 'event']">
+						<xsl:for-each select="save:instruction[@type = 'event']">
 						<div>
 						<h3 class="name"><xsl:value-of select="@name"/></h3>
 						<xsl:call-template name="savegame.table">
 						<xsl:with-param name="items">
-						<xsl:apply-templates select="save:group[@instruction = 'event-step']/*" 
+						<xsl:apply-templates select="save:instruction[@type = 'event-step']/*" 
 						mode="item"/>
 						</xsl:with-param>
 						</xsl:call-template>
@@ -1157,7 +1157,7 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 			<xsl:apply-templates select="." mode="form-content" />
 		</div>
 	</xsl:template>
-	<xsl:template match="save:group[@instruction = 'bit-field']"
+	<xsl:template match="save:instruction[@type = 'bit-field']"
 		mode="item">
 		<xsl:param name="class" select="''" />
 		<div>
@@ -1168,7 +1168,7 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 			<xsl:apply-templates select="." mode="form-content" />
 		</div>
 	</xsl:template>
-	<xsl:template match="save:group[@instruction = 'string-dictionary']"
+	<xsl:template match="save:instruction[@type = 'string-dictionary']"
 		mode="item">
 		<xsl:param name="class" select="''" />
 		<div>
@@ -1244,7 +1244,7 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
-	<xsl:template match="save:group[@instruction = 'bit-field']"
+	<xsl:template match="save:instruction[@type = 'bit-field']"
 		mode="form-content">
 		<ul>
 			<xsl:for-each select="save:bit">
@@ -1254,7 +1254,7 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 			</xsl:for-each>
 		</ul>
 	</xsl:template>
-	<xsl:template match="save:group[@instruction = 'event']"
+	<xsl:template match="save:instruction[@type = 'event']"
 		mode="form-content">
 		<xsl:apply-templates select="*" mode="form-content" />
 	</xsl:template>
@@ -1466,14 +1466,15 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 		<xsl:if test="string-length($class)">
 			<xsl:attribute name="class"><xsl:value-of select="$class" /></xsl:attribute>
 		</xsl:if>
+		<xsl:if test="string-length(@type)">
+			<xsl:attribute name="data-type"><xsl:value-of select="@type" /></xsl:attribute>
+		</xsl:if>
+		<!-- 
 		<xsl:if test="string-length(@template)">
 			<xsl:attribute name="data-template"><xsl:value-of select="@template" /></xsl:attribute>
 		</xsl:if>
 		<xsl:if test="string-length(@dict)">
 			<xsl:attribute name="data-dictionary"><xsl:value-of select="@dict" /></xsl:attribute>
-		</xsl:if>
-		<xsl:if test="string-length(@type)">
-			<xsl:attribute name="data-type"><xsl:value-of select="@type" /></xsl:attribute>
 		</xsl:if>
 		<xsl:if test="string-length(@instruction)">
 			<xsl:attribute name="data-instruction"><xsl:value-of select="@instruction" /></xsl:attribute>
@@ -1481,6 +1482,7 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 		<xsl:if test="string-length(@name)">
 			<xsl:attribute name="data-name"><xsl:value-of select="@name" /></xsl:attribute>
 		</xsl:if>
+		-->
 	</xsl:template>
 
 
@@ -1515,7 +1517,7 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 			</xsl:for-each>
 		</xsl:if>
 	</xsl:template>
-	<xsl:template match="save:group[@instruction = 'bit-field']"
+	<xsl:template match="save:instruction[@type = 'bit-field']"
 		mode="form-name">
 		<xsl:if test="string-length(@name)">
 			<h3 class="name">

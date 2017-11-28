@@ -11,7 +11,7 @@ class RepeatGroupInstruction extends AbstractInstructionContent
 
     private $groupCount;
 
-    protected function getXmlTag(): string
+    protected function getXmlInstructionType(): string
     {
         return 'repeat-group';
     }

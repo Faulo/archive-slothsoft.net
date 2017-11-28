@@ -125,6 +125,29 @@
 		</xsd:complexType>
 	</xsd:element>
 	
+	<xsd:element name="instruction">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="containerContentNode">
+					<xsd:attribute name="type" use="required">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:token">
+								<xsd:enumeration value="string-dictionary"/>
+								<xsd:enumeration value="event-dictionary"/>
+								<xsd:enumeration value="event"/>
+								<xsd:enumeration value="event-step"/>
+								<xsd:enumeration value="bit-field"/>
+								<xsd:enumeration value="repeat-group"/>
+								<xsd:enumeration value="use-global"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:attribute>
+					<xsd:attribute name="dictionary-ref" type="id" use="optional"/>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	
 	<xsd:element name="binary">
 		<xsd:complexType>
 			<xsd:complexContent>
@@ -182,6 +205,7 @@
 		<xsd:complexType>
 			<xsd:complexContent>
 				<xsd:extension base="valueContentNode">
+					<xsd:attribute name="dictionary-ref" type="id" use="optional"/>
 				</xsd:extension>
 			</xsd:complexContent>
 		</xsd:complexType>
@@ -270,7 +294,6 @@
 			<xsd:extension base="genericNode">
 				<xsd:attribute name="name" type="name" use="optional"/>
 				<xsd:attribute name="position" type="numberExpression" use="optional"/>
-				<xsd:attribute name="dictionary-ref" type="id" use="optional"/>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -288,6 +311,7 @@
 	<xsd:complexType name="instructionContentNode">
 		<xsd:complexContent>
 			<xsd:extension base="containerContentNode">
+				<xsd:attribute name="dictionary-ref" type="id" use="optional"/>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
@@ -317,6 +341,7 @@
 			
 			<!-- container -->
 			<xsd:element ref="group"/>
+			<xsd:element ref="instruction"/>
 			
 			<!-- instruction -->
 			<xsd:element ref="bit-field"/>

@@ -127,6 +127,14 @@ class ModController
     }
 
     private $editorConfig = [
+		'structure.savegame' => [
+		'archives' => [
+            'Party_char.amb',
+			'Party_data.sav',
+			'Merchant_data.amb',
+			'Chest_data.amb',
+		]
+		],
         'dictionaries' => [
             'structure' => 'structure', //.dictionaries
             'archives' => [
@@ -184,22 +192,40 @@ class ModController
                 'Monster_char_data.amb'
             ]
         ],
-        'maps-lyramion' => [
+        'worldmap.morag' => [
             'archives' => [
-                '1Map_data.amb'
+                '2Map_data.amb',
+				'2Map_texts.amb',
             ]
         ],
-        'maps-misc' => [
+        'worldmap.kire' => [
             'archives' => [
-                '2Map_data.amb'
+                '3Map_data.amb',
+				'3Map_texts.amb',
             ]
         ],
-        'maps-kire' => [
+        'worldmap.lyramion' => [
             'archives' => [
-                '3Map_data.amb'
+                '1Map_data.amb',
+				'1Map_texts.amb',
             ]
-        ]
-    
+        ],
+        'maps.2d' => [
+            'archives' => [
+                '2Map_data.amb',
+				'2Map_texts.amb',
+                '3Map_data.amb',
+				'3Map_texts.amb',
+            ]
+        ],
+        'maps.3d' => [
+            'archives' => [
+                '2Map_data.amb',
+				'2Map_texts.amb',
+                '3Map_data.amb',
+				'3Map_texts.amb',
+            ]
+        ],
     ];
     
     public function createEditorAction(HTTPRequest $req)
@@ -231,8 +257,11 @@ class ModController
 			$ret = true;
 		} else {
 			$editor = $this->editorAction($req);
+			
+			$xml = $editor->asString();
+			$xml = preg_replace('~\<archive[^>]+/\>~', '', $xml);
         
-			$ret = $libResource->setContents($editor->asString());
+			$ret = $libResource->setContents($xml);
         }
 		
         return $ret ? $libResource : null;
@@ -464,6 +493,7 @@ content: " ";
         // $modList[] = 'Slothsoft-v1.00-DE';
         
         $editorList = [];
+        $editorList[] = 'structure.savegame';
         $editorList[] = 'dictionaries';
         $editorList[] = 'portraits';
         $editorList[] = 'items';
@@ -471,11 +501,12 @@ content: " ";
         $editorList[] = 'npcs';
         $editorList[] = 'monsters';
         $editorList[] = 'tileset.icons';
-        $editorList[] = 'maps-lyramion';
-        $editorList[] = 'maps-misc';
-        $editorList[] = 'maps-kire';
+        $editorList[] = 'maps.2d';
+        $editorList[] = 'maps.3d';
+        //$editorList[] = 'worldmap.lyramion';
+        //$editorList[] = 'worldmap.kire';
+        //$editorList[] = 'worldmap.morag';
 		
-        // $libList = array_keys($this->extractionConfig);
         $libList = [];
         $libList[] = 'dictionaries';
         $libList[] = 'portraits';
@@ -484,6 +515,11 @@ content: " ";
         $libList[] = 'npcs';
         $libList[] = 'monsters';
         $libList[] = 'tileset.icons';
+        $libList[] = 'maps.2d';
+        $libList[] = 'maps.3d';
+        //$libList[] = 'worldmap.lyramion';
+        //$libList[] = 'worldmap.kire';
+        //$libList[] = 'worldmap.morag';
         
         $styleList = [];
         $styleList[] = 'portraits';

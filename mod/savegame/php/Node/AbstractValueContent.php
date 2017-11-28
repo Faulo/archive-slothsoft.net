@@ -19,7 +19,7 @@ abstract class AbstractValueContent extends AbstractContentNode
 
     protected function getXmlAttributes(): string
     {
-        return parent::getXmlAttributes() . $this->createXmlTextAttribute('value', (string) $this->value) . $this->createXmlIntegerAttribute('size', $this->size) . $this->createXmlIntegerAttribute('value-id', $this->valueId);
+        return parent::getXmlAttributes() . $this->createXmlIntegerAttribute('position', $this->getContentOffset()) . $this->createXmlTextAttribute('value', (string) $this->value) . $this->createXmlIntegerAttribute('size', $this->size) . $this->createXmlIntegerAttribute('value-id', $this->valueId);
     }
 
     protected function loadStruc(EditorElement $strucElement)

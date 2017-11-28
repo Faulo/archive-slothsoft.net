@@ -14,7 +14,7 @@
 	<xsl:variable name="dictionaryDocument" select="document($dictionaryURL)"/>
 
 	<xsl:key name="dictionary-option"
-		match="/amber:amberdata/amber:dictionary-list/amber:dictionary/amber:option" use="../@dictionary-id" />	<xsl:key name="string-dictionary"		match="save:group[@instruction='string-dictionary']/save:string" use="../@name" />
+		match="/amber:amberdata/amber:dictionary-list/amber:dictionary/amber:option" use="../@dictionary-id" />	<xsl:key name="string-dictionary"		match="save:instruction[@type='string-dictionary']/save:string" use="../@name" />
 		
 	<func:function name="amber:getName">
 		<xsl:param name="context" select="."/>
@@ -82,11 +82,28 @@
 					<xsl:when test="$lib = 'items'">
 						<xsl:call-template name="extract-items" />
 					</xsl:when>
-					<xsl:when test="$lib = 'maps'">
-						<xsl:call-template name="extract-maps" />
-					</xsl:when>
 					<xsl:when test="$lib = 'tileset.icons'">
 						<xsl:call-template name="extract-tileset.icons" />
+					</xsl:when>
+					<xsl:when test="$lib = 'maps.3d'">
+						<xsl:call-template name="extract-maps">
+							<xsl:with-param name="maps" select="save:archive[contains(@name, 'Map_data.amb')]/*
+							[.//*[@name='unknown']/*[1]/@value != 13]
+							[.//*[@name='map-type']/@value = 1]"/>
+						</xsl:call-template>
+					</xsl:when>
+					<xsl:when test="$lib = 'maps.2d'">
+						<xsl:call-template name="extract-maps">
+							<xsl:with-param name="maps" select="save:archive[contains(@name, 'Map_data.amb')]/*
+							[.//*[@name='unknown']/*[1]/@value != 13]
+							[.//*[@name='map-type']/@value = 2]"/>
+						</xsl:call-template>
+					</xsl:when>
+					<xsl:when test="$lib = 'worldmap.lyramion' or $lib = 'worldmap.morag' or $lib = 'worldmap.kire'">
+						<xsl:call-template name="extract-maps">
+							<xsl:with-param name="maps" select="save:archive[contains(@name, 'Map_data.amb')]/*
+							[.//*[@name='unknown']/*[1]/@value = 13]"/>
+						</xsl:call-template>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:text>Unknown lib: </xsl:text>
@@ -2165,8 +2182,8 @@
 	</xsl:template>
 
 	<xsl:template name="extract-maps">
-		<xsl:variable name="maps"
-			select="save:archive[contains(@name, 'Map_data.amb')]/*" />
+		<xsl:param name="maps"
+			select="/.." />
 		<xsl:if test="count($maps)">
 			<xsl:variable name="texts"
 				select="save:archive[contains(@name, 'Map_texts.amb')]/*" />
@@ -2542,15 +2559,14 @@
 			<xsl:apply-templates select="$root//*[@name='unknown']"
 				mode="unknown" />
 
-			<!--
-				<xsl:for-each select="$root//*[@name = 'label']/*">
+			
+			<xsl:for-each select="$root//*[@name = 'label']/*">
 				<label>
-				<xsl:apply-templates select="." mode="attr">
-				<xsl:with-param name="name" select="'name'"/>
-				</xsl:apply-templates>
+					<xsl:apply-templates select="." mode="attr">
+						<xsl:with-param name="name" select="'name'"/>
+					</xsl:apply-templates>
 				</label>
-				</xsl:for-each>
-			-->
+			</xsl:for-each>
 		</map>
 	</xsl:template>	<xsl:template match="save:integer | save:signed-integer | save:string"		mode="attr">
 		<xsl:param name="name" select="@name" />

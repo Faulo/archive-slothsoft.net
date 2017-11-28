@@ -10,16 +10,16 @@
 		<xsd:complexType>
 			<xsd:complexContent>
 				<xsd:restriction base="xsd:anyType">
-					<xsd:all>
-						<xsd:element ref="item-list" minOccurs="0" maxOccurs="1"/>
-						<xsd:element ref="portrait-list" minOccurs="0" maxOccurs="1"/>
-						<xsd:element ref="monster-list" minOccurs="0" maxOccurs="1"/>
-						<xsd:element ref="class-list" minOccurs="0" maxOccurs="1"/>
-						<xsd:element ref="map-list" minOccurs="0" maxOccurs="1"/>
-						<xsd:element ref="tileset.icon-list" minOccurs="0" maxOccurs="1"/>
-						<xsd:element ref="gfx-archive-list" minOccurs="0" maxOccurs="1"/>
-						<xsd:element ref="dictionary-list" minOccurs="0" maxOccurs="1"/>
-					</xsd:all>
+					<xsd:choice minOccurs="0" maxOccurs="unbounded">
+						<xsd:element ref="item-list" />
+						<xsd:element ref="portrait-list" />
+						<xsd:element ref="monster-list" />
+						<xsd:element ref="class-list" />
+						<xsd:element ref="map-list" />
+						<xsd:element ref="tileset.icon-list" />
+						<xsd:element ref="gfx-archive-list" />
+						<xsd:element ref="dictionary-list" />
+					</xsd:choice>
 				</xsd:restriction>
 			</xsd:complexContent>
 		</xsd:complexType>

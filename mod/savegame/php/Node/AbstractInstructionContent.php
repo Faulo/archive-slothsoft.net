@@ -9,17 +9,19 @@ abstract class AbstractInstructionContent extends AbstractContentNode
 
     abstract protected function loadInstruction(EditorElement $strucElement);
 
+    abstract protected function getXmlInstructionType(): string;
+
     // protected $dictionary;
     protected $dictionaryRef;
 
-    public function asXML(): string
+    protected function getXmlTag(): string
     {
-        return $this->createXmlElement('group', $this->getXmlAttributes(), $this->getXmlContent());
+        return 'instruction';
     }
 
     protected function getXmlAttributes(): string
     {
-        return parent::getXmlAttributes() . $this->createXmlIdAttribute('instruction', $this->getXmlTag()) . $this->createXmlIdAttribute('dictionary-ref', $this->dictionaryRef);
+        return parent::getXmlAttributes() . $this->createXmlIdAttribute('type', $this->getXmlInstructionType()) . $this->createXmlIdAttribute('dictionary-ref', $this->dictionaryRef);
     }
 
     protected function loadStruc(EditorElement $strucElement)
@@ -27,10 +29,6 @@ abstract class AbstractInstructionContent extends AbstractContentNode
         parent::loadStruc($strucElement);
         
         $this->dictionaryRef = (string) $strucElement->getAttribute('dictionary-ref');
-        
-        // if ($this->dictionaryRef !== '') {
-        // $this->dictionary = $this->getOwnerSavegame()->getDictionaryById($this->dictionaryRef);
-        // }
     }
 
     protected function loadContent(EditorElement $strucElement)

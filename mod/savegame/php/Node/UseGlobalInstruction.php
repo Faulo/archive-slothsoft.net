@@ -9,7 +9,7 @@ class UseGlobalInstruction extends AbstractInstructionContent
 
     private $globalRef;
 
-    protected function getXmlTag(): string
+    protected function getXmlInstructionType(): string
     {
         return 'use-global';
     }

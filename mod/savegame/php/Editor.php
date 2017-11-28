@@ -205,8 +205,10 @@ class Editor
                 return new Node\ArchiveNode();
             case EditorElement::NODE_TYPES['global']:
                 return new Node\GlobalNode();
-            case EditorElement::NODE_TYPES['dictionary']:
-                return new Node\DictionaryNode();
+            case EditorElement::NODE_TYPES['for-each-file']:
+                return new Node\ForEachFileNode();
+            case EditorElement::NODE_TYPES['file']:
+                return new Node\FileContainer();
             
             // values
             case EditorElement::NODE_TYPES['integer']:
@@ -227,8 +229,8 @@ class Editor
             // containers
             case EditorElement::NODE_TYPES['group']:
                 return new Node\GroupContainer();
-            case EditorElement::NODE_TYPES['file']:
-                return new Node\FileContainer();
+            case EditorElement::NODE_TYPES['instruction']:
+                return new Node\InstructionContainer();
             
             // instructions
             case EditorElement::NODE_TYPES['bit-field']:
@@ -245,8 +247,6 @@ class Editor
                 return new Node\RepeatGroupInstruction();
             case EditorElement::NODE_TYPES['use-global']:
                 return new Node\UseGlobalInstruction();
-            case EditorElement::NODE_TYPES['for-each-file']:
-                return new Node\ForEachFileInstruction();
             
             default:
                 throw new DomainException(sprintf('unknown type: "%s"', $type));

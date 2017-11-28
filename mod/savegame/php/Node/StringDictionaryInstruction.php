@@ -24,7 +24,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
 
     private $stringSize;
 
-    protected function getXmlTag(): string
+    protected function getXmlInstructionType(): string
     {
         return 'string-dictionary';
     }

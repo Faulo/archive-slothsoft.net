@@ -31,7 +31,7 @@ class EventStepInstruction extends AbstractInstructionContent
      * const EVENT_CREATE_FOOD = 2;
      *
      */
-    protected function getXmlTag(): string
+    protected function getXmlInstructionType(): string
     {
         return 'event-step';
     }

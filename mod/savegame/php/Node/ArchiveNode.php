@@ -30,8 +30,6 @@ class ArchiveNode extends AbstractNode
 
     private $size;
 
-    private $fileList;
-
     private $archivePath;
 
     private $fileDirectory;
@@ -86,6 +84,13 @@ class ArchiveNode extends AbstractNode
                     $this->filePathList[$path] = basename($path);
                 }
             }
+        }
+    }
+
+    protected function loadChildren(EditorElement $strucElement)
+    {
+        if ($this->getOwnerEditor()->shouldLoadArchive($this->name)) {
+            parent::loadChildren($strucElement);
         }
     }
 

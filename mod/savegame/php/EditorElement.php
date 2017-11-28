@@ -10,21 +10,21 @@ class EditorElement
 
     const NODE_TYPES = [
         'savegame.editor' => 1,
-        'archive' => 2,
-        'global' => 3,
-        'dictionary' => 4,
-        'option' => 5,
+        'global' => 2,
+        'archive' => 3,
+        'for-each-file' => 4,
+        'file' => 5,
         
+        'binary' => 10,
         'integer' => 11,
         'signed-integer' => 12,
         'string' => 13,
         'bit' => 14,
         'select' => 15,
         'event-script' => 16,
-        'binary' => 17,
         
         'group' => 20,
-        'file' => 21,
+        'instruction' => 21,
         
         'bit-field' => 30,
         'string-dictionary' => 31,
@@ -33,7 +33,6 @@ class EditorElement
         'event-step' => 34,
         'repeat-group' => 35,
         'use-global' => 36,
-        'for-each-file' => 37
     ];
 
     public static function getNodeTag(int $val)

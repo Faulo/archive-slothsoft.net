@@ -11,7 +11,7 @@ class EventInstruction extends AbstractInstructionContent
 
     private $stepSize;
 
-    protected function getXmlTag(): string
+    protected function getXmlInstructionType(): string
     {
         return 'event';
     }

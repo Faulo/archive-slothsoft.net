@@ -8,7 +8,7 @@ declare(ticks = 1000);
 class EventDictionaryInstruction extends AbstractInstructionContent
 {
 
-    protected function getXmlTag(): string
+    protected function getXmlInstructionType(): string
     {
         return 'event-dictionary';
     }

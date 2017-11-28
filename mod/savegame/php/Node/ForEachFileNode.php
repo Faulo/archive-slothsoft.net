@@ -4,7 +4,7 @@ namespace Slothsoft\Savegame\Node;
 use Slothsoft\Savegame\EditorElement;
 declare(ticks = 1000);
 
-class ForEachFileInstruction extends AbstractNode
+class ForEachFileNode extends AbstractNode
 {
 
     protected function getXmlTag(): string

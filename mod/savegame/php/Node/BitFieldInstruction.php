@@ -13,7 +13,7 @@ class BitFieldInstruction extends AbstractInstructionContent
 
     private $lastBit;
 
-    protected function getXmlTag(): string
+    protected function getXmlInstructionType(): string
     {
         return 'bit-field';
     }
