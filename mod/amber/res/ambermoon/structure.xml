@@ -1097,12 +1097,12 @@
 			<integer position="15" />
 		</group>
 		<group position="0x14C">
-			<repeat-group name="tiles" group-count="$width * $height"
-				group-size="$map-type 
-				* 2">
-				<integer position="0" size="1" name="tile-id" />
-				<integer position="2" size="2 * ($map-type - 1)" name="tile-id" />
-				<integer position="1" size="1" name="event-id" />
+			<repeat-group name="fields" group-count="$width * $height"
+				group-size="$map-type * 2">
+				<!-- name="tile-id"  name="event-id" -->
+				<integer position="0" size="1"/>
+				<integer position="2" size="2 * ($map-type - 1)"/>
+				<integer position="1" size="1"/>
 			</repeat-group>
 			<group position="$width * $height * $map-type * 2" name="events">
 				<event-dictionary />
@@ -1458,10 +1458,16 @@
 			-->
 			<group name="data">
 				<integer position="0" size="2" name="entry-count" />
+				<binary position="2" size="4" name="unknown"/>
 			</group>
 			<group name="tiles">
 				<repeat-group position="2" group-count="$entry-count"
 					group-size="8">
+					<group name="testing">
+						<integer position="0" size="1" />
+						<integer position="1" size="1" />
+						<integer position="3" size="1" />
+					</group>
 					<bit-field position="2" size="1" name="mobility"
 						dictionary-ref="tile-icon-mobility" />
 					<integer position="4" size="2" name="image-id" />
@@ -1489,12 +1495,23 @@
 				<integer position="5" />
 			</group>
 			<group name="data">
-				<integer position="0" size="2" name="entry-count" />
+				<integer position="8" size="2" name="tile-count" />
+				<integer position="10 + $tile-count * 66" size="2" name="info-count" />
+				<binary position="0" size="10" />
+				<binary position="10 + $tile-count * 66" size="10" />
+				<binary position="10 + $tile-count * 66 + 2 + $info-count * 14" size="200" />
 			</group>
-			<group name="tiles">
-				<repeat-group position="0x84" group-count="255"
-					group-size="8">
-					<binary size="8" name="data" />
+			<group name="tiles-lab">
+				<repeat-group position="10" group-count="$tile-count"
+					group-size="66">
+					<binary position="0" size="2" />
+					<binary position="2" size="64" />
+				</repeat-group>
+			</group>
+			<group name="tiles-lab">
+				<repeat-group position="10 + $tile-count * 66 + 2" group-count="$info-count"
+					group-size="14"><!--0x84-->
+					<binary position="0" size="14" />
 				</repeat-group>
 			</group>
 		</for-each-file>

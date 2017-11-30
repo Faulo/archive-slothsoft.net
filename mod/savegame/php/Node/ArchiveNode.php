@@ -7,7 +7,7 @@ use Slothsoft\Savegame\EditorElement;
 use DomainException;
 declare(ticks = 1000);
 
-class ArchiveNode extends AbstractNode
+class ArchiveNode extends AbstractNode implements XmlBuildableInterface
 {
 
     const ARCHIVE_TYPE_RAW = 'Raw';
@@ -36,12 +36,12 @@ class ArchiveNode extends AbstractNode
 
     private $filePathList;
 
-    protected function getXmlTag(): string
+    public  function getXmlTag(): string
     {
         return 'archive';
     }
 
-    protected function getXmlAttributes(): string
+    public function getXmlAttributes(): string
     {
         return $this->createXmlIdAttribute('name', $this->name) . $this->createXmlIdAttribute('type', $this->type) . $this->createXmlIdAttribute('path', $this->path) . $this->createXmlIdAttribute('timestamp', $this->timestamp) . $this->createXmlIdAttribute('md5', $this->md5) . $this->createXmlIntegerAttribute('size', $this->size);
     }
@@ -203,5 +203,12 @@ class ArchiveNode extends AbstractNode
     public function getFilePathByName(string $name): string
     {
         return array_search($name, $this->filePathList, true);
+    }
+	
+	public function appendChild(XmlBuildableInterface $childNode)
+    {
+        assert($childNode instanceof FileContainer);
+		
+		parent::appendChild($childNode);
     }
 }

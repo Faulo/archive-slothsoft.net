@@ -19,7 +19,7 @@ class IntegerValue extends AbstractValueContent
 
     private $max;
 
-    protected function getXmlTag(): string
+    public  function getXmlTag(): string
     {
         return 'integer';
     }

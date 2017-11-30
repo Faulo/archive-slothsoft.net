@@ -4,25 +4,11 @@ namespace Slothsoft\Savegame\Node;
 use Slothsoft\Savegame\EditorElement;
 declare(ticks = 1000);
 
-class ForEachFileNode extends AbstractNode
+class ForEachFileNode extends AbstractNode 
 {
-
-    protected function getXmlTag(): string
-    {
-        return 'for-each-file';
-    }
-
-    protected function getXmlAttributes(): string
-    {
-        return '';
-    }
-
-    public function asXML(): string
-    {
-        return $this->getXmlContent();
-    }
-
-    public function loadChildren(EditorElement $strucElement)
+	protected function loadNode(EditorElement $strucElement) {
+	}
+	public function loadChildren(EditorElement $strucElement)
     {
         $archive = $this->getParentNode();
         
@@ -35,7 +21,4 @@ class ForEachFileNode extends AbstractNode
             $this->loadChild($childElement);
         }
     }
-
-    protected function loadNode(EditorElement $strucElement)
-    {}
 }

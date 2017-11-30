@@ -210,7 +210,7 @@ class DOMHelper
         return $doc;
     }
 
-    public function transform($dataDoc, $templateDoc, array $param = [])
+    public function transform($dataDoc, $templateDoc, array $param = [], $outputURI = null)
     {
         if (! ($dataDoc instanceof DOMDocument)) {
             $dataDoc = $this->load($dataDoc);
@@ -219,15 +219,13 @@ class DOMHelper
             $templateDoc = $this->load($templateDoc);
         }
         
-        $returnAsString = false;
-        
         $xslt = new XSLTProcessor();
 		$xslt->setParameter(null, $param);
         
         $xslt->registerPHPFunctions();
         $xslt->importStylesheet($templateDoc);
         
-        return $returnAsString ? $xslt->transformToXML($dataDoc) : $xslt->transformToDoc($dataDoc);
+        return $outputURI === null ? $xslt->transformToDoc($dataDoc) : $xslt->transformToURI($dataDoc, $outputURI);
     }
 
     public function transformToFragment($dataDoc, $templateDoc, $targetDoc)

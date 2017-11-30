@@ -4,7 +4,7 @@ namespace Slothsoft\Savegame\Node;
 use Slothsoft\Savegame\EditorElement;
 declare(ticks = 1000);
 
-class EventInstruction extends AbstractInstructionContent
+class EventInstruction extends AbstractInstructionContent 
 {
 
     private $size;

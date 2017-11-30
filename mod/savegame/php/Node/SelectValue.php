@@ -9,7 +9,7 @@ class SelectValue extends AbstractValueContent
 
     protected $dictionaryRef;
 
-    protected function getXmlTag(): string
+    public  function getXmlTag(): string
     {
         return 'select';
     }

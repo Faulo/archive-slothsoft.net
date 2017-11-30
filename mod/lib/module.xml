@@ -16,6 +16,11 @@
 	<struc name="jquery">
 		<script name="jquery" uri="http://jquery.com/download/" />
 	</struc>
+	
+	<struc name="pixijs">
+		<script name="pixijs/pixi.min"
+			uri="https://pixijs.download/v4.6.1/pixi.min.js" />
+	</struc>
 
 	<struc name="WebRTC">
 		<script name="webrtc.adapter"
@@ -30,4 +35,5 @@
 		type="image/png" />
 	<resourceDir name="twemoji-svg" path="twemoji-gh-pages/svg"
 		type="image/svg+xml" />
+		
 </module>

@@ -5,7 +5,7 @@ use Slothsoft\Savegame\Editor;
 use Slothsoft\Savegame\EditorElement;
 declare(ticks = 1000);
 
-class SavegameNode extends AbstractNode
+class SavegameNode extends AbstractNode implements XmlBuildableInterface
 {
 
     /**
@@ -75,24 +75,24 @@ class SavegameNode extends AbstractNode
     protected function loadNode(EditorElement $strucElement)
     {}
 
-    public function appendChild(AbstractNode $node)
+    public function appendChild(XmlBuildableInterface $node)
     {
         assert($node instanceof ArchiveNode);
         
         parent::appendChild($node);
     }
 
-    protected function getXmlTag(): string
+    public  function getXmlTag(): string
     {
         return 'savegame.editor';
     }
 
-    protected function getXmlAttributes(): string
+    public function getXmlAttributes(): string
     {
         return $this->createXmlIdAttribute('xmlns', 'http://schema.slothsoft.net/savegame/editor') . $this->createXmlTextAttribute('save-id', $this->saveId) . $this->createXmlIdAttribute('schemaVersion', '0.3');
     }
 
-    public function getArchiveById(string $id)
+    public function getArchiveById(string $id) : ArchiveNode
     {
         foreach ($this->getChildNodeList() as $node) {
             if ($node->getArchiveId() === $id) {

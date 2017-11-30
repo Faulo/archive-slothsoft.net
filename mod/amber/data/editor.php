@@ -22,7 +22,6 @@ if ($saveAll or $downloadAll) {
 }
 
 if ($saveFile or $downloadFile) {
-    $editor->updateContent();
     if ($saveFile) {
         $editor->writeArchiveFile($saveFile);
     }

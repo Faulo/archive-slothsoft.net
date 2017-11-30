@@ -53,6 +53,26 @@
 				status-active="" status-public="">
 				<param name="id" value="portraits" />
 			</page>
+			<page name="Maps2D" title="Maps2D" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="id" value="maps.2d" />
+			</page>
+			<page name="Maps3D" title="Maps3D" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="id" value="maps.3d" />
+			</page>
+			<page name="WorldmapLyramion" title="WorldmapLyramion" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="id" value="worldmap.lyramion" />
+			</page>
+			<page name="WorldmapKire" title="WorldKire" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="id" value="worldmap.kire" />
+			</page>
+			<page name="WorldmapMorag" title="WorldmapMorag" ref="mod.resource"
+				status-active="" status-public="">
+				<param name="id" value="worldmap.morag" />
+			</page>
 		</page>
 		<page name="Thalion-v1.06-DE" title="Thalion-v1.06-DE" ref="mod"
 			status-active="" status-public="">

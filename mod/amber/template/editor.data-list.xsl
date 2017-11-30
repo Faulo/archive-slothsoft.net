@@ -3,20 +3,27 @@
 	xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:str="http://exslt.org/strings"
 	extension-element-prefixes="str">
-
-	<xsl:template match="/data/*[@data-cms-name = 'list']">
+	
+	<xsl:variable name="amberdata" select="/data/*[@data-cms-name='amberdata']/amber:amberdata"/>
+	
+	<xsl:template match="/data">
 		<div class="Amber Editor">
 			<script type="application/javascript"><![CDATA[
 var savegameEditor;
 window.addEventListener(
 	"DOMContentLoaded",
 	function(eve) {
-		savegameEditor = new SavegameEditor(document.querySelector(".Amber"));
+		let node;
+		
+		node = document.querySelector(".Amber.Editor");
+		if (node) {
+			savegameEditor = new SavegameEditor(node);
+		}
 	},
 	false
 );
 			]]></script>
-			<xsl:apply-templates select="*" mode="itemlist" />
+			<xsl:apply-templates select="*[@data-cms-name = 'list']" mode="itemlist" />
 			<div class="popup" onclick="savegameEditor.closePopup(arguments[0])" />
 		</div>
 	</xsl:template>
@@ -61,6 +68,34 @@ window.addEventListener(
 				<xsl:apply-templates select="." mode="itemlist" />
 			</details>
 		</xsl:for-each>
+	</xsl:template>
+	
+	<xsl:template match="amber:map-list" mode="itemlist">
+		<xsl:choose>
+			<xsl:when test="count(*) = 1">
+				<xsl:for-each select="*">
+					<button type="button" onclick="savegameEditor.viewMap(this.parentNode, '{@id}');">
+						Weltkarte generieren: <span class="green"><xsl:value-of select="@name" /></span>
+					</button>
+					<template><xsl:copy-of select="."/></template>
+				</xsl:for-each>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:for-each select="*">
+					<details ontoggle="savegameEditor.viewMap(this, '{@id}'); if (!this._mapViewer) this._mapViewer = new MapViewer(this);">
+						<summary>
+							<h2>
+								Karte:
+								<span class="green">
+									<xsl:value-of select="@name" />
+								</span>
+							</h2>
+						</summary>
+						<template><xsl:copy-of select="."/></template>
+					</details>
+				</xsl:for-each>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="amber:class" mode="itemlist">

@@ -4,7 +4,7 @@ namespace Slothsoft\Savegame\Node;
 use Slothsoft\Savegame\EditorElement;
 declare(ticks = 1000);
 
-abstract class AbstractValueContent extends AbstractContentNode
+abstract class AbstractValueContent extends AbstractContentNode implements XmlBuildableInterface
 {
 
     abstract protected function decodeValue(string $rawValue);
@@ -17,7 +17,7 @@ abstract class AbstractValueContent extends AbstractContentNode
 
     protected $value;
 
-    protected function getXmlAttributes(): string
+    public function getXmlAttributes(): string
     {
         return parent::getXmlAttributes() . $this->createXmlIntegerAttribute('position', $this->getContentOffset()) . $this->createXmlTextAttribute('value', (string) $this->value) . $this->createXmlIntegerAttribute('size', $this->size) . $this->createXmlIntegerAttribute('value-id', $this->valueId);
     }
@@ -48,9 +48,12 @@ abstract class AbstractValueContent extends AbstractContentNode
         return $this->valueId;
     }
 
-    public function setValue($value)
+    public function setValue($value, bool $updateContent = false)
     {
         $this->value = $value;
+		if ($updateContent) {
+			$this->updateContent();
+		}
     }
 
     public function getValue()

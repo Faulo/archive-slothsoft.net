@@ -4,15 +4,9 @@ namespace Slothsoft\Savegame\Node;
 use Slothsoft\Savegame\EditorElement;
 declare(ticks = 1000);
 
-class UseGlobalInstruction extends AbstractInstructionContent
+class UseGlobalInstruction extends AbstractContentNode
 {
-
-    private $globalRef;
-
-    protected function getXmlInstructionType(): string
-    {
-        return 'use-global';
-    }
+	private $globalRef;
 
     protected function loadStruc(EditorElement $strucElement)
     {
@@ -20,15 +14,16 @@ class UseGlobalInstruction extends AbstractInstructionContent
         
         $this->globalRef = (string) $strucElement->getAttribute('ref');
     }
-
-    protected function loadInstruction(EditorElement $strucElement)
+	protected function loadContent(EditorElement $strucElement) {
+	}
+	
+	protected function loadChildren(EditorElement $strucElement)
     {
-        return $this->getOwnerSavegame()->getGlobalElementsById($this->globalRef);
-    }
-
-    public function asXML(): string
-    {
-        return $this->getXmlContent();
+        if ($instructionList = $this->getOwnerSavegame()->getGlobalElementsById($this->globalRef)) {
+            foreach ($instructionList as $instruction) {
+                $this->loadChild($instruction);
+            }
+        }
     }
 }
 

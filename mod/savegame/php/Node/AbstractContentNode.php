@@ -18,7 +18,7 @@ abstract class AbstractContentNode extends AbstractNode
 
     abstract protected function loadContent(EditorElement $strucElement);
 
-    protected function getXmlAttributes(): string
+    public function getXmlAttributes(): string
     {
         return $this->createXmlIdAttribute('name', $this->getName());
     }
@@ -84,5 +84,13 @@ abstract class AbstractContentNode extends AbstractNode
     public function getName()
     {
         return $this->name;
+    }
+	
+	
+	public function appendChild(XmlBuildableInterface $childNode)
+    {
+        assert($childNode instanceof AbstractContentNode);
+		
+		parent::appendChild($childNode);
     }
 }

@@ -49,9 +49,25 @@ class ModResourceLocator
             'type' => ModResource::TYPE_LIBRARY,
             'name' => 'pcs'
         ],
-        'amberdata' => [
+        'maps.2d' => [
             'type' => ModResource::TYPE_LIBRARY,
-            'name' => 'items'
+            'name' => 'maps.2d'
+        ],
+        'maps.3d' => [
+            'type' => ModResource::TYPE_LIBRARY,
+            'name' => 'maps.3d'
+        ],
+		'worldmap.lyramion' => [
+            'type' => ModResource::TYPE_LIBRARY,
+            'name' => 'worldmap.lyramion'
+        ],
+		'worldmap.kire' => [
+            'type' => ModResource::TYPE_LIBRARY,
+            'name' => 'worldmap.kire'
+        ],
+		'worldmap.morag' => [
+            'type' => ModResource::TYPE_LIBRARY,
+            'name' => 'worldmap.morag'
         ],
         'libs' => [
             'type' => ModResource::TYPE_MODFILE,

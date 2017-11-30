@@ -4,9 +4,10 @@
 	xmlns:amber="http://schema.slothsoft.net/amber/amberdata" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:exsl="http://exslt.org/common" xmlns:func="http://exslt.org/functions"
 	xmlns:str="http://exslt.org/strings" xmlns:set="http://exslt.org/sets"
+	xmlns:math="http://exslt.org/math"
 	xmlns:php="http://php.net/xsl" xmlns:save="http://schema.slothsoft.net/savegame/editor"
 	xmlns:html="http://www.w3.org/1999/xhtml"
-	extension-element-prefixes="exsl func str set php">
+	extension-element-prefixes="exsl func str set math php">
 
 	<xsl:param name="lib" select="''" />
 	<xsl:param name="dictionaryURL" select="''"/>
@@ -99,8 +100,13 @@
 							[.//*[@name='map-type']/@value = 2]"/>
 						</xsl:call-template>
 					</xsl:when>
-					<xsl:when test="$lib = 'worldmap.lyramion' or $lib = 'worldmap.morag' or $lib = 'worldmap.kire'">
-						<xsl:call-template name="extract-maps">
+					<xsl:when test="$lib = 'worldmap.lyramion'">
+						<xsl:call-template name="extract-worldmap">
+							<xsl:with-param name="maps" select="save:archive[contains(@name, 'Map_data.amb')]/*"/>
+						</xsl:call-template>
+					</xsl:when>
+					<xsl:when test="$lib = 'worldmap.morag' or $lib = 'worldmap.kire'">
+						<xsl:call-template name="extract-worldmap">
 							<xsl:with-param name="maps" select="save:archive[contains(@name, 'Map_data.amb')]/*
 							[.//*[@name='unknown']/*[1]/@value = 13]"/>
 						</xsl:call-template>
@@ -2201,19 +2207,165 @@
 		</xsl:if>
 	</xsl:template>
 
+	<xsl:template name="extract-worldmap">
+		<xsl:param name="maps"
+			select="/.." />
+		<xsl:if test="count($maps)">
+			<xsl:variable name="root" select="$maps[1]"/>
+			<xsl:variable name="texts"
+				select="save:archive[contains(@name, 'Map_texts.amb')]/*" />
+			<map-list>
+				<xsl:variable name="size" select="math:sqrt(count($maps))" />
+				<xsl:variable name="field-maps" select="$maps//*[@name='fields']" />
+				
+				<xsl:variable name="width" select="$root//*[@name='width']/@value" />
+				<xsl:variable name="height" select="$root//*[@name='height']/@value" />
+				<xsl:variable name="tileset" select="$root//*[@name='tileset-id']/@value" />
+				<xsl:variable name="palette" select="$root//*[@name='palette-id']/@value" />
+				<xsl:variable name="map-type" select="$root//*[@name='map-type']/@value" />
+				<xsl:variable name="world" select="$root//*[@name='world']/@value" />
+				
+				<map id="{$lib}" width="{$size * $width}" height="{$size * $height}" tileset-id="{$tileset}" palette-id="{$palette}" map-type="{$map-type}" world="{$world}">
+					<xsl:choose>
+						<xsl:when test="$world = 0">
+							<xsl:attribute name="name"><xsl:value-of
+								select="'LYRAMIONISCHE INSELN'" /></xsl:attribute>
+						</xsl:when>
+						<xsl:when test="$world = 1">
+							<xsl:attribute name="name"><xsl:value-of
+								select="'WALDMOND'" /></xsl:attribute>
+						</xsl:when>
+						<xsl:when test="$world = 2">
+							<xsl:attribute name="name"><xsl:value-of
+								select="'WÜSTENMOND'" /></xsl:attribute>
+						</xsl:when>
+					</xsl:choose>
+					<field-map>
+						<xsl:variable name="mapYList" select="str:split(str:padding($size, '-'), '')"/>
+						<xsl:variable name="mapXList" select="str:split(str:padding($size, '-'), '')"/>
+						<xsl:variable name="fieldYList" select="str:split(str:padding($height, '-'), '')"/>
+						<xsl:variable name="fieldXList" select="str:split(str:padding($width, '-'), '')"/>
+						
+						<xsl:for-each select="$mapYList">
+							<xsl:variable name="mapY" select="position()" />
+							<xsl:for-each select="$fieldYList">
+								<xsl:variable name="fieldY" select="position()" />
+								<field-row>
+									<xsl:for-each select="$mapXList">
+										<xsl:variable name="mapX" select="position()" />
+										
+										<xsl:for-each select="$fieldXList">
+											<xsl:variable name="fieldX" select="position()" />
+											
+											<xsl:variable name="field" select="$field-maps[($mapY - 1) * $size + $mapX]/*[($fieldY - 1) * $width + $fieldX]"/>
+											<field>
+												<xsl:apply-templates select="$field/*[1][@value &gt; 0]" mode="attr">
+													<xsl:with-param name="name" select="'low'"/>
+												</xsl:apply-templates>
+												<xsl:apply-templates select="$field/*[2][@value &gt; 0]" mode="attr">
+													<xsl:with-param name="name" select="'high'"/>
+												</xsl:apply-templates>
+												<xsl:apply-templates select="$field/*[3][@value &gt; 0]" mode="attr">
+													<xsl:with-param name="name" select="'event'"/>
+												</xsl:apply-templates>
+											</field>
+										</xsl:for-each>
+									</xsl:for-each>
+								</field-row>
+							</xsl:for-each>
+						</xsl:for-each>
+					</field-map>
+				</map>
+			</map-list>
+		</xsl:if>
+	</xsl:template>
+
+	<xsl:template name="extract-map">
+		<xsl:param name="root" select="." />
+		<xsl:param name="id" />
+
+		<xsl:variable name="width" select="$root//*[@name='width']/@value" />
+		<xsl:variable name="height" select="$root//*[@name='height']/@value" />
+		<xsl:variable name="tileset" select="$root//*[@name='tileset-id']/@value" />
+		<xsl:variable name="palette" select="$root//*[@name='palette-id']/@value" />
+		<xsl:variable name="map-type" select="$root//*[@name='map-type']/@value" />
+		<map id="{$id}">
+			<xsl:choose>
+				<xsl:when test="$id &gt; 512">
+					<xsl:attribute name="name"><xsl:value-of
+						select="'MORAG'" /></xsl:attribute>
+				</xsl:when>
+				<xsl:when test="$id &gt; 256">
+					<xsl:apply-templates select="($root//save:string)[1]"
+						mode="attr">
+						<xsl:with-param name="name" select="'name'" />
+					</xsl:apply-templates>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:attribute name="name"><xsl:value-of
+						select="'LYRAMIONISCHE INSELN'" /></xsl:attribute>
+				</xsl:otherwise>
+			</xsl:choose>
+
+			<xsl:apply-templates select="$root//*[@name='data']/*"
+				mode="attr" />
+
+			<xsl:apply-templates select="$root//*[@name='unknown']"
+				mode="unknown" />
+
+			
+			<xsl:for-each select="$root//*[@name = 'label']/*">
+				<label>
+					<xsl:apply-templates select="." mode="attr">
+						<xsl:with-param name="name" select="'name'"/>
+					</xsl:apply-templates>
+				</label>
+			</xsl:for-each>
+			
+			
+			<xsl:for-each select="$root//*[@name='fields']">
+				<xsl:variable name="fieldYList" select="str:split(str:padding($height, '-'), '')"/>
+				<xsl:variable name="fieldXList" select="str:split(str:padding($width, '-'), '')"/>
+				<xsl:variable name="fields" select="*" />
+				<field-map>
+					<xsl:for-each select="$fieldYList">
+						<xsl:variable name="fieldY" select="position()" />
+						<field-row>
+							<xsl:for-each select="$fieldXList">
+								<xsl:variable name="fieldX" select="position()" />
+								<xsl:variable name="field" select="$fields[($fieldY - 1) * $width + $fieldX]"/>
+								<field>
+									<xsl:apply-templates select="$field/*[1][@value &gt; 0]" mode="attr">
+										<xsl:with-param name="name" select="'low'"/>
+									</xsl:apply-templates>
+									<xsl:apply-templates select="$field/*[2][@value &gt; 0]" mode="attr">
+										<xsl:with-param name="name" select="'high'"/>
+									</xsl:apply-templates>
+									<xsl:apply-templates select="$field/*[3][@value &gt; 0]" mode="attr">
+										<xsl:with-param name="name" select="'event'"/>
+									</xsl:apply-templates>
+								</field>
+							</xsl:for-each>
+						</field-row>
+					</xsl:for-each>
+				</field-map>
+			</xsl:for-each>
+		</map>
+	</xsl:template>
+
 	<xsl:template name="extract-tileset.icons">
 		<xsl:variable name="tilesets"
 				select="save:archive[contains(@name, 'Icon_data.amb')]/*" />
 		<xsl:if test="count($tilesets)">
-			<tileset.icon-list>
+			<tileset-icon-list>
 				<xsl:for-each select="$tilesets">
 					<xsl:sort select="@file-name" />
-					<xsl:variable name="id" select="@file-name" />
+					<xsl:variable name="id" select="number(@file-name)" />
 					<xsl:call-template name="extract-tileset.icon">
 						<xsl:with-param name="id" select="$id" />
 					</xsl:call-template>
 				</xsl:for-each>
-			</tileset.icon-list>
+			</tileset-icon-list>
 		</xsl:if>
 	</xsl:template>
 	
@@ -2221,7 +2373,7 @@
 	<xsl:template name="extract-tileset.icon">
 		<xsl:param name="root" select="." />
 		<xsl:param name="id" />
-		<tileset.icon id="{$id}">
+		<tileset-icon id="{$id}">
 			<xsl:apply-templates select="$root//*[@name='data']//*[@value]"
 				mode="attr" />
 			<xsl:for-each select=".//*[@name = 'tiles']/*/*">
@@ -2231,7 +2383,7 @@
 					</tile>
 				</xsl:if>
 			</xsl:for-each>
-		</tileset.icon>
+		</tileset-icon>
 	</xsl:template>
 
 
@@ -2529,45 +2681,6 @@
 				<br xmlns="http://www.w3.org/1999/xhtml"/>
 			</xsl:for-each>
 		</text>
-	</xsl:template>
-
-	<xsl:template name="extract-map">
-		<xsl:param name="root" select="." />
-		<xsl:param name="id" />
-
-		<map id="{$id}">
-			<xsl:choose>
-				<xsl:when test="$id &gt; 512">
-					<xsl:attribute name="name"><xsl:value-of
-						select="'MORAG'" /></xsl:attribute>
-				</xsl:when>
-				<xsl:when test="$id &gt; 256">
-					<xsl:apply-templates select="($root//save:string)[1]"
-						mode="attr">
-						<xsl:with-param name="name" select="'name'" />
-					</xsl:apply-templates>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:attribute name="name"><xsl:value-of
-						select="'LYRAMIONISCHE INSELN'" /></xsl:attribute>
-				</xsl:otherwise>
-			</xsl:choose>
-
-			<xsl:apply-templates select="$root//*[@name='data']/*"
-				mode="attr" />
-
-			<xsl:apply-templates select="$root//*[@name='unknown']"
-				mode="unknown" />
-
-			
-			<xsl:for-each select="$root//*[@name = 'label']/*">
-				<label>
-					<xsl:apply-templates select="." mode="attr">
-						<xsl:with-param name="name" select="'name'"/>
-					</xsl:apply-templates>
-				</label>
-			</xsl:for-each>
-		</map>
 	</xsl:template>	<xsl:template match="save:integer | save:signed-integer | save:string"		mode="attr">
 		<xsl:param name="name" select="@name" />
 		<xsl:param name="value" select="@value" />		<xsl:attribute name="{$name}"><xsl:value-of			select="normalize-space($value)" /></xsl:attribute>	</xsl:template>	<xsl:template match="save:select" mode="attr">

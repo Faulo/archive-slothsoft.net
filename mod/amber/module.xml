@@ -41,7 +41,7 @@
 				<param name="id" value="portraits" />
 				</data>
 			-->
-			<data name="mod.resource-document">
+			<data name="mod.resource-document" as="amberdata">
 				<param name="id" value="libs" />
 			</data>
 		</fragment>
@@ -51,9 +51,14 @@
 		<struc name="/slothsoft/default" />
 		<fragment name="content">
 			<data name="mod.resource-document" as="list" />
+			<data name="mod.resource-document" as="amberdata">
+				<param name="id" value="libs" />
+			</data>
 			<template name="editor.data-list" />
 			<struc name="default" />
 			<struc name="SavegameEditor" />
+			<struc name="/lib/pixijs" />
+			<script name="MapViewer" />
 		</fragment>
 	</fragment>
 

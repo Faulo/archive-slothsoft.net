@@ -27,7 +27,7 @@ class SignedIntegerValue extends AbstractValueContent
 
     private $max;
 
-    protected function getXmlTag(): string
+    public  function getXmlTag(): string
     {
         return 'signed-integer';
     }

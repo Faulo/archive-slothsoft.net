@@ -6,7 +6,7 @@ declare(ticks = 1000);
 class BinaryValue extends AbstractValueContent
 {
 
-    protected function getXmlTag(): string
+    public  function getXmlTag(): string
     {
         return 'binary';
     }

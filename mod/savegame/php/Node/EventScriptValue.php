@@ -6,7 +6,7 @@ declare(ticks = 1000);
 class EventScriptValue extends AbstractValueContent
 {
 
-    protected function getXmlTag(): string
+    public  function getXmlTag(): string
     {
         return 'event-script';
     }

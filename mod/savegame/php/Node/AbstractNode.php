@@ -12,10 +12,6 @@ abstract class AbstractNode
 
     abstract protected function loadNode(EditorElement $strucElement);
 
-    abstract protected function getXmlTag(): string;
-
-    abstract protected function getXmlAttributes(): string;
-
     /**
      *
      * @var \Slothsoft\Savegame\Node\AbstractNode
@@ -31,7 +27,7 @@ abstract class AbstractNode
     {
         $this->parentNode = $parentNode;
         
-        if ($this->parentNode) {
+        if ($this->parentNode and $this instanceof XmlBuildableInterface) {
             $this->parentNode->appendChild($this);
         }
         
@@ -75,12 +71,59 @@ abstract class AbstractNode
         return $this->parentNode instanceof SavegameNode ? $this->parentNode : $this->parentNode->getOwnerSavegame();
     }
 
-    public function asXML(): string
+    
+
+    /**
+     *
+     * @return \Slothsoft\Savegame\Converter
+     */
+    protected function getConverter()
+    {
+        return Converter::getInstance();
+    }
+
+    public function getParentNode()
+    {
+        return $this->parentNode;
+    }
+
+    
+	
+	public function getValueById(int $id) {
+		$ret = null;
+		foreach ($this->getChildNodeList() as $node) {
+			if ($ret = $node->getValueById($id)) {
+				break;
+			}
+		}
+		return $ret;
+	}
+	
+	
+	
+	public function appendChild(XmlBuildableInterface $childNode)
+    {
+		if ($this instanceof XmlBuildableInterface) {
+			if ($this->childNodeList === null) {
+				$this->childNodeList = new Vector();
+			}
+			$this->childNodeList[] = $childNode;
+		} else {
+			$this->parentNode->appendChild($childNode);
+		}
+    }
+
+    public function getChildNodeList()
+    {
+        return $this->childNodeList === null ? [] : $this->childNodeList;
+    }
+	
+	public function asXML(): string
     {
         return $this->createXmlElement($this->getXmlTag(), $this->getXmlAttributes(), $this->getXmlContent());
     }
 
-    protected function getXmlContent(): string
+    public  function getXmlContent(): string
     {
         $content = '';
         foreach ($this->getChildNodeList() as $child) {
@@ -108,32 +151,5 @@ abstract class AbstractNode
     {
         $value = htmlspecialchars($value, ENT_COMPAT | ENT_XML1);
         return $value === '' ? '' : " $name=\"$value\"";
-    }
-
-    /**
-     *
-     * @return \Slothsoft\Savegame\Converter
-     */
-    protected function getConverter()
-    {
-        return Converter::getInstance();
-    }
-
-    public function getParentNode()
-    {
-        return $this->parentNode;
-    }
-
-    public function appendChild(AbstractNode $childNode)
-    {
-        if ($this->childNodeList === null) {
-            $this->childNodeList = new Vector();
-        }
-        $this->childNodeList[] = $childNode;
-    }
-
-    public function getChildNodeList()
-    {
-        return $this->childNodeList ? $this->childNodeList : [];
     }
 }

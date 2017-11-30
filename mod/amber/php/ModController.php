@@ -259,7 +259,19 @@ class ModController
 			$editor = $this->editorAction($req);
 			
 			$xml = $editor->asString();
-			$xml = preg_replace('~\<archive[^>]+/\>~', '', $xml);
+			$xml = preg_replace(
+				[
+					'~ value-id="\d+"~',
+					'~ position="\d+"~',
+					'~ min="\d+"~',
+					'~ max="\d+"~',
+					'~ bit="\d+"~',
+					'~ encoding="\w+"~',
+					'~\<archive[^>]+/\>~',
+				],
+				'',
+				$xml
+			);
         
 			$ret = $libResource->setContents($xml);
         }
@@ -292,12 +304,13 @@ class ModController
 					//$params['dictionaryURL'] = 'file://' . realpath($dictionaryResource->getPath());
 					$params['dictionaryURL'] = 'http://localhost' . $dictionaryResource->getUrl();
 				}
-				if ($extractDoc = $this->dom->transform(
+				if ($this->dom->transform(
 					 $editorResource->getPath(),
 					$templateResource->getPath(),
-					$params
+					$params,
+					$libResource->getPath()
 					)) {
-					$ret = $libResource->setContents($extractDoc->saveXML());
+					$ret = true;
 				}
 			}
         }
@@ -364,7 +377,7 @@ class ModController
                 ];
                 break;
             case 'tileset.icons':
-                foreach ($libDoc->getElementsByTagName('tileset.icon') as $tilesetNode) {
+                foreach ($libDoc->getElementsByTagName('tileset-icon') as $tilesetNode) {
                     $fileId = $tilesetNode->getAttribute('id');
                     $palettes = [];
                     foreach (range(1, 49) as $paletteId) {
@@ -497,29 +510,39 @@ content: " ";
         $editorList[] = 'dictionaries';
         $editorList[] = 'portraits';
         $editorList[] = 'items';
+        $editorList[] = 'classes';
         $editorList[] = 'pcs';
         $editorList[] = 'npcs';
         $editorList[] = 'monsters';
         $editorList[] = 'tileset.icons';
         $editorList[] = 'maps.2d';
         $editorList[] = 'maps.3d';
-        //$editorList[] = 'worldmap.lyramion';
-        //$editorList[] = 'worldmap.kire';
-        //$editorList[] = 'worldmap.morag';
+        $editorList[] = 'worldmap.morag';
+        $editorList[] = 'worldmap.kire';
+        $editorList[] = 'worldmap.lyramion';
+        $editorList[] = 'graphics';
 		
         $libList = [];
         $libList[] = 'dictionaries';
         $libList[] = 'portraits';
         $libList[] = 'items';
+        $libList[] = 'classes';
         $libList[] = 'pcs';
         $libList[] = 'npcs';
         $libList[] = 'monsters';
         $libList[] = 'tileset.icons';
         $libList[] = 'maps.2d';
         $libList[] = 'maps.3d';
-        //$libList[] = 'worldmap.lyramion';
-        //$libList[] = 'worldmap.kire';
-        //$libList[] = 'worldmap.morag';
+        $libList[] = 'worldmap.morag';
+        $libList[] = 'worldmap.kire';
+        $libList[] = 'worldmap.lyramion';
+        $libList[] = 'graphics';
+		
+		$globalList = [];
+        $globalList[] = 'dictionaries';
+        $globalList[] = 'items';
+        $globalList[] = 'portraits';
+        $globalList[] = 'tileset.icons';
         
         $styleList = [];
         $styleList[] = 'portraits';
@@ -570,7 +593,7 @@ content: " ";
                     echo "\t\t\t" . $lib . PHP_EOL;
                     try {
                         $libResource = $this->createLibraryAction($req);
-                        if ($libResource) {
+                        if ($libResource and in_array($lib, $globalList, true)) {
                             if ($libDoc = $libResource->getDocument()) {
                                 foreach ($libDoc->documentElement->childNodes as $node) {
                                     $libs[] = $libDoc->saveXML($node);

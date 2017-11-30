@@ -9,7 +9,7 @@ class StringValue extends AbstractValueContent
 
     private $encoding;
 
-    protected function getXmlTag(): string
+    public  function getXmlTag(): string
     {
         return 'string';
     }

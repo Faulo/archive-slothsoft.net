@@ -9,12 +9,12 @@ class BitValue extends AbstractValueContent
 
     private $bit;
 
-    protected function getXmlTag(): string
+    public  function getXmlTag(): string
     {
         return 'bit';
     }
 
-    protected function getXmlAttributes(): string
+    public function getXmlAttributes(): string
     {
         return parent::getXmlAttributes() . $this->createXmlIntegerAttribute('bit', $this->bit);
     }
@@ -36,9 +36,9 @@ class BitValue extends AbstractValueContent
         $this->value = (bool) ($this->decodeValue($rawValue) & $this->getBitValue());
     }
 
-    public function setValue($value)
+    public function setValue($value, bool $updateContent = false)
     {
-        $this->value = (bool) $value;
+       parent::setValue((bool) $value, $updateContent);
     }
 
     public function updateContent()

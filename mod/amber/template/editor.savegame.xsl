@@ -277,7 +277,7 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 	<xsl:template
 		match="save:archive[contains(@name, 'Map_data.amb')]"
 		mode="form-content">
-		<xsl:apply-templates select="$amberdata/amber:tileset.icon-list" mode="picker"/>
+		<xsl:apply-templates select="$amberdata/amber:tileset-icon-list" mode="picker"/>
 		
 		<xsl:variable name="fileList" select="save:file" />
 		<xsl:variable name="nameList"
@@ -303,7 +303,7 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 									</xsl:with-param>
 								</xsl:call-template>
 							</div>
-							<xsl:call-template name="savegame.amber.tiles" />
+							<xsl:call-template name="savegame.amber.fields" />
 							<xsl:call-template name="savegame.amber.events" />
 							<!--
 								</xsl:with-param>
@@ -333,15 +333,12 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 										<xsl:call-template name="savegame.table">
 											<xsl:with-param name="label" select="'data'" />
 											<xsl:with-param name="items">
-												<xsl:apply-templates select="save:integer | save:select"
+												<xsl:apply-templates select="*"
 													mode="item" />
 											</xsl:with-param>
 										</xsl:call-template>
 									</div>
 								</xsl:for-each>
-								<div>
-									<xsl:call-template name="savegame.amber.testing" />
-								</div>
 								<div>
 									<xsl:for-each select=".//*[@name = 'tiles']">
 										<h3 class="name">tiles</h3>
@@ -368,13 +365,13 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 											</thead>
 											<tbody>
 												<xsl:for-each select="*/*">
-													<xsl:if test="*[@name='image-count']/@value &gt; 0">
+													<xsl:if test="true() or *[@name='image-count']/@value &gt; 0">
 														<tr>
 															<td class="right-aligned">
 																<xsl:value-of select="position()" />
 															</td>
 															<td>
-																<amber-picker type="tileset.icon-{$tilesetId}" class="tile-picker"
+																<amber-picker type="tileset-icon-{$tilesetId}" class="tile-picker"
 																	role="button" tabindex="0">
 																	<amber-tile-id value="{position()}"/>
 																</amber-picker>
@@ -399,6 +396,34 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 															</td>
 															<td>
 																<xsl:apply-templates select="save:select"
+																	mode="form-content" />
+															</td>
+														</tr>
+													</xsl:if>
+												</xsl:for-each>
+											</tbody>
+										</table>
+									</xsl:for-each>
+									
+									
+									<xsl:for-each select=".//*[@name = 'tiles-lab']">
+										<h3 class="name">tiles</h3>
+										<table data-tileset-lab="{$tilesetId}" data-palette="1">
+											<thead>
+												<tr>
+													<td>tile-id</td>
+													<td>data</td>
+												</tr>
+											</thead>
+											<tbody>
+												<xsl:for-each select="*/*">
+													<xsl:if test="true() or *[@name='image-count']/@value &gt; 0">
+														<tr>
+															<td class="right-aligned">
+																<xsl:value-of select="position()" />
+															</td>
+															<td>
+																<xsl:apply-templates select="."
 																	mode="form-content" />
 															</td>
 														</tr>
@@ -838,16 +863,16 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 			</xsl:for-each>
 		</xsl:for-each>
 	</xsl:template>
-	<xsl:template name="savegame.amber.tiles">
+	<xsl:template name="savegame.amber.fields">
 		<xsl:variable name="width" select=".//*[@name='width']/@value" />
 		<xsl:variable name="height" select=".//*[@name='height']/@value" />
 		<xsl:variable name="tileset" select=".//*[@name='tileset-id']/@value" />
 		<xsl:variable name="palette" select=".//*[@name='palette-id']/@value" />
 		<xsl:variable name="map-type" select=".//*[@name='map-type']/@value" />
-		<xsl:for-each select=".//*[@name='tiles']">
-			<xsl:variable name="tiles" select="*" />
+		<xsl:for-each select=".//*[@name='fields']">
+			<xsl:variable name="fields" select="*" />
 			<div>
-				<h3 class="name">Tiles</h3>
+				<h3 class="name">fields</h3>
 				<div class="map">
 
 					<table data-palette="{$palette}">
@@ -870,7 +895,7 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 									<xsl:for-each select="str:split(str:padding($width, '-'), '')">
 										<xsl:variable name="x" select="position()" />
 										<td title="{$x}|{$y}">
-											<xsl:apply-templates select="$tiles[($y - 1) * $width + $x]"
+											<xsl:apply-templates select="$fields[($y - 1) * $width + $x]"
 												mode="tile-picker" />
 										</td>
 									</xsl:for-each>
@@ -1227,7 +1252,7 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 	</xsl:template>
 
 	<!-- form-content instructions -->
-	<xsl:template match="save:group" mode="form-content">
+	<xsl:template match="save:group | save:instruction" mode="form-content">
 		<xsl:choose>
 			<xsl:when test="@dictionary-ref">
 				<xsl:variable name="options"
@@ -1342,9 +1367,17 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 		</amber-picker>
 	</xsl:template>
 	<xsl:template match="*" mode="tile-picker">
-		<amber-picker type="tileset.icon" class="tile-picker" contextmenu="amber-picker-tileset.icon"
+		<amber-picker type="tileset-icon" class="tile-picker" contextmenu="amber-picker-tileset-icon"
 			role="button" tabindex="0" onclick="savegameEditor.openPopup(arguments[0])">
-			<xsl:apply-templates select="*" mode="form-picker" />
+			<xsl:apply-templates select="*[1]" mode="form-picker">
+				<xsl:with-param name="name" select="'tile-id'"/>
+			</xsl:apply-templates>
+			<xsl:apply-templates select="*[2]" mode="form-picker">
+				<xsl:with-param name="name" select="'tile-id'"/>
+			</xsl:apply-templates>
+			<xsl:apply-templates select="*[3]" mode="form-picker">
+				<xsl:with-param name="name" select="'event-id'"/>
+			</xsl:apply-templates>
 		</amber-picker>
 	</xsl:template>
 	<xsl:template match="*" mode="monster-sprite-picker">
@@ -1541,7 +1574,8 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 	<xsl:template
 		match="save:string | save:integer | save:signed-integer | save:bit | save:select"
 		mode="form-picker">
-		<xsl:element name="{concat('amber-', @name)}"><!--  namespace="http://schema.slothsoft.net/amber/xhtml" -->
+		<xsl:param name="name" select="@name"/>
+		<xsl:element name="{concat('amber-', $name)}"><!--  namespace="http://schema.slothsoft.net/amber/xhtml" -->
 			<xsl:attribute name="value"><xsl:value-of select="@value"/></xsl:attribute>
 			<xsl:apply-templates select="." mode="form-hidden" />
 		</xsl:element>

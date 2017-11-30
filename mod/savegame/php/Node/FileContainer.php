@@ -7,7 +7,7 @@ use Slothsoft\Savegame\EditorElement;
 use Slothsoft\Savegame\NodeEvaluatorInterface;
 declare(ticks = 1000);
 
-class FileContainer extends AbstractNode implements NodeEvaluatorInterface
+class FileContainer extends AbstractNode implements NodeEvaluatorInterface, XmlBuildableInterface
 {
 
     private $filePath;
@@ -28,12 +28,12 @@ class FileContainer extends AbstractNode implements NodeEvaluatorInterface
 
     private $ownerSavegame;
 
-    protected function getXmlTag(): string
+    public  function getXmlTag(): string
     {
         return 'file';
     }
 
-    protected function getXmlAttributes(): string
+    public function getXmlAttributes(): string
     {
         return $this->createXmlIdAttribute('file-name', $this->fileName);
     }
@@ -128,6 +128,13 @@ class FileContainer extends AbstractNode implements NodeEvaluatorInterface
             }
         }
     }
+	public function getValueById(int $id) {
+		foreach ($this->valueList as $node) {
+            if ($node->getValueId() === $id) {
+				return $node;
+			}
+		}
+	}
 
     public function evaluate($expression)
     {

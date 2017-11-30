@@ -106,11 +106,6 @@ class Editor
         return sprintf('%s%s%s.%s', $this->config['tempDir'], DIRECTORY_SEPARATOR, $this->config['id'], $name);
     }
 
-    public function updateContent()
-    {
-        $this->savegame->updateContent();
-    }
-
     public function getConfigValue($key)
     {
         return isset($this->config[$key]) ? $this->config[$key] : null;
@@ -146,13 +141,17 @@ class Editor
                 if ($val === '_checkbox') {
                     $val = isset($req['data'][$id . $val]);
                 }
-                if ($node = $this->getValueById((int) $id)) {
+                if ($node = $this->savegame->getValueById((int) $id)) {
                     // printf('%s: %s => %s%s', $id, $node->getValue(), $val, PHP_EOL);
-                    $node->setValue($val);
+                    $node->setValue($val, true);
                 }
             }
         }
     }
+	public function getArchiveById(string $id) : Node\ArchiveNode
+    {
+		return $this->savegame->getArchiveById($id);
+	}
 
     /**
      *

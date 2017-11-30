@@ -373,6 +373,25 @@ SavegameEditor.prototype = Object.create(
 				}
 				return ret;
 			}
-		}
+		},
+		viewMap : {
+			value : function(detailsNode) {
+				try {
+					if (!detailsNode._mapViewer) {
+						let mapNode = detailsNode.querySelector("template").content.querySelector("map");
+						if (mapNode) {
+							let tilesetId = mapNode.getAttribute("tileset-id");
+							let tilesetNode = this.getRepositoryElement("tileset-icon", tilesetId);
+							if (tilesetNode) {
+								detailsNode._mapViewer = new MapViewer(mapNode, tilesetNode);
+								detailsNode.appendChild(detailsNode._mapViewer.getViewNode());
+							}
+						}
+					}
+				} catch(e) {
+					detailsNode.textContent = e;
+				}
+			}
+		},
 	}
 );
