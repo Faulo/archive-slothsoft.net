@@ -1,3 +1,5 @@
+"use strict";
+
 // © 2017 Daniel Schulz
 function SavegameEditor(rootNode) {
 	this.rootNode = rootNode;
@@ -380,10 +382,22 @@ SavegameEditor.prototype = Object.create(
 					if (!detailsNode._mapViewer) {
 						let mapNode = detailsNode.querySelector("template").content.querySelector("map");
 						if (mapNode) {
-							let tilesetId = mapNode.getAttribute("tileset-id");
-							let tilesetNode = this.getRepositoryElement("tileset-icon", tilesetId);
+							let tilesetId, tilesetNode, viewer;
+							tilesetId = mapNode.getAttribute("tileset-id");
+							switch (mapNode.getAttribute("map-type")) {
+								case "2":
+								case "2D":
+									tilesetNode = this.getRepositoryElement("tileset-icon", tilesetId);
+									viewer = "MapViewer";
+									break;
+								case "1":
+								case "3D":
+									tilesetNode = this.getRepositoryElement("tileset-lab", tilesetId);
+									viewer = "DungeonViewer";
+									break;
+							}
 							if (tilesetNode) {
-								detailsNode._mapViewer = new MapViewer(mapNode, tilesetNode);
+								detailsNode._mapViewer = new window[viewer](mapNode, tilesetNode);
 								detailsNode.appendChild(detailsNode._mapViewer.getViewNode());
 							}
 						}

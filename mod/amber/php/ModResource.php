@@ -186,7 +186,7 @@ class ModResource extends HTTPFile
 		return filemtime($this->getPath());
 	}
     
-    public function setContents(string $content)
+    public function setContents($content)
     {
         $folder = dirname($this->getPath());
         if (! file_exists($folder)) {

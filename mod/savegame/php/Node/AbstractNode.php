@@ -5,6 +5,7 @@ use Ds\Vector;
 use Slothsoft\Savegame\Converter;
 use Slothsoft\Savegame\Editor;
 use Slothsoft\Savegame\EditorElement;
+use Slothsoft\Savegame\Build\BuildableInterface;
 declare(ticks = 1000);
 
 abstract class AbstractNode
@@ -27,8 +28,8 @@ abstract class AbstractNode
     {
         $this->parentNode = $parentNode;
         
-        if ($this->parentNode and $this instanceof XmlBuildableInterface) {
-            $this->parentNode->appendChild($this);
+        if ($this->parentNode and $this instanceof BuildableInterface) {
+            $this->parentNode->appendBuildChild($this);
         }
         
         $this->loadStruc($strucElement);
@@ -71,8 +72,6 @@ abstract class AbstractNode
         return $this->parentNode instanceof SavegameNode ? $this->parentNode : $this->parentNode->getOwnerSavegame();
     }
 
-    
-
     /**
      *
      * @return \Slothsoft\Savegame\Converter
@@ -86,70 +85,19 @@ abstract class AbstractNode
     {
         return $this->parentNode;
     }
-
-    
 	
-	public function getValueById(int $id) {
-		$ret = null;
-		foreach ($this->getChildNodeList() as $node) {
-			if ($ret = $node->getValueById($id)) {
-				break;
-			}
-		}
-		return $ret;
-	}
-	
-	
-	
-	public function appendChild(XmlBuildableInterface $childNode)
-    {
-		if ($this instanceof XmlBuildableInterface) {
-			if ($this->childNodeList === null) {
-				$this->childNodeList = new Vector();
-			}
-			$this->childNodeList[] = $childNode;
-		} else {
-			$this->parentNode->appendChild($childNode);
-		}
-    }
-
-    public function getChildNodeList()
-    {
-        return $this->childNodeList === null ? [] : $this->childNodeList;
-    }
-	
-	public function asXML(): string
-    {
-        return $this->createXmlElement($this->getXmlTag(), $this->getXmlAttributes(), $this->getXmlContent());
-    }
-
-    public  function getXmlContent(): string
-    {
-        $content = '';
-        foreach ($this->getChildNodeList() as $child) {
-            $content .= $child->asXML();
+	public function appendBuildChild(BuildableInterface $childNode) {
+		if ($this instanceof BuildableInterface) {
+            if ($this->childNodeList === null) {
+                $this->childNodeList = new Vector();
+            }
+            $this->childNodeList[] = $childNode;
+        } else {
+            $this->parentNode->appendBuildChild($childNode);
         }
-        return $content;
-    }
-
-    protected function createXmlElement(string $tagName, string $attributes, string $content): string
+	}
+	public function getBuildChildren()
     {
-        return $content === '' ? "<$tagName $attributes />" : "<$tagName $attributes>$content</$tagName>";
-    }
-
-    protected function createXmlIntegerAttribute(string $name, int $value): string
-    {
-        return " $name=\"$value\"";
-    }
-
-    protected function createXmlIdAttribute(string $name, string $value): string
-    {
-        return $value === '' ? '' : " $name=\"$value\"";
-    }
-
-    protected function createXmlTextAttribute(string $name, string $value): string
-    {
-        $value = htmlspecialchars($value, ENT_COMPAT | ENT_XML1);
-        return $value === '' ? '' : " $name=\"$value\"";
+        return $this->childNodeList;
     }
 }

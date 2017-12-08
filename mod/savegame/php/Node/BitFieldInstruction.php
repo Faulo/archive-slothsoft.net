@@ -4,7 +4,7 @@ namespace Slothsoft\Savegame\Node;
 use Slothsoft\Savegame\EditorElement;
 declare(ticks = 1000);
 
-class BitFieldInstruction extends AbstractInstructionContent 
+class BitFieldInstruction extends AbstractInstructionContent
 {
 
     private $size;
@@ -13,7 +13,7 @@ class BitFieldInstruction extends AbstractInstructionContent
 
     private $lastBit;
 
-    protected function getXmlInstructionType(): string
+    protected function getInstructionType(): string
     {
         return 'bit-field';
     }

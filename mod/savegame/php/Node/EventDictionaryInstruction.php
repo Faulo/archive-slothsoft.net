@@ -5,10 +5,10 @@ use Slothsoft\Savegame\EditorElement;
 use RangeException;
 declare(ticks = 1000);
 
-class EventDictionaryInstruction extends AbstractInstructionContent 
+class EventDictionaryInstruction extends AbstractInstructionContent
 {
 
-    protected function getXmlInstructionType(): string
+    protected function getInstructionType(): string
     {
         return 'event-dictionary';
     }

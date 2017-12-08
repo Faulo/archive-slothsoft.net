@@ -86,6 +86,9 @@
 					<xsl:when test="$lib = 'tileset.icons'">
 						<xsl:call-template name="extract-tileset.icons" />
 					</xsl:when>
+					<xsl:when test="$lib = 'tileset.labs'">
+						<xsl:call-template name="extract-tileset.labs" />
+					</xsl:when>
 					<xsl:when test="$lib = 'maps.3d'">
 						<xsl:call-template name="extract-maps">
 							<xsl:with-param name="maps" select="save:archive[contains(@name, 'Map_data.amb')]/*
@@ -102,7 +105,7 @@
 					</xsl:when>
 					<xsl:when test="$lib = 'worldmap.lyramion'">
 						<xsl:call-template name="extract-worldmap">
-							<xsl:with-param name="maps" select="save:archive[contains(@name, 'Map_data.amb')]/*"/>
+							<xsl:with-param name="maps" select="save:archive[contains(@name, 'Map_data.amb')]/*[position() &lt;= 16]"/>
 						</xsl:call-template>
 					</xsl:when>
 					<xsl:when test="$lib = 'worldmap.morag' or $lib = 'worldmap.kire'">
@@ -2384,6 +2387,39 @@
 				</xsl:if>
 			</xsl:for-each>
 		</tileset-icon>
+	</xsl:template>
+
+	<xsl:template name="extract-tileset.labs">
+		<xsl:variable name="tilesets"
+				select="save:archive[contains(@name, 'Lab_data.amb')]/*" />
+		<xsl:if test="count($tilesets)">
+			<tileset-lab-list>
+				<xsl:for-each select="$tilesets">
+					<xsl:sort select="@file-name" />
+					<xsl:variable name="id" select="number(@file-name)" />
+					<xsl:call-template name="extract-tileset.lab">
+						<xsl:with-param name="id" select="$id" />
+					</xsl:call-template>
+				</xsl:for-each>
+			</tileset-lab-list>
+		</xsl:if>
+	</xsl:template>
+	
+
+	<xsl:template name="extract-tileset.lab">
+		<xsl:param name="root" select="." />
+		<xsl:param name="id" />
+		<tileset-lab id="{$id}">
+			<xsl:apply-templates select="$root//*[@name='data']//*[@value]"
+				mode="attr" />
+			<xsl:for-each select=".//*[@name = 'tiles']/*/*">
+				<xsl:if test="*[@name='image-count']/@value &gt; 0">
+					<tile id="{position()}">
+						<xsl:apply-templates select="*[@value]" mode="attr" />
+					</tile>
+				</xsl:if>
+			</xsl:for-each>
+		</tileset-lab>
 	</xsl:template>
 
 

@@ -5,6 +5,7 @@ use Slothsoft\CMS\HTTPRequest;
 use Slothsoft\Core\DOMHelper;
 use Slothsoft\Core\FileSystem;
 use Slothsoft\Savegame\Editor;
+use Slothsoft\Savegame\Build\XmlBuilder;
 use Error;
 use Exception;
 
@@ -177,6 +178,11 @@ class ModController
                 'Icon_data.amb'
             ]
         ],
+        'tileset.labs' => [
+            'archives' => [
+                '2Lab_data.amb'
+            ]
+        ],
         'pcs' => [
             'archives' => [
                 'Party_char.amb'
@@ -258,22 +264,30 @@ class ModController
 		} else {
 			$editor = $this->editorAction($req);
 			
-			$xml = $editor->asString();
-			$xml = preg_replace(
-				[
-					'~ value-id="\d+"~',
-					'~ position="\d+"~',
-					'~ min="\d+"~',
-					'~ max="\d+"~',
-					'~ bit="\d+"~',
-					'~ encoding="\w+"~',
-					'~\<archive[^>]+/\>~',
-				],
-				'',
-				$xml
-			);
+			$builder = new XmlBuilder();
+			$builder->registerTagBlacklist([
+				'archive',
+			]);
+			if ($lib === 'structure.savegame') {
+				$builder->registerAttributeBlacklist([
+					'value',
+					'value-id',
+				]);
+			} else {
+				$builder->registerAttributeBlacklist([
+					'value-id',
+					'position',
+					'min',
+					'max',
+					'bit',
+					'encoding',
+				]);
+			}
+			$stream = $builder->buildStream($editor->getSavegame());
         
-			$ret = $libResource->setContents($xml);
+			$ret = $libResource->setContents($stream);
+			
+			fclose($stream);
         }
 		
         return $ret ? $libResource : null;
@@ -515,12 +529,13 @@ content: " ";
         $editorList[] = 'npcs';
         $editorList[] = 'monsters';
         $editorList[] = 'tileset.icons';
-        $editorList[] = 'maps.2d';
-        $editorList[] = 'maps.3d';
-        $editorList[] = 'worldmap.morag';
-        $editorList[] = 'worldmap.kire';
-        $editorList[] = 'worldmap.lyramion';
-        $editorList[] = 'graphics';
+        $editorList[] = 'tileset.labs';
+        //$editorList[] = 'maps.2d';
+		//$editorList[] = 'maps.3d';
+        //$editorList[] = 'worldmap.morag';
+        //$editorList[] = 'worldmap.kire';
+        //$editorList[] = 'worldmap.lyramion';
+        //$editorList[] = 'graphics';
 		
         $libList = [];
         $libList[] = 'dictionaries';
@@ -531,18 +546,20 @@ content: " ";
         $libList[] = 'npcs';
         $libList[] = 'monsters';
         $libList[] = 'tileset.icons';
-        $libList[] = 'maps.2d';
-        $libList[] = 'maps.3d';
-        $libList[] = 'worldmap.morag';
-        $libList[] = 'worldmap.kire';
-        $libList[] = 'worldmap.lyramion';
-        $libList[] = 'graphics';
+        $libList[] = 'tileset.labs';
+        //$libList[] = 'maps.2d';
+        //$libList[] = 'maps.3d';
+        //$libList[] = 'worldmap.morag';
+        //$libList[] = 'worldmap.kire';
+        //$libList[] = 'worldmap.lyramion';
+        //$libList[] = 'graphics';
 		
 		$globalList = [];
         $globalList[] = 'dictionaries';
         $globalList[] = 'items';
         $globalList[] = 'portraits';
         $globalList[] = 'tileset.icons';
+        $globalList[] = 'tileset.labs';
         
         $styleList = [];
         $styleList[] = 'portraits';

@@ -3,6 +3,8 @@ namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\Editor;
 use Slothsoft\Savegame\EditorElement;
+use Slothsoft\Savegame\Build\BuilderInterface;
+use Slothsoft\Savegame\Build\BuildableInterface;
 declare(ticks = 1000);
 
 abstract class AbstractContentNode extends AbstractNode
@@ -17,11 +19,13 @@ abstract class AbstractContentNode extends AbstractNode
     protected $contentOffset;
 
     abstract protected function loadContent(EditorElement $strucElement);
-
-    public function getXmlAttributes(): string
+	
+	public function getBuildAttributes(BuilderInterface $builder): array
     {
-        return $this->createXmlIdAttribute('name', $this->getName());
-    }
+		return [
+			'name' 		=> $this->name,
+		];
+	}
 
     protected function loadStruc(EditorElement $strucElement)
     {
@@ -85,12 +89,11 @@ abstract class AbstractContentNode extends AbstractNode
     {
         return $this->name;
     }
-	
-	
-	public function appendChild(XmlBuildableInterface $childNode)
+
+    public function appendBuildChild(BuildableInterface $childNode)
     {
         assert($childNode instanceof AbstractContentNode);
-		
-		parent::appendChild($childNode);
+        
+        parent::appendBuildChild($childNode);
     }
 }

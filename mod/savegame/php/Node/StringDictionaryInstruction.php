@@ -5,7 +5,7 @@ use Slothsoft\Savegame\EditorElement;
 use DomainException;
 declare(ticks = 1000);
 
-class StringDictionaryInstruction extends AbstractInstructionContent 
+class StringDictionaryInstruction extends AbstractInstructionContent
 {
 
     const LIST_TYPE_NULL_DELIMITED = 'null-delimited';
@@ -24,7 +24,7 @@ class StringDictionaryInstruction extends AbstractInstructionContent
 
     private $stringSize;
 
-    protected function getXmlInstructionType(): string
+    protected function getInstructionType(): string
     {
         return 'string-dictionary';
     }

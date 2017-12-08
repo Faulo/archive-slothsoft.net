@@ -16,6 +16,9 @@
 	image-rendering: pixelated;
 	image-rendering: -moz-crisp-edges;
 }
+.Amber .DungeonViewer {
+	
+}
 
 .Amber, .Amber a:link, .Amber a:visited {
 	text-shadow: black 1px 1px, black 0px 1px, black 1px 0px;

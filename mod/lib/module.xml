@@ -21,6 +21,11 @@
 		<script name="pixijs/pixi.min"
 			uri="https://pixijs.download/v4.6.1/pixi.min.js" />
 	</struc>
+	
+	<struc name="babylonjs">
+		<script name="babylonjs/babylon.custom"
+			uri="https://babyloncomponentselector.azurewebsites.net/api/buildbabylon?stable=true&amp;minified=true" />
+	</struc>
 
 	<struc name="WebRTC">
 		<script name="webrtc.adapter"

@@ -4,7 +4,7 @@ namespace Slothsoft\Savegame\Node;
 use Slothsoft\Savegame\EditorElement;
 declare(ticks = 1000);
 
-class EventStepInstruction extends AbstractInstructionContent 
+class EventStepInstruction extends AbstractInstructionContent
 {
 
     /*
@@ -31,7 +31,7 @@ class EventStepInstruction extends AbstractInstructionContent
      * const EVENT_CREATE_FOOD = 2;
      *
      */
-    protected function getXmlInstructionType(): string
+    protected function getInstructionType(): string
     {
         return 'event-step';
     }
@@ -50,7 +50,7 @@ class EventStepInstruction extends AbstractInstructionContent
         
         $ref = sprintf('event-%02d.%02d', $eventType, $eventSubType);
         
-        $ret = $savegame->getGlobalElementsById($ref);
+        $instructionList = $savegame->getGlobalElementsById($ref);
         
         if (! $instructionList) {
             $ref = sprintf('event-%02d', $eventType);

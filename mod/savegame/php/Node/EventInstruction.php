@@ -4,14 +4,14 @@ namespace Slothsoft\Savegame\Node;
 use Slothsoft\Savegame\EditorElement;
 declare(ticks = 1000);
 
-class EventInstruction extends AbstractInstructionContent 
+class EventInstruction extends AbstractInstructionContent
 {
 
     private $size;
 
     private $stepSize;
 
-    protected function getXmlInstructionType(): string
+    protected function getInstructionType(): string
     {
         return 'event';
     }

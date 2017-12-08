@@ -62,10 +62,10 @@ class HTTPResponse
     protected static $httpConfig = [
         'date-format' => 'D, d M Y H:i:s \\G\\M\\T',
         'doc-timestamp' => false, // "rendering took X seconds and Y MB"
-        'merge-styleFiles' => true,
-        'merge-scriptFiles' => true,
-        'minify-styleFiles' => false,
-        'minify-scriptFiles' => false,
+        'merge-styleFiles' => CMS_RESPONSE_MERGE_STYLEFILES,
+        'merge-scriptFiles' => CMS_RESPONSE_MERGE_SCRIPTFILES,
+        'minify-styleFiles' => CMS_RESPONSE_MINIFY_STYLEFILES,
+        'minify-scriptFiles' => CMS_RESPONSE_MINIFY_SCRIPTFILES,
         'cache-duration' => 30, // max-age, Sekunden
         'file-size' => 16 * MEMORY_MEGABYTE, // maximum setFile-load
         'seek-size' => 1 * MEMORY_MEGABYTE, // maximum fseek
@@ -552,9 +552,7 @@ EOT;
                 return $minifier->minify();
             });
         } else {
-            return $this->cache->mergeFiles($scriptFiles, 'js/', function ($buffer) {
-                return '"use strict";' . PHP_EOL . $buffer;
-            });
+            return $this->cache->mergeFiles($scriptFiles, 'js/');
         }
     }
 

@@ -59,6 +59,8 @@
 			<struc name="SavegameEditor" />
 			<struc name="/lib/pixijs" />
 			<script name="MapViewer" />
+			<struc name="/lib/babylonjs" />
+			<script name="DungeonViewer" />
 		</fragment>
 	</fragment>
 
@@ -194,6 +196,7 @@
 	</struc>
 	<struc name="SavegameEditor">
 		<script name="/core/XSLT" />
+		<script name="/core/NS" />
 		<script name="SavegameEditor" />
 	</struc>
 

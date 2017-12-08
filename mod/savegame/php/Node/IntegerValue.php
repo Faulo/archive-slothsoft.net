@@ -2,6 +2,7 @@
 namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\EditorElement;
+use Slothsoft\Savegame\Build\BuilderInterface;
 declare(ticks = 1000);
 
 class IntegerValue extends AbstractValueContent
@@ -19,20 +20,25 @@ class IntegerValue extends AbstractValueContent
 
     private $max;
 
-    public  function getXmlTag(): string
+    public function getBuildTag(): string
     {
         return 'integer';
     }
-
-    public function getXmlAttributes(): string
+	
+	public function getBuildAttributes(BuilderInterface $builder): array
     {
-        return parent::getXmlAttributes() . $this->createXmlIntegerAttribute('min', $this->min) . $this->createXmlIntegerAttribute('max', $this->max);
-    }
+		return parent::getBuildAttributes($builder) + [
+			'value' => $this->value,
+			'min' 	=> $this->min,
+			'max' 	=> $this->max,
+		];
+	}
 
     protected function loadStruc(EditorElement $strucElement)
     {
         parent::loadStruc($strucElement);
         
+		$this->value = 0;
         $this->min = (int) $strucElement->getAttribute('min');
         $this->max = (int) $strucElement->getAttribute('max', self::MAX_VALUES[$this->size]);
     }

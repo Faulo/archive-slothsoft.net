@@ -2,9 +2,11 @@
 namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\EditorElement;
+use Slothsoft\Savegame\Build\BuildableInterface;
+use Slothsoft\Savegame\Build\BuilderInterface;
 declare(ticks = 1000);
 
-abstract class AbstractValueContent extends AbstractContentNode implements XmlBuildableInterface
+abstract class AbstractValueContent extends AbstractContentNode implements BuildableInterface
 {
 
     abstract protected function decodeValue(string $rawValue);
@@ -17,10 +19,14 @@ abstract class AbstractValueContent extends AbstractContentNode implements XmlBu
 
     protected $value;
 
-    public function getXmlAttributes(): string
+	public function getBuildAttributes(BuilderInterface $builder): array
     {
-        return parent::getXmlAttributes() . $this->createXmlIntegerAttribute('position', $this->getContentOffset()) . $this->createXmlTextAttribute('value', (string) $this->value) . $this->createXmlIntegerAttribute('size', $this->size) . $this->createXmlIntegerAttribute('value-id', $this->valueId);
-    }
+		return parent::getBuildAttributes($builder) + [
+			'position' 	=> $this->getContentOffset(),
+			'value-id'	=> $this->valueId,
+			'size' 		=> $this->size,
+		];
+	}
 
     protected function loadStruc(EditorElement $strucElement)
     {
@@ -51,9 +57,9 @@ abstract class AbstractValueContent extends AbstractContentNode implements XmlBu
     public function setValue($value, bool $updateContent = false)
     {
         $this->value = $value;
-		if ($updateContent) {
-			$this->updateContent();
-		}
+        if ($updateContent) {
+            $this->updateContent();
+        }
     }
 
     public function getValue()

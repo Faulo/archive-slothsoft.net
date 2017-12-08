@@ -16,7 +16,8 @@
 						<xsd:element ref="monster-list" />
 						<xsd:element ref="class-list" />
 						<xsd:element ref="map-list" />
-						<xsd:element ref="tileset.icon-list" />
+						<xsd:element ref="tileset-icon-list" />
+						<xsd:element ref="tileset-lab-list" />
 						<xsd:element ref="gfx-archive-list" />
 						<xsd:element ref="dictionary-list" />
 					</xsd:choice>
@@ -40,7 +41,10 @@
 	<xsd:element name="map-list">
 	</xsd:element>
 	
-	<xsd:element name="tileset.icon-list">
+	<xsd:element name="tileset-icon-list">
+	</xsd:element>
+	
+	<xsd:element name="tileset-lab-list">
 	</xsd:element>
 	
 	<xsd:element name="gfx-archive-list">

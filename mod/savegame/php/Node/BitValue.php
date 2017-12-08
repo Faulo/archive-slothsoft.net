@@ -2,6 +2,7 @@
 namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\EditorElement;
+use Slothsoft\Savegame\Build\BuilderInterface;
 declare(ticks = 1000);
 
 class BitValue extends AbstractValueContent
@@ -9,36 +10,30 @@ class BitValue extends AbstractValueContent
 
     private $bit;
 
-    public  function getXmlTag(): string
+    public function getBuildTag(): string
     {
         return 'bit';
     }
-
-    public function getXmlAttributes(): string
+	
+	public function getBuildAttributes(BuilderInterface $builder): array
     {
-        return parent::getXmlAttributes() . $this->createXmlIntegerAttribute('bit', $this->bit);
-    }
+		return parent::getBuildAttributes($builder) + [
+			'value' => $this->value ? '1' : '',
+			'bit' 	=> $this->bit,
+		];
+	}
 
     protected function loadStruc(EditorElement $strucElement)
     {
         parent::loadStruc($strucElement);
         
+		$this->value = false;
         $this->bit = (int) $strucElement->getAttribute('bit');
     }
 
     private function getBitValue()
     {
         return $this->getConverter()->pow2($this->bit);
-    }
-
-    public function setRawValue(string $rawValue)
-    {
-        $this->value = (bool) ($this->decodeValue($rawValue) & $this->getBitValue());
-    }
-
-    public function setValue($value, bool $updateContent = false)
-    {
-       parent::setValue((bool) $value, $updateContent);
     }
 
     public function updateContent()
@@ -48,7 +43,7 @@ class BitValue extends AbstractValueContent
 
     protected function decodeValue(string $rawValue)
     {
-        return $this->getConverter()->decodeInteger($rawValue, $this->size);
+        return (bool) ($this->getConverter()->decodeInteger($rawValue, $this->size) & $this->getBitValue());
     }
 
     protected function encodeValue($value): string

@@ -303,6 +303,7 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 									</xsl:with-param>
 								</xsl:call-template>
 							</div>
+							<xsl:call-template name="savegame.amber.mobs" />
 							<xsl:call-template name="savegame.amber.fields" />
 							<xsl:call-template name="savegame.amber.events" />
 							<!--
@@ -495,7 +496,7 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 		<xsl:for-each select="save:file">
 			<xsl:call-template name="savegame.flex">
 				<xsl:with-param name="items">
-					<xsl:for-each select="*">
+					<xsl:for-each select="save:group">
 						<div>
 							<xsl:call-template name="savegame.table">
 								<xsl:with-param name="label" select="@name" />
@@ -507,6 +508,25 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 					</xsl:for-each>
 				</xsl:with-param>
 			</xsl:call-template>
+			<xsl:for-each select="save:instruction[@name = 'mob-existance']">
+				<div>
+					<xsl:call-template name="savegame.tabs">
+						<xsl:with-param name="label" select="'Aktive Karte:'" />
+						<xsl:with-param name="options" select="key('dictionary-option', 'map-ids')[@key &gt; 0]/@val" />
+						<xsl:with-param name="list">
+							<xsl:for-each select="*">
+								<li>
+									<xsl:call-template name="savegame.flex">
+										<xsl:with-param name="items">
+											<xsl:apply-templates select="*" mode="item" />
+										</xsl:with-param>
+									</xsl:call-template>
+								</li>
+							</xsl:for-each>
+						</xsl:with-param>
+					</xsl:call-template>
+				</div>
+			</xsl:for-each>
 		</xsl:for-each>
 	</xsl:template>
 
@@ -863,6 +883,25 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 			</xsl:for-each>
 		</xsl:for-each>
 	</xsl:template>
+	<xsl:template name="savegame.amber.mobs">
+		<xsl:for-each select=".//*[@name='mobs']">
+			<xsl:call-template name="savegame.flex">
+				<xsl:with-param name="label" select="'mobs'" />
+				<xsl:with-param name="items">
+					<xsl:for-each select="*[*[1]/@value &gt; 0]">
+						<div>
+							<xsl:call-template name="savegame.table">
+								<xsl:with-param name="label" select="concat('mob #', position())" />
+								<xsl:with-param name="items">
+									<xsl:apply-templates select="*" mode="item" />
+								</xsl:with-param>
+							</xsl:call-template>
+						</div>
+					</xsl:for-each>
+				</xsl:with-param>
+			</xsl:call-template>
+		</xsl:for-each>
+	</xsl:template>
 	<xsl:template name="savegame.amber.fields">
 		<xsl:variable name="width" select=".//*[@name='width']/@value" />
 		<xsl:variable name="height" select=".//*[@name='height']/@value" />
@@ -911,6 +950,8 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 		<xsl:call-template name="savegame.table">
 			<xsl:with-param name="label" select="'Allgemein'" />
 			<xsl:with-param name="items">
+				<xsl:apply-templates select=".//*[@name = 'character-type']"
+					mode="item" />
 				<xsl:for-each select=".//*[@name = 'portrait']">
 					<div>
 						<xsl:apply-templates select="." mode="form-name"/>

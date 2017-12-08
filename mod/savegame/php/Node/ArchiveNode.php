@@ -5,9 +5,11 @@ use Slothsoft\Amber\ArchiveManager;
 use Slothsoft\Core\FileSystem;
 use Slothsoft\Savegame\EditorElement;
 use DomainException;
+use Slothsoft\Savegame\Build\BuildableInterface;
+use Slothsoft\Savegame\Build\BuilderInterface;
 declare(ticks = 1000);
 
-class ArchiveNode extends AbstractNode implements XmlBuildableInterface
+class ArchiveNode extends AbstractNode implements BuildableInterface
 {
 
     const ARCHIVE_TYPE_RAW = 'Raw';
@@ -36,15 +38,22 @@ class ArchiveNode extends AbstractNode implements XmlBuildableInterface
 
     private $filePathList;
 
-    public  function getXmlTag(): string
+    public function getBuildTag(): string
     {
         return 'archive';
     }
 
-    public function getXmlAttributes(): string
+	public function getBuildAttributes(BuilderInterface $builder): array
     {
-        return $this->createXmlIdAttribute('name', $this->name) . $this->createXmlIdAttribute('type', $this->type) . $this->createXmlIdAttribute('path', $this->path) . $this->createXmlIdAttribute('timestamp', $this->timestamp) . $this->createXmlIdAttribute('md5', $this->md5) . $this->createXmlIntegerAttribute('size', $this->size);
-    }
+		return [
+			'name' 		=> $this->name,
+			'type'		=> $this->type,
+			'path'		=> $this->path,
+			'md5'		=> $this->md5,
+			'size'		=> $this->size,
+			'timestamp'	=> $this->timestamp,
+		];
+	}
 
     public function loadStruc(EditorElement $strucElement)
     {
@@ -126,44 +135,46 @@ class ArchiveNode extends AbstractNode implements XmlBuildableInterface
     public function getArchive()
     {
         $ret = null;
-        switch ($this->type) {
-            case self::ARCHIVE_TYPE_AMBR:
-                $header = [];
-                $body = [];
-                $maxId = 0;
-                foreach ($this->getChildNodeList() as $child) {
-                    $id = (int) $child->getFileName();
-                    if ($id > $maxId) {
-                        $maxId = $id;
-                    }
-                    $val = $child->getContent();
-                    $header[$id] = pack('N', strlen($val));
-                    $body[$id] = $val;
-                }
-                for ($id = 1; $id < $maxId; $id ++) {
-                    if (! isset($header[$id])) {
-                        $header[$id] = pack('N', 0);
-                        $body[$id] = '';
-                    }
-                }
-                ksort($header);
-                ksort($body);
-                
-                array_unshift($header, 'AMBR' . pack('n', count($body)));
-                
-                $ret = implode('', $header) . implode('', $body);
-                break;
-            case self::ARCHIVE_TYPE_JH:
-            case self::ARCHIVE_TYPE_AM2:
-            case self::ARCHIVE_TYPE_RAW:
-                $ret = '';
-                foreach ($this->getChildNodeList() as $child) {
-                    $ret .= $child->getContent();
-                }
-                break;
-            default:
-                throw new DomainException(sprintf('unknown archive type "%s"!', $this->type));
-        }
+		if ($childList = $this->getBuildChildren()) {
+			switch ($this->type) {
+				case self::ARCHIVE_TYPE_AMBR:
+					$header = [];
+					$body = [];
+					$maxId = 0;
+					foreach ($childList as $child) {
+						$id = (int) $child->getFileName();
+						if ($id > $maxId) {
+							$maxId = $id;
+						}
+						$val = $child->getContent();
+						$header[$id] = pack('N', strlen($val));
+						$body[$id] = $val;
+					}
+					for ($id = 1; $id < $maxId; $id ++) {
+						if (! isset($header[$id])) {
+							$header[$id] = pack('N', 0);
+							$body[$id] = '';
+						}
+					}
+					ksort($header);
+					ksort($body);
+					
+					array_unshift($header, 'AMBR' . pack('n', count($body)));
+					
+					$ret = implode('', $header) . implode('', $body);
+					break;
+				case self::ARCHIVE_TYPE_JH:
+				case self::ARCHIVE_TYPE_AM2:
+				case self::ARCHIVE_TYPE_RAW:
+					$ret = '';
+					foreach ($childList as $child) {
+						$ret .= $child->getContent();
+					}
+					break;
+				default:
+					throw new DomainException(sprintf('unknown archive type "%s"!', $this->type));
+			}
+		}
         return $ret;
     }
 
@@ -204,11 +215,11 @@ class ArchiveNode extends AbstractNode implements XmlBuildableInterface
     {
         return array_search($name, $this->filePathList, true);
     }
-	
-	public function appendChild(XmlBuildableInterface $childNode)
+
+    public function appendBuildChild(BuildableInterface $childNode)
     {
         assert($childNode instanceof FileContainer);
-		
-		parent::appendChild($childNode);
+        
+        parent::appendBuildChild($childNode);
     }
 }

@@ -87,10 +87,11 @@
 		<select name="event-payload" position="5" size="1"
 			dictionary-ref="event-teleport-types" />
 		<use-global ref="event-bit-goto" />
+		
+		<select position="8" size="2" name="event-payload"
+			dictionary-ref="gotos" />
 
 		<integer name="event-null" position="4" />
-		<integer name="event-null" position="8" />
-		<integer name="event-null" position="9" />
 	</global>
 	<global global-id="event-02">
 		<!-- door -->
@@ -944,6 +945,14 @@
 				<bit name="partybit-leonardia-absent" position="0x2B8C" bit="0" />
 				<bit name="partybit-gryban-absent" position="0x2BB8" bit="0" />
 			</group>
+			<!--
+			<repeat-group name="mob-existance" position="0x2504" group-count="1024" group-size="4">
+				<bit-field name="01-08" position="0"/>
+				<bit-field name="09-16" position="1"/>
+				<bit-field name="17-24" position="2"/>
+				<bit-field name="25-32" position="3"/>
+			</repeat-group>
+			-->
 		</for-each-file>
 	</archive>
 	<archive path="Amberfiles/Save.00/Merchant_data.amb" type="AMBR">
@@ -1084,6 +1093,10 @@
 			<integer position="6" name="tileset-id" />
 			<integer position="9" name="palette-id" />
 			<select position="3" name="bgm-id" dictionary-ref="songs" />
+			<!--
+			<integer position="$width * $height * $map-type * 2" name="event-count"/>
+			<binary position="$width * $height * $map-type * 2 + 8 + $event-count * 12" size="4" name="walkcoords"/>
+			-->
 		</group>
 		<group name="unknown">
 			<integer position="0" />
@@ -1091,19 +1104,37 @@
 			<integer position="7" />
 			<integer position="8" />
 			<integer position="11" />
-			<integer position="12" />
-			<integer position="13" />
-			<integer position="14" />
-			<integer position="15" />
 		</group>
+		<repeat-group name="mobs" position="12" group-count="32" group-size="10">
+			<integer position="0" name="char-id"/>
+			<integer position="1" name="monster-maybe"/>
+			<bit position="2" bit="0" name="is-npc"/>
+			<bit position="2" bit="1" name="is-monstergroup"/>
+			<bit position="2" bit="4" name="is-popup"/>
+			<bit position="2" bit="2" name="random-movement"/>
+			<bit position="2" bit="3" name="uses-tileset"/>
+			<integer position="3" name="event-id"/>
+			<integer position="4" name="gfx-id" size="2"/>
+			<bit position="8" bit="0" name="is-intangible"/>
+			<!--
+			<bit position="6" bit="7" name="is-?"/>
+			<integer position="7" name="null"/>
+			<bit position="8" bit="0" name="is-intangible"/>
+			<bit position="8" bit="4" name="is-grandpa"/>
+			<bit position="9" bit="0" name="animation-delay"/>
+			<bit position="9" bit="4" name="is-?"/>
+			<binary position="6" size="4"/>
+			-->
+		</repeat-group>
 		<group position="0x14C">
+		<!--
 			<repeat-group name="fields" group-count="$width * $height"
 				group-size="$map-type * 2">
-				<!-- name="tile-id"  name="event-id" -->
 				<integer position="0" size="1"/>
 				<integer position="2" size="2 * ($map-type - 1)"/>
 				<integer position="1" size="1"/>
 			</repeat-group>
+		-->
 			<group position="$width * $height * $map-type * 2" name="events">
 				<event-dictionary />
 			</group>
@@ -1124,27 +1155,75 @@
 			<use-global ref="map-data" />
 		</for-each-file>
 	</archive>
+	<global global-id="icon-data">
+		<group name="data">
+			<integer position="0" size="2" name="entry-count" />
+			<binary position="2" size="4" name="unknown"/>
+		</group>
+		<group name="tiles">
+			<repeat-group position="2" group-count="$entry-count"
+				group-size="8">
+				<group name="testing">
+					<integer position="0" size="1" />
+					<integer position="1" size="1" />
+					<integer position="3" size="1" />
+				</group>
+				<bit-field position="2" size="1" name="mobility"
+					dictionary-ref="tile-icon-mobility" />
+				<integer position="4" size="2" name="image-id" />
+				<integer position="6" size="1" name="image-count" />
+				<select position="7" size="1" name="image-color"
+					dictionary-ref="colors" />
+			</repeat-group>
+		</group>
+	</global>
 	<archive path="Amberfiles/Icon_data.amb" type="AMBR">
 		<for-each-file>
-			<group name="testing">
-				<integer position="2" />
-				<integer position="3" />
-				<integer position="4" />
-				<integer position="5" />
-			</group>
-			<group name="data">
-				<integer position="0" size="2" name="entry-count" />
-			</group>
-			<group name="tiles">
-				<repeat-group position="6" group-count="$entry-count"
-					group-size="8">
-					<integer position="0" size="2" name="image-id" />
-					<integer position="2" size="1" name="image-count" />
-					<binary position="3" size="5" />
-				</repeat-group>
-			</group>
+			<use-global ref="icon-data" />
 		</for-each-file>
 	</archive>
+	<global global-id="lab-data">
+		<group name="testing">
+			<integer position="2" />
+			<integer position="3" />
+			<integer position="4" />
+			<integer position="5" />
+		</group>
+		<group name="data">
+			<integer position="8" size="2" name="tile-count" />
+			<integer position="10 + $tile-count * 66" size="2" name="info-count" />
+			<binary position="0" size="10" />
+			<binary position="10 + $tile-count * 66" size="10" />
+			<binary position="10 + $tile-count * 66 + 2 + $info-count * 14" size="200" />
+		</group>
+		<group name="tiles-lab">
+			<repeat-group position="10" group-count="$tile-count"
+				group-size="66">
+				<binary position="0" size="2" />
+				<binary position="2" size="64" />
+			</repeat-group>
+		</group>
+		<group name="tiles-lab">
+			<repeat-group position="10 + $tile-count * 66 + 2" group-count="$info-count"
+				group-size="14"><!--0x84-->
+				<binary position="0" size="14" />
+			</repeat-group>
+		</group>
+	</global>
+	<archive path="Amberfiles/2Lab_data.amb" type="AMBR">
+		<for-each-file>
+			<use-global ref="lab-data" />
+		</for-each-file>
+	</archive>
+	<archive path="Amberfiles/3Lab_data.amb" type="AMBR">
+		<for-each-file>
+			<use-global ref="lab-data" />
+		</for-each-file>
+	</archive>
+
+	
+	
+	
 	<global global-id="place-inn">
 		<group>
 			<integer position="0" name="price" size="2" />
@@ -1448,34 +1527,7 @@
 	</archive>
 	<archive path="Extrafiles/2D_Icon_data.amb" type="AMBR">
 		<for-each-file>
-			<!--
-				<group name="testing">
-				<integer position="2" />
-				<integer position="3" />
-				<integer position="4" />
-				<integer position="5" />
-				</group>
-			-->
-			<group name="data">
-				<integer position="0" size="2" name="entry-count" />
-				<binary position="2" size="4" name="unknown"/>
-			</group>
-			<group name="tiles">
-				<repeat-group position="2" group-count="$entry-count"
-					group-size="8">
-					<group name="testing">
-						<integer position="0" size="1" />
-						<integer position="1" size="1" />
-						<integer position="3" size="1" />
-					</group>
-					<bit-field position="2" size="1" name="mobility"
-						dictionary-ref="tile-icon-mobility" />
-					<integer position="4" size="2" name="image-id" />
-					<integer position="6" size="1" name="image-count" />
-					<select position="7" size="1" name="image-color"
-						dictionary-ref="colors" />
-				</repeat-group>
-			</group>
+			<use-global ref="icon-data" />
 		</for-each-file>
 	</archive>
 
@@ -1488,32 +1540,7 @@
 	</archive>
 	<archive path="Extrafiles/3D_Lab_data.amb" type="AMBR">
 		<for-each-file>
-			<group name="testing">
-				<integer position="2" />
-				<integer position="3" />
-				<integer position="4" />
-				<integer position="5" />
-			</group>
-			<group name="data">
-				<integer position="8" size="2" name="tile-count" />
-				<integer position="10 + $tile-count * 66" size="2" name="info-count" />
-				<binary position="0" size="10" />
-				<binary position="10 + $tile-count * 66" size="10" />
-				<binary position="10 + $tile-count * 66 + 2 + $info-count * 14" size="200" />
-			</group>
-			<group name="tiles-lab">
-				<repeat-group position="10" group-count="$tile-count"
-					group-size="66">
-					<binary position="0" size="2" />
-					<binary position="2" size="64" />
-				</repeat-group>
-			</group>
-			<group name="tiles-lab">
-				<repeat-group position="10 + $tile-count * 66 + 2" group-count="$info-count"
-					group-size="14"><!--0x84-->
-					<binary position="0" size="14" />
-				</repeat-group>
-			</group>
+			<use-global ref="lab-data" />
 		</for-each-file>
 	</archive>
 </savegame.editor>

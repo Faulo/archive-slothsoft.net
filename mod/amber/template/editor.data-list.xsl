@@ -74,7 +74,7 @@ window.addEventListener(
 		<xsl:choose>
 			<xsl:when test="count(*) = 1">
 				<xsl:for-each select="*">
-					<button type="button" onclick="savegameEditor.viewMap(this.parentNode, '{@id}');">
+					<button type="button" onclick="savegameEditor.viewMap(this.parentNode, '{@id}')">
 						Weltkarte generieren: <span class="green"><xsl:value-of select="@name" /></span>
 					</button>
 					<template><xsl:copy-of select="."/></template>
@@ -82,7 +82,7 @@ window.addEventListener(
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:for-each select="*">
-					<details ontoggle="savegameEditor.viewMap(this, '{@id}'); if (!this._mapViewer) this._mapViewer = new MapViewer(this);">
+					<details ontoggle="savegameEditor.viewMap(this, '{@id}')">
 						<summary>
 							<h2>
 								Karte:

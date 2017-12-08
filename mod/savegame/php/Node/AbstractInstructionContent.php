@@ -2,27 +2,32 @@
 namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\EditorElement;
+use Slothsoft\Savegame\Build\BuildableInterface;
+use Slothsoft\Savegame\Build\BuilderInterface;
 declare(ticks = 1000);
 
-abstract class AbstractInstructionContent extends AbstractContentNode implements XmlBuildableInterface
+abstract class AbstractInstructionContent extends AbstractContentNode implements BuildableInterface
 {
 
     abstract protected function loadInstruction(EditorElement $strucElement);
 
-    abstract protected function getXmlInstructionType(): string;
+    abstract protected function getInstructionType(): string;
 
     // protected $dictionary;
     protected $dictionaryRef;
 
-    public  function getXmlTag(): string
+    public function getBuildTag(): string
     {
         return 'instruction';
     }
-
-    public function getXmlAttributes(): string
+	
+	public function getBuildAttributes(BuilderInterface $builder): array
     {
-        return parent::getXmlAttributes() . $this->createXmlIdAttribute('type', $this->getXmlInstructionType()) . $this->createXmlIdAttribute('dictionary-ref', $this->dictionaryRef);
-    }
+		return parent::getBuildAttributes($builder) + [
+			'type' 				=> $this->getInstructionType(),
+			'dictionary-ref' 	=> $this->dictionaryRef,
+		];
+	}
 
     protected function loadStruc(EditorElement $strucElement)
     {

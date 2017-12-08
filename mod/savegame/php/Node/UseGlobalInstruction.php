@@ -6,7 +6,8 @@ declare(ticks = 1000);
 
 class UseGlobalInstruction extends AbstractContentNode
 {
-	private $globalRef;
+
+    private $globalRef;
 
     protected function loadStruc(EditorElement $strucElement)
     {
@@ -14,10 +15,11 @@ class UseGlobalInstruction extends AbstractContentNode
         
         $this->globalRef = (string) $strucElement->getAttribute('ref');
     }
-	protected function loadContent(EditorElement $strucElement) {
-	}
-	
-	protected function loadChildren(EditorElement $strucElement)
+
+    protected function loadContent(EditorElement $strucElement)
+    {}
+
+    protected function loadChildren(EditorElement $strucElement)
     {
         if ($instructionList = $this->getOwnerSavegame()->getGlobalElementsById($this->globalRef)) {
             foreach ($instructionList as $instruction) {

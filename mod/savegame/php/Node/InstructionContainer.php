@@ -2,24 +2,28 @@
 namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\EditorElement;
+use Slothsoft\Savegame\Build\BuilderInterface;
 declare(ticks = 1000);
 
-class InstructionContainer extends AbstractContainerContent 
+class InstructionContainer extends AbstractContainerContent
 {
 
     private $type;
 
     private $dictionaryRef;
 
-    public  function getXmlTag(): string
+    public function getBuildTag(): string
     {
         return 'instruction';
     }
-
-    public function getXmlAttributes(): string
+	
+	public function getBuildAttributes(BuilderInterface $builder): array
     {
-        return parent::getXmlAttributes() . $this->createXmlIdAttribute('type', $this->type) . $this->createXmlIdAttribute('dictionary-ref', $this->dictionaryRef);
-    }
+		return parent::getBuildAttributes($builder) + [
+			'type' 				=> $this->type,
+			'dictionary-ref' 	=> $this->dictionaryRef,
+		];
+	}
 
     protected function loadStruc(EditorElement $strucElement)
     {

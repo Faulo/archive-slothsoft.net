@@ -4,6 +4,7 @@ namespace Slothsoft\Savegame;
 use Ds\Vector;
 use Slothsoft\CMS\HTTPFile;
 use Slothsoft\Core\DOMHelper;
+use Slothsoft\Savegame\Build\XmlBuilder;
 use DOMDocument;
 use DOMElement;
 use DOMNode;
@@ -137,33 +138,51 @@ class Editor
     public function parseRequest(array $req)
     {
         if (isset($req['data'])) {
+			$valueMap = $this->savegame->getValueMap();
             foreach ($req['data'] as $id => $val) {
                 if ($val === '_checkbox') {
                     $val = isset($req['data'][$id . $val]);
                 }
-                if ($node = $this->savegame->getValueById((int) $id)) {
+                if (isset($valueMap[$id])) {
                     // printf('%s: %s => %s%s', $id, $node->getValue(), $val, PHP_EOL);
-                    $node->setValue($val, true);
+                    $valueMap[$id]->setValue($val, true);
                 }
             }
         }
     }
+	public function getSavegame() {
+		return $this->savegame;
+	}
 	public function getArchiveById(string $id) : Node\ArchiveNode
     {
 		return $this->savegame->getArchiveById($id);
 	}
 
+    
     /**
      *
      * @return \Slothsoft\CMS\HTTPFile
      */
     public function asFile() : HTTPFile
     {
-        return HTTPFile::createFromString($this->asString(), sprintf('savegame.%s.xml', $this->config['id']));
+		$builder = new XmlBuilder();
+		$handle = $builder->buildStream($this->savegame);
+        $ret = HTTPFile::createFromStream(
+			$handle,
+			sprintf('savegame.%s.xml', $this->config['id'])
+		);
+		fclose($handle);
+		return $ret;
     }
     
     public function asString() : string {
-        return $this->savegame->asXML();
+		$builder = new XmlBuilder();
+		$builder->registerAttributeBlacklist([
+			'position',
+			'bit',
+			'encoding',
+		]);
+		return $builder->buildString($this->savegame);
     }
 
     public function asDocument() : DOMDocument
@@ -176,7 +195,7 @@ class Editor
     public function asNode(DOMDocument $dataDoc) : DOMNode
     {
         $retFragment = $dataDoc->createDocumentFragment();
-        $retFragment->appendXML($this->savegame->asXML());
+        $retFragment->appendXML($this->asString());
         return $retFragment;
     }
 
@@ -202,8 +221,6 @@ class Editor
                 return new Node\SavegameNode($this);
             case EditorElement::NODE_TYPES['archive']:
                 return new Node\ArchiveNode();
-            case EditorElement::NODE_TYPES['global']:
-                return new Node\GlobalNode();
             case EditorElement::NODE_TYPES['for-each-file']:
                 return new Node\ForEachFileNode();
             case EditorElement::NODE_TYPES['file']:

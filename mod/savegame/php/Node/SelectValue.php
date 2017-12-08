@@ -2,6 +2,7 @@
 namespace Slothsoft\Savegame\Node;
 
 use Slothsoft\Savegame\EditorElement;
+use Slothsoft\Savegame\Build\BuilderInterface;
 declare(ticks = 1000);
 
 class SelectValue extends AbstractValueContent
@@ -9,20 +10,24 @@ class SelectValue extends AbstractValueContent
 
     protected $dictionaryRef;
 
-    public  function getXmlTag(): string
+    public function getBuildTag(): string
     {
         return 'select';
     }
-
-    public function getXmlAttributes(): string
+	
+	public function getBuildAttributes(BuilderInterface $builder): array
     {
-        return parent::getXmlAttributes() . $this->createXmlIdAttribute('dictionary-ref', $this->dictionaryRef);
-    }
+		return parent::getBuildAttributes($builder) + [
+			'value' => $this->value,
+			'dictionary-ref' 	=> $this->dictionaryRef,
+		];
+	}
 
     protected function loadStruc(EditorElement $strucElement)
     {
         parent::loadStruc($strucElement);
         
+		$this->value = 0;
         $this->dictionaryRef = (string) $strucElement->getAttribute('dictionary-ref');
     }
 

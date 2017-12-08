@@ -1,3 +1,5 @@
+"use strict";
+
 // © 2017 Daniel Schulz
 function MapViewer(mapNode, tilesetNode) {
 	PIXI.utils.sayHello("Amber MapViewer 0.1");
@@ -28,8 +30,7 @@ MapViewer.prototype = Object.create(
 		tilesetId 			: { writable : true },
 		tilesetImageUrl 	: { writable : true },
 		tilesetTexturesList : { writable : true },
-		staticTiles 		: { writable : true },
-		animatedTiles 		: { writable : true },
+		tilesetLayers 		: { writable : true },
 		
 		init : {
 			value : function() {
@@ -82,7 +83,6 @@ MapViewer.prototype = Object.create(
 				this.viewNode = this.renderer.view;
 				
 				this.stage = new PIXI.Container();
-				this.renderer.render(this.stage);
 				
 				this.loader = new PIXI.loaders.Loader();
 					
@@ -103,12 +103,21 @@ MapViewer.prototype = Object.create(
 		initTileset : {
 			value : function(tilesetTexture) {
 				this.tilesetTexturesList = {};
-				this.staticTiles = new PIXI.Container();
-				this.staticTiles.cacheAsBitmap = true;
-				this.animatedTiles = new PIXI.Container();
+				this.tilesetLayers = {};
 				
-				this.stage.addChild(this.staticTiles);
-				this.stage.addChild(this.animatedTiles);
+				this.tilesetLayers.lowStatic = new PIXI.Container();
+				this.tilesetLayers.lowAnim = new PIXI.Container();
+				this.tilesetLayers.highStatic = new PIXI.Container();
+				this.tilesetLayers.highAnim = new PIXI.Container();
+				this.tilesetLayers.text = new PIXI.Container();
+
+				this.tilesetLayers.lowStatic.cacheAsBitmap = true;
+				this.tilesetLayers.highStatic.cacheAsBitmap = true;
+				this.tilesetLayers.text.cacheAsBitmap = true;
+				
+				for (let key in this.tilesetLayers) {
+					this.stage.addChild(this.tilesetLayers[key]);
+				}
 				
 				let nodeList = this.tilesetNode.querySelectorAll("tile");
 				for (let i = 0; i < nodeList.length; i++) {
@@ -147,18 +156,27 @@ MapViewer.prototype = Object.create(
 						let fieldNode = fieldNodeList[x];
 						
 						if (fieldNode.hasAttribute("low")) {
-							this.addTile(x, y, fieldNode.getAttribute("low"));
+							let sprite = this.addTile(x, y, fieldNode.getAttribute("low"));
+							if (sprite.loop) {
+								this.tilesetLayers.lowAnim.addChild(sprite);
+							} else {
+								this.tilesetLayers.lowStatic.addChild(sprite);
+							}
 						}
 						if (fieldNode.hasAttribute("high")) {
-							this.addTile(x, y, fieldNode.getAttribute("high"));
+							let sprite = this.addTile(x, y, fieldNode.getAttribute("high"));
+							if (sprite.loop) {
+								this.tilesetLayers.highAnim.addChild(sprite);
+							} else {
+								this.tilesetLayers.highStatic.addChild(sprite);
+							}
 						}
 						if (fieldNode.hasAttribute("event")) {
-							this.addText(x, y, fieldNode.getAttribute("event"));
+							let sprite = this.addText(x, y, fieldNode.getAttribute("event"));
+							this.tilesetLayers.text.addChild(sprite);
 						}
 					}
 				}
-				
-				this.renderer.render(this.stage);
 			}
 		},
 		loadTexture : {
@@ -203,26 +221,19 @@ MapViewer.prototype = Object.create(
 				if (textures.length === 1) { 
 					sprite = new PIXI.Sprite(textures[0]);
 					//sprite.cacheAsBitmap = true;
-					
-					this.staticTiles.addChild(sprite);
 				} else {
 					sprite = new PIXI.extras.AnimatedSprite(textures, true);
 					sprite.animationSpeed = 0.1;
 					sprite.loop = true;
-					window.setTimeout(
-						() => {
-							sprite.play();
-						},
-						100 * Math.random()
-					);
-					
-					this.animatedTiles.addChild(sprite);
+					sprite.play();
 				}
 
 				sprite.x = x * this.fieldSize;
 				sprite.y = y * this.fieldSize;
 				
 				sprite.scale.set(this.fieldSize / this.tileSize, this.fieldSize / this.tileSize);
+				
+				return sprite;
 			}
 		},
 		addText : {
@@ -238,8 +249,8 @@ MapViewer.prototype = Object.create(
 				sprite.alpha = 0.8;
 				sprite.interactive = true;
 				sprite.buttonMode = true;
-
-				this.staticTiles.addChild(sprite);
+				
+				return sprite;
 			}
 		},
 		getViewNode : {

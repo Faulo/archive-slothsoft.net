@@ -72,6 +72,22 @@ class HTTPFile
         file_put_contents($filePath, $content);
         return self::createFromPath($filePath, $fileName);
     }
+
+    /**
+     * @param resource $resource
+     * @param string $fileName
+     * @return \Slothsoft\CMS\HTTPFile
+     */
+    public static function createFromStream($resource, string $fileName = '')
+    {
+        $fileName = (string) $fileName;
+        if ($fileName === '') {
+            $fileName = 'index.txt';
+        }
+        $filePath = self::getTempFile();
+        file_put_contents($filePath, $resource);
+        return self::createFromPath($filePath, $fileName);
+    }
     
     /**
      * @param mixed $object
@@ -229,7 +245,7 @@ class HTTPFile
     {
         return file_get_contents($this->getPath());
     }
-    public function setContents(string $content)
+    public function setContents($content)
     {
         return file_put_contents($this->getPath(), $content);
     }

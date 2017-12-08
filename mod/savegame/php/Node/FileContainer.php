@@ -5,9 +5,11 @@ use Ds\Vector;
 use Slothsoft\Savegame\Editor;
 use Slothsoft\Savegame\EditorElement;
 use Slothsoft\Savegame\NodeEvaluatorInterface;
+use Slothsoft\Savegame\Build\BuildableInterface;
+use Slothsoft\Savegame\Build\BuilderInterface;
 declare(ticks = 1000);
 
-class FileContainer extends AbstractNode implements NodeEvaluatorInterface, XmlBuildableInterface
+class FileContainer extends AbstractNode implements NodeEvaluatorInterface, BuildableInterface
 {
 
     private $filePath;
@@ -28,15 +30,16 @@ class FileContainer extends AbstractNode implements NodeEvaluatorInterface, XmlB
 
     private $ownerSavegame;
 
-    public  function getXmlTag(): string
+    public function getBuildTag(): string
     {
         return 'file';
     }
-
-    public function getXmlAttributes(): string
+	public function getBuildAttributes(BuilderInterface $builder): array
     {
-        return $this->createXmlIdAttribute('file-name', $this->fileName);
-    }
+		return [
+			'file-name' => $this->fileName
+		];
+	}
 
     protected function loadStruc(EditorElement $strucElement)
     {
@@ -128,12 +131,18 @@ class FileContainer extends AbstractNode implements NodeEvaluatorInterface, XmlB
             }
         }
     }
-	public function getValueById(int $id) {
-		foreach ($this->valueList as $node) {
+
+    public function getValueById(int $id)
+    {
+        foreach ($this->valueList as $node) {
             if ($node->getValueId() === $id) {
-				return $node;
-			}
-		}
+                return $node;
+            }
+        }
+    }
+	
+	public function getValueList() : Vector {
+		return $this->valueList;
 	}
 
     public function evaluate($expression)

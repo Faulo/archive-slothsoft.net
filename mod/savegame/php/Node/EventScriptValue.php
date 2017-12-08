@@ -6,10 +6,16 @@ declare(ticks = 1000);
 class EventScriptValue extends AbstractValueContent
 {
 
-    public  function getXmlTag(): string
+    public function getBuildTag(): string
     {
         return 'event-script';
     }
+	public function getBuildAttributes(BuilderInterface $builder): array
+    {
+		return parent::getBuildAttributes($builder) + [
+			'value' 	=> $builder->escapeAttribute($this->value),
+		];
+	}
 
     protected function loadContent()
     {

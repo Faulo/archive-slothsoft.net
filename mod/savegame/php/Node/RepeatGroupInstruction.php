@@ -4,14 +4,14 @@ namespace Slothsoft\Savegame\Node;
 use Slothsoft\Savegame\EditorElement;
 declare(ticks = 1000);
 
-class RepeatGroupInstruction extends AbstractInstructionContent 
+class RepeatGroupInstruction extends AbstractInstructionContent
 {
 
     private $groupSize;
 
     private $groupCount;
 
-    protected function getXmlInstructionType(): string
+    protected function getInstructionType(): string
     {
         return 'repeat-group';
     }
