@@ -5,6 +5,14 @@
 	<p key="daniel-schulz.slothsoft.net">News</p>
 	<p key="daniel-schulz.slothsoft.net/content">
 		<article>
+			<h2>10.12.2017</h2>
+			<p>
+				OK so in the future I'm gonna figure out a cool way to show off code examples of my work, but for now let it be known that 
+				<a href="https://github.com/Faulo/slothsoft.net/tree/master/mod" rel="external" target="_blank">my github repository</a>
+				contains the source code responsible for all of my websites (the part of it that was written by me, anyway). Including these very words!
+			</p>
+		</article>
+		<article>
 			<h2>31.07.2017</h2>
 			<p>
 				There we go. Added more projects, and screenshots. This should suffice
@@ -172,8 +180,8 @@
 				<figcaption>
 					Items can be changed via an
 					<a
-						href="https://w3c.github.io/html/interactive-elements.html#the-menu-element"
-						target="_blank" rel="external">HTML 5.2 context menu</a>
+						href="https://www.w3.org/TR/2016/REC-html51-20161101/interactive-elements.html#the-menu-element"
+						target="_blank" rel="external">HTML 5.1 context menu</a>
 					.
 				</figcaption>
 			</figure>

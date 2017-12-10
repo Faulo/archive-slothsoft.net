@@ -467,7 +467,7 @@ class HTTPDocument
     public function isBanworthy($message)
     {
         // TODO: proper hate speech check
-        return preg_match('/nigg[ae]/u', $message) or preg_match('/fags/u', $message);
+        return (preg_match('/nigg[ae]/u', $message) or preg_match('/fags/u', $message) or preg_match('/卐/u', $message));
     }
 
     public function isBanned($ip = null)
