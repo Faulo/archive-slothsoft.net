@@ -532,12 +532,12 @@ content: " ";
         $editorList[] = 'monsters';
         $editorList[] = 'tileset.icons';
         $editorList[] = 'tileset.labs';
-        //$editorList[] = 'maps.2d';
-		//$editorList[] = 'maps.3d';
-        //$editorList[] = 'worldmap.morag';
-        //$editorList[] = 'worldmap.kire';
-        //$editorList[] = 'worldmap.lyramion';
-        //$editorList[] = 'graphics';
+        $editorList[] = 'maps.2d';
+		$editorList[] = 'maps.3d';
+        $editorList[] = 'worldmap.morag';
+        $editorList[] = 'worldmap.kire';
+        $editorList[] = 'worldmap.lyramion';
+        $editorList[] = 'graphics';
 		
         $libList = [];
         $libList[] = 'dictionaries';
@@ -549,12 +549,12 @@ content: " ";
         $libList[] = 'monsters';
         $libList[] = 'tileset.icons';
         $libList[] = 'tileset.labs';
-        //$libList[] = 'maps.2d';
-        //$libList[] = 'maps.3d';
-        //$libList[] = 'worldmap.morag';
-        //$libList[] = 'worldmap.kire';
-        //$libList[] = 'worldmap.lyramion';
-        //$libList[] = 'graphics';
+        $libList[] = 'maps.2d';
+        $libList[] = 'maps.3d';
+        $libList[] = 'worldmap.morag';
+		$libList[] = 'worldmap.kire';
+        $libList[] = 'worldmap.lyramion';
+        $libList[] = 'graphics';
 		
 		$globalList = [];
         $globalList[] = 'dictionaries';
@@ -572,7 +572,7 @@ content: " ";
         $styleList[] = 'tileset.icons';
         
         $graphicsList = [];
-        // $graphicsList[] = 'graphics';
+        $graphicsList[] = 'graphics';
         
         foreach ($gameList as $game) {
             $req->setInputValue('game', $game);
@@ -702,8 +702,10 @@ content: " ";
                                     $sourceFile = $filePathList[$fileId];
                                     $targetFile = $this->locator->getResource(ModResource::TYPE_GRAPHIC, $archiveName . DIRECTORY_SEPARATOR . sprintf('%03d-%02d', $fileId, $options['palette']))->getPath();
                                     
-                                    $res = $graphicsManager->convertGraphic($sourceFile, $targetFile, $options);
-                                    echo "\t\t\t\t" . ($res ? 'OK: ' : 'ERROR: ') . $targetFile . PHP_EOL;
+									if (!file_exists($targetFile)) {
+										$res = $graphicsManager->convertGraphic($sourceFile, $targetFile, $options);
+										echo "\t\t\t\t" . ($res ? 'OK: ' : 'ERROR: ') . $targetFile . PHP_EOL;
+									}
                                 }
                             }
                         }

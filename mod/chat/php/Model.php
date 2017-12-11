@@ -56,9 +56,10 @@ class Model
             if (! $this->dbmsTable->tableExists()) {
                 $this->install();
             }
-        } finally {
-            $this->dbmsTable = null;
-        }
+        } catch (Exception $e) {
+			$this->dbmsTable = null;
+			throw $e;
+		}
     }
 
     public function insert($message, $time, $ip)

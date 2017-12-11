@@ -53,7 +53,7 @@ MapViewer.prototype = Object.create(
 					
 					this.tilesetId = parseInt(this.tilesetNode.getAttribute("id"));
 					
-					this.tilesetImageUrl = "http://localhost/getData.php/amber/mod.resource?game=ambermoon&mod=Thalion-v1.05-DE&type=3&name=tileset.icons%2F";
+					this.tilesetImageUrl = "/getData.php/amber/mod.resource?game=ambermoon&mod=Thalion-v1.05-DE&type=3&name=tileset.icons%2F";
 					
 					this.tilesetImageUrl += ("000" + this.tilesetId).slice(-3);
 					this.tilesetImageUrl += "-";
@@ -159,32 +159,26 @@ MapViewer.prototype = Object.create(
 					for (let x = 0; x < fieldNodeList.length; x++) {
 						let fieldNode = fieldNodeList[x];
 						
-						window.setTimeout(
-							(x, y, fieldNode) => {
-								if (fieldNode.hasAttribute("low")) {
-									let sprite = this.addTile(x, y, fieldNode.getAttribute("low"));
-									if (sprite.loop) {
-										this.tilesetLayers.lowAnim.addChild(sprite);
-									} else {
-										this.tilesetLayers.lowStatic.addChild(sprite);
-									}
-								}
-								if (fieldNode.hasAttribute("high")) {
-									let sprite = this.addTile(x, y, fieldNode.getAttribute("high"));
-									if (sprite.loop) {
-										this.tilesetLayers.highAnim.addChild(sprite);
-									} else {
-										this.tilesetLayers.highStatic.addChild(sprite);
-									}
-								}
-								if (fieldNode.hasAttribute("event")) {
-									let sprite = this.addText(x, y, fieldNode.getAttribute("event"));
-									this.tilesetLayers.text.addChild(sprite);
-								}
-							},
-							0,
-							x, y, fieldNode
-						);
+						if (fieldNode.hasAttribute("low")) {
+							let sprite = this.addTile(x, y, fieldNode.getAttribute("low"));
+							if (sprite.loop) {
+								this.tilesetLayers.lowAnim.addChild(sprite);
+							} else {
+								this.tilesetLayers.lowStatic.addChild(sprite);
+							}
+						}
+						if (fieldNode.hasAttribute("high")) {
+							let sprite = this.addTile(x, y, fieldNode.getAttribute("high"));
+							if (sprite.loop) {
+								this.tilesetLayers.highAnim.addChild(sprite);
+							} else {
+								this.tilesetLayers.highStatic.addChild(sprite);
+							}
+						}
+						if (fieldNode.hasAttribute("event")) {
+							let sprite = this.addText(x, y, fieldNode.getAttribute("event"));
+							this.tilesetLayers.text.addChild(sprite);
+						}
 					}
 				}
 			}
