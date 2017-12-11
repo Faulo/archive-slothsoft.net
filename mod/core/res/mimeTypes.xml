@@ -8,17 +8,18 @@
 		<sub name="rdf+xml" ext="rdf"/>
 		<sub name="xsd+xml" ext="xsd"/><!--not real-->
 		<sub name="javascript" ext="js"/>
-		<sub name="zip" ext="zip"/>
 		<sub name="octet-stream" ext=""/>
 		<sub name="json" ext="json"/>
 		<sub name="pdf" ext="pdf"/>
 		<sub name="font-sfnt" ext="ttf" spec="http://developer.apple.com/fonts/TTRefMan/RM06/Chap6name.html"/>
 		<sub name="font-woff" ext="woff" spec="http://www.w3.org/TR/WOFF/"/>
 		<sub name="vnd.unity" ext="unity3d"/>
+		<sub name="zip" ext="zip"/>
+		<sub name="x-7z-compressed" ext="7z"/>
+		<sub name="x-lzh-compressed" ext="lha"/>
 		<sub name="x-nbt" ext="dat"/>
 		<sub name="x-mcr" ext="mcr"/>
 		<sub name="x-mca" ext="mca"/>
-		<sub name="x-7z-compressed" ext="7z"/>
 		<sub name="x-subrip" ext="srt"/>
 		<sub name="x-xpinstall" ext="xpi"/>
 		<sub name="x-msdownload" ext="exe"/>
