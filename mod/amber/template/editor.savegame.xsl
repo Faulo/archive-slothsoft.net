@@ -981,7 +981,7 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 		</xsl:call-template>
 	</xsl:template>
 	<xsl:template name="savegame.amber.character-ailments">
-		<xsl:apply-templates select=".//*[@name = 'ailments-current']"
+		<xsl:apply-templates select=".//*[@name = 'ailments']"
 			mode="item">
 			<xsl:with-param name="class" select="'ailments'" />
 		</xsl:apply-templates>

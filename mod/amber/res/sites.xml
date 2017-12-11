@@ -1,114 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
-	<page name="Ambermoon" title="Ambermoon" module="amber" ref="home"
+	<page name="Ambermoon" title="Ambermoon" module="amber" ref="description"
 		status-active="" status-public="">
-		<page name="EditorHelp" title="EditorHelp" ref="help"
+		<param name="game" value="ambermoon" />
+		
+		<page name="EditorHelp" title="EditorHelp" ref="description"
 			status-active="" status-public="" />
+		<page name="Downloads" title="Downloads" ref="description" status-active="" status-public=""/>
+		
+		<page name="Thalion-v1.06-DE" title="Thalion-v1.06-DE" ref="description"
+			status-active="" status-public="">
+			<param name="mod" value="Thalion-v1.06-DE" />
+			<res ref="/amber/sites-mod"/>
+		</page>
+		
+		<page name="Thalion-v1.05-DE" title="Thalion-v1.05-DE" ref="description"
+			status-active="" status-public="">
+			<param name="mod" value="Thalion-v1.05-DE" />
+			<res ref="/amber/sites-mod"/>
+		</page>
+		
+		
 		<page name="SavegameEditor" title="SavegameEditor"
 			redirect="/Ambermoon/Thalion-v1.05-DE/SaveEditor" status-active="" />
 		<page name="GamedataEditor" title="GamedataEditor"
 			redirect="/Ambermoon/Thalion-v1.05-DE/GameEditor" status-active="" />
 		<page name="GameEditor" title="GameEditor"
 			redirect="/Ambermoon/Thalion-v1.05-DE/GameEditor" status-active="" />
+			
 		<page name="ExperienceChart" title="ExperienceChart"
-			redirect="/Ambermoon/Thalion-v1.05-DE/ClassList" status-active="" />
+			redirect="/Ambermoon/Thalion-v1.05-DE/GameData/ClassList" status-active="" />
 		<page name="ItemList" title="ItemList"
-			redirect="/Ambermoon/Thalion-v1.05-DE/ItemList" status-active="" />
+			redirect="/Ambermoon/Thalion-v1.05-DE/GameData/ItemList" status-active="" />
 		<page name="PortraitList" title="PortraitList"
-			redirect="/Ambermoon/Thalion-v1.05-DE/PortraitList" status-active="" />
-
-		<param name="game" value="ambermoon" />
-		<page name="Thalion-v1.05-DE" title="Thalion-v1.05-DE" ref="mod"
-			status-active="" status-public="">
-			<param name="mod" value="Thalion-v1.05-DE" />
-			<page name="SaveEditor" title="SavegameEditor" ref="mod.editor"
-				status-active="" status-public="">
-				<param name="struc" value="structure.savegame" />
-			</page>
-			<page name="GameEditor" title="GameEditor" ref="mod.editor"
-				status-active="" status-public="">
-				<param name="struc" value="structure" />
-			</page>
-			<page name="ItemList" title="ItemList" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="items" />
-			</page>
-			<page name="PCList" title="PCList" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="pcs" />
-			</page>
-			<page name="NPCList" title="NPCList" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="npcs" />
-			</page>
-			<page name="MonsterList" title="MonsterList" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="monsters" />
-			</page>
-			<page name="ClassList" title="ClassList" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="classes" />
-			</page>
-			<page name="PortraitList" title="PortraitList" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="portraits" />
-			</page>
-			<page name="Maps2D" title="Maps2D" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="maps.2d" />
-			</page>
-			<page name="Maps3D" title="Maps3D" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="maps.3d" />
-			</page>
-			<page name="WorldmapLyramion" title="WorldmapLyramion" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="worldmap.lyramion" />
-			</page>
-			<page name="WorldmapKire" title="WorldKire" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="worldmap.kire" />
-			</page>
-			<page name="WorldmapMorag" title="WorldmapMorag" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="worldmap.morag" />
-			</page>
-		</page>
-		<page name="Thalion-v1.06-DE" title="Thalion-v1.06-DE" ref="mod"
-			status-active="" status-public="">
-			<param name="mod" value="Thalion-v1.06-DE" />
-			<page name="SaveEditor" title="SavegameEditor" ref="mod.editor"
-				status-active="" status-public="">
-				<param name="struc" value="structure.savegame" />
-			</page>
-			<page name="GameEditor" title="GameEditor" ref="mod.editor"
-				status-active="" status-public="">
-				<param name="struc" value="structure" />
-			</page>
-			<page name="ItemList" title="ItemList" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="items" />
-			</page>
-			<page name="PCList" title="PCList" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="pcs" />
-			</page>
-			<page name="NPCList" title="NPCList" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="npcs" />
-			</page>
-			<page name="MonsterList" title="MonsterList" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="monsters" />
-			</page>
-			<page name="ClassList" title="ClassList" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="classes" />
-			</page>
-			<page name="PortraitList" title="PortraitList" ref="mod.resource"
-				status-active="" status-public="">
-				<param name="id" value="portraits" />
-			</page>
-		</page>
+			redirect="/Ambermoon/Thalion-v1.05-DE/GameData/PortraitList" status-active="" />
 	</page>
 </data>

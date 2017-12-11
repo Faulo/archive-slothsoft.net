@@ -1,30 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
-	<fragment name="home">
+	<fragment name="description">
 		<struc name="/slothsoft/default" />
 		<fragment name="content">
-			<template name="home" />
+			<template name="description" />
 			<struc name="default" />
 		</fragment>
 		<call name="chat" />
 	</fragment>
-
-	<fragment name="mod">
-		<struc name="/slothsoft/default" />
-		<fragment name="content">
-			<template name="mod" />
-			<struc name="default" />
-		</fragment>
-	</fragment>
-	<fragment name="editor">
-		<struc name="/slothsoft/default" />
-		<fragment name="content">
-			<data name="editor" />
-			<template name="editor" />
-			<struc name="default" />
-		</fragment>
-	</fragment>
-
+	
 	<fragment name="mod.editor">
 		<struc name="/slothsoft/default" />
 		<fragment name="content">
@@ -64,15 +48,40 @@
 		</fragment>
 	</fragment>
 
+	<fragment name="chat">
+		<param name="chat-database" value="amber" />
+		<template name="/chat/shoutbox" />
+		<call name="/chat/default" as="chat" />
+	</fragment>
+	
+	
+	
+	
+	
+<!-- 
+	<fragment name="home">
+		<struc name="/slothsoft/default" />
+		<fragment name="content">
+			<template name="home" />
+			<struc name="default" />
+		</fragment>
+		<call name="chat" />
+	</fragment>
+
+	
+	<fragment name="editor">
+		<struc name="/slothsoft/default" />
+		<fragment name="content">
+			<data name="editor" />
+			<template name="editor" />
+			<struc name="default" />
+		</fragment>
+	</fragment>
+
 	<fragment name="editor-savegame">
 		<struc name="/slothsoft/default" />
 		<param name="EditorConfig" value="/amber/AmbermoonSavegame" />
 		<call name="editor-content" as="content" />
-		<!-- <fragment name="content"> <data name="editor"/> <template name="editor"/>
-			<struc name="default"/> <script name="SavegameEditor"/> <res name="AmbermoonItems"
-			as="items" load="xml"/> <res name="AmbermoonPortraits" as="portraits"
-			load="xml"/>
-			<call name="itemlist-content"/> <call name="portraitlist-content"/> </fragment> -->
 	</fragment>
 
 	<fragment name="editor-gamedata">
@@ -90,8 +99,7 @@
 	<fragment name="editor-content">
 		<data name="editor" />
 		<template name="editor" />
-		<struc name="default" />
-		<!-- <script name="/lib/angular"/> <script name="AngularAmber"/> -->
+		<struc name="default" /
 		<script name="SavegameEditor" />
 		<res name="AmbermoonItems" as="items" load="xml" />
 		<res name="AmbermoonPortraits" as="portraits" load="xml" />
@@ -136,12 +144,6 @@
 		<res name="AmbermoonPortraits" as="list" load="xml" />
 	</fragment>
 
-	<fragment name="chat">
-		<param name="chat-database" value="amber" />
-		<template name="/chat/shoutbox" />
-		<call name="/chat/default" as="chat" />
-	</fragment>
-
 	<fragment name="items">
 		<param name="standalone" scope="global" />
 		<template name="items" />
@@ -179,6 +181,13 @@
 		<data name="extract-classes" />
 		<template name="editor.extract" />
 	</fragment>
+-->
+
+
+
+
+
+
 
 	<struc name="default">
 		<style name="default" />
@@ -186,13 +195,6 @@
 		<data name="mod.resource-stylesheet">
 			<param name="id" value="styles" />
 		</data>
-		<!--
-			<style name="items" />
-			<style name="portraits" />
-			<style name="tileset.icons"/>
-		-->
-		<!-- <style name="dictionary" /> -->
-		<!-- <style name="tilesets" /> -->
 	</struc>
 	<struc name="SavegameEditor">
 		<script name="/core/XSLT" />
@@ -200,19 +202,24 @@
 		<script name="SavegameEditor" />
 	</struc>
 
+
+
+
+
+
+
 	<resource name="sites" path="sites.xml" type="application/xml" />
+	<resource name="sites-mod" path="sites.mod.xml" type="application/xml" />
 
 	<resource name="editor" path="editor.xml" type="application/xml" />
 	<resource name="config" path="config.json" type="application/json" />
 	<resource name="charStruc" path="charStruc.xml" type="application/xml" />
 	<resource name="partyStruc" path="partyStruc.xml" type="application/xml" />
 
-	<resource name="AmbermoonAmberfiles" path="AmbermoonAmberfiles.xml"
+	
+	<resource name="AmbermoonSavegame" path="ambermoon/structure.xml"
 		type="application/xml" />
-	<resource name="AmbermoonSavegame" path="AmbermoonAmberfiles.Savegame.xml"
-		type="application/xml" />
-	<resource name="AmbermoonGamedata" path="AmbermoonAmberfiles.Gamedata.xml"
-		type="application/xml" />
+	
 	<!-- <resource name="AmbermoonDictionary" path="AmbermoonDictionary.xml"
 		type="application/xml"/> <resource name="AmbermoonItems" path="AmbermoonItems.svg"
 		type="image/svg+xml"/> <resource name="AmbermoonCPU" path="AmbermoonCPU.xml"
@@ -234,5 +241,7 @@
 	<resourceDir name="monster-gfx" path="monster-gfx" type="image/png" />
 
 	<resourceDir name="AmbermoonPatch" path="save/patch" type="*/*" />
+	
+	<resourceDir name="patch" path="patches" type="*/*" />
 
 </module>

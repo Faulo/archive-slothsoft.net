@@ -799,7 +799,7 @@
 		<integer name="gold" position="24" size="2" />
 		<integer name="food" position="26" size="2" />
 		<integer name="fixed-FFFF" position="28" size="2" />
-		<bit-field position="30" size="2" name="ailments-current"
+		<bit-field position="30" size="2" name="ailments"
 			dictionary-ref="ailments" />
 		<integer name="combat-experience" position="32" size="2" />
 
@@ -891,6 +891,268 @@
 			</group>
 		-->
 	</global>
+	<global global-id="map-texts">
+		<string-dictionary type="size-first" encoding="CP850"
+			position="0" name="label" />
+	</global>
+	<global global-id="map-data">
+		<group name="data">
+			<select position="10" name="world" dictionary-ref="map-worlds" />
+			<select position="2" name="map-type" dictionary-ref="map-types" />
+			<integer position="4" name="width" />
+			<integer position="5" name="height" />
+			<integer position="6" name="tileset-id" />
+			<integer position="9" name="palette-id" />
+			<select position="3" name="bgm-id" dictionary-ref="songs" />
+			<!--
+			<integer position="$width * $height * $map-type * 2" name="event-count"/>
+			<binary position="$width * $height * $map-type * 2 + 8 + $event-count * 12" size="4" name="walkcoords"/>
+			-->
+		</group>
+		<group name="unknown">
+			<integer position="0" />
+			<integer position="1" />
+			<integer position="7" />
+			<integer position="8" />
+			<integer position="11" />
+		</group>
+		<repeat-group name="mobs" position="12" group-count="32" group-size="10">
+			<integer position="0" name="char-id"/>
+			<integer position="1" name="monster-maybe"/>
+			<bit position="2" bit="0" name="is-npc"/>
+			<bit position="2" bit="1" name="is-monstergroup"/>
+			<bit position="2" bit="4" name="is-popup"/>
+			<bit position="2" bit="2" name="random-movement"/>
+			<bit position="2" bit="3" name="uses-tileset"/>
+			<integer position="3" name="event-id"/>
+			<integer position="4" name="gfx-id" size="2"/>
+			<bit position="8" bit="0" name="is-intangible"/>
+			<!--
+			<bit position="6" bit="7" name="is-?"/>
+			<integer position="7" name="null"/>
+			<bit position="8" bit="0" name="is-intangible"/>
+			<bit position="8" bit="4" name="is-grandpa"/>
+			<bit position="9" bit="0" name="animation-delay"/>
+			<bit position="9" bit="4" name="is-?"/>
+			<binary position="6" size="4"/>
+			-->
+		</repeat-group>
+		<group position="0x14C">
+		<!--
+			<repeat-group name="fields" group-count="$width * $height"
+				group-size="$map-type * 2">
+				<integer position="0" size="1"/>
+				<integer position="2" size="2 * ($map-type - 1)"/>
+				<integer position="1" size="1"/>
+			</repeat-group>
+		-->
+			<group position="$width * $height * $map-type * 2" name="events">
+				<event-dictionary />
+			</group>
+		</group>
+	</global>
+	<global global-id="icon-data">
+		<group name="data">
+			<integer position="0" size="2" name="entry-count" />
+			<binary position="2" size="4" name="unknown"/>
+		</group>
+		<group name="tiles">
+			<repeat-group position="2" group-count="$entry-count"
+				group-size="8">
+				<group name="testing">
+					<integer position="0" size="1" />
+					<integer position="1" size="1" />
+					<integer position="3" size="1" />
+				</group>
+				<bit-field position="2" size="1" name="mobility"
+					dictionary-ref="tile-icon-mobility" />
+				<integer position="4" size="2" name="image-id" />
+				<integer position="6" size="1" name="image-count" />
+				<select position="7" size="1" name="image-color"
+					dictionary-ref="colors" />
+			</repeat-group>
+		</group>
+	</global>
+	<global global-id="lab-data">
+		<group name="testing">
+			<integer position="2" />
+			<integer position="3" />
+			<integer position="4" />
+			<integer position="5" />
+		</group>
+		<group name="data">
+			<integer position="8" size="2" name="tile-count" />
+			<integer position="10 + $tile-count * 66" size="2" name="info-count" />
+			<binary position="0" size="10" />
+			<binary position="10 + $tile-count * 66" size="10" />
+			<binary position="10 + $tile-count * 66 + 2 + $info-count * 14" size="200" />
+		</group>
+		<group name="tiles-lab">
+			<repeat-group position="10" group-count="$tile-count"
+				group-size="66">
+				<binary position="0" size="2" />
+				<binary position="2" size="64" />
+			</repeat-group>
+		</group>
+		<group name="tiles-lab">
+			<repeat-group position="10 + $tile-count * 66 + 2" group-count="$info-count"
+				group-size="14"><!--0x84-->
+				<binary position="0" size="14" />
+			</repeat-group>
+		</group>
+	</global>
+	
+	<global global-id="place-inn">
+		<group>
+			<integer position="0" name="price" size="2" />
+			<integer position="2" name="map-x" size="2" />
+			<integer position="4" name="map-y" size="2" />
+			<select position="6" name="map-id" size="2" dictionary-ref="map-ids" />
+			<integer position="8" name="healing" size="2" />
+		</group>
+	</global>
+	<global global-id="place-trainer">
+		<group>
+			<select position="0" name="skill" size="2" dictionary-ref="skills" />
+			<integer position="2" name="price" size="2" />
+		</group>
+	</global>
+	<global global-id="place-healer">
+		<repeat-group group-size="2" group-count="13"
+			dictionary-ref="ailments-healer">
+			<integer size="2" />
+		</repeat-group>
+	</global>
+	<global global-id="place-shop">
+		<group>
+		</group>
+	</global>
+	<global global-id="place-food">
+		<group>
+			<integer name="price" size="2" />
+		</group>
+	</global>
+	<global global-id="place-sage">
+		<group>
+			<integer name="price" size="2" />
+		</group>
+	</global>
+	<global global-id="place-blacksmith">
+		<group>
+			<integer name="price" size="2" />
+		</group>
+	</global>
+	<global global-id="place-transport">
+		<group>
+			<integer position="0" name="price" size="2" />
+			<integer position="2" name="map-x" size="2" />
+			<integer position="4" name="map-y" size="2" />
+			<select position="6" name="map-id" size="2" dictionary-ref="map-ids" />
+			<select position="8" name="spawn" size="2" dictionary-ref="event-spawn-types" />
+		</group>
+	</global>
+	<global global-id="AM2-strings">
+		<string-dictionary type="null-delimited" encoding="8bit"
+			position="0x000" name="spell-types" string-count="7" />
+		<string-dictionary type="null-delimited" encoding="8bit"
+			position="0x02F" name="spells-white" string-count="30" />
+		<string-dictionary type="null-delimited" encoding="8bit"
+			position="0x20A" name="spells-blue" string-count="30" />
+		<string-dictionary type="null-delimited" encoding="8bit"
+			position="0x398" name="spells-green" string-count="30" />
+		<string-dictionary type="null-delimited" encoding="8bit"
+			position="0x4AD" name="spells-black" string-count="30" />
+		<string-dictionary type="null-delimited" encoding="8bit"
+			position="0x62E" name="spells-misc" string-count="30" />
+	</global>
+	<global global-id="AM2-items">
+		<repeat-group group-size="60" group-count="402">
+			<integer position="0" name="image-id" />
+			<select position="1" name="type" dictionary-ref="item-types" />
+			<select position="2" name="slot" dictionary-ref="item-slots" />
+			<integer position="5" name="hands" max="2" />
+			<integer position="6" name="fingers" max="2" />
+			<bit-field position="4" name="genders" first-bit="0"
+				last-bit="1" dictionary-ref="genders" />
+			<integer position="7" name="lp-max" />
+			<integer position="8" name="sp-max" />
+			<select position="9" name="attribute-type" dictionary-ref="attributes" />
+			<integer position="10" name="attribute-value" />
+			<select position="11" name="skill-type" dictionary-ref="skills" />
+			<integer position="12" name="skill-value" />
+
+			<integer position="13" name="armor" />
+			<integer position="14" name="damage" />
+			<select position="15" name="ammunition-type" dictionary-ref="ammunitions" />
+			<select position="16" name="ranged-type" dictionary-ref="ammunitions" />
+
+			<integer position="21" name="subtype" />
+			<integer position="22" name="subsubtype" />
+			<select position="23" name="spell-type" dictionary-ref="item-spell-types" />
+			<integer position="24" name="spell-id" />
+			<integer position="25" name="charges-default" />
+			<integer position="27" name="max-charges-by-shop" />
+			<integer position="28" name="max-charges-by-spell" />
+			<integer position="29" name="price-per-charge" />
+			<integer position="30" name="magic-armor" />
+			<integer position="31" name="magic-weapon" />
+			<bit-field position="32" name="properties" first-bit="0"
+				last-bit="6" dictionary-ref="item-properties" />
+			<bit-field position="33" name="default-status" first-bit="0"
+				last-bit="1" dictionary-ref="item-status" />
+			<bit-field position="34" name="classes" size="2" first-bit="0"
+				last-bit="8" dictionary-ref="classes" />
+			<integer position="36" name="price" size="2" />
+			<integer position="38" name="weight" size="2" />
+			<string position="40" name="name" size="19" encoding="CP850" />
+		</repeat-group>
+	</global>
+	<global global-id="AM2-integers">
+		<repeat-group name="class-experience" group-size="2"
+			group-count="10">
+			<integer size="2" />
+		</repeat-group>
+	</global>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<archive path="Amberfiles/Save.00/Party_char.amb" type="AMBR">
 		<for-each-file>
 			<use-global ref="character" />
@@ -1065,10 +1327,6 @@
 				position="0" name="dialog" />
 		</for-each-file>
 	</archive>
-	<global global-id="map-texts">
-		<string-dictionary type="size-first" encoding="CP850"
-			position="0" name="label" />
-	</global>
 	<archive path="Amberfiles/1Map_texts.amb" type="AMBR">
 		<for-each-file>
 			<use-global ref="map-texts" />
@@ -1084,62 +1342,6 @@
 			<use-global ref="map-texts" />
 		</for-each-file>
 	</archive>
-	<global global-id="map-data">
-		<group name="data">
-			<select position="10" name="world" dictionary-ref="map-worlds" />
-			<select position="2" name="map-type" dictionary-ref="map-types" />
-			<integer position="4" name="width" />
-			<integer position="5" name="height" />
-			<integer position="6" name="tileset-id" />
-			<integer position="9" name="palette-id" />
-			<select position="3" name="bgm-id" dictionary-ref="songs" />
-			<!--
-			<integer position="$width * $height * $map-type * 2" name="event-count"/>
-			<binary position="$width * $height * $map-type * 2 + 8 + $event-count * 12" size="4" name="walkcoords"/>
-			-->
-		</group>
-		<group name="unknown">
-			<integer position="0" />
-			<integer position="1" />
-			<integer position="7" />
-			<integer position="8" />
-			<integer position="11" />
-		</group>
-		<repeat-group name="mobs" position="12" group-count="32" group-size="10">
-			<integer position="0" name="char-id"/>
-			<integer position="1" name="monster-maybe"/>
-			<bit position="2" bit="0" name="is-npc"/>
-			<bit position="2" bit="1" name="is-monstergroup"/>
-			<bit position="2" bit="4" name="is-popup"/>
-			<bit position="2" bit="2" name="random-movement"/>
-			<bit position="2" bit="3" name="uses-tileset"/>
-			<integer position="3" name="event-id"/>
-			<integer position="4" name="gfx-id" size="2"/>
-			<bit position="8" bit="0" name="is-intangible"/>
-			<!--
-			<bit position="6" bit="7" name="is-?"/>
-			<integer position="7" name="null"/>
-			<bit position="8" bit="0" name="is-intangible"/>
-			<bit position="8" bit="4" name="is-grandpa"/>
-			<bit position="9" bit="0" name="animation-delay"/>
-			<bit position="9" bit="4" name="is-?"/>
-			<binary position="6" size="4"/>
-			-->
-		</repeat-group>
-		<group position="0x14C">
-		<!--
-			<repeat-group name="fields" group-count="$width * $height"
-				group-size="$map-type * 2">
-				<integer position="0" size="1"/>
-				<integer position="2" size="2 * ($map-type - 1)"/>
-				<integer position="1" size="1"/>
-			</repeat-group>
-		-->
-			<group position="$width * $height * $map-type * 2" name="events">
-				<event-dictionary />
-			</group>
-		</group>
-	</global>
 	<archive path="Amberfiles/1Map_data.amb" type="AMBR">
 		<for-each-file>
 			<use-global ref="map-data" />
@@ -1155,61 +1357,11 @@
 			<use-global ref="map-data" />
 		</for-each-file>
 	</archive>
-	<global global-id="icon-data">
-		<group name="data">
-			<integer position="0" size="2" name="entry-count" />
-			<binary position="2" size="4" name="unknown"/>
-		</group>
-		<group name="tiles">
-			<repeat-group position="2" group-count="$entry-count"
-				group-size="8">
-				<group name="testing">
-					<integer position="0" size="1" />
-					<integer position="1" size="1" />
-					<integer position="3" size="1" />
-				</group>
-				<bit-field position="2" size="1" name="mobility"
-					dictionary-ref="tile-icon-mobility" />
-				<integer position="4" size="2" name="image-id" />
-				<integer position="6" size="1" name="image-count" />
-				<select position="7" size="1" name="image-color"
-					dictionary-ref="colors" />
-			</repeat-group>
-		</group>
-	</global>
 	<archive path="Amberfiles/Icon_data.amb" type="AMBR">
 		<for-each-file>
 			<use-global ref="icon-data" />
 		</for-each-file>
 	</archive>
-	<global global-id="lab-data">
-		<group name="testing">
-			<integer position="2" />
-			<integer position="3" />
-			<integer position="4" />
-			<integer position="5" />
-		</group>
-		<group name="data">
-			<integer position="8" size="2" name="tile-count" />
-			<integer position="10 + $tile-count * 66" size="2" name="info-count" />
-			<binary position="0" size="10" />
-			<binary position="10 + $tile-count * 66" size="10" />
-			<binary position="10 + $tile-count * 66 + 2 + $info-count * 14" size="200" />
-		</group>
-		<group name="tiles-lab">
-			<repeat-group position="10" group-count="$tile-count"
-				group-size="66">
-				<binary position="0" size="2" />
-				<binary position="2" size="64" />
-			</repeat-group>
-		</group>
-		<group name="tiles-lab">
-			<repeat-group position="10 + $tile-count * 66 + 2" group-count="$info-count"
-				group-size="14"><!--0x84-->
-				<binary position="0" size="14" />
-			</repeat-group>
-		</group>
-	</global>
 	<archive path="Amberfiles/2Lab_data.amb" type="AMBR">
 		<for-each-file>
 			<use-global ref="lab-data" />
@@ -1224,55 +1376,6 @@
 	
 	
 	
-	<global global-id="place-inn">
-		<group>
-			<integer position="0" name="price" size="2" />
-			<integer position="2" name="map-x" size="2" />
-			<integer position="4" name="map-y" size="2" />
-			<select position="6" name="map-id" size="2" dictionary-ref="map-ids" />
-			<integer position="8" name="healing" size="2" />
-		</group>
-	</global>
-	<global global-id="place-trainer">
-		<group>
-			<select position="0" name="skill" size="2" dictionary-ref="skills" />
-			<integer position="2" name="price" size="2" />
-		</group>
-	</global>
-	<global global-id="place-healer">
-		<repeat-group group-size="2" group-count="13"
-			dictionary-ref="ailments-healer">
-			<integer size="2" />
-		</repeat-group>
-	</global>
-	<global global-id="place-shop">
-		<group>
-		</group>
-	</global>
-	<global global-id="place-food">
-		<group>
-			<integer name="price" size="2" />
-		</group>
-	</global>
-	<global global-id="place-sage">
-		<group>
-			<integer name="price" size="2" />
-		</group>
-	</global>
-	<global global-id="place-blacksmith">
-		<group>
-			<integer name="price" size="2" />
-		</group>
-	</global>
-	<global global-id="place-transport">
-		<group>
-			<integer position="0" name="price" size="2" />
-			<integer position="2" name="map-x" size="2" />
-			<integer position="4" name="map-y" size="2" />
-			<select position="6" name="map-id" size="2" dictionary-ref="map-ids" />
-			<select position="8" name="spawn" size="2" dictionary-ref="event-spawn-types" />
-		</group>
-	</global>
 	<archive path="Amberfiles/Place_data" type="JH">
 		<for-each-file>
 			<!--
@@ -1375,68 +1478,6 @@
 
 		</archive>
 	-->
-	<global global-id="AM2-strings">
-		<string-dictionary type="null-delimited" encoding="8bit"
-			position="0x000" name="spell-types" string-count="7" />
-		<string-dictionary type="null-delimited" encoding="8bit"
-			position="0x02F" name="spells-white" string-count="30" />
-		<string-dictionary type="null-delimited" encoding="8bit"
-			position="0x20A" name="spells-blue" string-count="30" />
-		<string-dictionary type="null-delimited" encoding="8bit"
-			position="0x398" name="spells-green" string-count="30" />
-		<string-dictionary type="null-delimited" encoding="8bit"
-			position="0x4AD" name="spells-black" string-count="30" />
-		<string-dictionary type="null-delimited" encoding="8bit"
-			position="0x62E" name="spells-misc" string-count="30" />
-	</global>
-	<global global-id="AM2-items">
-		<repeat-group group-size="60" group-count="402">
-			<integer position="0" name="image-id" />
-			<select position="1" name="type" dictionary-ref="item-types" />
-			<select position="2" name="slot" dictionary-ref="item-slots" />
-			<integer position="5" name="hands" max="2" />
-			<integer position="6" name="fingers" max="2" />
-			<bit-field position="4" name="genders" first-bit="0"
-				last-bit="1" dictionary-ref="genders" />
-			<integer position="7" name="lp-max" />
-			<integer position="8" name="sp-max" />
-			<select position="9" name="attribute-type" dictionary-ref="attributes" />
-			<integer position="10" name="attribute-value" />
-			<select position="11" name="skill-type" dictionary-ref="skills" />
-			<integer position="12" name="skill-value" />
-
-			<integer position="13" name="armor" />
-			<integer position="14" name="damage" />
-			<select position="15" name="ammunition-type" dictionary-ref="ammunitions" />
-			<select position="16" name="ranged-type" dictionary-ref="ammunitions" />
-
-			<integer position="21" name="subtype" />
-			<integer position="22" name="subsubtype" />
-			<select position="23" name="spell-type" dictionary-ref="item-spell-types" />
-			<integer position="24" name="spell-id" />
-			<integer position="25" name="charges-default" />
-			<integer position="27" name="max-charges-by-shop" />
-			<integer position="28" name="max-charges-by-spell" />
-			<integer position="29" name="price-per-charge" />
-			<integer position="30" name="magic-armor" />
-			<integer position="31" name="magic-weapon" />
-			<bit-field position="32" name="properties" first-bit="0"
-				last-bit="6" dictionary-ref="item-properties" />
-			<bit-field position="33" name="default-status" first-bit="0"
-				last-bit="1" dictionary-ref="item-status" />
-			<bit-field position="34" name="classes" size="2" first-bit="0"
-				last-bit="8" dictionary-ref="classes" />
-			<integer position="36" name="price" size="2" />
-			<integer position="38" name="weight" size="2" />
-			<string position="40" name="name" size="19" encoding="CP850" />
-		</repeat-group>
-	</global>
-	<global global-id="AM2-integers">
-		<repeat-group name="class-experience" group-size="2"
-			group-count="10">
-			<integer size="2" />
-		</repeat-group>
-	</global>
 	<!--
 		<archive path="Amberfiles/AM2_CPU" type="AM2">
 

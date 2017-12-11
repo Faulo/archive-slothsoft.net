@@ -40,4 +40,6 @@
 	<p key="chat/description/vct.Pittmon">chat/description/vct.Pittmon</p>
 	<p key="chat/title/vct.test">chat/title/vct.test</p>
 	<p key="chat/description/vct.test">chat/description/vct.test</p>
+<p key="chat/title/">chat/title/</p>
+<p key="chat/description/">chat/description/</p>
 </html>

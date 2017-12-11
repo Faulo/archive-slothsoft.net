@@ -13,6 +13,7 @@ MapViewer.prototype = Object.create(
 	Object.prototype, {
 		fieldSize 	: { writable : true },
 		tileSize : { writable : true },
+		animationEnabled : { writable : true },
 		
 		viewNode 	: { writable : true },
 		renderer 	: { writable : true },
@@ -35,16 +36,19 @@ MapViewer.prototype = Object.create(
 		init : {
 			value : function() {
 				try {
-					this.fieldSize = 32;
-					this.tileSize = 16;
-					
 					this.mapWidth = parseInt(this.mapNode.getAttribute("width"));
 					this.mapHeight = parseInt(this.mapNode.getAttribute("height"));
 					this.mapPaletteId = parseInt(this.mapNode.getAttribute("palette-id"));
 					this.mapPaletteId--;
 					
-					if (this.mapWidth > 100) {
+					if (this.mapWidth < 100) {
+						this.fieldSize = 32;
+						this.tileSize = 16;
+						this.animationEnabled = true;
+					} else {
 						this.fieldSize = 16;
+						this.tileSize = 16;
+						this.animationEnabled = true;
 					}
 					
 					this.tilesetId = parseInt(this.tilesetNode.getAttribute("id"));
@@ -155,26 +159,32 @@ MapViewer.prototype = Object.create(
 					for (let x = 0; x < fieldNodeList.length; x++) {
 						let fieldNode = fieldNodeList[x];
 						
-						if (fieldNode.hasAttribute("low")) {
-							let sprite = this.addTile(x, y, fieldNode.getAttribute("low"));
-							if (sprite.loop) {
-								this.tilesetLayers.lowAnim.addChild(sprite);
-							} else {
-								this.tilesetLayers.lowStatic.addChild(sprite);
-							}
-						}
-						if (fieldNode.hasAttribute("high")) {
-							let sprite = this.addTile(x, y, fieldNode.getAttribute("high"));
-							if (sprite.loop) {
-								this.tilesetLayers.highAnim.addChild(sprite);
-							} else {
-								this.tilesetLayers.highStatic.addChild(sprite);
-							}
-						}
-						if (fieldNode.hasAttribute("event")) {
-							let sprite = this.addText(x, y, fieldNode.getAttribute("event"));
-							this.tilesetLayers.text.addChild(sprite);
-						}
+						window.setTimeout(
+							(x, y, fieldNode) => {
+								if (fieldNode.hasAttribute("low")) {
+									let sprite = this.addTile(x, y, fieldNode.getAttribute("low"));
+									if (sprite.loop) {
+										this.tilesetLayers.lowAnim.addChild(sprite);
+									} else {
+										this.tilesetLayers.lowStatic.addChild(sprite);
+									}
+								}
+								if (fieldNode.hasAttribute("high")) {
+									let sprite = this.addTile(x, y, fieldNode.getAttribute("high"));
+									if (sprite.loop) {
+										this.tilesetLayers.highAnim.addChild(sprite);
+									} else {
+										this.tilesetLayers.highStatic.addChild(sprite);
+									}
+								}
+								if (fieldNode.hasAttribute("event")) {
+									let sprite = this.addText(x, y, fieldNode.getAttribute("event"));
+									this.tilesetLayers.text.addChild(sprite);
+								}
+							},
+							0,
+							x, y, fieldNode
+						);
 					}
 				}
 			}
@@ -218,7 +228,7 @@ MapViewer.prototype = Object.create(
 			value : function(x, y, tileId) {
 				let textures = this.getTilesetTextures(tileId);
 				let sprite;
-				if (textures.length === 1) { 
+				if (textures.length === 1 || !this.animationEnabled) { 
 					sprite = new PIXI.Sprite(textures[0]);
 					//sprite.cacheAsBitmap = true;
 				} else {

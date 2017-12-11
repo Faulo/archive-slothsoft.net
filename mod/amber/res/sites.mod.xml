@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<page name="SaveEditor" title="SavegameEditor" ref="mod.editor"
+		status-active="" status-public="">
+		<param name="struc" value="structure.savegame" />
+	</page>
+	<page name="GameEditor" title="GameEditor" ref="mod.editor"
+		status-active="" >
+		<param name="struc" value="structure" />
+	</page>
+	<page name="GameData" title="GameData" ref="description" status-active="" status-public="">
+	
+		<page name="ItemList" title="ItemList" ref="mod.resource"
+			status-active="" status-public="">
+			<param name="id" value="items" />
+		</page>
+		<page name="PCList" title="PCList" ref="mod.resource"
+			status-active="" status-public="">
+			<param name="id" value="pcs" />
+		</page>
+		<page name="NPCList" title="NPCList" ref="mod.resource"
+			status-active="" status-public="">
+			<param name="id" value="npcs" />
+		</page>
+		<page name="MonsterList" title="MonsterList" ref="mod.resource"
+			status-active="" status-public="">
+			<param name="id" value="monsters" />
+		</page>
+		<page name="ClassList" title="ClassList" ref="mod.resource"
+			status-active="" status-public="">
+			<param name="id" value="classes" />
+		</page>
+		<page name="PortraitList" title="PortraitList" ref="mod.resource"
+			status-active="" status-public="">
+			<param name="id" value="portraits" />
+		</page>
+		<page name="Maps2D" title="Maps2D" ref="mod.resource"
+			status-active="" status-public="">
+			<param name="id" value="maps.2d" />
+		</page>
+		<page name="Maps3D" title="Maps3D" ref="mod.resource"
+			status-active="" status-public="">
+			<param name="id" value="maps.3d" />
+		</page>
+		<page name="WorldmapLyramion" title="WorldmapLyramion" ref="mod.resource"
+			status-active="" >
+			<param name="id" value="worldmap.lyramion" />
+		</page>
+		<page name="WorldmapKire" title="WorldKire" ref="mod.resource"
+			status-active="" status-public="">
+			<param name="id" value="worldmap.kire" />
+		</page>
+		<page name="WorldmapMorag" title="WorldmapMorag" ref="mod.resource"
+			status-active="" status-public="">
+			<param name="id" value="worldmap.morag" />
+		</page>
+	</page>
+</data>

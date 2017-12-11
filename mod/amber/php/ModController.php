@@ -128,14 +128,16 @@ class ModController
     }
 
     private $editorConfig = [
+		/*
 		'structure.savegame' => [
-		'archives' => [
-            'Party_char.amb',
-			'Party_data.sav',
-			'Merchant_data.amb',
-			'Chest_data.amb',
-		]
+			'archives' => [
+				'Party_char.amb',
+				'Party_data.sav',
+				'Merchant_data.amb',
+				'Chest_data.amb',
+			]
 		],
+		//*/
         'dictionaries' => [
             'structure' => 'structure', //.dictionaries
             'archives' => [
@@ -520,7 +522,7 @@ content: " ";
         // $modList[] = 'Slothsoft-v1.00-DE';
         
         $editorList = [];
-        $editorList[] = 'structure.savegame';
+        //$editorList[] = 'structure.savegame';
         $editorList[] = 'dictionaries';
         $editorList[] = 'portraits';
         $editorList[] = 'items';

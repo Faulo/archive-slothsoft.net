@@ -1,24 +1,795 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us">
 
-	<p key="ExperienceChart">Experience Chart</p>
-	<p key="SavegameEditor">Savegame Editor</p>
-	<p key="Ambermoon">Ambermoon</p>
-	<p key="Slothsoft">Slothsoft</p>
+	
 	<p key="Eigenschaften">Eigenschaften</p>
-	<p key="Attributes">Attribute</p>
-	<p key="Skills">Fähigkeiten</p>
-	<p key="Sprache">Sprachen</p>
-	<p key="Equip">Ausrüstung</p>
-	<p key="Items">Inventar</p>
-	<p key="SpruchHeil">Zaubersprüche: Weiß</p>
-	<p key="SpruchAlch">Zaubersprüche: Blau</p>
-	<p key="SpruchMyst">Zaubersprüche: Grün</p>
-	<p key="SpruchSchw">Zaubersprüche: Schwarz</p>
+	<p key="Attributes">Attributes</p>
+	<p key="Skills">Skills</p>
+	<p key="Sprache">Languages</p>
+	<p key="Equip">Equipment</p>
+	<p key="Items">Inventory</p>
+	<p key="SpruchHeil">Spells: White</p>
+	<p key="SpruchAlch">Spells: Blue</p>
+	<p key="SpruchMyst">Spells: Green</p>
+	<p key="SpruchSchw">Spells: Black</p>
 	<p key="Hand">Hand</p>
 	<p key="Finger">Finger</p>
 	<p key="Stats">Stats</p>
-	<p key="language:de-de">language:de-de</p>
-	<p key="language:en-us">language:en-us</p>
-	<p key="Ausgezeichnete Idee.">Ausgezeichnete Idee.</p>
+	
+	
+<p key="description:EditorHelp">
+	<div class="Amber Instructions">
+			<details>
+				<summary>
+					<h2>Erklärung</h2>
+				</summary>
+				<div>
+					<p>
+						Dies ist ein Savegame-Editor für das Thalion Spiel Ambermoon.
+						Er
+						ermöglicht das Herunterladen eines Spielstands bei Spielbeginn mit
+						veränderten Charaktereigenschaften.
+						Beispielsweise könnte
+						Großvaters Enkel statt eines menschlichen Abenteurers ein
+						elfischer Magier sein...
+					</p>
+				</div>
+			</details>
+			<details>
+				<summary>
+					<h2>Installation</h2>
+				</summary>
+				<div>
+					<ol>
+						<li>Hier die gewünschten Charakteränderungen vornehmen.</li>
+						<li>Auf Konsistenz achten: Beispielsweise sollten "Klasse" und
+							"Schule" immer zusammengehören.</li>
+						<li>Das Inventar und "Gewicht" am Besten so lassen wie es ist -
+							wenn eins von beiden unbedacht verändert wird könnte der
+							Charakter auf einmal negative Kilos mit sich rumschleppen! orz</li>
+						<li>Wenn die Team-Zusammenstellung verändert wird, die
+							entsprechenden "Party Schalter" anklicken. Wenn beispielsweise
+							Egil über die Dropdown-Box in die Party aufgenommen wird, muss
+							der Schalter "Egil nicht in Spannenberg" aktiviert werden - sonst
+							hat man ihn in der Party und er rennt gleichzeitig im
+							Trainer-Haus rum. :D</li>
+						<li>Wenn die neue Party den Ansprüchen genügt, nochmal überprüfen
+							dass "Anzahl Mitglieder" die korrekte Anzahl der aktiven
+							Party-Mitglieder wiedergibt...</li>
+						<li>"Party_char.amb" und "Party_data.sav" runterladen.</li>
+						<li>Diese 2 Dateien irgendwie auf den Amiga befördern. :3</li>
+						<li>Ambermoon starten.</li>
+						<li>Neues Spiel beginnen.</li>
+						<li>Sofort auf einen beliebigen Slot speichern. Die Nummer des
+							Slots merken.</li>
+						<li>Ambermoon beenden.</li>
+						<li>In den Ambermoon-Ordnern die Spielstände finden. Es sind 11
+							Ordner von "0" bis "10" durchnummiert. Spielstand "0" ist der,
+							der von Ambermoon geladen wird wenn ein neues Spiel begonnen
+							wird.</li>
+						<li>In dem Ordner des eben gespeicherten Spiels die
+							heruntergeladenen Dateien "Party_char.amb" und "Party_data.sav"
+							kopieren, die existierenden Dateien überschreiben.</li>
+						<li>Ambermoon starten und den Spielstand laden. Alle
+							Charakterwerte sollten jetzt den vorgenommenen Änderungen
+							entsprechen.</li>
+						<li>
+							Für Fragen, Anregungen oder Beschwerden stehe ich unter
+							<samp>info.slothsoft@gmail.com</samp>
+							zur Verfügung.
+						</li>
+					</ol>
+				</div>
+			</details>
+			<details>
+				<summary>
+					<h2>FAQs</h2>
+				</summary>
+				<div>
+					<dl>
+						<dt>
+							Was bedeutet
+							<code>apr-per-level</code>
+							?
+						</dt>
+						<dd>
+							<p>
+								Das steht für "zusätzliche Attacke pro Runde pro [X] Level, ab
+								dem doppelten
+								<span>APRproLvl</span>
+								Wert". Abenteurer beispielsweise erhalten, beginnend mit Lvl 24,
+								alle 12 Level eine zusätzliche Attacke pro Runde. Also Lvl
+							</p>
+							<code>
+								1-23: 1 APR
+								<br/>
+								24-35: 2 APR
+								<br/>
+								36-47: 3 APR
+								<br/>
+								48-50: 4 APR
+								<br/>
+							</code>
+							<p>(Anders ausgedrückt: <code>APR = Level / apr-per-level</code>, abgerundet)</p>
+							<p>
+								Dieser Wert ist klassenabhängig und muss nicht verändert werden, wenn
+								nach "Standard" Regeln gespielt werden soll.
+							</p>
+						</dd>
+						<dt>Gryban bleibt bei Stufe 35 stehen. Ist das ein Bug?</dt>
+						<dd>
+							<p>
+								Ja. Die Anzahl an EP, um ein Level zu erreichen errechnet sich aus:
+							</p>
+							<code>Klassenfaktor * (Lvl * (Lvl + 1) / 2)</code>
+							<p>
+								Der Klassenfaktor für Abenteurer, beispielsweise, ist 75 EP.
+								Level 2 erreicht man bei
+								<code>75 EP * (2 * (2 + 1) / 2) = 225 EP</code>
+							</p>
+							<p>
+								Für Paladine liegt er glaube ich bei 180 EP. Also sollte ein
+								Paladin auf Level 35 mindestens 180 EP * 630 = 113400 EP
+								besitzen. Gryban startet aber mit nur 47250 EP. Ein Blick auf
+								die
+								<a href="/Ambermoon/Thalion-v1.05-DE/GameData/ClassList/">
+									Erfahrungstabelle
+								</a>
+								verrät: Da ist der Programmierer wohl in der Spalte verrutscht
+								und hat versehentlich der EP-Wert für Abenteurer eingetragen
+								(Dieser hätte auf Level 35 tatsächlich exakt 47250 EP). Sobald
+								Gryban genügend EP für Level 35 gesammelt hat, levelt er normal
+								weiter.
+							</p>
+							<p>
+								Die Klassenfaktoren (in AM2_CPU ab Position 0x451F0) sind:
+							</p>
+							<dl>
+								<dt>Abenteurer</dt>
+								<dd>75</dd>
+								<dt>Krieger</dt>
+								<dd>150</dd>
+								<dt>Paladin</dt>
+								<dd>180</dd>
+								<dt>Dieb</dt>
+								<dd>100</dd>
+								<dt>Ranger</dt>
+								<dd>125</dd>
+								<dt>Heiler</dt>
+								<dt>Alchemist</dt>
+								<dt>Mystiker</dt>
+								<dd>90</dd>
+								<dt>Magier</dt>
+								<dd>95</dd>
+								<dt>Katze</dt>
+								<dd>32767</dd>
+							</dl>
+							<p>
+								Überprüfen kann man das in dem man auf Level 0 mit 0 EP startet und beim
+								Level Up zu 1 schaut, wieviel EP für das nächste Level Up
+								benötigt werden. Dieser Wert geteilt durch 3 ist der
+								Klassenfaktor.
+							</p>
+						</dd>
+						<dt>Katze?!</dt>
+						<dd>
+							<p>Ja. ^^</p>
+							<p>Scheinbar war es ursprünglich angedacht, eine Katze als
+								Partymitglied zu erhalten, ähnlich des Hundes in Amberstar.</p>
+							<p>
+								Dafür gibt es auch eine eigene Rasse ("Tier"), ein
+								<a href="/Ambermoon/Thalion-v1.05-DE/GameData/PortraitList/">unbenutztes Portrait</a>
+								, und ein Kampf-Icon, was eine Katze darstellt. Tiere dürfen
+								keine Gegenstände ausrüsten und auch keine Gegenstände, Gold,
+								oder Nahrung bei sich tragen. Und, wie man dem Klassenfaktor
+								oben entnehmen kann, auch keine Level aufsteigen (Ein Level 50
+								Abenteurer hat gerade mal so viel EP wie eine Level 2 Katze).
+							</p>
+						</dd>
+						<dt>Wie wärs mit einem Gegenstands-Editor?</dt>
+						<dd>
+							<p>
+								<a href="/Ambermoon/Thalion-v1.05-DE/GameData/ItemList/">Ausgezeichnete Idee.</a>
+							</p>
+						</dd>
+						<dt>Wie benutzt man diesen Editor am Besten?</dt>
+						<dd>
+							<p>
+								Ich habe ihn benutzt um direkt zu Spielbeginn mit 6 Charakteren zu
+								starten. Dafür habe ich die 5 Helden aus dem Thalion Büro
+								genommen und Name/Portrait/Klasse/Rasse angepasst. Alle auf
+								Level 1 mit 0 EP gesetzt, alle Zaubersprüche deaktiviert,
+								LP/SP/LP/SLP auf 10 rum gesetzt, Attribute/Fähigkeiten auf 20-40
+								rum, wie beim Protagonisten. Damit wird der normale Spielfluß am
+								wenigsten gestört, da die normalen Partymitglieder nach wie vor
+								in der Welt rumgurken.
+							</p>
+						</dd>
+						<dt>
+							Was macht der
+							<span>Zwischenspeichern</span>
+							button?
+						</dt>
+						<dd>
+							<p>
+								Er speichert den aktuellen Status des Spielstandes in einer neuen
+								Datei auf dem Server, und generiert eine URL unter dieser ihr
+								den
+								Spielstand später wiederfinden, weiter bearbeiten und herunterladen könnt.
+							</p>
+							<p>
+								Ein von mir angelegter Speicherstand ist beispielsweise unter
+								<a href="/Ambermoon/Thalion-v1.05-DE/SaveEditor/?SaveName=team3">?SaveName=team3</a>
+								zu finden.
+							</p>
+						</dd>
+						<dt>Gibt es den Editor als Desktop-Programm?</dt>
+						<dd>
+							<p>Nein.</p>
+							<p>
+								Das interne Bitschupsen ist in PHP geschrieben und die Ausgabe
+								basiert auf XSL + HTML. Für keins von beiden wäre mir ein
+								einfacher Weg bekannt, sie in ein Desktop-Programm zu
+								konvertieren, also wird es vorerst bei dieser online-Version
+								bleiben. Vielleicht räum ich irgendwann mal den Code auf und
+								stell ihn zur Verfügung, so dass andere Webseiten den Editor
+								hosten könnten...
+							</p>
+						</dd>
+						<dt>Wenn ich meine eigene Party_char.amb in einem Hexeditor öffne,
+							sieht sie komplett anders aus als die hier Runtergeladene?</dt>
+						<dd>
+							<p>Yeah, das ist die Verschlüsselung die Ambermoon anwendet um
+								das Modifizieren der Dateien zu erschweren.</p>
+							<p>Ich habe keine Ahnung wie diese Verschlüsselung funktioniert,
+								aber Ambermoon hat einen angenehmen Bug um dieses Problem zu
+								umgehen:</p>
+							<ol>
+								<li>
+									Wenn Ambermoon einen Spielstand läd, dekodiert es die Dateien
+									zuerst, und legt diese Dateien im Ordner
+									<samp>Amberfiles/</samp>
+									(der Ordner in dem auch die Spielstände sind) ab.
+								</li>
+								<li>
+									Demnach gibt es die Dateien
+									<samp>Amberfiles/Party_char.amb</samp>
+									und
+									<samp>Amberfiles/Party_data.sav</samp>
+									, die immer den zuletzt geladenen Spielstand beinhalten.
+								</li>
+								<li>
+									Modifiziert man nun diese Dateien mit einem Hexeditor und legt
+									sie zurück in ihre
+									<samp>AmberFiles/Save.0x/</samp>
+									...
+								</li>
+								<li>... werden sie beim nächsten Laden dieses Spielstands von
+									Ambermoon eingelesen und akzeptiert. Scheinbar erkennt es, dass
+									die Dateien bereits entschlüsselt sind und überspringt fröhlich
+									diesen Schritt.</li>
+							</ol>
+							<p>
+								Also muss man zum Bearbeiten eines Spielstandes nichts weiter
+								machen als den Spielstand einmal in Ambermoon zu laden, dann
+								Ambermoon zu beenden und die Dateien
+								<samp>Amberfiles/Party_char.amb</samp>
+								und
+								<samp>Amberfiles/Party_data.sav</samp>
+								in einem Hexeditor inspizieren.
+							</p>
+							<p>
+								Die von mir bisher ermittelten Hex-Werte habe ich in
+								<a href="/getResource.php/amber/AmbermoonSavegame">einer XML</a>
+								gesammelt. Der Spielercharakter beispielsweise beginnt bei der
+								Hex-Position
+								<samp>x0043</samp>
+								, der nächste Char (Netsrak) bei
+								<samp>x022F</samp>
+								, usw. Der Name eines Charakters beginnt
+								<samp>x0111</samp>
+								Bytes
+								<em>nach</em>
+								dem Beginn des Charakters, also im Falle von Thalion bei
+								<samp>x0043 + x0111 = x154</samp>
+								Hex (
+								<samp>340</samp>
+								Dezimal) und kann maximal 15 Zeichen betragen.
+							</p>
+						</dd>
+						<dt>Läuft dieser Online-Editor auch auf nem Emulator ( Amiga
+							Forever ) und wenn ja, wie?</dt>
+						<dd>
+							<p>
+								Der Editor ist ein XHTML-Dokument mit einer handvoll
+								JavaScript. Die Browser für den Amiga, die ich kenne können nur
+								HTML verarbeiten, weshalb sie weder den Editor noch den Rest
+								dieser Website darstellen können.
+							</p>
+							<p>
+								Für die Benutzung der runtergeladenen Spielstände mit einem
+								Emulator muss lediglich Schritt 7 von "Dateien auf den Amiga
+								befördern" zu "Dateien in den Amiga Ordner schieben" geändert
+								werden. :&gt; </p>
+						</dd>
+						<dt>Was bewirken die Attribute?</dt>
+						<dd>
+							<p>Gute Frage. Folgende Effekte habe ich beobachtet. Kennt noch
+								jemand weitere?</p>
+							<dl>
+								<dt>STA - Stärke</dt>
+								<dd>Das maximale Tragegewicht, in Kilogramm.</dd>
+								<dt>INT - Intelligenz</dt>
+								<dd>Keine.</dd>
+								<dt>GES - Geschicklichkeit</dt>
+								<dd>Keine.</dd>
+								<dt>SCH - Schnelligkeit</dt>
+								<dd>Bestimmt die Reihenfolge im Kampf.</dd>
+								<dt>KON - Konstitution</dt>
+								<dd>Keine.</dd>
+								<dt>KAR - Karisma</dt>
+								<dd>Beeinflusst den Verkaufspreis von Gegenständen.</dd>
+								<dt>GLÜ - Glück</dt>
+								<dd>Die Wahrscheinlichkeit, immun gegen einen Falleneffekt zu
+									sein, in Prozent.</dd>
+								<dt>A-M - Anti-Magie</dt>
+								<dd>Die Wahrscheinlichkeit, immun gegen einen schädlichen
+									Zauberspruch zu sein, in Prozent.</dd>
+							</dl>
+						</dd>
+						<dt>Was bewirken die Fähigkeiten?</dt>
+						<dd>
+							<p>Die sind schon etwas ergründlicher. Folgende Effekte habe ich
+								beobachtet. Kennt noch jemand weitere?</p>
+							<dl>
+								<dt>ATT - Attacke</dt>
+								<dd>Die Wahrscheinlichkeit, im Kampf einen Treffer zu erzielen,
+									in Prozent.</dd>
+								<dt>PAR - Parade</dt>
+								<dd>Die Wahrscheinlichkeit, die "Verteidigen" Aktion im Kampf
+									erfolgreich ein zu setzen (und keinen Schaden von einem Angriff
+									zu erhalten), in Prozent.</dd>
+								<dt>SCH - Schwimmen</dt>
+								<dd>Wieviel von dem Schaden, der durch Ertrinken passiert,
+									verhindert wird, in Prozent. Ab 99 Schwimmen nimmt man keinen
+									Schaden mehr von Gewässern.</dd>
+								<dt>KRI - Kritische Treffer</dt>
+								<dd>Die Wahrscheinlichkeit, dass ein erfolgreicher Angriff ein
+									Kritischer Treffer (OHKO) ist, in Prozent.</dd>
+								<dt>F-F - Fallen Finden</dt>
+								<dd>Die Wahrscheinlichkeit, eine Falle an einem Schloss zu
+									finden, in Prozent.</dd>
+								<dt>F-E - Fallen Entschärfen</dt>
+								<dd>Die Wahrscheinlichkeit, eine gefundene Falle zu
+									neutralisieren, in Prozent.</dd>
+								<dt>S-Ö - Schlösser Knacken</dt>
+								<dd>Die Wahrscheinlichkeit, ein verschlossenes Schloss zu
+									öffnen, in Prozent. Wenn es gelingt, spielen eventuelle Fallen
+									keine Rolle; wenn es misslingt, werden eventuelle Fallen
+									ausgelöst.</dd>
+								<dt>SUC - Suchen</dt>
+								<dd>Keine.</dd>
+								<dt>SRL - Spruchrollen Lesen</dt>
+								<dd>Die Wahrscheinlichkeit, einen Zauberspruch von einer
+									Spruchrolle zu lernen, in Prozent.</dd>
+								<dt>M-B - Magie Benutzen</dt>
+								<dd>Die Wahrscheinlichkeit, einen gelernten Zauberspruch zu
+									wirken, in Prozent.</dd>
+							</dl>
+						</dd>
+						<!--
+							<dt>Hier ist angegeben, dass Egil auf Stufe 5 bereits 2 Attacken pro 
+							Runde haben soll. Aber mein Egil ist bereits Stufe 6 ohne zweiten Angriff 
+							:( </dt>
+							<dd>
+							<p>
+							Hmm ja. In der Spielstand-Datei fand ich einen Wert, der angibt alle 
+							wie viele Level ein Charakter eine zusätzliche "Attacke pro Runde" bekommt. 
+							Für die beiden Krieger des Spiels, Egil und Erik, ist dieser Wert "5". Alle 
+							5 Level erhalten sie eine zusätzliche <span>APR</span>. Zusätzlich hat Erik, 
+							der Level 50 ist, 11 <span>APR</span>, woraus ich schlussfolgere er hatte 
+							auf Lvl 1 1 <span>APR</span>, auf Lvl 5 2, (etc.) ... auf Lvl 45 10, und 
+							auf Lvl 50 11.
+							</p>
+							<p>
+							Ich selbst kann mich nicht mehr erinnern, wann Egil eine 2. <span>APR</span> 
+							bekommt, aber verschiedene Spieler haben mir nahegetragen dass es NICHT auf 
+							Level 5 ist. Ich vermute Charaktere haben noch einen anderen Wert, der das 
+							<span>APR</span>-Wachstum beeinflusst, aber ich hab diesen bei meiner (sporadischen) 
+							Spielstand-Analyse nicht gefunden.
+							</p>
+							<p>
+							Wenn einem Spieler zufällig auffallen sollte bei welchen Levelaufstiegen 
+							Egil eine zusätzliche <span>APR</span> erhält, wär ich für diese Info sehr 
+							dankbar. ^^'
+							</p>
+							<p>
+							(Jeder <span>APR</span>-Anstieg ist relevant für meine Analyse, egal 
+							ob von 1 zu 2 oder von 9 zu 10. /o/)
+							</p>
+							</dd>
+						-->
+						<!--
+							<dt>Noch Fragen?</dt>
+							<dd>
+							<form action="." method="post">
+							<textarea rows="1" name="amber/help/faq"/>
+							<button type="submit" class="yellow">
+							Frage einreichen
+							</button>
+							</form>
+							</dd>
+						-->
+					</dl>
+				</div>
+			</details>
+			<details>
+				<summary>
+					<h2>Mir bekannte Bugs in Ambermoon</h2>
+				</summary>
+				<div>
+					<p>
+						Eine Liste der Fehler, die mir beim Spielen von Ambermoon und
+						Entwickeln dieses Tools aufgefallen sind.
+					</p>
+					<p>
+						Unter <a href="../Downloads">Downloads</a> gibt es Patches für ein paar dieser Bugs.
+					</p>
+					<p>Farblegende:</p>
+					<ul>
+						<li class="gray">gefixt in der aktuellen Version</li>
+						<li class="yellow">noch nicht gefixt, aber denkbar</li>
+						<li class="orange">wahrscheinlich unmöglich zu fixen</li>
+					</ul>
+
+					<details>
+						<summary>
+							<h3>Allgemeine Sonderbarkeiten</h3>
+						</summary>
+
+						<dl>
+							<dt class="orange">Fernkampfwaffen im Nahkampf einsetzen</dt>
+							<dd>Wird im Kampf ein Gegner zum angreifen selektiert
+								(Schwert-Symbol erscheint) und dann im Inventar die
+								Nahkampfwaffe durch eine Fernkampfwaffe ersetzt, benutzt der
+								Charakter für den Rest des Kampfes diese Fernkampfwaffe zum
+								Angriff. Das spart Munition, und die Schildhand ist frei für
+								andere Items.</dd>
+
+							<dt class="orange">Events in 3D-Dungeons per "Sprung" umgehen</dt>
+							<dd>Vielen Events ist eine bestimmte X/Y Koordinate zugeordnet,
+								und sie triggern, sobald diese betreten wird. Der Zauber
+								"Sprung" teleportiert die Gruppe 2 Koordinateneinheiten
+								vorwärts, und so lassen sich diverse unangenehme Events
+								buchstäblich überspringen. So lassen sich viele Boss-Räume
+								plündern bevor man dem Boss gegenübertritt (wenn überhaupt). Das
+								geht z.B. bei manchen Hügelriesen, Nagier, und Luminor.</dd>
+
+							<dt class="orange">Gegner per Speichern/Laden umgehen</dt>
+							<dd>Die aktuelle Position von Gegnern in einem Raum ist nicht
+								Teil der Spielstand-Dateien. Stattdessen erscheinen Gegner beim
+								Laden an ihrer Anfangsposition. Das heißt, wenn ein Gegner der
+								Gruppe zu Nahe kommt, brauch nur gespeichert und sofort wieder
+								geladen werden, um den Gegner zu seiner Anfangsposition zu
+								befördern. So lässt sich z.B. das Banditenhaus komplett
+								ausräumen ohne 1 mal kämpfen zu müssen.</dd>
+
+							<dt class="yellow">Hexenbesen nach Morag schmuggeln</dt>
+							<dd>Auf dem Wüstenmond wird ein eventuell mitgeführter Hexenbesen
+								per Event zerstört. Über die Zauber "Wort des Markierens" und
+								"Wort der Rückkehr" lässt sich das Triggern dieses Events
+								umgehen, und damit der Besen als Transportmittel auf dem Mond
+								benutzen.</dd>
+						</dl>
+					</details>
+
+					<details>
+						<summary>
+							<h3>
+								Bugs in der Datei
+								<span class="gray">AM2_BLIT</span>
+								/
+								<span class="gray">AM2_CPU</span>
+							</h3>
+						</summary>
+
+						<dl>
+							<dt class="gray">Magische Bolzen benötigen 0 Hände</dt>
+							<dd>Das Item "Magische Bolzen" benötigt keine Hände, kann also
+								problemlos mit einer Zweihandwaffe kombiniert werden, für den
+								Verzauberungsbonus von Attacke+15.</dd>
+
+							<dt class="gray">Schleudermesser/dolche erhöhen den Angriff von
+								Nahkampfwaffen</dt>
+							<dd>Die Items "Schleudermesser" und "Schleuderdolch" haben einen
+								Angriffswert, obwohl sie Munition sind, und lassen sich deshalb
+								ausgezeichnet anstelle eines Schildes ausrüsten.</dd>
+
+							<dt class="gray">Zielbroschen sind Amulette</dt>
+							<dd>Das Item "Zielbrosche" ist in der Kategorie "Amulett". Es
+								verhält sich aber wie eine Brosche.</dd>
+
+							<dt class="gray">Der Krypta-Schlüssel ist ein Amulett</dt>
+							<dd>Das Item "Krypta Schlüssel" ist in der Kategorie "Amulett".
+								Es verhält sich aber wie ein Schlüssel.</dd>
+						</dl>
+					</details>
+
+					<details>
+						<summary>
+							<h3>
+								Bugs in der Datei
+								<span class="gray">Party_char.amb</span>
+							</h3>
+						</summary>
+
+						<dl>
+							<dt class="gray">Valdyn kann Schwimmen nicht maximieren</dt>
+							<dd>Valdyn trägt Valdyn's Ledercape (Schwimmen+15). Dieser Bonus
+								ist aber nicht in seinen Fähigkeiten vermerkt, so dass er per
+								Training maximal 80/95 Schwimmen erreichen kann.</dd>
+
+							<dt class="gray">Sabine kann Magie Benutzen nicht maximieren</dt>
+							<dd>Sabine trägt eine Robe der Gala (Magie Benutzen+20). Dieser
+								Bonus ist aber nicht in ihren Fähigkeiten vermerkt, so dass sie
+								per Training maximal 75/95 Magie Benutzen erreichen kann.
+								Stattdessen hat sie Spruchrollen Lesen+20, und kann per Training
+								115/95 Spruchrollen Lesen erreichen.</dd>
+
+							<dt class="gray">Leonardia kann Magie Benutzen nicht maximieren</dt>
+							<dd>Leonardia trägt eine Robe des Magus (Magie Benutzen+15).
+								Dieser Bonus ist aber in ihren Fähigkeiten als +5 vermerkt, so
+								dass sie per Training maximal 85/95 Magie Benutzen erreichen
+								kann.</dd>
+
+							<dt class="gray">Targor kann Attacke nicht maximieren</dt>
+							<dd>Targor trägt eine Wurfsichel (Attacke+10). Dieser Bonus ist
+								aber nicht in seinen Fähigkeiten vermerkt, so dass er per
+								Training maximal 15/25 Attacke erreichen kann.</dd>
+
+							<dt class="gray">Gryban kann Attacke und Magie Benutzen nicht
+								maximieren</dt>
+							<dd>Gryban trägt ein Heiliges Schwert (Attacke+5) und eine
+								Ritterrüstung (Magie Benutzen+25). Diese Boni sind aber nicht in
+								seinen Fähigkeiten vermerkt, so dass er per Training maximal
+								80/85 Attacke und 25/50 Magie Benutzen erreichen kann.
+								Stattdessen hat er Spruchrollen Lesen+25, und kann per Training
+								75/50 Spruchrollen Lesen erreichen.</dd>
+
+							<dt class="gray">Gryban erhält keine Levelaufstiege</dt>
+							<dd>Ein Level 35 Paladin sollte 113400 Erfahrung haben. Gryban
+								startet mit nur 47250. Sobald er genug Erfahrung für Level 36
+								gesammelt hat (119880), steigt er normal auf.</dd>
+							
+							<dt class="gray">Selena hat maximal 2 statt 5% Kritische Treffer</dt>
+							<dd>Ein Dieb sollte ein Kritische Treffer Maximum von 5% haben, Selena hat aber nur 2%. <small>(Ich gebe zu, das könnte auch ein Balancing-Versuch sein, der es einfach nicht zu den anderen Dieben geschafft hat, aber meinem Gefühl nach ist 5% richtiger.)</small></dd>
+								
+							<dt class="gray">Niemand kann perfekt schwimmen</dt>
+							<dd>Alle Charaktere haben ein Schwimmen-Maximum von 95. Um aber
+								schwimmen zu können, ohne Schaden zu nehmen, braucht man 99
+								Schwimmen (wie der Ring des Sobek es auch gibt).</dd>
+						</dl>
+					</details>
+
+					<details>
+						<summary>
+							<h3>
+								Bugs in der Datei
+								<span class="gray">NPC_char.amb</span>
+							</h3>
+						</summary>
+
+						<dl>
+							<dt class="yellow">Sandra rückt den Schlüssel ihrer Truhe nicht raus</dt>
+							<dd>
+								Sandra, die Oberheilerin von Spannenberg, erzählt auf Nachfrage von ihrer Tochter Sabine. Dann gibt sie der Party einen Schlüssel, um nach Burnville zu kommen. Aber je nachdem, ob man sie auf <code>Tochter</code> oder <code>Sabine</code> angesprochen hat, erhält man entweder den <code>Burnville Schlüssel</code> oder <code>Sandra's Schlüssel</code>. Das könnte so gedacht sein - Namen sind Sandra wichtig, wie man an ihrem Kater erkennt - allerdings spricht sie in beiden Fällen vom Plündern ihrer Truhe, was ja aber keinen Sinn macht, wenn sie den Schlüssel dafür einbehält.
+							</dd>
+						</dl>
+					</details>
+
+					<details>
+						<summary>
+							<h3>
+								Bugs in der Datei
+								<span class="gray">Monster_char_data.amb</span>
+							</h3>
+						</summary>
+
+						<dl>
+							<dt class="yellow">Reg Hügelriese ist kein Boss</dt>
+							<dd>
+								Reg, der Anführer der Orks in Spannenberg, ist nicht als Boss
+								gekennzeichnet. Dadurch hat er auch keine
+								<a href="http://tvtropes.org/pmwiki/pmwiki.php/Main/ContractualBossImmunity" rel="external">Immunitäten gegen Zustandsveränderungen</a>
+								, und kann insbesondere durch die Zaubersprüche
+								<code>FURCHT</code>
+								,
+								<code>VERRÜCKTHEIT</code>
+								, oder
+								<code>VERSTEINERN</code>
+								+
+								<code>OPFER AUFLÖSEN</code>
+								in die Flucht geschlagen werden - inklusive seines Kopfes und
+								Gefängnisschlüssels, was dann die Quest des Freiherrn und
+								Befreiung Selenas unlösbar macht.
+							</dd>
+						</dl>
+					</details>
+
+					<details>
+						<summary>
+							<h3>
+								Bugs in der Datei
+								<span class="gray">1Map_data.amb</span>
+							</h3>
+						</summary>
+
+						<dl>
+							<dt class="yellow">Lyramion 150|450 ist keine Weltkarte</dt>
+							<dd>Der Kartenausschnitt, der die Korrdinaten 150|450 - 199|499
+								abdeckt ist nicht als Weltkarte gekennzeichnet. Wird er
+								verlassen (also z.B. von Koordinate 180|499 zu 180|500
+								geschippert) entsteht ein Anzeige-Bug, wo es scheint als würde
+								plötzlich die Sonne aufgehen - der Lichtkreis der Party springt
+								auf die kleinstmögliche Größe und wird immer größer. Wird in
+								diesem Kartenbereich gespeichert, kann er nicht wieder geladen
+								werden - der Spielstand ist (außerhalb von Editoren wie meinem)
+								irreparabel verloren. (Glücklicherweise befindet sich dort nur
+								tiefes Wasser, so dass das nicht allzu häufig passieren dürfte.)</dd>
+						</dl>
+					</details>
+
+					<details>
+						<summary>
+							<h3>
+								Bugs in der Datei
+								<span class="gray">2Map_data.amb</span>
+							</h3>
+						</summary>
+
+						<dl>
+							<dt class="yellow">HANGAR AUF MORAG und GEFÄNGNIS - S'ANGRILA sind
+								nicht auf dem Wüstenmond</dt>
+							<dd>
+								Die Karten "HANGAR AUF MORAG" und "GEFÄNGNIS - S'ANGRILA" sind
+								als "auf Lyramion" gekennzeichnet, sind aber eigentlich auf dem
+								Wüstenmond. Dadurch lassen sich dort die Zaubersprüche
+								<code>Wort des Markierens</code>
+								und
+								<code>Wort der Rückkehr</code>
+								wirken, was den oben beschriebenen Trick ermöglicht. (Das gilt
+								allerdings nur für das erstmalige Betreten des Mondes; nach dem
+								Event mit dem sterbenden Moraner werden fortan 2 Duplikate
+								dieser Karten verwendet, die korrekt als "auf Morag"
+								gekennzeichnet sind.)
+							</dd>
+						</dl>
+					</details>
+				</div>
+			</details>
+			<details>
+				<summary>
+					<h2>Credits</h2>
+				</summary>
+				<div>
+					<p>
+						Ich habe die Tools vom
+						<a href="https://sourceforge.net/projects/amberworld/" rel="external" target="_blank">Amberworld-Projekt</a>
+						benutzt, insbesondere
+						<a href="https://sourceforge.net/projects/amberworld/files/ambtool/" rel="external" target="_blank">ambtool</a>
+						und
+						<a href="https://sourceforge.net/projects/amberworld/files/amgfx/" rel="external" target="_blank">amgfx</a>
+						.
+					</p>
+					<p>
+						Zur de-kompilierung von AM2_CPU habe ich den
+						<a href="http://aminet.net/package/util/pack/imploder-4.0" rel="external" target="_blank">Imploder</a>
+						benutzt.
+					</p>
+					<p>
+						Der Rest ist Eigenentwicklung, und verfügbar in meinem
+						<a href="https://github.com/Faulo/slothsoft.net/tree/master/mod/savegame" rel="external" target="_blank">Repository auf GitHub</a>
+						.
+					</p>
+					<p>
+						Außerdem gibt es noch meine Analysen der
+						<a href="/getResource.php/amber/AmbermoonSavegame">Spielstanddateien</a>
+						.
+					</p>
+				</div>
+			</details>
+		</div>
+</p>
+
+
+<p key="description:Ambermoon">
+	<article>
+		<h2>Introduction</h2>
+		<p>Ambermoon is German RRG which was developed by Thalion Software
+			and released in 1993 for the Amiga.</p>
+		<p>It was one of the first video games Daniel encountered as a child
+			(and the first RPG for a long time), and the fond memories he still
+			holds of it is what compelled him to create the savegame editor
+			you'll find here.</p>
+		<p>It's not finished yet (and might never be) and not very thoroughly
+			tested, so don't expect much. :'&gt;</p>
+	</article>
+</p>
+<p key="description:Thalion-v1.05-DE">
+	<article>
+		<h2>Über</h2>
+		<p>Ambermoon v1.05, Deutsch, vom 06.12.1993.</p>
+		<p>Dieser Branch beinhaltet:</p>
+		<ul>
+			<li><a href="http://thalion.exotica.org.uk/games/ambermoon/credits/credits.html" rel="external">Die Basisversion vom Thalion Webshrine</a> (v1.01, dort als v1.05 vermarktet)</li>
+			<li><a href="http://aminet.net/package/game/patch/amber" rel="external">Aminet's "amber" Patch</a> (v1.05)</li>
+			<li><a href="http://aminet.net/package/game/patch/amberfix" rel="external">Aminet's "amberfix" Patch</a></li>
+		</ul>
+		<p>Wenn ihr den Spielstand Editor benutzen wollt, navigiert euch zuerst zu dem Branch, der eurer lokalen Kopie von Ambermoon entspricht.</p>
+	</article>
+</p>
+<p key="description:Thalion-v1.06-DE">
+	<article>
+		<h2>Über</h2>
+		<p>Ambermoon v1.06, Deutsch, vom 08.08.2017.</p>
+		<p>Dieser Branch beinhaltet:</p>
+		<ul>
+			<li><a href="http://thalion.exotica.org.uk/games/ambermoon/credits/credits.html" rel="external">Die Basisversion vom Thalion Webshrine</a> (v1.01, dort als v1.05 vermarktet)</li>
+			<li><a href="http://aminet.net/package/game/patch/amber" rel="external">Aminet's "amber" Patch</a> (v1.05)</li>
+			<li><a href="http://aminet.net/package/game/patch/amberfix" rel="external">Aminet's "amberfix" Patch</a></li>
+			<li><a href="../Downloads/">Mein Patch</a> (v1.06)</li>
+		</ul>
+		<p>Wenn ihr den Spielstand Editor benutzen wollt, navigiert euch zuerst zu dem Branch, der eurer lokalen Kopie von Ambermoon entspricht.</p>
+	</article>
+</p>
+<p key="description:Downloads">
+	<article>
+		<h2>Patches</h2>
+		
+		<p>Hier biete ich Patches für die <a href="../EditorHelp/">mir bekannten Bugs</a> an.</p>
+		
+		<p>Jeder Patch setzt <a href="http://aminet.net/package/game/patch/amber" rel="external">Ambermoon v1.05 6-12-1993 / Deutsch</a> voraus.</p>
+		
+		<div class="Amber Instructions">
+		
+			<details>
+				<summary><h2>Ambermoon v1.06 8-08-2017 / Deutsch</h2></summary>
+				<dl>
+					<dt>Download:</dt>
+					<dd>
+						<ul>
+							<li><a href="/getResource.php/amber/patch/Ambermoon.v1.06.zip">Ambermoon.v1.06.zip</a></li>
+							<li><a href="/getResource.php/amber/patch/Ambermoon.v1.06.lha">Ambermoon.v1.06.lha</a></li>
+						</ul>
+					</dd>
+					<dt>Behobene Bugs:</dt>
+					<dd>
+					<ul class="gray">
+						<li>Magische Bolzen benötigen 0 Hände</li>
+						<li>Schleudermesser/dolche erhöhen den Angriff von Nahkampfwaffen</li>
+						<li>Zielbroschen sind Amulette</li>
+						<li>Der Krypta-Schlüssel ist ein Amulett</li>
+						<li>Valdyn kann Schwimmen nicht maximieren</li>
+						<li>Sabine kann Magie Benutzen nicht maximieren</li>
+						<li>Leonardia kann Magie Benutzen nicht maximieren</li>
+						<li>Targor kann Attacke nicht maximieren</li>
+						<li>Gryban kann Attacke und Magie Benutzen nicht maximieren</li>
+						<li>Gryban erhält keine Levelaufstiege</li>
+						<li>Selena hat maximal 2 statt 5% Kritische Treffer</li>
+						<li>Niemand kann perfekt schwimmen</li>
+					</ul>
+					</dd>
+				</dl>
+			</details>
+		</div>
+	</article>
+</p>
+<p key="description:GameData">
+	<article>
+		<h2>Über</h2>
+		<p>Hier stelle ich allerlei Infos über das Spiel bereit, die direkt aus den Quelldateien extrahiert und in menschenlesbare Form gebracht wurden.</p>
+		<p><strong>ACHTUNG!</strong><br/>Das bedeutet, das hier auch allerlei Geheimnisse zu finden sind. Wenn ihr den Spaß am Entdecken nicht trüben wollt, versucht zuerst ohne Hilfe dieser Seiten durch zu spielen. :)</p>
+	</article>
+
+</p>
 </html>

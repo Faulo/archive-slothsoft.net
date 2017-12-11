@@ -1,6 +1,8 @@
 <?php
 namespace Slothsoft\Savegame\Node;
 
+use Slothsoft\Savegame\Build\BuilderInterface;
+
 declare(ticks = 1000);
 
 class EventScriptValue extends AbstractValueContent

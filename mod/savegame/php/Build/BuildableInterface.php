@@ -1,7 +1,6 @@
 <?php
 namespace Slothsoft\Savegame\Build;
 
-use Slothsoft\Savegame\Build\BuilderInterface;
 declare(ticks = 1000);
 
 interface BuildableInterface

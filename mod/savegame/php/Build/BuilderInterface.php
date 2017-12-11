@@ -1,7 +1,6 @@
 <?php
 namespace Slothsoft\Savegame\Build;
 
-use Slothsoft\CMS\HTTPFile;
 declare(ticks = 1000);
 
 interface BuilderInterface
