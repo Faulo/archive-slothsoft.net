@@ -122,7 +122,7 @@ DungeonViewer.prototype = Object.create(
 				this.tilesetMaterials.wall = material;
 				
 				
-				let textureURL = "/getData.php/amber/mod.resource?game=ambermoon&mod=Thalion-v1.05-DE&type=3&name=tileset.icons%2Ffloor";
+				let textureURL = "/getData.php/amber/mod.resource?game=ambermoon&mod=Thalion-v1.05-DE&type=3&name=tileset.floors%2F000-00";
 				
 				material = new BABYLON.StandardMaterial("floorMaterial", this.stage);
 				material.diffuseTexture = new BABYLON.Texture(textureURL, this.stage);
