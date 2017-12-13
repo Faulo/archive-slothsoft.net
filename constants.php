@@ -32,9 +32,9 @@ const BCP47_PREGMATCH = '/(?<language>[a-z]{2,3})(?:-(?<extlang>aao|abh|abv|acm|
 
 
 //side effects:
-require 'config.php';
-require 'functions.php';
-require sprintf('%s%sconstants-%s.php', __DIR__, DIRECTORY_SEPARATOR, PHP_SAPI);
+require __DIR__ . DIRECTORY_SEPARATOR . 'config.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'functions.php';
+require __DIR__ . DIRECTORY_SEPARATOR . sprintf('constants-%s.php', PHP_SAPI);
 
 chdir(SERVER_ROOT);
 

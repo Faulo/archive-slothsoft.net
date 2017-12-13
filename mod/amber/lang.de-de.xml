@@ -663,6 +663,11 @@
 								dieser Karten verwendet, die korrekt als "auf Morag"
 								gekennzeichnet sind.)
 							</dd>
+							<dt class="yellow">SANSRIE'S SCHLÜSSEL öffnet nicht die Tür in SANSRIE'S TUNNEL</dt>
+							<dd>
+								Sansrie's Tunnel ist ein alternativer Weg zurück aufs Festland, wenn man fertig mit Sansrie's Insel ist.
+								Leider ist die Tür in ihm so programmiert, dass kein Schlüssel im Spiel sie öffnen kann - und das obwohl Sansrie einen Schlüssel fallenlässt, der perfekt dafür geeignet wäre.
+							</dd>
 						</dl>
 					</details>
 				</div>
