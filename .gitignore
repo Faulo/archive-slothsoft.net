@@ -1,0 +1,32 @@
+
+#useless everywhere
+unused/
+temp/
+*Kopie*
+Thumbs.db
+
+#root files
+/*
+!/constants.php
+!/constants-apache2handler.php
+!/constants-cli.php
+!/functions.php
+!/.gitignore
+
+#root folders
+/*/
+!/mod/
+
+#modules
+/mod/*/*/
+!/mod/*/cli/
+!/mod/*/data/
+!/mod/*/php/
+!/mod/*/php-tests/
+!/mod/*/template/
+!/mod/*/stylesheet/
+!/mod/*/script/
+!/mod/*/res/
+/mod/*/res/*/
+!/mod/*/schema/
+
