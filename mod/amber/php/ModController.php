@@ -141,8 +141,8 @@ class ModController
         'dictionaries' => [
             'structure' => 'structure', //.dictionaries
             'archives' => [
-				/*
                 'AM2_BLIT',
+				/*
                 'Party_char.amb',
                 'NPC_char.amb',
                 'Monster_char_data.amb',

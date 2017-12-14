@@ -1,3 +1,4 @@
 !/res/ambermoon
 /res/ambermoon/*/*
 !/res/ambermoon/*/src/
+!/res/patches

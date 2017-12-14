@@ -1207,14 +1207,12 @@
 				<bit name="partybit-leonardia-absent" position="0x2B8C" bit="0" />
 				<bit name="partybit-gryban-absent" position="0x2BB8" bit="0" />
 			</group>
-			<!--
-			<repeat-group name="mob-existance" position="0x2504" group-count="1024" group-size="4">
+			<repeat-group name="mob-existance" position="0x2504" group-count="455" group-size="4">
 				<bit-field name="01-08" position="0"/>
 				<bit-field name="09-16" position="1"/>
 				<bit-field name="17-24" position="2"/>
 				<bit-field name="25-32" position="3"/>
 			</repeat-group>
-			-->
 		</for-each-file>
 	</archive>
 	<archive path="Amberfiles/Save.00/Merchant_data.amb" type="AMBR">

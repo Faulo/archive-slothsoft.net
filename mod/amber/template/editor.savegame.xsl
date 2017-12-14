@@ -508,20 +508,31 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 					</xsl:for-each>
 				</xsl:with-param>
 			</xsl:call-template>
-			<xsl:for-each select="save:instruction[@name = 'mob-existance']">
+			<xsl:for-each select=".//save:instruction[@name = 'mob-existance']">
+				<xsl:variable name="maps" select="key('dictionary-option', 'map-ids')"/>
 				<div>
 					<xsl:call-template name="savegame.tabs">
 						<xsl:with-param name="label" select="'Aktive Karte:'" />
-						<xsl:with-param name="options" select="key('dictionary-option', 'map-ids')[@key &gt; 0]/@val" />
+						<xsl:with-param name="optionTokens">
+							 <xsl:for-each select="*">
+							 	<xsl:variable name="pos" select="position()"/>
+								<xsl:if test="$maps[@key = $pos]">
+									<token><xsl:value-of select="$maps[@key = $pos]/@val" /></token>
+								</xsl:if>
+							</xsl:for-each>
+						</xsl:with-param>
 						<xsl:with-param name="list">
 							<xsl:for-each select="*">
-								<li>
-									<xsl:call-template name="savegame.flex">
-										<xsl:with-param name="items">
-											<xsl:apply-templates select="*" mode="item" />
-										</xsl:with-param>
-									</xsl:call-template>
-								</li>
+								<xsl:variable name="pos" select="position()"/>
+								<xsl:if test="$maps[@key = $pos]">
+									<li>
+										<xsl:call-template name="savegame.flex">
+											<xsl:with-param name="items">
+												<xsl:apply-templates select="*" mode="item" />
+											</xsl:with-param>
+										</xsl:call-template>
+									</li>
+								</xsl:if>
 							</xsl:for-each>
 						</xsl:with-param>
 					</xsl:call-template>
@@ -1654,7 +1665,8 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 		<xsl:param name="label" select="''" />
 		<xsl:param name="class" select="''" />
 		<xsl:param name="list" select="/.." />
-		<xsl:param name="options" />
+		<xsl:param name="optionTokens" select="/.."/>
+		<xsl:param name="options" select="exsl:node-set($optionTokens)/*"/>
 
 		<div data-template="tabs">
 			<xsl:if test="string-length($class)">
