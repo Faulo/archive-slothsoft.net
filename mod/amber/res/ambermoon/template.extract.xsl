@@ -1214,7 +1214,7 @@
 			<xsl:for-each select="$AM2//save:instruction[@name = 'spell-types']">
 				<dictionary dictionary-id="spell-types">
 					<xsl:for-each select="*">
-						<option key="{position() - 1}" val="*/@value" />
+						<option key="{position() - 1}" val="{@value}" />
 					</xsl:for-each>
 				</dictionary>
 			</xsl:for-each>
