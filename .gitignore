@@ -12,6 +12,7 @@ Thumbs.db
 !/constants-cli.php
 !/functions.php
 !/.gitignore
+!/.gitmodules
 
 #root folders
 /*/
