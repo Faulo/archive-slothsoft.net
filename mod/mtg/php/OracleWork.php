@@ -228,7 +228,7 @@ class OracleWork extends Stackable
         $queryList['description'] = './/*[@class="rule-text"]';
         $queryList['flavor'] = './/*[@class="flavor-text"]';
         $queryList['expansion_name'] = '//h1';
-        $queryList['expansion_number'] = 'substring-before(.//*[@class="card-number"], "/")';
+        $queryList['expansion_number'] = 'string(.//*[@class="card-number"])';
         $queryList['legality'] = '"Custom"';
         $queryList['image'] = 'normalize-space(.//*[@class="scard"]/html:img/@src)';
         

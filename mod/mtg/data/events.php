@@ -6,10 +6,17 @@ $cacheTime = TIME_WEEK;
 // GPTs und PPTQs
 $eventTypeCodeNames = [
     'GT' => 'GPT',
-    'PPTQ' => 'PPTQ'
+    'PPTQ' => 'PPTQ',
+    'RPTQ' => 'RPTQ',
+	'QT' => 'PTQ',
+	'PR' => 'Prerelease',
+	'PEN' => 'Prerelease',
+	'SCP' => 'Store Championship',
+	//'FM' => 'FNM',
 ];
 $formatCodeNames = [
-    'SEALED' => 'Limited',
+    'BOOSTER' => 'Booster Draft',
+    'SEALED' => 'Sealed',
     'STANDARD' => 'Standard',
     'MODERN' => 'Modern',
     'LEGACY' => 'Legacy'
@@ -55,6 +62,19 @@ $header = [
 ];
 if ($res = \Slothsoft\Core\Storage::loadExternalJSON($uri, $cacheTime, json_encode($req), $header)) {
     $businessList = $res['d']['Results'];
+	//my_dump($businessList);die;
+	$businessList[] = [
+		'Id' => 378336, //comixart Bayreuth
+		'Organization' => [
+			'Id' => 37076,
+		],
+	];
+	$businessList[] = [
+		'Id' => 378193, //Kommunales Jugendzentrum
+		'Organization' => [
+			'Id' => 37076,
+		],
+	];
     
     $uri = 'http://locator.wizards.com/Service/LocationService.svc/GetLocationDetails';
     
@@ -70,43 +90,45 @@ if ($res = \Slothsoft\Core\Storage::loadExternalJSON($uri, $cacheTime, json_enco
                 "LocalTime" => $LocalTime,
                 "EarliestEventStartDate" => null,
                 "LatestEventStartDate" => null
-            ]
+            ],
+			"page" => 1,
+			"count" => 1000,
         ];
         
         if ($res = \Slothsoft\Core\Storage::loadExternalJSON($uri, $cacheTime, json_encode($req), $header)) {
             $eveList = $res['d']['Result']['EventsAtVenue'];
             foreach ($eveList as $eve) {
-                if (in_array($eve['EventTypeCode'], $EventTypeCodes)) {
-                    // my_dump($eve);
-                    
-                    $startDate = preg_match('/\d+/', $eve['StartDate'], $match) ? (int) substr($match[0], 0, - 3) : 0;
-                    // $startDate = date(DATE_W3C, $startDate);
-                    
-                    $event = [];
-                    $event['type'] = $eventTypeCodeNames[$eve['EventTypeCode']];
-                    $event['format'] = $formatCodeNames[$eve['PlayFormatCode']];
-                    $event['date'] = $startDate;
-                    $event['date-start'] = $startDate;
-                    $event['date-end'] = $startDate;
-                    $event['name'] = $eve['Name'];
-                    // $event['name-href'] = sprintf('mailto:%s', $eve['Email']);
-                    $event['name-title'] = $eve['AdditionalDetails'];
-                    $event['venue'] = $eve['Address']['Name'];
-                    $event['city'] = $eve['Address']['City']; // sprintf('%s (%s)', $eve['Address']['City'], $eve['Address']['Name']);
-                    $event['venue-href'] = sprintf('http://maps.google.com/?q=%s', rawurlencode(implode(' ', [
-                        $eve['Address']['Line1'],
-                        $eve['Address']['Line2'],
-                        $eve['Address']['Line3'],
-                        // $eve['Address']['Line4'],
-                        $eve['Address']['PostalCode'],
-                        $eve['Address']['City'],
-                        // $eve['Address']['Region'],
-                        $eve['Address']['CountryName']
-                    ])));
-                    $event['country'] = $eve['Address']['CountryName'];
-                    
-                    $eventList[] = $event;
-                }
+				if (in_array($eve['EventTypeCode'], $EventTypeCodes)) {
+					// my_dump($eve);
+					
+					$startDate = preg_match('/\d+/', $eve['StartDate'], $match) ? (int) substr($match[0], 0, - 3) : 0;
+					// $startDate = date(DATE_W3C, $startDate);
+					
+					$event = [];
+					$event['type'] = $eventTypeCodeNames[$eve['EventTypeCode']] ?? $eve['EventTypeCode'];
+					$event['format'] = $formatCodeNames[$eve['PlayFormatCode']] ?? $eve['PlayFormatCode'];
+					$event['date'] = $startDate;
+					$event['date-start'] = $startDate;
+					$event['date-end'] = $startDate;
+					$event['name'] = $eve['Name'];
+					// $event['name-href'] = sprintf('mailto:%s', $eve['Email']);
+					$event['name-title'] = $eve['AdditionalDetails'];
+					$event['venue'] = $eve['Address']['Name'];
+					$event['city'] = $eve['Address']['City']; // sprintf('%s (%s)', $eve['Address']['City'], $eve['Address']['Name']);
+					$event['venue-href'] = sprintf('http://maps.google.com/?q=%s', rawurlencode(implode(' ', [
+						$eve['Address']['Line1'],
+						$eve['Address']['Line2'],
+						$eve['Address']['Line3'],
+						// $eve['Address']['Line4'],
+						$eve['Address']['PostalCode'],
+						$eve['Address']['City'],
+						// $eve['Address']['Region'],
+						$eve['Address']['CountryName']
+					])));
+					$event['country'] = $eve['Address']['CountryName'];
+					
+					$eventList[] = $event;
+				}
             }
         }
     }

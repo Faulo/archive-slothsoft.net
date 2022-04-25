@@ -49,7 +49,7 @@
 	<func:function name="mtg:cards-by-expansion">
 		<xsl:param name="expansion"/>
 		
-		<func:result select="php:functionString('MTG\OracleXSLT::cardsByExpansion', $expansion)"/>
+		<func:result select="php:functionString('Slothsoft\MTG\OracleXSLT::cardsByExpansion', $expansion)"/>
 	</func:function>
 	
 	<xsl:template name="search.internal">

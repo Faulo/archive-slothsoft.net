@@ -169,6 +169,7 @@
 		output="thead" />
 	<resource name="sites" path="sites.xml" type="application/xml" />
 	<resource name="sites.players" path="sites.players.xml" type="application/xml" />
+	<resource name="sites.prerelease" path="sites.prerelease.xml" type="application/xml" />
 
 	<resource name="news" path="news.xhtml" type="application/xhtml+xml" />
 	<resource name="samlWidget" path="samlWidget.xhtml" type="application/xhtml+xml" />

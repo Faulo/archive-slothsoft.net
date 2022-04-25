@@ -418,6 +418,7 @@ class OracleInfo
                         // my_dump([$set, $type]);
                         if (strlen($set) and strlen($type)) {
                             switch ($type) {
+                                case 'special edition':
                                 case 'compilation set':
                                 case 'box set':
                                 case 'supplemetal set':

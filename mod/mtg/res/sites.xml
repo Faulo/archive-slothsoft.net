@@ -19,7 +19,7 @@
 		
 		<page name="Prices" ref="prices" title="Prices" status-active=""/>
 	</page>
-	<page name="Prereleases" ref="prerelease" title="Prereleases" status-active="" status-public=""/>
+	<res ref="/mtg/sites.prerelease"/>
 	<page name="Tokens" ref="tokens" title="Tokens" status-active="" status-public=""/>
 	<page name="Events" ref="events" title="Events" status-active="" status-public=""/>
 	<page name="Booster" ref="booster" title="Booster" status-active="" status-public=""/>
