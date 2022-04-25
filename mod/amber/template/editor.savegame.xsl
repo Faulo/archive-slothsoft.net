@@ -552,7 +552,7 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 				select="key('dictionary-option', 'shops')/@val" />
 			<xsl:with-param name="list">
 				<xsl:for-each select="key('dictionary-option', 'shops')/@key">
-					<xsl:for-each select="$fileList[@file-name = current()]">
+					<xsl:for-each select="$fileList[number(@file-name) = current()]">
 						<li>
 							<xsl:call-template name="savegame.amber.shop" />
 						</li>
@@ -1410,10 +1410,22 @@ xmlns:amber="http://schema.slothsoft.net/amber/amberdata"
 				mode="form-picker" />
 			<xsl:apply-templates select=".//*[@name = 'item-amount']"
 				mode="form-picker" />
+			<xsl:for-each select=".//*[@name = 'item-status']">
+				<xsl:variable name="options"
+				select="key('dictionary-option', @dictionary-ref)" />
+				<xsl:for-each select="*">
+					<xsl:variable name="key" select="position() - 1"/>
+					<xsl:apply-templates select="." mode="form-picker">
+						<xsl:with-param name="name" select="$options[@key = $key]/@val"/>
+					</xsl:apply-templates>
+				</xsl:for-each>
+			</xsl:for-each>
+			<!--
 			<xsl:apply-templates select=".//*[@name = 'broken']"
 				mode="form-picker" />
 			<xsl:apply-templates select=".//*[@name = 'identified']"
 				mode="form-picker" />
+			-->
 			<xsl:apply-templates select=".//*[@name = 'item-charge']"
 				mode="form-picker" />
 		</amber-picker>

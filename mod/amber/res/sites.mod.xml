@@ -15,11 +15,11 @@
 			<param name="id" value="items" />
 		</page>
 		<page name="PCList" title="PCList" ref="mod.resource"
-			status-active="" status-public="">
+			status-active="" >
 			<param name="id" value="pcs" />
 		</page>
 		<page name="NPCList" title="NPCList" ref="mod.resource"
-			status-active="" status-public="">
+			status-active="" >
 			<param name="id" value="npcs" />
 		</page>
 		<page name="MonsterList" title="MonsterList" ref="mod.resource"
@@ -27,7 +27,7 @@
 			<param name="id" value="monsters" />
 		</page>
 		<page name="ClassList" title="ClassList" ref="mod.resource"
-			status-active="" status-public="">
+			status-active="" >
 			<param name="id" value="classes" />
 		</page>
 		<page name="PortraitList" title="PortraitList" ref="mod.resource"
