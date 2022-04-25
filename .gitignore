@@ -4,6 +4,7 @@ unused/
 temp/
 *Kopie*
 Thumbs.db
+*.log
 
 #root files
 /*

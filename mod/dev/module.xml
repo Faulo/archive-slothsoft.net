@@ -59,7 +59,32 @@
 	<resourceDir name="pics" path="pics" type="image/*" />
 	<resourceDir name="txt" path="txt" type="text/plain" />
 	<resourceDir name="misc" path="misc" type="*/*" />
+	<resourceDir name="game-design-1a" path="game-design-1a" type="*/*" />
 	<resource name="unicode" path="unicode.xml" type="application/xml" />
+	
+	<resourceDir name="arbeit" path="arbeit" type="text/csv" 
+		del="," sep="" output="thead"/>
+	<resourceDir name="arbeit-xml" path="arbeit" type="application/xml" />
+	<resourceDir name="arbeit-zip" path="arbeit" type="application/x-zip" />
+	<fragment name="arbeit">
+		<template name="_arbeit" />
+		<data name="arbeit.weeks"/>
+		<data name="arbeit.report"/>
+		<struc name="/core/HTML5" />
+		<param name="standalone" scope="global" />
+	</fragment>
+	<fragment name="fantasycritic">
+		<template name="_fantasycritic" />
+		<data name="fantasycritic"/>
+		<struc name="/core/HTML5" />
+		<param name="standalone" scope="global" />
+	</fragment>
+	<fragment name="arbeit-scores">
+		<template name="_arbeit" />
+		<data name="arbeit.scores"/>
+		<struc name="/core/HTML5" />
+		<param name="standalone" scope="global" />
+	</fragment>
 
 	<resource name="dvb" path="dvb.xml" type="application/xml" />
 
@@ -86,6 +111,15 @@
 		<param name="standalone" scope="global" />
 	</fragment>
 
+
+	<fragment name="beatsaber.playlist">
+		<template name="_beatsaber" />
+		<data name="beatsaber.playlist"/>
+		<struc name="/core/HTML5" />
+		<struc name="/dev/default" />
+		<param name="standalone" scope="global" />
+	</fragment>
+	
 	<resource name="sites" path="sites.xml" type="application/xml" />
 
 	<resource name="8bit" path="8bit.xml" type="application/xml" />
@@ -101,4 +135,17 @@
 	<resource name="GameOfLife" path="GameOfLife.svg" type="image/svg+xml" />
 	<resource name="GameOfLife.Filter" path="GameOfLife.Filter.svg"
 		type="image/svg+xml" />
+		
+	<resourceDir name="tot-logs" path="ToT/logs" type="application/xml" />
+	
+	<fragment name="tot-log">
+		<template name="_tot-log" />
+		<data name="ToT/log"/>
+		<param name="standalone" scope="global" />
+	</fragment>
+	<fragment name="tot-github">
+		<data name="ToT/push"/>
+		<data name="ToT/pull"/>
+		<data name="ToT/compile"/>
+	</fragment>
 </module>

@@ -1,0 +1,6 @@
+Array
+(
+    [0] => C:\Webserver\htdocs\mod\dev\res\ToT\logs\
+    [1] => 
+    [2] => 
+)
