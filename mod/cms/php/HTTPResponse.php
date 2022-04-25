@@ -280,6 +280,7 @@ class HTTPResponse
             
             switch ($this->method) {
                 case HTTPRequest::METHOD_HEAD:
+                case HTTPRequest::METHOD_OPTIONS:
                     break;
                 default:
                     $this->sendBody();
@@ -588,9 +589,11 @@ EOT;
                 unset($styleFile);
             }
             
+			/*
             foreach ($this->styleFiles as $styleFile) {
                 $doc->insertBefore($doc->createProcessingInstruction('xml-stylesheet', sprintf('type="text/css" href="%s"', $styleFile)), $doc->firstChild);
             }
+			//*/
         }
         
         // Script-Datei erstellen
@@ -669,6 +672,15 @@ EOT;
                 } else {
                     $head = $doc->documentElement;
                 }
+				foreach ($this->styleFiles as $styleFile) {
+					if ($styleFile) {
+                        $node = $doc->createElementNS(HTTPDocument::NS_HTML, 'link');
+                        $node->setAttribute('href', $styleFile);
+                        $node->setAttribute('rel', 'stylesheet');
+                        $node->setAttribute('type', 'text/css');
+                        $head->appendChild($node);
+					}
+				}
                 foreach ($this->scriptFiles as $scriptFile) {
                     if ($scriptFile) {
                         $node = $doc->createElementNS(HTTPDocument::NS_HTML, 'script');
@@ -684,6 +696,9 @@ EOT;
                 if ($head = $doc->getElementsByTagNameNS(HTTPDocument::NS_SVG, 'defs')->item(0)) {} else {
                     $head = $doc->documentElement;
                 }
+				foreach ($this->styleFiles as $styleFile) {
+					$doc->insertBefore($doc->createProcessingInstruction('xml-stylesheet', sprintf('type="text/css" href="%s"', $styleFile)), $doc->firstChild);
+				}
                 foreach ($this->scriptFiles as $scriptFile) {
                     if ($scriptFile) {
                         $node = $doc->createElementNS(HTTPDocument::NS_SVG, 'script');
@@ -695,9 +710,15 @@ EOT;
                 break;
             case HTTPDocument::NS_XSL:
                 $this->mime = 'application/xslt+xml';
+				foreach ($this->styleFiles as $styleFile) {
+					$doc->insertBefore($doc->createProcessingInstruction('xml-stylesheet', sprintf('type="text/css" href="%s"', $styleFile)), $doc->firstChild);
+				}
                 break;
             default:
                 $this->mime = 'application/xml';
+				foreach ($this->styleFiles as $styleFile) {
+					$doc->insertBefore($doc->createProcessingInstruction('xml-stylesheet', sprintf('type="text/css" href="%s"', $styleFile)), $doc->firstChild);
+				}
                 break;
         }
         /*
@@ -724,6 +745,9 @@ EOT;
             $doc->documentElement->insertBefore($doc->createComment(PHP_EOL . sprintf(HTTPDocument::ERR_REQRES, get_execution_time(), memory_get_peak_usage() / 1048576) . PHP_EOL), $doc->documentElement->firstChild);
             $this->setBody(trim($doc->saveXML()));
         } else {
+			if (isset($_REQUEST['prettify'])) {
+				$doc->formatOutput = true;
+			}
             $this->setBody(trim($doc->saveXML()));
             $this->setEtag(self::calcEtag($this->body), true);
         }
@@ -789,6 +813,16 @@ EOT;
 
     protected function sendHeaderList()
     {
+		// HACK 21.05.2021 - erstmal alles erlauben
+		if (!$this->getHeader('Access-Control-Allow-Methods')) {
+			$this->addHeader('Access-Control-Allow-Methods', '*');
+		}
+		if (!$this->getHeader('Access-Control-Allow-Origin')) {
+			$this->addHeader('Access-Control-Allow-Origin', '*');
+		}
+		if (!$this->getHeader('Access-Control-Allow-Headers')) {
+			$this->addHeader('Access-Control-Allow-Headers', '*');
+		}
         //$this->addHeader('connection', 'Keep-Alive');
         if ($this->rangeEnd !== null) {
             $this->addHeader('accept-ranges', 'bytes');
@@ -843,6 +877,9 @@ EOT;
                 $this->addHeader('cache-control', 'must-revalidate, max-age=%d', [
                     $cacheDuration
                 ]);
+				if (!$this->getHeader('Access-Control-Max-Age')) {
+					$this->addHeader('Access-Control-Max-Age', $cacheDuration);
+				}
                 break;
             case self::BODY_STREAM:
             case self::BODY_COMMAND:

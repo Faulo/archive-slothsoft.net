@@ -147,8 +147,8 @@ class HTTPFile
             $refererURI = sprintf('Referer: %s://%s%s', $param['scheme'], $param['host'], $param['path']);
             $filePath = self::getTempFile();
             $downloadExec = sprintf(self::CURL_COMMAND, escapeshellarg(urldecode($url)), escapeshellarg($filePath), escapeshellarg($refererURI));
-            exec($downloadExec);
-            // file_put_contents(__FILE__ . '.txt', $downloadExec . PHP_EOL, FILE_APPEND);
+            `$downloadExec`;
+			//pclose(popen($downloadExec, 'rb'));
             $ret = file_exists($filePath) ? self::createFromPath($filePath, $fileName) : null;
         } else {
             @$data = file_get_contents($url);
@@ -222,9 +222,11 @@ class HTTPFile
 
     protected $name;
 
-    protected function __construct($filePath, $fileName = null)
+    protected function __construct($filePath, $fileName = '')
     {
-        if ($fileName === null) {
+		$filePath = (string) $filePath;
+		$fileName = (string) $fileName;
+        if ($fileName === '') {
             $fileName = basename($filePath);
         }
         $this->path = $filePath;

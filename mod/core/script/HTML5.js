@@ -73,3 +73,21 @@ window.addEventListener(
 	false
 );
 //*/
+window.addEventListener(
+	"DOMContentLoaded",
+	(eve) => {
+		if (window.location.hash) {
+			let id = window.location.hash.substr(1);
+			let targetNode = document.getElementById(id);
+			if (targetNode) {
+				for (let node = targetNode; node.nodeType == Node.ELEMENT_NODE; node = node.parentNode) {
+					if (node.tagName === "details" && !node.hasAttribute("open")) {
+						node.setAttribute("open", "open");
+					}
+				}
+				targetNode.scrollIntoView();
+			}
+		}
+	},
+	false
+);

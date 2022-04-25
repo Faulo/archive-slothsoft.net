@@ -139,11 +139,7 @@ class Client
                     if (! isset($val['name'])) {
                         $val['name'] = reset($val['columns']);
                     }
-                    foreach ($val['columns'] as &$c) {
-                        $c = sprintf('`%s`', $c);
-                    }
-                    unset($c);
-                    $sql = sprintf('%s `%s` (%s)', $val['type'], $val['name'], implode(',', $val['columns']));
+                    $sql = sprintf('%s `%s` (%s)', $val['type'] ?? 'KEY', $val['name'], implode(',', $val['columns']));
                 } else {
                     $sql = sprintf('KEY `%s` (`%s`)', $val, $val);
                 }
@@ -420,7 +416,7 @@ class Client
     public function escape($string)
     {
         if ($this->connect()) {
-            return $this->sqli->real_escape_string($string);
+            return $this->sqli->real_escape_string((string) $string);
         }
         return $string;
     }

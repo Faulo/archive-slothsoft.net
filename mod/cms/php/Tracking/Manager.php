@@ -32,7 +32,7 @@ class Manager
             $archive = self::getArchive();
             $archive->insertTemp($request['REQUEST_TIME_FLOAT'] ?? microtime(true), $request);
         } catch (Exception $e) {
-            file_put_contents(__FILE__ . '.txt', $e->getMessage() . PHP_EOL, FILE_APPEND);
+            file_put_contents(__FILE__ . '.txt', date(DATE_DATETIME) . PHP_EOL . $e->getMessage() . PHP_EOL, FILE_APPEND);
         }
     }
 }

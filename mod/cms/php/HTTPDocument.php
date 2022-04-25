@@ -542,6 +542,7 @@ class HTTPDocument
                                     case HTTPRequest::METHOD_HEAD:
                                     case HTTPRequest::METHOD_GET:
                                     case HTTPRequest::METHOD_POST:
+                                    case HTTPRequest::METHOD_OPTIONS:
                                         $ret = null;
                                         $this->httpResponse->setStatus(HTTPResponse::STATUS_GONE);
                                         $this->httpResponse->setDownload(isset($this->httpRequest->input['download']));
@@ -1339,9 +1340,10 @@ class HTTPDocument
                     $dataRes = $this->includeFile($file, $dataDoc);
                     
                     while ($dataRes instanceof HTTPClosure) {
-                        if ($dataRes->isThreaded() and PHP_SAPI === 'apache2handler') {
+                        if ($dataRes->isThreaded() and PHP_SAPI !== 'cli') {
                             // switch to CLI
-                            $cmd = sprintf('php %s %s', SERVER_ROOT . 'vhosts\\cmd\\getData.php', $path);
+							$phpLocation = realpath('C:/Webserver/php-7.0/php.exe');
+                            $cmd = sprintf('%s %s %s', $phpLocation, SERVER_ROOT . 'vhosts\\cmd\\getData.php', $path);
                             $dataRes = new HTTPCommand($cmd);
                         } else {
                             $dataRes = $dataRes->run();

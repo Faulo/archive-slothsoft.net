@@ -16,20 +16,6 @@ declare(ticks = 1000);
 class HTTPRequest
 {
 
-    protected static $allowedHostList = [
-        'slothsoft.net',
-        'backend.slothsoft.net',
-        'daniel-schulz.slothsoft.net',
-        'mtg.slothsoft.net',
-        'twitter.slothsoft.net',
-        'dev.slothsoft.net',
-        'twitter.slothsoft.net',
-        'proxy.slothsoft.net',
-        'test.slothsoft.net',
-        'dende',
-        'localhost'
-    ];
-
     public static function prepareEnvironment(array &$env)
     {
         $lang = null;
@@ -52,13 +38,7 @@ class HTTPRequest
         $env['REQUEST_LANGUAGE'] = $lang;
         $env['REQUEST_TIME_DATE'] = date(DATE_DATETIME, $env['REQUEST_TIME']);
         
-        $key = isset($env['HTTP_HOST']) ? array_search(strtolower($env['HTTP_HOST']), self::$allowedHostList) : false;
-        if ($key === false) {
-            $key = array_search(strtolower($env['SERVER_NAME']), self::$allowedHostList);
-        }
-        $env['SERVER_NAME'] = $key === false ? self::$allowedHostList[0] : self::$allowedHostList[$key];
-        
-        if ($env['SERVER_NAME'] === 'localhost') {
+        if (!isset($env['SERVER_NAME']) or $env['SERVER_NAME'] === 'localhost') {
             $env['SERVER_NAME'] = SERVER_NAME;
         }
         
@@ -97,6 +77,8 @@ class HTTPRequest
     const METHOD_POST = 'POST';
 
     const METHOD_HEAD = 'HEAD';
+
+    const METHOD_OPTIONS = 'OPTIONS';
 
     const PROTOCOL_HTTP = 'HTTP';
 

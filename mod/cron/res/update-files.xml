@@ -74,7 +74,7 @@
 		<update
 			name="FFmpeg"
 			dest-path = "C:\NetzwerkDaten\Downloads\cron\ffmpeg.7z"
-			source-uri = "http://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-latest-win64-static.7z"
+			source-uri = "https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-latest-win64-static.zip"
 			success-cmd = "7z e %s *.exe -r -y -oC:\NetzwerkDaten\Dropbox\Tools\ffmpeg"
 		/>
 	</data>
@@ -228,7 +228,7 @@ if ($dirList) {
 			name="Minecraft Overviewer"
 			dest-path = "C:\NetzwerkDaten\Downloads\cron\overviewer.7z"
 			source-uri = "http://overviewer.org/downloads"
-			source-xpath = ".//html:a[contains(@href, '/builds/win64/')]/@href"
+			source-xpath = ".//html:a[contains(@href, '/builds/') and contains(@href, 'win64')]/@href"
 			success-cmd = "7z x %s -y -oC:\Minecraft\Tools\Overviewer"
 		/>
 		<update
