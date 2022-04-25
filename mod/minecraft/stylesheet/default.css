@@ -257,6 +257,7 @@ nav.Map {
 	.minecraft-home .minecraft-log ul, .minecraft-home [data-chat-id="list"] {
 		height: auto;
 		overflow: visible;
+		max-width: 50vw;
 	}
 	.minecraft-log .onlinePlayers, .minecraft-log *[data-month] {
 		display: none !important;

@@ -6,18 +6,19 @@ if (! $this->httpRequest->getInputValue('update')) {
     // echo 'DEACTIVATED'; return;
 }
 
-$uri = 'https://minecraft.net/en-us/download/server';
+$uri = 'https://www.minecraft.net/en-us/download/server/';
 $downloadHost = 'https://s3.amazonaws.com/Minecraft.Download/versions/';
+$downloadHost = 'https://launcher.mojang.com';
 $ext = '.jar';
 $targetList = [
     'C:/NetzwerkDaten/Dropbox/MinecraftServer',
-    'C:/NetzwerkDaten/Dropbox/Dani Julia/Minecraft'
+    //'C:/NetzwerkDaten/Dropbox/Dani Julia/Minecraft'
     // 'C:/NetzwerkDaten/Dropbox/MinecraftServer/MCEdit/ServerJarStorage/latest',
 ];
 
 $ret = 'Starting update... ' . $uri . PHP_EOL;
 if ($xpath = Storage::loadExternalXPath($uri, 0)) {
-    $nodeList = $xpath->evaluate('.//*[contains(@href, "minecraft_server")]');
+    $nodeList = $xpath->evaluate('.//*[contains(@href, "server.jar")]');
     foreach ($nodeList as $node) {
         $uri = trim($node->getAttribute('href'));
         $targetFile = 'minecraft_server.jar';
@@ -51,6 +52,8 @@ if ($xpath = Storage::loadExternalXPath($uri, 0)) {
             }
         }
     }
+} else {
+	$ret .= 'URL not found? ' . $uri . PHP_EOL;
 }
 $this->progressStatus |= self::STATUS_RESPONSE_SET;
 $this->httpResponse->setStatus(HTTPResponse::STATUS_OK);
