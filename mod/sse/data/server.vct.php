@@ -15,9 +15,19 @@ $sse->init($lastId, $userId);
 
 $ret = null;
 
+
 switch ($sseMode) {
     case 'push':
-        $sse->dispatchEvent($this->httpRequest->getInputValue('type'), $this->httpRequest->getInputJSON());
+		if ($this->httpRequest->hasInputValue('data')) {
+			$data = $this->httpRequest->getInputValue('data');
+		} else {
+			$data = $this->httpRequest->getInputJSON();
+		}
+		if (!is_string($data)) {
+			$data = json_encode($data);
+		}
+		//file_put_contents(__FILE__ . '.log', print_r($data, true));
+        $sse->dispatchEvent($this->httpRequest->getInputValue('type'), $data);
         $this->httpResponse->setStatus(HTTPResponse::STATUS_NO_CONTENT);
         $this->progressStatus = self::STATUS_RESPONSE_SET;
         break;

@@ -15,7 +15,7 @@ if ($userName = $this->httpRequest->getInputValue('user')) {
     }
     
     $options = [];
-    $options['limit'] = $this->httpRequest->getInputValue('limit', 10000);
+    $options['limit'] = $this->httpRequest->getInputValue('limit', 100);
     $options['offset'] = $this->httpRequest->getInputValue('start', - 1);
     $options['pics'] = (int) $this->httpRequest->getInputValue('pics', - 1);
     

@@ -37,7 +37,7 @@ class Stream extends HTTPStream
         // $this->headerList['connection'] = 'close';
         $this->hasStarted = false;
         $this->eventStack = [];
-        $this->sleepDuration = 100 * TIME_MILLISECOND;
+        $this->sleepDuration = TIME_MILLISECOND;
         $this->heartbeatContent = ":\n";
         $this->heartbeatInterval = 10 * TIME_SECOND;
     }
