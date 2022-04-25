@@ -5,9 +5,16 @@ use Slothsoft\Core\FileSystem;
 use DOMXPath;
 $downloadDirsList = [
     0 => [],
+	'hentai.ms' => [
+		'C:/NetzwerkDaten/pr0n/manga/hentai.ms/',
+	],
     'pururin.us' => [
         'C:/NetzwerkDaten/pr0n/manga/pururin.us/'
-    ]
+    ],
+	'nhentai.net' => [
+		'C:/NetzwerkDaten/pr0n/manga/nhentai.net/',
+	],
+	//*/
     /*
  * 'hentai.ms' => [
  * 'C:/NetzwerkDaten/pr0n/manga/hentai.ms/',

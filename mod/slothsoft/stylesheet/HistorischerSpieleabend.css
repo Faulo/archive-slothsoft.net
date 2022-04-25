@@ -1,0 +1,494 @@
+/* https://coolors.co/c1ecfc-d4efb0-f9cbfa-274060-fafaff */
+
+hr {
+	margin: 0;
+}
+h1, h2, h3,
+.h1, .h2, .h3 {
+	padding-left: 0.5rem;
+	text-align: center;
+}
+
+html {
+	overflow-y: scroll;
+}
+body {
+	background: #fafaff; /*background 1*/
+	/*background: #C2F48B; /*background 2*/
+	/*background: #C9ECF2; /*background 3*/
+	font-family: Calibri, sans-serif;
+	color: #262c1b;
+}
+
+.info {
+	max-width: 40em;
+	text-align: center;
+	margin: auto;
+}
+
+
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.columns .event {
+	width: max-content;
+	display: block;
+	margin: 1em auto;
+}
+
+details {
+}
+
+
+.tracks {
+	font-size: 0.8em;
+	position: fixed;
+	right: 0.5em;
+	top: 0.5em;
+	padding: 0.5em;
+	border-radius: 0.5em;
+	background-color: white;
+	border: 1px solid silver;
+	opacity: 0.9;
+}
+.tracks label {
+	margin: 0;
+}
+.tracks input {
+	display: inline-block;
+	width: 1.5rem;
+}
+.subtracks {
+	margin: 0;
+	padding-left: 1.5rem;
+}
+.subtracks li {
+	list-style-type: none;
+	font-size: smaller;
+}
+
+.header {
+	margin: 0.25em;
+}
+.event {
+	width: 30em;
+	margin: 0.5em;
+	padding: 0 0 1em 0.5em;
+	background-color: #d7dbda;
+	box-shadow: 0.25em 0.25em 0.25em rgba(0, 0, 0, 0.5) !important;
+}
+.theme {
+	font-weight: bold;
+	color: #fafaff;
+	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.75) !important;
+}
+.course-id {
+	font-size: 0.7em;
+	display: block;
+	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.75) !important;
+}
+.id {
+	/*
+	font-family: monospace;
+	background-color: rgba(255, 255, 127, 0.2);
+	border-radius: 0.25em;
+	padding: 0.25em;
+	*/
+}
+.prereqs, .moderator, .reading {
+	font-size: 0.8rem;
+	padding-left: 1.5rem;
+}
+.prereqs a, .reading a {
+	display: list-item;
+	margin-left: 2em;
+}
+*[data-prereq]::after {
+	content: "✔";
+	color: darkgreen;
+	font-weight: bold;
+	font-size: 0.8em;
+	line-height: 1;
+	vertical-align: text-top;
+}
+*[data-prereq="missing"]::after {
+	content: "❌";
+	color: brown;
+}
+*[data-wanted]::after {
+	font-size: 0.8em;
+	content: attr(data-wanted);
+	line-height: 1;
+	vertical-align: text-top;
+	color: darkgreen;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 0.5em;
+	padding: 0.25em;
+	opacity: 0.7;
+}
+*[data-wanted=""]::after {
+	content: "WANTED";
+	color: brown;
+}
+*[data-todo] .course-id::before {
+	content: "(todo)";
+	color: brown;
+	font-size: 0.6em;
+	line-height: 1;
+	vertical-align: text-top;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 0.5em;
+	padding: 0.25em;
+	display: block;
+}
+*[data-unavailable] {
+	opacity: 0.7;
+}
+
+.footer {
+	text-align: center;
+	line-height: 2em;
+}
+.url {
+	padding: 0.5em;
+}
+.qr {
+	height: 2em;
+}
+
+/* http://paletton.com/#uid=32W0X0k7UUa3cZA5wXlaiQ5cFL3 */
+
+/* COLOR THEME 1 */
+/*
+https://lospec.com/palette-list/cloudy-28
+#51887c
+#66a96d
+#a6c87b
+#d9e68f
+#ecaa6d
+#d56247
+#a43c3c
+#59160e
+#773c35
+#9e6257
+#d3847a
+#db96ad
+#c277a3
+#9b5d99
+#62417d
+#b6cde3
+#92bbcd
+#6ba9b4
+#34539e
+#457bb4
+*/
+/*
+*[data-genre="FPS"] {
+	background-color: #51887c;
+}
+*[data-genre="SPO"] {
+	background-color: #66a96d
+}
+*[data-genre="FIG"] {
+	background-color: #a6c87b;
+}
+*[data-genre="ADV"] {
+	background-color: #d9e68f;
+}
+*[data-genre="ACT"] {
+	background-color: #ecaa6d;
+}
+*[data-genre="STE"] {
+	background-color: #d56247;
+}
+*[data-genre="JNR"] {
+	background-color: #a43c3c;
+}
+*[data-genre="MUS"] {
+	background-color: #59160e;
+}
+*[data-genre="RAC"] {
+	background-color: #773c35;
+}
+*[data-genre="HOR"] {
+	background-color: #9e6257;
+}
+*[data-genre="PUZ"] {
+	background-color: #d3847a;
+}
+*[data-genre="STR"] {
+	background-color: #db96ad;
+}
+*[data-genre="TAC"] {
+	background-color: #c277a3;
+}
+*[data-genre="GOD"] {
+	background-color: #9b5d99;
+}
+*[data-genre="RPG"] {
+	background-color: #68a5d5;
+}
+*[data-genre="MUD"] {
+	background-color: #b6cde3;
+}
+*[data-genre="LAN"] {
+	background-color: #92bbcd;
+}
+*[data-genre="GER"] {
+	background-color: #6ba9b4;
+}
+*[data-genre="MIS"] {
+	background-color: #34539e;
+}
+*/
+
+/*
+*[data-type="author"] {
+	background-color: #FFE3B4;
+}
+*[data-type="author"] .theme {
+	color: #FFC35E;
+}
+
+*[data-type="genre"] {
+	background-color: #FAB1CC;
+}
+*[data-type="genre"] .theme {
+	color: #E25489;
+}
+
+*[data-type="game"] {
+	background-color: #D1D7F6;
+}
+*[data-type="game"] .theme {
+	color: #8C99D7;
+}
+*/
+
+article {
+	border-color: silver;
+	border-style: ridge;
+	border-width: 2px;
+	border-radius: 0.5em 0.5em 2em 0.5em;
+}
+.ludography {
+	padding-left: 1.5em;
+	list-style-type: none;
+}
+.country {
+	display: inline-block;
+	width: 1.5em;
+	margin-left: -1.5em;
+	vertical-align: top;
+	text-align: center;
+}
+.country img {
+	display: inline;
+	width: 1.5em;
+}
+.dev {
+}
+.year {
+}
+.title {
+	font-style: italic;
+}
+.version {
+}
+.platform {
+	font-family: monospace;
+}
+
+.date {
+	text-align: center;
+	padding: 0;
+	font-size: 1.2em;
+}
+.icon {
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
+	display: block;
+	height: 10em;
+	margin: 0 0.5em 0 0;
+}
+.past .icon, .future .icon {
+	display: none;
+}
+
+
+@media (min-width:30em) {
+	.tabled-content {
+		display: table;
+	}
+	.tabled-content > * {
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
+
+.poster {
+	position: relative;
+	width: 277mm;
+	height: 190mm;
+	overflow: clip;
+	font-family: Bahnschrift;
+	font-weight: bold;
+	top: 1cm;
+	left: 1cm;
+	page-break-after: always;
+}
+.poster * {
+	margin: 0;
+	padding: 0;
+	text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.5) !important;
+}
+.poster h1 {
+	position: relative;
+	width: 17cm;
+	text-align: left;
+	font-size: 3cm;
+	line-height: 3cm;
+}
+.poster h4 {
+	position: relative;
+	width: 17cm;
+	text-align: center;
+	font-size: 0.75cm;
+	line-height: 0.75cm;
+	color: #666;
+}
+.poster h2 {
+	position: relative;
+	width: 20cm;
+	text-align: left;
+	font-size: 1.5cm;
+	line-height: 1.5cm;
+	top: 1cm;
+}
+.poster h3 {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	text-align: left;
+	font-size: 1cm;
+	color: #666;
+}
+.poster h3 > span {
+	vertical-align: middle;
+}
+.poster .box {
+	display: inline-block;
+	position: relative;
+	border-radius: 0.5cm;
+	background: #666;
+	padding: 0.25cm;
+}
+.poster .box > * {
+	display: inline-block;
+	position: relative;
+	border-radius: 0.5cm;
+	background: white;
+	text-align: center;
+	padding: 0.25cm 0.5cm;
+}
+.poster .box large {
+	display: block;
+	font-size: 2cm;
+	line-height: 2cm;
+}
+.poster .box small {
+	display: block;
+	font-size: 0.25cm;
+	line-height: 0.5cm;
+	margin-top: -0.5cm;
+}
+.poster .ludography {
+	position: relative;
+	padding-left: 1cm;
+	font-size: 0.75cm;
+	line-height: 1cm;
+	list-style-type: upper-roman;
+}
+.poster img {
+	position: absolute;
+	display: block;
+}
+.poster img.logo {
+	top: 0;
+	right: 0;
+	width: 9cm;
+	border-radius: 0.5cm;
+}
+.poster .event-left {
+	position: absolute;
+	top: 10cm;
+	left: 0;
+	width: 9cm;
+}
+.poster .event-right {
+	position: absolute;
+	top: 10cm;
+	left: 10cm;
+	font-size: 1cm;
+}
+.poster img.icon {
+	position: relative;
+	top: 0;
+	right: 0;
+	width: auto;
+	height: 5cm;
+	margin-left: auto;
+	border: 0.125cm solid black;
+	border-radius: 0.125cm;
+	background: black;
+	-moz-box-shadow: 1cm 1cm 2cm red;
+	-webkit-box-shadow: 1cm 1cm 2cm red;
+}
+.poster img.gil {
+	bottom: 0;
+	left: 0;
+	height: 3cm;
+}
+
+
+.print {
+	display: none;
+}
+.noprint {
+	display: block;
+}
+@media print {
+	@page {
+		size: 297mm 210mm;
+	}
+	.print {
+		display: block;
+	}
+	.noprint {
+		display: none;
+	}
+	.course-id::before {
+		content: attr(data-course);
+	}
+	.course-id::after {
+		content: ":";
+	}
+	.id {
+		display: none;
+	}
+	html {
+	}
+	body {
+		background: transparent;
+	}
+	h1 {
+	}
+	a:link {
+		text-decoration: none;
+	}
+	a:link::after {
+		display: none;
+	}
+}

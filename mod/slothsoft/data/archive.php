@@ -17,11 +17,20 @@ $downloadDirsList = [
     'pr0n' => [
         'C:/NetzwerkDaten/pr0n/videos/'
     ],
+    'hentai' => [
+        'C:/NetzwerkDaten/pr0n/hentai/'
+    ],
     'files' => [
         'C:/NetzwerkDaten/YouTube/',
         'C:/NetzwerkDaten/Uploads/',
         'C:/NetzwerkDaten/Downloads/',
         'C:/NetzwerkDaten/Torrents/'
+    ],
+    'tot' => [
+        'C:/NetzwerkDaten/Trial of Two/'
+    ],
+    'images' => [
+        'C:/NetzwerkDaten/Images/'
     ],
     'misc' => [
         'C:/NetzwerkDaten/Uploads/',
@@ -42,6 +51,9 @@ $downloadDirsList = [
     'ghibli' => [
         'D:/Media/Movies/Studio Ghibli/'
         // 'C:/NetzwerkDaten/Series/Movies/Studio Ghibli/',
+    ],
+    'wichteln' => [
+        'C:/NetzwerkDaten/Weihnachtswichteln'
     ]
 ];
 
@@ -132,8 +144,13 @@ if (isset($_FILES[$uploadKey])) {
         if ($error === 0) {
             // my_dump($_FILES);
             $success = move_uploaded_file($_FILES[$uploadKey]['tmp_name'][$i], $uploadDir . DIRECTORY_SEPARATOR . utf8_decode(basename($_FILES[$uploadKey]['name'][$i])));
-            // my_dump( $defaultDir . $_FILES[$uploadKey]['name'][$i]);
-            // my_dump(file_exists( $defaultDir . $_FILES[$uploadKey]['name'][$i]));
+            if (!$success) {
+				throw new \Exception('Could not upload "%s" to "%s"!', $_FILES[$uploadKey]['tmp_name'][$i], $uploadDir . DIRECTORY_SEPARATOR . $_FILES[$uploadKey]['name'][$i]);
+			}
+			$verifyTree = true;
+			//my_dump($success);
+			//my_dump( $uploadDir . DIRECTORY_SEPARATOR . $_FILES[$uploadKey]['name'][$i]);
+            //my_dump(file_exists( $uploadDir . DIRECTORY_SEPARATOR . $_FILES[$uploadKey]['name'][$i]));
         }
     }
 }

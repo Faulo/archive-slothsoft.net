@@ -59,7 +59,7 @@
 			<call name="/amber/chat" as="chat" />
 			<call name="/talesof/chat" as="chat" />
 			<call name="fire-emblem-chat" as="chat" />
-			<call name="missing-sloth-chat" as="chat" />
+			<call name="/webrtc/chat" as="chat" />
 		</fragment>
 	</fragment>
 
@@ -490,7 +490,25 @@
 	<resourceDir name="vocab-ja" path="vocab-ja" type="audio/mpeg" />
 	<resourceDir name="vocab-jlpt" path="vocab-jlpt" type="application/xhtml+xml" />
 	<resource name="grammar-ja" path="japanese.grammar.xml" type="application/xml" />
-
+	
+	<resourceDir name="HistorischerSpieleabend" path="HistorischerSpieleabend" type="application/pdf"/>
+	<resourceDir name="HistorischerSpieleabendIcons" path="HistorischerSpieleabend/icons" type="image/*"/>
+	
+	
+	<fragment name="HistorischerSpieleabend">
+		<data name="HistorischerSpieleabendRedirect"/>
+	</fragment>
+	<fragment name="HistorischerSpieleabendPage">
+		<res name="HistorischerSpieleabendIndex" load="xml"/>
+		<res name="HistorischerSpieleabendColors" load="xml"/>
+		<template name="_HistorischerSpieleabend"/>
+		<style name="default" />
+		<style name="HistorischerSpieleabend" />
+	</fragment>
+	<resource name="HistorischerSpieleabendIndex" path="HistorischerSpieleabend/index.xml" type="application/xml" />
+	<resource name="HistorischerSpieleabendTemplate" path="HistorischerSpieleabend/index.xsl" type="application/xslt+xml" />
+	<resource name="HistorischerSpieleabendColors" path="HistorischerSpieleabend/colors.csv"
+		type="text/csv" del="," sep="" cols="1" output="table" />
 
 	<struc name="default">
 		<template name="_default" />

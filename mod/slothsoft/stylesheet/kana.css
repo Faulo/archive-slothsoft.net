@@ -34,26 +34,39 @@
 	width: 50%;
 }
 
-table[data-template="kana-table"] {
+*[data-template="kana-table"] {
 	table-layout: fixed;
 	background-color: rgba(200, 255, 150, 0.5);
 	margin-left: auto;
 	margin-right: auto;
+	border-collapse: collapse;
+}
+*[data-template="kana-table"] label {
+	display: block;
+}
+*[data-template="kana-table"] tbody th {
+	font-size: larger;
+	border-top: 0.25em solid rgba(200, 255, 150, 1);
+	border-bottom: 0.25em solid rgba(200, 255, 150, 1);
+	width: 1.5em;
+	text-align: center;
 }
 *[data-template="kana-table"] tbody td {
 	font-size: larger;
 	background-color: rgba(255, 255, 255, 0.5);
+	border-top: 0.25em solid rgba(200, 255, 150, 1);
+	border-bottom: 0.25em solid rgba(200, 255, 150, 1);
+	width: 2.5em;
 }
 *[data-template="kana-table"] td:nth-child(3n + 2) {
-	padding-left: 8px;
+	border-left: 1em solid rgba(200, 255, 150, 1);
 	text-align: right;
 }
 *[data-template="kana-table"] td:nth-child(3n + 3) {
-	padding: 4px;
 	text-align: center;
 }
 *[data-template="kana-table"] td:nth-child(3n + 1) {
-	padding-right: 8px;
+	border-right: 1em solid rgba(200, 255, 150, 1);
 	text-align: left;
 }
 .translatorForm {
@@ -177,15 +190,18 @@ table.translatorForm .english dd .meaning-tags {
 }
 
 *[data-parity = "0"] {
-	background-color: rgba(200, 200, 255, 0.5);;
+	background-color: rgba(200, 200, 255, 0.5);
 }
 *[data-parity = "1"] {
-	background-color: rgba(200, 255, 200, 0.5);;
+	background-color: rgba(200, 255, 200, 0.5);
 }
 .kanaTest input[type="text"] {
 	font-size: 3em;
 	display: block;
 	width: 100%;
+}
+.kanaTest input[name="testKana"] {
+	font-family: myCode;
 }
 .kanaTest ul {
 	list-style-type: none;

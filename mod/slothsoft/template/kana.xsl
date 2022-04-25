@@ -6,8 +6,9 @@
 
 	
 	<xsl:template match="*[kana]" name="kana.table">
-		<xsl:param name="kanaList" select="kana[not(@skip)]"/>
+		<xsl:param name="kanaList" select=".//kana[not(@skip)][@latin]"/>
 		<xsl:param name="drawForm" select="false()"/>
+		<xsl:variable name="rows" select="row"/>
 		<xsl:variable name="vowels" select="$kanaList[not(@v = following::kana/@v)]/@v"/>
 		<xsl:variable name="consonants" select="$kanaList[not(@c = following::kana/@c)]/@c"/>
 		<xsl:if test="$drawForm">
@@ -43,9 +44,8 @@ var KanaTable = {
 			<thead>
 				<tr>
 					<th/>
-					<xsl:for-each select="$vowels">
-						<xsl:sort select="."/>
-						<xsl:variable name="v" select="string(.)"/>
+					<xsl:for-each select="$rows[1]/kana">
+						<xsl:variable name="v" select="string(@v)"/>
 						<th/>
 						<xsl:choose>
 							<xsl:when test="$drawForm">
@@ -70,8 +70,7 @@ var KanaTable = {
 				</tr>
 				<tr>
 					<th/>
-					<xsl:for-each select="$vowels">
-						<xsl:sort select="."/>
+					<xsl:for-each select="$rows[1]/kana">
 						<td><abbr title="Hiragana">Hi</abbr></td>
 						<td><abbr title="Latin">La</abbr></td>
 						<td><abbr title="Katakana">Ka</abbr></td>
@@ -79,9 +78,8 @@ var KanaTable = {
 				</tr>
 			</thead>
 			<tbody>
-				<xsl:for-each select="$consonants">
-					<xsl:sort select="."/>
-					<xsl:variable name="c" select="string(.)"/>
+				<xsl:for-each select="$rows">
+					<xsl:variable name="c" select="string(@c)"/>
 					<tr>
 						<th>
 							<xsl:choose>
@@ -99,17 +97,14 @@ var KanaTable = {
 								</xsl:otherwise>
 							</xsl:choose>
 						</th>
-						<xsl:for-each select="$vowels">
-							<xsl:sort select="."/>
-							<xsl:variable name="v" select="string(.)"/>
-							<xsl:variable name="kana" select="$kanaList[@c = $c and @v = $v]"/>
+						<xsl:for-each select="kana">
 							<xsl:choose>
-								<xsl:when test="$kana">
+								<xsl:when test="@latin">
 									<xsl:choose>
 										<xsl:when test="$drawForm">
 											<td>
-												<label for="kanaList-{$kana/*[1]/@name}">
-													<xsl:for-each select="$kana/hiragana">
+												<label for="kanaList-{@latin}">
+													<xsl:for-each select="hiragana">
 														<span>
 															<xsl:if test="@user-count">
 																<xsl:attribute name="title"><xsl:value-of select="@user-count"/>ｘ ☑</xsl:attribute>
@@ -122,16 +117,16 @@ var KanaTable = {
 											</td>
 											<td>
 												<label>
-													<input name="kana[]" value="{$kana/@latin}" type="checkbox" id="kanaList-{$kana/*[1]/@name}">
-														<xsl:if test="$kana/@checked">
+													<input name="kana[]" value="{@latin}" type="checkbox" id="kanaList-{@latin}">
+														<xsl:if test="@checked">
 															<xsl:attribute name="checked">checked</xsl:attribute>
 														</xsl:if>
 													</input>
 												</label>
 											</td>
 											<td>
-												<label for="kanaList-{$kana/*[1]/@name}">
-													<xsl:for-each select="$kana/katakana">
+												<label for="kanaList-{@latin}">
+													<xsl:for-each select="katakana">
 														<span>
 															<xsl:if test="@user-count">
 																<xsl:attribute name="title"><xsl:value-of select="@user-count"/>ｘ ☑</xsl:attribute>
@@ -145,7 +140,7 @@ var KanaTable = {
 										</xsl:when>
 										<xsl:otherwise>
 											<td>
-												<xsl:for-each select="$kana/hiragana">
+												<xsl:for-each select="hiragana">
 													<xsl:call-template name="word.strokeOrder">
 														<xsl:with-param name="text" select="@name"/>
 													</xsl:call-template>
@@ -154,10 +149,10 @@ var KanaTable = {
 												</xsl:for-each>
 											</td>
 											<td>
-												<xsl:value-of select="$kana/@latin"/>
+												<xsl:value-of select="@latin"/>
 											</td>
 											<td>
-												<xsl:for-each select="$kana/katakana">
+												<xsl:for-each select="katakana">
 													<xsl:call-template name="word.strokeOrder">
 														<xsl:with-param name="text" select="@name"/>
 													</xsl:call-template>
@@ -167,7 +162,6 @@ var KanaTable = {
 											</td>
 										</xsl:otherwise>
 									</xsl:choose>
-									
 								</xsl:when>
 								<xsl:otherwise>
 									<td/><td/><td/>

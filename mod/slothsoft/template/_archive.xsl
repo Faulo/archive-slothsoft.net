@@ -117,7 +117,7 @@
 						<a href="?watch={@id}&amp;autoplay" title="Watch"><xsl:value-of select="@name"/></a>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:value-of select="@name"/>
+						<a href="?show={@id}" title="Show file"><xsl:value-of select="@name"/></a>
 					</xsl:otherwise>
 				</xsl:choose>
 			</p>

@@ -39,12 +39,14 @@ td th {
 	text-align: right;
 }
 table[id] {
-	background-color: #eee;
-	width: 100%;
+	background-color: #FAFAFA;
+	width: 1000px;
+	max-width: 100%;
+	margin: auto;
 }
 table[id] > * > tr > * {
 	padding: 0.25em 0.5em;
-	background-color: #eef;
+	background-color: #FFFFF0;
 }
 table[id], table[id] > * > tr > * {
 	border: 1px solid gray;
@@ -106,7 +108,7 @@ caption {
 						<th class="part-details">Properties</th>
 						<th class="part-power">Power</th>
 						<th class="part-price">Price</th>
-						<th class="part-history">Price History</th>
+						<!--<th class="part-history">Price History</th>-->
 					</tr>
 				</thead>
 				<tfoot>
@@ -114,9 +116,9 @@ caption {
 						<td/>
 						<td/>
 						<td/>
-						<td><xsl:value-of select="sum(*/@tdp)"/>&#160;W</td>
-						<th><xsl:value-of select="format-number(sum(*/@price), '0.00')"/>&#160;€</th>
-						<th title="Tatsächlich bezahlter Preis">(<xsl:value-of select="format-number(sum(@final-price), '0.00')"/>&#160;€)</th>
+						<td class="number"><xsl:value-of select="sum(*/@tdp)"/>&#160;W</td>
+						<th class="number"><xsl:value-of select="format-number(sum(*/@price), '0.00')"/>&#160;€</th>
+						<!--<th title="Tatsächlich bezahlter Preis">(<xsl:value-of select="format-number(sum(@final-price), '0.00')"/>&#160;€)</th>-->
 					</tr>
 				</tfoot>
 				<tbody>
@@ -152,6 +154,7 @@ caption {
 									</xsl:otherwise>
 								</xsl:choose>
 							</td>
+							<!--
 							<td>
 								<xsl:if test="price">
 									<details>
@@ -184,6 +187,7 @@ caption {
 									</details>
 								</xsl:if>
 							</td>
+							-->
 						</tr>
 					</xsl:for-each>
 				</tbody>

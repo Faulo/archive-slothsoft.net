@@ -2,6 +2,8 @@
 namespace Slothsoft\CMS;
 
 use Slothsoft\Core\FileSystem;
+use Slothsoft\Core\Storage;
+
 $dataPath = self::loadXPath($dataDoc);
 $retNode = $dataDoc->createDocumentFragment();
 
@@ -25,20 +27,24 @@ foreach ($partList as $part) {
         $partNames[] = $part->getAttribute('name');
         $dateFile = $tempDir . $todayDate . '.' . $part->getAttribute('name') . '.xml';
         
-        if (! is_file($dateFile)) {
-            // if (!$part->parentNode->hasAttribute('final-price')) {
-            /*
-             * if ($priceDoc = self::loadExternalDocument($uri, 'html', 0)) {
-             * $priceDoc->save($dateFile);
-             * }
-             * //
-             */
-            // }
+		continue;
+		
+        if (!$part->parentNode->hasAttribute('final-price')) {
+			if (! is_file($dateFile)) {
+				echo $dateFile . PHP_EOL;
+				if ($priceDoc = Storage::loadExternalDocument($uri, TIME_DAY)) {
+					$priceDoc->save($dateFile);
+					echo 'SUCCESS';
+				} else {
+					echo $uri . PHP_EOL;
+				}
+				die;
+			}
         }
     }
 }
 
-$prices = FileSystem::scanDir($tempDir);
+$prices = []; //FileSystem::scanDir($tempDir);
 foreach ($prices as $file) {
     $arr = explode('.', $file);
     $date = $arr[0];

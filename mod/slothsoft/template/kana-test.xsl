@@ -76,7 +76,7 @@ addEventListener(
 				<button type="submit">Check</button>
 				
 				<h2>Generate a test using these Kana:</h2>
-				<div class="floatLeft">
+				<div>
 					<label>
 						Selected:
 						<xsl:value-of select="count(kana[@checked])"/>/<xsl:value-of select="count(kana)"/>

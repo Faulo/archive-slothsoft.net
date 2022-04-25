@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
 	<page name="secretArchive" title="secretArchive" status-active="">
-		<page name="Hentai" ref="archive-hentai" title="Hentai" status-active="">
+		<page name="Hentai" ref="archive" title="Hentai" status-active="">
 			<page name="ryuutama.com" ref="archive-hentai" title="ryuutama.com" status-active="">
 				<param name="load-archive" value="ryuutama.com"/>
 			</page>
@@ -17,6 +17,9 @@
 			<page name="pururin.us" ref="archive-hentai" title="pururin.us" status-active="">
 				<param name="load-archive" value="pururin.us"/>
 			</page>
+			<page name="Videos" ref="archive" title="Videos" status-active="">
+				<param name="load-archive" value="hentai"/>
+			</page>
 		</page>
 		<page name="Manga" redirect=".." title="Manga" status-active="">
 			<page name="OnePiece" ref="archive-manga" title="OnePiece" status-active="">
@@ -28,6 +31,9 @@
 		</page>
 		<page name="Files" ref="archive" title="Files" status-active="">
 			<param name="load-archive" value="files"/>
+		</page>
+		<page name="Images" ref="archive" title="Images" status-active="">
+			<param name="load-archive" value="images"/>
 		</page>
 		<page name="Misc" ref="archive" title="Misc" status-active="">
 			<param name="load-archive" value="misc"/>
@@ -62,13 +68,81 @@
 		<page name="Chat" ref="archive" title="Chat" status-active="">
 			<param name="chat" value=""/>
 		</page>
+		<page name="TrialOfTwo" ref="archive" title="TrialOfTwo" status-active="">
+			<param name="load-archive" value="tot"/>
+		</page>
+	</page>
+	
+	<page name="Weihnachtswichteln" ref="archive" title="Weihnachtswichteln" status-active="">
+		<param name="load-archive" value="wichteln"/>
+		<page name="Kummerkasten" ref="archive" title="Kummerkasten" status-active="">
+			<param name="chat" value=""/>
+			<param name="chat-duration" value="30"/>
+		</page>
 	</page>
 	
 	<page name="downloads">
-		<param name="load-archive" value="files"/>
 		<page name="TheLegendOfZelda-TheWindWaker-PronounPatcher.zip" ref="archive" status-active="">
+			<param name="load-archive" value="files"/>
 			<param name="download" value="id-0603f914d59ae8de9e1b5ce9381adb13"/>
 		</page>
+		
+		<page name="games">
+			<param name="load-archive" value="files"/>
+			<page name="PowerFantasyVR.zip" ref="archive" status-active="">
+				<param name="download" value="id-250bef594a2d649522270649058c7333"/>
+			</page>
+			<page name="Communiganda.zip" ref="archive" status-active="">
+				<param name="download" value="id-114477c68da0d2ca1e3c739c539885a1"/>
+			</page>
+			<page name="FindingHome.zip" ref="archive" status-active="">
+				<param name="download" value="id-e8ae0c116fd814d01009399ea278814d"/>
+			</page>
+			<page name="KeepEverybodyHappy.zip" ref="archive" status-active="">
+				<param name="download" value="id-c051300bafcbf127b6cc7368c8335dff"/>
+			</page>
+			<page name="Orbital.zip" ref="archive" status-active="">
+				<param name="download" value="id-f9a7c8a45091dbce20a2b705009db2ba"/>
+			</page>
+			<page name="ReverseSlender.zip" ref="archive" status-active="">
+				<param name="download" value="id-d1342525be9f9d7feb34049967884e4a"/>
+			</page>
+			<page name="SpaceCape.zip" ref="archive" status-active="">
+				<param name="download" value="id-0a746ffff5c75bd20c68bddeb3c00c4d"/>
+			</page>
+			<page name="WatchOut.zip" ref="archive" status-active="">
+				<param name="download" value="id-215bc2dffdf11e911d3405750e65cfa1"/>
+			</page>
+			<page name="ChartRunner.zip" ref="archive" status-active="">
+				<param name="download" value="id-71224e5d98850f5749d371aaacd563a0"/>
+			</page>
+			<page name="TheCursedBroom.zip" ref="archive" status-active="">
+				<param name="download" value="id-903a0ccc38f090751ed5125a8c94fc1a"/>
+			</page>
+			<page name="BackToTheChicken.zip" ref="archive" status-active="">
+				<param name="download" value="id-6c1bd5eebe3375bb700e3feb8eb99ba7"/>
+			</page>
+			<page name="TrialOfTwo.GamesPreis.zip" ref="archive" status-active="">
+				<param name="download" value="id-92a5b537a9f830404bdd60d2079b9707"/>
+			</page>
+			<page name="NuttinToLose.zip" ref="archive" status-active="">
+				<param name="download" value="id-415ddc1a58650633c043384c45616c2f"/>
+			</page>
+			<page name="Pengwing.zip" ref="archive" status-active="">
+				<param name="download" value="id-a5a993a448e4c6445bea4838d83370cc"/>
+			</page>
+		</page>
+		
+		<page name="HistorischerSpieleabend" ref=".." status-active="">
+			<param name="load-archive" value="images"/>
+			<page name="cstrike.7z" ref="archive" status-active="">
+				<param name="download" value="id-b4cb354a0b06f92d64c43cad62f1a23d"/>
+			</page>
+			<page name="VampireTheMasqueradeBloodlines.7z" ref="archive" status-active="">
+				<param name="download" value="id-f52fe5b0e7d3f468ea6df01bb075d93f"/>
+			</page>
+		</page>
+		
 		<page name="tales" status-active="" ref="archive">
 			<param name="load-archive" value="tales"/>
 			<!--

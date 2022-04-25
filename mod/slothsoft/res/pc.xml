@@ -80,7 +80,7 @@
 			tdp="2"
 			>
 			<properties
-				size="1x 4 GB"
+				size="4x 4 GB"
 				type="PC3-10600 ECC"
 				frequency="1333 MHz"
 				/>
@@ -105,6 +105,17 @@
 			>
 			<properties
 				frequency="900 MHz" memory="512 MB"
+				/>
+		</part>
+		<part
+			type="GPU"
+			href="https://www.techpowerup.com/gpu-specs/geforce-gt-730.c2590"
+			name="Nvidia GeForce GT 730"
+			tdp="49"
+			price="32"
+			>
+			<properties
+				frequency="700 MHz" memory="2048 MB"
 				/>
 		</part>
 		<part
@@ -144,7 +155,7 @@
 		</part>
 	</data>
 	
-	<data name="Danis PC" final-price="727.05">
+	<data name="Danis PC 2011" final-price="727.05">
 		<part
 			type="Mainboard" 
 			href="http://www.asus.com/Motherboards/Intel_Socket_1155/P8Z68V_LE/#specifications"
@@ -250,6 +261,172 @@
 			price="15" price-uri="http://www.idealo.de/preisvergleich/OffersOfProduct/2484287_-kerbstone-laser-mouse-trust.html"
 			/>
 	</data>
+	<data name="Danis PC 2021" final-price="680.01">
+		<part
+			type="Mainboard" 
+			href="https://www.asrock.com/mb/AMD/B550M-ITXac/index.asp"
+			name="ASRock B550M-ITX/ac"
+			tdp="6"
+			price="125" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/200411500_-b550m-itx-ac-asrock.html"
+			>
+			<properties
+				socket="AM4" ram="DDR4-3200" sata="6 Gb/s" form="Mini-ITX"
+				/>
+		</part>
+		<part
+			type="CPU"
+			href="https://www.amd.com/en/products/cpu/amd-ryzen-5-5600x"
+			name="AMD Ryzen 5 5600X"
+			tdp="65"
+			price="278" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/200733050_-ryzen-5-5600x-box-amd.html"
+			>
+			<properties
+				frequency="3.70 GHz" cores="6" cache-l2="3 KB" cache-l3="32 MB" socket="AM4" pcie="4.0"
+				/>
+		</part>
+		<part
+			type="RAM"
+			href=""
+			name="HyperX FURY 32GB Kit"
+			price="140" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/200443729_-fury-32gb-kit-ddr4-3200-cl16-hx432c16fb4k2-32-hyperx.html"
+			tdp="0"
+			>
+			<properties
+				size="2x 16 GB"
+				type="DDR4-3200"
+				frequency="3200 MHz"
+				/>
+		</part>
+		<!--
+		<part
+			type="PSU"
+			href="https://www.bequiet.com/en/powersupply/2276"
+			name="be quiet! Pure Power 11 FM"
+			tdp="0"
+			price="89"
+			price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/201232712_-pure-power-11-fm-650w-be-quiet.html"
+			>
+			<properties
+				power="650 W"
+				/>
+		</part>
+		-->
+		<part
+			type="Audio"
+			href="https://datasheetspdf.com/pdf-file/808237/RealtekMicroelectronics/ALC887/1"
+			name="RealTek ALC887"
+			price="0"
+			tdp="0"
+			><properties
+				channels="7.1"
+				/>
+		</part>
+		<part
+			type="PSU"
+			href="https://www.tooq.com/product.php?id=1451"
+			name="TooQ Ecopower II ATX 500W"
+			tdp="0"
+			price="20"
+			price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/200258193_-ecopower-ii-atx-500w-tqep-500sp-tooq.html"
+			>
+			<properties
+				power="500 W"
+				/>
+		</part>
+		<part
+			type="Chassis"
+			href="https://en.sharkoon.com/product/16426"
+			name="Sharkoon SHARK ZONE C10"
+			tdp="0"
+			price="42" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/4752162_-shark-zone-c10-sharkoon.html"
+			>
+			<properties
+				size="Mini-ITX Tower"
+				psu="-"
+				/>
+		</part>
+		<part
+			type="GPU"
+			href="https://www.nvidia.com/de-de/geforce/graphics-cards/30-series/rtx-3060-3060ti/"
+			name="GeForce RTX 3060"
+			price="329" price-uri="https://www.idealo.de/preisvergleich/ProductCategory/16073F101483660-101794279-102016811.html?sortKey=minPrice"
+			tdp="200"
+			>
+			<properties
+				frequency="1320 MHz"
+				memory="12 GB"
+				/>
+		</part>
+		<part
+			type="GPU"
+			href="https://www.amd.com/en/products/graphics/amd-radeon-rx-6700-xt"
+			name="Radeon RX 6700 XT"
+			price="329" price-uri="https://www.idealo.de/preisvergleich/ProductCategory/16073F101603952-101621198-101922126.html?sortKey=minPrice"
+			tdp="200"
+			>
+			<properties
+				frequency="2375 MHz"
+				memory="12 GB"
+				/>
+		</part>
+		<part
+			type="HDD"
+			href="https://www.intenso.de/en/products/solid-state-drives/M.2%20SSD%20Top%20Performance"
+			name="Intenso SSD M.2 2280"
+			price="50" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/5826821_-sata-iii-top-512gb-m-2-intenso.html"
+			tdp="5"
+			>
+			<properties
+				size="512 GB"
+				/>
+		</part>
+	</data>
+	<data name="Danis PC 2021 - Intel" >
+		<part
+			type="Mainboard" 
+			href="https://www.asrock.com/mb/Intel/H570M-ITXac/index.asp"
+			name="ASRock H570M-ITX/ac"
+			tdp="6"
+			price="126" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/201111842_-h570m-itx-ac-asrock.html"
+			>
+			<properties
+				socket="LGA 1200" ram="DDR4-3200" sata="6 Gb/s" form="Mini-ITX"
+				/>
+		</part>
+		<part
+			type="CPU"
+			href="https://ark.intel.com/content/www/us/en/ark/products/212275/intel-core-i5-11600k-processor-12m-cache-up-to-4-90-ghz.html"
+			name="Intel Core i5 11600K"
+			tdp="125"
+			price="229" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/201170501_-core-i5-11600k-box-intel.html"
+			>
+			<properties
+				frequency="3.90 GHz" cores="6" cache-l2="? KB" cache-l3="12 MB" socket="LGA 1200" pcie="4.0"
+				/>
+		</part>
+		<part
+			type="GPU"
+			href="https://ark.intel.com/content/www/us/en/ark/products/212275/intel-core-i5-11600k-processor-12m-cache-up-to-4-90-ghz.html"
+			name="Intel UHD Graphics 750"
+			price="0" price-uri=""
+			tdp="0"
+			>
+			<properties
+				frequency="350  MHz"
+				memory="0 GB"
+				/>
+		</part>
+		<part
+			type="Audio"
+			href="https://datasheetspdf.com/pdf-file/808237/RealtekMicroelectronics/ALC887/1"
+			name="RealTek ALC897"
+			price="0"
+			tdp="0"
+			><properties
+				channels="7.1"
+				/>
+		</part>
+	</data>
 	<data name="Steffis PC" final-price="629.69">
 		<part
 			type="Mainboard" 
@@ -340,7 +517,110 @@
 			price="15" price-uri="http://www.idealo.de/preisvergleich/OffersOfProduct/1402650_-evolution-stream-xt-corded-multimedia-keyboard-de-cherry.html"
 			/>
 	</data>
-	<data name="Julias PC">
+	<data name="Steffis PC 2018" >
+		<part
+			type="Mainboard" 
+			href="https://www.msi.com/Motherboard/Z370-TOMAHAWK"
+			name="MSI Z370 Tomahawk"
+			tdp=""
+			price="130" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/5766553_-z370-tomahawk-msi.html"
+			>
+			<properties
+				socket="LGA 1151" ram="DDR4-4000" sata="6 Gb/s" form="ATX"
+				/>
+		</part>
+		<part
+			type="CPU"
+			href="https://ark.intel.com/products/126686/Intel-Core-i7-8700-Processor-12M-Cache-up-to-4_60-GHz"
+			name="Intel Core i7 8700"
+			tdp="0"
+			price="180" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/5765852_-core-i7-8700-box-sockel-1151-14nm-bx80684i78700-intel.html"
+			>
+			<properties
+				frequency="3.20 GHz" cores="6" cache-l2="? KB" cache-l3="12 MB" bus="DMI" multiplier="?"
+				/>
+		</part>
+		<part
+			type="RAM"
+			href="https://www.gskill.com/en/product/f4-3200c16d-16gvk"
+			name="G.SKill Ripjaws V 16GB Black "
+			price="175" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/4893641_-ripjaws-v-16gb-kit-ddr4-3000-cl15-f4-3000c15d-16gvgb-g-skill.html"
+			tdp="0"
+			>
+			<properties
+				size="2x 8 GB"
+				type="PC4-3000"
+				frequency="3000 MHz"
+				/>
+		</part>
+		<part
+			type="GPU"
+			href="https://de.msi.com/Graphics-card/GeForce-GTX-1060-GAMING-X-6G.html"
+			name="MSI GeForce GTX 1050 Ti"
+			price="180" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/5157925_-geforce-gtx-1050-ti-oc-4gt-4096mb-msi.html"
+			tdp="0"
+			>
+			<properties
+				frequency="1341  MHz"
+				memory="4.0 GB"
+				/>
+		</part>
+		<part
+			type="Audio"
+			href="http://www.realtek.com.tw/products/productsView.aspx?Langid=1&amp;PFid=28&amp;Level=4&amp;Conn=4&amp;&amp;ProdID=284"
+			name="RealTek ALC892"
+			price="0"
+			tdp="0"
+			><properties
+				channels="7.1"
+				/>
+		</part>
+		<part
+			type="HDD"
+			name="Western Digital Black SSD"
+			price="80" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/5318413_-black-256gb-m-2-western-digital.html"
+			tdp="0"
+			>
+			<properties
+				size="256 GB"
+				/>
+		</part>
+		<part
+			type="HDD"
+			name="Western Digital Red SATA III"
+			price="55" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/3412425_-red-sata-iii-1tb-wd10efrx-western-digital.html"
+			tdp="0"
+			>
+			<properties
+				size="1024 GB"
+				/>
+		</part>
+		<part
+			type="PSU"
+			href="http://de.thermaltake.com/products-model.aspx?id=C_00003003"
+			name="Thermaltake Smart Pro RGB "
+			tdp="0"
+			price="90"
+			price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/5427766_-smart-pro-rgb-thermaltake.html"
+			>
+			<properties
+				power="650 W"
+				/>
+		</part>
+		<part
+			type="Chassis"
+			href="http://de.thermaltake.com/products-model.aspx?id=C_00002950"
+			name="Thermaltake Versa C22 RGB Black"
+			tdp="0"
+			price="60" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/5171794_-versa-c22-rgb-schwarz-thermaltake.html"
+			>
+			<properties
+				size="Midi Tower"
+				psu="-"
+				/>
+		</part>
+	</data>
+	<data name="Julias PC" final-price="300.00">
 		<part
 			type="Mainboard" 
 			href="http://msi.com/product/mb/H61M-P25--B3-.html#?div=Detail"
