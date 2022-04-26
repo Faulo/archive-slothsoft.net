@@ -3,6 +3,7 @@ namespace Slothsoft\CMS;
 
 use Slothsoft\Core\FS\DownloadManager;
 use Slothsoft\Core\CloudFlareScraper;
+
 return new HTTPClosure([
     'isThreaded' => true
 ], function () {

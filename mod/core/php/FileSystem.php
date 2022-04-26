@@ -207,9 +207,11 @@ abstract class FileSystem
                     if ($tagName) {
                         $retNode = $dataDoc->createElement($tagName);
                         $time = self::changetime($path);
+						$attr['change-timestamp'] = $time;
                         $attr['change-datetime'] = date(DATE_DATETIME, $time);
                         $attr['change-utc'] = date(DATE_UTC, $time);
                         $time = self::maketime($path);
+						$attr['make-timestamp'] = $time;
                         $attr['make-datetime'] = date(DATE_DATETIME, $time);
                         $attr['make-utc'] = date(DATE_UTC, $time);
                         $attr['path'] = $path;
@@ -357,6 +359,7 @@ abstract class FileSystem
         $filename = str_replace($notAllowed, $toReplace, $filename);
         $filename = preg_replace('~\s+~iu', ' ', $filename);
         $filename = trim($filename);
+		$filename = substr($filename, 0, 200);
         return $filename;
     }
 

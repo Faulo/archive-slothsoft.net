@@ -604,6 +604,7 @@ class DownloadWork extends Stackable
             $options['source-uri'] = $nextURI;
         } while ($nextURI and $notFound < (int) $options['data-missing-count'] and count($ret) < $options['chapter-count']);
         $this->log(sprintf('Prepared to download %d manga of %s! (%s)', count($ret), $options['name'], $options['source-uri']));
+		// $this->log(print_r($ret, true));
         return $ret;
     }
 
@@ -666,6 +667,49 @@ class DownloadWork extends Stackable
                 }
             }
         }
+		
+        if (isset($options['source-page-uri'])) {
+			$xpath = $options['downloader']->getXPath($options['source-uri']);
+			if ($xpath) {
+				$title = $this->downloadString($xpath, $options['source-xpath-title']);
+				$title = FileSystem::filenameSanitize($title);
+				
+				$path = $options['dest-root'] . $title . DIRECTORY_SEPARATOR;
+				
+				if ($title and !is_dir($path)) {
+					$firstPage = true;
+					
+					for ($page = 1; $page < $options['page-count']; $page++) {
+						$uri = sprintf($options['source-page-uri'], $options['source-uri'], $page);
+						
+						$image = $this->downloadURI($uri, $options['source-xpath-image']);
+						
+						if (!$image) {
+							break;
+						}
+						
+						$ext = pathinfo($image, PATHINFO_EXTENSION);
+						$file = $path . sprintf($options['dest-file'], $page, $ext);
+									
+						if (file_exists($file)) {
+							// nothing to do \o/
+							break;
+						} else {
+							if ($data = $options['downloader']->getFile($image)) {
+								if ($firstPage) {
+									if (! is_dir($path)) {
+										mkdir($path, 0777, true);
+									}
+									$this->log(sprintf('Downloading hentai "%s" (%s)', $title, $uri));
+									$firstPage = false;
+								}
+								file_put_contents($file, $data);
+							}
+						}
+					}
+				}
+			}
+		}
         return $ret;
     }
 

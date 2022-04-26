@@ -14,6 +14,9 @@
 			<page name="nhentai.net" ref="archive-hentai" title="nhentai.net" status-active="">
 				<param name="load-archive" value="nhentai.net"/>
 			</page>
+			<page name="nhentai.old" ref="archive-hentai" title="nhentai.old" status-active="">
+				<param name="load-archive" value="nhentai.old"/>
+			</page>
 			<page name="pururin.us" ref="archive-hentai" title="pururin.us" status-active="">
 				<param name="load-archive" value="pururin.us"/>
 			</page>

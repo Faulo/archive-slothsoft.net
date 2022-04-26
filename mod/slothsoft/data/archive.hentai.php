@@ -11,6 +11,9 @@ $downloadDirsList = [
     'pururin.us' => [
         'C:/NetzwerkDaten/pr0n/manga/pururin.us/'
     ],
+	'nhentai.old' => [
+		'C:/NetzwerkDaten/pr0n/manga/nhentai.old/',
+	],
 	'nhentai.net' => [
 		'C:/NetzwerkDaten/pr0n/manga/nhentai.net/',
 	],
@@ -108,9 +111,10 @@ foreach ($downloadDirs as $key => $dir) {
             foreach ($tmpList as $node) {
                 $node->setAttribute('uri', str_replace('C:', '\\\\Dende', $node->getAttribute('path')));
                 
-                $avg = $xpath->evaluate('sum(file/@size-int) div count(file)', $node);
-                // $avg = $xpath->evaluate('count(file)', $node);
-                $nodeList[sprintf('%08d-%s', $avg, $node->getAttribute('id'))] = $node;
+                $rank = $xpath->evaluate('number(.//file/@change-timestamp)', $node);
+                // $rank = $xpath->evaluate('sum(file/@size-int) div count(file)', $node);
+                // $rank = $xpath->evaluate('count(file)', $node);
+                $nodeList[sprintf('%08d-%s', $rank, $node->getAttribute('id'))] = $node;
             }
             unset($tmpList);
             krsort($nodeList);

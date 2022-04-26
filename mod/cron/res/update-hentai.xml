@@ -12,10 +12,11 @@
 		dest-path="%s"
 		dest-file="%03d.%s"
 		data-missing-count="1"
-		chapter-count="100"
+		chapter-count="1000"
 		page-count="1000">
 		
 		<data name="pururin.us"
+			active="0"
 			source-host="http://pururin.us"
 			source-xpath = ".//*[@class='thumbnail thumb-pururin  col-xs-3 col-sm-3 col-md-3 col-lg-3'][@href]"
 			source-xpath-next	= ".//*[@rel='next']/@href"
@@ -39,15 +40,28 @@
 		</data>
 		
 		<data name="nhentai.net"
-			active="0"
+			active="1"
 			source-host="http://nhentai.net"
 			source-xpath = ".//*[@class='cover'][@href]"
 			source-xpath-next=".//*[@class='next']/@href"
 			source-xpath-image = ".//*[@id='image-container']//@src"
+			source-xpath-title="substring-before(.//title, '»')"			
+			source-page-uri = "%s%d/"
 			>
-			<!--source-xpath-title="substring-before(.//title, '»')"-->
 			<update
 				source-path = "/language/english/"
+				/>
+			<update
+				source-path = "/language/english/popular-today"
+				/>
+			<update
+				source-path = "/language/english/popular-week"
+				/>
+			<update
+				source-path = "/tag/uncensored/"
+				/>
+			<update
+				source-path = "/tag/pregnant/"
 				/>
 		</data>
 		
