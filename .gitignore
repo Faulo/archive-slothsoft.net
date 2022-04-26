@@ -5,6 +5,7 @@ temp/
 *Kopie*
 Thumbs.db
 *.log
+*.php.txt
 
 #root files
 /*
